@@ -44,6 +44,12 @@ SHELL_VERIFIED = re.compile(
     r"(?:^|\n)BLIKVM_SHELL_OK kernel=7\.\S+[ \t]*(?=\n|$)"
 )
 DMESG_END = re.compile(r"(?:^|\n)BLIKVM_DMESG_END[ \t]*(?=\n|$)")
+MMC_TEST_PASS = re.compile(
+    r"(?:^|\n)BLIKVM_MMC_TEST_PASS "
+    r"device=/dev/mmcblk0 partition=/dev/mmcblk0p1 "
+    r"filesystem=ext4 file=/etc/os-release mount_options=ro,noload"
+    r"[ \t]*(?=\n|$)"
+)
 
 LINUX_ARTIFACT_NAMES = (
     "Image",
@@ -97,6 +103,7 @@ FORBIDDEN_UBOOT_PATTERNS = (
     re.compile(r"(?:^|;)\s*env\s+save(?:\s|;|$)"),
     re.compile(r"(?:^|;)\s*(?:mmc|nand)\s+(?:write|erase)(?:\s|;|$)"),
     re.compile(r"(?:^|;)\s*sf\s+(?:write|erase|update)(?:\s|;|$)"),
+    re.compile(r"(?:^|;)\s*(?:fatwrite|ext4write)(?:\s|;|$)"),
 )
 
 USB_ROLES = {
@@ -1180,22 +1187,229 @@ def classify_boot_failure(text: str, stage: str) -> str:
         return "uboot_rejected_boot"
     if stage == "kernel_boot":
         return "kernel_handoff_not_observed"
+    if stage == "mmc_test":
+        if not re.search(r"(?:mmcblk|new high speed SD)", cleaned, re.IGNORECASE):
+            return "mmc_device_not_enumerated"
+        if "BLIKVM_MMC_TEST_PASS" not in cleaned:
+            return "mmc_read_or_mount_failure"
     return "automation_or_preflight_failure"
+
+
+def capture_shell_command(
+    console: SerialConsole,
+    recorder: RunRecorder,
+    filename: str,
+    label: str,
+    command: str,
+    timeout: float = 30.0,
+) -> tuple[int, str]:
+    """Run one initramfs shell command and archive only its marked output."""
+
+    token = f"BLIKVM_{label.upper()}"
+    end_pattern = re.compile(
+        rf"(?:^|\n){re.escape(token)}_END rc=([0-9]+)[ \t]*(?=\n|$)"
+    )
+    wrapped = (
+        f"printf '\\n{token}_BEGIN\\n'; {command}; "
+        f"blikvm_rc=$?; printf '\\n{token}_END rc=%s\\n' \"$blikvm_rc\"\r"
+    )
+    console.write(wrapped.encode("utf-8"))
+    _matched, raw = console.wait_for((end_pattern,), timeout)
+    cleaned = clean_console(raw)
+    lines = cleaned.splitlines()
+    try:
+        begin = lines.index(f"{token}_BEGIN")
+        end = next(
+            index
+            for index in range(begin + 1, len(lines))
+            if lines[index].startswith(f"{token}_END rc=")
+        )
+    except (ValueError, StopIteration) as error:
+        raise RuntimeError(f"could not isolate target output for {filename}") from error
+    status_match = re.fullmatch(rf"{re.escape(token)}_END rc=([0-9]+)", lines[end])
+    if not status_match:
+        raise RuntimeError(f"could not parse target status for {filename}")
+    output = "\n".join(lines[begin + 1 : end]).strip() + "\n"
+    recorder.save_text(filename, output)
+    return int(status_match.group(1)), output
+
+
+def parse_mmc_lsblk(text: str) -> list[dict[str, str]]:
+    """Parse the tab-separated MMC inventory emitted by initramfs/lsblk."""
+
+    lines = [line for line in text.splitlines() if line]
+    if not lines:
+        return []
+    fields = lines[0].split("\t")
+    expected = (
+        "NAME",
+        "KNAME",
+        "MAJ:MIN",
+        "RO",
+        "SIZE_SECTORS",
+        "TYPE",
+        "FSTYPE",
+        "MOUNTPOINT",
+    )
+    if tuple(fields) != expected:
+        raise RuntimeError("unexpected initramfs lsblk header")
+    devices: list[dict[str, str]] = []
+    for line in lines[1:]:
+        values = line.split("\t")
+        if len(values) != len(fields):
+            raise RuntimeError(f"malformed initramfs lsblk row: {line}")
+        devices.append(dict(zip((field.lower() for field in fields), values)))
+    return devices
+
+
+def run_mmc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
+    """Inventory and read the vendor SD root partition without allowing writes."""
+
+    evidence: dict[str, str] = {}
+    statuses: dict[str, int] = {}
+
+    commands = (
+        (
+            "mmc-enumeration.log",
+            "mmc_wait",
+            "i=0; while [ ! -b /dev/mmcblk0p1 ] && [ \"$i\" -lt 15 ]; "
+            "do sleep 1; i=$((i + 1)); done; "
+            "printf 'wait_seconds=%s\\n' \"$i\"; [ -b /dev/mmcblk0p1 ]",
+            25.0,
+        ),
+        (
+            "block-readonly.log",
+            "mmc_readonly",
+            "ok=1; found=0; for dev in /dev/mmcblk[0-9] /dev/mmcblk[0-9]p*; "
+            "do [ -b \"$dev\" ] || continue; found=1; "
+            "blockdev --setro \"$dev\" || ok=0; "
+            "ro=$(blockdev --getro \"$dev\" 2>/dev/null || echo error); "
+            "printf '%s ro=%s\\n' \"$dev\" \"$ro\"; "
+            "[ \"$ro\" = 1 ] || ok=0; done; "
+            "[ \"$found\" -eq 1 ] && [ \"$ok\" -eq 1 ]",
+            20.0,
+        ),
+        (
+            "mmc-identify.log",
+            "mmc_identify",
+            "found=0; for card in /sys/bus/mmc/devices/mmc*:*; "
+            "do [ -d \"$card\" ] || continue; found=1; "
+            "printf 'sysfs_device=%s\\n' \"${card##*/}\"; "
+            "for attr in type name manfid oemid serial date cid csd ocr; "
+            "do [ -r \"$card/$attr\" ] && "
+            "printf '%s=%s\\n' \"$attr\" \"$(cat \"$card/$attr\")\"; done; "
+            "done; [ \"$found\" -eq 1 ]",
+            20.0,
+        ),
+        ("lsblk.log", "mmc_lsblk", "lsblk", 20.0),
+        ("blkid.log", "mmc_blkid", "blkid", 20.0),
+        ("proc-partitions.log", "mmc_partitions", "cat /proc/partitions", 20.0),
+        ("partition-table.log", "mmc_fdisk", "fdisk -l /dev/mmcblk0", 20.0),
+        (
+            "mmc-dmesg.log",
+            "mmc_dmesg",
+            "dmesg | grep -Ei 'mmc|sunxi|regulator|ext4|partition'",
+            20.0,
+        ),
+    )
+    for filename, label, command, timeout in commands:
+        status, output = capture_shell_command(
+            console, recorder, filename, label, command, timeout
+        )
+        statuses[filename] = status
+        evidence[filename] = output
+
+    mount_command = (
+        "( set -e; mounted=0; "
+        "cleanup() { [ \"$mounted\" -eq 0 ] || umount /mnt/mmc-test; }; "
+        "trap cleanup EXIT; mkdir -p /mnt/mmc-test; "
+        "mount -t ext4 -o ro,noload /dev/mmcblk0p1 /mnt/mmc-test; mounted=1; "
+        "grep ' /mnt/mmc-test ext4 ro,' /proc/mounts; "
+        "test -r /mnt/mmc-test/etc/os-release; "
+        "echo BLIKVM_MMC_FILE_BEGIN; cat /mnt/mmc-test/etc/os-release; "
+        "echo BLIKVM_MMC_FILE_END; "
+        "sha256sum /mnt/mmc-test/etc/os-release; "
+        "echo 'BLIKVM_MMC_TEST_PASS device=/dev/mmcblk0 "
+        "partition=/dev/mmcblk0p1 filesystem=ext4 file=/etc/os-release "
+        "mount_options=ro,noload' )"
+    )
+    mount_status, mount_output = capture_shell_command(
+        console,
+        recorder,
+        "mount-readonly.log",
+        "mmc_mount",
+        mount_command,
+        30.0,
+    )
+    statuses["mount-readonly.log"] = mount_status
+    evidence["mount-readonly.log"] = mount_output
+
+    post_status, post_output = capture_shell_command(
+        console,
+        recorder,
+        "mmc-dmesg-after-mount.log",
+        "mmc_dmesg_after",
+        "dmesg | grep -Ei 'mmc|sunxi|regulator|ext4|partition'",
+        20.0,
+    )
+    statuses["mmc-dmesg-after-mount.log"] = post_status
+    evidence["mmc-dmesg-after-mount.log"] = post_output
+
+    failures = [name for name, status in statuses.items() if status != 0]
+    if failures:
+        raise RuntimeError("MMC target commands failed: " + ", ".join(failures))
+    if not MMC_TEST_PASS.search(mount_output):
+        raise RuntimeError("read-only MMC mount did not emit the success marker")
+
+    devices = parse_mmc_lsblk(evidence["lsblk.log"])
+    by_name = {device["name"]: device for device in devices}
+    disk = by_name.get("mmcblk0")
+    partition = by_name.get("mmcblk0p1")
+    if disk is None or partition is None:
+        raise RuntimeError("lsblk did not identify mmcblk0 and mmcblk0p1")
+    if partition["fstype"] != "ext4":
+        raise RuntimeError(
+            f"mmcblk0p1 has unexpected filesystem {partition['fstype']!r}"
+        )
+    if any(device["ro"] != "1" for device in devices):
+        raise RuntimeError("not every detected MMC block device is forced read-only")
+
+    return {
+        "controller": "4020000.mmc",
+        "card": "mmc0",
+        "block_device": disk,
+        "partitions": [device for device in devices if device["type"] == "part"],
+        "mounted_partition": "/dev/mmcblk0p1",
+        "filesystem": "ext4",
+        "mount_options": ["ro", "noload"],
+        "file_read": "/etc/os-release",
+        "unmounted_after_test": True,
+        "storage_writes_attempted": False,
+        "evidence": {name: str(recorder.path / name) for name in statuses},
+    }
 
 
 def boot_linux_command(
     args: argparse.Namespace, sys_root: Path, dev_root: Path
 ) -> dict[str, Any]:
-    recorder = RunRecorder("boot-linux", args.out_root)
+    run_mmc = args.command == "boot-mmc"
+    recorder = RunRecorder(args.command, args.out_root)
     stage = "preflight"
     last_passed = "none"
     manifest: dict[str, Any] | None = None
     publication: Path | None = None
+    mmc: dict[str, Any] | None = None
     try:
         manifest = copy_linux_artifacts(recorder, args.artifact_root)
         recorder.metadata["artifacts"] = manifest["artifacts"]
         recorder.metadata["linux"] = manifest["linux"]
         recorder.metadata["initramfs"] = manifest["initramfs"]
+        recorder.metadata["safety"].update(
+            {
+                "target_storage_writes_attempted": False,
+                "target_filesystem_mount_mode": "read-only" if run_mmc else None,
+            }
+        )
         device = resolve_uart_device(sys_root, dev_root, args.device)
         recorder.metadata["uart"] = {
             "device": str(device),
@@ -1289,14 +1503,19 @@ def boot_linux_command(
             boot_text += verification
             last_passed = "serial_shell"
 
+            if run_mmc:
+                stage = "mmc_test"
+                mmc = run_mmc_test(console, recorder)
+                last_passed = "mmc_read_only"
+
             console.write(b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END\r")
             _, dmesg_text = console.wait_for((DMESG_END,), 20.0)
             recorder.save_text("dmesg.log", dmesg_text)
             recorder.save_text("boot-console.log", boot_text)
 
-        report = {
+        report: dict[str, Any] = {
             "result": "passed",
-            "stage": "serial_shell",
+            "stage": "mmc_read_only" if run_mmc else "serial_shell",
             "last_passed_stage": last_passed,
             "linux_version": manifest["linux"]["version"],
             "uart_available": True,
@@ -1313,6 +1532,8 @@ def boot_linux_command(
             "uart_log": str(recorder.path / "uart.log"),
             "dmesg_log": str(recorder.path / "dmesg.log"),
         }
+        if mmc is not None:
+            report["mmc"] = mmc
     except Exception as error:
         raw_path = recorder.path / "uart.raw"
         evidence = raw_path.read_bytes() if raw_path.exists() else b""
@@ -1554,6 +1775,28 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     linux_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
+    mmc_parser = subparsers.add_parser(
+        "boot-mmc",
+        help="TFTP-boot Linux and verify the existing SD filesystems read-only",
+    )
+    add_uboot_options(mmc_parser)
+    mmc_parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=Path(
+            os.environ.get(
+                "LABCTL_LINUX_ARTIFACT_ROOT",
+                REPOSITORY_ROOT / "out" / "build" / "artifacts",
+            )
+        ),
+    )
+    mmc_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+    mmc_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)
     if getattr(args, "jobs", 1) < 1:
@@ -1601,7 +1844,7 @@ def main(argv: list[str] | None = None) -> int:
             report = boot_vendor_command(args, sys_root, dev_root)
         elif args.command == "build-linux":
             report = build_linux_command(args)
-        elif args.command == "boot-linux":
+        elif args.command in ("boot-linux", "boot-mmc"):
             report = boot_linux_command(args, sys_root, dev_root)
         elif args.command == "collect":
             report = collect_command(args)

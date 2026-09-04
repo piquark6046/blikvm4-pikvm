@@ -1,8 +1,10 @@
-# Linux 7.x serial bring-up build
+# Linux 7.x serial and MMC bring-up build
 
-The first hardware slice is intentionally limited to H616 core support,
-UART0, and an Alpine/BusyBox initramfs. MMC, Linux Ethernet, USB, display,
-capture, gadget, and board-control GPIO support are disabled.
+The accepted baseline was limited to H616 core support, UART0, and an
+Alpine/BusyBox initramfs. The current isolated slice adds only MMC0, block and
+MS-DOS partition parsing, the existing ext4 format, and its fixed 3.3 V supply.
+Linux Ethernet, USB, display, capture, gadget, and board-control GPIO support
+remain disabled.
 
 Build from the repository root:
 
@@ -32,15 +34,18 @@ Current artifacts are written to `out/build/artifacts/`. Every `labctl`
 build or boot also copies the exact artifacts, hashes, logs, and result JSON
 into a unique `out/runs/<run-id>/` directory.
 
-Boot on the connected board with:
+Boot and run the read-only MMC test on the connected board with:
 
 ```bash
-sudo ./lab/labctl --pretty boot-linux \
+sudo ./lab/labctl --pretty boot-mmc \
   --target-password-file /path/outside/repository/to/vendor-password
 ```
 
 If the board is already stopped at U-Boot, replace the credential option with
 `--no-reboot`. All U-Boot `setenv` operations are session-only. The command
 publishes an immutable TFTP run directory, verifies every returned byte count,
-captures raw and timestamped UART, waits for `BLIKVM_INITRAMFS_READY`, executes
-a shell command, captures `dmesg`, and classifies failures from UART evidence.
+captures raw and timestamped UART, waits for `BLIKVM_INITRAMFS_READY`, records
+MMC identity, `lsblk`, `blkid`, the partition table, `/proc/partitions`, and
+relevant `dmesg`, and forces every detected MMC block node read-only. It mounts
+`/dev/mmcblk0p1` as ext4 with `ro,noload`, reads `/etc/os-release`, records its
+hash, and unmounts before reporting success.

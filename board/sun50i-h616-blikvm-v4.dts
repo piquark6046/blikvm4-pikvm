@@ -2,17 +2,19 @@
 /*
  * Minimal first-boot device tree for the BliKVM v4.
  *
- * This intentionally describes only DRAM and the proven UART0 console.
- * Storage, Ethernet, USB, display/capture, GPIO-controlled functions, and
- * carrier peripherals belong to later, independently validated slices.
+ * This intentionally describes only DRAM, the proven UART0 console, and the
+ * removable SD slot on MMC0. Ethernet, USB, display/capture, GPIO-controlled
+ * functions, and carrier peripherals belong to later, independently
+ * validated slices.
  */
 
 /dts-v1/;
 
 #include "sun50i-h616.dtsi"
+#include <dt-bindings/gpio/gpio.h>
 
 / {
-	model = "BliKVM v4 (serial bring-up)";
+	model = "BliKVM v4 (serial + MMC bring-up)";
 	compatible = "blicube,blikvm-v4", "allwinner,sun50i-h616";
 
 	aliases {
@@ -27,6 +29,33 @@
 		device_type = "memory";
 		reg = <0x0 0x40000000 0x0 0x40000000>;
 	};
+
+	/*
+	 * The vendor DT routes MMC0 and the PF I/O bank to the PMIC's always-on
+	 * 3.3 V LDO2 ("vcc-sys"). U-Boot has already established this rail.
+	 * Model it as non-switchable here so this read-only slice does not need
+	 * to control the AXP1530-compatible PMIC.
+	 */
+	reg_vcc_sys: regulator-vcc-sys {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc-sys";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+		regulator-boot-on;
+	};
+};
+
+&mmc0 {
+	bus-width = <4>;
+	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /* PF6 */
+	disable-wp;
+	vmmc-supply = <&reg_vcc_sys>;
+	status = "okay";
+};
+
+&pio {
+	vcc-pf-supply = <&reg_vcc_sys>;
 };
 
 &uart0 {

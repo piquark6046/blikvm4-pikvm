@@ -76,3 +76,11 @@ Keep vendor U-Boot and load immutable per-run kernel/DTB/initramfs paths over TF
 `labctl` now builds, publishes, boots, captures, and classifies the minimal Linux 7.2.3 slice. The reproducible builder, eleven tests, minimal DTS/binding, Alpine initramfs, and command-verified real-hardware serial shell pass are recorded in [linux-7x-bringup.md](linux-7x-bringup.md). Passing run `20260904T014648Z-1900fd6-736450` also captured dmesg automatically. No flashing or U-Boot replacement was used. Full milestone gates are in [milestones.md](milestones.md).
 
 All external references, classifications, access dates, and pinned commits are in [sources.md](sources.md). Raw live evidence is under [vendor-system](vendor-system/README.md).
+
+## 18. MMC/SD slice
+
+The accepted serial baseline is preserved as commit `969aa19` and tag
+`linux-7.2.3-serial-baseline`. The next isolated slice enables only MMC0,
+block/MS-DOS partition parsing, the existing ext4 format, and the vendor's
+always-on 3.3 V SD/PF supply. Its evidence derivation and read-only automated
+test are in [mmc-sd-bringup.md](mmc-sd-bringup.md).

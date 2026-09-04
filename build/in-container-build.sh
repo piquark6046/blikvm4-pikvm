@@ -39,7 +39,7 @@ else
     make -C "$linux_src" O="$linux_build" olddefconfig
 fi
 
-required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL'
+required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS'
 for symbol in $required_symbols; do
     if ! grep -qx "CONFIG_${symbol}=y" "$linux_build/.config"; then
         echo "required CONFIG_${symbol}=y was not resolved" >&2
@@ -70,6 +70,7 @@ trap 'rm -rf "$staging"' EXIT
 tar -C "$staging" --no-same-owner --same-permissions -xzf "$alpine_tar"
 install -m 0755 "$repo/initramfs/init" "$staging/init"
 install -m 0644 "$repo/initramfs/inittab" "$staging/etc/inittab"
+install -m 0755 "$repo/initramfs/lsblk" "$staging/usr/bin/lsblk"
 find "$staging" -exec touch -h -d '@0' {} +
 (
     cd "$staging"

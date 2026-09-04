@@ -1,0 +1,24 @@
+#!/bin/busybox sh
+# Minimal lsblk-like inventory for the deliberately small initramfs. Alpine's
+# minirootfs does not ship util-linux lsblk, so keep this bounded to MMC block
+# devices and source every value from sysfs, blkid, and /proc/mounts.
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+printf 'NAME\tKNAME\tMAJ:MIN\tRO\tSIZE_SECTORS\tTYPE\tFSTYPE\tMOUNTPOINT\n'
+for sysdev in /sys/class/block/mmcblk*; do
+	[ -e "$sysdev" ] || continue
+	name=${sysdev##*/}
+	dev=/dev/$name
+	if [ -r "$sysdev/partition" ]; then
+		type=part
+	else
+		type=disk
+	fi
+	fstype=$(blkid "$dev" 2>/dev/null | sed -n 's/.* TYPE="\([^"]*\)".*/\1/p')
+	mountpoint=$(awk -v device="$dev" '$1 == device { print $2; exit }' /proc/mounts)
+	printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+		"$name" "$dev" "$(cat "$sysdev/dev")" "$(cat "$sysdev/ro")" \
+		"$(cat "$sysdev/size")" "$type" "${fstype:--}" "${mountpoint:--}"
+done

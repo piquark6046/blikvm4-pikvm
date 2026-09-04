@@ -186,6 +186,8 @@ class LabctlAutomationTests(unittest.TestCase):
             "env save",
             "mmc write 0x40000000 0 1",
             "sf erase 0 1000",
+            "fatwrite mmc 0:1 0x40000000 forbidden 10",
+            "ext4write mmc 0:1 0x40000000 /forbidden 10",
         ):
             with self.subTest(command=command):
                 with self.assertRaisesRegex(ValueError, "refusing"):
@@ -273,6 +275,20 @@ class LabctlAutomationTests(unittest.TestCase):
         parse_tftp_size("Bytes transferred = 4096 (1000 hex)", 4096, "Image")
         with self.assertRaisesRegex(RuntimeError, "size mismatch"):
             parse_tftp_size("Bytes transferred = 4095", 4096, "Image")
+
+    def test_parse_mmc_lsblk_identifies_disk_and_partitions(self) -> None:
+        parse_mmc_lsblk = LABCTL_MODULE["parse_mmc_lsblk"]
+        listing = (
+            "NAME\tKNAME\tMAJ:MIN\tRO\tSIZE_SECTORS\tTYPE\tFSTYPE\tMOUNTPOINT\n"
+            "mmcblk0\t/dev/mmcblk0\t179:0\t1\t125173760\tdisk\t-\t-\n"
+            "mmcblk0p1\t/dev/mmcblk0p1\t179:1\t1\t10695456\tpart\text4\t-\n"
+        )
+
+        devices = parse_mmc_lsblk(listing)
+
+        self.assertEqual([item["name"] for item in devices], ["mmcblk0", "mmcblk0p1"])
+        self.assertEqual(devices[1]["fstype"], "ext4")
+        self.assertEqual(devices[1]["ro"], "1")
 
     def test_guarded_vendor_phy_workaround_changes_only_verified_field(self) -> None:
         apply_workaround = LABCTL_MODULE["apply_vendor_phy_workaround"]
