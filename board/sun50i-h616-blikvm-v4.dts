@@ -2,10 +2,10 @@
 /*
  * Minimal first-boot device tree for the BliKVM v4.
  *
- * This intentionally describes only DRAM, the proven UART0 console, and the
- * removable SD slot on MMC0. Ethernet, USB, display/capture, GPIO-controlled
- * functions, and carrier peripherals belong to later, independently
- * validated slices.
+ * This intentionally describes only DRAM, the proven UART0 console, the
+ * removable SD slot on MMC0, and the EMAC1 RMII Ethernet path. USB,
+ * display/capture, GPIO-controlled functions, and carrier peripherals belong
+ * to later, independently validated slices.
  */
 
 /dts-v1/;
@@ -14,10 +14,11 @@
 #include <dt-bindings/gpio/gpio.h>
 
 / {
-	model = "BliKVM v4 (serial + MMC bring-up)";
+	model = "BliKVM v4 (serial + MMC + Ethernet bring-up)";
 	compatible = "blicube,blikvm-v4", "allwinner,sun50i-h616";
 
 	aliases {
+		ethernet0 = &emac1;
 		serial0 = &uart0;
 	};
 
@@ -46,6 +47,22 @@
 	};
 };
 
+&emac1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&emac1_rmii_pins>;
+	phy-mode = "rmii";
+	phy-handle = <&ext_rmii_phy>;
+	phy-supply = <&reg_vcc_sys>;
+	status = "okay";
+};
+
+&mdio1 {
+	ext_rmii_phy: ethernet-phy@0 {
+		compatible = "ethernet-phy-ieee802.3-c22";
+		reg = <0>;
+	};
+};
+
 &mmc0 {
 	bus-width = <4>;
 	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /* PF6 */
@@ -55,7 +72,15 @@
 };
 
 &pio {
+	vcc-pa-supply = <&reg_vcc_sys>;
 	vcc-pf-supply = <&reg_vcc_sys>;
+
+	emac1_rmii_pins: emac1-rmii-pins {
+		pins = "PA0", "PA1", "PA2", "PA3", "PA4",
+		       "PA5", "PA6", "PA7", "PA8", "PA9";
+		function = "emac1";
+		drive-strength = <40>;
+	};
 };
 
 &uart0 {

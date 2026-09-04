@@ -50,6 +50,7 @@ def main() -> None:
             "source_sha256": versions["ALPINE_SHA256"],
             "init": "/init",
             "ready_marker": "BLIKVM_INITRAMFS_READY",
+            "network_utilities": ["ip", "ping"],
         },
         "build": {
             "default_jobs": 3,

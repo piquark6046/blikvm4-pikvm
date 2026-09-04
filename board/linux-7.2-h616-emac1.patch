@@ -1,0 +1,103 @@
+diff --git a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
+--- a/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
++++ b/Documentation/devicetree/bindings/net/allwinner,sun8i-a83t-emac.yaml
+@@ -36,6 +36,7 @@ properties:
+               - allwinner,sun20i-d1-emac
+               - allwinner,sun50i-a100-emac
+               - allwinner,sun50i-h6-emac
++              - allwinner,sun50i-h616-emac
+               - allwinner,sun50i-h616-emac0
+               - allwinner,sun55i-a523-gmac0
+           - const: allwinner,sun50i-a64-emac
+@@ -70,11 +71,19 @@ properties:
+   power-domains:
+     maxItems: 1
+ 
+   syscon:
+-    $ref: /schemas/types.yaml#/definitions/phandle
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      - minItems: 1
++        maxItems: 2
++        items:
++          - description: Phandle to the system-control device
++          - description: EMAC clock-register index
+     description:
+       Phandle to the device containing the EMAC or GMAC clock
+-      register
++      register, optionally followed by the register index. The index defaults
++      to zero and is multiplied by four before being added to the variant's
++      base register offset.
+ 
+ required:
+   - compatible
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
+--- a/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-h616.dtsi
+@@ -742,6 +742,26 @@
+ 			};
+ 		};
+ 
++		emac1: ethernet@5030000 {
++			compatible = "allwinner,sun50i-h616-emac",
++				     "allwinner,sun50i-a64-emac";
++			reg = <0x05030000 0x10000>;
++			interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "macirq";
++			clocks = <&ccu CLK_BUS_EMAC1>;
++			clock-names = "stmmaceth";
++			resets = <&ccu RST_BUS_EMAC1>;
++			reset-names = "stmmaceth";
++			syscon = <&syscon 1>;
++			status = "disabled";
++
++			mdio1: mdio {
++				compatible = "snps,dwmac-mdio";
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++
+ 		gpadc: adc@5070000 {
+ 			compatible = "allwinner,sun50i-h616-gpadc",
+ 				     "allwinner,sun20i-d1-gpadc";
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
+@@ -1108,10 +1108,12 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
+ 	struct stmmac_resources stmmac_res;
+ 	struct sunxi_priv_data *gmac;
+ 	struct device *dev = &pdev->dev;
++	struct reg_field syscon_field;
+ 	struct stmmac_priv *priv;
+ 	struct net_device *ndev;
+ 	struct regmap *regmap;
+ 	int ret;
++	u32 syscon_idx = 0;
+ 
+ 	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+ 	if (ret)
+@@ -1163,8 +1165,12 @@ static int sun8i_dwmac_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	gmac->regmap_field = devm_regmap_field_alloc(dev, regmap,
+-						     *gmac->variant->syscon_field);
++	syscon_field = *gmac->variant->syscon_field;
++	ret = of_property_read_u32_index(pdev->dev.of_node, "syscon", 1,
++					 &syscon_idx);
++	if (!ret)
++		syscon_field.reg += syscon_idx * sizeof(u32);
++	gmac->regmap_field = devm_regmap_field_alloc(dev, regmap, syscon_field);
+ 	if (IS_ERR(gmac->regmap_field)) {
+ 		ret = PTR_ERR(gmac->regmap_field);
+ 		dev_err(dev, "Unable to map syscon register: %d\n", ret);
+@@ -1277,6 +1283,8 @@ static const struct of_device_id sun8i_dwmac_match[] = {
+ 		.data = &emac_variant_a64 },
+ 	{ .compatible = "allwinner,sun50i-h6-emac",
+ 		.data = &emac_variant_h6 },
++	{ .compatible = "allwinner,sun50i-h616-emac",
++		.data = &emac_variant_h6 },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, sun8i_dwmac_match);

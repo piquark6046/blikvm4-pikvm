@@ -165,6 +165,18 @@ class LabctlDetectTests(unittest.TestCase):
 
 
 class LabctlAutomationTests(unittest.TestCase):
+    def test_uart_line_uses_one_terminator_and_neutral_flush_byte(self) -> None:
+        console_type = LABCTL_MODULE["SerialConsole"]
+        console = object.__new__(console_type)
+        writes: list[tuple[bytes, bool]] = []
+        console.write = lambda data, log=True: writes.append((data, log))
+
+        console.write_line(b"version")
+
+        self.assertEqual(writes, [(b"version\r ", True)])
+        with self.assertRaises(ValueError):
+            console.write_line(b"version\r")
+
     def test_console_cleanup_and_environment_parsing(self) -> None:
         clean_console = LABCTL_MODULE["clean_console"]
         parse_environment = LABCTL_MODULE["parse_environment"]
@@ -300,6 +312,58 @@ class LabctlAutomationTests(unittest.TestCase):
         self.assertEqual(devices[1]["fstype"], "ext4")
         self.assertEqual(devices[1]["ro"], "1")
 
+    def test_parse_ip_link_interfaces_excludes_loopback(self) -> None:
+        parse_interfaces = LABCTL_MODULE["parse_ip_link_interfaces"]
+        listing = (
+            "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN\n"
+            "2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 state UP\n"
+        )
+
+        self.assertEqual(parse_interfaces(listing), ["eth0"])
+
+    def test_ethernet_evidence_requires_phy_zero_carrier_address_and_ping(self) -> None:
+        assess = LABCTL_MODULE["assess_ethernet_evidence"]
+        evidence = {
+            "ethernet-dmesg.log": (
+                "dwmac-sun8i 5030000.ethernet: PTP uses main clock\n"
+                "dwmac-sun8i 5030000.ethernet eth0: "
+                "PHY [stmmac-0:00] driver [Generic PHY]\n"
+                "dwmac-sun8i 5030000.ethernet eth0: "
+                "Link is Up - 100Mbps/Full\n"
+            ),
+            "phy-mdio.log": (
+                "mdio_bus=stmmac-0\nphy_device=stmmac-0:00\n"
+                "phy_address=00\nphy_id=0x00441400\n"
+            ),
+            "carrier-state.log": "carrier=1\n",
+            "ip-link.log": "2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP>\n",
+            "ip-addr.log": "inet 192.168.88.2/24 scope global eth0\n",
+            "ip-route.log": (
+                "192.168.88.0/24 dev eth0 scope link\ndefault_route_present=0\n"
+            ),
+            "ping.log": "5 packets transmitted, 5 packets received, 0% packet loss\n",
+        }
+        statuses = {
+            "phy-mdio.log": 0,
+            "carrier-state.log": 0,
+            "ip-addr.log": 0,
+            "ip-route.log": 0,
+            "ping.log": 0,
+            "ethernet-dmesg.log": 0,
+        }
+
+        checks, failed_stage = assess("eth0", statuses, evidence)
+
+        self.assertIsNone(failed_stage)
+        self.assertTrue(all(item["status"] == "pass" for item in checks.values()))
+
+        evidence["ping.log"] = (
+            "5 packets transmitted, 0 packets received, 100% packet loss\n"
+        )
+        checks, failed_stage = assess("eth0", statuses, evidence)
+        self.assertEqual(checks["ping"]["status"], "fail")
+        self.assertEqual(failed_stage, "ping")
+
     def test_guarded_vendor_phy_workaround_changes_only_verified_field(self) -> None:
         apply_workaround = LABCTL_MODULE["apply_vendor_phy_workaround"]
 
@@ -340,6 +404,22 @@ class LabctlAutomationTests(unittest.TestCase):
         self.assertTrue(result["applied"])
         self.assertFalse(result["persistent"])
         self.assertEqual(session.commands[-1], "mw.l 7bf4466c 0 1; md.l 7bf4466c 1")
+
+    def test_uart_resolution_falls_back_to_unique_usb_identity_tty(self) -> None:
+        resolve = LABCTL_MODULE["resolve_uart_device"]
+        fixture = LabctlDetectTests()
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            sys_root = root / "sys"
+            dev_root = root / "dev"
+            dev_root.mkdir()
+            fixture.add_usb(sys_root, "1-2", "1a86:7523", "USB Serial")
+            fixture.add_uart(sys_root, dev_root)
+            (dev_root / "serial" / "by-id" / "usb-1a86_USB_Serial-if00-port0").unlink()
+
+            self.assertEqual(
+                resolve(sys_root, dev_root, None), dev_root / "ttyUSB0"
+            )
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""BliKVM v4 lab discovery, UART, U-Boot, and TFTP automation."""
+"""BliKVM v4 lab discovery, UART, RAM boot, and hardware validation."""
 
 from __future__ import annotations
 
@@ -49,6 +49,12 @@ MMC_TEST_PASS = re.compile(
     r"device=/dev/mmcblk0 partition=/dev/mmcblk0p1 "
     r"filesystem=ext4 file=/etc/os-release mount_options=ro,noload"
     r"[ \t]*(?=\n|$)"
+)
+ETHERNET_FAILURE = re.compile(
+    r"(?:MDIO[^\n]*(?:timed?\s*out|timeout)|"
+    r"(?:DMA|EMAC)[^\n]*reset timeout|TX timeout|NETDEV WATCHDOG|"
+    r"stmmac[^\n]*(?:probe[^\n]*failed|DMA[^\n]*error))",
+    re.IGNORECASE,
 )
 
 LINUX_ARTIFACT_NAMES = (
@@ -558,14 +564,30 @@ def resolve_uart_device(sys_root: Path, dev_root: Path, override: str | None) ->
             f"expected exactly one BliKVM UART {UART_USB_ID}, found {len(matches)}"
         )
     stable_paths = matches[0]["stable_paths"]
-    if len(stable_paths) != 1:
+    if len(stable_paths) == 1:
+        path = Path(stable_paths[0])
+    elif not stable_paths:
+        # Some CH340 revisions expose no USB serial string, so udev cannot
+        # construct /dev/serial/by-id. The USB VID:PID-to-tty association above
+        # is still unambiguous and excludes the LattePanda MCU.
+        path = Path(matches[0]["device_path"])
+    else:
         raise RuntimeError(
-            "BliKVM UART must resolve to exactly one /dev/serial/by-id path"
+            "BliKVM UART resolves to more than one /dev/serial/by-id path"
         )
-    path = Path(stable_paths[0])
     if dev_root != Path("/dev"):
         path = dev_root / path.relative_to("/dev")
+    if not path.exists():
+        raise RuntimeError(f"resolved BliKVM UART device does not exist: {path}")
     return path
+
+
+class ConsoleTimeoutError(TimeoutError):
+    """A bounded console wait that retains output received before timeout."""
+
+    def __init__(self, message: str, output: str) -> None:
+        super().__init__(message)
+        self.output = output
 
 
 class SerialConsole:
@@ -602,7 +624,9 @@ class SerialConsole:
         attributes[4] = termios.B115200
         attributes[5] = termios.B115200
         termios.tcsetattr(self.fd, termios.TCSANOW, attributes)
-        termios.tcflush(self.fd, termios.TCIFLUSH)
+        flags = fcntl.fcntl(self.fd, fcntl.F_GETFL)
+        fcntl.fcntl(self.fd, fcntl.F_SETFL, flags & ~os.O_NONBLOCK)
+        termios.tcflush(self.fd, termios.TCIOFLUSH)
         return self
 
     def __exit__(self, *_error: object) -> None:
@@ -626,10 +650,25 @@ class SerialConsole:
                 raise TimeoutError("timed out writing to UART")
             count = os.write(self.fd, view)
             view = view[count:]
+        termios.tcdrain(self.fd)
         if log:
             self.recorder.log_uart("TX", data)
         else:
             self.recorder.log_uart("TX", b"<redacted>\r")
+
+    def write_line(self, data: bytes, *, log: bool = True) -> None:
+        """Write one CR-terminated console command with a harmless flush byte.
+
+        This CH340 path can hold the final byte of a write until another byte
+        arrives.  A trailing space makes the CR reach the target immediately;
+        both U-Boot and the Linux shell accept that space as harmless leading
+        whitespace on the next line.  CRLF is unsafe here because the delayed
+        LF repeats the previous U-Boot command.
+        """
+
+        if b"\r" in data or b"\n" in data:
+            raise ValueError("UART line payload must not contain a line ending")
+        self.write(data + b"\r ", log=log)
 
     def read_chunk(self, timeout: float = 0.25) -> bytes:
         if self.fd is None:
@@ -676,9 +715,10 @@ class SerialConsole:
             chunk = self.read_chunk(min(0.25, max(0.0, deadline - time.monotonic())))
             if chunk:
                 data.extend(chunk)
-        raise TimeoutError(
+        raise ConsoleTimeoutError(
             f"timed out after {timeout:.1f}s waiting for console pattern; "
-            f"last output: {clean_console(bytes(data))[-500:]!r}"
+            f"last output: {clean_console(bytes(data))[-500:]!r}",
+            clean_console(bytes(data)),
         )
 
 
@@ -696,17 +736,48 @@ class UBootSession:
         self.boot_timeout = boot_timeout
         self.login_user = login_user
         self.password_file = password_file
+        self.transaction_prefix = (
+            f"BLIKVM_UBOOT_{os.getpid():x}_{time.monotonic_ns():x}"
+        )
+        self.transaction_index = 0
+
+    def _next_token(self) -> str:
+        self.transaction_index += 1
+        return f"{self.transaction_prefix}_{self.transaction_index:02x}"
+
+    def _wait_for_token(self, token: str, timeout: float) -> str:
+        completed = re.compile(
+            rf"(?:^|\n){re.escape(token)}[ \t]*(?=\n)[\s\S]*?"
+            rf"(?:^|\n)=>\s*$"
+        )
+        _matched, text = self.console.wait_for((completed,), timeout)
+        cleaned = clean_console(text)
+        lines = cleaned.splitlines()
+        starts = [index for index, line in enumerate(lines) if line.strip() == token]
+        if not starts:
+            raise RuntimeError("could not isolate the marked U-Boot transaction")
+        return "\n".join(lines[starts[-1] + 1 :]).strip() + "\n"
 
     def acquire_prompt(self, allow_reboot: bool = True) -> str:
+        if not allow_reboot:
+            # Cancel any partial line left by an interrupted/failed UART run.
+            self.console.write(b"\x03 ")
+            self.console.read_for(0.15)
+            marker = self._next_token()
+            self.console.write_line(f"echo {marker}".encode("ascii"))
+            text = self._wait_for_token(marker, 10.0)
+            self.recorder.log_uboot("prompt acquired", text)
+            return text
+
         # Ctrl-C elicits the current prompt without repeating U-Boot's previous
         # command (an empty Enter is repeat-command in this build).
-        self.console.write(b"\x03")
+        self.console.write(b"\x03 ")
         try:
             state, text = self.console.wait_for(
                 (UBOOT_PROMPT, LINUX_PROMPT, LOGIN_PROMPT, PASSWORD_PROMPT), 3.0
             )
         except TimeoutError:
-            self.console.write(b"\r")
+            self.console.write_line(b"")
             state, text = self.console.wait_for(
                 (UBOOT_PROMPT, LINUX_PROMPT, LOGIN_PROMPT, PASSWORD_PROMPT), 3.0
             )
@@ -720,7 +791,7 @@ class UBootSession:
             # belong to a username assembled from line-setup noise. Do not
             # disclose the credential into that unknown authentication flow.
             # Submit an empty password and restart from a fresh login prompt.
-            self.console.write(b"\r")
+            self.console.write_line(b"")
             self.console.wait_for((LOGIN_PROMPT,), 10.0)
             state = 2
         if state == 2:
@@ -735,17 +806,17 @@ class UBootSession:
                 raise RuntimeError("could not read a password from the credential file") from error
             if not password:
                 raise RuntimeError("target credential file contains an empty password")
-            self.console.write(self.login_user.encode("utf-8") + b"\r")
+            self.console.write_line(self.login_user.encode("utf-8"))
             self.console.wait_for((PASSWORD_PROMPT,), 10.0)
-            self.console.write(password.encode("utf-8") + b"\r", log=False)
+            self.console.write_line(password.encode("utf-8"), log=False)
             _, text = self.console.wait_for((LINUX_PROMPT,), 20.0)
             password = ""
 
         # The vendor image permits reboot through logind; the bring-up
         # initramfs has only BusyBox. This shell expression supports both.
-        self.console.write(
+        self.console.write_line(
             b"if command -v systemctl >/dev/null 2>&1; then systemctl reboot; "
-            b"else reboot -f; fi\r"
+            b"else reboot -f; fi"
         )
         deadline = time.monotonic() + self.boot_timeout
         data = bytearray()
@@ -762,7 +833,7 @@ class UBootSession:
             if not interrupted and (
                 "Autoboot in" in text or "Hit any key to stop autoboot" in text
             ):
-                self.console.write(b" ")
+                self.console.write(b"  ")
                 interrupted = True
             if interrupted and UBOOT_PROMPT.search(text):
                 self.recorder.log_uboot("boot capture and autoboot interrupt", text)
@@ -782,8 +853,10 @@ class UBootSession:
         for pattern in FORBIDDEN_UBOOT_PATTERNS:
             if pattern.search(command):
                 raise ValueError(f"refusing persistent/destructive U-Boot command: {command}")
-        self.console.write(command.encode("utf-8") + b"\r")
-        _, text = self.console.wait_for((UBOOT_PROMPT,), timeout)
+        token = self._next_token()
+        wrapped = f"echo {token}; {command}"
+        self.console.write_line(wrapped.encode("utf-8"))
+        text = self._wait_for_token(token, timeout)
         self.recorder.log_uboot(command, text)
         return text
 
@@ -1192,6 +1265,18 @@ def classify_boot_failure(text: str, stage: str) -> str:
             return "mmc_device_not_enumerated"
         if "BLIKVM_MMC_TEST_PASS" not in cleaned:
             return "mmc_read_or_mount_failure"
+    if stage.startswith("ethernet_"):
+        if re.search(r"(?:EMAC|DMA).*reset timeout", cleaned, re.IGNORECASE):
+            return "ethernet_mac_or_clock_reset_failure"
+        if stage == "ethernet_ping":
+            return "ethernet_data_path_or_ping_timeout"
+        if re.search(r"(?:MDIO|PHY)", cleaned, re.IGNORECASE):
+            return "ethernet_mdio_or_phy_failure"
+        if "carrier" in cleaned.lower():
+            return "ethernet_carrier_failure"
+        if "ping" in cleaned.lower():
+            return "ethernet_ip_or_ping_failure"
+        return "ethernet_bringup_failure"
     return "automation_or_preflight_failure"
 
 
@@ -1211,10 +1296,23 @@ def capture_shell_command(
     )
     wrapped = (
         f"printf '\\n{token}_BEGIN\\n'; {command}; "
-        f"blikvm_rc=$?; printf '\\n{token}_END rc=%s\\n' \"$blikvm_rc\"\r"
+        f"blikvm_rc=$?; printf '\\n{token}_END rc=%s\\n' \"$blikvm_rc\""
     )
-    console.write(wrapped.encode("utf-8"))
-    _matched, raw = console.wait_for((end_pattern,), timeout)
+    console.write_line(wrapped.encode("utf-8"))
+    try:
+        _matched, raw = console.wait_for((end_pattern,), timeout)
+    except ConsoleTimeoutError as error:
+        lines = error.output.splitlines()
+        with contextlib.suppress(ValueError):
+            begin = lines.index(f"{token}_BEGIN")
+            lines = lines[begin + 1 :]
+        partial = "\n".join(lines).strip()
+        recorder.save_text(
+            filename,
+            (partial + "\n" if partial else "")
+            + f"collection_timeout_seconds={timeout:.1f}\n",
+        )
+        raise
     cleaned = clean_console(raw)
     lines = cleaned.splitlines()
     try:
@@ -1260,6 +1358,104 @@ def parse_mmc_lsblk(text: str) -> list[dict[str, str]]:
             raise RuntimeError(f"malformed initramfs lsblk row: {line}")
         devices.append(dict(zip((field.lower() for field in fields), values)))
     return devices
+
+
+def parse_ip_link_interfaces(text: str) -> list[str]:
+    """Return physical-test candidates from `ip -o link show` output."""
+
+    interfaces: list[str] = []
+    for line in text.splitlines():
+        match = re.match(r"^\d+:\s+([^:@\s]+)(?:@[^:]+)?:", line)
+        if match and match.group(1) != "lo":
+            interfaces.append(match.group(1))
+    return interfaces
+
+
+def assess_ethernet_evidence(
+    interface: str | None,
+    statuses: dict[str, int],
+    evidence: dict[str, str],
+) -> tuple[dict[str, dict[str, Any]], str | None]:
+    """Turn archived target output into ordered Ethernet stage results."""
+
+    dmesg = evidence.get("ethernet-dmesg.log", "")
+    phy = evidence.get("phy-mdio.log", "")
+    link = evidence.get("ip-link.log", "")
+    address = evidence.get("ip-addr.log", "")
+    carrier = evidence.get("carrier-state.log", "")
+    ping = evidence.get("ping.log", "")
+    route = evidence.get("ip-route.log", "")
+
+    checks: dict[str, dict[str, Any]] = {
+        "mac_probe": {
+            "status": "pass"
+            if re.search(r"dwmac-sun8i\s+5030000\.ethernet", dmesg)
+            and not re.search(r"(?:probe.*failed|EMAC reset timeout)", dmesg, re.I)
+            else "fail",
+        },
+        "mdio_bus": {
+            "status": "pass"
+            if statuses.get("phy-mdio.log") == 0 and "mdio_bus=" in phy
+            else "fail",
+        },
+        "phy_detected": {
+            "status": "pass"
+            if "phy_address=00" in phy and "phy_id=0x00441400" in phy
+            else "fail",
+            "expected_address": 0,
+            "expected_phy_id": "0x00441400",
+        },
+        "interface_present": {
+            "status": "pass" if interface else "fail",
+            "interface": interface,
+        },
+        "carrier": {
+            "status": "pass"
+            if statuses.get("carrier-state.log") == 0
+            and "carrier=1" in carrier
+            and "LOWER_UP" in link
+            else "fail",
+        },
+        "static_address": {
+            "status": "pass"
+            if statuses.get("ip-addr.log") == 0
+            and re.search(r"\binet\s+192\.168\.88\.2/24\b", address)
+            and statuses.get("ip-route.log") == 0
+            and "default_route_present=0" in route
+            else "fail",
+            "address": "192.168.88.2/24",
+            "default_route_added": False,
+            "dns_configured": False,
+            "dhcp_used": False,
+        },
+        "ping": {
+            "status": "pass"
+            if statuses.get("ping.log") == 0
+            and re.search(r"(?:^|\s)0% packet loss", ping)
+            else "fail",
+            "peer": HOST_IP,
+        },
+        "no_persistent_errors": {
+            "status": "pass"
+            if statuses.get("ethernet-dmesg.log") == 0
+            and not ETHERNET_FAILURE.search(dmesg)
+            else "fail",
+        },
+    }
+    ordered = (
+        "mac_probe",
+        "mdio_bus",
+        "phy_detected",
+        "interface_present",
+        "carrier",
+        "static_address",
+        "ping",
+        "no_persistent_errors",
+    )
+    failed_stage = next(
+        (name for name in ordered if checks[name]["status"] != "pass"), None
+    )
+    return checks, failed_stage
 
 
 def run_mmc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
@@ -1389,16 +1585,252 @@ def run_mmc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
     }
 
 
+def run_ethernet_test(
+    console: SerialConsole, recorder: RunRecorder
+) -> dict[str, Any]:
+    """Validate EMAC1, MDIO, PHY, carrier, and a static isolated-lab ping."""
+
+    evidence: dict[str, str] = {}
+    statuses: dict[str, int] = {}
+
+    initial_commands = (
+        (
+            "ethernet-dmesg-probe.log",
+            "ethernet_probe_dmesg",
+            "dmesg | grep -Ei '5030000|dwmac|stmmac|ethernet|mdio|phy|link'",
+        ),
+        ("ip-link-before.log", "ethernet_link_before", "ip -o link show"),
+        ("ip-addr-before.log", "ethernet_addr_before", "ip -o addr show"),
+        (
+            "phy-mdio.log",
+            "ethernet_phy_mdio",
+            "found_bus=0; found_phy=0; "
+            "for bus in /sys/class/mdio_bus/*; do [ -e \"$bus\" ] || continue; "
+            "found_bus=1; printf 'mdio_bus=%s\\n' \"${bus##*/}\"; done; "
+            "for phy in /sys/bus/mdio_bus/devices/*; do "
+            "[ -e \"$phy\" ] || continue; found_phy=1; name=${phy##*/}; "
+            "printf 'phy_device=%s\\n' \"$name\"; "
+            "printf 'phy_address=%s\\n' \"${name##*:}\"; "
+            "for attr in phy_id modalias uevent; do [ -r \"$phy/$attr\" ] && "
+            "printf '%s=%s\\n' \"$attr\" \"$(cat \"$phy/$attr\")\"; done; "
+            "[ ! -L \"$phy/driver\" ] || printf 'phy_driver=%s\\n' "
+            "\"$(readlink \"$phy/driver\")\"; "
+            "[ ! -L \"$phy/of_node\" ] || printf 'of_node=%s\\n' "
+            "\"$(readlink \"$phy/of_node\")\"; done; "
+            "[ \"$found_bus\" -eq 1 ] && [ \"$found_phy\" -eq 1 ]",
+        ),
+    )
+    for filename, label, command in initial_commands:
+        status, output = capture_shell_command(
+            console, recorder, filename, label, command, 20.0
+        )
+        statuses[filename] = status
+        evidence[filename] = output
+
+    interfaces = parse_ip_link_interfaces(evidence["ip-link-before.log"])
+    interface = interfaces[0] if len(interfaces) == 1 else None
+    if interface is None:
+        unavailable = (
+            "interface=unavailable\n"
+            f"candidate_count={len(interfaces)}\n"
+            f"candidates={','.join(interfaces)}\n"
+        )
+        for filename in (
+            "link-up.log",
+            "carrier-state.log",
+            "ip-addr.log",
+            "ip-route.log",
+            "ip-link.log",
+            "ping.log",
+        ):
+            recorder.save_text(filename, unavailable)
+            evidence[filename] = unavailable
+            statuses[filename] = 1
+    else:
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+", interface):
+            raise RuntimeError(f"unsafe target interface name: {interface!r}")
+
+        commands = (
+            (
+                "link-up.log",
+                "ethernet_link_up",
+                f"ip link set {interface} up; link_rc=$?; "
+                "ip link show; "
+                "[ \"$link_rc\" -eq 0 ]",
+                20.0,
+            ),
+            (
+                "carrier-state.log",
+                "ethernet_carrier",
+                f"i=0; while [ \"$(cat /sys/class/net/{interface}/carrier "
+                "2>/dev/null)\" != 1 ] && [ \"$i\" -lt 30 ]; "
+                "do sleep 1; i=$((i + 1)); done; "
+                f"printf 'interface={interface}\\nwait_seconds=%s\\n' \"$i\"; "
+                f"for attr in carrier operstate speed duplex address; do "
+                f"printf '%s=%s\\n' \"$attr\" "
+                f"\"$(cat /sys/class/net/{interface}/$attr 2>/dev/null || "
+                "echo unavailable)\"; done; "
+                f"[ \"$(cat /sys/class/net/{interface}/carrier 2>/dev/null)\" = 1 ]",
+                40.0,
+            ),
+            (
+                "ip-addr.log",
+                "ethernet_static_address",
+                f"ip addr add {TARGET_IP}/24 dev {interface}; add_rc=$?; "
+                f"ip addr show dev {interface}; "
+                f"ip addr show dev {interface} | "
+                f"grep -Eq 'inet {re.escape(TARGET_IP)}/24'; "
+                "addr_rc=$?; [ \"$add_rc\" -eq 0 ] && [ \"$addr_rc\" -eq 0 ]",
+                20.0,
+            ),
+            (
+                "ip-route.log",
+                "ethernet_route",
+                "ip route list; if ip route list | grep -q '^default'; "
+                "then echo default_route_present=1; false; "
+                "else echo default_route_present=0; true; fi",
+                20.0,
+            ),
+            (
+                "ip-link.log",
+                "ethernet_link_final",
+                "ip -o link show",
+                20.0,
+            ),
+            (
+                "ping.log",
+                "ethernet_ping",
+                "ping_rc=0; attempt=1; while [ \"$attempt\" -le 5 ]; do "
+                "printf 'ping_attempt=%s\\n' \"$attempt\"; "
+                f"ping -c 1 -W 2 -I {interface} {HOST_IP} || ping_rc=1; "
+                "attempt=$((attempt + 1)); done; [ \"$ping_rc\" -eq 0 ]",
+                30.0,
+            ),
+        )
+        collection_timeout: dict[str, Any] | None = None
+        for index, (filename, label, command, timeout) in enumerate(commands):
+            try:
+                status, output = capture_shell_command(
+                    console, recorder, filename, label, command, timeout
+                )
+            except ConsoleTimeoutError as error:
+                statuses[filename] = 124
+                evidence[filename] = read_text(recorder.path / filename)
+                collection_timeout = {
+                    "evidence": filename,
+                    "timeout_seconds": timeout,
+                    "message": str(error),
+                }
+                for skipped_filename, _label, _command, _timeout in commands[
+                    index + 1 :
+                ]:
+                    skipped = f"skipped_after_timeout={filename}\n"
+                    recorder.save_text(skipped_filename, skipped)
+                    statuses[skipped_filename] = 125
+                    evidence[skipped_filename] = skipped
+                break
+            statuses[filename] = status
+            evidence[filename] = output
+
+    if interface is not None and collection_timeout is not None:
+        dmesg_output = (
+            evidence["ethernet-dmesg-probe.log"]
+            + f"final_collection_skipped_after_timeout={collection_timeout['evidence']}\n"
+        )
+        recorder.save_text("ethernet-dmesg.log", dmesg_output)
+        statuses["ethernet-dmesg.log"] = 125
+        evidence["ethernet-dmesg.log"] = dmesg_output
+    else:
+        dmesg_status, dmesg_output = capture_shell_command(
+            console,
+            recorder,
+            "ethernet-dmesg.log",
+            "ethernet_dmesg_final",
+            "dmesg | grep -Ei '5030000|dwmac|stmmac|ethernet|mdio|phy|link|timeout|watchdog'",
+            20.0,
+        )
+        statuses["ethernet-dmesg.log"] = dmesg_status
+        evidence["ethernet-dmesg.log"] = dmesg_output
+
+    checks, failed_stage = assess_ethernet_evidence(interface, statuses, evidence)
+    speed_match = re.search(r"(?m)^speed=([^\n]+)$", evidence["carrier-state.log"])
+    duplex_match = re.search(r"(?m)^duplex=([^\n]+)$", evidence["carrier-state.log"])
+    mac_match = re.search(r"(?m)^address=([^\n]+)$", evidence["carrier-state.log"])
+    phy_device_match = re.search(
+        r"(?m)^phy_device=([^\n]+)$", evidence["phy-mdio.log"]
+    )
+    phy_device = phy_device_match.group(1) if phy_device_match else None
+
+    return {
+        "result": "passed" if failed_stage is None else "failed",
+        "failed_stage": failed_stage,
+        "collection_timeout": collection_timeout if interface is not None else None,
+        "controller": "5030000.ethernet",
+        "interface": interface,
+        "phy": {
+            "mdio_bus": phy_device.rsplit(":", 1)[0] if phy_device else None,
+            "device": phy_device,
+            "address": 0 if checks["phy_detected"]["status"] == "pass" else None,
+            "id": "0x00441400"
+            if checks["phy_detected"]["status"] == "pass"
+            else None,
+            "binding": "ethernet-phy-ieee802.3-c22",
+        },
+        "link": {
+            "carrier": checks["carrier"]["status"] == "pass",
+            "speed_mbps": speed_match.group(1) if speed_match else None,
+            "duplex": duplex_match.group(1) if duplex_match else None,
+            "mac_address": mac_match.group(1) if mac_match else None,
+        },
+        "ip": {
+            "address": f"{TARGET_IP}/24",
+            "peer": HOST_IP,
+            "dhcp_used": False,
+            "dns_configured": False,
+            "default_gateway_configured": False,
+        },
+        "ping": {
+            "requested_probes": 5,
+            "successful_probes": len(
+                re.findall(
+                    r"(?m)^1 packets transmitted, 1 packets received, "
+                    r"0% packet loss$",
+                    evidence["ping.log"],
+                )
+            ),
+        },
+        "checks": checks,
+        "evidence": {
+            name: str(recorder.path / name)
+            for name in (
+                "ethernet-dmesg-probe.log",
+                "phy-mdio.log",
+                "link-up.log",
+                "carrier-state.log",
+                "ip-link-before.log",
+                "ip-link.log",
+                "ip-addr-before.log",
+                "ip-addr.log",
+                "ip-route.log",
+                "ping.log",
+                "ethernet-dmesg.log",
+            )
+        },
+    }
+
+
 def boot_linux_command(
     args: argparse.Namespace, sys_root: Path, dev_root: Path
 ) -> dict[str, Any]:
-    run_mmc = args.command == "boot-mmc"
+    run_mmc = args.command in ("boot-mmc", "boot-ethernet")
+    run_ethernet = args.command == "boot-ethernet"
     recorder = RunRecorder(args.command, args.out_root)
     stage = "preflight"
     last_passed = "none"
     manifest: dict[str, Any] | None = None
     publication: Path | None = None
     mmc: dict[str, Any] | None = None
+    ethernet: dict[str, Any] | None = None
     try:
         manifest = copy_linux_artifacts(recorder, args.artifact_root)
         recorder.metadata["artifacts"] = manifest["artifacts"]
@@ -1408,6 +1840,9 @@ def boot_linux_command(
             {
                 "target_storage_writes_attempted": False,
                 "target_filesystem_mount_mode": "read-only" if run_mmc else None,
+                "dhcp_used": False,
+                "dns_configured": False,
+                "default_gateway_configured": False,
             }
         )
         device = resolve_uart_device(sys_root, dev_root, args.device)
@@ -1479,9 +1914,9 @@ def boot_linux_command(
             last_passed = "network_load"
 
             stage = "kernel_boot"
-            console.write(
+            console.write_line(
                 b"booti ${kernel_addr_r} ${ramdisk_addr_r}:${ramdisk_size} "
-                b"${fdt_addr_r}\r"
+                b"${fdt_addr_r}"
             )
             boot_patterns = (
                 INITRAMFS_READY,
@@ -1498,11 +1933,11 @@ def boot_linux_command(
             # BusyBox prompt and tear its literal byte sequence. Elicit a new
             # prompt after the boot log settles instead of relying on that
             # asynchronous first rendering.
-            console.write(b"\r")
+            console.write_line(b"")
             _, prompt_text = console.wait_for((INITRAMFS_SHELL,), 15.0)
             boot_text += prompt_text
-            console.write(
-                b"printf 'BLIKVM_SHELL_OK kernel=%s\\n' \"$(uname -r)\"\r"
+            console.write_line(
+                b"printf 'BLIKVM_SHELL_OK kernel=%s\\n' \"$(uname -r)\""
             )
             _, verification = console.wait_for((SHELL_VERIFIED,), 10.0)
             boot_text += verification
@@ -1513,14 +1948,33 @@ def boot_linux_command(
                 mmc = run_mmc_test(console, recorder)
                 last_passed = "mmc_read_only"
 
-            console.write(b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END\r")
+            if run_ethernet:
+                stage = "ethernet_test"
+                ethernet = run_ethernet_test(console, recorder)
+                if ethernet["result"] != "passed":
+                    failed_stage = ethernet["failed_stage"] or "unknown"
+                    stage = f"ethernet_{failed_stage}"
+                    raise RuntimeError(
+                        f"Ethernet validation failed at stage {failed_stage}"
+                    )
+                last_passed = "ethernet_ping"
+
+            console.write_line(
+                b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END"
+            )
             _, dmesg_text = console.wait_for((DMESG_END,), 20.0)
             recorder.save_text("dmesg.log", dmesg_text)
             recorder.save_text("boot-console.log", boot_text)
 
         report: dict[str, Any] = {
             "result": "passed",
-            "stage": "mmc_read_only" if run_mmc else "serial_shell",
+            "stage": (
+                "ethernet_ping"
+                if run_ethernet
+                else "mmc_read_only"
+                if run_mmc
+                else "serial_shell"
+            ),
             "last_passed_stage": last_passed,
             "linux_version": manifest["linux"]["version"],
             "uart_available": True,
@@ -1539,6 +1993,8 @@ def boot_linux_command(
         }
         if mmc is not None:
             report["mmc"] = mmc
+        if ethernet is not None:
+            report["ethernet"] = ethernet
     except Exception as error:
         raw_path = recorder.path / "uart.raw"
         evidence = raw_path.read_bytes() if raw_path.exists() else b""
@@ -1553,6 +2009,10 @@ def boot_linux_command(
             report["tftp_publication"] = str(publication)
         if manifest is not None:
             report["linux_version"] = manifest["linux"]["version"]
+        if mmc is not None:
+            report["mmc"] = mmc
+        if ethernet is not None:
+            report["ethernet"] = ethernet
     return recorder.finish(report)
 
 
@@ -1611,8 +2071,8 @@ def boot_vendor_command(
                             f"TFTP size mismatch for {filename}: "
                             f"U-Boot={actual_size}, host={expected_tftp_sizes[filename]}"
                         )
-            session.console.write(
-                b"booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}\r"
+            session.console.write_line(
+                b"booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}"
             )
             _, boot_text = console.wait_for(
                 (re.compile(r"(?:^|\n)mangopimcore login:\s*$", re.IGNORECASE),),
@@ -1698,7 +2158,7 @@ def error_report(stage: str, error: Exception) -> dict[str, Any]:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="labctl",
-        description="BliKVM v4 UART, U-Boot, and TFTP lab automation",
+        description="BliKVM v4 UART, U-Boot, TFTP, and Linux HIL automation",
     )
     parser.add_argument("--pretty", action="store_true", help="indent JSON output")
     parser.add_argument(
@@ -1750,7 +2210,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     vendor_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
     build_parser = subparsers.add_parser(
-        "build-linux", help="incrementally build the Linux 7.x serial-boot artifacts"
+        "build-linux", help="incrementally build the Linux 7.x bring-up artifacts"
     )
     build_parser.add_argument(
         "--jobs",
@@ -1802,6 +2262,31 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     mmc_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
+    ethernet_parser = subparsers.add_parser(
+        "boot-ethernet",
+        help=(
+            "TFTP-boot Linux, retain the read-only MMC test, and validate "
+            "EMAC1 with a static isolated-lab ping"
+        ),
+    )
+    add_uboot_options(ethernet_parser)
+    ethernet_parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=Path(
+            os.environ.get(
+                "LABCTL_LINUX_ARTIFACT_ROOT",
+                REPOSITORY_ROOT / "out" / "build" / "artifacts",
+            )
+        ),
+    )
+    ethernet_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+    ethernet_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)
     if getattr(args, "jobs", 1) < 1:
@@ -1849,7 +2334,7 @@ def main(argv: list[str] | None = None) -> int:
             report = boot_vendor_command(args, sys_root, dev_root)
         elif args.command == "build-linux":
             report = build_linux_command(args)
-        elif args.command in ("boot-linux", "boot-mmc"):
+        elif args.command in ("boot-linux", "boot-mmc", "boot-ethernet"):
             report = boot_linux_command(args, sys_root, dev_root)
         elif args.command == "collect":
             report = collect_command(args)

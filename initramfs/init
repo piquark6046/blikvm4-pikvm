@@ -13,8 +13,8 @@ hostname blikvm-initramfs
 
 echo
 echo "BLIKVM_INITRAMFS_READY kernel=$(uname -r)"
-echo "Minimal Alpine/BusyBox serial shell with read-only MMC diagnostics."
-echo "Linux networking and USB remain disabled."
+echo "Minimal Alpine/BusyBox serial shell with read-only MMC and Ethernet diagnostics."
+echo "Ethernet is left unconfigured; USB remains disabled."
 echo
 
 export PS1='blikvm-initramfs:/ # '

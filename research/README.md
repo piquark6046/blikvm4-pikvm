@@ -1,6 +1,6 @@
 # BliKVM v4 Allwinner PiKVM port research
 
-Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The outcome is a viable port with one material Linux gap: this carrier uses H616's second Ethernet MAC, which is not described/bound in upstream Linux v7.2. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
+Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The viable port now has passing Linux 7.2.3 serial, MMC/read-only ext4, and H616 EMAC1 Ethernet slices. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
 
 ## 1. Confirmed hardware
 
@@ -24,7 +24,7 @@ Use the 5V/UART USB-C port, 115200 8N1, stable path `/dev/serial/by-id/usb-1a86_
 
 ## 6. Linux 7.x status
 
-Core/clock/reset/pinctrl/UART/MMC/USB/UVC/configfs/GPIO/SPI/RTC/thermal/watchdog/RNG/AXP313A/RTL8723DS support exists in v7.2. There is no BliKVM/MCore DTS, configfs HID must be added to the config, and EMAC1 needs a kernel/binding addition. See [linux-7x-support.md](linux-7x-support.md).
+Core/clock/reset/pinctrl/UART/MMC/USB/UVC/configfs/GPIO/SPI/RTC/thermal/watchdog/RNG/AXP313A/RTL8723DS support exists in v7.2. There is no upstream BliKVM/MCore DTS, configfs HID must later be added to the config, and the required focused EMAC1 kernel/binding addition is now validated. See [linux-7x-support.md](linux-7x-support.md) and [ethernet-bringup.md](ethernet-bringup.md).
 
 ## 7. Required DTS work
 
@@ -64,7 +64,7 @@ Keep vendor U-Boot and load immutable per-run kernel/DTB/initramfs paths over TF
 
 ## 16. Major risks
 
-1. EMAC1 is not upstream-complete for Linux 7.x; the vendor U-Boot TFTP loop is proven with a guarded RAM-only correction for its bad PHY address.
+1. EMAC1 is not upstream-complete for Linux 7.x, so the validated focused patch remains a maintenance item; the vendor U-Boot TFTP loop is proven with a guarded RAM-only correction for its bad PHY address.
 2. PMIC naming/old firmware inconsistency requires conservative rail validation.
 3. FEL reachability and secure SPL handoff are unproven.
 4. Exact carrier/PHY revision is unknown.
@@ -84,3 +84,12 @@ The accepted serial baseline is preserved as commit `969aa19` and tag
 block/MS-DOS partition parsing, the existing ext4 format, and the vendor's
 always-on 3.3 V SD/PF supply. Its evidence derivation and read-only automated
 test are in [mmc-sd-bringup.md](mmc-sd-bringup.md).
+
+## 19. Ethernet slice
+
+The H616 EMAC1/RMII slice passed two consecutive RAM-only Linux 7.2.3 boots.
+Linux independently found the Clause-22 PHY at address 0 with ID `0x00441400`,
+`eth0` reached 100/full `LOWER_UP`, and 10/10 bounded pings reached the isolated
+LattePanda address with no DHCP, DNS, default route, or storage write. The
+upstream/vendor comparison, minimal patch, failure isolation, and archived run
+IDs are in [ethernet-bringup.md](ethernet-bringup.md).

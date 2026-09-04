@@ -16,7 +16,7 @@ Enable MMC0/card detect only. **Pass:** the exact SD and its partitions appear r
 
 ## M3 — Ethernet
 
-Implement/validate H616 EMAC1 support and board RMII/PHY description. **Pass:** correct PHY ID, carrier, no dummy regulator, static `192.168.88.2`, 1,000 pings without loss, sustained transfer, and SSH. Test across VPN changes. This is the highest-risk kernel milestone.
+Implement/validate H616 EMAC1 support and board RMII/PHY description. **Bring-up slice pass:** correct MAC and PHY enumerate, carrier reaches `LOWER_UP`, static `192.168.88.2/24` has no DHCP/DNS/default gateway, repeated pings reach `192.168.88.1`, and Ethernet dmesg has no persistent timeout/reset error while M1/M2 keep passing. **Current:** bring-up slice passed in consecutive runs `20260904T035100Z-792afb5-231884` and `20260904T035129Z-792afb5-102033`, including 10/10 pings total and Linux-confirmed PHY address 0/ID `0x00441400`. **Later qualification gate:** 1,000 pings without loss, sustained transfer, SSH, and testing across VPN changes; these broader items were intentionally out of scope for this isolated slice.
 
 ## M4 — USB host and capture
 

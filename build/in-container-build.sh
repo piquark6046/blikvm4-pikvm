@@ -27,6 +27,10 @@ if ! grep -q 'blicube,blikvm-v4' \
     "$linux_src/Documentation/devicetree/bindings/arm/sunxi.yaml"; then
     patch -d "$linux_src" -p1 < "$repo/board/linux-7.2-bli-v4.patch"
 fi
+if ! grep -q 'compatible = "allwinner,sun50i-h616-emac"' \
+    "$linux_src/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c"; then
+    patch -d "$linux_src" -p1 < "$repo/board/linux-7.2-h616-emac1.patch"
+fi
 
 config_hash=$(sha256sum "$repo/build/linux-serial.config" | cut -d' ' -f1)
 if ! test -f "$linux_build/.config" \
@@ -39,7 +43,7 @@ else
     make -C "$linux_src" O="$linux_build" olddefconfig
 fi
 
-required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS'
+required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL POSIX_TIMERS BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS NET PACKET INET ETHTOOL_NETLINK NETDEVICES ETHERNET NET_VENDOR_STMICRO STMMAC_ETH STMMAC_PLATFORM DWMAC_SUN8I PHYLIB FWNODE_MDIO OF_MDIO MDIO_BUS_MUX'
 for symbol in $required_symbols; do
     if ! grep -qx "CONFIG_${symbol}=y" "$linux_build/.config"; then
         echo "required CONFIG_${symbol}=y was not resolved" >&2
@@ -71,6 +75,13 @@ tar -C "$staging" --no-same-owner --same-permissions -xzf "$alpine_tar"
 install -m 0755 "$repo/initramfs/init" "$staging/init"
 install -m 0644 "$repo/initramfs/inittab" "$staging/etc/inittab"
 install -m 0755 "$repo/initramfs/lsblk" "$staging/usr/bin/lsblk"
+for utility in ip ping; do
+    if ! test -e "$staging/sbin/$utility" && ! test -L "$staging/sbin/$utility" \
+       && ! test -e "$staging/bin/$utility" && ! test -L "$staging/bin/$utility"; then
+        echo "required BusyBox network utility is missing: $utility" >&2
+        exit 1
+    fi
+done
 find "$staging" -exec touch -h -d '@0' {} +
 (
     cd "$staging"
