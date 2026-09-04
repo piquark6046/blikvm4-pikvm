@@ -3,9 +3,10 @@
  * Minimal first-boot device tree for the BliKVM v4.
  *
  * This intentionally describes only DRAM, the proven UART0 console, the
- * removable SD slot on MMC0, and the EMAC1 RMII Ethernet path. USB,
- * display/capture, GPIO-controlled functions, and carrier peripherals belong
- * to later, independently validated slices.
+ * removable SD slot on MMC0, the EMAC1 RMII Ethernet path, and the single
+ * USB1 host path wired to the internal HDMI capture device. Display/media,
+ * USB gadget, GPIO/ATX functions, and other carrier peripherals belong to
+ * later, independently validated slices.
  */
 
 /dts-v1/;
@@ -14,7 +15,7 @@
 #include <dt-bindings/gpio/gpio.h>
 
 / {
-	model = "BliKVM v4 (serial + MMC + Ethernet bring-up)";
+	model = "BliKVM v4 (serial + MMC + Ethernet + USB host bring-up)";
 	compatible = "blicube,blikvm-v4", "allwinner,sun50i-h616";
 
 	aliases {
@@ -45,6 +46,25 @@
 		regulator-always-on;
 		regulator-boot-on;
 	};
+
+	/*
+	 * The captured vendor DT identifies PC8 as the active-high enable for
+	 * the capture device's dedicated 5 V USB1 VBUS switch. Unlike vcc-sys,
+	 * this rail is enabled only while the USB1 PHY is in use.
+	 */
+	reg_usb1_vbus: regulator-usb1-vbus {
+		compatible = "regulator-fixed";
+		regulator-name = "usb1-vbus";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		enable-active-high;
+		gpio = <&pio 2 8 GPIO_ACTIVE_HIGH>; /* PC8 */
+	};
+};
+
+/* USB1 is the only host wired to the internal high-speed MS2131. */
+&ehci1 {
+	status = "okay";
 };
 
 &emac1 {
@@ -86,5 +106,10 @@
 &uart0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart0_ph_pins>;
+	status = "okay";
+};
+
+&usbphy {
+	usb1_vbus-supply = <&reg_usb1_vbus>;
 	status = "okay";
 };

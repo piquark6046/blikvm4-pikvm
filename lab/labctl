@@ -56,6 +56,13 @@ ETHERNET_FAILURE = re.compile(
     r"stmmac[^\n]*(?:probe[^\n]*failed|DMA[^\n]*error))",
     re.IGNORECASE,
 )
+USB_FAILURE = re.compile(
+    r"(?:device descriptor read[^\n]*error|device not accepting address|"
+    r"unable to enumerate USB device|Cannot enable|over-current|"
+    r"reset (?:high|full|low)-speed USB device|HC died|controller not stopped|"
+    r"(?:usb|ehci|phy|vbus)[^\n]*(?:probe[^\n]*failed|timeout|error -[0-9]+))",
+    re.IGNORECASE,
+)
 
 LINUX_ARTIFACT_NAMES = (
     "Image",
@@ -1277,6 +1284,19 @@ def classify_boot_failure(text: str, stage: str) -> str:
         if "ping" in cleaned.lower():
             return "ethernet_ip_or_ping_failure"
         return "ethernet_bringup_failure"
+    if stage.startswith("usb_"):
+        usb_stages = {
+            "usb_phy_probe": "usb_phy_probe_failure",
+            "usb_vbus_power": "usb_regulator_vbus_or_gpio_failure",
+            "usb_controller_probe": "usb_controller_selection_clock_or_reset_failure",
+            "usb_root_hub": "usb_root_hub_failure",
+            "usb_ms2131_enumeration": "ms2131_not_enumerated",
+            "usb_topology_speed": "usb_hub_topology_or_speed_failure",
+            "usb_no_persistent_errors": "usb_persistent_runtime_error",
+        }
+        if stage in usb_stages:
+            return usb_stages[stage]
+        return "usb_topology_or_enumeration_failure"
     return "automation_or_preflight_failure"
 
 
@@ -1450,6 +1470,105 @@ def assess_ethernet_evidence(
         "carrier",
         "static_address",
         "ping",
+        "no_persistent_errors",
+    )
+    failed_stage = next(
+        (name for name in ordered if checks[name]["status"] != "pass"), None
+    )
+    return checks, failed_stage
+
+
+def assess_usb_evidence(
+    statuses: dict[str, int], evidence: dict[str, str]
+) -> tuple[dict[str, dict[str, Any]], str | None]:
+    """Turn archived target output into ordered USB host stage results."""
+
+    controller = evidence.get("usb-controller-phy.log", "")
+    enumeration = evidence.get("usb-enumeration-wait.log", "")
+    listing = evidence.get("lsusb.log", "")
+    topology = evidence.get("lsusb-tree.log", "")
+    dmesg = evidence.get("usb-dmesg.log", "")
+    enabled_controllers = re.findall(
+        r"(?m)^enabled_usb_controller=([^\s]+)\s+driver=([^\s]+)$", controller
+    )
+    ms2131_interfaces = re.findall(
+        r"(?m)^\s*\|__ Port 1: Dev [0-9]+, If ([0-9]+), Class=([^,]+), "
+        r"Driver=([^,]+), ([^,]+), ID=345f:2131$",
+        topology,
+        re.I,
+    )
+
+    checks: dict[str, dict[str, Any]] = {
+        "phy_probe": {
+            "status": "pass"
+            if statuses.get("usb-controller-phy.log") == 0
+            and "phy_present=1" in controller
+            and "phy_driver=sun4i-usb-phy" in controller
+            else "fail",
+            "expected_phy": "5100400.phy",
+            "expected_port": 1,
+        },
+        "vbus_power": {
+            "status": "pass"
+            if "regulator_present=1" in controller
+            and "regulator_name=usb1-vbus" in controller
+            and "regulator_state=enabled" in controller
+            else "fail",
+            "expected_regulator": "usb1-vbus",
+            "enable_gpio": "PC8 active-high",
+        },
+        "controller_probe": {
+            "status": "pass"
+            if "controller_present=1" in controller
+            and "controller_driver=ehci-platform" in controller
+            and enabled_controllers == [("5200000.usb", "ehci-platform")]
+            and "ehci-platform 5200000.usb: EHCI Host Controller" in dmesg
+            and "ehci-platform 5200000.usb: USB 2.0 started, EHCI 1.00" in dmesg
+            else "fail",
+            "expected_controller": "5200000.usb",
+            "other_host_controllers_enabled": False,
+        },
+        "root_hub": {
+            "status": "pass"
+            if statuses.get("lsusb.log") == 0
+            and statuses.get("lsusb-tree.log") == 0
+            and re.search(r"ID 1d6b:0002\b", listing, re.I)
+            and re.search(
+                r"Class=root_hub, Driver=ehci-platform/1p, 480M", topology
+            )
+            else "fail",
+        },
+        "ms2131_enumeration": {
+            "status": "pass"
+            if statuses.get("usb-enumeration-wait.log") == 0
+            and "vid_pid=345f:2131" in enumeration.lower()
+            and re.search(
+                r"ID 345f:2131\s+MACROSILICON\s+USB2 Video", listing, re.I
+            )
+            else "fail",
+            "expected_vid_pid": "345f:2131",
+        },
+        "topology_speed": {
+            "status": "pass"
+            if {item[0] for item in ms2131_interfaces} == {"0", "1", "2", "3", "4"}
+            and all(item[2] == "[none]" for item in ms2131_interfaces)
+            and all(item[3].lower() == "480m" for item in ms2131_interfaces)
+            else "fail",
+            "expected_topology": "USB1 root port 1, direct, 480 Mbit/s",
+        },
+        "no_persistent_errors": {
+            "status": "pass"
+            if statuses.get("usb-dmesg.log") == 0 and not USB_FAILURE.search(dmesg)
+            else "fail",
+        },
+    }
+    ordered = (
+        "phy_probe",
+        "vbus_power",
+        "controller_probe",
+        "root_hub",
+        "ms2131_enumeration",
+        "topology_speed",
         "no_persistent_errors",
     )
     failed_stage = next(
@@ -1819,11 +1938,136 @@ def run_ethernet_test(
     }
 
 
+def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
+    """Validate only the H616 USB1 EHCI path and internal MS2131."""
+
+    evidence: dict[str, str] = {}
+    statuses: dict[str, int] = {}
+    commands = (
+        (
+            "usb-enumeration-wait.log",
+            "usb_enumeration_wait",
+            "i=0; device=; while [ \"$i\" -lt 15 ]; do "
+            "for candidate in /sys/bus/usb/devices/*; do "
+            "[ -r \"$candidate/idVendor\" ] || continue; "
+            "[ -r \"$candidate/idProduct\" ] || continue; "
+            "vid=$(cat \"$candidate/idVendor\"); pid=$(cat \"$candidate/idProduct\"); "
+            "if [ \"$vid:$pid\" = 345f:2131 ]; then device=$candidate; break; fi; "
+            "done; [ -z \"$device\" ] || break; sleep 1; i=$((i + 1)); done; "
+            "printf 'wait_seconds=%s\\n' \"$i\"; "
+            "if [ -n \"$device\" ]; then printf 'device=%s\\n' \"${device##*/}\"; "
+            "printf 'vid_pid=%s:%s\\n' \"$(cat \"$device/idVendor\")\" "
+            "\"$(cat \"$device/idProduct\")\"; "
+            "for attr in manufacturer product serial speed busnum devnum devpath; do "
+            "[ -r \"$device/$attr\" ] && printf '%s=%s\\n' \"$attr\" "
+            "\"$(cat \"$device/$attr\")\"; done; fi; [ -n \"$device\" ]",
+            25.0,
+        ),
+        ("lsusb.log", "usb_lsusb", "lsusb", 20.0),
+        ("lsusb-tree.log", "usb_lsusb_tree", "lsusb -t", 20.0),
+        (
+            "usb-controller-phy.log",
+            "usb_controller_phy",
+            "ok=1; controller=/sys/bus/platform/devices/5200000.usb; "
+            "phy=/sys/bus/platform/devices/5100400.phy; "
+            "if [ -d \"$controller\" ]; then echo controller_present=1; "
+            "driver=$(readlink \"$controller/driver\" 2>/dev/null); "
+            "printf 'controller_driver=%s\\n' \"${driver##*/}\"; "
+            "[ \"${driver##*/}\" = ehci-platform ] || ok=0; "
+            "else echo controller_present=0; ok=0; fi; "
+            "if [ -d \"$phy\" ]; then echo phy_present=1; "
+            "driver=$(readlink \"$phy/driver\" 2>/dev/null); "
+            "printf 'phy_driver=%s\\n' \"${driver##*/}\"; "
+            "[ \"${driver##*/}\" = sun4i-usb-phy ] || ok=0; "
+            "else echo phy_present=0; ok=0; fi; "
+            "for node in /sys/bus/platform/devices/*.usb; do "
+            "[ -L \"$node/driver\" ] || continue; driver=$(readlink \"$node/driver\"); "
+            "printf 'enabled_usb_controller=%s driver=%s\\n' \"${node##*/}\" "
+            "\"${driver##*/}\"; done; "
+            "reg_found=0; for regulator in /sys/class/regulator/regulator.*; do "
+            "[ -r \"$regulator/name\" ] || continue; "
+            "[ \"$(cat \"$regulator/name\")\" = usb1-vbus ] || continue; "
+            "reg_found=1; echo regulator_present=1; echo regulator_name=usb1-vbus; "
+            "printf 'regulator_path=%s\\n' \"${regulator##*/}\"; "
+            "for attr in state microvolts num_users; do [ -r \"$regulator/$attr\" ] && "
+            "printf 'regulator_%s=%s\\n' \"$attr\" "
+            "\"$(cat \"$regulator/$attr\")\"; done; done; "
+            "[ \"$reg_found\" -eq 1 ] || { echo regulator_present=0; ok=0; }; "
+            "[ \"$ok\" -eq 1 ]",
+            20.0,
+        ),
+        (
+            "usb-dmesg.log",
+            "usb_dmesg",
+            "dmesg | grep -Ei 'usb|ehci|ohci|5100400|5200000|vbus|regulator'",
+            20.0,
+        ),
+    )
+
+    for filename, label, command, timeout in commands:
+        status, output = capture_shell_command(
+            console, recorder, filename, label, command, timeout
+        )
+        statuses[filename] = status
+        evidence[filename] = output
+
+    checks, failed_stage = assess_usb_evidence(statuses, evidence)
+    enumeration = evidence["usb-enumeration-wait.log"]
+    device_match = re.search(r"(?m)^device=([^\n]+)$", enumeration)
+    serial_match = re.search(r"(?m)^serial=([^\n]+)$", enumeration)
+    speed_match = re.search(r"(?m)^speed=([^\n]+)$", enumeration)
+    bus_match = re.search(r"(?m)^busnum=([^\n]+)$", enumeration)
+    dev_match = re.search(r"(?m)^devnum=([^\n]+)$", enumeration)
+    interface_drivers = re.findall(
+        r"(?m)^\s*\|__ Port 1: Dev [0-9]+, If [0-9]+, Class=[^,]+, "
+        r"Driver=([^,]+), [^,]+, ID=345f:2131$",
+        evidence["lsusb-tree.log"],
+        re.I,
+    )
+
+    return {
+        "result": "passed" if failed_stage is None else "failed",
+        "failed_stage": failed_stage,
+        "controller": {
+            "device": "5200000.usb",
+            "driver": "ehci-platform",
+            "type": "EHCI",
+            "other_host_controllers_enabled": False,
+        },
+        "phy": {"device": "5100400.phy", "driver": "sun4i-usb-phy", "index": 1},
+        "power": {
+            "regulator": "usb1-vbus",
+            "microvolts": 5000000,
+            "enable_gpio": "PC8",
+            "enable_active_high": True,
+        },
+        "device": {
+            "sysfs_name": device_match.group(1) if device_match else None,
+            "vid_pid": "345f:2131"
+            if checks["ms2131_enumeration"]["status"] == "pass"
+            else None,
+            "manufacturer": "MACROSILICON",
+            "product": "USB2 Video",
+            "serial": serial_match.group(1) if serial_match else None,
+            "bus": int(bus_match.group(1)) if bus_match else None,
+            "device_number": int(dev_match.group(1)) if dev_match else None,
+            "speed_mbps": int(speed_match.group(1)) if speed_match else None,
+            "topology": "USB1 root port 1 (direct)",
+            "class_drivers_bound": any(
+                driver != "[none]" for driver in interface_drivers
+            ),
+        },
+        "checks": checks,
+        "evidence": {name: str(recorder.path / name) for name in statuses},
+    }
+
+
 def boot_linux_command(
     args: argparse.Namespace, sys_root: Path, dev_root: Path
 ) -> dict[str, Any]:
-    run_mmc = args.command in ("boot-mmc", "boot-ethernet")
-    run_ethernet = args.command == "boot-ethernet"
+    run_mmc = args.command in ("boot-mmc", "boot-ethernet", "boot-usb")
+    run_ethernet = args.command in ("boot-ethernet", "boot-usb")
+    run_usb = args.command == "boot-usb"
     recorder = RunRecorder(args.command, args.out_root)
     stage = "preflight"
     last_passed = "none"
@@ -1831,6 +2075,7 @@ def boot_linux_command(
     publication: Path | None = None
     mmc: dict[str, Any] | None = None
     ethernet: dict[str, Any] | None = None
+    usb: dict[str, Any] | None = None
     try:
         manifest = copy_linux_artifacts(recorder, args.artifact_root)
         recorder.metadata["artifacts"] = manifest["artifacts"]
@@ -1843,6 +2088,8 @@ def boot_linux_command(
                 "dhcp_used": False,
                 "dns_configured": False,
                 "default_gateway_configured": False,
+                "usb_gadget_enabled": False,
+                "media_support_enabled": False,
             }
         )
         device = resolve_uart_device(sys_root, dev_root, args.device)
@@ -1929,10 +2176,11 @@ def boot_linux_command(
             last_passed = "initramfs"
             stage = "serial_shell"
 
-            # MMC enumeration can interleave printk output through the first
-            # BusyBox prompt and tear its literal byte sequence. Elicit a new
-            # prompt after the boot log settles instead of relying on that
-            # asynchronous first rendering.
+            # MMC and USB enumeration can interleave printk output through the
+            # first BusyBox prompt and tear its literal byte sequence. Give
+            # those built-in asynchronous probes a bounded settling interval,
+            # then elicit a fresh prompt instead of relying on the first one.
+            time.sleep(2.0)
             console.write_line(b"")
             _, prompt_text = console.wait_for((INITRAMFS_SHELL,), 15.0)
             boot_text += prompt_text
@@ -1959,6 +2207,17 @@ def boot_linux_command(
                     )
                 last_passed = "ethernet_ping"
 
+            if run_usb:
+                stage = "usb_test"
+                usb = run_usb_test(console, recorder)
+                if usb["result"] != "passed":
+                    failed_stage = usb["failed_stage"] or "unknown"
+                    stage = f"usb_{failed_stage}"
+                    raise RuntimeError(
+                        f"USB host validation failed at stage {failed_stage}"
+                    )
+                last_passed = "usb_enumeration"
+
             console.write_line(
                 b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END"
             )
@@ -1969,7 +2228,9 @@ def boot_linux_command(
         report: dict[str, Any] = {
             "result": "passed",
             "stage": (
-                "ethernet_ping"
+                "usb_enumeration"
+                if run_usb
+                else "ethernet_ping"
                 if run_ethernet
                 else "mmc_read_only"
                 if run_mmc
@@ -1995,6 +2256,8 @@ def boot_linux_command(
             report["mmc"] = mmc
         if ethernet is not None:
             report["ethernet"] = ethernet
+        if usb is not None:
+            report["usb"] = usb
     except Exception as error:
         raw_path = recorder.path / "uart.raw"
         evidence = raw_path.read_bytes() if raw_path.exists() else b""
@@ -2013,6 +2276,8 @@ def boot_linux_command(
             report["mmc"] = mmc
         if ethernet is not None:
             report["ethernet"] = ethernet
+        if usb is not None:
+            report["usb"] = usb
     return recorder.finish(report)
 
 
@@ -2287,6 +2552,31 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     ethernet_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
+    usb_parser = subparsers.add_parser(
+        "boot-usb",
+        help=(
+            "TFTP-boot Linux, retain MMC/Ethernet tests, and validate only "
+            "the USB1 EHCI host path and internal MS2131"
+        ),
+    )
+    add_uboot_options(usb_parser)
+    usb_parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=Path(
+            os.environ.get(
+                "LABCTL_LINUX_ARTIFACT_ROOT",
+                REPOSITORY_ROOT / "out" / "build" / "artifacts",
+            )
+        ),
+    )
+    usb_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+    usb_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)
     if getattr(args, "jobs", 1) < 1:
@@ -2334,7 +2624,7 @@ def main(argv: list[str] | None = None) -> int:
             report = boot_vendor_command(args, sys_root, dev_root)
         elif args.command == "build-linux":
             report = build_linux_command(args)
-        elif args.command in ("boot-linux", "boot-mmc", "boot-ethernet"):
+        elif args.command in ("boot-linux", "boot-mmc", "boot-ethernet", "boot-usb"):
             report = boot_linux_command(args, sys_root, dev_root)
         elif args.command == "collect":
             report = collect_command(args)

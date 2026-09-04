@@ -51,6 +51,7 @@ def main() -> None:
             "init": "/init",
             "ready_marker": "BLIKVM_INITRAMFS_READY",
             "network_utilities": ["ip", "ping"],
+            "usb_inspection_utilities": ["lsusb", "lsusb -t"],
         },
         "build": {
             "default_jobs": 3,

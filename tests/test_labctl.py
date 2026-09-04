@@ -13,6 +13,7 @@ import unittest
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 LABCTL = REPOSITORY_ROOT / "lab" / "labctl"
+INITRAMFS_LSUSB = REPOSITORY_ROOT / "initramfs" / "lsusb"
 LABCTL_MODULE = runpy.run_path(str(LABCTL), run_name="labctl_test_module")
 
 
@@ -269,6 +270,15 @@ class LabctlAutomationTests(unittest.TestCase):
             with self.subTest(text=text):
                 self.assertEqual(classify(text, "kernel_boot"), expected)
 
+        self.assertEqual(
+            classify("MS2131 absent", "usb_ms2131_enumeration"),
+            "ms2131_not_enumerated",
+        )
+        self.assertEqual(
+            classify("regulator disabled", "usb_vbus_power"),
+            "usb_regulator_vbus_or_gpio_failure",
+        )
+
     def test_shell_markers_match_before_a_following_prompt(self) -> None:
         verified = LABCTL_MODULE["SHELL_VERIFIED"]
         dmesg_end = LABCTL_MODULE["DMESG_END"]
@@ -363,6 +373,119 @@ class LabctlAutomationTests(unittest.TestCase):
         checks, failed_stage = assess("eth0", statuses, evidence)
         self.assertEqual(checks["ping"]["status"], "fail")
         self.assertEqual(failed_stage, "ping")
+
+    def test_usb_evidence_requires_only_ehci1_and_direct_480m_ms2131(self) -> None:
+        assess = LABCTL_MODULE["assess_usb_evidence"]
+        evidence = {
+            "usb-controller-phy.log": (
+                "controller_present=1\ncontroller_driver=ehci-platform\n"
+                "phy_present=1\nphy_driver=sun4i-usb-phy\n"
+                "enabled_usb_controller=5200000.usb driver=ehci-platform\n"
+                "regulator_present=1\nregulator_name=usb1-vbus\n"
+                "regulator_state=enabled\n"
+            ),
+            "usb-enumeration-wait.log": (
+                "device=1-1\nvid_pid=345f:2131\nspeed=480\n"
+            ),
+            "lsusb.log": (
+                "Bus 001 Device 002: ID 345f:2131 MACROSILICON USB2 Video\n"
+                "Bus 001 Device 001: ID 1d6b:0002 Linux EHCI Host Controller\n"
+            ),
+            "lsusb-tree.log": (
+                "/:  Bus 01.Port 1: Dev 1, Class=root_hub, "
+                "Driver=ehci-platform/1p, 480M\n"
+                "    |__ Port 1: Dev 2, If 0, Class=Video, Driver=[none], "
+                "480M, ID=345f:2131\n"
+                "    |__ Port 1: Dev 2, If 1, Class=Video, Driver=[none], "
+                "480M, ID=345f:2131\n"
+                "    |__ Port 1: Dev 2, If 2, Class=Audio, Driver=[none], "
+                "480M, ID=345f:2131\n"
+                "    |__ Port 1: Dev 2, If 3, Class=Audio, Driver=[none], "
+                "480M, ID=345f:2131\n"
+                "    |__ Port 1: Dev 2, If 4, Class=Human Interface Device, "
+                "Driver=[none], 480M, ID=345f:2131\n"
+            ),
+            "usb-dmesg.log": (
+                "ehci-platform 5200000.usb: EHCI Host Controller\n"
+                "ehci-platform 5200000.usb: USB 2.0 started, EHCI 1.00\n"
+            ),
+        }
+        statuses = {name: 0 for name in evidence}
+
+        checks, failed_stage = assess(statuses, evidence)
+
+        self.assertIsNone(failed_stage)
+        self.assertTrue(all(item["status"] == "pass" for item in checks.values()))
+
+        evidence["usb-controller-phy.log"] += (
+            "enabled_usb_controller=5310000.usb driver=ehci-platform\n"
+        )
+        checks, failed_stage = assess(statuses, evidence)
+        self.assertEqual(checks["controller_probe"]["status"], "fail")
+        self.assertEqual(failed_stage, "controller_probe")
+
+    def test_initramfs_lsusb_reports_flat_identity_and_tree(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            sys_root = Path(temporary) / "sys"
+            devices = sys_root / "bus" / "usb" / "devices"
+            root = devices / "usb1"
+            capture = devices / "1-1"
+            interface = devices / "1-1:1.0"
+            values = {
+                root: {
+                    "idVendor": "1d6b",
+                    "idProduct": "0002",
+                    "manufacturer": "Linux 7.2.3 ehci_hcd",
+                    "product": "EHCI Host Controller",
+                    "busnum": "1",
+                    "devnum": "1",
+                    "maxchild": "1",
+                    "speed": "480",
+                },
+                capture: {
+                    "idVendor": "345f",
+                    "idProduct": "2131",
+                    "manufacturer": "MACROSILICON",
+                    "product": "USB2 Video",
+                    "busnum": "1",
+                    "devnum": "2",
+                    "devpath": "1",
+                    "speed": "480",
+                },
+                interface: {
+                    "bInterfaceNumber": "00",
+                    "bInterfaceClass": "0e",
+                },
+            }
+            for directory, attributes in values.items():
+                for name, value in attributes.items():
+                    write_value(directory / name, value)
+            (root / "controller-driver").symlink_to("/drivers/ehci-platform")
+            environment = os.environ.copy()
+            environment["LSUSB_SYS_ROOT"] = str(sys_root)
+
+            flat = subprocess.run(
+                ["/bin/sh", str(INITRAMFS_LSUSB)],
+                env=environment,
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout
+            tree = subprocess.run(
+                ["/bin/sh", str(INITRAMFS_LSUSB), "-t"],
+                env=environment,
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout
+
+            self.assertIn("ID 345f:2131 MACROSILICON USB2 Video", flat)
+            self.assertIn("Driver=ehci-platform/1p, 480M", tree)
+            self.assertIn(
+                "Port 1: Dev 2, If 0, Class=Video, Driver=[none], "
+                "480M, ID=345f:2131",
+                tree,
+            )
 
     def test_guarded_vendor_phy_workaround_changes_only_verified_field(self) -> None:
         apply_workaround = LABCTL_MODULE["apply_vendor_phy_workaround"]

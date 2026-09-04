@@ -1,0 +1,124 @@
+#!/bin/busybox sh
+# Minimal sysfs-backed lsusb for the bring-up initramfs. Alpine BusyBox's
+# applet prints a useful flat list but ignores -t, so keep one small script
+# instead of adding libusb, usb.ids, and the complete usbutils package.
+
+set -eu
+
+sys_root=${LSUSB_SYS_ROOT:-/sys}
+usb_root="$sys_root/bus/usb/devices"
+
+read_attr() {
+	if [ -r "$1" ]; then
+		cat "$1"
+	fi
+}
+
+speed_label() {
+	case "$1" in
+		1.5|12|480|5000|10000|20000) printf '%sM' "$1" ;;
+		*) printf '%s' "${1:-unknown}" ;;
+	esac
+}
+
+class_name() {
+	case "$1" in
+		01) printf Audio ;;
+		02) printf Communications ;;
+		03) printf 'Human Interface Device' ;;
+		05) printf Physical ;;
+		06) printf Imaging ;;
+		07) printf Printer ;;
+		08) printf 'Mass Storage' ;;
+		09) printf Hub ;;
+		0a) printf 'CDC Data' ;;
+		0b) printf 'Smart Card' ;;
+		0d) printf 'Content Security' ;;
+		0e) printf Video ;;
+		0f) printf 'Personal Healthcare' ;;
+		10) printf 'Audio/Video' ;;
+		dc) printf Diagnostic ;;
+		e0) printf Wireless ;;
+		ef) printf Miscellaneous ;;
+		fe) printf 'Application Specific' ;;
+		ff) printf 'Vendor Specific' ;;
+		*) printf 'Defined at Interface level' ;;
+	esac
+}
+
+driver_name() {
+	driver=$(readlink "$1/driver" 2>/dev/null || true)
+	if [ -z "$driver" ]; then
+		driver=$(readlink "$1/controller-driver" 2>/dev/null || true)
+	fi
+	if [ -n "$driver" ]; then
+		printf '%s' "${driver##*/}"
+	else
+		printf '[none]'
+	fi
+}
+
+flat_list() {
+	for device in "$usb_root"/*; do
+		[ -r "$device/idVendor" ] || continue
+		[ -r "$device/idProduct" ] || continue
+		bus=$(read_attr "$device/busnum")
+		dev=$(read_attr "$device/devnum")
+		vendor=$(read_attr "$device/idVendor")
+		product_id=$(read_attr "$device/idProduct")
+		manufacturer=$(read_attr "$device/manufacturer")
+		product=$(read_attr "$device/product")
+		printf 'Bus %03d Device %03d: ID %s:%s' "$bus" "$dev" "$vendor" "$product_id"
+		[ -z "$manufacturer" ] || printf ' %s' "$manufacturer"
+		[ -z "$product" ] || printf ' %s' "$product"
+		printf '\n'
+	done
+}
+
+tree_list() {
+	for root in "$usb_root"/usb*; do
+		[ -r "$root/busnum" ] || continue
+		bus=$(read_attr "$root/busnum")
+		dev=$(read_attr "$root/devnum")
+		ports=$(read_attr "$root/maxchild")
+		speed=$(speed_label "$(read_attr "$root/speed")")
+		root_driver=$(driver_name "$root/..")
+		if [ "$root_driver" = '[none]' ]; then
+			root_driver=$(driver_name "$root")
+		fi
+		printf '/:  Bus %02d.Port 1: Dev %d, Class=root_hub, Driver=%s/%sp, %s\n' \
+			"$bus" "$dev" "$root_driver" "${ports:-0}" "$speed"
+
+		for device in "$usb_root"/"$bus"-*; do
+			[ -r "$device/idVendor" ] || continue
+			case "${device##*/}" in *:*) continue ;; esac
+			dev=$(read_attr "$device/devnum")
+			devpath=$(read_attr "$device/devpath")
+			port=${devpath##*.}
+			speed=$(speed_label "$(read_attr "$device/speed")")
+			vendor=$(read_attr "$device/idVendor")
+			product_id=$(read_attr "$device/idProduct")
+			indent='    '
+			remainder=$devpath
+			while [ "${remainder#*.}" != "$remainder" ]; do
+				indent="$indent    "
+				remainder=${remainder#*.}
+			done
+			for interface in "$device":*; do
+				[ -r "$interface/bInterfaceNumber" ] || continue
+				ifnum=$(read_attr "$interface/bInterfaceNumber")
+				class=$(class_name "$(read_attr "$interface/bInterfaceClass")")
+				driver=$(driver_name "$interface")
+				printf '%s|__ Port %s: Dev %d, If %d, Class=%s, Driver=%s, %s, ID=%s:%s\n' \
+					"$indent" "$port" "$dev" "$((0x$ifnum))" "$class" \
+					"$driver" "$speed" "$vendor" "$product_id"
+			done
+		done
+	done
+}
+
+case "${1:-}" in
+	'') flat_list ;;
+	-t) [ "$#" -eq 1 ] || exit 2; tree_list ;;
+	*) echo 'usage: lsusb [-t]' >&2; exit 2 ;;
+esac

@@ -1,6 +1,6 @@
 # BliKVM v4 Allwinner PiKVM port research
 
-Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The viable port now has passing Linux 7.2.3 serial, MMC/read-only ext4, and H616 EMAC1 Ethernet slices. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
+Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The viable port now has passing Linux 7.2.3 serial, MMC/read-only ext4, H616 EMAC1 Ethernet, and isolated internal USB host slices. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
 
 ## 1. Confirmed hardware
 
@@ -93,3 +93,12 @@ Linux independently found the Clause-22 PHY at address 0 with ID `0x00441400`,
 LattePanda address with no DHCP, DNS, default route, or storage write. The
 upstream/vendor comparison, minimal patch, failure isolation, and archived run
 IDs are in [ethernet-bringup.md](ethernet-bringup.md).
+
+## 20. Internal USB host slice
+
+Only H616 USB1 EHCI, PHY index 1, and the PC8-controlled `usb1-vbus` rail are
+enabled. Two consecutive full RAM boots enumerated the internal MS2131 as
+`345f:2131` directly on root port 1 at 480 Mbit/s while preserving MMC and
+Ethernet. All Video/Audio/HID interfaces remain unbound because media, UVC,
+audio, HID, gadget, and UDC support are intentionally outside this slice. See
+[usb-host-bringup.md](usb-host-bringup.md).

@@ -1,10 +1,10 @@
 # Linux 7.x serial and MMC bring-up build
 
 The accepted baseline was limited to H616 core support, UART0, and an
-Alpine/BusyBox initramfs. The current isolated slice adds only MMC0, block and
-MS-DOS partition parsing, the existing ext4 format, and its fixed 3.3 V supply.
-Linux Ethernet, USB, display, capture, gadget, and board-control GPIO support
-remain disabled.
+Alpine/BusyBox initramfs. Incremental slices now add MMC0/read-only ext4,
+EMAC1/RMII, and only the USB1 EHCI/PHY/VBUS path wired to the internal MS2131.
+OHCI and the other USB controllers remain disabled, as do media/UVC, gadget,
+UDC, USB storage, display, and board-control GPIO functions.
 
 Build from the repository root:
 
@@ -34,18 +34,17 @@ Current artifacts are written to `out/build/artifacts/`. Every `labctl`
 build or boot also copies the exact artifacts, hashes, logs, and result JSON
 into a unique `out/runs/<run-id>/` directory.
 
-Boot and run the read-only MMC test on the connected board with:
+Boot and run the complete retained MMC, Ethernet, and USB-host tests with:
 
 ```bash
-sudo ./lab/labctl --pretty boot-mmc \
+sudo ./lab/labctl --pretty boot-usb \
   --target-password-file /path/outside/repository/to/vendor-password
 ```
 
 If the board is already stopped at U-Boot, replace the credential option with
 `--no-reboot`. All U-Boot `setenv` operations are session-only. The command
 publishes an immutable TFTP run directory, verifies every returned byte count,
-captures raw and timestamped UART, waits for `BLIKVM_INITRAMFS_READY`, records
-MMC identity, `lsblk`, `blkid`, the partition table, `/proc/partitions`, and
-relevant `dmesg`, and forces every detected MMC block node read-only. It mounts
-`/dev/mmcblk0p1` as ext4 with `ro,noload`, reads `/etc/os-release`, records its
-hash, and unmounts before reporting success.
+captures raw and timestamped UART, waits for `BLIKVM_INITRAMFS_READY`, reruns
+the read-only MMC/ext4 and isolated static-Ethernet checks, then archives USB
+PHY/controller/VBUS evidence, `lsusb`, `lsusb -t`, VID:PID, topology, speed,
+relevant dmesg, and a machine-readable result.
