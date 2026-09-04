@@ -1,6 +1,6 @@
 # BliKVM v4 Allwinner PiKVM port research
 
-Research and direct hardware discovery were completed on 2026-09-03. The outcome is a viable port with one material Linux gap: this carrier uses H616's second Ethernet MAC, which is not described/bound in upstream Linux v7.2. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
+Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The outcome is a viable port with one material Linux gap: this carrier uses H616's second Ethernet MAC, which is not described/bound in upstream Linux v7.2. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
 
 ## 1. Confirmed hardware
 
@@ -52,7 +52,7 @@ Alpine 3.24.1 is recommended for the bring-up initramfs. It is only “MAYBE” 
 
 ## 13. Development network
 
-Reserve `enp1s0` as `192.168.77.1/24` and target `192.168.77.2/24`, with no gateway and `never-default`. Internet stays on `wlo1`, Proton on `wg_profile`, and TFTP binds only to the lab NIC. A physical Ethernet link is currently absent. See [lab-network.md](lab-network.md).
+`enp1s0` is configured as `192.168.88.1/24` and the target uses `192.168.88.2/24`, with no gateway/DNS and `never-default`. Internet remains on `wlo1`, Proton on `wg_profile`, and TFTP binds only to the lab NIC. The link is live at 100 Mb/s full duplex. See [lab-network.md](lab-network.md).
 
 ## 14. Boot loop
 
@@ -64,7 +64,7 @@ Keep vendor U-Boot and load immutable per-run kernel/DTB/initramfs paths over TF
 
 ## 16. Major risks
 
-1. EMAC1 is not upstream-complete and blocks the preferred TFTP/SSH loop.
+1. EMAC1 is not upstream-complete for Linux 7.x; the vendor U-Boot TFTP loop is proven with a guarded RAM-only correction for its bad PHY address.
 2. PMIC naming/old firmware inconsistency requires conservative rail validation.
 3. FEL reachability and secure SPL handoff are unproven.
 4. Exact carrier/PHY revision is unknown.
@@ -73,6 +73,6 @@ Keep vendor U-Boot and load immutable per-run kernel/DTB/initramfs paths over TF
 
 ## 17. First implementation milestone
 
-The small read-only `labctl detect` slice defined in [decision.md](decision.md) is implemented and fixture-tested. Live verification found exactly one `1a86:7523` BliKVM UART, selected its `/dev/serial/by-id` path, excluded the `3343:803a` LattePanda MCU, protected the known host boot media identity, and correctly reported the absent Ethernet carrier as a blocker. The next M0 slice is the pinned Linux 7.x/DT/initramfs builder. Do not implement flashing or replace U-Boot. Full milestone gates are in [milestones.md](milestones.md).
+`labctl` now builds, publishes, boots, captures, and classifies the minimal Linux 7.2.3 slice. The reproducible builder, eleven tests, minimal DTS/binding, Alpine initramfs, and command-verified real-hardware serial shell pass are recorded in [linux-7x-bringup.md](linux-7x-bringup.md). Passing run `20260904T014648Z-1900fd6-736450` also captured dmesg automatically. No flashing or U-Boot replacement was used. Full milestone gates are in [milestones.md](milestones.md).
 
 All external references, classifications, access dates, and pinned commits are in [sources.md](sources.md). Raw live evidence is under [vendor-system](vendor-system/README.md).

@@ -4,11 +4,11 @@ Each milestone has an artifact, pass gate, and fallback. A later milestone may n
 
 ## M0 — Tooling and evidence
 
-Build Linux/DT/initramfs in a pinned AMD64 container; implement device detection, UART capture/interrupt, source pinning, and run manifests. **Pass:** `labctl detect` identifies the CH341 UART; a dry build is reproducible; UART captures a complete known-good reboot. **Current:** detector and UART/evidence pass; builder, run manifests, and network remain.
+Build Linux/DT/initramfs in a pinned AMD64 container; implement device detection, UART capture/interrupt, source pinning, and run manifests. **Pass:** `labctl detect` identifies the CH341 UART; a dry build is reproducible; UART captures a complete known-good reboot. **Current:** passed; no-change incremental builds reproduce the artifact hashes and use `-j3` by default.
 
 ## M1 — Linux 7.x console
 
-Create the minimal board DTS and config. Boot `Image` + DTB + Alpine initramfs from vendor U-Boot. **Pass:** SPL/U-Boot load succeeds, `earlycon` and ttyS0 work, all four CPUs start, `/init` prints the run ID, no fatal exception. **Fallback:** U-Boot prompt and known-good SD.
+Create the minimal board DTS and config. Boot `Image` + DTB + Alpine initramfs from vendor U-Boot. **Pass:** SPL/U-Boot load succeeds, `earlycon` and ttyS0 work, all four CPUs start, `/init` prints the ready marker, no fatal exception. **Current:** passed in run `20260904T014648Z-1900fd6-736450`; the shell executed a command and reported Linux `7.2.3-blikvm-v4-serial`, followed by automated dmesg capture. **Fallback:** U-Boot prompt and known-good SD.
 
 ## M2 — Storage
 
@@ -16,7 +16,7 @@ Enable MMC0/card detect. **Pass:** the exact SD appears, partition table is read
 
 ## M3 — Ethernet
 
-Implement/validate H616 EMAC1 support and board RMII/PHY description. **Pass:** correct PHY ID, carrier, no dummy regulator, static `192.168.77.2`, 1,000 pings without loss, sustained transfer, and SSH. Test across VPN changes. This is the highest-risk kernel milestone.
+Implement/validate H616 EMAC1 support and board RMII/PHY description. **Pass:** correct PHY ID, carrier, no dummy regulator, static `192.168.88.2`, 1,000 pings without loss, sustained transfer, and SSH. Test across VPN changes. This is the highest-risk kernel milestone.
 
 ## M4 — USB host and capture
 

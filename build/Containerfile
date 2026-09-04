@@ -1,0 +1,33 @@
+ARG TOOLCHAIN_BASE=docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+FROM ${TOOLCHAIN_BASE}
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      bc \
+      bison \
+      build-essential \
+      ca-certificates \
+      cpio \
+      device-tree-compiler \
+      file \
+      flex \
+      gcc-aarch64-linux-gnu \
+      kmod \
+      libelf-dev \
+      libssl-dev \
+      python3 \
+      python3-dev \
+      python3-pip \
+      rsync \
+      xz-utils \
+ && pip3 install --break-system-packages --no-cache-dir dtschema==2026.6 \
+ && rm -rf /var/lib/apt/lists/*
+
+ENV ARCH=arm64 \
+    CROSS_COMPILE=aarch64-linux-gnu- \
+    KBUILD_BUILD_USER=blikvm \
+    KBUILD_BUILD_HOST=linux-builder \
+    KBUILD_BUILD_TIMESTAMP=1970-01-01T00:00:00Z \
+    SOURCE_DATE_EPOCH=0
+WORKDIR /work

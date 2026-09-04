@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from pathlib import Path
+import runpy
 import subprocess
 import sys
 import tempfile
@@ -11,6 +13,7 @@ import unittest
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 LABCTL = REPOSITORY_ROOT / "lab" / "labctl"
+LABCTL_MODULE = runpy.run_path(str(LABCTL), run_name="labctl_test_module")
 
 
 def write_value(path: Path, value: str) -> None:
@@ -159,6 +162,158 @@ class LabctlDetectTests(unittest.TestCase):
             self.assertEqual(
                 report["usb_devices"][0]["role"], "host_lattepanda_mcu"
             )
+
+
+class LabctlAutomationTests(unittest.TestCase):
+    def test_console_cleanup_and_environment_parsing(self) -> None:
+        clean_console = LABCTL_MODULE["clean_console"]
+        parse_environment = LABCTL_MODULE["parse_environment"]
+        raw = b"\x1b[32mkernel_addr_r=0x40080000\x1b[0m\r\nnot a key=x\r\n=> "
+
+        cleaned = clean_console(raw)
+
+        self.assertNotIn("\x1b", cleaned)
+        self.assertEqual(
+            parse_environment(cleaned), {"kernel_addr_r": "0x40080000"}
+        )
+
+    def test_forbids_persistent_or_media_writing_uboot_commands(self) -> None:
+        session_type = LABCTL_MODULE["UBootSession"]
+        session = session_type(None, None)
+
+        for command in (
+            "saveenv",
+            "env save",
+            "mmc write 0x40000000 0 1",
+            "sf erase 0 1000",
+        ):
+            with self.subTest(command=command):
+                with self.assertRaisesRegex(ValueError, "refusing"):
+                    session.execute(command)
+
+    def test_vendor_manifest_hashes_exact_artifacts(self) -> None:
+        vendor_manifest = LABCTL_MODULE["vendor_manifest"]
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "Image").write_bytes(b"kernel")
+            (root / "uInitrd").write_bytes(b"ramdisk")
+            (root / "sun50i-h616-mangopi-mcore.dtb").write_bytes(b"fdt")
+
+            manifest = vendor_manifest(root)
+
+            self.assertEqual(manifest["kernel"]["size"], 6)
+            self.assertEqual(
+                manifest["kernel"]["sha256"],
+                "6923dd1bc0460082c5d55a831908c24a282860b7f1cd6c2b79cf1bc8857c639c",
+            )
+
+    def test_linux_manifest_rejects_an_artifact_changed_after_build(self) -> None:
+        linux_artifact_manifest = LABCTL_MODULE["linux_artifact_manifest"]
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            payloads = {
+                "Image": b"arm64 kernel",
+                "sun50i-h616-blikvm-v4.dtb": b"device tree",
+                "initramfs.cpio.gz": b"initramfs",
+                "linux.config": b"CONFIG_ARCH_SUNXI=y\n",
+            }
+            records = {}
+            for name, payload in payloads.items():
+                (root / name).write_bytes(payload)
+                records[name] = {
+                    "name": name,
+                    "size": len(payload),
+                    "sha256": hashlib.sha256(payload).hexdigest(),
+                }
+            (root / "manifest.json").write_text(
+                json.dumps(
+                    {
+                        "linux": {"version": "7.2.3"},
+                        "initramfs": {"ready_marker": "BLIKVM_INITRAMFS_READY"},
+                        "build": {},
+                        "artifacts": records,
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            self.assertEqual(linux_artifact_manifest(root)["linux"]["version"], "7.2.3")
+            (root / "Image").write_bytes(b"changed")
+            with self.assertRaisesRegex(RuntimeError, "does not match manifest"):
+                linux_artifact_manifest(root)
+
+    def test_boot_failure_classifier_uses_uart_evidence(self) -> None:
+        classify = LABCTL_MODULE["classify_boot_failure"]
+        cases = {
+            "Failed to execute /init (error -8)": "init_not_executable",
+            "Kernel panic - not syncing: VFS: Unable to mount root fs": (
+                "unable_to_mount_initramfs"
+            ),
+            "Starting kernel ...": "kernel_console_timeout",
+        }
+        for text, expected in cases.items():
+            with self.subTest(text=text):
+                self.assertEqual(classify(text, "kernel_boot"), expected)
+
+    def test_shell_markers_match_before_a_following_prompt(self) -> None:
+        verified = LABCTL_MODULE["SHELL_VERIFIED"]
+        dmesg_end = LABCTL_MODULE["DMESG_END"]
+        prompt = "blikvm-initramfs:/ # "
+
+        self.assertIsNotNone(
+            verified.search(
+                "BLIKVM_SHELL_OK kernel=7.2.3-blikvm-v4-serial\n" + prompt
+            )
+        )
+        self.assertIsNotNone(dmesg_end.search("BLIKVM_DMESG_END\n" + prompt))
+
+    def test_tftp_transfer_size_must_match_the_published_artifact(self) -> None:
+        parse_tftp_size = LABCTL_MODULE["parse_tftp_size"]
+
+        parse_tftp_size("Bytes transferred = 4096 (1000 hex)", 4096, "Image")
+        with self.assertRaisesRegex(RuntimeError, "size mismatch"):
+            parse_tftp_size("Bytes transferred = 4095", 4096, "Image")
+
+    def test_guarded_vendor_phy_workaround_changes_only_verified_field(self) -> None:
+        apply_workaround = LABCTL_MODULE["apply_vendor_phy_workaround"]
+
+        class FakeSession:
+            def __init__(self) -> None:
+                self.commands: list[str] = []
+
+            def execute(self, command: str, _timeout: float) -> str:
+                self.commands.append(command)
+                if command == "version":
+                    return "U-Boot 2021.10-armbian (Feb 20 2023 - 09:48:57 +0800)"
+                if command == "bdinfo":
+                    return (
+                        "-> start    = 0x0000000040000000\n"
+                        "-> size     = 0x0000000040000000\n=> "
+                    )
+                if command.startswith("fdt addr"):
+                    return "ethernet-phy@16 {\nreg = <0x00000010>;\n};\n=> "
+                if command.startswith("mdio read"):
+                    return "2 - 0x44\n3 - 0x1400\n=> "
+                if command == "dm uclass":
+                    return "0 * ethernet@5030000 @ 7bf43380, seq 0\n=> "
+                if command == "md.q 7bf433b8 1":
+                    return "7bf433b8: 000000007bf4bb00\n=> "
+                if command == "md.l 7bf6cb00 2":
+                    return "7bf6cb00: 00000006 00000010\n=> "
+                if command == "md.q 7bf6cb40 1":
+                    return "7bf6cb40: 000000007bf44620\n=> "
+                if command == "md.l 7bf4466c 1":
+                    return "7bf4466c: 00000010\n=> "
+                if command.startswith("mw.l 7bf4466c 0 1"):
+                    return "7bf4466c: 00000000\n=> "
+                raise AssertionError(f"unexpected command: {command}")
+
+        session = FakeSession()
+        result = apply_workaround(session)
+
+        self.assertTrue(result["applied"])
+        self.assertFalse(result["persistent"])
+        self.assertEqual(session.commands[-1], "mw.l 7bf4466c 0 1; md.l 7bf4466c 1")
 
 
 if __name__ == "__main__":

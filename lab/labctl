@@ -1,20 +1,103 @@
 #!/usr/bin/env python3
-"""Read-only discovery utility for the BliKVM v4 development host."""
+"""BliKVM v4 lab discovery, UART, U-Boot, and TFTP automation."""
 
 from __future__ import annotations
 
 import argparse
+import contextlib
 import datetime as dt
+import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
 import platform
+import re
+import select
 import shutil
+import subprocess
 import sys
+import termios
+import time
+import tty
 from typing import Any
 
 
 SCHEMA_VERSION = 1
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_OUT_ROOT = REPOSITORY_ROOT / "out" / "runs"
+DEFAULT_TFTP_ROOT = Path("/var/lib/tftpboot")
+DEFAULT_UART_BAUD = 115200
+LAB_INTERFACE = "enp1s0"
+HOST_IP = "192.168.88.1"
+TARGET_IP = "192.168.88.2"
+UART_USB_ID = "1a86:7523"
+
+ANSI_ESCAPE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
+UBOOT_PROMPT = re.compile(r"(?:^|\n)=>\s*$")
+LINUX_PROMPT = re.compile(r"(?:^|\n)[^\x00-\x1f\n]{1,160}[$#]\s*$")
+LOGIN_PROMPT = re.compile(r"(?:^|\n)[^\n]{0,80}login:\s*$", re.IGNORECASE)
+PASSWORD_PROMPT = re.compile(r"(?:^|\n)Password:\s*$", re.IGNORECASE)
+INITRAMFS_READY = re.compile(r"(?:^|\n)BLIKVM_INITRAMFS_READY\b")
+INITRAMFS_SHELL = re.compile(r"(?:^|\n)blikvm-initramfs:/ #\s*$")
+SHELL_VERIFIED = re.compile(
+    r"(?:^|\n)BLIKVM_SHELL_OK kernel=7\.\S+[ \t]*(?=\n|$)"
+)
+DMESG_END = re.compile(r"(?:^|\n)BLIKVM_DMESG_END[ \t]*(?=\n|$)")
+
+LINUX_ARTIFACT_NAMES = (
+    "Image",
+    "sun50i-h616-blikvm-v4.dtb",
+    "initramfs.cpio.gz",
+    "linux.config",
+    "manifest.json",
+)
+
+BOOT_FAILURE_PATTERNS = (
+    (re.compile(r"Bad Linux ARM64 Image magic", re.IGNORECASE), "bad_arm64_image"),
+    (re.compile(r"Wrong Ramdisk Image Format", re.IGNORECASE), "bad_ramdisk_format"),
+    (
+        re.compile(r"(?:ERROR: Did not find|FDT_ERR|invalid.*(?:fdt|device tree))", re.IGNORECASE),
+        "invalid_device_tree",
+    ),
+    (
+        re.compile(r"Kernel panic.*(?:Unable to mount root|VFS)", re.IGNORECASE | re.DOTALL),
+        "unable_to_mount_initramfs",
+    ),
+    (
+        re.compile(r"(?:Failed to execute /init|No working init found)", re.IGNORECASE),
+        "init_not_executable",
+    ),
+    (re.compile(r"Kernel panic - not syncing", re.IGNORECASE), "kernel_panic"),
+    (
+        re.compile(r"(?:Synchronous Abort|Internal error:|Unable to handle kernel)", re.IGNORECASE),
+        "kernel_exception",
+    ),
+)
+
+UBOOT_COLLECTION_COMMANDS = (
+    "version",
+    "bdinfo",
+    "printenv",
+    "mmc list",
+    "mmc info",
+    "help",
+    "help booti",
+    "help tftp",
+    "help tftpboot",
+    "help dhcp",
+    "help ping",
+    "help net",
+    "help usb",
+    "net list",
+)
+
+FORBIDDEN_UBOOT_PATTERNS = (
+    re.compile(r"(?:^|;)\s*saveenv(?:\s|;|$)"),
+    re.compile(r"(?:^|;)\s*env\s+save(?:\s|;|$)"),
+    re.compile(r"(?:^|;)\s*(?:mmc|nand)\s+(?:write|erase)(?:\s|;|$)"),
+    re.compile(r"(?:^|;)\s*sf\s+(?:write|erase|update)(?:\s|;|$)"),
+)
 
 USB_ROLES = {
     ("1a86", "7523"): "blikvm_uart",
@@ -353,14 +436,1151 @@ def detect(sys_root: Path, dev_root: Path) -> dict[str, Any]:
     }
 
 
+def utc_now() -> str:
+    return dt.datetime.now(dt.timezone.utc).isoformat()
+
+
+def clean_console(data: bytes | str) -> str:
+    if isinstance(data, bytes):
+        text = data.decode("utf-8", errors="replace")
+    else:
+        text = data
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return ANSI_ESCAPE.sub("", text)
+
+
+def write_json(path: Path, value: dict[str, Any]) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    temporary.replace(path)
+
+
+def git_revision() -> str:
+    try:
+        process = subprocess.run(
+            ["git", "rev-parse", "--short=12", "HEAD"],
+            cwd=REPOSITORY_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return "unknown"
+    return process.stdout.strip() or "unknown"
+
+
+class RunRecorder:
+    def __init__(self, command: str, out_root: Path) -> None:
+        stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        suffix = f"{time.time_ns() % 1_000_000:06d}"
+        self.run_id = f"{stamp}-{git_revision()[:7]}-{suffix}"
+        self.path = out_root / self.run_id
+        self.path.mkdir(parents=True, exist_ok=False)
+        self.metadata: dict[str, Any] = {
+            "schema_version": SCHEMA_VERSION,
+            "run_id": self.run_id,
+            "command": command,
+            "started_at": utc_now(),
+            "repository_revision": git_revision(),
+            "host": {
+                "platform": platform.system(),
+                "kernel": platform.release(),
+                "machine": platform.machine(),
+            },
+            "safety": {"persistent_uboot_environment_written": False},
+        }
+        write_json(self.path / "metadata.json", self.metadata)
+
+    def log_uart(self, direction: str, data: bytes) -> None:
+        if not data:
+            return
+        stamp = utc_now()
+        rendered = data.decode("utf-8", errors="backslashreplace")
+        with (self.path / "uart.log").open("a", encoding="utf-8") as stream:
+            stream.write(f"[{stamp}] {direction} {rendered}")
+            if not rendered.endswith("\n"):
+                stream.write("\n")
+        if direction == "RX":
+            with (self.path / "uart.raw").open("ab") as stream:
+                stream.write(data)
+
+    def log_uboot(self, heading: str, text: str) -> None:
+        with (self.path / "uboot.log").open("a", encoding="utf-8") as stream:
+            stream.write(f"\n## {heading}\n{text.rstrip()}\n")
+
+    def save_text(self, name: str, text: str) -> None:
+        (self.path / name).write_text(text, encoding="utf-8")
+
+    def finish(self, report: dict[str, Any]) -> dict[str, Any]:
+        report.setdefault("schema_version", SCHEMA_VERSION)
+        report.setdefault("run_id", self.run_id)
+        report.setdefault("run_directory", str(self.path))
+        report.setdefault("finished_at", utc_now())
+        self.metadata["finished_at"] = report["finished_at"]
+        self.metadata["result"] = report.get("result", "error")
+        self.metadata["stage"] = report.get("stage")
+        write_json(self.path / "metadata.json", self.metadata)
+        write_json(self.path / "test-results.json", report)
+        sudo_uid = os.environ.get("SUDO_UID")
+        sudo_gid = os.environ.get("SUDO_GID")
+        if sudo_uid and sudo_gid:
+            uid, gid = int(sudo_uid), int(sudo_gid)
+            for path in (self.path, *self.path.rglob("*")):
+                with contextlib.suppress(OSError):
+                    os.chown(path, uid, gid)
+        return report
+
+
+def resolve_uart_device(sys_root: Path, dev_root: Path, override: str | None) -> Path:
+    if override:
+        path = Path(override)
+        if not path.exists():
+            raise RuntimeError(f"UART device does not exist: {path}")
+        return path
+
+    report = detect(sys_root, dev_root)
+    matches = [
+        item
+        for item in report["serial_devices"]
+        if item["role"] == "blikvm_uart" and item["usb_id"] == UART_USB_ID
+    ]
+    if len(matches) != 1:
+        raise RuntimeError(
+            f"expected exactly one BliKVM UART {UART_USB_ID}, found {len(matches)}"
+        )
+    stable_paths = matches[0]["stable_paths"]
+    if len(stable_paths) != 1:
+        raise RuntimeError(
+            "BliKVM UART must resolve to exactly one /dev/serial/by-id path"
+        )
+    path = Path(stable_paths[0])
+    if dev_root != Path("/dev"):
+        path = dev_root / path.relative_to("/dev")
+    return path
+
+
+class SerialConsole:
+    def __init__(self, path: Path, recorder: RunRecorder) -> None:
+        self.path = path
+        self.recorder = recorder
+        self.fd: int | None = None
+        self.original_attributes: list[Any] | None = None
+
+    def __enter__(self) -> "SerialConsole":
+        try:
+            self.fd = os.open(self.path, os.O_RDWR | os.O_NOCTTY | os.O_NONBLOCK)
+        except PermissionError as error:
+            raise RuntimeError(
+                f"permission denied opening {self.path}; run labctl via sudo or grant "
+                "the user dialout access"
+            ) from error
+        try:
+            fcntl.flock(self.fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            os.close(self.fd)
+            self.fd = None
+            raise RuntimeError(f"UART is already locked: {self.path}") from error
+
+        self.original_attributes = termios.tcgetattr(self.fd)
+        tty.setraw(self.fd, when=termios.TCSANOW)
+        attributes = termios.tcgetattr(self.fd)
+        attributes[2] |= termios.CLOCAL | termios.CREAD
+        attributes[2] &= ~termios.CSIZE
+        attributes[2] |= termios.CS8
+        attributes[2] &= ~(termios.PARENB | termios.CSTOPB)
+        if hasattr(termios, "CRTSCTS"):
+            attributes[2] &= ~termios.CRTSCTS
+        attributes[4] = termios.B115200
+        attributes[5] = termios.B115200
+        termios.tcsetattr(self.fd, termios.TCSANOW, attributes)
+        termios.tcflush(self.fd, termios.TCIFLUSH)
+        return self
+
+    def __exit__(self, *_error: object) -> None:
+        if self.fd is None:
+            return
+        if self.original_attributes is not None:
+            with contextlib.suppress(termios.error):
+                termios.tcsetattr(self.fd, termios.TCSANOW, self.original_attributes)
+        with contextlib.suppress(OSError):
+            fcntl.flock(self.fd, fcntl.LOCK_UN)
+        os.close(self.fd)
+        self.fd = None
+
+    def write(self, data: bytes, *, log: bool = True) -> None:
+        if self.fd is None:
+            raise RuntimeError("UART is not open")
+        view = memoryview(data)
+        while view:
+            _, writable, _ = select.select([], [self.fd], [], 2.0)
+            if not writable:
+                raise TimeoutError("timed out writing to UART")
+            count = os.write(self.fd, view)
+            view = view[count:]
+        if log:
+            self.recorder.log_uart("TX", data)
+        else:
+            self.recorder.log_uart("TX", b"<redacted>\r")
+
+    def read_chunk(self, timeout: float = 0.25) -> bytes:
+        if self.fd is None:
+            raise RuntimeError("UART is not open")
+        readable, _, _ = select.select([self.fd], [], [], timeout)
+        if not readable:
+            return b""
+        try:
+            data = os.read(self.fd, 65536)
+        except BlockingIOError:
+            return b""
+        self.recorder.log_uart("RX", data)
+        return data
+
+    def read_for(self, seconds: float) -> bytes:
+        deadline = time.monotonic() + seconds
+        chunks: list[bytes] = []
+        while time.monotonic() < deadline:
+            chunk = self.read_chunk(min(0.25, max(0.0, deadline - time.monotonic())))
+            if chunk:
+                chunks.append(chunk)
+        return b"".join(chunks)
+
+    def wait_for(
+        self, patterns: tuple[re.Pattern[str], ...], timeout: float
+    ) -> tuple[int, str]:
+        deadline = time.monotonic() + timeout
+        data = bytearray()
+        while time.monotonic() < deadline:
+            text = clean_console(bytes(data))
+            matched: int | None = None
+            for index, pattern in enumerate(patterns):
+                if pattern.search(text):
+                    matched = index
+                    break
+            if matched is not None:
+                # A prompt-like byte sequence can occur at the end of a chunk
+                # in bulk output. Require a brief quiet interval.
+                extra = self.read_chunk(0.08)
+                if not extra:
+                    return matched, text
+                data.extend(extra)
+                continue
+            chunk = self.read_chunk(min(0.25, max(0.0, deadline - time.monotonic())))
+            if chunk:
+                data.extend(chunk)
+        raise TimeoutError(
+            f"timed out after {timeout:.1f}s waiting for console pattern; "
+            f"last output: {clean_console(bytes(data))[-500:]!r}"
+        )
+
+
+class UBootSession:
+    def __init__(
+        self,
+        console: SerialConsole,
+        recorder: RunRecorder,
+        boot_timeout: float = 90.0,
+        login_user: str = "blikvm",
+        password_file: Path | None = None,
+    ) -> None:
+        self.console = console
+        self.recorder = recorder
+        self.boot_timeout = boot_timeout
+        self.login_user = login_user
+        self.password_file = password_file
+
+    def acquire_prompt(self, allow_reboot: bool = True) -> str:
+        # Ctrl-C elicits the current prompt without repeating U-Boot's previous
+        # command (an empty Enter is repeat-command in this build).
+        self.console.write(b"\x03")
+        try:
+            state, text = self.console.wait_for(
+                (UBOOT_PROMPT, LINUX_PROMPT, LOGIN_PROMPT, PASSWORD_PROMPT), 3.0
+            )
+        except TimeoutError:
+            self.console.write(b"\r")
+            state, text = self.console.wait_for(
+                (UBOOT_PROMPT, LINUX_PROMPT, LOGIN_PROMPT, PASSWORD_PROMPT), 3.0
+            )
+        if state == 0:
+            self.recorder.log_uboot("prompt acquired", text)
+            return text
+        if not allow_reboot:
+            raise RuntimeError("target is not at a U-Boot prompt")
+        if state == 3:
+            # A password prompt observed immediately after opening the UART may
+            # belong to a username assembled from line-setup noise. Do not
+            # disclose the credential into that unknown authentication flow.
+            # Submit an empty password and restart from a fresh login prompt.
+            self.console.write(b"\r")
+            self.console.wait_for((LOGIN_PROMPT,), 10.0)
+            state = 2
+        if state == 2:
+            if self.password_file is None:
+                raise RuntimeError(
+                    "target is at a Linux authentication prompt; provide --target-password-file "
+                    "or log in/reboot the board while labctl is waiting"
+                )
+            try:
+                password = self.password_file.read_text(encoding="utf-8").splitlines()[0]
+            except (OSError, IndexError) as error:
+                raise RuntimeError("could not read a password from the credential file") from error
+            if not password:
+                raise RuntimeError("target credential file contains an empty password")
+            self.console.write(self.login_user.encode("utf-8") + b"\r")
+            self.console.wait_for((PASSWORD_PROMPT,), 10.0)
+            self.console.write(password.encode("utf-8") + b"\r", log=False)
+            _, text = self.console.wait_for((LINUX_PROMPT,), 20.0)
+            password = ""
+
+        # The vendor image permits reboot through logind; the bring-up
+        # initramfs has only BusyBox. This shell expression supports both.
+        self.console.write(
+            b"if command -v systemctl >/dev/null 2>&1; then systemctl reboot; "
+            b"else reboot -f; fi\r"
+        )
+        deadline = time.monotonic() + self.boot_timeout
+        data = bytearray()
+        interrupted = False
+        saw_uboot = False
+        while time.monotonic() < deadline:
+            chunk = self.console.read_chunk(0.2)
+            if not chunk:
+                continue
+            data.extend(chunk)
+            text = clean_console(bytes(data))
+            if "U-Boot " in text:
+                saw_uboot = True
+            if not interrupted and (
+                "Autoboot in" in text or "Hit any key to stop autoboot" in text
+            ):
+                self.console.write(b" ")
+                interrupted = True
+            if interrupted and UBOOT_PROMPT.search(text):
+                self.recorder.log_uboot("boot capture and autoboot interrupt", text)
+                return text
+            if "Authentication is required" in text or "Access denied" in text:
+                raise RuntimeError("Linux refused the unprivileged reboot request")
+        if saw_uboot and not interrupted:
+            reason = "U-Boot started but the autoboot countdown was not interrupted"
+        else:
+            reason = "did not reach a U-Boot prompt"
+        raise TimeoutError(f"{reason} within {self.boot_timeout:.1f}s")
+
+    def execute(self, command: str, timeout: float = 15.0) -> str:
+        command = command.strip()
+        if not command or "\n" in command or "\r" in command:
+            raise ValueError("U-Boot command must be one non-empty line")
+        for pattern in FORBIDDEN_UBOOT_PATTERNS:
+            if pattern.search(command):
+                raise ValueError(f"refusing persistent/destructive U-Boot command: {command}")
+        self.console.write(command.encode("utf-8") + b"\r")
+        _, text = self.console.wait_for((UBOOT_PROMPT,), timeout)
+        self.recorder.log_uboot(command, text)
+        return text
+
+
+def parse_environment(text: str) -> dict[str, str]:
+    environment: dict[str, str] = {}
+    for line in clean_console(text).splitlines():
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        if re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", key):
+            environment[key] = value
+    return environment
+
+
+def required_load_addresses(session: UBootSession) -> dict[str, str]:
+    text = session.execute("printenv kernel_addr_r fdt_addr_r ramdisk_addr_r", 10.0)
+    environment = parse_environment(text)
+    required = ("kernel_addr_r", "fdt_addr_r", "ramdisk_addr_r")
+    missing = [name for name in required if name not in environment]
+    if missing:
+        raise RuntimeError("missing U-Boot load addresses: " + ", ".join(missing))
+    for name in required:
+        if not re.fullmatch(r"0x[0-9A-Fa-f]+", environment[name]):
+            raise RuntimeError(f"invalid U-Boot address {name}={environment[name]!r}")
+    return {name: environment[name] for name in required}
+
+
+def memory_value(text: str, bits: int) -> int:
+    digits = 16 if bits == 64 else 8
+    match = re.search(rf"(?m)^[0-9a-fA-F]+:\s+([0-9a-fA-F]{{{digits}}})", text)
+    if not match:
+        raise RuntimeError(f"could not parse {bits}-bit U-Boot memory value")
+    return int(match.group(1), 16)
+
+
+def apply_vendor_phy_workaround(session: UBootSession) -> dict[str, Any]:
+    """Correct the known vendor control-DT PHY address in RAM only.
+
+    The shipped U-Boot control DT points EMAC1 at MDIO address 0x10, while
+    both the Linux DT and live Clause-22 ID registers locate the PHY at 0.
+    All version, DT, object-layout, pointer-range, and current-value guards
+    must pass before the single phy_device.addr word is changed.
+    """
+
+    version = session.execute("version", 10.0)
+    expected_version = "U-Boot 2021.10-armbian (Feb 20 2023 - 09:48:57 +0800)"
+    if expected_version not in version:
+        raise RuntimeError("refusing PHY workaround on an unknown U-Boot build")
+
+    board = session.execute("bdinfo", 10.0)
+    if (
+        "-> start    = 0x0000000040000000" not in board
+        or "-> size     = 0x0000000040000000" not in board
+    ):
+        raise RuntimeError("refusing PHY workaround outside the verified 1 GiB DRAM map")
+
+    control_fdt = session.execute(
+        "fdt addr ${fdtcontroladdr}; fdt print /soc/ethernet@5030000", 10.0
+    )
+    if 'ethernet-phy@16' not in control_fdt or "reg = <0x00000010>" not in control_fdt:
+        raise RuntimeError("vendor U-Boot control-DT PHY mismatch was not found")
+
+    phy_id = session.execute("mdio read ethernet@5030000 0 2-3", 10.0)
+    if "2 - 0x44" not in phy_id or "3 - 0x1400" not in phy_id:
+        raise RuntimeError("real PHY ID at MDIO address 0 is not the verified device")
+
+    devices = session.execute("dm uclass", 10.0)
+    match = re.search(r"ethernet@5030000\s+@\s+([0-9a-fA-F]+)", devices)
+    if not match:
+        raise RuntimeError("could not locate the live EMAC udevice")
+    udevice = int(match.group(1), 16)
+    if not 0x40000000 <= udevice < 0x80000000:
+        raise RuntimeError("EMAC udevice pointer is outside verified DRAM")
+
+    private_output = session.execute(f"md.q {udevice + 0x38:x} 1", 10.0)
+    private = memory_value(private_output, 64)
+    if not 0x40000000 <= private < 0x80000000:
+        raise RuntimeError("EMAC private pointer is outside verified DRAM")
+
+    # These offsets are guarded by the exact vendor build above and verified
+    # against its live interface=RMII/phyaddr words before any write.
+    private_header = session.execute(f"md.l {private + 0x21000:x} 2", 10.0)
+    values = re.search(
+        r"(?m)^[0-9a-fA-F]+:\s+([0-9a-fA-F]{8})\s+([0-9a-fA-F]{8})",
+        private_header,
+    )
+    if not values or int(values.group(1), 16) != 6:
+        raise RuntimeError("EMAC private layout guard failed")
+    configured_phyaddr = int(values.group(2), 16)
+    if configured_phyaddr != 0x10:
+        raise RuntimeError("EMAC private PHY address is not the expected bad value 0x10")
+
+    phydev_output = session.execute(f"md.q {private + 0x21040:x} 1", 10.0)
+    phydev = memory_value(phydev_output, 64)
+    if not 0x40000000 <= phydev < 0x80000000:
+        raise RuntimeError("PHY object pointer is outside verified DRAM")
+    address_field = phydev + 0x4C
+    current_output = session.execute(f"md.l {address_field:x} 1", 10.0)
+    current = memory_value(current_output, 32)
+    if current == 0:
+        return {
+            "applied": False,
+            "reason": "already_corrected",
+            "control_dt_phy_address": 0x10,
+            "runtime_phy_address": 0,
+        }
+    if current != 0x10:
+        raise RuntimeError(
+            f"PHY object layout guard found unexpected address 0x{current:x}"
+        )
+
+    confirmation = session.execute(
+        f"mw.l {address_field:x} 0 1; md.l {address_field:x} 1", 10.0
+    )
+    if memory_value(confirmation, 32) != 0:
+        raise RuntimeError("RAM-only PHY address correction did not take effect")
+    return {
+        "applied": True,
+        "reason": "vendor_control_dt_phy_address_mismatch",
+        "control_dt_phy_address": 0x10,
+        "runtime_phy_address": 0,
+        "address_field": f"0x{address_field:x}",
+        "persistent": False,
+    }
+
+
+def uart_command(args: argparse.Namespace, sys_root: Path, dev_root: Path) -> dict[str, Any]:
+    recorder = RunRecorder("uart", args.out_root)
+    try:
+        device = resolve_uart_device(sys_root, dev_root, args.device)
+        recorder.metadata["uart"] = {
+            "device": str(device),
+            "baud": DEFAULT_UART_BAUD,
+            "format": "8N1",
+            "flow_control": "none",
+        }
+        write_json(recorder.path / "metadata.json", recorder.metadata)
+        with SerialConsole(device, recorder) as console:
+            data = console.read_for(args.seconds)
+        report = {
+            "result": "passed",
+            "stage": "uart_capture",
+            "bytes_captured": len(data),
+            "uart_log": str(recorder.path / "uart.log"),
+        }
+    except Exception as error:
+        report = error_report("uart_capture", error)
+    return recorder.finish(report)
+
+
+def uboot_command(args: argparse.Namespace, sys_root: Path, dev_root: Path) -> dict[str, Any]:
+    recorder = RunRecorder(f"uboot {args.uboot_action}", args.out_root)
+    try:
+        device = resolve_uart_device(sys_root, dev_root, args.device)
+        recorder.metadata["uart"] = {"device": str(device), "baud": DEFAULT_UART_BAUD}
+        outputs: dict[str, str] = {}
+        with SerialConsole(device, recorder) as console:
+            session = UBootSession(
+                console,
+                recorder,
+                args.boot_timeout,
+                args.target_user,
+                args.target_password_file,
+            )
+            session.acquire_prompt(allow_reboot=not args.no_reboot)
+            commands = (
+                (args.uboot_command,)
+                if args.uboot_action == "exec"
+                else UBOOT_COLLECTION_COMMANDS
+            )
+            for command in commands:
+                outputs[command] = session.execute(command, args.command_timeout)
+        report = {
+            "result": "passed",
+            "stage": "uboot_command" if args.uboot_action == "exec" else "uboot_collect",
+            "commands": list(outputs),
+            "outputs": outputs,
+            "uboot_prompt": True,
+            "uboot_log": str(recorder.path / "uboot.log"),
+        }
+    except Exception as error:
+        report = error_report("uboot_command", error)
+    return recorder.finish(report)
+
+
+def tftp_test_command(
+    args: argparse.Namespace, sys_root: Path, dev_root: Path
+) -> dict[str, Any]:
+    recorder = RunRecorder("tftp-test", args.out_root)
+    try:
+        artifact = args.tftp_root / "test.txt"
+        expected_size = artifact.stat().st_size
+        expected_sha256 = hashlib.sha256(artifact.read_bytes()).hexdigest()
+        device = resolve_uart_device(sys_root, dev_root, args.device)
+        recorder.metadata["uart"] = {"device": str(device), "baud": DEFAULT_UART_BAUD}
+        recorder.metadata["network"] = {
+            "interface": LAB_INTERFACE,
+            "host_ip": HOST_IP,
+            "target_ip": TARGET_IP,
+            "tftp_root": str(args.tftp_root),
+        }
+        with SerialConsole(device, recorder) as console:
+            session = UBootSession(
+                console,
+                recorder,
+                args.boot_timeout,
+                args.target_user,
+                args.target_password_file,
+            )
+            session.acquire_prompt(allow_reboot=not args.no_reboot)
+            phy_workaround = apply_vendor_phy_workaround(session)
+            addresses = required_load_addresses(session)
+            session.execute(f"setenv ipaddr {TARGET_IP}")
+            session.execute(f"setenv serverip {HOST_IP}")
+            session.execute("setenv netmask 255.255.255.0")
+            ping_output = session.execute(f"ping {HOST_IP}", 30.0)
+            if "is alive" not in ping_output:
+                raise RuntimeError("U-Boot did not report the TFTP host as alive")
+            transfer_output = session.execute(
+                "tftp ${kernel_addr_r} test.txt", args.command_timeout
+            )
+            match = re.search(r"Bytes transferred\s*=\s*(\d+)", transfer_output)
+            if not match:
+                raise RuntimeError("U-Boot did not report a successful TFTP byte count")
+            actual_size = int(match.group(1))
+            if actual_size != expected_size:
+                raise RuntimeError(
+                    f"TFTP size mismatch: U-Boot={actual_size}, host={expected_size}"
+                )
+        report = {
+            "result": "passed",
+            "stage": "tftp_transfer",
+            "uboot_prompt": True,
+            "ethernet_link": True,
+            "uboot_ping": True,
+            "tftp_transfer": True,
+            "vendor_phy_workaround": phy_workaround,
+            "load_address": addresses["kernel_addr_r"],
+            "artifact": {
+                "path": str(artifact),
+                "size": expected_size,
+                "sha256": expected_sha256,
+            },
+        }
+    except Exception as error:
+        report = error_report("tftp_transfer", error)
+    return recorder.finish(report)
+
+
+def vendor_manifest(vendor_root: Path) -> dict[str, Any]:
+    paths = {
+        "kernel": vendor_root / "Image",
+        "ramdisk": vendor_root / "uInitrd",
+        "fdt": vendor_root / "sun50i-h616-mangopi-mcore.dtb",
+    }
+    artifacts: dict[str, Any] = {}
+    for role, path in paths.items():
+        if not path.is_file():
+            raise RuntimeError(f"missing vendor {role} artifact: {path}")
+        artifacts[role] = {
+            "path": str(path),
+            "size": path.stat().st_size,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
+    return artifacts
+
+
+def linux_artifact_manifest(artifact_root: Path) -> dict[str, Any]:
+    manifest_path = artifact_root / "manifest.json"
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise RuntimeError(f"could not read Linux artifact manifest: {manifest_path}") from error
+    if not str(manifest.get("linux", {}).get("version", "")).startswith("7."):
+        raise RuntimeError("artifact manifest does not describe a Linux 7.x build")
+
+    records = manifest.get("artifacts", {})
+    for name in LINUX_ARTIFACT_NAMES:
+        path = artifact_root / name
+        if not path.is_file():
+            raise RuntimeError(f"missing Linux artifact: {path}")
+        if name == "manifest.json":
+            continue
+        record = records.get(name)
+        if not isinstance(record, dict):
+            raise RuntimeError(f"manifest has no record for {name}")
+        actual_size = path.stat().st_size
+        actual_sha256 = hashlib.sha256(path.read_bytes()).hexdigest()
+        if record.get("size") != actual_size or record.get("sha256") != actual_sha256:
+            raise RuntimeError(f"artifact does not match manifest: {name}")
+
+    image_size = (artifact_root / "Image").stat().st_size
+    ramdisk_size = (artifact_root / "initramfs.cpio.gz").stat().st_size
+    if image_size >= 0x0F180000:
+        raise RuntimeError("Image would overlap the verified U-Boot FDT load address")
+    if ramdisk_size >= 0x04000000:
+        raise RuntimeError("initramfs exceeds the verified 64 MiB bring-up limit")
+    return manifest
+
+
+def copy_linux_artifacts(recorder: RunRecorder, artifact_root: Path) -> dict[str, Any]:
+    manifest = linux_artifact_manifest(artifact_root)
+    checksum_lines: list[str] = []
+    for name in LINUX_ARTIFACT_NAMES:
+        source = artifact_root / name
+        destination = recorder.path / name
+        shutil.copy2(source, destination)
+        checksum_lines.append(f"{hashlib.sha256(destination.read_bytes()).hexdigest()}  {name}")
+    recorder.save_text("SHA256SUMS", "\n".join(checksum_lines) + "\n")
+    return manifest
+
+
+def build_linux_command(args: argparse.Namespace) -> dict[str, Any]:
+    recorder = RunRecorder("build-linux", args.out_root)
+    try:
+        command = [str(REPOSITORY_ROOT / "build" / "build.sh")]
+        environment = os.environ.copy()
+        environment["JOBS"] = str(args.jobs)
+        process = subprocess.run(
+            command,
+            cwd=REPOSITORY_ROOT,
+            env=environment,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        build_log = (
+            "$ " + " ".join(command) + "\n" + process.stdout + process.stderr
+        )
+        recorder.save_text("build.log", build_log)
+        if process.returncode != 0:
+            raise RuntimeError(f"Linux build exited with status {process.returncode}")
+        artifact_root = REPOSITORY_ROOT / "out" / "build" / "artifacts"
+        manifest = copy_linux_artifacts(recorder, artifact_root)
+        recorder.metadata["build"] = manifest["build"]
+        recorder.metadata["linux"] = manifest["linux"]
+        recorder.metadata["initramfs"] = manifest["initramfs"]
+        write_json(recorder.path / "metadata.json", recorder.metadata)
+        report = {
+            "result": "passed",
+            "stage": "build",
+            "linux_version": manifest["linux"]["version"],
+            "jobs": args.jobs,
+            "incremental_build_directory": manifest["build"]["incremental_output"],
+            "artifacts": manifest["artifacts"],
+            "build_log": str(recorder.path / "build.log"),
+        }
+    except Exception as error:
+        report = error_report("build", error)
+    return recorder.finish(report)
+
+
+def publish_linux_artifacts(
+    recorder: RunRecorder, tftp_root: Path
+) -> tuple[Path, str]:
+    parent = tftp_root / "runs"
+    published = parent / recorder.run_id
+    temporary = parent / f".{recorder.run_id}.tmp"
+    if published.exists() or temporary.exists():
+        raise RuntimeError(f"TFTP run path already exists: {published}")
+    parent.mkdir(parents=True, exist_ok=True)
+    temporary.mkdir(mode=0o755)
+    try:
+        for name in ("Image", "sun50i-h616-blikvm-v4.dtb", "initramfs.cpio.gz"):
+            destination = temporary / name
+            # copy2 would preserve the workspace's user_home_t SELinux xattr,
+            # which dnsmasq_t is correctly forbidden to read. Creating a new
+            # inode here inherits the TFTP directory's tftpdir_rw_t label.
+            shutil.copyfile(recorder.path / name, destination)
+            destination.chmod(0o644)
+        os.replace(temporary, published)
+    except Exception:
+        with contextlib.suppress(OSError):
+            shutil.rmtree(temporary)
+        raise
+    return published, f"runs/{recorder.run_id}"
+
+
+def parse_tftp_size(output: str, expected: int, filename: str) -> None:
+    match = re.search(r"Bytes transferred\s*=\s*(\d+)", output)
+    if not match:
+        raise RuntimeError(f"TFTP failed for {filename}")
+    actual = int(match.group(1))
+    if actual != expected:
+        raise RuntimeError(
+            f"TFTP size mismatch for {filename}: U-Boot={actual}, host={expected}"
+        )
+
+
+def classify_boot_failure(text: str, stage: str) -> str:
+    cleaned = clean_console(text)
+    for pattern, signature in BOOT_FAILURE_PATTERNS:
+        if pattern.search(cleaned):
+            return signature
+    if stage == "network_load":
+        return "uboot_network_or_tftp_failure"
+    if stage == "kernel_boot" and "Starting kernel" in cleaned:
+        return "kernel_console_timeout"
+    if stage == "kernel_boot" and UBOOT_PROMPT.search(cleaned):
+        return "uboot_rejected_boot"
+    if stage == "kernel_boot":
+        return "kernel_handoff_not_observed"
+    return "automation_or_preflight_failure"
+
+
+def boot_linux_command(
+    args: argparse.Namespace, sys_root: Path, dev_root: Path
+) -> dict[str, Any]:
+    recorder = RunRecorder("boot-linux", args.out_root)
+    stage = "preflight"
+    last_passed = "none"
+    manifest: dict[str, Any] | None = None
+    publication: Path | None = None
+    try:
+        manifest = copy_linux_artifacts(recorder, args.artifact_root)
+        recorder.metadata["artifacts"] = manifest["artifacts"]
+        recorder.metadata["linux"] = manifest["linux"]
+        recorder.metadata["initramfs"] = manifest["initramfs"]
+        device = resolve_uart_device(sys_root, dev_root, args.device)
+        recorder.metadata["uart"] = {
+            "device": str(device),
+            "baud": DEFAULT_UART_BAUD,
+            "format": "8N1",
+            "flow_control": "none",
+        }
+        publication, tftp_prefix = publish_linux_artifacts(recorder, args.tftp_root)
+        recorder.metadata["network"] = {
+            "interface": LAB_INTERFACE,
+            "host_ip": HOST_IP,
+            "target_ip": TARGET_IP,
+            "tftp_root": str(args.tftp_root),
+            "published_path": str(publication),
+        }
+        write_json(recorder.path / "metadata.json", recorder.metadata)
+        last_passed = "deploy"
+
+        sizes = {
+            name: (recorder.path / name).stat().st_size
+            for name in ("Image", "sun50i-h616-blikvm-v4.dtb", "initramfs.cpio.gz")
+        }
+        with SerialConsole(device, recorder) as console:
+            session = UBootSession(
+                console,
+                recorder,
+                args.boot_timeout,
+                args.target_user,
+                args.target_password_file,
+            )
+            session.acquire_prompt(allow_reboot=not args.no_reboot)
+            last_passed = "uboot_interrupt"
+            phy_workaround = apply_vendor_phy_workaround(session)
+            addresses = required_load_addresses(session)
+
+            stage = "network_load"
+            session.execute(f"setenv ipaddr {TARGET_IP}")
+            session.execute(f"setenv serverip {HOST_IP}")
+            session.execute("setenv netmask 255.255.255.0")
+            ping_output = session.execute(f"ping {HOST_IP}", 30.0)
+            if "is alive" not in ping_output:
+                raise RuntimeError("U-Boot ping failed before Linux boot")
+
+            transfer = session.execute(
+                f"tftp ${{kernel_addr_r}} {tftp_prefix}/Image", args.command_timeout
+            )
+            parse_tftp_size(transfer, sizes["Image"], "Image")
+            transfer = session.execute(
+                f"tftp ${{ramdisk_addr_r}} {tftp_prefix}/initramfs.cpio.gz",
+                args.command_timeout,
+            )
+            parse_tftp_size(transfer, sizes["initramfs.cpio.gz"], "initramfs.cpio.gz")
+            session.execute("setenv ramdisk_size ${filesize}")
+            transfer = session.execute(
+                f"tftp ${{fdt_addr_r}} {tftp_prefix}/sun50i-h616-blikvm-v4.dtb",
+                args.command_timeout,
+            )
+            parse_tftp_size(
+                transfer,
+                sizes["sun50i-h616-blikvm-v4.dtb"],
+                "sun50i-h616-blikvm-v4.dtb",
+            )
+            session.execute(
+                'setenv bootargs "console=ttyS0,115200n8 earlycon '
+                'loglevel=8 ignore_loglevel printk.time=1 rdinit=/init panic=-1"'
+            )
+            last_passed = "network_load"
+
+            stage = "kernel_boot"
+            console.write(
+                b"booti ${kernel_addr_r} ${ramdisk_addr_r}:${ramdisk_size} "
+                b"${fdt_addr_r}\r"
+            )
+            boot_patterns = (
+                INITRAMFS_READY,
+                *(pattern for pattern, _signature in BOOT_FAILURE_PATTERNS),
+                UBOOT_PROMPT,
+            )
+            matched, boot_text = console.wait_for(boot_patterns, args.linux_timeout)
+            if matched != 0:
+                raise RuntimeError("boot stopped before the initramfs ready marker")
+            last_passed = "initramfs"
+
+            if not INITRAMFS_SHELL.search(boot_text):
+                _, prompt_text = console.wait_for((INITRAMFS_SHELL,), 15.0)
+                boot_text += prompt_text
+            console.write(
+                b"printf 'BLIKVM_SHELL_OK kernel=%s\\n' \"$(uname -r)\"\r"
+            )
+            _, verification = console.wait_for((SHELL_VERIFIED,), 10.0)
+            boot_text += verification
+            last_passed = "serial_shell"
+
+            console.write(b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END\r")
+            _, dmesg_text = console.wait_for((DMESG_END,), 20.0)
+            recorder.save_text("dmesg.log", dmesg_text)
+            recorder.save_text("boot-console.log", boot_text)
+
+        report = {
+            "result": "passed",
+            "stage": "serial_shell",
+            "last_passed_stage": last_passed,
+            "linux_version": manifest["linux"]["version"],
+            "uart_available": True,
+            "uboot_prompt": True,
+            "uboot_ping": True,
+            "tftp_transfer": True,
+            "kernel_started": True,
+            "init_reached": True,
+            "serial_shell_usable": True,
+            "ready_marker": manifest["initramfs"]["ready_marker"],
+            "vendor_phy_workaround": phy_workaround,
+            "load_addresses": addresses,
+            "tftp_publication": str(publication),
+            "uart_log": str(recorder.path / "uart.log"),
+            "dmesg_log": str(recorder.path / "dmesg.log"),
+        }
+    except Exception as error:
+        raw_path = recorder.path / "uart.raw"
+        evidence = raw_path.read_bytes() if raw_path.exists() else b""
+        failure_signature = classify_boot_failure(
+            clean_console(evidence) + "\n" + str(error), stage
+        )
+        report = error_report(stage, error)
+        report["last_passed_stage"] = last_passed
+        report["failure_signature"] = failure_signature
+        report["uart_log"] = str(recorder.path / "uart.log")
+        if publication is not None:
+            report["tftp_publication"] = str(publication)
+        if manifest is not None:
+            report["linux_version"] = manifest["linux"]["version"]
+    return recorder.finish(report)
+
+
+def boot_vendor_command(
+    args: argparse.Namespace, sys_root: Path, dev_root: Path
+) -> dict[str, Any]:
+    recorder = RunRecorder("boot-vendor", args.out_root)
+    try:
+        artifacts = vendor_manifest(args.vendor_root)
+        device = resolve_uart_device(sys_root, dev_root, args.device)
+        recorder.metadata["uart"] = {"device": str(device), "baud": DEFAULT_UART_BAUD}
+        recorder.metadata["artifacts"] = artifacts
+        with SerialConsole(device, recorder) as console:
+            session = UBootSession(
+                console,
+                recorder,
+                args.boot_timeout,
+                args.target_user,
+                args.target_password_file,
+            )
+            session.acquire_prompt(allow_reboot=not args.no_reboot)
+            phy_workaround = apply_vendor_phy_workaround(session)
+            addresses = required_load_addresses(session)
+            commands = (
+                f"setenv ipaddr {TARGET_IP}",
+                f"setenv serverip {HOST_IP}",
+                "setenv netmask 255.255.255.0",
+                f"ping {HOST_IP}",
+                "tftp ${kernel_addr_r} vendor/Image",
+                "tftp ${ramdisk_addr_r} vendor/uInitrd",
+                "tftp ${fdt_addr_r} vendor/sun50i-h616-mangopi-mcore.dtb",
+                'setenv bootargs "root=UUID=a990fd36-0857-4856-b0b8-5c84a7df516f '
+                'rootwait rootfstype=ext4 console=ttyS0,115200 consoleblank=0 '
+                'loglevel=1 ubootpart=6a80d8d9-01 '
+                'usb-storage.quirks=0x2537:0x1066:u,0x2537:0x1068:u '
+                'cgroup_enable=memory swapaccount=1"',
+            )
+            expected_tftp_sizes = {
+                "vendor/Image": artifacts["kernel"]["size"],
+                "vendor/uInitrd": artifacts["ramdisk"]["size"],
+                "vendor/sun50i-h616-mangopi-mcore.dtb": artifacts["fdt"]["size"],
+            }
+            for command in commands:
+                timeout = 60.0 if command.startswith("tftp ") else 30.0
+                output = session.execute(command, timeout)
+                if command.startswith("ping ") and "is alive" not in output:
+                    raise RuntimeError("U-Boot ping failed before vendor boot")
+                if command.startswith("tftp "):
+                    match = re.search(r"Bytes transferred\s*=\s*(\d+)", output)
+                    if not match:
+                        raise RuntimeError(f"TFTP failed: {command}")
+                    filename = command.rsplit(" ", 1)[-1]
+                    actual_size = int(match.group(1))
+                    if actual_size != expected_tftp_sizes[filename]:
+                        raise RuntimeError(
+                            f"TFTP size mismatch for {filename}: "
+                            f"U-Boot={actual_size}, host={expected_tftp_sizes[filename]}"
+                        )
+            session.console.write(
+                b"booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}\r"
+            )
+            _, boot_text = console.wait_for(
+                (re.compile(r"(?:^|\n)mangopimcore login:\s*$", re.IGNORECASE),),
+                args.linux_timeout,
+            )
+            recorder.log_uboot("vendor Linux boot", boot_text)
+        report = {
+            "result": "passed",
+            "stage": "vendor_tftp_boot",
+            "uart_available": True,
+            "uboot_prompt": True,
+            "ethernet_link": True,
+            "uboot_ping": True,
+            "tftp_transfer": True,
+            "vendor_kernel_booted": True,
+            "vendor_phy_workaround": phy_workaround,
+            "load_addresses": addresses,
+            "artifacts": artifacts,
+        }
+    except Exception as error:
+        report = error_report("vendor_tftp_boot", error)
+    return recorder.finish(report)
+
+
+def collect_command(args: argparse.Namespace) -> dict[str, Any]:
+    recorder = RunRecorder("collect", args.out_root)
+    try:
+        command_groups = {
+            "ethernet.txt": (
+                ["ip", "-br", "link"],
+                ["ethtool", LAB_INTERFACE],
+            ),
+            "addresses.txt": (["ip", "-br", "addr"],),
+            "routes.txt": (["ip", "route"],),
+            "rules.txt": (["ip", "rule"],),
+            "networkmanager.txt": (
+                ["nmcli", "device", "status"],
+                ["nmcli", "connection", "show", "--active"],
+                ["nmcli", "connection", "show", "blikvm-lab"],
+            ),
+            "vpn.txt": (["wg", "show"],),
+            "firewall.txt": (
+                ["firewall-cmd", "--get-active-zones"],
+                ["firewall-cmd", "--zone=blikvm-lab", "--list-all"],
+            ),
+            "tftp-service.txt": (
+                ["systemctl", "--no-pager", "--full", "status", "dnsmasq-blikvm-tftp.service"],
+            ),
+        }
+        statuses: dict[str, int] = {}
+        for filename, commands in command_groups.items():
+            sections: list[str] = []
+            returncodes: list[int] = []
+            for command in commands:
+                process = subprocess.run(
+                    command, capture_output=True, text=True, check=False
+                )
+                sections.append(
+                    "$ " + " ".join(command) + "\n" + process.stdout + process.stderr
+                )
+                returncodes.append(process.returncode)
+            recorder.save_text(filename, "\n".join(sections))
+            statuses[filename] = max(returncodes)
+        report = {
+            "result": "passed" if all(code == 0 for code in statuses.values()) else "failed",
+            "stage": "collect",
+            "files": list(command_groups),
+            "returncodes": statuses,
+        }
+    except Exception as error:
+        report = error_report("collect", error)
+    return recorder.finish(report)
+
+
+def error_report(stage: str, error: Exception) -> dict[str, Any]:
+    return {
+        "result": "failed",
+        "stage": stage,
+        "error": {"type": type(error).__name__, "message": str(error)},
+    }
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="labctl",
-        description="Read-only BliKVM v4 lab discovery",
+        description="BliKVM v4 UART, U-Boot, and TFTP lab automation",
     )
-    parser.add_argument("command", choices=("detect",))
     parser.add_argument("--pretty", action="store_true", help="indent JSON output")
-    return parser.parse_args(argv)
+    parser.add_argument(
+        "--out-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_OUT_ROOT", DEFAULT_OUT_ROOT)),
+        help="per-run result directory root",
+    )
+    parser.add_argument(
+        "--device",
+        default=os.environ.get("LABCTL_UART_DEVICE"),
+        help="explicit UART path (normally resolved from USB identity)",
+    )
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    subparsers.add_parser("detect", help="discover lab devices and prerequisites")
+
+    uart_parser = subparsers.add_parser("uart", help="capture UART output")
+    uart_parser.add_argument("--seconds", type=float, default=10.0)
+
+    uboot_parser = subparsers.add_parser("uboot", help="control U-Boot over UART")
+    add_uboot_options(uboot_parser)
+    uboot_actions = uboot_parser.add_subparsers(dest="uboot_action", required=True)
+    exec_parser = uboot_actions.add_parser("exec", help="execute one safe command")
+    exec_parser.add_argument("uboot_command")
+    uboot_actions.add_parser("collect", help="collect the non-destructive environment")
+
+    tftp_parser = subparsers.add_parser(
+        "tftp-test", help="ping the host and fetch the small TFTP test artifact"
+    )
+    add_uboot_options(tftp_parser)
+    tftp_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+
+    vendor_parser = subparsers.add_parser(
+        "boot-vendor", help="TFTP-boot preserved known-good vendor artifacts"
+    )
+    add_uboot_options(vendor_parser)
+    vendor_parser.add_argument(
+        "--vendor-root",
+        type=Path,
+        default=Path(
+            os.environ.get("LABCTL_VENDOR_ROOT", DEFAULT_TFTP_ROOT / "vendor")
+        ),
+    )
+    vendor_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
+    build_parser = subparsers.add_parser(
+        "build-linux", help="incrementally build the Linux 7.x serial-boot artifacts"
+    )
+    build_parser.add_argument(
+        "--jobs",
+        type=int,
+        default=int(os.environ.get("LABCTL_JOBS", "3")),
+        help="parallel build jobs (default: 3)",
+    )
+
+    linux_parser = subparsers.add_parser(
+        "boot-linux", help="publish and TFTP-boot the Linux 7.x serial slice"
+    )
+    add_uboot_options(linux_parser)
+    linux_parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=Path(
+            os.environ.get(
+                "LABCTL_LINUX_ARTIFACT_ROOT",
+                REPOSITORY_ROOT / "out" / "build" / "artifacts",
+            )
+        ),
+    )
+    linux_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+    linux_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
+    subparsers.add_parser("collect", help="collect current host network evidence")
+    args = parser.parse_args(argv)
+    if getattr(args, "jobs", 1) < 1:
+        parser.error("--jobs must be greater than zero")
+    return args
+
+
+def add_uboot_options(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--boot-timeout", type=float, default=90.0)
+    parser.add_argument("--command-timeout", type=float, default=30.0)
+    parser.add_argument(
+        "--no-reboot",
+        action="store_true",
+        help="require the target to already be stopped at U-Boot",
+    )
+    parser.add_argument(
+        "--target-user",
+        default=os.environ.get("LABCTL_TARGET_USER", "blikvm"),
+        help="vendor Linux console user used only when rebooting from login",
+    )
+    credential_path = os.environ.get("LABCTL_TARGET_PASSWORD_FILE")
+    parser.add_argument(
+        "--target-password-file",
+        type=Path,
+        default=Path(credential_path) if credential_path else None,
+        help="runtime-only credential file; password bytes are redacted from logs",
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -369,7 +1589,24 @@ def main(argv: list[str] | None = None) -> int:
     dev_root = Path(os.environ.get("LABCTL_DEV_ROOT", "/dev"))
 
     try:
-        report = detect(sys_root, dev_root)
+        if args.command == "detect":
+            report = detect(sys_root, dev_root)
+        elif args.command == "uart":
+            report = uart_command(args, sys_root, dev_root)
+        elif args.command == "uboot":
+            report = uboot_command(args, sys_root, dev_root)
+        elif args.command == "tftp-test":
+            report = tftp_test_command(args, sys_root, dev_root)
+        elif args.command == "boot-vendor":
+            report = boot_vendor_command(args, sys_root, dev_root)
+        elif args.command == "build-linux":
+            report = build_linux_command(args)
+        elif args.command == "boot-linux":
+            report = boot_linux_command(args, sys_root, dev_root)
+        elif args.command == "collect":
+            report = collect_command(args)
+        else:  # argparse prevents this; keep JSON error behavior explicit.
+            raise ValueError(f"unsupported command: {args.command}")
     except Exception as error:  # Keep automation output machine-readable.
         report = {
             "schema_version": SCHEMA_VERSION,
@@ -383,7 +1620,7 @@ def main(argv: list[str] | None = None) -> int:
 
     json.dump(report, sys.stdout, indent=2 if args.pretty else None, sort_keys=True)
     sys.stdout.write("\n")
-    return 0
+    return 0 if report.get("result") in ("ok", "passed") else 1
 
 
 if __name__ == "__main__":

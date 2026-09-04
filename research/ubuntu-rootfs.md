@@ -9,7 +9,7 @@ Recommendation: use the official **Ubuntu Base 26.04.1 LTS (Resolute) ARM64** ta
 3. Extract as root with numeric owners into a fresh staging directory. Bind/mount `proc`, `sys`, `dev`, and `dev/pts` only inside the build container/chroot and unmount them on every exit path.
 4. Configure `ports.ubuntu.com` for `resolute`, `resolute-updates`, and security; set locale, UTC default, hostname, machine-id first-boot handling, and predictable interface naming.
 5. Install a minimal base: `systemd-sysv`, `udev`, `kmod`, `initramfs-tools`, `iproute2`, `ethtool`, `openssh-server`, `ca-certificates`, `sudo`, `rsync`, `curl`, `usbutils`, `v4l-utils`, `i2c-tools`, `libgpiod-tools`, and diagnostics. Keep recommends disabled unless justified.
-6. Use `systemd-networkd` for the first image. Ship a static lab profile for `192.168.77.2/24` with no default gateway, plus an opt-in DHCP profile for later deployments. NetworkManager adds no value to early bring-up.
+6. Use `systemd-networkd` for the first image. Ship a static lab profile for `192.168.88.2/24` with no default gateway, plus an opt-in DHCP profile for later deployments. NetworkManager adds no value to early bring-up.
 7. Provision SSH with a build-time public-key file that is deliberately outside Git. Disable password and root password login. Never bake the vendor default password or a private key into an image.
 8. Install pinned kernel modules under `/lib/modules/<release>`, place `Image`, DTB, and initramfs in a separate artifact directory, and run `depmod`/`update-initramfs` under ARM64 emulation if required.
 9. Build uStreamer and kvmd as explicit versioned packages. Do not let the rootfs build install arbitrary Git `master` or unpinned pip dependencies.
@@ -29,4 +29,3 @@ Build the minimal feature set first so missing optional Python modules cannot hi
 ## Storage and read-only policy
 
 Start read-write during porting. Once stable, make the OS partition read-only, put `/var/lib/kvmd`, uploaded images, SSH host keys, logs/metrics, and update state on a dedicated writable partition or overlay. Preserve the vendor image's good power-loss property without copying its opaque `/mnt` layout. MSD backing files must never be mounted writable locally while exported writable to the controlled host.
-

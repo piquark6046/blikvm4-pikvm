@@ -1,0 +1,22 @@
+#!/bin/busybox sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+export PATH
+
+mount -t devtmpfs devtmpfs /dev 2>/dev/null || true
+exec </dev/ttyS0 >/dev/ttyS0 2>&1
+
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t tmpfs tmpfs /run
+hostname blikvm-initramfs
+
+echo
+echo "BLIKVM_INITRAMFS_READY kernel=$(uname -r)"
+echo "Minimal Alpine/BusyBox serial shell; no storage or network is enabled."
+echo
+
+export PS1='blikvm-initramfs:/ # '
+# PID 1 already owns explicit ttyS0 file descriptors above. Alpine's BusyBox
+# does not enable the optional cttyhack applet, so execute its shell directly.
+exec /bin/busybox sh -i

@@ -1,0 +1,17 @@
+[Unit]
+Description=BliKVM isolated lab TFTP server
+After=NetworkManager.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dnsmasq --keep-in-foreground --conf-file=/etc/dnsmasq.d/blikvm-tftp.conf --pid-file=
+Restart=on-failure
+RestartSec=2s
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadOnlyPaths=/var/lib/tftpboot
+
+[Install]
+WantedBy=multi-user.target

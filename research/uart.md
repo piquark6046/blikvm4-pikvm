@@ -17,7 +17,7 @@ Status: **working and suitable for automation**.
 
 The live capture showed both SPL/TF-A/U-Boot output and the Linux login prompt. Login input was accepted. The host's `/dev/ttyACM0` is a LattePanda Leonardo (`3343:803a`) and must never be mistaken for the target.
 
-Direct access currently requires root because `/dev/ttyUSB0` is not accessible to the invoking account. A future host setup step should install a narrowly matched udev rule:
+Direct access currently requires root because `/dev/ttyUSB0` is not accessible to the invoking account. The transport phase therefore invokes `labctl` with `sudo`; completed run files are returned to the invoking user's ownership. A future host setup step may install a narrowly matched udev rule:
 
 ```udev
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="blikvm-uart", GROUP="dialout", MODE="0660"
@@ -26,4 +26,3 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="b
 The VID:PID has no unique USB serial, so the rule deliberately does not claim that every CH341 is a BliKVM. If another `1a86:7523` is attached, topology or an explicit operator selection is required. Automation should use `termios`/pyserial directly, lock the device, timestamp raw bytes, tolerate ANSI output, and match bounded prompts rather than scrape an interactive terminal emulator.
 
 Power warning: the 5V/UART port can also power the board. Follow the vendor's cable-order warning when 12 V is connected and prefer a data/power split arrangement for automated cycling.
-

@@ -15,3 +15,7 @@ Files:
 
 Not collected: `lspci` is not meaningful on this target; `gpioinfo` was absent; `/proc/config.gz` was displayed but too large for the first console capture, so relevant configuration symbols were checked from `/boot/config-5.19.4-sunxi64` and are summarized in the research documents. The board revision printed on the PCB was not visually available.
 
+The subsequent transport phase copied the exact kernel, uInitrd, and base DTB
+from this read-only system. Their source paths, sizes, and hashes are recorded
+in `artifacts/vendor/README.md`; the full TFTP boot evidence is in
+`research/uart-uboot-tftp-phase.md`.

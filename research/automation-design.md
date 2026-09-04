@@ -5,8 +5,8 @@
 ```bash
 ./lab/labctl detect
 ./lab/labctl uart
-./lab/labctl build
-./lab/labctl boot
+./lab/labctl build-linux
+./lab/labctl boot-linux
 ./lab/labctl test
 ./lab/labctl cycle
 ./lab/labctl power-cycle
@@ -14,7 +14,7 @@
 ./lab/labctl collect
 ```
 
-Every command writes one JSON document to stdout; human progress goes to stderr. The initial implementation deliberately includes only `detect`. Unimplemented mutating commands must fail explicitly, never guess.
+Every command writes one JSON document to stdout; human progress goes to stderr. The implementation includes `detect`, direct `uart` capture, `uboot exec`, `uboot collect`, `tftp-test`, `boot-vendor`, `build-linux`, `boot-linux`, and host `collect`. The Linux boot command atomically publishes immutable artifacts, verifies transfer sizes, checks a `/init` marker and live shell command, captures dmesg, and classifies UART failures. Power/FEL mutation remains unimplemented and must fail explicitly rather than guess.
 
 ## Run model
 
@@ -23,12 +23,16 @@ out/runs/<UTC timestamp>-<short commit>-<sequence>/
 ├── metadata.json
 ├── build.log
 ├── uart.log
+├── uart.raw
 ├── uboot.log
 ├── dmesg.log
+├── boot-console.log
 ├── test-results.json
 ├── Image
 ├── sun50i-h616-blikvm-v4.dtb
 ├── initramfs.cpio.gz
+├── linux.config
+├── manifest.json
 └── SHA256SUMS
 ```
 
@@ -70,4 +74,3 @@ Stages are `preflight`, `build`, `deploy`, `reboot`, `spl`, `tf_a`, `uboot_inter
 - A watchdog timeout never automatically escalates to flash or power cycling.
 
 No BliKVM power-control relay was detected. Its ATX output controls the remote computer, not the BliKVM itself. `power-cycle` must remain unavailable until a separately identified relay/PDU is installed and tested.
-

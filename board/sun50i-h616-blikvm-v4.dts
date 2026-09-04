@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Minimal first-boot device tree for the BliKVM v4.
+ *
+ * This intentionally describes only DRAM and the proven UART0 console.
+ * Storage, Ethernet, USB, display/capture, GPIO-controlled functions, and
+ * carrier peripherals belong to later, independently validated slices.
+ */
+
+/dts-v1/;
+
+#include "sun50i-h616.dtsi"
+
+/ {
+	model = "BliKVM v4 (serial bring-up)";
+	compatible = "blicube,blikvm-v4", "allwinner,sun50i-h616";
+
+	aliases {
+		serial0 = &uart0;
+	};
+
+	chosen {
+		stdout-path = "serial0:115200n8";
+	};
+
+	memory@40000000 {
+		device_type = "memory";
+		reg = <0x0 0x40000000 0x0 0x40000000>;
+	};
+};
+
+&uart0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart0_ph_pins>;
+	status = "okay";
+};
