@@ -1,0 +1,104 @@
+Capture: controlled reboot over /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+Baud: 115200 8N1
+Persistent writes: none
+
+U-Boot SPL 2021.10-armbian (Feb 20 2023 - 09:48:57 +0800)
+pmic id is 0x4b
+DRAM: 1024 MiB
+Trying to boot from MMC1
+NOTICE:  BL31: v2.8(debug):a84636ad-dirty
+NOTICE:  BL31: Built : 09:48:37, Feb 20 2023
+NOTICE:  BL31: Detected Allwinner H616 SoC (1823)
+NOTICE:  BL31: Found U-Boot DTB at 0x4a082d60, model: MangoPi Mcore
+INFO:    ARM GICv2 driver initialized
+INFO:    Configuring SPC Controller
+INFO:    PMIC: Probing AXP305 on RSB
+ERROR:   RSB: set run-time address: 0x10003
+INFO:    Could not init RSB: -65539
+INFO:    BL31: Platform setup done
+INFO:    BL31: Initializing runtime services
+INFO:    BL31: cortex_a53: CPU workaround for 855873 was applied
+INFO:    BL31: cortex_a53: CPU workaround for 1530924 was applied
+INFO:    PSCI: Suspend is unavailable
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x4a000000
+INFO:    SPSR = 0x3c9
+INFO:    Changed devicetree.
+
+U-Boot 2021.10-armbian (Feb 20 2023 - 09:48:57 +0800) Allwinner Technology
+
+CPU:   Allwinner H616 (SUN50I)
+Model: MangoPi Mcore
+I2C:   ready
+DRAM:  1 GiB
+MMC:   mmc@4020000: 0
+Loading Environment from FAT... Unable to use mmc 0:1...
+In:    serial@5000000
+Out:   serial@5000000
+Err:   serial@5000000
+Net:   phy interface6
+eth0: ethernet@5030000
+Autoboot in 1 seconds, press <Space> to stop
+=>
+
+=> bdinfo
+boot_params = 0x0000000040000100
+DRAM bank   = 0x0000000000000000
+-> start    = 0x0000000040000000
+-> size     = 0x0000000040000000
+baudrate    = 115200 bps
+current eth = ethernet@5030000
+ethaddr     = 02:00:eb:b5:cf:cd
+IP addr     = <NULL>
+fdt_blob    = 0x000000007bf3cb00
+new_fdt     = 0x000000007bf3cb00
+fdt_size    = 0x00000000000052e0
+memory[0]   [0x40000000-0x7fffffff], 0x40000000 bytes flags: 0
+
+Selected `printenv` values:
+
+arch=arm
+baudrate=115200
+boot_targets=fel mmc0 pxe dhcp
+bootcmd=run distro_bootcmd
+bootdelay=1
+console=ttyS0,115200
+dfu_alt_info_ram=kernel ram 0x40080000 0x1000000;fdt ram 0x4FA00000 0x100000;ramdisk ram 0x4FF00000 0x4000000
+ethaddr=02:00:eb:b5:cf:cd
+fdt_addr_r=0x4FA00000
+fdtfile=allwinner/sun50i-h616-mangopi-mcore.dtb
+kernel_addr_r=0x40080000
+kernel_comp_addr_r=0x44000000
+kernel_comp_size=0xb000000
+pxefile_addr_r=0x4FD00000
+ramdisk_addr_r=0x4FF00000
+scriptaddr=0x4FC00000
+serial#=32c05000ebb5cfcd
+stderr=serial@5000000
+stdin=serial@5000000
+stdout=serial@5000000
+Environment size: 4335/131068 bytes
+
+=> mmc list
+mmc@4020000: 0 (SD)
+
+=> mmc info
+Device: mmc@4020000
+Name: EC1S5
+Bus Speed: 50000000
+Mode: SD High Speed (50MHz)
+SD version 3.0
+High Capacity: Yes
+Capacity: 59.7 GiB
+Bus Width: 4-bit
+
+=> usb start
+Unknown command 'usb' - try 'help'
+
+=> net list
+eth0 : ethernet@5030000 02:00:eb:b5:cf:cd active
+
+`help` confirmed `tftpboot`, `dhcp`, `booti`, `load`, `ext4load`, and `fatload`. `booti` accepts a raw initrd as `address:size` and requires a flattened DTB.
+
+The final `boot` loaded `/boot/boot.scr`, the 33,579-byte MangoPi MCore DTB, a 13,147,172-byte legacy `uInitrd`, and a 22,333,448-byte `Image`; the known-good system returned to `mangopimcore login:`.
+

@@ -1,0 +1,19 @@
+Observation earlier on 2026-09-03 with the BliKVM USB-PC connector attached to the Fedora host:
+
+Bus 001 Device 007: ID 1d6b:0106 Linux Foundation Multifunction
+USB path: pci-0000:00:14.0-usb-0:2
+Speed: 480 Mbit/s
+Manufacturer: BliKVM
+Product: Multifunction
+Serial: 6b65796d696d6570690
+MaxPower: 250 mA
+
+Interfaces observed by `lsusb -v`:
+
+- interface 0: HID boot keyboard, 8-byte reports
+- interface 1: HID, 7-byte reports (mouse profile)
+- interface 2: HID boot mouse, 5-byte reports
+- interface 3: USB mass storage, SCSI/Bulk-Only Transport
+
+The mass-storage LUN appeared as a 5 GiB USB disk with model `File-Stor Gadget`, serial `6b65796d696d6570690`, a Ventoy exFAT partition, and a 32 MiB FAT partition. This was positively identified as the BliKVM gadget; the host's 58.2 GiB `/dev/mmcblk0` is its own boot device. The USB-PC cable was later replaced by the 5V/UART cable, so this gadget was no longer present in `host-current.txt`.
+

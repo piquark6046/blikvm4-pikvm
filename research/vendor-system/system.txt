@@ -1,0 +1,94 @@
+$ uname -a
+Linux mangopimcore 5.19.4-sunxi64 #22.08.2 SMP Mon Feb 20 09:51:48 CST 2023 aarch64 aarch64 aarch64 GNU/Linux
+$ cat /proc/cmdline
+root=UUID=a990fd36-0857-4856-b0b8-5c84a7df516f rootwait rootfstype=ext4 console=ttyS0,115200 consoleblank=0 loglevel=1 ubootpart=6a80d8d9-01 usb-storage.quirks=0x2537:0x1066:u,0x2537:0x1068:u   cgroup_enable=memory swapaccount=1
+$ cat /etc/os-release
+PRETTY_NAME="Armbian 22.08.2 Jammy"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.1 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+$ lsblk
+NAME        PATH            SIZE TYPE FSTYPE MODEL SERIAL     MOUNTPOINTS
+mmcblk0     /dev/mmcblk0   59.7G disk              0x307967bb 
+├─mmcblk0p1 /dev/mmcblk0p1  5.1G part ext4                    /
+├─mmcblk0p2 /dev/mmcblk0p2    3M part ext4                    
+└─mmcblk0p3 /dev/mmcblk0p3 54.6G part ext4                    /mnt
+zram0       /dev/zram0      492M disk                         [SWAP]
+zram1       /dev/zram1       50M disk                         /var/log
+zram2       /dev/zram2        0B disk                         
+$ lsusb
+Bus 006 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 005 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub
+Bus 002 Device 002: ID 345f:2131 MACROSILICON USB2 Video
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+$ lsusb -t
+/:  Bus 06.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M
+/:  Bus 05.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M
+/:  Bus 04.Port 1: Dev 1, Class=root_hub, Driver=ohci-platform/1p, 12M
+/:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
+/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
+    |__ Port 1: Dev 2, If 0, Class=Video, Driver=uvcvideo, 480M
+    |__ Port 1: Dev 2, If 1, Class=Video, Driver=uvcvideo, 480M
+    |__ Port 1: Dev 2, If 2, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 1: Dev 2, If 3, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 1: Dev 2, If 4, Class=Human Interface Device, Driver=usbhid, 480M
+/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=ehci-platform/1p, 480M
+$ ip -br link
+lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+eth0             DOWN           12:00:eb:b5:cf:cd <NO-CARRIER,BROADCAST,MULTICAST,UP> 
+wlan0            DOWN           54:f2:9f:16:6e:d1 <NO-CARRIER,BROADCAST,MULTICAST,UP> 
+$ ip -br addr
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+eth0             DOWN           
+wlan0            DOWN           
+$ ip route
+$ mount
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+udev on /dev type devtmpfs (rw,nosuid,relatime,size=430616k,nr_inodes=107654,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,noexec,relatime,size=100772k,mode=755)
+/dev/mmcblk0p1 on / type ext4 (ro,noatime,errors=remount-ro,commit=600)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=30,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+nfsd on /proc/fs/nfsd type nfsd (rw,relatime)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,relatime)
+tmpfs on /var/blikvm type tmpfs (rw,nosuid,nodev,relatime)
+tmpfs on /var/lib/logrotate type tmpfs (rw,nosuid,nodev,noexec,noatime,size=1024k,mode=755)
+tmpfs on /var/lib/sudo type tmpfs (rw,nosuid,nodev,noexec,noatime,size=1024k,mode=700)
+tmpfs on /var/log type tmpfs (rw,nosuid,nodev,noexec,noatime,size=51200k)
+tmpfs on /var/mail type tmpfs (rw,nosuid,nodev,noexec,noatime,size=25600k)
+tmpfs on /var/tmp type tmpfs (rw,nosuid,nodev,relatime)
+/dev/mmcblk0p3 on /mnt type ext4 (rw,relatime)
+tmpfs on /var/log.hdd type tmpfs (rw,nosuid,nodev,noexec,noatime,size=51200k)
+/dev/zram1 on /var/log type ext4 (rw,relatime,discard)
+sunrpc on /run/rpc_pipefs type rpc_pipefs (rw,relatime)
+tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,size=100768k,nr_inodes=25192,mode=700,uid=1000,gid=1000)
+$ device-tree identity
+MangoPi Mcore
+mgcc,mangopi-mcore
+allwinner,sun50i-h616
+MemTotal:        1007700 kB
+MemFree:          400592 kB
+MemAvailable:     703688 kB

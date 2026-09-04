@@ -1,0 +1,49 @@
+$ date -Iseconds
+2026-09-03T20:54:46+09:00
+
+$ lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 003: ID 0bda:0129 Realtek Semiconductor Corp. RTS5129 Card Reader Controller
+Bus 001 Device 004: ID 3343:803a Unknown LattePanda Leonardo
+Bus 001 Device 005: ID 1a40:0101 Terminus Technology Inc. Hub
+Bus 001 Device 006: ID 8087:0026 Intel Corp. AX201 Bluetooth
+Bus 001 Device 008: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+$ ls -l /dev/serial/by-id
+usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB0
+usb-Unknown_LattePanda_Leonardo-if00 -> ../../ttyACM0
+
+$ ip -br link
+lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
+enp1s0           DOWN           00:e0:4c:07:f0:0f <NO-CARRIER,BROADCAST,MULTICAST,UP>
+wlo1             UP             be:80:9e:4b:52:0e <BROADCAST,MULTICAST,UP,LOWER_UP>
+wg_profile       UNKNOWN        <POINTOPOINT,NOARP,UP,LOWER_UP>
+
+$ ip -br addr
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp1s0           DOWN
+wlo1             UP             172.15.10.116/24 fe80::3b10:5c17:2feb:d66a/64
+wg_profile       UNKNOWN        10.2.0.2/32 2a07:b944::2:2/128 fe80::bf71:b292:4957:da71/64
+
+$ ip route
+default via 172.15.10.1 dev wlo1 proto dhcp src 172.15.10.116 metric 20600
+172.15.10.0/24 dev wlo1 proto kernel scope link src 172.15.10.116 metric 600
+172.18.0.0/16 via 172.15.10.1 dev wlo1 proto dhcp src 172.15.10.116 metric 600
+
+$ nmcli -t -f DEVICE,TYPE,STATE,CONNECTION device
+wlo1:wifi:connected:piquaNet
+wg_profile:wireguard:connected:wg_profile
+lo:loopback:connected (externally):lo
+p2p-dev-wlo1:wifi-p2p:disconnected:
+enp1s0:ethernet:unavailable:
+
+$ firewall-cmd --state
+running
+
+$ firewall-cmd --get-active-zones
+FedoraWorkstation (default)
+  interfaces: wlo1 wg_profile
+
+The host boot disk is `/dev/mmcblk0`, 58.2 GiB, serial `0x979a962d`; it is not BliKVM media. With the UART cable attached there is no removable BliKVM block device.
+

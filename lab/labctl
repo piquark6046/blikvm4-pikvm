@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""Read-only discovery utility for the BliKVM v4 development host."""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import os
+from pathlib import Path
+import platform
+import shutil
+import sys
+from typing import Any
+
+
+SCHEMA_VERSION = 1
+
+USB_ROLES = {
+    ("1a86", "7523"): "blikvm_uart",
+    ("1d6b", "0106"): "blikvm_usb_gadget",
+    ("1f3a", "efe8"): "allwinner_fel",
+    ("3343", "803a"): "host_lattepanda_mcu",
+}
+
+REQUIRED_BUILD_TOOLS = (
+    "make",
+    "dtc",
+    "aarch64-linux-gnu-gcc",
+)
+
+DISCOVERED_TOOLS = (
+    "python3",
+    "git",
+    "podman",
+    "docker",
+    "make",
+    "dtc",
+    "aarch64-linux-gnu-gcc",
+    "sunxi-fel",
+    "ip",
+    "dnsmasq",
+)
+
+
+def read_text(path: Path) -> str | None:
+    try:
+        return path.read_text(encoding="utf-8", errors="replace").strip()
+    except (FileNotFoundError, PermissionError, OSError):
+        return None
+
+
+def read_int(path: Path, default: int | None = None) -> int | None:
+    value = read_text(path)
+    if value is None:
+        return default
+    try:
+        return int(value)
+    except ValueError:
+        return default
+
+
+def dev_display_path(path: Path, dev_root: Path) -> str:
+    try:
+        relative = path.relative_to(dev_root)
+    except ValueError:
+        return str(path)
+    return "/dev/" + relative.as_posix()
+
+
+def tty_paths(sys_root: Path, dev_root: Path) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    class_root = sys_root / "class" / "tty"
+    try:
+        entries = sorted(class_root.iterdir(), key=lambda item: item.name)
+    except (FileNotFoundError, PermissionError, OSError):
+        entries = []
+
+    for entry in entries:
+        if not (entry.name.startswith("ttyUSB") or entry.name.startswith("ttyACM")):
+            continue
+        try:
+            resolved = str(entry.resolve(strict=False))
+        except OSError:
+            resolved = str(entry)
+        result[entry.name] = {
+            "name": entry.name,
+            "device_path": dev_display_path(dev_root / entry.name, dev_root),
+            "sysfs_path": resolved,
+            "stable_paths": [],
+        }
+
+    by_id = dev_root / "serial" / "by-id"
+    try:
+        stable_entries = sorted(by_id.iterdir(), key=lambda item: item.name)
+    except (FileNotFoundError, PermissionError, OSError):
+        stable_entries = []
+
+    for entry in stable_entries:
+        try:
+            target_name = entry.resolve(strict=False).name
+        except OSError:
+            continue
+        if target_name in result:
+            result[target_name]["stable_paths"].append(
+                dev_display_path(entry, dev_root)
+            )
+
+    return result
+
+
+def usb_devices(sys_root: Path, ttys: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    devices_root = sys_root / "bus" / "usb" / "devices"
+    try:
+        entries = sorted(devices_root.iterdir(), key=lambda item: item.name)
+    except (FileNotFoundError, PermissionError, OSError):
+        return []
+
+    devices: list[dict[str, Any]] = []
+    for entry in entries:
+        vendor = read_text(entry / "idVendor")
+        product_id = read_text(entry / "idProduct")
+        if vendor is None or product_id is None:
+            continue
+
+        vendor = vendor.lower()
+        product_id = product_id.lower()
+        sys_name = entry.name
+        matched_ttys: list[str] = []
+        for tty_name, tty in ttys.items():
+            resolved = tty["sysfs_path"]
+            # Root hubs are named usbN and appear in every child device path.
+            # Only physical device nodes (for example 1-2) can own a tty.
+            if "-" in sys_name and (
+                f"/{sys_name}/" in resolved or f"/{sys_name}:" in resolved
+            ):
+                matched_ttys.append(tty_name)
+
+        device: dict[str, Any] = {
+            "sysfs_name": sys_name,
+            "usb_id": f"{vendor}:{product_id}",
+            "role": USB_ROLES.get((vendor, product_id), "other"),
+            "manufacturer": read_text(entry / "manufacturer"),
+            "product": read_text(entry / "product"),
+            "serial": read_text(entry / "serial"),
+            "speed_mbps": read_int(entry / "speed"),
+            "bus_number": read_int(entry / "busnum"),
+            "device_number": read_int(entry / "devnum"),
+            "tty_devices": sorted(matched_ttys),
+        }
+        devices.append(device)
+    return devices
+
+
+def serial_devices(
+    ttys: dict[str, dict[str, Any]], usb: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    roles_by_tty: dict[str, str] = {}
+    usb_ids_by_tty: dict[str, str] = {}
+    for device in usb:
+        for tty_name in device["tty_devices"]:
+            roles_by_tty[tty_name] = device["role"]
+            usb_ids_by_tty[tty_name] = device["usb_id"]
+
+    serial: list[dict[str, Any]] = []
+    for tty_name in sorted(ttys):
+        tty = ttys[tty_name]
+        serial.append(
+            {
+                "name": tty_name,
+                "device_path": tty["device_path"],
+                "stable_paths": tty["stable_paths"],
+                "usb_id": usb_ids_by_tty.get(tty_name),
+                "role": roles_by_tty.get(tty_name, "other"),
+            }
+        )
+    return serial
+
+
+def network_interfaces(sys_root: Path) -> list[dict[str, Any]]:
+    class_root = sys_root / "class" / "net"
+    try:
+        entries = sorted(class_root.iterdir(), key=lambda item: item.name)
+    except (FileNotFoundError, PermissionError, OSError):
+        return []
+
+    interfaces: list[dict[str, Any]] = []
+    for entry in entries:
+        interface_type = read_int(entry / "type")
+        if entry.name == "lo":
+            kind = "loopback"
+        elif (entry / "wireless").exists() or entry.name.startswith("wl"):
+            kind = "wireless"
+        elif interface_type == 1 and (entry / "device").exists():
+            kind = "ethernet"
+        else:
+            kind = "virtual_or_other"
+
+        interfaces.append(
+            {
+                "name": entry.name,
+                "kind": kind,
+                "address": read_text(entry / "address"),
+                "operstate": read_text(entry / "operstate"),
+                "carrier": read_int(entry / "carrier"),
+            }
+        )
+    return interfaces
+
+
+def block_devices(sys_root: Path) -> list[dict[str, Any]]:
+    class_root = sys_root / "class" / "block"
+    try:
+        entries = sorted(class_root.iterdir(), key=lambda item: item.name)
+    except (FileNotFoundError, PermissionError, OSError):
+        return []
+
+    devices: list[dict[str, Any]] = []
+    for entry in entries:
+        if (entry / "partition").exists():
+            continue
+        sectors = read_int(entry / "size")
+        serial = read_text(entry / "device" / "serial")
+        devices.append(
+            {
+                "name": entry.name,
+                "size_bytes": sectors * 512 if sectors is not None else None,
+                "removable": read_int(entry / "removable"),
+                "model": read_text(entry / "device" / "model"),
+                "serial": serial,
+                "protected": serial == "0x979a962d",
+            }
+        )
+    return devices
+
+
+def discover_tools() -> dict[str, str | None]:
+    return {name: shutil.which(name) for name in DISCOVERED_TOOLS}
+
+
+def check_report(
+    usb: list[dict[str, Any]],
+    serial: list[dict[str, Any]],
+    interfaces: list[dict[str, Any]],
+    tools: dict[str, str | None],
+) -> tuple[dict[str, Any], list[str], list[str]]:
+    blockers: list[str] = []
+    warnings: list[str] = []
+
+    uart_usb = [device for device in usb if device["role"] == "blikvm_uart"]
+    if len(uart_usb) == 1:
+        uart_status = "pass"
+    elif not uart_usb:
+        uart_status = "missing"
+        blockers.append("BliKVM UART USB device 1a86:7523 was not found")
+    else:
+        uart_status = "ambiguous"
+        blockers.append("More than one BliKVM UART USB device 1a86:7523 was found")
+
+    uart_serial = [device for device in serial if device["role"] == "blikvm_uart"]
+    stable_paths = sorted(
+        path for device in uart_serial for path in device["stable_paths"]
+    )
+    if len(stable_paths) == 1:
+        stable_status = "pass"
+    elif not stable_paths:
+        stable_status = "missing"
+        blockers.append("No stable /dev/serial/by-id path was found for the BliKVM UART")
+    else:
+        stable_status = "ambiguous"
+        blockers.append("More than one stable path was found for the BliKVM UART")
+
+    ethernet = [item for item in interfaces if item["kind"] == "ethernet"]
+    ethernet_with_carrier = [item for item in ethernet if item["carrier"] == 1]
+    if ethernet_with_carrier:
+        ethernet_status = "pass"
+    elif ethernet:
+        ethernet_status = "no_carrier"
+        blockers.append("No physical Ethernet interface currently has carrier")
+    else:
+        ethernet_status = "missing"
+        blockers.append("No physical Ethernet interface was found")
+
+    missing_build_tools = [name for name in REQUIRED_BUILD_TOOLS if not tools[name]]
+    container_runtime = tools["podman"] or tools["docker"]
+    if missing_build_tools and not container_runtime:
+        build_status = "missing"
+        blockers.append(
+            "Kernel build prerequisites are missing and no container runtime is available: "
+            + ", ".join(missing_build_tools)
+        )
+    elif missing_build_tools:
+        build_status = "container_available"
+        warnings.append(
+            "Native build prerequisites are missing; use the detected container runtime: "
+            + ", ".join(missing_build_tools)
+        )
+    else:
+        build_status = "pass"
+
+    fel_count = sum(device["role"] == "allwinner_fel" for device in usb)
+    gadget_count = sum(device["role"] == "blikvm_usb_gadget" for device in usb)
+
+    checks = {
+        "blikvm_uart": {"status": uart_status, "count": len(uart_usb)},
+        "stable_uart_path": {"status": stable_status, "paths": stable_paths},
+        "lab_ethernet_carrier": {
+            "status": ethernet_status,
+            "interfaces": [item["name"] for item in ethernet_with_carrier],
+        },
+        "build_toolchain": {
+            "status": build_status,
+            "missing_native_tools": missing_build_tools,
+            "container_runtime": container_runtime,
+        },
+        "optional_usb_modes": {
+            "fel_devices": fel_count,
+            "gadget_devices": gadget_count,
+        },
+    }
+    return checks, blockers, warnings
+
+
+def detect(sys_root: Path, dev_root: Path) -> dict[str, Any]:
+    ttys = tty_paths(sys_root, dev_root)
+    usb = usb_devices(sys_root, ttys)
+    serial = serial_devices(ttys, usb)
+    interfaces = network_interfaces(sys_root)
+    blocks = block_devices(sys_root)
+    tools = discover_tools()
+    checks, blockers, warnings = check_report(usb, serial, interfaces, tools)
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "command": "detect",
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "result": "ok",
+        "readiness": "blocked" if blockers else "ready",
+        "host": {
+            "platform": platform.system(),
+            "kernel": platform.release(),
+            "machine": platform.machine(),
+        },
+        "roots": {"sys": str(sys_root), "dev": str(dev_root)},
+        "usb_devices": usb,
+        "serial_devices": serial,
+        "network_interfaces": interfaces,
+        "block_devices": blocks,
+        "tools": tools,
+        "checks": checks,
+        "blockers": blockers,
+        "warnings": warnings,
+    }
+
+
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog="labctl",
+        description="Read-only BliKVM v4 lab discovery",
+    )
+    parser.add_argument("command", choices=("detect",))
+    parser.add_argument("--pretty", action="store_true", help="indent JSON output")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(sys.argv[1:] if argv is None else argv)
+    sys_root = Path(os.environ.get("LABCTL_SYS_ROOT", "/sys"))
+    dev_root = Path(os.environ.get("LABCTL_DEV_ROOT", "/dev"))
+
+    try:
+        report = detect(sys_root, dev_root)
+    except Exception as error:  # Keep automation output machine-readable.
+        report = {
+            "schema_version": SCHEMA_VERSION,
+            "command": args.command,
+            "result": "error",
+            "error": {"type": type(error).__name__, "message": str(error)},
+        }
+        json.dump(report, sys.stdout, sort_keys=True)
+        sys.stdout.write("\n")
+        return 1
+
+    json.dump(report, sys.stdout, indent=2 if args.pretty else None, sort_keys=True)
+    sys.stdout.write("\n")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
