@@ -1492,10 +1492,15 @@ def boot_linux_command(
             if matched != 0:
                 raise RuntimeError("boot stopped before the initramfs ready marker")
             last_passed = "initramfs"
+            stage = "serial_shell"
 
-            if not INITRAMFS_SHELL.search(boot_text):
-                _, prompt_text = console.wait_for((INITRAMFS_SHELL,), 15.0)
-                boot_text += prompt_text
+            # MMC enumeration can interleave printk output through the first
+            # BusyBox prompt and tear its literal byte sequence. Elicit a new
+            # prompt after the boot log settles instead of relying on that
+            # asynchronous first rendering.
+            console.write(b"\r")
+            _, prompt_text = console.wait_for((INITRAMFS_SHELL,), 15.0)
+            boot_text += prompt_text
             console.write(
                 b"printf 'BLIKVM_SHELL_OK kernel=%s\\n' \"$(uname -r)\"\r"
             )

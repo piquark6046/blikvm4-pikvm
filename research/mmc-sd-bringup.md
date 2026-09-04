@@ -65,6 +65,14 @@ Both complete automated attempts passed:
 |---|---|
 | `20260904T021821Z-969aa19-190597` | Linux 7.2.3 serial shell, MMC enumeration, partition inventory, and read-only file test passed. |
 | `20260904T021906Z-969aa19-622256` | Immediate repeat produced the same device, partitions, filesystem identities, and mount result. |
+| `20260904T022241Z-64ee1a8-276055` | Fresh-prompt retry behavior passed with the same read-only result after reproducing the interleaved-printk case below. |
+
+Post-commit run `20260904T022134Z-64ee1a8-014736` reached `/init`, but printk
+from MMC enumeration split the initial BusyBox prompt byte sequence and the
+automation timed out before issuing a target command. `labctl` now elicits a
+fresh prompt after the ready marker; this UART-only retry behavior has
+regression coverage. The failed attempt is retained in full and did not reach
+the MMC test or change storage.
 
 The card is `mmc0:59b4`, type SD, name `EC1S5`, serial `0x307967bb`, CID
 `1b534d454331533530307967bba182ef`, and 125,173,760 512-byte sectors

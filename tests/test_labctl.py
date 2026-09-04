@@ -269,6 +269,16 @@ class LabctlAutomationTests(unittest.TestCase):
         )
         self.assertIsNotNone(dmesg_end.search("BLIKVM_DMESG_END\n" + prompt))
 
+    def test_mmc_printk_can_tear_initial_shell_prompt(self) -> None:
+        prompt = LABCTL_MODULE["INITRAMFS_SHELL"]
+        torn = (
+            "blikvm-initra[    0.562699] mmcblk0: mmc0:59b4 EC1S5 59.7 GiB\n"
+            "mfs:/ # \x1b[6n[    0.569494] mmcblk0: p1 p2 p3\n"
+        )
+
+        self.assertIsNone(prompt.search(torn))
+        self.assertIsNotNone(prompt.search(torn + "blikvm-initramfs:/ # "))
+
     def test_tftp_transfer_size_must_match_the_published_artifact(self) -> None:
         parse_tftp_size = LABCTL_MODULE["parse_tftp_size"]
 
