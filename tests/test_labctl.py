@@ -394,9 +394,9 @@ class LabctlAutomationTests(unittest.TestCase):
             "lsusb-tree.log": (
                 "/:  Bus 01.Port 1: Dev 1, Class=root_hub, "
                 "Driver=ehci-platform/1p, 480M\n"
-                "    |__ Port 1: Dev 2, If 0, Class=Video, Driver=[none], "
+                "    |__ Port 1: Dev 2, If 0, Class=Video, Driver=uvcvideo, "
                 "480M, ID=345f:2131\n"
-                "    |__ Port 1: Dev 2, If 1, Class=Video, Driver=[none], "
+                "    |__ Port 1: Dev 2, If 1, Class=Video, Driver=uvcvideo, "
                 "480M, ID=345f:2131\n"
                 "    |__ Port 1: Dev 2, If 2, Class=Audio, Driver=[none], "
                 "480M, ID=345f:2131\n"
@@ -423,6 +423,126 @@ class LabctlAutomationTests(unittest.TestCase):
         checks, failed_stage = assess(statuses, evidence)
         self.assertEqual(checks["controller_probe"]["status"], "fail")
         self.assertEqual(failed_stage, "controller_probe")
+
+    def test_uvc_evidence_requires_binding_modes_and_changing_payloads(self) -> None:
+        assess = LABCTL_MODULE["assess_uvc_evidence"]
+        interface_lines = "\n".join(
+            [
+                "INTERFACE usb_device=1-1 interface=1-1:1.0 number=00 "
+                "class=0e subclass=01 protocol=00 alt=00 endpoints=1 driver=uvcvideo",
+                "INTERFACE usb_device=1-1 interface=1-1:1.1 number=01 "
+                "class=0e subclass=02 protocol=00 alt=00 endpoints=0 driver=uvcvideo",
+                "INTERFACE usb_device=1-1 interface=1-1:1.2 number=02 "
+                "class=01 subclass=01 protocol=00 alt=00 endpoints=0 driver=[none]",
+                "INTERFACE usb_device=1-1 interface=1-1:1.3 number=03 "
+                "class=01 subclass=02 protocol=00 alt=00 endpoints=1 driver=[none]",
+                "INTERFACE usb_device=1-1 interface=1-1:1.4 number=04 "
+                "class=03 subclass=00 protocol=00 alt=00 endpoints=1 driver=[none]",
+            ]
+        )
+        node_map = (
+            "VIDEO_NODE device=/dev/video0 name=USB2_Video dev=81:0 index=0 "
+            "sysfs_device=/sys/devices/1-1:1.0/video4linux/video0 "
+            "usb_device=1-1 usb_interface=1-1:1.0 interface_number=00 "
+            "driver=uvcvideo\n"
+            "VIDEO_NODE device=/dev/video1 name=USB2_Video dev=81:1 index=1 "
+            "sysfs_device=/sys/devices/1-1:1.0/video4linux/video1 "
+            "usb_device=1-1 usb_interface=1-1:1.0 interface_number=00 "
+            "driver=uvcvideo\n"
+        )
+        capabilities = (
+            "NODE device=/dev/video0 driver=uvcvideo card=USB2_Video "
+            "bus_info=usb-5200000.usb-1 version=7.2.3 capabilities=0x1 "
+            "device_caps=0x1 capture=1 metadata=0 streaming=1\n"
+            "NODE device=/dev/video1 driver=uvcvideo card=USB2_Video "
+            "bus_info=usb-5200000.usb-1 version=7.2.3 capabilities=0x1 "
+            "device_caps=0x1 capture=0 metadata=1 streaming=1\n"
+            "INPUT device=/dev/video0 index=0 current=1 name=Camera type=2 "
+            "status=0x00000000 capabilities=0x00000000 std=0x0\n"
+            "STANDARDS device=/dev/video0 applicable=0 count=0\n"
+            "FORMAT device=/dev/video0 type=video_capture index=0 fourcc=YUYV "
+            "flags=0x0 description=YUYV_4:2:2\n"
+            "SIZE device=/dev/video0 fourcc=YUYV index=0 kind=discrete "
+            "width=640 height=480\n"
+            "INTERVAL device=/dev/video0 fourcc=YUYV width=640 height=480 "
+            "index=0 kind=discrete numerator=1 denominator=30 fps=30.000\n"
+            "ENUMERATION_SUMMARY result=pass nodes=2 capture_nodes=1 "
+            "metadata_nodes=1 formats=2 sizes=1 intervals=1 inputs=1 standards=0\n"
+        )
+        frames = []
+        for index in range(60):
+            frames.append(
+                f"FRAME index={index} sequence={index} bytesused=614400 "
+                f"nonzero_bytes=600000 hash_fnv1a64={index + 1:016x} "
+                f"changed_from_previous={int(index > 0)} timestamp=1.000000 "
+                "flags=0x00000000"
+            )
+        stream = (
+            "CAPTURE_CONFIG device=/dev/video0 requested_fourcc=YUYV "
+            "requested_width=640 requested_height=480 requested_fps=30 "
+            "negotiated_fourcc=YUYV negotiated_width=640 negotiated_height=480 "
+            "interval=1/30 bytesperline=1280 sizeimage=614400 field=1\n"
+            + "\n".join(frames)
+            + "\nCAPTURE_SUMMARY result=pass device=/dev/video0 frames=60 "
+            "nonempty_frames=60 changing_transitions=59 unique_hashes=60 "
+            "total_bytes=36864000 total_nonzero_bytes=36000000 "
+            "startup_error_frames=0 error_frames=0\n"
+        )
+        evidence = {
+            "console-loglevel.log": "console_loglevel=1\n",
+            "uvc-detection.log": "vid_pid=345f:2131\nuvc_interfaces=2\nvideo_nodes=2\n",
+            "usb-interface-bindings.log": interface_lines,
+            "video-node-map.log": node_map,
+            "v4l2-capabilities.log": capabilities,
+            "v4l2-stream.log": stream,
+            "uvc-dmesg.log": (
+                "usb 1-1: New USB device found, idVendor=345f, idProduct=2131\n"
+                "usbcore: registered new interface driver uvcvideo\n"
+            ),
+            "console-loglevel-restore.log": "console_loglevel=8\n",
+        }
+        statuses = {name: 0 for name in evidence}
+
+        checks, failed_stage, parsed = assess(statuses, evidence)
+
+        self.assertIsNone(failed_stage)
+        self.assertTrue(all(item["status"] == "pass" for item in checks.values()))
+        self.assertEqual(checks["format_enumeration"]["formats"], ["YUYV"])
+        self.assertEqual(parsed["capture_summary"]["unique_hashes"], "60")
+
+        startup_discard_stream = stream.replace(
+            "CAPTURE_CONFIG device=",
+            "FRAME_DISCARD phase=startup reason=error_flag sequence=0 "
+            "bytesused=2425 timestamp=1.000000 flags=0x00000040\n"
+            "CAPTURE_CONFIG device=",
+        ).replace("startup_error_frames=0", "startup_error_frames=1")
+        evidence["v4l2-stream.log"] = startup_discard_stream
+        checks, failed_stage, _parsed = assess(statuses, evidence)
+        self.assertIsNone(failed_stage)
+        self.assertEqual(checks["bounded_stream"]["startup_error_frames"], 1)
+
+        evidence["v4l2-stream.log"] = stream.replace(
+            "startup_error_frames=0 error_frames=0",
+            "startup_error_frames=0 error_frames=1",
+        )
+        checks, failed_stage, _parsed = assess(statuses, evidence)
+        self.assertEqual(checks["bounded_stream"]["status"], "fail")
+        self.assertEqual(failed_stage, "bounded_stream")
+
+        unchanged_stream = stream
+        for index in range(1, 60):
+            unchanged_stream = unchanged_stream.replace(
+                f"hash_fnv1a64={index + 1:016x}",
+                "hash_fnv1a64=0000000000000001",
+            )
+        unchanged_stream = unchanged_stream.replace(
+            "changing_transitions=59 unique_hashes=60",
+            "changing_transitions=0 unique_hashes=1",
+        )
+        evidence["v4l2-stream.log"] = unchanged_stream
+        checks, failed_stage, _parsed = assess(statuses, evidence)
+        self.assertEqual(checks["changing_frames"]["status"], "fail")
+        self.assertEqual(failed_stage, "changing_frames")
 
     def test_initramfs_lsusb_reports_flat_identity_and_tree(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

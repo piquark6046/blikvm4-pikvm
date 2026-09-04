@@ -10,6 +10,7 @@
 ./lab/labctl boot-mmc
 ./lab/labctl boot-ethernet
 ./lab/labctl boot-usb
+./lab/labctl boot-uvc
 ./lab/labctl test
 ./lab/labctl cycle
 ./lab/labctl power-cycle
@@ -17,7 +18,7 @@
 ./lab/labctl collect
 ```
 
-Every command writes one JSON document to stdout; human progress goes to stderr. The implementation includes `detect`, direct `uart` capture, `uboot exec`, `uboot collect`, `tftp-test`, `boot-vendor`, `build-linux`, `boot-linux`, `boot-mmc`, `boot-ethernet`, `boot-usb`, and host `collect`. The Linux boot commands atomically publish immutable artifacts, verify transfer sizes, retain prior-slice tests, capture per-device evidence and dmesg, and classify failures. Power/FEL mutation remains unimplemented and must fail explicitly rather than guess.
+Every command writes one JSON document to stdout; human progress goes to stderr. The implementation includes `detect`, direct `uart` capture, `uboot exec`, `uboot collect`, `tftp-test`, `boot-vendor`, `build-linux`, `boot-linux`, `boot-mmc`, `boot-ethernet`, `boot-usb`, `boot-uvc`, and host `collect`. The Linux boot commands atomically publish immutable artifacts, verify transfer sizes, retain prior-slice tests, capture per-device evidence and dmesg, and classify failures. `boot-uvc` additionally records USB bindings, video-node/sysfs mapping, complete V4L2 enumeration, bounded frame hashes, and UVC-specific dmesg. Power/FEL mutation remains unimplemented and must fail explicitly rather than guess.
 
 ## Run model
 

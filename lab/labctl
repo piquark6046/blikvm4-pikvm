@@ -63,6 +63,13 @@ USB_FAILURE = re.compile(
     r"(?:usb|ehci|phy|vbus)[^\n]*(?:probe[^\n]*failed|timeout|error -[0-9]+))",
     re.IGNORECASE,
 )
+UVC_FAILURE = re.compile(
+    r"(?:uvcvideo[^\n]*(?:failed|failure|error|timed?\s*out|timeout)|"
+    r"(?:usb 1-1|ehci-platform 5200000\.usb)[^\n]*"
+    r"(?:reset high-speed|URB|bandwidth|timed?\s*out|timeout|disconnect)|"
+    r"No space left on device)",
+    re.IGNORECASE,
+)
 
 LINUX_ARTIFACT_NAMES = (
     "Image",
@@ -1297,6 +1304,22 @@ def classify_boot_failure(text: str, stage: str) -> str:
         if stage in usb_stages:
             return usb_stages[stage]
         return "usb_topology_or_enumeration_failure"
+    if stage.startswith("uvc_"):
+        uvc_stages = {
+            "uvc_device_detection": "uvc_device_or_driver_missing",
+            "uvc_driver_binding": "uvc_interface_binding_failure",
+            "uvc_video_nodes": "v4l2_video_node_mapping_failure",
+            "uvc_capability_enumeration": "v4l2_capability_query_failure",
+            "uvc_format_enumeration": "v4l2_mode_enumeration_failure",
+            "uvc_capture_mode": "v4l2_mode_negotiation_failure",
+            "uvc_bounded_stream": "uvc_streaming_or_timeout_failure",
+            "uvc_nonempty_payload": "captured_frames_empty",
+            "uvc_changing_frames": "captured_frames_unchanged",
+            "uvc_no_persistent_errors": "uvc_or_usb_transport_error",
+        }
+        if stage in uvc_stages:
+            return uvc_stages[stage]
+        return "uvc_or_v4l2_failure"
     return "automation_or_preflight_failure"
 
 
@@ -1497,6 +1520,7 @@ def assess_usb_evidence(
         topology,
         re.I,
     )
+    interface_drivers = {number: driver for number, _class, driver, _speed in ms2131_interfaces}
 
     checks: dict[str, dict[str, Any]] = {
         "phy_probe": {
@@ -1551,10 +1575,19 @@ def assess_usb_evidence(
         "topology_speed": {
             "status": "pass"
             if {item[0] for item in ms2131_interfaces} == {"0", "1", "2", "3", "4"}
-            and all(item[2] == "[none]" for item in ms2131_interfaces)
+            and interface_drivers.get("0") == "uvcvideo"
+            and interface_drivers.get("1") == "uvcvideo"
+            and all(interface_drivers.get(number) == "[none]" for number in ("2", "3", "4"))
             and all(item[3].lower() == "480m" for item in ms2131_interfaces)
             else "fail",
             "expected_topology": "USB1 root port 1, direct, 480 Mbit/s",
+            "expected_interface_drivers": {
+                "0": "uvcvideo",
+                "1": "uvcvideo",
+                "2": "[none]",
+                "3": "[none]",
+                "4": "[none]",
+            },
         },
         "no_persistent_errors": {
             "status": "pass"
@@ -1939,7 +1972,7 @@ def run_ethernet_test(
 
 
 def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
-    """Validate only the H616 USB1 EHCI path and internal MS2131."""
+    """Validate the H616 USB1 EHCI path and internal MS2131 transport."""
 
     evidence: dict[str, str] = {}
     statuses: dict[str, int] = {}
@@ -2053,10 +2086,392 @@ def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
             "device_number": int(dev_match.group(1)) if dev_match else None,
             "speed_mbps": int(speed_match.group(1)) if speed_match else None,
             "topology": "USB1 root port 1 (direct)",
-            "class_drivers_bound": any(
-                driver != "[none]" for driver in interface_drivers
+            "interface_drivers": interface_drivers,
+            "uvc_interfaces_bound": interface_drivers.count("uvcvideo"),
+            "audio_or_hid_drivers_bound": any(
+                driver not in ("[none]", "uvcvideo") for driver in interface_drivers
             ),
         },
+        "checks": checks,
+        "evidence": {name: str(recorder.path / name) for name in statuses},
+    }
+
+
+def prefixed_records(text: str, prefix: str) -> list[dict[str, str]]:
+    """Parse the static V4L2 utility's space-delimited key/value records."""
+
+    records: list[dict[str, str]] = []
+    marker = prefix + " "
+    for line in text.splitlines():
+        if not line.startswith(marker):
+            continue
+        record: dict[str, str] = {}
+        for field in line[len(marker) :].split():
+            if "=" not in field:
+                continue
+            key, value = field.split("=", 1)
+            record[key] = value
+        records.append(record)
+    return records
+
+
+def assess_uvc_evidence(
+    statuses: dict[str, int], evidence: dict[str, str]
+) -> tuple[dict[str, dict[str, Any]], str | None, dict[str, Any]]:
+    """Validate driver binding, V4L2 enumeration, payloads, and transport health."""
+
+    binding_records = prefixed_records(
+        evidence.get("usb-interface-bindings.log", ""), "INTERFACE"
+    )
+    node_maps = prefixed_records(evidence.get("video-node-map.log", ""), "VIDEO_NODE")
+    capabilities = evidence.get("v4l2-capabilities.log", "")
+    stream = evidence.get("v4l2-stream.log", "")
+    dmesg = evidence.get("uvc-dmesg.log", "")
+    nodes = prefixed_records(capabilities, "NODE")
+    formats = prefixed_records(capabilities, "FORMAT")
+    sizes = prefixed_records(capabilities, "SIZE")
+    intervals = prefixed_records(capabilities, "INTERVAL")
+    inputs = prefixed_records(capabilities, "INPUT")
+    standards = prefixed_records(capabilities, "STANDARD")
+    enumeration_summaries = prefixed_records(capabilities, "ENUMERATION_SUMMARY")
+    capture_configs = prefixed_records(stream, "CAPTURE_CONFIG")
+    frames = prefixed_records(stream, "FRAME")
+    discarded_frames = prefixed_records(stream, "FRAME_DISCARD")
+    capture_summaries = prefixed_records(stream, "CAPTURE_SUMMARY")
+
+    interface_drivers = {
+        item.get("number"): item.get("driver") for item in binding_records
+    }
+    uvc_nodes = [
+        item
+        for item in nodes
+        if item.get("driver") == "uvcvideo"
+        and item.get("bus_info") == "usb-5200000.usb-1"
+    ]
+    capture_nodes = [
+        item
+        for item in uvc_nodes
+        if item.get("capture") == "1" and item.get("streaming") == "1"
+    ]
+    mapped_devices = {item.get("device") for item in node_maps}
+    mapped_uvc_nodes = [
+        item
+        for item in node_maps
+        if item.get("driver") == "uvcvideo"
+        and item.get("device") in {node.get("device") for node in uvc_nodes}
+        and item.get("usb_device") == "1-1"
+    ]
+    enumeration = enumeration_summaries[0] if enumeration_summaries else {}
+    capture = capture_summaries[0] if capture_summaries else {}
+    capture_config = capture_configs[0] if capture_configs else {}
+    try:
+        captured_frames = int(capture.get("frames", "0"))
+        nonempty_frames = int(capture.get("nonempty_frames", "0"))
+        changing_transitions = int(capture.get("changing_transitions", "0"))
+        unique_hashes = int(capture.get("unique_hashes", "0"))
+        total_bytes = int(capture.get("total_bytes", "0"))
+        total_nonzero = int(capture.get("total_nonzero_bytes", "0"))
+        startup_error_frames = int(capture.get("startup_error_frames", "0"))
+        error_frames = int(capture.get("error_frames", "-1"))
+        frame_sizes = [int(frame["bytesused"]) for frame in frames]
+        frame_nonzero = [int(frame["nonzero_bytes"]) for frame in frames]
+        frame_hashes = [frame["hash_fnv1a64"] for frame in frames]
+    except ValueError:
+        captured_frames = nonempty_frames = changing_transitions = 0
+        unique_hashes = total_bytes = total_nonzero = 0
+        startup_error_frames = 0
+        error_frames = -1
+        frame_sizes = []
+        frame_nonzero = []
+        frame_hashes = []
+    except KeyError:
+        frame_sizes = []
+        frame_nonzero = []
+        frame_hashes = []
+
+    capture_format_present = any(
+        item.get("type") == "video_capture" and item.get("fourcc") == "YUYV"
+        for item in formats
+    )
+    requested_mode_present = any(
+        item.get("fourcc") == "YUYV"
+        and item.get("width") == "640"
+        and item.get("height") == "480"
+        for item in sizes
+    ) and any(
+        item.get("fourcc") == "YUYV"
+        and item.get("width") == "640"
+        and item.get("height") == "480"
+        and item.get("numerator") == "1"
+        and item.get("denominator") == "30"
+        for item in intervals
+    )
+
+    checks: dict[str, dict[str, Any]] = {
+        "device_detection": {
+            "status": "pass"
+            if statuses.get("uvc-detection.log") == 0
+            and "vid_pid=345f:2131" in evidence.get("uvc-detection.log", "").lower()
+            else "fail",
+        },
+        "driver_binding": {
+            "status": "pass"
+            if statuses.get("usb-interface-bindings.log") == 0
+            and interface_drivers.get("00") == "uvcvideo"
+            and interface_drivers.get("01") == "uvcvideo"
+            and all(
+                interface_drivers.get(number) == "[none]"
+                for number in ("02", "03", "04")
+            )
+            else "fail",
+            "interface_drivers": interface_drivers,
+        },
+        "video_nodes": {
+            "status": "pass"
+            if statuses.get("video-node-map.log") == 0
+            and capture_nodes
+            and mapped_devices.issuperset(
+                node.get("device") for node in uvc_nodes if node.get("device")
+            )
+            and len(mapped_uvc_nodes) == len(uvc_nodes)
+            else "fail",
+            "capture_node_count": len(capture_nodes),
+            "uvc_node_count": len(uvc_nodes),
+        },
+        "capability_enumeration": {
+            "status": "pass"
+            if statuses.get("v4l2-capabilities.log") == 0
+            and enumeration.get("result") == "pass"
+            and capture_nodes
+            else "fail",
+            "inputs": len(inputs),
+            "standards": len(standards),
+        },
+        "format_enumeration": {
+            "status": "pass"
+            if capture_format_present and sizes and intervals and requested_mode_present
+            else "fail",
+            "formats": sorted(
+                {
+                    item.get("fourcc", "")
+                    for item in formats
+                    if item.get("type") == "video_capture"
+                }
+            ),
+            "size_count": len(sizes),
+            "interval_count": len(intervals),
+        },
+        "capture_mode": {
+            "status": "pass"
+            if capture_config.get("negotiated_fourcc") == "YUYV"
+            and capture_config.get("negotiated_width") == "640"
+            and capture_config.get("negotiated_height") == "480"
+            and capture_config.get("interval") == "1/30"
+            else "fail",
+            "requested": "YUYV 640x480 at 30 fps",
+            "negotiated": capture_config,
+        },
+        "bounded_stream": {
+            "status": "pass"
+            if captured_frames == 60
+            and len(frames) == captured_frames
+            and startup_error_frames <= 1
+            and len(discarded_frames) == startup_error_frames
+            and error_frames == 0
+            else "fail",
+            "frames": captured_frames,
+            "startup_error_frames": startup_error_frames,
+            "error_frames": error_frames,
+            "utility_exit_status": statuses.get("v4l2-stream.log"),
+        },
+        "nonempty_payload": {
+            "status": "pass"
+            if captured_frames == 60
+            and nonempty_frames == captured_frames
+            and total_bytes > 0
+            and total_nonzero > 0
+            and all(size > 0 for size in frame_sizes)
+            and all(count > 0 for count in frame_nonzero)
+            and sum(frame_sizes) == total_bytes
+            and sum(frame_nonzero) == total_nonzero
+            else "fail",
+            "total_bytes": total_bytes,
+            "total_nonzero_bytes": total_nonzero,
+        },
+        "changing_frames": {
+            "status": "pass"
+            if changing_transitions >= 2
+            and unique_hashes >= 3
+            and len(set(frame_hashes)) == unique_hashes
+            else "fail",
+            "changing_transitions": changing_transitions,
+            "unique_hashes": unique_hashes,
+        },
+        "no_persistent_errors": {
+            "status": "pass"
+            if statuses.get("console-loglevel.log") == 0
+            and statuses.get("uvc-dmesg.log") == 0
+            and statuses.get("console-loglevel-restore.log") == 0
+            and not UVC_FAILURE.search(dmesg)
+            and not USB_FAILURE.search(dmesg)
+            else "fail",
+        },
+    }
+    ordered = (
+        "device_detection",
+        "driver_binding",
+        "video_nodes",
+        "capability_enumeration",
+        "format_enumeration",
+        "capture_mode",
+        "bounded_stream",
+        "nonempty_payload",
+        "changing_frames",
+        "no_persistent_errors",
+    )
+    failed_stage = next(
+        (name for name in ordered if checks[name]["status"] != "pass"), None
+    )
+    parsed = {
+        "interfaces": binding_records,
+        "video_nodes": uvc_nodes,
+        "sysfs_node_mappings": mapped_uvc_nodes,
+        "formats": formats,
+        "sizes": sizes,
+        "intervals": intervals,
+        "inputs": inputs,
+        "standards": standards,
+        "enumeration_summary": enumeration,
+        "capture_config": capture_config,
+        "frames": frames,
+        "capture_summary": capture,
+    }
+    return checks, failed_stage, parsed
+
+
+def run_uvc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
+    """Enumerate the MS2131 UVC/V4L2 API and capture changing raw frames."""
+
+    evidence: dict[str, str] = {}
+    statuses: dict[str, int] = {}
+    commands = (
+        (
+            "console-loglevel.log",
+            "uvc_console_loglevel",
+            "parameter=/sys/module/printk/parameters/ignore_loglevel; "
+            "[ ! -w \"$parameter\" ] || echo N > \"$parameter\"; dmesg -n 1; "
+            "printf 'console_loglevel=1\\nignore_loglevel=%s\\n' "
+            "\"$(cat \"$parameter\" 2>/dev/null || echo unavailable)\"",
+            20.0,
+        ),
+        (
+            "uvc-detection.log",
+            "uvc_detection",
+            "i=0; found=0; while [ \"$i\" -lt 15 ]; do "
+            "for device in /sys/bus/usb/devices/*; do "
+            "[ -r \"$device/idVendor\" ] || continue; "
+            "[ -r \"$device/idProduct\" ] || continue; "
+            "if [ \"$(cat \"$device/idVendor\"):$(cat \"$device/idProduct\")\" "
+            "= 345f:2131 ]; then found=1; break; fi; done; "
+            "uvc=0; for interface in /sys/bus/usb/devices/*:1.*; do "
+            "[ -L \"$interface/driver\" ] || continue; "
+            "driver=$(readlink \"$interface/driver\"); "
+            "[ \"${driver##*/}\" = uvcvideo ] && uvc=$((uvc + 1)); done; "
+            "nodes=0; for node in /dev/video*; do [ -c \"$node\" ] && "
+            "nodes=$((nodes + 1)); done; "
+            "[ \"$found\" -eq 1 ] && [ \"$uvc\" -ge 2 ] && "
+            "[ \"$nodes\" -ge 1 ] && break; sleep 1; i=$((i + 1)); done; "
+            "printf 'wait_seconds=%s\\nvid_pid=345f:2131\\nuvc_interfaces=%s\\n"
+            "video_nodes=%s\\n' \"$i\" \"$uvc\" \"$nodes\"; "
+            "[ \"$found\" -eq 1 ] && [ \"$uvc\" -eq 2 ] && [ \"$nodes\" -ge 1 ]",
+            25.0,
+        ),
+        (
+            "usb-interface-bindings.log",
+            "usb_interface_bindings",
+            "ok=1; count=0; for interface in /sys/bus/usb/devices/*:*; do "
+            "usb_device=${interface%:*}; [ -r \"$usb_device/idVendor\" ] || continue; "
+            "[ \"$(cat \"$usb_device/idVendor\"):$(cat \"$usb_device/idProduct\")\" "
+            "= 345f:2131 ] || continue; count=$((count + 1)); "
+            "driver='[none]'; [ ! -L \"$interface/driver\" ] || "
+            "{ link=$(readlink \"$interface/driver\"); driver=${link##*/}; }; "
+            "printf 'INTERFACE usb_device=%s interface=%s number=%s class=%s "
+            "subclass=%s protocol=%s alt=%s endpoints=%s driver=%s\\n' "
+            "\"${usb_device##*/}\" \"${interface##*/}\" "
+            "\"$(cat \"$interface/bInterfaceNumber\")\" "
+            "\"$(cat \"$interface/bInterfaceClass\")\" "
+            "\"$(cat \"$interface/bInterfaceSubClass\")\" "
+            "\"$(cat \"$interface/bInterfaceProtocol\")\" "
+            "\"$(tr -d ' ' < \"$interface/bAlternateSetting\")\" "
+            "\"$(cat \"$interface/bNumEndpoints\")\" \"$driver\"; done; "
+            "[ \"$count\" -eq 5 ]",
+            20.0,
+        ),
+        (
+            "video-node-map.log",
+            "video_node_map",
+            "ok=1; count=0; for class_node in /sys/class/video4linux/video*; do "
+            "[ -e \"$class_node\" ] || continue; count=$((count + 1)); "
+            "resolved=$(readlink -f \"$class_node/device\"); interface=; "
+            "for candidate in /sys/bus/usb/devices/*:*; do "
+            "candidate_path=$(readlink -f \"$candidate\"); "
+            "case \"$resolved/\" in \"$candidate_path/\"*) interface=$candidate; break;; esac; "
+            "done; driver='[none]'; usb_device='[none]'; number='[none]'; "
+            "if [ -n \"$interface\" ]; then usb_device=${interface%:*}; "
+            "number=$(cat \"$interface/bInterfaceNumber\"); "
+            "[ ! -L \"$interface/driver\" ] || "
+            "{ link=$(readlink \"$interface/driver\"); driver=${link##*/}; }; fi; "
+            "name=$(cat \"$class_node/name\" | tr ' ' '_'); "
+            "printf 'VIDEO_NODE device=/dev/%s name=%s dev=%s index=%s "
+            "sysfs_device=%s usb_device=%s usb_interface=%s "
+            "interface_number=%s driver=%s\\n' \"${class_node##*/}\" \"$name\" "
+            "\"$(cat \"$class_node/dev\")\" \"$(cat \"$class_node/index\")\" "
+            "\"$resolved\" \"${usb_device##*/}\" \"${interface##*/}\" "
+            "\"$number\" \"$driver\"; done; [ \"$count\" -ge 1 ]",
+            20.0,
+        ),
+        (
+            "v4l2-capabilities.log",
+            "v4l2_capabilities",
+            "v4l2-test --enumerate",
+            45.0,
+        ),
+        (
+            "v4l2-stream.log",
+            "v4l2_stream",
+            "v4l2-test --capture-auto --fourcc YUYV --width 640 --height 480 "
+            "--fps 30 --frames 60 --timeout-ms 3000",
+            60.0,
+        ),
+        (
+            "uvc-dmesg.log",
+            "uvc_dmesg",
+            "dmesg | grep -Ei 'uvc|video4linux|videodev|345f|usb 1-1|"
+            "5200000\\.usb|ehci|urb|bandwidth|disconnect|timeout'",
+            20.0,
+        ),
+        (
+            "console-loglevel-restore.log",
+            "uvc_console_loglevel_restore",
+            "dmesg -n 8; parameter=/sys/module/printk/parameters/ignore_loglevel; "
+            "[ ! -w \"$parameter\" ] || echo Y > \"$parameter\"; "
+            "printf 'console_loglevel=8\\nignore_loglevel=%s\\n' "
+            "\"$(cat \"$parameter\" 2>/dev/null || echo unavailable)\"",
+            20.0,
+        ),
+    )
+    for filename, label, command, timeout in commands:
+        status, output = capture_shell_command(
+            console, recorder, filename, label, command, timeout
+        )
+        statuses[filename] = status
+        evidence[filename] = output
+
+    checks, failed_stage, parsed = assess_uvc_evidence(statuses, evidence)
+    return {
+        "result": "passed" if failed_stage is None else "failed",
+        "failed_stage": failed_stage,
+        **parsed,
         "checks": checks,
         "evidence": {name: str(recorder.path / name) for name in statuses},
     }
@@ -2065,9 +2480,10 @@ def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
 def boot_linux_command(
     args: argparse.Namespace, sys_root: Path, dev_root: Path
 ) -> dict[str, Any]:
-    run_mmc = args.command in ("boot-mmc", "boot-ethernet", "boot-usb")
-    run_ethernet = args.command in ("boot-ethernet", "boot-usb")
-    run_usb = args.command == "boot-usb"
+    run_mmc = args.command in ("boot-mmc", "boot-ethernet", "boot-usb", "boot-uvc")
+    run_ethernet = args.command in ("boot-ethernet", "boot-usb", "boot-uvc")
+    run_usb = args.command in ("boot-usb", "boot-uvc")
+    run_uvc = args.command == "boot-uvc"
     recorder = RunRecorder(args.command, args.out_root)
     stage = "preflight"
     last_passed = "none"
@@ -2076,6 +2492,7 @@ def boot_linux_command(
     mmc: dict[str, Any] | None = None
     ethernet: dict[str, Any] | None = None
     usb: dict[str, Any] | None = None
+    uvc: dict[str, Any] | None = None
     try:
         manifest = copy_linux_artifacts(recorder, args.artifact_root)
         recorder.metadata["artifacts"] = manifest["artifacts"]
@@ -2089,7 +2506,9 @@ def boot_linux_command(
                 "dns_configured": False,
                 "default_gateway_configured": False,
                 "usb_gadget_enabled": False,
-                "media_support_enabled": False,
+                "media_support_enabled": True,
+                "usb_audio_enabled": False,
+                "platform_media_or_codec_enabled": False,
             }
         )
         device = resolve_uart_device(sys_root, dev_root, args.device)
@@ -2218,6 +2637,17 @@ def boot_linux_command(
                     )
                 last_passed = "usb_enumeration"
 
+            if run_uvc:
+                stage = "uvc_test"
+                uvc = run_uvc_test(console, recorder)
+                if uvc["result"] != "passed":
+                    failed_stage = uvc["failed_stage"] or "unknown"
+                    stage = f"uvc_{failed_stage}"
+                    raise RuntimeError(
+                        f"UVC/V4L2 validation failed at stage {failed_stage}"
+                    )
+                last_passed = "uvc_capture"
+
             console.write_line(
                 b"echo BLIKVM_DMESG_BEGIN; dmesg; echo BLIKVM_DMESG_END"
             )
@@ -2228,7 +2658,9 @@ def boot_linux_command(
         report: dict[str, Any] = {
             "result": "passed",
             "stage": (
-                "usb_enumeration"
+                "uvc_capture"
+                if run_uvc
+                else "usb_enumeration"
                 if run_usb
                 else "ethernet_ping"
                 if run_ethernet
@@ -2258,6 +2690,8 @@ def boot_linux_command(
             report["ethernet"] = ethernet
         if usb is not None:
             report["usb"] = usb
+        if uvc is not None:
+            report["uvc"] = uvc
     except Exception as error:
         raw_path = recorder.path / "uart.raw"
         evidence = raw_path.read_bytes() if raw_path.exists() else b""
@@ -2278,6 +2712,8 @@ def boot_linux_command(
             report["ethernet"] = ethernet
         if usb is not None:
             report["usb"] = usb
+        if uvc is not None:
+            report["uvc"] = uvc
     return recorder.finish(report)
 
 
@@ -2577,6 +3013,31 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     usb_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
+    uvc_parser = subparsers.add_parser(
+        "boot-uvc",
+        help=(
+            "TFTP-boot Linux, retain MMC/Ethernet/USB-host tests, then "
+            "enumerate and stream from the internal MS2131 with V4L2"
+        ),
+    )
+    add_uboot_options(uvc_parser)
+    uvc_parser.add_argument(
+        "--artifact-root",
+        type=Path,
+        default=Path(
+            os.environ.get(
+                "LABCTL_LINUX_ARTIFACT_ROOT",
+                REPOSITORY_ROOT / "out" / "build" / "artifacts",
+            )
+        ),
+    )
+    uvc_parser.add_argument(
+        "--tftp-root",
+        type=Path,
+        default=Path(os.environ.get("LABCTL_TFTP_ROOT", DEFAULT_TFTP_ROOT)),
+    )
+    uvc_parser.add_argument("--linux-timeout", type=float, default=180.0)
+
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)
     if getattr(args, "jobs", 1) < 1:
@@ -2624,7 +3085,13 @@ def main(argv: list[str] | None = None) -> int:
             report = boot_vendor_command(args, sys_root, dev_root)
         elif args.command == "build-linux":
             report = build_linux_command(args)
-        elif args.command in ("boot-linux", "boot-mmc", "boot-ethernet", "boot-usb"):
+        elif args.command in (
+            "boot-linux",
+            "boot-mmc",
+            "boot-ethernet",
+            "boot-usb",
+            "boot-uvc",
+        ):
             report = boot_linux_command(args, sys_root, dev_root)
         elif args.command == "collect":
             report = collect_command(args)

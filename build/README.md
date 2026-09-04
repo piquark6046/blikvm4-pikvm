@@ -1,10 +1,11 @@
-# Linux 7.x serial and MMC bring-up build
+# Linux 7.x BliKVM bring-up build
 
 The accepted baseline was limited to H616 core support, UART0, and an
 Alpine/BusyBox initramfs. Incremental slices now add MMC0/read-only ext4,
-EMAC1/RMII, and only the USB1 EHCI/PHY/VBUS path wired to the internal MS2131.
-OHCI and the other USB controllers remain disabled, as do media/UVC, gadget,
-UDC, USB storage, display, and board-control GPIO functions.
+EMAC1/RMII, only the USB1 EHCI/PHY/VBUS path wired to the internal MS2131,
+and the minimum upstream V4L2/UVC capture stack. OHCI and the other USB
+controllers remain disabled, as do USB audio, gadget, UDC, USB storage,
+platform media/codecs, display, and board-control GPIO functions.
 
 Build from the repository root:
 
@@ -48,3 +49,16 @@ captures raw and timestamped UART, waits for `BLIKVM_INITRAMFS_READY`, reruns
 the read-only MMC/ext4 and isolated static-Ethernet checks, then archives USB
 PHY/controller/VBUS evidence, `lsusb`, `lsusb -t`, VID:PID, topology, speed,
 relevant dmesg, and a machine-readable result.
+
+Run the same retained checks followed by UVC binding, complete V4L2 mode
+enumeration, and a bounded 60-frame 640x480 YUYV capture with:
+
+```bash
+sudo ./lab/labctl --pretty boot-uvc \
+  --target-password-file /path/outside/repository/to/vendor-password
+```
+
+The initramfs contains a single static `v4l2-test` binary instead of
+`v4l-utils`. It uses only the kernel UAPI to enumerate nodes, capabilities,
+inputs, standards, formats, sizes and intervals, then performs MMAP streaming
+and reports the size, nonzero-byte count and FNV-1a hash of each frame.

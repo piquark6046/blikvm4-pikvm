@@ -14,6 +14,7 @@ RUN apt-get update \
       flex \
       gcc-aarch64-linux-gnu \
       kmod \
+      libc6-dev-arm64-cross \
       libelf-dev \
       libssl-dev \
       python3 \

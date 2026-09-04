@@ -1,15 +1,18 @@
 # HDMI capture path
 
-Status: **usable through standard upstream Linux UVC interfaces**.
+Status: **raw upstream Linux 7.2.3 UVC/V4L2 capture proven on hardware**.
 
-The connected board contains a MacroSilicon MS2131-family device. The live USB identity is `345f:2131`, manufacturer `MACROSILICON`, product `USB2 Video`, serial `29404080`. It sits directly on H616 USB host 1 (`usb-5200000.usb-1`) at 480 Mbit/s and exposes:
+The connected board contains a MacroSilicon MS2131-family device. The live USB identity is `345f:2131`, manufacturer `MACROSILICON`, product `USB2 Video`, serial `29404080`. It sits directly on H616 USB host 1 (`usb-5200000.usb-1`) at 480 Mbit/s. In the minimal upstream bring-up image it exposes:
 
 - two UVC interfaces bound by `uvcvideo`;
-- video capture `/dev/video1` and UVC metadata `/dev/video2`;
-- USB audio interfaces bound by `snd-usb-audio`;
-- a USB HID control interface.
+- video capture `/dev/video0` and UVC metadata `/dev/video1`;
+- unbound USB audio interfaces; and
+- an unbound USB HID control interface.
 
-`/dev/video0` is the SoC Cedrus codec and must not be selected as the HDMI input.
+The vendor OS also enables Cedrus, shifting the vendor capture/metadata nodes to
+`/dev/video1` and `/dev/video2`. Node numbers therefore remain unsuitable as a
+future persistent identity even though `/dev/video0` is deterministic in this
+minimal image.
 
 ## Measured modes
 
@@ -24,7 +27,12 @@ The capture node supports MJPEG and YUYV. Relevant examples from the full [raw V
 | YUYV | 800x600 | 30, 20, 10 fps |
 | YUYV | 720x480, 640x480 | up to 60 fps |
 
-The live default was MJPEG 1920x1080 at 30 fps. Vendor software searches for the first `/dev/video*` advertising JPEG and starts uStreamer at 1920x1080/20 fps; this heuristic is fragile because Cedrus occupies video0 and enumeration can change.
+The live default is MJPEG 1920x1080 at 30 fps. The complete Linux 7.2.3 mode
+matrix and two passing bounded captures are recorded in
+[uvc-v4l2-bringup.md](uvc-v4l2-bringup.md). Vendor software searches for the
+first `/dev/video*` advertising JPEG and starts uStreamer at 1920x1080/20 fps;
+this heuristic is fragile because Cedrus occupies video0 in that OS and
+enumeration can change.
 
 ## Stable identification
 
@@ -32,7 +40,7 @@ Prefer the standard `/dev/v4l/by-id` link containing serial `29404080`. If a dis
 
 ## PiKVM test sequence
 
-1. Confirm VID:PID, serial, 480 Mbit/s, and `uvcvideo`/`snd-usb-audio` binding.
+1. Confirm VID:PID, serial, 480 Mbit/s, and `uvcvideo` binding; keep USB audio deferred.
 2. Run `v4l2-compliance` on the stable capture symlink.
 3. Capture 300 MJPEG frames at 1920x1080/30 and check decode errors, timestamps, drops, and USB resets.
 4. Exercise HDMI signal loss/reacquisition and resolution changes without rebooting.
@@ -40,4 +48,3 @@ Prefer the standard `/dev/v4l/by-id` link containing serial `29404080`. If a dis
 6. Treat audio as optional until video is stable.
 
 The vendor's 4K30 figure describes accepted HDMI input/loop-through, not a verified 4K UVC stream. H.264, where available in vendor releases, is software encoding; it is not advertised by this V4L2 capture device.
-

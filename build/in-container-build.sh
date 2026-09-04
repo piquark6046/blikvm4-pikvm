@@ -43,7 +43,7 @@ else
     make -C "$linux_src" O="$linux_build" olddefconfig
 fi
 
-required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL POSIX_TIMERS BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS NET PACKET INET ETHTOOL_NETLINK NETDEVICES ETHERNET NET_VENDOR_STMICRO STMMAC_ETH STMMAC_PLATFORM DWMAC_SUN8I PHYLIB FWNODE_MDIO OF_MDIO MDIO_BUS_MUX USB USB_ANNOUNCE_NEW_DEVICES USB_EHCI_HCD USB_EHCI_HCD_PLATFORM EXTCON POWER_SUPPLY GENERIC_PHY PHY_SUN4I_USB'
+required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL POSIX_TIMERS BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS NET PACKET INET ETHTOOL_NETLINK NETDEVICES ETHERNET NET_VENDOR_STMICRO STMMAC_ETH STMMAC_PLATFORM DWMAC_SUN8I PHYLIB FWNODE_MDIO OF_MDIO MDIO_BUS_MUX USB USB_ANNOUNCE_NEW_DEVICES USB_EHCI_HCD USB_EHCI_HCD_PLATFORM EXTCON POWER_SUPPLY GENERIC_PHY PHY_SUN4I_USB MEDIA_SUPPORT MEDIA_SUPPORT_FILTER MEDIA_CAMERA_SUPPORT MEDIA_USB_SUPPORT VIDEO_DEV MEDIA_CONTROLLER USB_VIDEO_CLASS VIDEOBUF2_CORE VIDEOBUF2_V4L2 VIDEOBUF2_MEMOPS VIDEOBUF2_VMALLOC'
 for symbol in $required_symbols; do
     if ! grep -qx "CONFIG_${symbol}=y" "$linux_build/.config"; then
         echo "required CONFIG_${symbol}=y was not resolved" >&2
@@ -51,9 +51,9 @@ for symbol in $required_symbols; do
     fi
 done
 
-for symbol in USB_OHCI_HCD USB_GADGET USB_MUSB_SUNXI MEDIA_SUPPORT VIDEO_DEV USB_VIDEO_CLASS; do
+for symbol in USB_OHCI_HCD USB_GADGET USB_MUSB_SUNXI SND SND_USB_AUDIO DRM MEDIA_PLATFORM_SUPPORT VIDEO_SUNXI_CEDRUS MEDIA_ANALOG_TV_SUPPORT MEDIA_DIGITAL_TV_SUPPORT MEDIA_RADIO_SUPPORT MEDIA_SDR_SUPPORT MEDIA_TEST_SUPPORT; do
     if grep -Eq "^CONFIG_${symbol}=(y|m)$" "$linux_build/.config"; then
-        echo "forbidden USB-host slice CONFIG_${symbol} is enabled" >&2
+        echo "forbidden UVC slice CONFIG_${symbol} is enabled" >&2
         exit 1
     fi
 done
@@ -83,7 +83,15 @@ install -m 0755 "$repo/initramfs/init" "$staging/init"
 install -m 0644 "$repo/initramfs/inittab" "$staging/etc/inittab"
 install -m 0755 "$repo/initramfs/lsblk" "$staging/usr/bin/lsblk"
 install -m 0755 "$repo/initramfs/lsusb" "$staging/usr/bin/lsusb"
-for utility in ip ping lsusb; do
+"${CROSS_COMPILE}gcc" -std=c11 -Os -static -s \
+    -Wall -Wextra -Werror \
+    -o "$staging/usr/bin/v4l2-test" "$repo/initramfs/v4l2-test.c"
+if ! file "$staging/usr/bin/v4l2-test" \
+    | grep -Eq 'ARM aarch64.*statically linked'; then
+    echo "v4l2-test is not a static AArch64 executable" >&2
+    exit 1
+fi
+for utility in ip ping lsusb v4l2-test; do
     if ! test -e "$staging/sbin/$utility" && ! test -L "$staging/sbin/$utility" \
        && ! test -e "$staging/bin/$utility" && ! test -L "$staging/bin/$utility" \
        && ! test -e "$staging/usr/bin/$utility" \

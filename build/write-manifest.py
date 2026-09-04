@@ -52,6 +52,7 @@ def main() -> None:
             "ready_marker": "BLIKVM_INITRAMFS_READY",
             "network_utilities": ["ip", "ping"],
             "usb_inspection_utilities": ["lsusb", "lsusb -t"],
+            "video_inspection_utilities": ["v4l2-test"],
         },
         "build": {
             "default_jobs": 3,

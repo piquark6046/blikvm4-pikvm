@@ -1,6 +1,6 @@
 # BliKVM v4 Allwinner PiKVM port research
 
-Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The viable port now has passing Linux 7.2.3 serial, MMC/read-only ext4, H616 EMAC1 Ethernet, and isolated internal USB host slices. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
+Research and direct hardware discovery were completed on 2026-09-03. The UART/U-Boot/TFTP transport phase is also complete; see the [live phase evidence](uart-uboot-tftp-phase.md). The viable port now has passing Linux 7.2.3 serial, MMC/read-only ext4, H616 EMAC1 Ethernet, internal USB host, and raw UVC/V4L2 capture slices. The [decision gate](decision.md) selects upstream Linux 7.x plus a focused EMAC1 patch, an Alpine bring-up initramfs, Ubuntu 26.04 as the first final userspace, vendor U-Boot/TFTP for deployment, and known-good SD for recovery.
 
 ## 1. Confirmed hardware
 
@@ -32,7 +32,12 @@ Build a clean board DTS from `sun50i-h616.dtsi`; use upstream OrangePi/BigTreeTe
 
 ## 8. Video capture
 
-The internal device is standard USB2 UVC, not CSI. Use serial `29404080` to create `/dev/kvmd-video`; start with 1080p30 MJPEG pass-through and exercise signal loss. See [video-capture.md](video-capture.md).
+The internal device is standard USB2 UVC, not CSI. Linux 7.2.3 now binds its
+video interfaces to upstream `uvcvideo`, enumerates the complete MJPEG/YUYV
+mode table, and captures non-empty changing frames across two full RAM-only
+boots. Use serial `29404080` for the eventual `/dev/kvmd-video` link; uStreamer
+and PiKVM integration have not started. See [video-capture.md](video-capture.md)
+and [uvc-v4l2-bringup.md](uvc-v4l2-bringup.md).
 
 ## 9. USB gadget
 
@@ -102,3 +107,14 @@ enabled. Two consecutive full RAM boots enumerated the internal MS2131 as
 Ethernet. All Video/Audio/HID interfaces remain unbound because media, UVC,
 audio, HID, gadget, and UDC support are intentionally outside this slice. See
 [usb-host-bringup.md](usb-host-bringup.md).
+
+## 21. Raw UVC/V4L2 slice
+
+The USB-host baseline is preserved as commit `b09f56d` and tag
+`linux-7.2.3-usb-host-baseline`. The next isolated image enables only the media,
+V4L2/videobuf2, USB media, and upstream UVC core needed by MS2131. Two complete
+RAM-only boots bound interfaces 0/1, created one capture and one metadata node,
+enumerated 22 format-size records and 84 intervals, and each captured 60
+non-empty YUYV frames with 60 unique hashes and no persistent USB/UVC errors.
+The deterministic source, mode matrix, automation, and evidence are in
+[uvc-v4l2-bringup.md](uvc-v4l2-bringup.md).

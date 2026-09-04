@@ -23,12 +23,17 @@ Implement/validate H616 EMAC1 support and board RMII/PHY description. **Bring-up
 Enable host 1 and identify `345f:2131` by serial. **Host-only slice pass:** the
 exact controller/PHY/VBUS path probes, a root hub appears, and the device
 enumerates with stable identity/topology/speed and no persistent USB error
-while M1-M3 keep passing. **Current:** passed in three consecutive runs
+while M1-M3 keep passing. **Host baseline:** passed in three consecutive runs
 `20260904T042809Z-04b3657-019979`, `20260904T042847Z-04b3657-561173`, and
 `20260904T043155Z-04b3657-022990`; only EHCI1 is enabled and all MS2131 class
-interfaces remain unbound. **Later capture gate:** stable `/dev/kvmd-video`,
-V4L2 compliance, 300-frame 1080p30 MJPEG capture, signal loss/recovery, and
-uStreamer smoke test without USB reset.
+interfaces remain unbound. It is preserved by commit `b09f56d` and tag
+`linux-7.2.3-usb-host-baseline`. **Raw UVC/V4L2 slice:** passed in runs
+`20260904T062855Z-b09f56d-182887` and `20260904T063907Z-b09f56d-825527`;
+interfaces 0/1 bind `uvcvideo`, `/dev/video0` captures, `/dev/video1` carries
+metadata, all advertised modes are archived, and both boots captured 60
+non-empty changing YUYV frames with clean USB/UVC dmesg. **Later integration
+gate:** stable `/dev/kvmd-video`, `v4l2-compliance`, longer 1080p30 MJPEG and
+signal loss/recovery qualification, then uStreamer smoke testing.
 
 ## M5 — USB gadget
 
