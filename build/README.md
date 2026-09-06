@@ -102,3 +102,30 @@ This command qualifies only the keyboard slice, not all of M5. The older
 `boot-uvc` command deliberately keeps its UVC-only controller expectations;
 use archived UVC artifacts with that command and current M5 artifacts with
 `boot-hid`.
+
+For G2 (keyboard plus one absolute mouse), build the same incremental image
+on the VM and add `--absolute-mouse` to `boot-hid` on the bridge. The separate
+`hid-absolute-mouse` helper calls the unchanged G1 setup and adds exactly one
+non-boot absolute-pointer function before binding. No reports are sent at
+boot or during setup. The reviewed descriptor source is
+`initramfs/hid-absolute-mouse.report.hex`; the builder embeds the decoded bytes
+in the initramfs.
+
+The G2 runner checks both exact host report descriptors, exactly two usbhid
+interfaces, mouse evdev capabilities, and deterministic coordinates/button
+reports on grabbed devices. It repeats the input checks after software
+rebind, after physical USB-PC reconnect (`G2_RECONNECT_READY`), and alongside
+60-frame UVC capture. A prior physical reconnect reference must be from a
+passing G2 run with identical artifact hashes. Full qualification additionally
+requires two subsequent consecutive RAM-only boots with USB-PC attached.
+See [G2 evidence and status](../research/m5-hid-bringup.md).
+
+
+G2 is qualified at annotated tag `linux-7.2.3-hid-absolute-mouse-baseline`.
+If physical handling produces a brief intermediate enumeration that interrupts
+post-reconnect testing, preserve the failed boot. The separate
+`python3 lab/absolute-live.py --interrupted-run /path/to/run` may qualify the
+final already-bound device only when the archived physical sequence, current
+identity and exact automation match. It checks actual host events and concurrent
+UVC without modifying gadget binding; two subsequent full RAM boots are still
+required. See the research record for the accepted evidence chain.

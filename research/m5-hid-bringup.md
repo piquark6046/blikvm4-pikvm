@@ -1,9 +1,10 @@
-# M5: USB0 UDC and one HID keyboard
+# M5: USB0 UDC and staged HID qualification
 
-Status: G1 keyboard-only qualification passed on 2026-09-06. Physical
-USB-PC reconnect, host input press/release, concurrent changing UVC capture,
-and two subsequent consecutive RAM-only boots all passed. The remaining M5
-mouse and storage gates are not accepted or implemented.
+Status: G1 keyboard-only and G2 keyboard plus absolute mouse qualification
+passed on 2026-09-06. G2 preserves the frozen G1 keyboard unchanged and adds
+exactly one absolute-pointer function. Physical reconnect, host evdev input,
+concurrent changing UVC capture and two consecutive RAM-only boots are proven.
+Relative mouse and storage remain deferred; this is not completion of all M5.
 
 ## Prerequisite
 
@@ -180,16 +181,223 @@ than falsely attributing the later commit to earlier runs.
 The verified keyboard-only slice is preserved by the annotated tag
 `linux-7.2.3-hid-keyboard-baseline`. G1 is complete; work stops here.
 
-## Proposed G2: absolute mouse, not yet started
+## G2: absolute mouse qualification
 
-Start from the G1 tag and retain the keyboard unchanged. Review one absolute
-pointer report descriptor with explicit button bits and unsigned X/Y logical
-ranges. Add only that one configfs HID function in a separate RAM-only slice.
-Verify the host's exact two-interface descriptors, HID bindings, input
-identities and absolute-axis ranges. Use a grabbed input device to validate
-bounded deterministic coordinates and button press/release without moving
-the host's active pointer. Repeat unbind/rebind and physical reconnect, retain
-the keyboard input checks and simultaneous 60-frame changing UVC capture,
-and reproduce the full stack across two RAM-only boots before accepting G2.
-Relative mouse and disposable read-only storage remain later independent
-gates; GPIO/ATX, Ubuntu rootfs, uStreamer and kvmd remain deferred.
+G2 retains the G1 keyboard unchanged and adds one reviewed absolute-pointer
+report descriptor. Qualification requires exact two-interface host descriptors,
+input capabilities and observed events on grabbed devices, software rebind,
+physical reconnect, concurrent changing UVC capture and two complete RAM boots.
+Relative mouse and disposable read-only storage remain later independent gates.
+
+### G2 descriptor and implementation review
+
+G2 starts at frozen G1 tag `linux-7.2.3-hid-keyboard-baseline`, commit
+`6ace5fdbfbe247b1e919dac2e9ba46d6bd9d6fe0`. The entire G1 keyboard helper,
+report descriptor, interface subclass/protocol, report length, endpoint
+configuration and device strings are unchanged. G2 adds only `hid.absolute`
+as interface 1, with subclass/protocol 0/0, one interrupt IN endpoint,
+`no_out_endpoint=1`, and a five-byte report without a report ID.
+The retained product/serial strings still contain “keyboard”; these are
+intentionally stable device identity strings, not an interface count.
+
+The exact 51-byte mouse descriptor is archived in
+[`initramfs/hid-absolute-mouse.report.hex`](../initramfs/hid-absolute-mouse.report.hex).
+The builder decodes that file into `/usr/share/hid-absolute-mouse.report`;
+the target helper copies those bytes to configfs. Each host snapshot saves
+both binary and hex copies of each actual HID report descriptor, compares
+them byte-for-byte against the source definitions, and saves the USB
+descriptor blob and its SHA-256.
+
+| Descriptor bytes | Meaning |
+|---|---|
+| `05 01 09 02 a1 01 09 01 a1 00` | Generic Desktop Mouse application, Pointer physical collection |
+| `05 09 19 01 29 03 15 00 25 01 95 03 75 01 81 02` | Button usages 1–3; logical 0–1; three explicit one-bit data/variable/absolute fields |
+| `95 01 75 05 81 01` | Five constant padding bits |
+| `05 01 09 30 09 31 15 00 26 ff 7f 75 10 95 02 81 02` | X/Y; logical minimum 0, maximum 32767; two unsigned 16-bit data/variable/absolute fields |
+| `c0 c0` | Close both collections |
+
+The report layout is `<BHH` (little endian): three low button bits in byte
+0, X in bytes 1–2, Y in bytes 3–4. No wheel, relative axes, feature/output
+report or report ID is present. This is the minimal G2 descriptor; final
+PiKVM integration has not selected a wheel-bearing descriptor. A local test
+independently parses the HID items and verifies their semantics and 40-bit
+report length, rather than trusting successful writes.
+
+The deterministic sequence starts from verified zero coordinates/all buttons
+released, then sends `(X,Y)=(256,512)`, `(32511,32255)`, `(16384,8192)`, left
+button down and up at the intermediate coordinate, and `(0,0)` with all
+buttons released. The host verifier requires six ordered EV_SYN report
+boundaries with exact expected EV_ABS/EV_KEY values. It rejects missing,
+reordered, relative, incorrect, or incomplete events including SYN_DROPPED.
+It queries EVIOCGABS and EVIOCGKEY to confirm final neutral state. Both
+matching evdev devices are grabbed before any reports or cleanup. The
+keyboard retains its G1 Left Shift test.
+
+`labctl boot-hid --absolute-mouse` selects the isolated G2 verifier; the G1
+command/verifier remains available without that flag. G2 checks exactly two
+usbhid interfaces, exact descriptors, EV_ABS X/Y ranges 0–32767, exactly
+BTN_LEFT/BTN_RIGHT/BTN_MIDDLE, and no EV_REL capabilities. It tests both
+functions before rebind, after rebind, after physical reconnect, and during
+retained 60-frame UVC capture. Two subsequent full RAM boots may reference
+the identical-artifact G2 physical reconnect evidence, explicitly recording
+that physical unplugging was not repeated on those boots.
+
+### G2 negative evidence
+
+Run `20260906T034645Z-6ace5fd-140145` booted and enumerated both expected
+interfaces, exact descriptors and correct mouse input capabilities. It
+stopped before functional reports because the verifier incorrectly assumed
+one filename per line in BusyBox's terminal `ls` output. The checker now
+compares whitespace-separated function names and resolves configfs's relative
+symlinks before checking their targets. A fixture rejects missing/extra
+functions while accepting columnar output. Neither HID descriptor nor target
+artifact changed for this verifier correction. This run is not a G2 pass.
+
+### Initial G2 result: physical reconnect wait expired (superseded below)
+
+VM incremental build `20260906T034430Z-6ace5fd-810002` passed with six jobs.
+Image, DTB and kernel configuration retain the G1 hashes in the table above.
+Only the initramfs changes: 4,299,100 bytes, SHA-256
+`2b18ce4f381cd83c7fb0a193a7c0ca50bc2d26a14285c1bc6e65d25eadb8da08`.
+The mouse report descriptor is 51 bytes, SHA-256
+`b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a`.
+The unchanged keyboard descriptor is 63 bytes, SHA-256
+`14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476`.
+
+Run `20260906T034809Z-6ace5fd-053056` passed the retained RAM boot,
+MMC/read-only ext4, Ethernet and internal MS2131 host checks. Both initial
+and post-software-rebind snapshots proved exactly two high-speed usbhid
+interfaces, exact descriptors, stable device identity, and expected button
+and absolute-axis capabilities. Host evdev confirmed all six ordered mouse
+reports and Shift press/release on both passes. Final coordinates and key
+states were queried while both devices remained grabbed. Software unbind
+removed both target hidg nodes; rebind recreated them and restored configured
+UDC state. Host USB device number changed from 19 to 20.
+
+The runner then announced `G2_RECONNECT_READY` and waited 600 seconds.
+No physical USB-PC disconnect occurred; it exited at
+`hid_physical_reconnect` with `G2 composite did not disconnect`.
+This is explicitly **not a G2 pass**. The run did not proceed to post-physical-
+reconnect input, concurrent UVC capture, or the two consecutive qualification
+boots. Final UART/configfs/dmesg and host evidence were collected; no matching
+USB/MUSB/PHY/UDC/HID error lines appeared in the observed logs. That observation
+does not substitute for the pending regression gates.
+
+At that point both functions remained bound in neutral/all-released state.
+The temporary moving HDMI source was stopped after collection. All 32 local
+unit/fixture tests also pass on the bridge. VM and bridge tested automation
+bytes match; metadata records G1 parent commit `6ace5fd` plus dirty status
+and exact automation hashes.
+
+The byte-exact archive `out/m5/g2-evidence.tar.gz` is 400,133 bytes, SHA-256
+`51092e0f6b246b715d6fa63f207809b6c70a576f44f44046610959b2bc53d3b7`.
+It contains both negative runs, raw UART/U-Boot, target dmesg/configfs,
+host descriptors in binary/hex, evdev event JSON, host kernel/udev logs,
+and initial/final tested verifier sources. It was downloaded with an
+authenticated, certificate-pinned TLS transfer and its size/hash were
+verified against the bridge. Original runs remain at
+`/home/user/blikvm-g2/repo/out/runs/`; byte-exact VM copies are under
+`out/runs/`. The provisional machine-readable evidence recorded
+`not_qualified`, completed checks, source/artifact/evidence hashes,
+and the gates still pending at that time. That incomplete attempt was not
+committed or tagged; the final qualified archive below supersedes its summary.
+
+### Final physical reconnect and live qualification
+
+The resumed boot `20260906T042537Z-6ace5fd-610854` again passed the retained
+stack, initial input and software rebind. During the user-confirmed physical
+cable operation, the host recorded device 22 disappearing at 04:26:22.062391,
+a brief enumeration as device 23, then another disconnect at 04:26:22.859784.
+The verifier attempted its post-reconnect test during that short intermediate
+enumeration; the evdev device disappeared and it correctly failed at
+`hid_reconnected_input`. No input reports were sent at that failed stage.
+This interrupted boot remains failed in the archive.
+
+Final enumeration as device 24 began at 04:26:29.808189: the final disconnected
+interval was 6.948405 seconds. Both interfaces bound usbhid, with new evdev
+sysfs instances `input35`/`input36`, identical USB and report descriptors,
+identity strings, button bits and unsigned absolute-axis ranges.
+
+The separate `lab/absolute-live.py` follow-up does not reboot, set up, unbind
+or bind the gadget. It requires an interrupted G2 post-reconnect run, verifies
+its automation hashes, archives the full host kernel sequence, checks the
+ordered physical removal/enumeration device numbers and at least two seconds
+of final disconnection, requires removal of the old evdev objects and a stable
+current enumeration, then qualifies the actual final device. It does not
+convert the earlier failed boot into a pass or relax the normal boot runner's
+requirement for a passing identical-artifact reconnect reference.
+
+Live run `20260906T042917Z-6ace5fd-970522` passed on that final device. Both
+grabbed input devices produced the expected ordered reports after reconnect
+and during capture, with zero coordinates/all keys and buttons released at
+cleanup. The UDC remained configured with precisely the two expected
+functions. Its 60-frame MS2131 capture had 49 unique hashes and 48 changing
+transitions, with no startup, stream or USB/controller error.
+
+### Two consecutive retained RAM-only boots
+
+With USB-PC continuously attached and identical VM-built artifact hashes,
+these two complete boots then passed consecutively:
+
+| Run | Retained stack and HID | Concurrent UVC |
+|---|---|---|
+| `20260906T043006Z-6ace5fd-692810` | UART/U-Boot/TFTP, MMC/read-only ext4, EMAC1, EHCI1/MS2131, USB0 MUSB, exact two HID interfaces, both input modes before/after rebind and during capture | 60 non-empty frames, 51 unique hashes, 50 changes, zero errors |
+| `20260906T043047Z-6ace5fd-858154` | Same complete retained stack and host-event checks | 60 non-empty frames, 56 unique hashes, 55 changes, zero errors |
+
+Each boot references the passing live physical-reconnect qualification with
+identical artifact hashes, and explicitly records that physical unplugging
+was not repeated on that boot. Both repeat software unbind/rebind, descriptor
+and capability inspection, keyboard Shift and absolute coordinate/button
+tests, clean configfs/UDC checks, and concurrent UVC capture. All capture
+startup/error counts are zero. Host and target logs show no persistent
+MUSB/PHY/UDC/USB errors or unexpected USB controller/device resets.
+
+USB descriptor SHA-256 remains
+`e4d9234c4ec7594a4581ca2b34471466f81a01b9ee07371a955deaa8392caeb6`
+through the physical reconnect, live follow-up and both RAM boots. Host device
+numbers progressed to 25/26 then 27/28 across boot/bind/rebind; the stable
+serial, product, VID:PID, interface order and descriptor bytes stayed the same.
+The kernel, DTB, kernel configuration, G1 helper and G1 report descriptor
+remain unchanged from the frozen keyboard baseline.
+
+All 33 local tests pass on both VM and bridge, including the independently
+parsed mouse descriptor, capability/interface rejection cases, exact host
+event order/cleanup, and interrupted physical-reconnect sequence checks.
+The final source archive matches the VM byte-for-byte. Run metadata records
+G1 parent revision `6ace5fdbfbe2`, dirty status and automation hashes; the live
+runner additionally records its own SHA-256. No later commit is retroactively
+attributed to these hardware runs.
+
+### Accepted G2 evidence and next gate
+
+The final byte-exact archive is `out/m5/g2-qualified-evidence.tar.gz`,
+1,338,836 bytes, SHA-256
+`30de8aafd092e8dfc90829892b6bd0b94bc5884e73b135290d8ce0ebfb101d9b`.
+It preserves all three failed attempts, the live follow-up, both passing
+boots, original UART/U-Boot and host/target logs, exact binary/hex descriptors,
+evdev event JSON, per-run metadata/results and tested sources. Authenticated,
+certificate-pinned TLS transfer was verified against the bridge size/hash.
+Original runs remain under `/home/user/blikvm-g2/repo/out/runs/`; byte-exact
+VM copies are under `out/runs/`. The two passing VM boot directories also
+contain the verified VM-built artifacts. Large raw logs/binaries stay out of
+Git; the [machine-readable evidence](evidence/m5-g2-absolute-mouse.json)
+records `passed`, the exact physical sequence, source/artifact/file hashes,
+all HID events and retained checks, UVC summaries, and negative attempts.
+
+The accepted slice is preserved by annotated tag
+`linux-7.2.3-hid-absolute-mouse-baseline`. G2 is complete. Both HID functions
+remain bound and neutral on the target; the temporary HDMI pattern source
+has been stopped. U-Boot and its persistent environment are unchanged; the
+vendor SD remains the recovery path.
+
+Proposed G3 only: start from the G2 tag, preserve keyboard and absolute mouse
+unchanged, and review/add exactly one relative-pointer HID function with
+explicit buttons and deterministic signed relative X/Y ranges. Verify exactly
+three usbhid interfaces and their exact descriptors, with EV_REL (not EV_ABS)
+on the new evdev device. Grab the matching devices and require ordered positive,
+negative and zero-delta/button press-release reports plus neutral cleanup.
+Repeat all keyboard/absolute checks, software rebind, physical reconnect,
+concurrent 60-frame changing UVC capture and two consecutive RAM-only boots
+before accepting a separate relative-mouse baseline. Wheel behavior must be
+explicitly reviewed with that descriptor. Mass storage, GPIO/ATX, Ubuntu
+rootfs, uStreamer and kvmd remain deferred. G3 has not been implemented.

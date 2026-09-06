@@ -85,6 +85,13 @@ install -m 0644 "$repo/initramfs/inittab" "$staging/etc/inittab"
 install -m 0755 "$repo/initramfs/lsblk" "$staging/usr/bin/lsblk"
 install -m 0755 "$repo/initramfs/lsusb" "$staging/usr/bin/lsusb"
 install -m 0755 "$repo/initramfs/hid-keyboard" "$staging/usr/bin/hid-keyboard"
+install -m 0755 "$repo/initramfs/hid-absolute-mouse" "$staging/usr/bin/hid-absolute-mouse"
+mkdir -p "$staging/usr/share"
+python3 - "$repo/initramfs/hid-absolute-mouse.report.hex" "$staging/usr/share/hid-absolute-mouse.report" <<'PY'
+import sys
+from pathlib import Path
+Path(sys.argv[2]).write_bytes(bytes.fromhex(Path(sys.argv[1]).read_text()))
+PY
 "${CROSS_COMPILE}gcc" -std=c11 -Os -static -s \
     -Wall -Wextra -Werror \
     -o "$staging/usr/bin/v4l2-test" "$repo/initramfs/v4l2-test.c"
