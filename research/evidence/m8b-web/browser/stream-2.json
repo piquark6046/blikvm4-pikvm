@@ -1,0 +1,24 @@
+{
+  "result": "passed",
+  "command": [
+    "curl",
+    "--config",
+    "/home/user/repos/blikvm4-pikvm/out/kvmd-web/private/stream-curl.conf",
+    "--cacert",
+    "/home/user/repos/blikvm4-pikvm/out/kvmd-web/private/server.crt",
+    "--silent",
+    "--show-error",
+    "--no-buffer",
+    "--include",
+    "--max-time",
+    "130",
+    "https://localhost:8443/streamer/stream"
+  ],
+  "seconds_requested": 120.0,
+  "elapsed": 120.01965,
+  "frames": 3573,
+  "bytes": 148216697,
+  "unique_hashes": 3572,
+  "transitions": 3571,
+  "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 20:45:57 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/a2c329f512a1a0c0; path=/; max-age=30"
+}

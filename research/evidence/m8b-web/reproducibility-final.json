@@ -1,0 +1,50 @@
+{
+  "result": "passed",
+  "builds": [
+    {
+      "artifact": "kvmd-web_4.213-1blikvm2_arm64.deb",
+      "builds": [
+        {
+          "path": "out/kvmd-web/artifacts-final1/kvmd-web_4.213-1blikvm2_arm64.deb",
+          "size": 849848,
+          "sha256": "8bb2beb74e51cf8fbdd1e4f125ec2b7a4cd69a47620c2d63952e2281cf10f62d"
+        },
+        {
+          "path": "out/kvmd-web/artifacts/kvmd-web_4.213-1blikvm2_arm64.deb",
+          "size": 849848,
+          "sha256": "8bb2beb74e51cf8fbdd1e4f125ec2b7a4cd69a47620c2d63952e2281cf10f62d"
+        }
+      ]
+    },
+    {
+      "artifact": "rootfs.tar.gz",
+      "builds": [
+        {
+          "path": "out/kvmd-web/artifacts-final1/rootfs.tar.gz",
+          "size": 88730368,
+          "sha256": "3a40cafa3e690a0317a176d6bd9e5f2f2b96ce771514518d2cde69cdd2836347"
+        },
+        {
+          "path": "out/kvmd-web/artifacts/rootfs.tar.gz",
+          "size": 88730368,
+          "sha256": "3a40cafa3e690a0317a176d6bd9e5f2f2b96ce771514518d2cde69cdd2836347"
+        }
+      ]
+    },
+    {
+      "artifact": "initramfs.cpio.gz",
+      "builds": [
+        {
+          "path": "out/kvmd-web/artifacts-final1/initramfs.cpio.gz",
+          "size": 88484805,
+          "sha256": "681c4cbe6b20ee62aac67dbfff01f3630f6fd044391f7681df06d483ac925731"
+        },
+        {
+          "path": "out/kvmd-web/artifacts/initramfs.cpio.gz",
+          "size": 88484805,
+          "sha256": "681c4cbe6b20ee62aac67dbfff01f3630f6fd044391f7681df06d483ac925731"
+        }
+      ]
+    }
+  ]
+}

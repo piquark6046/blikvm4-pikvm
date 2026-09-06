@@ -1,0 +1,12 @@
+active
+active
+Jul 27 20:44:07 blikvm-m7 nginx[187]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:07 blikvm-m7 systemd[1]: Started nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:58:03 blikvm-m7 systemd[1]: Stopping nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:58:05 blikvm-m7 systemd[1]: nginx.service: Deactivated successfully.
+Jul 27 20:58:05 blikvm-m7 systemd[1]: Stopped nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:58:05 blikvm-m7 systemd[1]: nginx.service: Consumed 12.483s CPU time over 13min 58.811s wall clock time.
+Jul 27 20:58:06 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:58:06 blikvm-m7 nginx[4672]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:58:06 blikvm-m7 nginx[4672]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:58:06 blikvm-m7 systemd[1]: Started nginx.service - BliKVM loopback HTTPS Web UI.

@@ -1,0 +1,11 @@
+fontconfig	2.17.1-3ubuntu1	amd64
+fonts-dejavu-core	2.37-8build1	all
+libasound2t64	1.2.15.3-1ubuntu1.1	amd64
+libatk-bridge2.0-0t64	2.60.4-0ubuntu0.1	amd64
+libatk1.0-0t64	2.60.4-0ubuntu0.1	amd64
+libatspi2.0-0t64	2.60.4-0ubuntu0.1	amd64
+libgbm1	26.0.8-1ubuntu0.3	amd64
+libxcomposite1	1:0.4.6-1build1	amd64
+libxdamage1	1:1.1.7-1	amd64
+libxfixes3	1:6.0.0-2build2	amd64
+libxrandr2	2:1.5.4-1build1	amd64

@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "boot_id": "224f2109-2a38-431f-8a28-a69d60fc88e7",
+  "listeners_proc": [
+    {
+      "address": "127.0.0.1",
+      "port": 443
+    },
+    {
+      "address": "192.168.88.2",
+      "port": 22
+    }
+  ],
+  "kvmd_pid": 187,
+  "ustreamer": {
+    "pid": 295,
+    "ppid": 187,
+    "uid": "988\t988\t988\t988",
+    "gid": "989\t989\t989\t989",
+    "cmdline": "/usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors ",
+    "cgroup": "0::/system.slice/kvmd.service\n"
+  },
+  "ustreamer_version": "6.65-1blikvm2",
+  "ustreamer_sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+  "logs": {
+    "listeners-ss": "Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                               \ntcp   LISTEN 0      0          127.0.0.1:443       0.0.0.0:*    users:((\"nginx\",pid=193,fd=5),(\"nginx\",pid=192,fd=5))\ntcp   LISTEN 0      0       192.168.88.2:22        0.0.0.0:*    users:((\"sshd\",pid=199,fd=6))                        \n",
+    "video-mode": "Format Video Capture:\n\tWidth/Height      : 1920/1080\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 4147200\n\tColorspace        : sRGB\n\tTransfer Function : Rec. 709\n\tYCbCr/HSV Encoding: ITU-R 601\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+    "systemd-failed": "  UNIT LOAD ACTIVE SUB DESCRIPTION\n\n0 loaded units listed.\n",
+    "nginx-error": "2026/07/27 20:45:47 [error] 193#193: *2 \"/usr/share/kvmd/web/vnc/index.html\" is not found (2: No such file or directory) while sending to client, client: 127.0.0.1, server: blikvm.local, request: \"GET /vnc/ HTTP/1.1\", host: \"localhost:8443\"\n2026/07/27 20:45:47 [error] 193#193: *2 \"/usr/share/kvmd/web/ipmi/index.html\" is not found (2: No such file or directory) while sending to client, client: 127.0.0.1, server: blikvm.local, request: \"GET /ipmi/ HTTP/1.1\", host: \"localhost:8443\"\n"
+  }
+}

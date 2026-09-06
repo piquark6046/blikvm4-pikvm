@@ -1,0 +1,1335 @@
+{
+  "result": "passed",
+  "http": [
+    {
+      "label": "unauthenticated API",
+      "method": "GET",
+      "path": "/api/streamer",
+      "status": 401
+    },
+    {
+      "label": "unauthenticated web redirected to login",
+      "method": "GET",
+      "path": "/kvm/",
+      "status": 302
+    },
+    {
+      "label": "unauthenticated video",
+      "method": "GET",
+      "path": "/streamer/state",
+      "status": 401
+    },
+    {
+      "label": "invalid credentials",
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 403
+    },
+    {
+      "label": "valid credentials",
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "label": "authenticated API",
+      "method": "GET",
+      "path": "/api/streamer",
+      "status": 200
+    },
+    {
+      "label": "authenticated video",
+      "method": "GET",
+      "path": "/streamer/state",
+      "status": 200
+    },
+    {
+      "label": "excluded hid",
+      "method": "GET",
+      "path": "/api/hid",
+      "status": 404
+    },
+    {
+      "label": "excluded msd",
+      "method": "GET",
+      "path": "/api/msd",
+      "status": 404
+    },
+    {
+      "label": "excluded atx",
+      "method": "GET",
+      "path": "/api/atx",
+      "status": 404
+    },
+    {
+      "label": "excluded gpio",
+      "method": "GET",
+      "path": "/api/gpio",
+      "status": 404
+    },
+    {
+      "label": "excluded switch",
+      "method": "GET",
+      "path": "/api/switch",
+      "status": 404
+    },
+    {
+      "label": "excluded page vnc",
+      "method": "GET",
+      "path": "/vnc/",
+      "status": 404
+    },
+    {
+      "label": "excluded page ipmi",
+      "method": "GET",
+      "path": "/ipmi/",
+      "status": 404
+    },
+    {
+      "label": "logout",
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "status": 200
+    },
+    {
+      "label": "logged-out API",
+      "method": "GET",
+      "path": "/api/streamer",
+      "status": 403
+    },
+    {
+      "label": "logged-out video",
+      "method": "GET",
+      "path": "/streamer/state",
+      "status": 403
+    }
+  ],
+  "websockets": [
+    {
+      "label": "unauthenticated",
+      "ok": false,
+      "events": []
+    },
+    {
+      "label": "authenticated",
+      "ok": true,
+      "events": [
+        "loop",
+        "clients",
+        "info",
+        "clients",
+        "streamer",
+        "info",
+        "info",
+        "info",
+        "pong"
+      ]
+    },
+    {
+      "label": "logged-out",
+      "ok": false,
+      "events": []
+    }
+  ],
+  "browser": {
+    "assets": [
+      {
+        "path": "/kvm/",
+        "status": 302
+      },
+      {
+        "path": "/login",
+        "status": 301
+      },
+      {
+        "path": "/login/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/radio.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/login/login.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/login/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/start.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/index/index.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/index/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/kvm.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logout.svg",
+        "status": 200
+      },
+      {
+        "path": "/kvm/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/navbar.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/progress.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/switch.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/slider.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/led.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/radio.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/keypad.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/tabs.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/stream.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/msd.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/keyboard.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/system.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/about.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-video.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-gear.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-link.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-mouse.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-keyboard.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-overheating.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/session.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/warning.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/stream-mouse-cursor.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-undervoltage.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/pic/blank-stream.webp",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-fan.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-power.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/info.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/hid.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/recorder.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/paste.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/atx.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/msd.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/switch.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/gpio.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/ocr.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/keyboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/mouse.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-hdd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/info.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-msd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-square.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_media.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_janus.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/vu.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/clipboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/keypad.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_mjpeg.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/kvm/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/navbar.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/led.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/slider.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/switch.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/radio.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/keypad.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/tabs.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/stream.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/msd.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/about.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/system.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/keyboard.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/progress.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-mouse.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-overheating.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-keyboard.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-video.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-undervoltage.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-fan.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-link.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/warning.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-gear.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/stream-mouse-cursor.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/pic/blank-stream.webp",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-hdd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-msd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-power.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/session.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-square.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/info.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/recorder.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/info.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/paste.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/hid.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/atx.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/msd.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/ocr.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/gpio.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/switch.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/mouse.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/keyboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_mjpeg.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_media.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_janus.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/clipboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/keypad.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/vu.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/start.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/index/index.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/index/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/kvm.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logout.svg",
+        "status": 200
+      },
+      {
+        "path": "/kvm/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/switch.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/keypad.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/msd.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/slider.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/radio.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/progress.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/tabs.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/stream.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/keyboard.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/system.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/about.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/navbar.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/led.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-link.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-mouse.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-undervoltage.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-overheating.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/warning.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-hid-keyboard.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-video.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-fan.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-gear.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/session.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/stream-mouse-cursor.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/pic/blank-stream.webp",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-power.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-atx-hdd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-msd.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/info.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/info.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/recorder.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/paste.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/hid.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/atx.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/msd.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/gpio.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/ocr.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/switch.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/keyboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/mouse.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_media.js",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/led-square.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/clipboard.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_janus.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/stream_mjpeg.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/keypad.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/kvm/vu.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/kvm/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/start.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/index/index.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/index/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logout.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/kvm.svg",
+        "status": 200
+      },
+      {
+        "path": "/login",
+        "status": 301
+      },
+      {
+        "path": "/login/",
+        "status": 200
+      },
+      {
+        "path": "/share/css/user.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/vars.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/radio.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/window.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/modal.css",
+        "status": 200
+      },
+      {
+        "path": "/share/css/main.css",
+        "status": 200
+      },
+      {
+        "path": "/share/js/vars.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/login/login.css",
+        "status": 200
+      },
+      {
+        "path": "/share/svg/logo.svg",
+        "status": 200
+      },
+      {
+        "path": "/share/js/login/main.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/bb.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/wm.js",
+        "status": 200
+      },
+      {
+        "path": "/share/js/tools.js",
+        "status": 200
+      },
+      {
+        "path": "/share/css/x-desktop.css",
+        "status": 200
+      }
+    ],
+    "errors": [],
+    "version": "145.0.7632.6",
+    "initial": {
+      "width": 1920,
+      "height": 1080,
+      "hashes": [
+        "e212f82d9190dabc22305ea09ce1786e602fb9c2cad83d1706b1a635004f3967",
+        "8f455cb4415eaee7e4794c749c7bed35c4c7dcd91ecf499d8f3a12413efe671d",
+        "7e555829a885285288d595510fcf2080f09376cf0a80a040a56b10737e844cfa",
+        "ec4fc656cbab2cceaeea0633727cbf9972ea8ef10946e5d3542a10c6208a72e1",
+        "d320f38a7ff003de9ae66090ea04e44772467806a89b3465eb4bf7b8786cd6a1",
+        "baa4a78cb9b38d37bc44215e6506d82b640f27fc4ed01ae5095a861b0791e556"
+      ]
+    },
+    "reload": {
+      "width": 1920,
+      "height": 1080,
+      "hashes": [
+        "2552d43b01d633c73d1a324c443864f8262c8a4324162acdbc06df3b9d4417f7",
+        "7b2e4a4a242747666f40cc6e2ab18b0ed28e116920a0c79b4922870c42f0cddf",
+        "f0e0be9d6e8f08af8ca88c478587bbcb8cec8412a2a13a74c120d1f013978d00",
+        "c26b50105758562710bd55dc79d5f8206623bfd9794bdc268b01bff007c8c9cf",
+        "c165782e36cda02e73e4b17362e3bc0ae9dda6d2f850a656ea79bd1880166b01",
+        "8dbf74571a24f061c2965e37d643368f858d16204b4c2e3ff74500f9e944e860"
+      ]
+    },
+    "cookie": {
+      "secure": true,
+      "httpOnly": true,
+      "sameSite": "Strict"
+    },
+    "after_rate_gate": {
+      "width": 1920,
+      "height": 1080,
+      "hashes": [
+        "8e20345cd82c81d2c9b3f5e058d85e5a045d6c944a40a413b6a75856f8aedac4",
+        "74af8e0424253ef43f6dfa395ea4786c177731812d4291ef9e05c8101392721c",
+        "c1b902db1e200caf2428605262f7ac540055e174fd321668e6bee253f66ca13b",
+        "c686adc9f5a02841f1a57453b20add8ce70b9b0e876e193de5eae5f218c622cb",
+        "53238767483f1793d21da710981f0304327b480a87689f4df243447c21650d23",
+        "b04a9251781f6856645eb235a1df4d8320e8f5517324259d11a0b24ad26b574f"
+      ]
+    },
+    "websockets": [
+      {
+        "path": "/api/ws",
+        "events": [
+          "loop",
+          "clients",
+          "info",
+          "clients",
+          "streamer",
+          "info",
+          "info",
+          "info",
+          "info",
+          "streamer",
+          "streamer",
+          "streamer"
+        ]
+      },
+      {
+        "path": "/api/ws",
+        "events": [
+          "loop",
+          "clients",
+          "info",
+          "clients",
+          "streamer",
+          "info",
+          "info",
+          "info",
+          "info",
+          "streamer",
+          "streamer",
+          "streamer"
+        ]
+      },
+      {
+        "path": "/api/ws",
+        "events": [
+          "loop",
+          "clients",
+          "info",
+          "clients",
+          "streamer",
+          "info",
+          "info",
+          "info",
+          "info",
+          "streamer",
+          "streamer",
+          "streamer"
+        ]
+      }
+    ],
+    "logout": true
+  },
+  "automation_sha256": "fa7c8059c34f9c0d2c11d3b53ac73c3aa89935dbb994f5a12c76ff16796cbca9",
+  "tls": {
+    "protocol": "TLSv1.3",
+    "fingerprint256": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26",
+    "subject": {
+      "CN": "blikvm.local"
+    },
+    "subjectaltname": "DNS:blikvm.local, DNS:localhost, IP Address:127.0.0.1",
+    "verified": true
+  },
+  "rate_load": {
+    "video_clients": 1,
+    "browser_page": "authenticated index"
+  },
+  "stream": {
+    "seconds": 120,
+    "frames": 3577,
+    "fps": 29.803113566351467,
+    "unique_hashes": 3576
+  }
+}

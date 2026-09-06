@@ -1,0 +1,84 @@
+{
+  "result": "passed",
+  "milestone": "M8-B",
+  "clean_boots": 5,
+  "boots": [
+    {
+      "index": 1,
+      "boot_id": "3f3fc5a2-3c92-4f46-940a-62f7138d8d69",
+      "boot_run": "20260906T132826Z-unknown-275454",
+      "hil_run": "20260906T132930Z-unknown-997115",
+      "fps": 29.637101812060063,
+      "frames": 3557,
+      "unique_hashes": 3557,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    },
+    {
+      "index": 2,
+      "boot_id": "224f2109-2a38-431f-8a28-a69d60fc88e7",
+      "boot_run": "20260906T133309Z-unknown-978181",
+      "hil_run": "20260906T133413Z-unknown-459933",
+      "fps": 29.770125142007995,
+      "frames": 3573,
+      "unique_hashes": 3572,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    },
+    {
+      "index": 3,
+      "boot_id": "f96a00a7-f967-4868-8638-ffb3030723df",
+      "boot_run": "20260906T133754Z-unknown-131402",
+      "hil_run": "20260906T133858Z-unknown-183207",
+      "fps": 29.803113566351467,
+      "frames": 3577,
+      "unique_hashes": 3576,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    },
+    {
+      "index": 4,
+      "boot_id": "610dc12f-4ab1-4c4d-815c-da80a4d4d8b4",
+      "boot_run": "20260906T134239Z-unknown-077169",
+      "hil_run": "20260906T134343Z-unknown-544735",
+      "fps": 29.794128073925428,
+      "frames": 3576,
+      "unique_hashes": 3576,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    },
+    {
+      "index": 5,
+      "boot_id": "112ff2f6-3c6c-437d-9257-364708cd7688",
+      "boot_run": "20260906T134723Z-unknown-428972",
+      "hil_run": "20260906T134827Z-unknown-231226",
+      "fps": 29.911674158985583,
+      "frames": 3590,
+      "unique_hashes": 3590,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    }
+  ],
+  "image_sha256": "2ca086bbde9a4d5051cdc601a68f988c55371552abce35a425a31b1d1e1daa18",
+  "video_clients_qualified": 1,
+  "m8a": "frozen",
+  "m6": "deferred",
+  "lan_exposure": false,
+  "kvmd_hid_msd_atx": false,
+  "baseline": "ubuntu-26.04.1-kvmd-video-baseline",
+  "tag": "ubuntu-26.04.1-kvmd-web-baseline",
+  "archive": {
+    "path": "out/kvmd-web/m8b-evidence.tar.gz",
+    "size": 4548103,
+    "sha256": "1dcfe3c70219c259a0f43d40183e4563bd55142cae16aeaa59e90b6d814484cd"
+  },
+  "local_tests": 75,
+  "preflight": {
+    "result": "passed",
+    "image_sha256": "2ca086bbde9a4d5051cdc601a68f988c55371552abce35a425a31b1d1e1daa18",
+    "full_hil": "20260906T130839Z-unknown-348902",
+    "browser": {
+      "fps": 29.72827135532955,
+      "frames": 3569,
+      "unique_hashes": 3569,
+      "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+    },
+    "source_loss_recovered_same_pid": 4773,
+    "m8b_acceptance": "pending_five_clean_boots"
+  }
+}

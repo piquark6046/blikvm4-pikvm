@@ -148,5 +148,15 @@ functionality across two clean RAM boots. Its baseline tag is
 `ubuntu-26.04.1-kvmd-video-baseline`: pinned/reproducible ARM64 package, BliKVM
 configuration, one owner of the frozen uStreamer, local Unix API, moving
 1080p30 video, HDMI recovery and five clean boots with retained M5/M7 gates.
-No nginx, web/auth, LAN API or kvmd gadget/ATX control is enabled. M8-B is
-proposed only; M6 remains deferred.
+This frozen M8-A slice has no web or hardware-control integration. The separate
+M8-B qualification follows below; M6 remains deferred.
+
+## 25. M8-B authenticated loopback web delivery
+
+[M8-B is qualified](m8b-web-auth-bringup.md) at
+`ubuntu-26.04.1-kvmd-web-baseline`: pinned web/auth packages, loopback-only nginx
+HTTPS, upstream htpasswd sessions, real PiKVM Web UI through SSH forwarding,
+exact frozen video ownership/mode, HDMI and service recovery, and five clean
+boots with 120-second HTTPS video and retained gadget regressions. LAN exposure
+and kvmd HID/MSD/ATX control remain excluded; M6 remains deferred. Controlled
+LAN qualification is proposed separately as M8-C.

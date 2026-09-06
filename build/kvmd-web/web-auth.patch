@@ -1,0 +1,175 @@
+--- a/kvmd/apps/kvmd/__init__.py
++++ b/kvmd/apps/kvmd/__init__.py
+@@ -22,6 +22,7 @@
+ 
+ # BliKVM M8-A package: only the upstream video subsystem is instantiated.
+ from .. import init
++from .auth import AuthManager
+ from .info import InfoManager
+ from .streamer import Streamer
+ from .ocr import Ocr
+@@ -29,10 +30,10 @@
+ 
+ 
+ def main() -> None:
+-    ia = init(prog="kvmd", description="BliKVM video-only kvmd", check_run=True)
++    ia = init(prog="kvmd", description="BliKVM video-only kvmd", check_run=True, load_auth=True)
+     config = ia.config.kvmd
+-    if config.auth.enabled or not config.streamer.forever:
+-        raise SystemExit("M8-A requires local Unix permissions and streamer.forever")
++    if not config.auth.enabled or not config.streamer.forever:
++        raise SystemExit("M8-B requires authentication and streamer.forever")
+     streamer = Streamer(
+         **config.streamer._unpack(ignore=["forever", "desired_fps", "resolution", "h264_bitrate", "h264_gop"]),
+         **config.streamer.resolution._unpack(),
+@@ -41,6 +42,22 @@
+         **config.streamer.h264_gop._unpack(),
+     )
+     KvmdServer(
++        auth=AuthManager(
++            enabled=config.auth.enabled,
++            expire=config.auth.expire,
++            extend=config.auth.extend,
++            usc_users=(config.auth.usc.kvmd_users + config.auth.usc.users),
++            usc_groups=(config.auth.usc.kvmd_groups + config.auth.usc.groups),
++            unauth_paths=[],
++
++            int_c=config.auth.internal,
++            ext_c=config.auth.external,
++
++            force_int_users=config.auth.internal.force_users,
++
++            totp_secret_path=config.auth.totp.secret.file,
++        ),
++        allow_redirects=config.auth.allow_redirects,
+         im=InfoManager(ia.config),
+         ocr=Ocr(**config.ocr._unpack()),
+         streamer=streamer,
+--- a/kvmd/apps/kvmd/server.py
++++ b/kvmd/apps/kvmd/server.py
+@@ -56,6 +56,8 @@
+ from ...validators.kvm import valid_stream_h264_bitrate
+ from ...validators.kvm import valid_stream_h264_gop
+ 
++from .auth import AuthManager
++from .api.auth import AuthApi, check_request_auth
+ from .info import InfoManager
+ from .streamer import Streamer
+ from .ocr import Ocr
+@@ -126,6 +128,8 @@
+ 
+     def __init__(  # pylint: disable=too-many-arguments,too-many-locals
+         self,
++        auth: AuthManager,
++        allow_redirects: list[str],
+         im: InfoManager,
+         ocr: Ocr,
+         streamer: Streamer,
+@@ -134,13 +138,15 @@
+ 
+         super().__init__()
+ 
++        self.__auth = auth
+         self.__streamer = streamer
+ 
+         self.__stream_forever = stream_forever
+ 
+         # Excluded integrations have no API routes, tasks, or device handles.
+-        self.__apis: list[object] = [self, InfoApi(im), StreamerApi(streamer, ocr)]
++        self.__apis: list[object] = [self, AuthApi(auth, allow_redirects), InfoApi(im), StreamerApi(streamer, ocr)]
+         self.__subsystems = [
++            _Subsystem.make(auth, "Auth"),
+             _Subsystem.make(streamer, "Streamer", self.__EV_STREAMER_STATE),
+             _Subsystem.make(im, "Info", self.__EV_INFO_STATE),
+         ]
+@@ -213,8 +219,7 @@
+         super().run(**kwargs)
+ 
+     async def _check_request_auth(self, exposed: HttpExposed, req: Request) -> None:
+-        # Native Unix-only listener; access is enforced by directory/socket modes.
+-        pass
++        await check_request_auth(self.__auth, exposed, req)
+ 
+     async def _before_app(self) -> None:
+         for sub in self.__subsystems:
+@@ -253,9 +258,11 @@
+         logger.info("On-Cleanup complete")
+ 
+     def _on_ws_added(self, ws: WsSession) -> None:
++        self.__auth.start_ws_session(ws.token)
+         self.__streamer_notifier.notify()
+ 
+     def _on_ws_removed(self, ws: WsSession) -> None:
++        self.__auth.stop_ws_session(ws.token)
+         self.__streamer_notifier.notify()
+ 
+     def __get_stream_clients(self) -> int:
+--- a/kvmd/apps/kvmd/info/__init__.py
++++ b/kvmd/apps/kvmd/info/__init__.py
+@@ -27,6 +27,7 @@
+ from ....yamlconf import Section
+ 
+ from .base import BaseInfoSubmanager
++from .auth import AuthInfoSubmanager
+ from .system import SystemInfoSubmanager
+ from .meta import MetaInfoSubmanager
+ from .uptime import UptimeInfoSubmanager
+@@ -37,6 +38,7 @@
+ class InfoManager:
+     def __init__(self, config: Section) -> None:
+         self.__subs: dict[str, BaseInfoSubmanager] = {
++            "auth": AuthInfoSubmanager(config.kvmd.auth.enabled),
+             "system": SystemInfoSubmanager(config.kvmd.info.hw.platform, config.kvmd.streamer.cmd),
+             "meta":   MetaInfoSubmanager(config.kvmd.info.meta),
+             "uptime": UptimeInfoSubmanager(),
+--- a/web/share/js/index/main.js
++++ b/web/share/js/index/main.js
+@@ -53,7 +53,7 @@
+ }
+ 
+ function __loadKvmdInfo() {
+-	tools.httpGet("api/info", {"legacy": 0, "fields": "auth,node,meta,extras"}, function(http) {
++	tools.httpGet("api/info", {"legacy": 0, "fields": "auth,node,meta"}, function(http) {
+ 		switch (http.status) {
+ 			case 200:
+ 				__showKvmdInfo(JSON.parse(http.responseText).result);
+@@ -76,7 +76,7 @@
+ 	if (info.extras === null) {
+ 		wm.error("Not all applications in the menu can be displayed due an error.<br>See KVMD logs for details.");
+ 	} else {
+-		apps = Object.values(info.extras).sort(function(a, b) {
++		apps = Object.values(info.extras || {}).sort(function(a, b) {
+ 			if (a.place < b.place) {
+ 				return -1;
+ 			} else if (a.place > b.place) {
+--- a/web/share/js/kvm/stream.js
++++ b/web/share/js/kvm/stream.js
+@@ -199,12 +199,9 @@
+ 	};
+ 
+ 	self.ensureDeps = function(cb) {
+-		JanusStreamer.ensure_janus(function(avail) {
+-			__janus_imported = avail;
+-			cb();
+-		});
+-	};
+-
++		__janus_imported = false;
++		cb();
++	};
+ 	self.getGeometry = function() {
+ 		// Первоначально обновление геометрии считалось через ResizeObserver.
+ 		// Но оно не ловило некоторые события, например в последовательности:
+--- a/web/share/js/kvm/session.js
++++ b/web/share/js/kvm/session.js
+@@ -100,8 +100,8 @@
+ 		tools.debug("Session: socket opened:", ev);
+ 		$("link-led").className = "led-green";
+ 		$("link-led").title = "Connected";
+-		__recorder.setSocket(__ws);
+-		__hid.setSocket(__ws);
++		__recorder.setSocket(null); // M8-B: control remains disconnected.
++		__hid.setSocket(null); // M8-B: no HID API or event transport.
+ 		__missed_heartbeats = 0;
+ 		__ping_timer = setInterval(__pingServer, 1000);
+ 	};

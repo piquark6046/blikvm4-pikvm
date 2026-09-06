@@ -1,0 +1,16 @@
+kvmd:
+    auth:
+        enabled: true
+        internal:
+            type: htpasswd
+            file: /etc/kvmd/htpasswd
+        external:
+            type: ""
+        totp:
+            secret:
+                file: ""
+        usc:
+            kvmd_users: [root]
+            kvmd_groups: []
+            users: []
+            groups: []

@@ -1,0 +1,102 @@
+{
+  "build/kvmd-web/write-manifest.py": {
+    "size": 1982,
+    "sha256": "80fc199453a11fe76edc658ad3a81e87ecc46097a119159aaed28fe8ac98da4a"
+  },
+  "build/kvmd-web/nginx.conf": {
+    "size": 2644,
+    "sha256": "f3b8b98e1708c7baea65799b80078b638ba7276caf2438485b0c8d2e6418f114"
+  },
+  "build/kvmd-web/package.py": {
+    "size": 3935,
+    "sha256": "0d9481bd75543906cf6e363b8c49b0ccd707197721c572185c746e77bb88d748"
+  },
+  "build/kvmd-web/provision.py": {
+    "size": 3577,
+    "sha256": "817c4b3c35fa3ba7721cc01bbc40ae391197a9aaf749846c77eb8b01bbb9aad3"
+  },
+  "build/kvmd-web/nginx.service": {
+    "size": 712,
+    "sha256": "6a2d60cddf3dda6f980257ebac81025cd5a47a770e3351e95e2a70527d0f7a32"
+  },
+  "build/kvmd-web/build.sh": {
+    "size": 1669,
+    "sha256": "adba98bb62bb45d44b195a344e19168a065768028931ebfa9e0779e637315c6d"
+  },
+  "build/kvmd-web/packages.lock.tsv": {
+    "size": 7951,
+    "sha256": "0918b7765b3aec9f3390329b50b6a1befa9e5056f183f34ebedc1f922533036e"
+  },
+  "build/kvmd-web/web-auth.patch": {
+    "size": 6484,
+    "sha256": "bf59eb5f60fd134208f0356578aa5b49723334da99ee4824b99760085561e8e9"
+  },
+  "build/kvmd-web/versions.env": {
+    "size": 200,
+    "sha256": "f9fbc3a42511cea3d4334138f88862093937d2c97bef64e189e663fba6adadd8"
+  },
+  "build/kvmd-web/auth.yaml": {
+    "size": 335,
+    "sha256": "0e0ad34670b5125348f5bb0c03ccde4ae81ba018022290a31d94a5addbb87d8e"
+  },
+  "build/kvmd-web/README.md": {
+    "size": 5169,
+    "sha256": "673da79a2574bc3b92c96c4f0f848e42650703bea663687e53d016444ea1efa5"
+  },
+  "build/kvmd-web/kvmd-web.conf": {
+    "size": 320,
+    "sha256": "c673b81594eb7070bd8a2582f68ce43c586b6e9c4ee6438cb182929a6051113b"
+  },
+  "build/kvmd-web/package.sha256": {
+    "size": 123,
+    "sha256": "e0dc43490ba610d37dee8623460ee72495a61aa8fd72facabc9af4806c80bdf7"
+  },
+  "build/kvmd-web/in-container.sh": {
+    "size": 5645,
+    "sha256": "34351d1786b38816d21da619cb432460ff56ae17183f32d51260369c82cfe46f"
+  },
+  "build/kvmd-web/browser/package.json": {
+    "size": 55,
+    "sha256": "672e5d39bd385fcb5fac7b1ad822609fa34f04098f89e3794f8cb32b23b4db7c"
+  },
+  "build/kvmd-web/browser/package-lock.json": {
+    "size": 1590,
+    "sha256": "74df7d011ffd6f1b83f307ff9047d6e31b0e0664e5105fee86dc693c5ab7b8c5"
+  },
+  "lab/web-video-api.py": {
+    "size": 3463,
+    "sha256": "822c9f91016796eda29892a1f58036c9af8f8286497ba00cca5e3121da608cdb"
+  },
+  "lab/web-browser.mjs": {
+    "size": 12253,
+    "sha256": "fa7c8059c34f9c0d2c11d3b53ac73c3aa89935dbb994f5a12c76ff16796cbca9"
+  },
+  "lab/web-acceptance-gate.py": {
+    "size": 9684,
+    "sha256": "c46f0c2d5c2b86ed9266f5e2a9daf97067bfa95182dd5d406b50ecbc1eb1461c"
+  },
+  "lab/web-series.py": {
+    "size": 5774,
+    "sha256": "55c6bf21f8df2838f9dc023e8d9f2c59d83d0ba97559ed103f990a646fe34e8a"
+  },
+  "lab/web-video-hil.py": {
+    "size": 16873,
+    "sha256": "89d607039cb8760f8c0c26128142e5b107cea8d8cdf14e94b1ac571553da17ba"
+  },
+  "lab/web-listener-probe.py": {
+    "size": 753,
+    "sha256": "99226c4f7b8597aaee8483064d4218b35fb5a2ae26a7a8d7053ea6c0f7715964"
+  },
+  "lab/web-inventory.py": {
+    "size": 4801,
+    "sha256": "35bd9fcfbc4db5159727c602c51640c0355a8de6db99b9d20bf83d4e49e65267"
+  },
+  "lab/web-series-client.py": {
+    "size": 3784,
+    "sha256": "04ad99c9e7d656fe07d26130442da2116426b628bfbf1700058366810d6af86e"
+  },
+  "tests/test_web_package.py": {
+    "size": 2693,
+    "sha256": "c28b60fa910630c00f9734328eb3448bd30656bf2bf561b2e8dae7e6f72687b2"
+  }
+}

@@ -1,0 +1,28 @@
+[Unit]
+Description=BliKVM loopback HTTPS Web UI
+Wants=kvmd.service
+After=kvmd.service
+ConditionPathExists=/etc/kvmd/nginx/ssl/server.key
+ConditionPathExists=/etc/kvmd/htpasswd
+
+[Service]
+Type=exec
+ExecStartPre=/usr/sbin/nginx -t -c /etc/kvmd/nginx/nginx.conf
+ExecStart=/usr/sbin/nginx -c /etc/kvmd/nginx/nginx.conf -g 'daemon off;'
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGQUIT
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/run /var/log/nginx /var/lib/nginx
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX AF_INET
+
+[Install]
+WantedBy=multi-user.target

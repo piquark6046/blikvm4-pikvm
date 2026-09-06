@@ -1,0 +1,12 @@
+active
+active
+Jul 27 20:58:43 blikvm-m7 kvmd[2844]: kvmd.apps.kvmd.server             INFO --- Cleaning up Streamer ...
+Jul 27 20:58:43 blikvm-m7 kvmd[2844]: kvmd.apps.kvmd.streamer.runner    INFO --- Stopping streamer immediately ...
+Jul 27 20:58:43 blikvm-m7 kvmd[2844]: kvmd.apps.kvmd.streamer.runner    INFO --- Process killed: retcode=0
+Jul 27 20:58:43 blikvm-m7 kvmd[2844]: kvmd.apps.kvmd.streamer.runner    INFO --- POST-STOP-CMD: /bin/true post-stop
+Jul 27 20:58:43 blikvm-m7 kvmd[2844]: kvmd.apps.kvmd.server             INFO --- On-Cleanup complete
+Jul 27 20:58:44 blikvm-m7 systemd[1]: kvmd.service: Deactivated successfully.
+Jul 27 20:58:44 blikvm-m7 systemd[1]: Stopped kvmd.service - BliKVM video-only kvmd.
+Jul 27 20:58:44 blikvm-m7 systemd[1]: kvmd.service: Consumed 24.436s CPU time over 9min 20.677s wall clock time.
+Jul 27 20:58:44 blikvm-m7 systemd[1]: Starting kvmd.service - BliKVM video-only kvmd...
+Jul 27 20:58:44 blikvm-m7 systemd[1]: Started kvmd.service - BliKVM video-only kvmd.

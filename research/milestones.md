@@ -60,7 +60,7 @@ results](m5-storage-bringup.md) and [accepted HID evidence](m5-hid-bringup.md).
 
 ## M6 — GPIO/ATX
 
-**Current: DEFERRED by explicit user decision. Not passed. Do not attempt during M7 or M8-A.**
+**Current: DEFERRED by explicit user decision. Not passed. Do not attempt during M7, M8-A or M8-B.**
 
 Name/read status lines with libgpiod first. Use a meter/test fixture before outputs. **Pass:** inputs track known signals; power/reset pulses have verified polarity/duration; lines return inactive; no legacy sysfs GPIO dependency.
 
@@ -95,8 +95,28 @@ API. Two full HIL boots pass lifecycle and three HDMI-loss recoveries each;
 three further clean boots repeat API, 120-second 1080p30 and M5/M7 regressions.
 All five deliver 29.7–29.8 fps with exact 30-fps device mode. Baseline:
 `ubuntu-26.04.1-kvmd-video-baseline`. See [acceptance evidence](m8a-kvmd-video-bringup.md).
-M8 as a whole remains incomplete. M8-B web/auth is proposed only; no nginx,
-LAN API, kvmd HID/MSD/ATX control or optional integrations were enabled.
+M8-A remains frozen with no web or hardware-control integration. M8 as a whole
+remains incomplete; the separately qualified M8-B follows below.
+
+### M8-B — Authenticated loopback Web UI
+
+**Current: PASSED.** Pinned/reproducible `kvmd-web` 4.213-1blikvm2 and Ubuntu
+web/auth dependencies, nginx HTTPS on target loopback only, upstream htpasswd
+sessions and actual Chromium Web UI through SSH forwarding. Full preflight
+qualifies auth/logout/WebSockets, moving video, clean nginx/kvmd restarts and
+HDMI loss/restoration. Five subsequent consecutive clean boots restore the
+stack automatically, each passing a 120-second >=27-fps HTTPS stream, exact
+1080p30 capture mode and retained M5/M7 regressions. One video client is
+qualified; the two-client diagnostic remains below the rate gate. Baseline:
+`ubuntu-26.04.1-kvmd-web-baseline`. See [M8-B evidence](m8b-web-auth-bringup.md).
+No LAN exposure or kvmd HID/MSD/ATX control is enabled. M6 remains deferred.
+
+### M8-C — Proposed only
+
+Separately authorize controlled LAN HTTPS on an explicit interface, certificate
+trust/access policy and client-capacity gates, then repeat authenticated
+browser/video, recovery and reboot qualification. Hardware-control APIs remain
+a separate slice. No M8-C implementation is started.
 
 ## M9 — Optional hardware
 

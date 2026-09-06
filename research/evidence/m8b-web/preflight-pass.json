@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "image_sha256": "2ca086bbde9a4d5051cdc601a68f988c55371552abce35a425a31b1d1e1daa18",
+  "full_hil": "20260906T130839Z-unknown-348902",
+  "browser": {
+    "fps": 29.72827135532955,
+    "frames": 3569,
+    "unique_hashes": 3569,
+    "tls_fingerprint": "BF:BD:75:74:24:95:14:13:48:72:D3:F3:D2:81:F4:7D:71:CC:48:CB:99:0D:71:50:C7:5D:B0:8D:98:CF:32:26"
+  },
+  "source_loss_recovered_same_pid": 4773,
+  "m8b_acceptance": "pending_five_clean_boots"
+}
