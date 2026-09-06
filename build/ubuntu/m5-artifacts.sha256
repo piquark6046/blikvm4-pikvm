@@ -1,0 +1,5 @@
+b630280ed9063a5be6481fcc877fa423d1b2b3d5de75249da3a3865e49f9de4c  out/build/artifacts/Image
+bdcb95cd47816f3c05e97bbc25ff4cea0dd36afd6a89fa562a76e4ff65f76cf3  out/build/artifacts/initramfs.cpio.gz
+d1c090f2ec4aff58109d17fd487ffc6d1d0c8e13a946bd57473d0391e2d79da0  out/build/artifacts/linux.config
+152a4a674e32b90f1c73ffb30b6f19dcfa6a7c19caa18b62651fbec66370c5c3  out/build/artifacts/manifest.json
+3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2  out/build/artifacts/sun50i-h616-blikvm-v4.dtb

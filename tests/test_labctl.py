@@ -166,6 +166,15 @@ class LabctlDetectTests(unittest.TestCase):
 
 
 class LabctlAutomationTests(unittest.TestCase):
+    def test_multiple_osc_contexts_preserve_intervening_command_output(self):
+        clean = LABCTL_MODULE['clean_console']
+        raw = ('\x1b]3008;start=command\x1b\\\r\n'
+               'BLIKVM_PID1_BEGIN\r\nsystemd\r\nBLIKVM_PID1_END rc=0\r\n'
+               '\x1b]3008;end=command\x1b\\'
+               '\x1b]3008;start=shell\x1b\\root@blikvm-m7:~# ')
+        self.assertEqual(clean(raw), '\nBLIKVM_PID1_BEGIN\nsystemd\n'
+                         'BLIKVM_PID1_END rc=0\nroot@blikvm-m7:~# ')
+
     def test_password_prompt_allows_uart_flush_whitespace(self) -> None:
         prompt = LABCTL_MODULE["PASSWORD_PROMPT"]
         self.assertIsNotNone(prompt.search("blikvm\n Password: "))

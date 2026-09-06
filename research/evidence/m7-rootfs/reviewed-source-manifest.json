@@ -1,0 +1,265 @@
+{
+  "acceptance": {
+    "consecutive_boot_gate": 20,
+    "m6": "deferred",
+    "m7": "not_qualified"
+  },
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "sha256": "5337307fe1b5bb8c2d5417ef3a2f7b0facc81dcb0144cfd42a47948810c95d42",
+      "size": 6780936
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "8bde88f7e26ee5a040f6c4771e1b2a7bf4828f0e0597065f731b8129233ce675",
+      "size": 61566567
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "40f1579d1323483af01cfa847583e077173cd03dcb7e5e370775156d1c59ca65",
+      "size": 65957
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "sha256": "70d97902d3167a1bf747482e3244b82543d5221807450d17bc41719e2f80e60e",
+      "size": 5702
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "sha256": "27fbfd4a8cf34325c9804efa8d344196732d2956709577c3374819523ec60794",
+      "size": 61725630
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    }
+  },
+  "builder_image": "sha256:4b424588fc99a71195dc54659ea19c77508a7d457b15cdf5101b23551fbabcbc",
+  "initramfs": {
+    "distribution": "Ubuntu Base",
+    "init": "/sbin/init",
+    "transport": "read-write RAM root",
+    "version": "26.04.1"
+  },
+  "linux": {
+    "baseline": "linux-7.2.3-usb-gadget-baseline",
+    "exception": "documented systemd-required config delta",
+    "modules": "all built in",
+    "version": "7.2.3"
+  },
+  "schema_version": 1,
+  "source": {
+    "commit": "3fc61382861e8284827c8f43c4c9ad1ae6a27f25",
+    "files": {
+      "board/linux-7.2-bli-v4.patch": {
+        "sha256": "5da10e3400d26d3a2e644944fadc66a091ee03bdb1b79ff272189725ffb951d9",
+        "size": 1704
+      },
+      "board/linux-7.2-h616-emac1.patch": {
+        "sha256": "010ab2959e7b3137b5f40d38a0fbdbe929059810403f51cc9db8d2f42ad8196a",
+        "size": 3791
+      },
+      "board/linux-7.2-musb-rx-queue.patch": {
+        "sha256": "35dea2c63b24164a25e4322e441f9e7a7ed03729de8916c07c3a990321e47fc6",
+        "size": 625
+      },
+      "board/sun50i-h616-blikvm-v4.dts": {
+        "sha256": "4d6d90330b4b6c9a4107e82c52592f05beb2a4729918be35e74c4b951dedc144",
+        "size": 2921
+      },
+      "build/Containerfile": {
+        "sha256": "829ee9ef08749263d7de6e9024484947eb0513ccf0bed4e1061b4f7cc9389492",
+        "size": 919
+      },
+      "build/README.md": {
+        "sha256": "b9152084211f015e6c2782d8470a27c4e9c5e253ba1998b6e0eac2898daa9e78",
+        "size": 10403
+      },
+      "build/build.sh": {
+        "sha256": "54545ff696865565a0807faf4f70628aace53333385bbd34e40c0cf54858b09d",
+        "size": 2260
+      },
+      "build/in-container-build.sh": {
+        "sha256": "aedc645477df36c25e5d1560cf5ee1bd77a0b31442660d49f570713994149223",
+        "size": 6841
+      },
+      "build/linux-serial.config": {
+        "sha256": "2d61356b332c44e4744df52935830e472219005d2cd9c0df0df0e8f33b4130af",
+        "size": 3551
+      },
+      "build/make-storage-image.py": {
+        "sha256": "df8924412b9461534cf45d70eed67726769dd859cc0f3b8b25df9316afbfab99",
+        "size": 2324
+      },
+      "build/ubuntu/Containerfile": {
+        "sha256": "5e605843f81318e0c1510afeb4ce28dc6623ea0eb58e3f2e7773c3c2ea416ce5",
+        "size": 667
+      },
+      "build/ubuntu/README.md": {
+        "sha256": "c0fcb5c3400ce60c9ed78345a3df1648fdbdc2d2556a504f95f037a3bad7439d",
+        "size": 5363
+      },
+      "build/ubuntu/binfmt-rule.py": {
+        "sha256": "46773fcd3b9c70df48499bbdc301a9a57bf75676b420e163ed3b43477f48733f",
+        "size": 939
+      },
+      "build/ubuntu/build-kernel.sh": {
+        "sha256": "b11949d654656105514e3a4a3d7462193c4f563fb53c1390a2560d2d7b5086e1",
+        "size": 1502
+      },
+      "build/ubuntu/build.sh": {
+        "sha256": "b069964cbf3766535d6b36708cf2f009d1bca2f8bfea71be0265f083c8f6f196",
+        "size": 2954
+      },
+      "build/ubuntu/in-container.sh": {
+        "sha256": "eed83763e36ce78613e92401e0ca304f8e4c6d94d767b6c10810d9df05e02929",
+        "size": 9781
+      },
+      "build/ubuntu/linux-systemd.config": {
+        "sha256": "3518395dfc520db01fd9c87c3ac8898a25770fe3f3dc9850536898c6bc720be2",
+        "size": 861
+      },
+      "build/ubuntu/m5-artifacts.sha256": {
+        "sha256": "0e4fb27375d66c5b15e8ed5d867e5968a3839a2a989cd0d1b2a0d9efab947b0c",
+        "size": 507
+      },
+      "build/ubuntu/versions.env": {
+        "sha256": "93d418c5a347a3f6cd0d8fbc0243e65c1347304f6bbbb93d259780ec2a738985",
+        "size": 511
+      },
+      "build/ubuntu/write-manifest.py": {
+        "sha256": "db453f1196e162d05297b277dfd1f8701aa38c42d6f362a17f97b78257a49b72",
+        "size": 2026
+      },
+      "build/versions.env": {
+        "sha256": "21d8c23648ef38dd9496ca0bdf4fcb562742987b03fc5a84b3ef29196f0fad3a",
+        "size": 469
+      },
+      "build/write-manifest.py": {
+        "sha256": "8f3cf05277caa057de92a6f00f53beb6e7cb5c92bd3670b873627e6adcd506f2",
+        "size": 2163
+      },
+      "initramfs/gadget-storage": {
+        "sha256": "8a3ff132824b7eda12f9d24285f413993740ee13d533b91fee63947a4fc11af6",
+        "size": 1274
+      },
+      "initramfs/hid-absolute-mouse": {
+        "sha256": "db4cafff81ccb0a879c82746145af083b29f4b7836c6702316680a5002780fea",
+        "size": 1223
+      },
+      "initramfs/hid-absolute-mouse.report.hex": {
+        "sha256": "5042740020f35caf4499f86d30e6197b01c1574a4009e5ac9df4a9ffcf262a2c",
+        "size": 103
+      },
+      "initramfs/hid-keyboard": {
+        "sha256": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "size": 2940
+      },
+      "initramfs/hid-relative-mouse": {
+        "sha256": "23f2b379898312bc01cbd9883533527957c3c75592dc58a3e0812aa4db7a8dfa",
+        "size": 1218
+      },
+      "initramfs/hid-relative-mouse.report.hex": {
+        "sha256": "79ec371dc11213eb4a8d7dd6ced9c0fe28d8270e8ef862f717b0027498097bdb",
+        "size": 150
+      },
+      "initramfs/init": {
+        "sha256": "dd304ac469b26af7b9d58aac988abb57827185ad5a8803ca31f1a30d25653744",
+        "size": 954
+      },
+      "initramfs/inittab": {
+        "sha256": "b016036a389e78f66726450c13ac122d233976c57cba591c5ff6baf4be513db9",
+        "size": 332
+      },
+      "initramfs/lsblk": {
+        "sha256": "120d8ff5e71a5947892b0d678395a00eb9d809949d72fe9f8c91a00f0cd9c177",
+        "size": 891
+      },
+      "initramfs/lsusb": {
+        "sha256": "494925d694262f1c7c025f90a030e80ec64ea9f01836e60cb06235b4c9b995cf",
+        "size": 3592
+      },
+      "initramfs/v4l2-test.c": {
+        "sha256": "1ec544c47977e36453a6c61f58794a14d76549dc66c97e59816a1633c12bb956",
+        "size": 25286
+      },
+      "lab/absolute-live.py": {
+        "sha256": "93cc52815a590e0bba6fe7f8018035ccb743ed21e29722af906af7213dcb3137",
+        "size": 9529
+      },
+      "lab/absolutelab.py": {
+        "sha256": "5dbc726ea04dcf52c9ab838c40b41b8a3746bfc94d6d7d2603a2456f6d27333e",
+        "size": 16318
+      },
+      "lab/dnsmasq-blikvm-tftp.conf": {
+        "sha256": "b4b6a4f290336fe42ab1c9bee0c803b2abd3e2fe7363afb5a5640c53cd2c474d",
+        "size": 224
+      },
+      "lab/dnsmasq-blikvm-tftp.service": {
+        "sha256": "081b6cd94760dfb8e77a5ddb7c6fbf9ea422b13b3ea8103f14a29a5361df1831",
+        "size": 412
+      },
+      "lab/hid-live.py": {
+        "sha256": "12d932a3e3f7a99c9e300d683d8fe18ca93777915bc7f213c2a8897c765ea418",
+        "size": 4032
+      },
+      "lab/hidlab.py": {
+        "sha256": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+        "size": 13824
+      },
+      "lab/labctl": {
+        "sha256": "26c82c7dcd311c6d5512c0bed9446b0ff3f6c134dbcedbad48855ab4cf6a5068",
+        "size": 126449
+      },
+      "lab/relative-live.py": {
+        "sha256": "e0c17ec79762b7a481f8de3a31082a601e5d458eec6c3a3614c2297ce5db0545",
+        "size": 9642
+      },
+      "lab/relativelab.py": {
+        "sha256": "4487e8f4eff0ff4d44e90165085354aed46b9b0b53dd85470985121917371a9f",
+        "size": 23568
+      },
+      "lab/storage-live.py": {
+        "sha256": "01e717b0a873eec41ce94fe939975388a8b49222b925e5223700a11fb182c473",
+        "size": 13050
+      },
+      "lab/storagelab.py": {
+        "sha256": "1c8f4aa0a619216117e1e8f923e5b2eb8e81bda1b3d8a53400adaf6ed813e33e",
+        "size": 22279
+      },
+      "lab/tftp/test.txt": {
+        "sha256": "5e6fc42f65b3a83e369ca6cc63cfc735534ae2adb220ecf54a5c682d5ab77940",
+        "size": 39
+      },
+      "lab/ubuntu-boot.py": {
+        "sha256": "137d8274b328e060825166e05c08c5daa5504dececd4853c4e7996c149e746af",
+        "size": 9337
+      },
+      "lab/ubuntu-reboot-gate.py": {
+        "sha256": "db131bf4f6cb69e4cbaedb74085184e7b9d1e919e517c247664aed3ee68dbebf",
+        "size": 5097
+      },
+      "lab/ubuntu-recover.py": {
+        "sha256": "51da8f057ff9fb564e57653a5cc61e5753a5fe9f4c2f22953496478c9fc38dc3",
+        "size": 2230
+      },
+      "lab/ubuntu-regressions.py": {
+        "sha256": "2595378b82e13695551d615bda4e5c33f3e1d50b60d572735bb21cf9905e75d3",
+        "size": 8531
+      }
+    },
+    "status": "A  build/ubuntu/Containerfile\nAM build/ubuntu/README.md\nA  build/ubuntu/binfmt-rule.py\nA  build/ubuntu/build-kernel.sh\nA  build/ubuntu/build.sh\nA  build/ubuntu/in-container.sh\nA  build/ubuntu/linux-systemd.config\nA  build/ubuntu/m5-artifacts.sha256\nA  build/ubuntu/versions.env\nA  build/ubuntu/write-manifest.py\nM  lab/labctl\nAM lab/ubuntu-boot.py\nAM lab/ubuntu-reboot-gate.py\nA  lab/ubuntu-recover.py\nA  lab/ubuntu-regressions.py\nAM research/m7-ubuntu-rootfs-bringup.md\nMM research/milestones.md\nM  tests/test_labctl.py\nA  tests/test_ubuntu_builder.py\nAM tests/test_ubuntu_reboot_gate.py\n?? research/evidence/m7-rootfs/\n?? research/evidence/m7-ubuntu-rootfs.json"
+  },
+  "ubuntu": {
+    "archive": {
+      "sha256": "5a1906794ced63a71a8119c3f211ef5f0bbe0a243001b4bbd41fdf80c5b219fd",
+      "size": 35092106
+    },
+    "signature_status": "[GNUPG:] NEWSIG\n[GNUPG:] KEY_CONSIDERED 843938DF228D22F7B3742BC0D94AA3F0EFE21092 0\n[GNUPG:] SIG_ID f+iILxEekwnBgRiJV9QkWhguEq4 2026-08-27 1787864310\n[GNUPG:] GOODSIG D94AA3F0EFE21092 Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>\n[GNUPG:] VALIDSIG 843938DF228D22F7B3742BC0D94AA3F0EFE21092 2026-08-27 1787864310 0 4 0 1 10 00 843938DF228D22F7B3742BC0D94AA3F0EFE21092\n",
+    "signer": "843938DF228D22F7B3742BC0D94AA3F0EFE21092",
+    "snapshot": "20260906T000000Z",
+    "source_date_epoch": 1788652800
+  }
+}

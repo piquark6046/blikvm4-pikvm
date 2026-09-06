@@ -60,9 +60,13 @@ results](m5-storage-bringup.md) and [accepted HID evidence](m5-hid-bringup.md).
 
 ## M6 — GPIO/ATX
 
+**Current: DEFERRED by explicit user decision. Not passed. Do not attempt during M7.**
+
 Name/read status lines with libgpiod first. Use a meter/test fixture before outputs. **Pass:** inputs track known signals; power/reset pulses have verified polarity/duration; lines return inactive; no legacy sysfs GPIO dependency.
 
-## M7 — Ubuntu 26.04 rootfs
+## M7 — Ubuntu 26.04.1 ARM64 rootfs
+
+**Current: PASSED.** Reproducible Ubuntu Base 26.04.1 ARM64 RAM root, systemd/SSH, retained M5 hardware interfaces, and 20 consecutive clean software reboots. Annotated baseline: `ubuntu-26.04.1-rootfs-baseline`. See [M7 bring-up record](m7-ubuntu-rootfs-bringup.md).
 
 Boot the pinned Ubuntu Base build. **Pass:** systemd reaches multi-user, network/SSH work, logs identify the artifact, clean reboot succeeds 20 times. Read-only policy is a later sub-gate.
 

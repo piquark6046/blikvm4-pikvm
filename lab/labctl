@@ -34,7 +34,7 @@ HOST_IP = "192.168.88.1"
 TARGET_IP = "192.168.88.2"
 UART_USB_ID = "1a86:7523"
 
-ANSI_ESCAPE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
+ANSI_ESCAPE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*?(?:\x07|\x1b\\))")
 UBOOT_PROMPT = re.compile(r"(?:^|\n)=>\s*$")
 LINUX_PROMPT = re.compile(r"(?:^|\n)[^\x00-\x1f\n]{1,160}[$#]\s*$")
 LOGIN_PROMPT = re.compile(r"(?:^|\n)[^\n]{0,80}login:\s*$", re.IGNORECASE)
