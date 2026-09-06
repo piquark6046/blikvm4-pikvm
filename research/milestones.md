@@ -47,7 +47,16 @@ consecutive RAM-only boots (`20260906T033008Z-9edcd3a-215238` and
 `linux-7.2.3-hid-absolute-mouse-baseline` and
 `linux-7.2.3-hid-relative-mouse-baseline`. G3 preserved all three HID functions
 through physical reconnect, exact evdev tests and concurrent 60-frame UVC
-on two consecutive RAM-only boots. G4 read-only storage remains pending. See [M5 evidence](m5-hid-bringup.md).
+on two consecutive RAM-only boots. G4 read-only storage is qualified; **M5 is complete** at
+`linux-7.2.3-usb-gadget-baseline`. The final slice includes a focused MUSB
+receive-queue correction and preserves all three HID functions unchanged.
+Physical reconnect and consecutive full RAM boots
+`20260906T065643Z-520a6eb-632211` / `20260906T065743Z-520a6eb-416769`
+pass storage contents/hashes, rejected writes, software rebind, all HID input
+tests and concurrent 60-frame changing UVC with zero startup/stream errors
+and no unexpected USB reset. See [G4 evidence and rejected provisional
+results](m5-storage-bringup.md) and [accepted HID evidence](m5-hid-bringup.md).
+
 
 ## M6 — GPIO/ATX
 

@@ -1,0 +1,40 @@
+#!/bin/busybox sh
+# G4: exactly one RAM/initramfs-backed, read-only, non-CD-ROM LUN.
+set -eu
+g=/sys/kernel/config/usb_gadget/blikvm_m5
+f=$g/functions/mass_storage.g4
+image=/usr/share/g4-storage.img
+case "${1:-state}" in
+setup)
+    [ -f "$image" ] && [ ! -L "$image" ]
+    [ "$(stat -c %s "$image")" -eq 8388608 ]
+    sha256sum -c /usr/share/g4-storage.sha256
+    hid-relative-mouse setup
+    [ -z "$(cat "$g/UDC")" ]
+    mkdir "$f"
+    echo 1 > "$f/stall"
+    echo 1 > "$f/lun.0/ro"
+    echo 0 > "$f/lun.0/cdrom"
+    echo 0 > "$f/lun.0/removable"
+    echo 0 > "$f/lun.0/nofua"
+    echo 'BliKVM  G4 RAM RO       0001' > "$f/lun.0/inquiry_string"
+    echo "$image" > "$f/lun.0/file"
+    ln -s "$f" "$g/configs/c.1/mass_storage.g4"
+    echo storage_setup_complete=1
+    ;;
+state)
+    hid-relative-mouse state
+    echo storage_state_begin
+    for attr in stall; do echo "storage_$attr=$(cat "$f/$attr")"; done
+    for lun in "$f"/lun.*; do
+        echo "lun=${lun##*/}"
+        for attr in file ro cdrom removable nofua inquiry_string; do
+            echo "lun_${attr}=$(cat "$lun/$attr")"
+        done
+    done
+    sha256sum "$image"
+    sha256sum -c /usr/share/g4-storage.sha256
+    echo storage_state_end
+    ;;
+*) echo 'usage: gadget-storage setup|state' >&2; exit 2;;
+esac

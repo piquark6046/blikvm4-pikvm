@@ -127,5 +127,7 @@ all three functions with exact report descriptors, configfs-derived device
 mapping, grabbed host evdev tests, software/physical reconnect, concurrent
 60-frame changing MS2131 capture and two consecutive RAM-only boots. The
 annotated tag is `linux-7.2.3-hid-relative-mouse-baseline`. Read-only disposable
-mass storage is the proposed G4 gate and has not started; this is not completion
-of all M5. See [the qualification and negative evidence](m5-hid-bringup.md).
+mass storage is qualified as G4 with the focused MUSB receive-queue fix,
+physical reconnect and two consecutive full RAM boots. All retained HID,
+storage protection and concurrent zero-error UVC checks pass; M5 is complete. See [G4 status](m5-storage-bringup.md) and
+[the accepted HID qualification](m5-hid-bringup.md).

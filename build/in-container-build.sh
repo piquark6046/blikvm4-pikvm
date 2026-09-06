@@ -32,6 +32,12 @@ if ! grep -q 'compatible = "allwinner,sun50i-h616-emac"' \
     patch -d "$linux_src" -p1 < "$repo/board/linux-7.2-h616-emac1.patch"
 fi
 
+# Preserve packets accepted before the gadget has queued its next OUT request.
+if ! grep -q 'A packet may have arrived before the request was queued' \
+    "$linux_src/drivers/usb/musb/musb_gadget.c"; then
+    patch -d "$linux_src" -p1 < "$repo/board/linux-7.2-musb-rx-queue.patch"
+fi
+
 config_hash=$(sha256sum "$repo/build/linux-serial.config" | cut -d' ' -f1)
 if ! test -f "$linux_build/.config" \
    || ! test -f "$linux_build/.config-input.sha256" \
@@ -44,7 +50,7 @@ else
 fi
 
 required_symbols='ARCH_SUNXI BLK_DEV_INITRD RD_GZIP BINFMT_ELF BINFMT_SCRIPT DEVTMPFS DEVTMPFS_MOUNT SERIAL_8250 SERIAL_8250_CONSOLE SERIAL_8250_DW SERIAL_OF_PLATFORM PINCTRL_SUN50I_H616 DMA_SUN6I SUN50I_H616_CCU TMPFS PRINTK_TIME MAGIC_SYSRQ_SERIAL POSIX_TIMERS BLOCK PARTITION_ADVANCED MSDOS_PARTITION MMC MMC_BLOCK MMC_SUNXI REGULATOR REGULATOR_FIXED_VOLTAGE EXT4_FS NET PACKET INET ETHTOOL_NETLINK NETDEVICES ETHERNET NET_VENDOR_STMICRO STMMAC_ETH STMMAC_PLATFORM DWMAC_SUN8I PHYLIB FWNODE_MDIO OF_MDIO MDIO_BUS_MUX USB USB_ANNOUNCE_NEW_DEVICES USB_EHCI_HCD USB_EHCI_HCD_PLATFORM EXTCON POWER_SUPPLY GENERIC_PHY PHY_SUN4I_USB MEDIA_SUPPORT MEDIA_SUPPORT_FILTER MEDIA_CAMERA_SUPPORT MEDIA_USB_SUPPORT VIDEO_DEV MEDIA_CONTROLLER USB_VIDEO_CLASS VIDEOBUF2_CORE VIDEOBUF2_V4L2 VIDEOBUF2_MEMOPS VIDEOBUF2_VMALLOC'
-required_symbols="$required_symbols USB_GADGET USB_MUSB_HDRC USB_MUSB_GADGET USB_MUSB_SUNXI NOP_USB_XCEIV USB_LIBCOMPOSITE CONFIGFS_FS USB_CONFIGFS USB_CONFIGFS_F_HID"
+required_symbols="$required_symbols USB_GADGET USB_MUSB_HDRC USB_MUSB_GADGET USB_MUSB_SUNXI NOP_USB_XCEIV USB_LIBCOMPOSITE CONFIGFS_FS USB_CONFIGFS USB_CONFIGFS_F_HID USB_CONFIGFS_MASS_STORAGE USB_F_MASS_STORAGE"
 for symbol in $required_symbols; do
     if ! grep -qx "CONFIG_${symbol}=y" "$linux_build/.config"; then
         echo "required CONFIG_${symbol}=y was not resolved" >&2
@@ -52,7 +58,7 @@ for symbol in $required_symbols; do
     fi
 done
 
-for symbol in USB_OHCI_HCD USB_MUSB_HOST USB_MUSB_DUAL_ROLE USB_CONFIGFS_MASS_STORAGE SND SND_USB_AUDIO DRM MEDIA_PLATFORM_SUPPORT VIDEO_SUNXI_CEDRUS MEDIA_ANALOG_TV_SUPPORT MEDIA_DIGITAL_TV_SUPPORT MEDIA_RADIO_SUPPORT MEDIA_SDR_SUPPORT MEDIA_TEST_SUPPORT; do
+for symbol in USB_OHCI_HCD USB_MUSB_HOST USB_MUSB_DUAL_ROLE SND SND_USB_AUDIO DRM MEDIA_PLATFORM_SUPPORT VIDEO_SUNXI_CEDRUS MEDIA_ANALOG_TV_SUPPORT MEDIA_DIGITAL_TV_SUPPORT MEDIA_RADIO_SUPPORT MEDIA_SDR_SUPPORT MEDIA_TEST_SUPPORT; do
     if grep -Eq "^CONFIG_${symbol}=(y|m)$" "$linux_build/.config"; then
         echo "forbidden HID keyboard slice CONFIG_${symbol} is enabled" >&2
         exit 1
@@ -99,6 +105,8 @@ import sys
 from pathlib import Path
 Path(sys.argv[2]).write_bytes(bytes.fromhex(Path(sys.argv[1]).read_text()))
 PY
+install -m 0755 "$repo/initramfs/gadget-storage" "$staging/usr/bin/gadget-storage"
+python3 "$repo/build/make-storage-image.py" "$staging/usr/share"
 "${CROSS_COMPILE}gcc" -std=c11 -Os -static -s \
     -Wall -Wextra -Werror \
     -o "$staging/usr/bin/v4l2-test" "$repo/initramfs/v4l2-test.c"

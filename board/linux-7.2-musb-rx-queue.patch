@@ -1,0 +1,23 @@
+--- a/drivers/usb/musb/musb_gadget.c
++++ b/drivers/usb/musb/musb_gadget.c
+@@ -1162,18 +1162,13 @@
+  */
+ void musb_ep_restart(struct musb *musb, struct musb_request *req)
+ {
+-	u16 csr;
+-	void __iomem *epio = req->ep->hw_ep->regs;
+-
+ 	trace_musb_req_start(req);
+ 	musb_ep_select(musb->mregs, req->epnum);
+ 	if (req->tx) {
+ 		txstate(musb, req);
+ 	} else {
+-		csr = musb_readw(epio, MUSB_RXCSR);
+-		csr |= MUSB_RXCSR_FLUSHFIFO | MUSB_RXCSR_P_WZC_BITS;
+-		musb_writew(epio, MUSB_RXCSR, csr);
+-		musb_writew(epio, MUSB_RXCSR, csr);
++		/* A packet may have arrived before the request was queued. */
++		rxstate(musb, req);
+ 	}
+ }
+ 

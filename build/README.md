@@ -5,7 +5,7 @@ Alpine/BusyBox initramfs. Incremental slices now add MMC0/read-only ext4,
 EMAC1/RMII, only the USB1 EHCI/PHY/VBUS path wired to the internal MS2131,
 and the minimum upstream V4L2/UVC capture stack. The current M5 slice adds
 USB0 MUSB peripheral mode and configfs HID keyboard support. OHCI and the
-remaining USB controllers, USB audio/storage, platform media/codecs,
+remaining USB controllers, USB audio/host-storage, platform media/codecs,
 display, and board-control GPIO functions remain disabled.
 
 Build from the repository root:
@@ -151,3 +151,32 @@ three HID paths with another bounded capture. It does not alter binding or
 convert the failed run into a pass; two subsequent complete RAM boots are
 still mandatory. Every failed attempt remains archived, including any initial
 partial UVC frame. Qualification keeps the stricter zero-startup-error gate.
+
+G4 qualification uses `boot-hid --mass-storage`, which retains all three G3
+HID functions and adds one 8 MiB disposable FAT16 LUN from the VM-built
+initramfs. `build/make-storage-image.py` generates its fixed bytes and manifest;
+`gadget-storage setup` verifies the entire image before exposure and configures
+`ro=1`, `cdrom=0`, `removable=0`. No vendor SD or host disk backs the LUN.
+The only additional kernel options are configfs mass storage and its selected
+function driver. The bridge needs `sg3-utils` (including `sg_raw`, `sg_inq`,
+`sg_readcap`), the `sg` driver, util-linux, and its existing HID/UVC test tools.
+
+The verifier resolves the disk and SCSI generic device below the identified
+composite interface instead of choosing a fixed `/dev/sdX`. It checks all four
+interface bindings, exact retained HID descriptors/events, capacity, filesystem
+identity, a read-only mount, all known bytes/hashes, rejected filesystem and
+SCSI writes, and unchanged full-image hashes. Host image reads use direct I/O
+to bypass the page cache. Mounts are removed before software or physical
+reconnect. `G4_RECONNECT_READY` opens the cable window; unplug only USB-PC for
+at least three seconds. Two later complete RAM-only boots can reference the
+passing G4 result with `--reconnect-evidence`; they repeat software rebind,
+HID/storage tests and concurrent UVC. See [G4 status and evidence](../research/m5-storage-bringup.md).
+
+G4 is qualified at `linux-7.2.3-usb-gadget-baseline`. The builder also applies
+`board/linux-7.2-musb-rx-queue.patch`: MUSB must consume an OUT packet that
+arrived before the receive request was queued, rather than flush it. Without
+this correction, HID activity can coincide with lost storage commands and
+30-second host recovery resets. The verifier rejects unexpected USB resets;
+mount/write checks run sequentially, and direct image reads run during UVC.
+Failed historical pass flags and the final corrected-kernel acceptance are
+preserved in the G4 research record. M6 has not started.
