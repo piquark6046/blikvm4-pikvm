@@ -166,6 +166,12 @@ class LabctlDetectTests(unittest.TestCase):
 
 
 class LabctlAutomationTests(unittest.TestCase):
+    def test_password_prompt_allows_uart_flush_whitespace(self) -> None:
+        prompt = LABCTL_MODULE["PASSWORD_PROMPT"]
+        self.assertIsNotNone(prompt.search("blikvm\n Password: "))
+        self.assertIsNotNone(prompt.search("\nPassword: "))
+        self.assertIsNone(prompt.search("echo Password: "))
+
     def test_uart_line_uses_one_terminator_and_neutral_flush_byte(self) -> None:
         console_type = LABCTL_MODULE["SerialConsole"]
         console = object.__new__(console_type)
