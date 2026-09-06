@@ -1,0 +1,40 @@
+#!/bin/busybox sh
+# G3 adds one function to the unmodified G2 gadget, only while unbound.
+set -eu
+g=/sys/kernel/config/usb_gadget/blikvm_m5
+f=$g/functions/hid.relative
+case "${1:-state}" in
+setup)
+    hid-absolute-mouse setup
+    [ -z "$(cat "$g/UDC")" ]
+    mkdir "$f"
+    echo 0 > "$f/subclass"
+    echo 0 > "$f/protocol"
+    echo 1 > "$f/no_out_endpoint"
+    echo 3 > "$f/report_length"
+    cat /usr/share/hid-relative-mouse.report > "$f/report_desc"
+    ln -s "$f" "$g/configs/c.1/hid.relative"
+    echo relative_setup_complete=1
+    ;;
+report)
+    dev=$(cat "$f/dev")
+    path=$(readlink -f "/sys/dev/char/$dev")
+    node=/dev/${path##*/}
+    case "$node" in /dev/hidg[0-9]*) ;; *) exit 1;; esac
+    [ -c "$node" ]
+    timeout 5 sh -c 'printf "\000\000\000" > "$1"' sh "$node"
+    echo relative_neutral_report_sent=1
+    ;;
+state)
+    hid-absolute-mouse state
+    echo relative_function=hid.relative
+    for attr in subclass protocol report_length no_out_endpoint dev; do
+        echo "relative_$attr=$(cat "$f/$attr")"
+    done
+    od -An -tx1 "$f/report_desc"
+    echo functions_begin
+    ls "$g/functions"
+    echo functions_end
+    ;;
+*) echo 'usage: hid-relative-mouse setup|report|state' >&2; exit 2;;
+esac

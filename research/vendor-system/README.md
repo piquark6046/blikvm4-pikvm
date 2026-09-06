@@ -19,3 +19,9 @@ The subsequent transport phase copied the exact kernel, uInitrd, and base DTB
 from this read-only system. Their source paths, sizes, and hashes are recorded
 in `artifacts/vendor/README.md`; the full TFTP boot evidence is in
 `research/uart-uboot-tftp-phase.md`.
+
+G3 inspected the installed relative-mouse setup on 2026-09-06 through a
+`ro,noload` mount of partition 3, without executing the vendor script.
+`relative-mouse-source.txt` retains its licensed `configure_relative_mode`
+excerpt. Full capture provenance and the descriptor decision are in
+[the G3 review](../m5-hid-bringup.md#g3-descriptor-review).

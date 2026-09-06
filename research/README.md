@@ -118,3 +118,14 @@ enumerated 22 format-size records and 84 intervals, and each captured 60
 non-empty YUYV frames with 60 unique hashes and no persistent USB/UVC errors.
 The deterministic source, mode matrix, automation, and evidence are in
 [uvc-v4l2-bringup.md](uvc-v4l2-bringup.md).
+
+
+## 22. M5 HID baselines
+
+G1 keyboard, G2 absolute mouse and G3 relative mouse are qualified. G3 retains
+all three functions with exact report descriptors, configfs-derived device
+mapping, grabbed host evdev tests, software/physical reconnect, concurrent
+60-frame changing MS2131 capture and two consecutive RAM-only boots. The
+annotated tag is `linux-7.2.3-hid-relative-mouse-baseline`. Read-only disposable
+mass storage is the proposed G4 gate and has not started; this is not completion
+of all M5. See [the qualification and negative evidence](m5-hid-bringup.md).

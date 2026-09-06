@@ -4,7 +4,9 @@ Status: G1 keyboard-only and G2 keyboard plus absolute mouse qualification
 passed on 2026-09-06. G2 preserves the frozen G1 keyboard unchanged and adds
 exactly one absolute-pointer function. Physical reconnect, host evdev input,
 concurrent changing UVC capture and two consecutive RAM-only boots are proven.
-Relative mouse and storage remain deferred; this is not completion of all M5.
+G3 keyboard plus absolute and relative mouse qualification also passed on
+2026-09-06, including physical reconnect and two consecutive RAM-only boots.
+Storage remains deferred. This is not completion of all M5.
 
 ## Prerequisite
 
@@ -401,3 +403,230 @@ concurrent 60-frame changing UVC capture and two consecutive RAM-only boots
 before accepting a separate relative-mouse baseline. Wheel behavior must be
 explicitly reviewed with that descriptor. Mass storage, GPIO/ATX, Ubuntu
 rootfs, uStreamer and kvmd remain deferred. G3 has not been implemented.
+
+## G3 descriptor review
+
+G3 starts from frozen G2 `69ddad1` / `linux-7.2.3-hid-absolute-mouse-baseline`.
+Before implementing its descriptor, inspected the archived vendor USB-PC
+observation and the installed vendor implementation through a `ro,noload`
+mount of SD partition 3 (unmounted immediately afterward). Inspection run
+`20260906T044828Z-6ace5fd-234925` on the bridge captured
+`/mnt/exec/release/lib/hid/enable-gadget.sh`, SHA-256
+`f788d87391ded49871b7c02d92327ebace89c966f8c2c2df3a38efaaf7fcb305`.
+The bridge inspection runner still used its historical G2 checkout; the
+project baseline for the new work is the fetched VM G2 tag above.
+
+`configure_relative_mode` defines eight buttons, signed eight-bit X/Y and
+vertical wheel (-127..127), then signed eight-bit Consumer AC Pan. Its
+five-byte report and boot-mouse subclass/protocol 1/2 agree with the earlier
+host observation. The source's comment beside `95 03` incorrectly says
+report count 1; the actual item specifies three axes (X, Y, wheel).
+This is captured implementation evidence, not a new vendor-runtime test.
+
+Reviewed `usb-gadget.md`, `pikvm-port.md` and the accepted G2 descriptor
+review: the intended port requires independent absolute and relative paths,
+configfs function-to-device mapping, and later adaptation to kvmd. G3 chooses
+**three buttons, signed eight-bit relative X/Y (-127..127), and no wheel**.
+Wheel/pan support is evidenced and useful for eventual scrolling, but is not
+needed to qualify the smallest relative movement slice. Adding it now would
+expand the exact evdev axis contract and functional tests. As with frozen G2,
+this minimal descriptor is not claimed to be wire-compatible with kvmd's
+final mouse writer; scrolling and final report-layout adaptation require a
+separately reviewed integration change. No existing descriptor changes.
+
+G3's report is three bytes: button bits 0..2 and five constant padding bits,
+then signed X and Y. No report ID, wheel, pan, output or feature reports.
+The new non-boot interface uses subclass/protocol 0/0 and one interrupt IN
+endpoint. Expected host capabilities are exactly BTN_LEFT/RIGHT/MIDDLE and
+REL_X/REL_Y, with EV_REL present and EV_ABS absent. Zero relative deltas do
+not produce evdev movement or a SYN_REPORT on their own; cleanup must verify
+all buttons released and no extra event frame, not invent a neutral event.
+
+The new descriptor is 50 bytes, SHA-256
+`58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e`.
+The vendor relative descriptor decoded from the preserved source excerpt is
+56 bytes, SHA-256
+`ed2b0d7e283a431e6d8441c385d476004df5ce926ae0fb346ee03b9cd82e020a`.
+The new helper calls the unchanged G2 helper and adds `hid.relative` before
+binding, without sending reports. Mapping checks use each function's `dev`
+attribute and `/sys/dev/char`, compare all target descriptor bytes, and require
+three distinct character devices. Every host snapshot independently compares
+all three report descriptors and USB identity, verifies three usbhid bindings,
+and checks exact mouse capability sets. The new relative sequence is
+`(+17,0), (-23,0), (0,+31), (0,-47), (-11,+13)`, left press, left release,
+then zero delta/all buttons released. Seven exact EV_SYN frames are required;
+EVIOCGKEY confirms neutral state while the matching device remains grabbed.
+
+### Proposed G4 (not implemented)
+
+After G3 acceptance, preserve all three HID descriptors and add exactly one
+mass-storage function with one disposable backing image built on the VM and
+loaded into target RAM. Set `lun.0/ro=1` before binding; use no target SD or
+bridge disk as backing storage. Review the MUSB endpoint allocation for the
+additional bulk IN/OUT pair. Check exactly three retained HID interfaces plus
+one SCSI/Bulk-Only interface, precise host device identity, capacity and write
+protection. Read back/hash the complete small image and verify that a bounded
+write to this positively identified disposable LUN is rejected and its hash
+stays unchanged. Repeat all grabbed HID event tests, software rebind, physical
+reconnect, concurrent 60-frame changing UVC with zero errors, and two full
+RAM-only boots. No GPIO/ATX, final rootfs, uStreamer or kvmd work is included.
+
+### Initial G3 result: reconnect timeout (superseded below)
+
+At this provisional stage G3 was **not qualified**. VM incremental build
+`20260906T045215Z-69ddad1-506697` produced the unchanged G2 kernel,
+DTB and configuration hashes. The initramfs is 4,298,420 bytes, SHA-256
+`e1122d1e1422c74c6430ff56cb16b8fd0e49807527ba54893e2e4c2f283ee0db`.
+An earlier sandboxed build failed before Docker could run because sudo was
+blocked by `no_new_privs`; the authorized build reused the persistent objects.
+No clean/mrproper operation occurred.
+
+Run `20260906T045426Z-69ddad1-597242` passed the retained RAM boot,
+MMC/ext4 read-only, EMAC1 and EHCI1/MS2131 checks. Initial enumeration and
+software UDC unbind/rebind each produced exactly three high-speed usbhid
+interfaces and matching host/target report descriptors. The function mappings
+were keyboard `251:0`, absolute `251:1`, relative `251:2`, resolved through
+sysfs rather than assumed from those observed minor numbers. All three input
+objects disappeared at software unbind; rebind recreated them as
+`input48`, `input49`, `input50` with unchanged identities/capabilities.
+USB device number changed from 29 to 30.
+
+Both initial and post-rebind grabbed evdev tests passed: G1 Left Shift
+press/release, G2 deterministic absolute coordinates/button test, and the
+G3 signed movement/left-button sequence with exact seven SYN_REPORT frames.
+All keys/buttons were released and absolute coordinates returned to zero.
+The relative node exposed exactly REL_X/REL_Y and BTN_LEFT/RIGHT/MIDDLE,
+with no absolute axes, wheels or extra buttons.
+
+The runner announced `G3_RECONNECT_READY` and waited 600 seconds. No physical
+USB-PC disconnect was observed; it failed at `hid_physical_reconnect` with
+`G3 composite did not disconnect`. This result does not qualify G3. The
+post-physical-reconnect tests, concurrent UVC capture, and two consecutive
+acceptance boots were not run. No commit, baseline tag or push was performed.
+All three functions remain bound and neutral. The temporary HDMI pattern
+source was stopped and the bridge restored to VT1. Observed host/target
+logs contain no matching USB/MUSB/PHY/UDC/UVC error, but the unperformed
+capture and reconnect gates remain required. The archive also retains a
+pre-existing host i915 eDP link warning; it is explicitly separated from
+USB-controller errors in the machine-readable review.
+
+All 41 local unit/fixture tests passed on VM and bridge. Tested automation,
+helpers and descriptors match the VM source byte-for-byte; research/build
+README updates were written after testing. The source metadata records G2
+parent `69ddad1f2122`, dirty status, and exact automation hashes.
+The deployment receiver verified the full bundle size and hash despite curl
+reporting a TLS EOF at connection close; the subsequent evidence export used
+an explicit HTTP Content-Length and completed without that transport warning.
+
+Byte-exact evidence is retained in `/home/user/blikvm-g3/repo/out/runs/` on
+the bridge and `out/runs/` on the VM. Authenticated, certificate-pinned TLS
+export `out/m5/g3-evidence.tar.gz` is 288,767 bytes, SHA-256
+`74d6f8152ec3ac85bd96fc8552ce0a1db81be3139066710eb37221156736691c`.
+It includes UART/raw UART, U-Boot, target configfs/UDC/dmesg, host USB/report
+descriptors, evdev events, kernel/udev monitors, metadata/results, tested
+sources and the full vendor inspection run. VM run copies also contain the
+verified VM-built artifacts. The [machine-readable evidence](evidence/m5-g3-relative-mouse.json)
+initially recorded `not_qualified`, passed checks and pending gates; the final
+qualified evidence below supersedes that provisional summary.
+
+### G3 resumed run: UART command truncation
+
+Run `20260906T054427Z-69ddad1-137246` passed physical USB-PC reconnect,
+exact descriptor/capability recreation, and all three grabbed post-reconnect
+input tests. It then captured 60 non-empty frames with 55 unique hashes,
+54 changes and zero startup/stream errors, but failed `hid_concurrent_uvc`:
+BusyBox's interactive line editor truncated the 2,104-byte UART command,
+leaving off its completion marker. The echoed command stops after
+`blikvm_rc=$?`; the host correctly timed out instead of accepting the frame
+summary alone. This run remains failed.
+
+The G3 host verifier now stages the identical bounded keyboard/absolute/
+relative report scripts in `/run` using short base64 chunks and verifies each
+script's SHA-256 before execution. The concurrent launch command is short;
+the captured report sequences, descriptors, initramfs, kernel, DTB and config
+are unchanged. All 42 tests pass locally and on the bridge, including a
+fixture checking command bounds and byte-exact script reconstruction.
+A new full qualification run repeats the physical test with this corrected
+verifier; the original verifier is preserved in the evidence archive.
+
+
+### Final G3 physical reconnect and live qualification
+
+The corrected boot `20260906T054858Z-69ddad1-234233` recorded USB device 35
+removed at 05:50:03.301607 UTC and device 36 enumerating at 05:50:16.280373,
+a 12.978766-second physical disconnect. All three old evdev objects disappeared;
+the new keyboard, absolute mouse and relative mouse bound usbhid with identical
+USB/report descriptors, identity strings and exact capabilities. All three
+grabbed input tests passed after reconnect. Its capture delivered 60 valid
+changing frames with zero in-stream errors but one flagged partial startup
+buffer, so the stricter G3 wrapper correctly kept this boot failed.
+
+Live follow-up `20260906T055156Z-69ddad1-954161` repeated all HID inputs and
+capture on the same connected device and also recorded one partial startup
+buffer. It remains failed. The retained capture utility explicitly documents
+that an isochronous stream may begin partway through its first frame; the
+observed buffer was 11,592 bytes versus 614,400 bytes per complete frame.
+No kernel USB/UVC/controller error accompanied it, and all 60 subsequent
+frames were non-empty and changing. This observation does not erase either
+failed attempt or establish that every future stream start will be clean.
+
+The separate `lab/relative-live.py` requires a failed concurrent-capture boot
+with proven physical reconnect and all post-reconnect input passes. It checks
+unchanged automation hashes, exact USB/report descriptors, the archived
+physical transition and removal of all pre-disconnect input objects, current
+evdev identities, exact mouse capabilities and target function mappings.
+It never reboots, configures, binds or unbinds the gadget. It re-runs all three
+grabbed input sequences and concurrent capture, preserving failure status
+for all earlier runs. Its own source SHA-256 is recorded in its metadata.
+
+One further bounded live run, `20260906T055323Z-69ddad1-969949`, passed without
+changing the acceptance gate: 60 non-empty frames, 60 unique hashes, 59 changes,
+zero startup and stream errors, all three expected HID event sequences and
+neutral cleanup, exact descriptors/mappings, and no persistent USB/MUSB/PHY/
+UDC/UVC error. This is the passing physical-reconnect evidence referenced by
+the subsequent complete boots; the cable operation itself is attributed to
+the original physical run, not falsely recorded as repeated.
+
+### Two consecutive G3 RAM-only boots and accepted evidence
+
+With USB-PC left attached and identical VM-built artifacts, the following
+full boots passed consecutively without any intervening failed boot:
+
+| Run | Retained stack and HID | Concurrent MS2131 capture |
+|---|---|---|
+| `20260906T055434Z-69ddad1-749933` | UART/U-Boot/TFTP, MMC/ext4 read-only, EMAC1, EHCI1/MS2131, USB0 MUSB, keyboard, absolute and relative mouse; exact descriptors/capabilities/mapping and software rebind | 60 non-empty frames, 60 unique hashes, 59 changes, zero startup/stream errors |
+| `20260906T055522Z-69ddad1-090548` | Same complete retained stack and all three grabbed input tests | 60 non-empty frames, 60 unique hashes, 59 changes, zero startup/stream errors |
+
+Each boot verified keyboard Shift press/release, the frozen absolute coordinate
+and button sequence, and signed relative X/Y movement plus button press/release
+before/after rebind, after validating the prior physical evidence, and during
+capture. Function mappings remained keyboard `251:0`, absolute `251:1`,
+relative `251:2`, always derived from configfs `dev` and sysfs. All functions
+stayed bound through capture. Neither boot contains a persistent USB/MUSB/PHY/
+UDC/UVC error or unexpected USB/controller reset. All 42 local tests pass on
+both VM and bridge; the tested executable sources and descriptors match the VM
+byte-for-byte. Research documentation was finalized after testing.
+
+The final byte-exact archive `out/m5/g3-qualified-evidence.tar.gz` is
+1,688,086 bytes, SHA-256
+`cb720638edf1ffa9ce27bd4523b7202db2fa9adb1cbd617e14594c698fc9477a`.
+It preserves all failed attempts, the passing live follow-up, both full boots,
+UART/raw UART, U-Boot/TFTP, target dmesg/UDC/configfs state, host kernel/udev
+monitors, exact USB/HID descriptors, evdev events, capture records, metadata,
+current and initial verifier sources, and vendor descriptor inspection.
+Authenticated certificate-pinned TLS transfer was checked against bridge
+size/hash. Original runs remain in `/home/user/blikvm-g3/repo/out/runs/`;
+byte-exact VM copies are under `out/runs/`, with verified VM-built artifacts
+added to each passing run. Large raw logs and binaries remain outside Git.
+[Machine-readable evidence](evidence/m5-g3-relative-mouse.json) now records
+`passed`, source/artifact/file hashes, physical provenance, all host events,
+retained checks and negative attempts. Runs identify G2 parent `69ddad1f2122`
+plus dirty status; no later commit is retroactively attributed to hardware.
+
+G3 is qualified at annotated tag
+`linux-7.2.3-hid-relative-mouse-baseline`. The G1 and G2 helpers/descriptors,
+kernel, DTB and config remain unchanged. Three HID functions remain bound
+and neutral; the temporary HDMI source has been stopped and the bridge
+returned to VT1. The vendor SD and persistent U-Boot environment are unchanged.
+Work stops before G4; the proposed read-only mass-storage plan above remains
+unimplemented, as do GPIO/ATX, Ubuntu final rootfs, uStreamer and kvmd.

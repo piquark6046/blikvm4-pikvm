@@ -129,3 +129,25 @@ final already-bound device only when the archived physical sequence, current
 identity and exact automation match. It checks actual host events and concurrent
 UVC without modifying gadget binding; two subsequent full RAM boots are still
 required. See the research record for the accepted evidence chain.
+
+For G3, add `--relative-mouse` to `boot-hid`. This includes the frozen G1/G2
+functions and adds only `hid.relative`: three buttons, signed relative X/Y,
+no wheel. The descriptor rationale and qualification status are in the
+[M5 record](../research/m5-hid-bringup.md). The G1 and G2 command paths remain
+available. `G3_RECONNECT_READY` marks the physical USB-PC cable window;
+wait at least three seconds before reconnecting firmly. All three evdev
+nodes are grabbed during reports. Exact host/target descriptors, function
+mapping, input capabilities, signed event order and SYN_REPORT boundaries
+are checked before/after rebind and reconnect and during the retained UVC
+capture. `--reconnect-evidence` must refer to a passing G3 run with identical
+artifact hashes; it never substitutes for the initial physical cable test.
+
+If an otherwise verified G3 physical run stops during concurrent capture,
+`python3 lab/relative-live.py --interrupted-run /path/to/run` can requalify
+the same already-connected device. It requires the recorded physical
+transition and post-reconnect input passes, unchanged tested automation,
+matching current USB/evdev identities and exact descriptors, and checks all
+three HID paths with another bounded capture. It does not alter binding or
+convert the failed run into a pass; two subsequent complete RAM boots are
+still mandatory. Every failed attempt remains archived, including any initial
+partial UVC frame. Qualification keeps the stricter zero-startup-error gate.

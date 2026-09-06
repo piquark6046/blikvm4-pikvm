@@ -527,7 +527,8 @@ class RunRecorder:
         self.metadata["repository_status"] = source_status.stdout if source_status.returncode == 0 else "unavailable"
         for name in ("lab/labctl", "lab/hidlab.py", "initramfs/hid-keyboard",
                      "lab/absolutelab.py", "initramfs/hid-absolute-mouse",
-                     "initramfs/hid-absolute-mouse.report.hex"):
+                     "initramfs/hid-absolute-mouse.report.hex", "lab/relativelab.py",
+                     "initramfs/hid-relative-mouse", "initramfs/hid-relative-mouse.report.hex"):
             source = REPOSITORY_ROOT / name
             if source.is_file():
                 self.metadata.setdefault("automation_sha256", {})[name] = hashlib.sha256(source.read_bytes()).hexdigest()
@@ -2664,6 +2665,7 @@ def boot_linux_command(
             if run_hid:
                 stage = "hid_test"
                 hid_module = runpy.run_path(str(REPOSITORY_ROOT / "lab" / (
+                    "relativelab.py" if args.relative_mouse else
                     "absolutelab.py" if args.absolute_mouse else "hidlab.py")))
                 hid = hid_module["run_hid_test"](
                     console, recorder, args, run_uvc_test, capture_shell_command
@@ -2672,7 +2674,7 @@ def boot_linux_command(
                 if hid["result"] != "passed":
                     stage = "hid_" + hid["failed_stage"]
                     raise RuntimeError("HID validation failed: " + hid["error"])
-                last_passed = "hid_absolute_and_keyboard_and_uvc" if args.absolute_mouse else "hid_keyboard_and_uvc"
+                last_passed = "hid_three_functions_and_uvc" if args.relative_mouse else "hid_absolute_and_keyboard_and_uvc" if args.absolute_mouse else "hid_keyboard_and_uvc"
             elif run_uvc:
                 stage = "uvc_test"
                 uvc = run_uvc_test(console, recorder)
@@ -2694,7 +2696,7 @@ def boot_linux_command(
         report: dict[str, Any] = {
             "result": "passed",
             "stage": (
-                ("hid_absolute_and_keyboard_and_uvc" if args.absolute_mouse else "hid_keyboard_and_uvc") if run_hid else
+                ("hid_three_functions_and_uvc" if args.relative_mouse else "hid_absolute_and_keyboard_and_uvc" if args.absolute_mouse else "hid_keyboard_and_uvc") if run_hid else
                 "uvc_capture"
                 if run_uvc
                 else "usb_enumeration"
@@ -3087,6 +3089,9 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     hid_parser.add_argument("--reconnect-evidence", type=Path)
     hid_parser.add_argument("--absolute-mouse", action="store_true",
                             help="G2: retain G1 keyboard and add exactly one absolute mouse")
+
+    hid_parser.add_argument("--relative-mouse", action="store_true",
+                            help="G3: retain G1/G2 and add exactly one relative mouse")
 
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)

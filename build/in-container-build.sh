@@ -92,6 +92,13 @@ import sys
 from pathlib import Path
 Path(sys.argv[2]).write_bytes(bytes.fromhex(Path(sys.argv[1]).read_text()))
 PY
+install -m 0755 "$repo/initramfs/hid-relative-mouse" "$staging/usr/bin/hid-relative-mouse"
+mkdir -p "$staging/usr/share"
+python3 - "$repo/initramfs/hid-relative-mouse.report.hex" "$staging/usr/share/hid-relative-mouse.report" <<'PY'
+import sys
+from pathlib import Path
+Path(sys.argv[2]).write_bytes(bytes.fromhex(Path(sys.argv[1]).read_text()))
+PY
 "${CROSS_COMPILE}gcc" -std=c11 -Os -static -s \
     -Wall -Wextra -Werror \
     -o "$staging/usr/bin/v4l2-test" "$repo/initramfs/v4l2-test.c"

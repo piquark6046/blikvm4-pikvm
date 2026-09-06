@@ -43,8 +43,11 @@ Enable MUSB/configfs HID/MSD. **Pass:** keyboard; then both mouse modes; then an
 host input press/release, and concurrent 60-frame changing UVC on two
 consecutive RAM-only boots (`20260906T033008Z-9edcd3a-215238` and
 `20260906T033114Z-9edcd3a-029399`). Preserved by annotated tag
-`linux-7.2.3-hid-keyboard-baseline`. G2 absolute mouse is proposed only;
-relative mouse and storage remain pending. See [M5 evidence](m5-hid-bringup.md).
+`linux-7.2.3-hid-keyboard-baseline`. G2 absolute mouse and G3 relative mouse are also qualified at
+`linux-7.2.3-hid-absolute-mouse-baseline` and
+`linux-7.2.3-hid-relative-mouse-baseline`. G3 preserved all three HID functions
+through physical reconnect, exact evdev tests and concurrent 60-frame UVC
+on two consecutive RAM-only boots. G4 read-only storage remains pending. See [M5 evidence](m5-hid-bringup.md).
 
 ## M6 — GPIO/ATX
 
