@@ -39,6 +39,13 @@ signal loss/recovery qualification, then uStreamer smoke testing.
 
 Enable MUSB/configfs HID/MSD. **Pass:** keyboard; then both mouse modes; then an expendable read-only LUN; clean disconnect/rebind; full BliKVM reboot recovery on the controlled host.
 
+**Current:** G1 keyboard-only qualification passed physical USB-PC reconnect,
+host input press/release, and concurrent 60-frame changing UVC on two
+consecutive RAM-only boots (`20260906T033008Z-9edcd3a-215238` and
+`20260906T033114Z-9edcd3a-029399`). Preserved by annotated tag
+`linux-7.2.3-hid-keyboard-baseline`. G2 absolute mouse is proposed only;
+relative mouse and storage remain pending. See [M5 evidence](m5-hid-bringup.md).
+
 ## M6 — GPIO/ATX
 
 Name/read status lines with libgpiod first. Use a meter/test fixture before outputs. **Pass:** inputs track known signals; power/reset pulses have verified polarity/duration; lines return inactive; no legacy sysfs GPIO dependency.

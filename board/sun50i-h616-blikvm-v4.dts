@@ -4,9 +4,9 @@
  *
  * This intentionally describes only DRAM, the proven UART0 console, the
  * removable SD slot on MMC0, the EMAC1 RMII Ethernet path, and the single
- * USB1 host path wired to the internal HDMI capture device. Display/media,
- * USB gadget, GPIO/ATX functions, and other carrier peripherals belong to
- * later, independently validated slices.
+ * USB1 host path wired to the internal HDMI capture device, plus USB0
+ * peripheral mode for the M5 HID slice. Display, GPIO/ATX functions, and
+ * other carrier peripherals belong to later, independently validated slices.
  */
 
 /dts-v1/;
@@ -111,5 +111,11 @@
 
 &usbphy {
 	usb1_vbus-supply = <&reg_usb1_vbus>;
+	status = "okay";
+};
+
+/* USB-PC uses PHY0 as a peripheral; USB1 remains the capture host. */
+&usbotg {
+	dr_mode = "peripheral";
 	status = "okay";
 };

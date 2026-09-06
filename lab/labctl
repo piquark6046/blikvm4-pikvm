@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import platform
 import re
+import runpy
 import select
 import shutil
 import subprocess
@@ -37,7 +38,7 @@ ANSI_ESCAPE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))
 UBOOT_PROMPT = re.compile(r"(?:^|\n)=>\s*$")
 LINUX_PROMPT = re.compile(r"(?:^|\n)[^\x00-\x1f\n]{1,160}[$#]\s*$")
 LOGIN_PROMPT = re.compile(r"(?:^|\n)[^\n]{0,80}login:\s*$", re.IGNORECASE)
-PASSWORD_PROMPT = re.compile(r"(?:^|\n)Password:\s*$", re.IGNORECASE)
+PASSWORD_PROMPT = re.compile(r"(?:^|\n)[ \t]*Password:\s*$", re.IGNORECASE)
 INITRAMFS_READY = re.compile(r"(?:^|\n)BLIKVM_INITRAMFS_READY\b")
 INITRAMFS_SHELL = re.compile(r"(?:^|\n)blikvm-initramfs:/ #\s*$")
 SHELL_VERIFIED = re.compile(
@@ -518,6 +519,16 @@ class RunRecorder:
             },
             "safety": {"persistent_uboot_environment_written": False},
         }
+        source_status = subprocess.run(
+            ["git", "status", "--porcelain"], cwd=REPOSITORY_ROOT,
+            capture_output=True, text=True, check=False,
+        )
+        self.metadata["repository_dirty"] = bool(source_status.stdout) if source_status.returncode == 0 else None
+        self.metadata["repository_status"] = source_status.stdout if source_status.returncode == 0 else "unavailable"
+        for name in ("lab/labctl", "lab/hidlab.py", "initramfs/hid-keyboard"):
+            source = REPOSITORY_ROOT / name
+            if source.is_file():
+                self.metadata.setdefault("automation_sha256", {})[name] = hashlib.sha256(source.read_bytes()).hexdigest()
         write_json(self.path / "metadata.json", self.metadata)
 
     def log_uart(self, direction: str, data: bytes) -> None:
@@ -1502,7 +1513,7 @@ def assess_ethernet_evidence(
 
 
 def assess_usb_evidence(
-    statuses: dict[str, int], evidence: dict[str, str]
+    statuses: dict[str, int], evidence: dict[str, str], *, expect_musb: bool = False
 ) -> tuple[dict[str, dict[str, Any]], str | None]:
     """Turn archived target output into ordered USB host stage results."""
 
@@ -1545,7 +1556,10 @@ def assess_usb_evidence(
             "status": "pass"
             if "controller_present=1" in controller
             and "controller_driver=ehci-platform" in controller
-            and enabled_controllers == [("5200000.usb", "ehci-platform")]
+            and enabled_controllers == (
+                [("5100000.usb", "musb-sunxi"), ("5200000.usb", "ehci-platform")]
+                if expect_musb else [("5200000.usb", "ehci-platform")]
+            )
             and "ehci-platform 5200000.usb: EHCI Host Controller" in dmesg
             and "ehci-platform 5200000.usb: USB 2.0 started, EHCI 1.00" in dmesg
             else "fail",
@@ -1971,7 +1985,7 @@ def run_ethernet_test(
     }
 
 
-def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
+def run_usb_test(console: SerialConsole, recorder: RunRecorder, *, expect_musb: bool = False) -> dict[str, Any]:
     """Validate the H616 USB1 EHCI path and internal MS2131 transport."""
 
     evidence: dict[str, str] = {}
@@ -2044,7 +2058,7 @@ def run_usb_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
         statuses[filename] = status
         evidence[filename] = output
 
-    checks, failed_stage = assess_usb_evidence(statuses, evidence)
+    checks, failed_stage = assess_usb_evidence(statuses, evidence, expect_musb=expect_musb)
     enumeration = evidence["usb-enumeration-wait.log"]
     device_match = re.search(r"(?m)^device=([^\n]+)$", enumeration)
     serial_match = re.search(r"(?m)^serial=([^\n]+)$", enumeration)
@@ -2349,7 +2363,7 @@ def assess_uvc_evidence(
     return checks, failed_stage, parsed
 
 
-def run_uvc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any]:
+def run_uvc_test(console: SerialConsole, recorder: RunRecorder, *, concurrent_hid: bool = False, hid_report_command: str = "hid-keyboard report") -> dict[str, Any]:
     """Enumerate the MS2131 UVC/V4L2 API and capture changing raw frames."""
 
     evidence: dict[str, str] = {}
@@ -2461,6 +2475,12 @@ def run_uvc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
         ),
     )
     for filename, label, command, timeout in commands:
+        if concurrent_hid and filename == "v4l2-stream.log":
+            command = (
+                "(sleep 1; " + hid_report_command + " > /run/hid-report.log) & hid_pid=$!; "
+                + command + "; video_rc=$?; wait $hid_pid; hid_rc=$?; "
+                "cat /run/hid-report.log; [ $video_rc -eq 0 ] && [ $hid_rc -eq 0 ]"
+            )
         status, output = capture_shell_command(
             console, recorder, filename, label, command, timeout
         )
@@ -2480,10 +2500,11 @@ def run_uvc_test(console: SerialConsole, recorder: RunRecorder) -> dict[str, Any
 def boot_linux_command(
     args: argparse.Namespace, sys_root: Path, dev_root: Path
 ) -> dict[str, Any]:
-    run_mmc = args.command in ("boot-mmc", "boot-ethernet", "boot-usb", "boot-uvc")
-    run_ethernet = args.command in ("boot-ethernet", "boot-usb", "boot-uvc")
-    run_usb = args.command in ("boot-usb", "boot-uvc")
-    run_uvc = args.command == "boot-uvc"
+    run_mmc = args.command in ("boot-mmc", "boot-ethernet", "boot-usb", "boot-uvc", "boot-hid")
+    run_ethernet = args.command in ("boot-ethernet", "boot-usb", "boot-uvc", "boot-hid")
+    run_usb = args.command in ("boot-usb", "boot-uvc", "boot-hid")
+    run_uvc = args.command in ("boot-uvc", "boot-hid")
+    run_hid = args.command == "boot-hid"
     recorder = RunRecorder(args.command, args.out_root)
     stage = "preflight"
     last_passed = "none"
@@ -2493,6 +2514,7 @@ def boot_linux_command(
     ethernet: dict[str, Any] | None = None
     usb: dict[str, Any] | None = None
     uvc: dict[str, Any] | None = None
+    hid: dict[str, Any] | None = None
     try:
         manifest = copy_linux_artifacts(recorder, args.artifact_root)
         recorder.metadata["artifacts"] = manifest["artifacts"]
@@ -2505,7 +2527,7 @@ def boot_linux_command(
                 "dhcp_used": False,
                 "dns_configured": False,
                 "default_gateway_configured": False,
-                "usb_gadget_enabled": False,
+                "usb_gadget_enabled": run_hid,
                 "media_support_enabled": True,
                 "usb_audio_enabled": False,
                 "platform_media_or_codec_enabled": False,
@@ -2628,7 +2650,7 @@ def boot_linux_command(
 
             if run_usb:
                 stage = "usb_test"
-                usb = run_usb_test(console, recorder)
+                usb = run_usb_test(console, recorder, expect_musb=run_hid)
                 if usb["result"] != "passed":
                     failed_stage = usb["failed_stage"] or "unknown"
                     stage = f"usb_{failed_stage}"
@@ -2637,7 +2659,18 @@ def boot_linux_command(
                     )
                 last_passed = "usb_enumeration"
 
-            if run_uvc:
+            if run_hid:
+                stage = "hid_test"
+                hid_module = runpy.run_path(str(REPOSITORY_ROOT / "lab" / "hidlab.py"))
+                hid = hid_module["run_hid_test"](
+                    console, recorder, args, run_uvc_test, capture_shell_command
+                )
+                uvc = hid.get("uvc")
+                if hid["result"] != "passed":
+                    stage = "hid_" + hid["failed_stage"]
+                    raise RuntimeError("HID validation failed: " + hid["error"])
+                last_passed = "hid_keyboard_and_uvc"
+            elif run_uvc:
                 stage = "uvc_test"
                 uvc = run_uvc_test(console, recorder)
                 if uvc["result"] != "passed":
@@ -2658,6 +2691,7 @@ def boot_linux_command(
         report: dict[str, Any] = {
             "result": "passed",
             "stage": (
+                "hid_keyboard_and_uvc" if run_hid else
                 "uvc_capture"
                 if run_uvc
                 else "usb_enumeration"
@@ -2690,6 +2724,8 @@ def boot_linux_command(
             report["ethernet"] = ethernet
         if usb is not None:
             report["usb"] = usb
+        if hid is not None:
+            report["hid"] = hid
         if uvc is not None:
             report["uvc"] = uvc
     except Exception as error:
@@ -2712,6 +2748,8 @@ def boot_linux_command(
             report["ethernet"] = ethernet
         if usb is not None:
             report["usb"] = usb
+        if hid is not None:
+            report["hid"] = hid
         if uvc is not None:
             report["uvc"] = uvc
     return recorder.finish(report)
@@ -3038,6 +3076,13 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     uvc_parser.add_argument("--linux-timeout", type=float, default=180.0)
 
+    hid_parser = subparsers.add_parser(
+        "boot-hid", parents=[uvc_parser], add_help=False,
+        help="RAM boot one HID keyboard and qualify it alongside UVC",
+    )
+    hid_parser.add_argument("--reconnect-timeout", type=float, default=180.0)
+    hid_parser.add_argument("--reconnect-evidence", type=Path)
+
     subparsers.add_parser("collect", help="collect current host network evidence")
     args = parser.parse_args(argv)
     if getattr(args, "jobs", 1) < 1:
@@ -3091,6 +3136,7 @@ def main(argv: list[str] | None = None) -> int:
             "boot-ethernet",
             "boot-usb",
             "boot-uvc",
+            "boot-hid",
         ):
             report = boot_linux_command(args, sys_root, dev_root)
         elif args.command == "collect":

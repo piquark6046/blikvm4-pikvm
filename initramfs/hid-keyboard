@@ -1,0 +1,76 @@
+#!/bin/busybox sh
+# RAM-only M5 keyboard. No reports are sent by setup/bind.
+set -eu
+g=/sys/kernel/config/usb_gadget/blikvm_m5
+find_udc() {
+    set -- /sys/class/udc/*
+    [ "$#" -eq 1 ] && [ -e "$1" ] || { echo 'expected exactly one UDC' >&2; exit 1; }
+    case "$(readlink -f "$1")" in */5100000.usb/*) ;; *) echo 'unexpected UDC controller' >&2; exit 1;; esac
+    udc=${1##*/}
+}
+case "${1:-state}" in
+setup)
+    find_udc
+    grep -qs ' /sys/kernel/config configfs ' /proc/mounts || mount -t configfs configfs /sys/kernel/config
+    [ ! -e "$g" ] || { echo 'gadget already exists' >&2; exit 1; }
+    mkdir "$g"
+    echo 0x1d6b > "$g/idVendor"
+    echo 0x0106 > "$g/idProduct"
+    echo 0x0200 > "$g/bcdUSB"
+    echo 0x0100 > "$g/bcdDevice"
+    mkdir "$g/strings/0x409"
+    echo BliKVM > "$g/strings/0x409/manufacturer"
+    echo 'BliKVM M5 keyboard' > "$g/strings/0x409/product"
+    echo blikvm-v4-m5-keyboard > "$g/strings/0x409/serialnumber"
+    mkdir "$g/configs/c.1"
+    echo 50 > "$g/configs/c.1/MaxPower"
+    mkdir "$g/functions/hid.keyboard"
+    echo 1 > "$g/functions/hid.keyboard/subclass"
+    echo 1 > "$g/functions/hid.keyboard/protocol"
+    echo 1 > "$g/functions/hid.keyboard/no_out_endpoint"
+    echo 8 > "$g/functions/hid.keyboard/report_length"
+    printf '\005\001\011\006\241\001\005\007\031\340\051\347\025\000\045\001\165\001\225\010\201\002\225\001\165\010\201\001\225\005\165\001\005\010\031\001\051\005\221\002\225\001\165\003\221\001\225\006\165\010\025\000\045\145\005\007\031\000\051\145\201\000\300' > "$g/functions/hid.keyboard/report_desc"
+    ln -s "$g/functions/hid.keyboard" "$g/configs/c.1/hid.keyboard"
+    echo setup_complete=1
+    ;;
+bind)
+    find_udc
+    [ -z "$(cat "$g/UDC")" ]
+    echo "$udc" > "$g/UDC"
+    echo "bound_udc=$udc"
+    ;;
+unbind)
+    printf '\n' > "$g/UDC"
+    echo unbound=1
+    ;;
+report)
+    dev=$(cat "$g/functions/hid.keyboard/dev")
+    path=$(readlink -f "/sys/dev/char/$dev")
+    node=/dev/${path##*/}
+    case "$node" in /dev/hidg[0-9]*) ;; *) exit 1;; esac
+    [ -c "$node" ]
+    timeout 5 sh -c 'printf "\000\000\000\000\000\000\000\000" > "$1"' sh "$node"
+    echo neutral_report_sent=1
+    ;;
+state)
+    find_udc
+    echo "udc=$udc"
+    echo "udc_path=$(readlink -f "/sys/class/udc/$udc")"
+    for attr in state current_speed maximum_speed; do
+        echo "$attr=$(cat "/sys/class/udc/$udc/$attr")"
+    done
+    if [ -d "$g" ]; then
+        for attr in UDC idVendor idProduct; do echo "$attr=$(cat "$g/$attr")"; done
+        for attr in subclass protocol report_length no_out_endpoint dev; do
+            echo "$attr=$(cat "$g/functions/hid.keyboard/$attr")"
+        done
+        ls -l "$g/configs/c.1/"
+        for node in /dev/hidg*; do
+            [ -c "$node" ] || continue
+            ls -l "$node"
+        done
+        od -An -tx1 "$g/functions/hid.keyboard/report_desc"
+    fi
+    ;;
+*) echo 'usage: hid-keyboard setup|bind|unbind|report|state' >&2; exit 2;;
+esac

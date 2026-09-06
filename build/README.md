@@ -3,9 +3,10 @@
 The accepted baseline was limited to H616 core support, UART0, and an
 Alpine/BusyBox initramfs. Incremental slices now add MMC0/read-only ext4,
 EMAC1/RMII, only the USB1 EHCI/PHY/VBUS path wired to the internal MS2131,
-and the minimum upstream V4L2/UVC capture stack. OHCI and the other USB
-controllers remain disabled, as do USB audio, gadget, UDC, USB storage,
-platform media/codecs, display, and board-control GPIO functions.
+and the minimum upstream V4L2/UVC capture stack. The current M5 slice adds
+USB0 MUSB peripheral mode and configfs HID keyboard support. OHCI and the
+remaining USB controllers, USB audio/storage, platform media/codecs,
+display, and board-control GPIO functions remain disabled.
 
 Build from the repository root:
 
@@ -62,3 +63,42 @@ The initramfs contains a single static `v4l2-test` binary instead of
 `v4l-utils`. It uses only the kernel UAPI to enumerate nodes, capabilities,
 inputs, standards, formats, sizes and intervals, then performs MMAP streaming
 and reports the size, nonzero-byte count and FNV-1a hash of each frame.
+
+The VM/bridge migration passed with direct LattePanda HDMI output connected
+to the BliKVM HDMI input; an HDMI dummy plug is not a capture source. See
+[migration evidence](../research/vm-bridge-migration.md).
+
+Build the current M5 image on the VM with the same incremental command.
+Transfer the artifacts and source snapshot to the bridge, verify their
+hashes, and run there:
+
+```bash
+sudo ./lab/labctl --pretty boot-hid \
+  --artifact-root /path/to/VM-built/artifacts --tftp-root /srv/tftp \
+  --target-password-file /path/outside/repository/to/vendor-password
+```
+
+The command retains MMC/Ethernet/internal-host tests, validates USB0 UDC and
+one keyboard, checks unbind/rebind, then prints `HID_RECONNECT_READY` to
+stderr. Unplug/reconnect only USB-PC while that bounded wait is active.
+Afterward a bounded Left Shift press/release is verified through the exact
+keyboard's evdev input node. The verifier temporarily grabs only that node,
+checks both ordered EV_KEY events and synchronization, and releases the
+modifier on the target even on a test failure. It repeats this report during
+the retained 60-frame UVC capture. The gadget remains bound for inspection.
+USB/udev and kernel monitors are archived with host descriptors and input
+identity. The report descriptor is also checked through the matching hidraw
+node; a successful target write alone is not a pass.
+
+For a second RAM boot with identical artifacts, `--reconnect-evidence`
+can reference the first passing boot's `test-results.json`; physical
+reconnect is then recorded as previously verified rather than repeated.
+Enumeration, unbind/rebind, input press/release, and concurrent UVC are repeated.
+For qualification of an already bound keyboard following a separately
+monitored physical reconnect, `python3 lab/hid-live.py --reconnect-evidence
+/path/to/physical-run/test-results.json` runs the live report/capture checks.
+That live check does not substitute for two subsequent complete RAM boots.
+This command qualifies only the keyboard slice, not all of M5. The older
+`boot-uvc` command deliberately keeps its UVC-only controller expectations;
+use archived UVC artifacts with that command and current M5 artifacts with
+`boot-hid`.

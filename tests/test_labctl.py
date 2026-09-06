@@ -430,6 +430,16 @@ class LabctlAutomationTests(unittest.TestCase):
         self.assertEqual(checks["controller_probe"]["status"], "fail")
         self.assertEqual(failed_stage, "controller_probe")
 
+        evidence["usb-controller-phy.log"] = evidence["usb-controller-phy.log"].replace(
+            "enabled_usb_controller=5310000.usb driver=ehci-platform\n", ""
+        ).replace(
+            "enabled_usb_controller=5200000.usb driver=ehci-platform\n",
+            "enabled_usb_controller=5100000.usb driver=musb-sunxi\n"
+            "enabled_usb_controller=5200000.usb driver=ehci-platform\n",
+        )
+        self.assertEqual(assess(statuses, evidence)[1], "controller_probe")
+        self.assertIsNone(assess(statuses, evidence, expect_musb=True)[1])
+
     def test_uvc_evidence_requires_binding_modes_and_changing_payloads(self) -> None:
         assess = LABCTL_MODULE["assess_uvc_evidence"]
         interface_lines = "\n".join(

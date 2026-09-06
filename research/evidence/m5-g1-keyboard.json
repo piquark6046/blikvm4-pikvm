@@ -1,0 +1,1574 @@
+{
+  "bridge": "user-0 / LattePanda 3 Delta",
+  "evidence_archive": {
+    "name": "out/m5/g1-evidence.tar.gz",
+    "sha256": "ddece07d55d2fe87c9853b0709d16fdcbb71de7e592628aef04597fd4b071e99",
+    "size": 1002985
+  },
+  "live_report_runner_sha256": "12d932a3e3f7a99c9e300d683d8fe18ca93777915bc7f213c2a8897c765ea418",
+  "local_tests": {
+    "command": "python3 -m unittest discover -s tests",
+    "result": "passed",
+    "tests": 26
+  },
+  "physical_reconnect_kernel_log": [
+    "2026-09-06T03:27:57,759213+00:00 usb 1-3: USB disconnect, device number 12",
+    "2026-09-06T03:28:08,191789+00:00 usb 1-3: new high-speed USB device number 13 using xhci_hcd",
+    "2026-09-06T03:28:08,315853+00:00 usb 1-3: New USB device found, idVendor=1d6b, idProduct=0106, bcdDevice= 1.00",
+    "2026-09-06T03:28:08,315879+00:00 usb 1-3: New USB device strings: Mfr=1, Product=2, SerialNumber=3",
+    "2026-09-06T03:28:08,315886+00:00 usb 1-3: Product: BliKVM M5 keyboard",
+    "2026-09-06T03:28:08,315892+00:00 usb 1-3: Manufacturer: BliKVM",
+    "2026-09-06T03:28:08,315898+00:00 usb 1-3: SerialNumber: blikvm-v4-m5-keyboard",
+    "2026-09-06T03:28:08,320637+00:00 input: BliKVM BliKVM M5 keyboard as /devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.0009/input/input18",
+    "2026-09-06T03:28:08,388364+00:00 hid-generic 0003:1D6B:0106.0009: input,hidraw0: USB HID v1.01 Keyboard [BliKVM BliKVM M5 keyboard] on usb-0000:00:14.0-3/input0"
+  ],
+  "physical_reconnect_runner_sha256": "8fd93164cc7f9028ade0eca28565da216ce334e4e21f25a87634474f8351be7c",
+  "qualification": "M5 G1 keyboard only",
+  "result": "passed",
+  "runs": [
+    {
+      "artifacts": {
+        "Image": {
+          "name": "Image",
+          "sha256": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+          "size": 6291464
+        },
+        "initramfs.cpio.gz": {
+          "name": "initramfs.cpio.gz",
+          "sha256": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+          "size": 4298923
+        },
+        "linux.config": {
+          "name": "linux.config",
+          "sha256": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+          "size": 65127
+        },
+        "sun50i-h616-blikvm-v4.dtb": {
+          "name": "sun50i-h616-blikvm-v4.dtb",
+          "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+          "size": 20580
+        }
+      },
+      "automation_sha256": {
+        "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "lab/hidlab.py": "707aa88f9e2ca27b830a007ba5eeff1a38b6e5ce8a43ccc488a7e362b010d5aa",
+        "lab/labctl": "a246b3991adf170d68280ba8e10d3c883b51e015e477f7b12ccfe43660422d11"
+      },
+      "evidence_sha256": {
+        "host-descriptors-before.log": "08d6ac34a45d3f7dd44bb96d4f46c77858c9f511420e79e4f177f6d400842aad",
+        "host-descriptors-reconnected.log": "33cb33470a46b73f7daaca7c51c39f85c3cf4493759a0835abe6115ff4bc205a",
+        "host-dmesg-before.log": "13bd944c49171f5f30291525eb00c055526de702c7b6cbce556ad377a9373430",
+        "host-dmesg-reconnected.log": "a18bed5bee60a56bdfe88cb372b7eb8db8aeaa5f252575823f976349529a9ab2",
+        "host-input-before.json": "86e75dfe8de6072f3500436ec51799c27ff8dbb5e71716387b45e3616cb1d2ba",
+        "host-input-reconnected.json": "9084f468dbff88a3167a8d2812ffec05aa0c7e1e38229058775bf8343e471c5e",
+        "host-kernel-live.log": "f805537a2f8630d6e91f2d5d81fc64d12e2d195bb1ac427aa6afb031b47473b3",
+        "host-lsusb-before.log": "857e3f91e1b4a078928c48d5e0bdbc8dfc87a31a0c654e1dd8da233715125d4f",
+        "host-lsusb-disconnected.log": "311432db1222ebda25390907ea026f64d389d9717368e2bc70be7a3820abefa1",
+        "host-lsusb-reconnected.log": "8c83642fe67bea9ac9c8db1270e728e72ebcaf33b11fccd7a3e43c7f1641d408",
+        "host-lsusb-tree-before.log": "8cdbe6a30cdf07a04b922abbab0a7addb7a32e7e6798ec4f71bb986df9d3b3fa",
+        "host-lsusb-tree-disconnected.log": "aab25351b5d9cdb163ed4ff222fb5a38413a23550158094758a30329cec706a5",
+        "host-lsusb-tree-reconnected.log": "54c3812199998b4697ba1f7f492a6e63b6b6498a66d8cf4ceed143b9d8b9b2ce",
+        "host-report-before.hex": "91a9a9c4bcb2bfc68454959c280f3624360a06d88967ba6c7362553cdf251b94",
+        "host-report-reconnected.hex": "91a9a9c4bcb2bfc68454959c280f3624360a06d88967ba6c7362553cdf251b94",
+        "host-udev-before.log": "2a821093ba451ca2cf7af6b16e00379174fce932c50a3b3d4a1cda4f92a2a2c8",
+        "host-udev-events.log": "50e490657536b35d1fcea388b7469628f51d3e8de70b317e381a940e8ed928a2",
+        "host-udev-reconnected.log": "4f935a62fad582a5211c7fe6d7c74ad9eab89ac66dffba5cacc315b05aef35fc",
+        "metadata.json": "0e106a8184b338839a81e8c19a430ced4a8b6b8c552dc353f10cbe7a865e1179",
+        "test-results.json": "82cb74aa24e93b1280cc47ade61ce576137c4eff57b24c41db536e568e3690e5",
+        "usb-descriptors-before.hex": "c4f7c8dc4da312cb84db2cd1e795c6f983ce25488788f9456f80d19bbba23063",
+        "usb-descriptors-reconnected.hex": "c4f7c8dc4da312cb84db2cd1e795c6f983ce25488788f9456f80d19bbba23063"
+      },
+      "finished_at": "2026-09-06T03:28:09.009660+00:00",
+      "hid": {
+        "physical_reconnect": {
+          "after": {
+            "device": "1-3",
+            "device_number": "13",
+            "interfaces": [
+              {
+                "class": "03",
+                "driver": "usbhid",
+                "name": "1-3:1.0",
+                "protocol": "01",
+                "subclass": "01"
+              }
+            ],
+            "passed": true,
+            "serial": "blikvm-v4-m5-keyboard",
+            "speed": "480"
+          },
+          "before": {
+            "device": "1-3",
+            "device_number": "12",
+            "interfaces": [
+              {
+                "class": "03",
+                "driver": "usbhid",
+                "name": "1-3:1.0",
+                "protocol": "01",
+                "subclass": "01"
+              }
+            ],
+            "passed": true,
+            "serial": "blikvm-v4-m5-keyboard",
+            "speed": "480"
+          },
+          "disconnected_at": 1788665277.396102,
+          "identical_usb_and_report_descriptors": true,
+          "input_after": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.0009/input/input18",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "input_before": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.0008/input/input17",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "passed": true,
+          "reconnected_at": 1788665289.0074036
+        }
+      },
+      "result": "passed",
+      "run_id": "20260906T032328Z-9edcd3a-632784",
+      "stage": "physical_reconnect",
+      "started_at": "2026-09-06T03:23:28.491942+00:00"
+    },
+    {
+      "artifacts": {
+        "Image": {
+          "name": "Image",
+          "sha256": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+          "size": 6291464
+        },
+        "initramfs.cpio.gz": {
+          "name": "initramfs.cpio.gz",
+          "sha256": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+          "size": 4298923
+        },
+        "linux.config": {
+          "name": "linux.config",
+          "sha256": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+          "size": 65127
+        },
+        "sun50i-h616-blikvm-v4.dtb": {
+          "name": "sun50i-h616-blikvm-v4.dtb",
+          "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+          "size": 20580
+        }
+      },
+      "automation_sha256": {
+        "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "lab/hidlab.py": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+        "lab/labctl": "9a12367af868a354045db423ea58cd65844e2b6e0b12568f77d96f8ed376d4f4"
+      },
+      "evidence_sha256": {
+        "console-loglevel-restore.log": "4c974866a6567df933d233f0c3ab1b9f6be241013442d9f9145f0abe4cb881e2",
+        "console-loglevel.log": "06fea68d526579eb4a922435aa024c28ff920e3f40c83934686c4d4be4861d64",
+        "console-quiet.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "console-restore.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "hid-final-state.log": "3f39400487e84214d5aff6cddd4ff8608579ad807324fe3d00d6121073257d5e",
+        "hid-state-reconnected.log": "1417be4b08f6eab1c40df98cedcc0717c256ba1b668f8d0282b64fce2d754556",
+        "host-descriptors-after.log": "33cb33470a46b73f7daaca7c51c39f85c3cf4493759a0835abe6115ff4bc205a",
+        "host-descriptors-reconnected.log": "33cb33470a46b73f7daaca7c51c39f85c3cf4493759a0835abe6115ff4bc205a",
+        "host-dmesg-after.log": "a18bed5bee60a56bdfe88cb372b7eb8db8aeaa5f252575823f976349529a9ab2",
+        "host-dmesg-reconnected.log": "a18bed5bee60a56bdfe88cb372b7eb8db8aeaa5f252575823f976349529a9ab2",
+        "host-input-concurrent-report.json": "d59d2d395a0ada34f8783f1d381f696aa598170f5231c0b960f48fdd1df6b1e9",
+        "host-input-report.json": "c2334437b38a1f8812222b7168e3228247b51ed2288d6bac6583b8cfa1ddc6eb",
+        "host-kernel-live.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "host-lsusb-after.log": "8c83642fe67bea9ac9c8db1270e728e72ebcaf33b11fccd7a3e43c7f1641d408",
+        "host-lsusb-reconnected.log": "8c83642fe67bea9ac9c8db1270e728e72ebcaf33b11fccd7a3e43c7f1641d408",
+        "host-lsusb-tree-after.log": "54c3812199998b4697ba1f7f492a6e63b6b6498a66d8cf4ceed143b9d8b9b2ce",
+        "host-lsusb-tree-reconnected.log": "54c3812199998b4697ba1f7f492a6e63b6b6498a66d8cf4ceed143b9d8b9b2ce",
+        "host-udev-events.log": "a75697edb29c2c13f19e67b1fcaa15b36e16e39fd08f9ed40f33e7f029ae5b5a",
+        "metadata.json": "2821bfa2bbc403c5a181c7b5c306bdf3e48188ad248c6956f594923ca25238a3",
+        "modifier-report.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "release-concurrent.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "release-report.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "test-results.json": "320b8b9a671bb658d6f0d5207cd8cd3978b0bee72c74b78e2c0fc78c60d54eaa",
+        "uart.log": "6687c2602b628b2090230cf75c33039e6556935358cf4e83e4d3bd39702c2f1f",
+        "uart.raw": "352fa0556f7720992104d36f2710228c57d0d55b9816c612d97b70bb525200f6",
+        "usb-interface-bindings.log": "6842e86afb7c7533a8fbde1afa512d1c23365a676767f828431b4a21034bdf78",
+        "uvc-detection.log": "bcd7032bd6ad4a586b745f4700e20498ee885fa04c7518a2073fffbf2607d75e",
+        "uvc-dmesg.log": "c7dde5e69e2b803fde8f5fa0eb3df4f174effe6ab08e15f9d4b9c4e76b1cd123",
+        "v4l2-capabilities.log": "329f2d3548db6e031c0714e6544ca79451128368986e516c1ae417397b0f4e37",
+        "v4l2-stream.log": "586a57459f2f93b6b17ecb87df8b33492c5576578672d309393636a8e0f55f6d",
+        "video-node-map.log": "1fe003be95f59fb8e89a7b469d8fee3fd3c2c25f596abd0790e6ca8a8ebc087b"
+      },
+      "finished_at": "2026-09-06T03:28:55.358843+00:00",
+      "hid": {
+        "concurrent_input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 944891,
+              "seconds": 1788665331,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 944891,
+              "seconds": 1788665331,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 944891,
+              "seconds": 1788665331,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 111930,
+              "seconds": 1788665332,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 111930,
+              "seconds": 1788665332,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 111930,
+              "seconds": 1788665332,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.0009/input/input18",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 116758,
+              "seconds": 1788665328,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 116758,
+              "seconds": 1788665328,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 116758,
+              "seconds": 1788665328,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 282812,
+              "seconds": 1788665328,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 282812,
+              "seconds": 1788665328,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 282812,
+              "seconds": 1788665328,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.0009/input/input18",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "physical_reconnect": {
+          "evidence_run": "20260906T032328Z-9edcd3a-632784",
+          "passed": true,
+          "repeated_this_boot": false
+        },
+        "usb_errors": {
+          "matching_lines": [],
+          "passed": true
+        }
+      },
+      "result": "passed",
+      "run_id": "20260906T032847Z-9edcd3a-824830",
+      "stage": "live-report-uvc",
+      "started_at": "2026-09-06T03:28:47.392246+00:00",
+      "uvc": {
+        "capture_summary": {
+          "changing_transitions": "59",
+          "device": "/dev/video0",
+          "error_frames": "0",
+          "frames": "60",
+          "nonempty_frames": "60",
+          "result": "pass",
+          "startup_error_frames": "0",
+          "total_bytes": "36864000",
+          "total_nonzero_bytes": "36862684",
+          "unique_hashes": "60"
+        },
+        "checks": {
+          "bounded_stream": {
+            "error_frames": 0,
+            "frames": 60,
+            "startup_error_frames": 0,
+            "status": "pass",
+            "utility_exit_status": 0
+          },
+          "capability_enumeration": {
+            "inputs": 1,
+            "standards": 0,
+            "status": "pass"
+          },
+          "capture_mode": {
+            "negotiated": {
+              "bytesperline": "1280",
+              "device": "/dev/video0",
+              "field": "1",
+              "interval": "1/30",
+              "negotiated_fourcc": "YUYV",
+              "negotiated_height": "480",
+              "negotiated_width": "640",
+              "requested_fourcc": "YUYV",
+              "requested_fps": "30",
+              "requested_height": "480",
+              "requested_width": "640",
+              "sizeimage": "614400"
+            },
+            "requested": "YUYV 640x480 at 30 fps",
+            "status": "pass"
+          },
+          "changing_frames": {
+            "changing_transitions": 59,
+            "status": "pass",
+            "unique_hashes": 60
+          },
+          "device_detection": {
+            "status": "pass"
+          },
+          "driver_binding": {
+            "interface_drivers": {
+              "00": "uvcvideo",
+              "01": "uvcvideo",
+              "02": "[none]",
+              "03": "[none]",
+              "04": "[none]"
+            },
+            "status": "pass"
+          },
+          "format_enumeration": {
+            "formats": [
+              "MJPG",
+              "YUYV"
+            ],
+            "interval_count": 84,
+            "size_count": 22,
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "nonempty_payload": {
+            "status": "pass",
+            "total_bytes": 36864000,
+            "total_nonzero_bytes": 36862684
+          },
+          "video_nodes": {
+            "capture_node_count": 1,
+            "status": "pass",
+            "uvc_node_count": 2
+          }
+        },
+        "result": "passed"
+      }
+    },
+    {
+      "artifacts": {
+        "Image": {
+          "name": "Image",
+          "sha256": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+          "size": 6291464
+        },
+        "initramfs.cpio.gz": {
+          "name": "initramfs.cpio.gz",
+          "sha256": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+          "size": 4298923
+        },
+        "linux.config": {
+          "name": "linux.config",
+          "sha256": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+          "size": 65127
+        },
+        "sun50i-h616-blikvm-v4.dtb": {
+          "name": "sun50i-h616-blikvm-v4.dtb",
+          "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+          "size": 20580
+        }
+      },
+      "automation_sha256": {
+        "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "lab/hidlab.py": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+        "lab/labctl": "9a12367af868a354045db423ea58cd65844e2b6e0b12568f77d96f8ed376d4f4"
+      },
+      "ethernet": {
+        "checks": {
+          "carrier": {
+            "status": "pass"
+          },
+          "interface_present": {
+            "interface": "eth0",
+            "status": "pass"
+          },
+          "mac_probe": {
+            "status": "pass"
+          },
+          "mdio_bus": {
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "phy_detected": {
+            "expected_address": 0,
+            "expected_phy_id": "0x00441400",
+            "status": "pass"
+          },
+          "ping": {
+            "peer": "192.168.88.1",
+            "status": "pass"
+          },
+          "static_address": {
+            "address": "192.168.88.2/24",
+            "default_route_added": false,
+            "dhcp_used": false,
+            "dns_configured": false,
+            "status": "pass"
+          }
+        },
+        "collection_timeout": null,
+        "controller": "5030000.ethernet",
+        "failed_stage": null,
+        "interface": "eth0",
+        "ip": {
+          "address": "192.168.88.2/24",
+          "default_gateway_configured": false,
+          "dhcp_used": false,
+          "dns_configured": false,
+          "peer": "192.168.88.1"
+        },
+        "link": {
+          "carrier": true,
+          "duplex": "full",
+          "mac_address": "02:00:eb:b5:cf:cd",
+          "speed_mbps": "100"
+        },
+        "phy": {
+          "address": 0,
+          "binding": "ethernet-phy-ieee802.3-c22",
+          "device": "stmmac-0:00",
+          "id": "0x00441400",
+          "mdio_bus": "stmmac-0"
+        },
+        "ping": {
+          "requested_probes": 5,
+          "successful_probes": 5
+        },
+        "result": "passed"
+      },
+      "evidence_sha256": {
+        "Image": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+        "SHA256SUMS": "32d8637d31d7e40b48fac13f7402967df1378eca832c1aee96e9720f001d3610",
+        "blkid.log": "7ae4e11f76d085bf5465d9365df1251e2ecd8a29771b70b5df3673172caa0368",
+        "block-readonly.log": "bf31d1867cb14f86da77a6c5b3bf7213d612ce6a7dd24c5eed966107b59c346a",
+        "boot-console.log": "5b63bf6776898b01fe527f71023bcfd31bdf9d4cfa693036515260e0b8bc183c",
+        "carrier-state.log": "33c6e7d85c29bf946e0d848db8a5a2e660e1295a4b7066720f9dd8c35b15ecc7",
+        "console-loglevel-restore.log": "4c974866a6567df933d233f0c3ab1b9f6be241013442d9f9145f0abe4cb881e2",
+        "console-loglevel.log": "06fea68d526579eb4a922435aa024c28ff920e3f40c83934686c4d4be4861d64",
+        "dmesg.log": "9b36e1ee1834eb30673554e9dfe3ba25e797a3235edb7d87bae939eb37357023",
+        "ethernet-dmesg-probe.log": "0d6293e812a62ac13d3099a77efa10e09922cc8b422bf1737d722c2b8b00196f",
+        "ethernet-dmesg.log": "9059d2b2ef6920630b34d1c14abb70e088be845003beab0f8ab65ab4ff8e61a3",
+        "hid-bind.log": "48b71650bd8f685ffc30692388b3a12fb60a382d07c5509ceccc0370d10ba2f3",
+        "hid-concurrent-release.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-console-quiet.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "hid-console-restore.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "hid-dmesg-after.log": "c09971437f95812010f83432cde16127ac990abcac1d9098ab6b95ef87f5ac6e",
+        "hid-emergency-release.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-final-state.log": "e65a0c7afd4504a60b52680a63353a47461bffedb83a2e9e646364438d82bf63",
+        "hid-modifier-report.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-rebind.log": "48b71650bd8f685ffc30692388b3a12fb60a382d07c5509ceccc0370d10ba2f3",
+        "hid-setup.log": "9bd23444cda21143540671f08df394a5d1c8a3e08a3047ea32eea73fd167fab8",
+        "hid-state-after-uvc.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-bound.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-reconnected.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-unbound.log": "fe89cfa80cfa72b7a33436d7e3edb5ece5a51e4782571e2694785392c42a2441",
+        "hid-unbind.log": "1f0407d8308ba03bafec57ce0fa939829fad7f07828f841a217b47b1718de7ea",
+        "host-descriptors-after.log": "2183a51614f3ff71ca2d27eda025ec4952b55b3d2d1b862bbdcc7ff4ca82259e",
+        "host-descriptors-before.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "host-descriptors-bound.log": "76fb6f86d7b8a651b28bbe1fbf18ff6653582150034c43de8e477afbf20acd39",
+        "host-dmesg-after.log": "cc58321288efc09f6daa6cd248b68d0525f5b17a1208edabe986f472c19ce75f",
+        "host-dmesg-before.log": "a671313a6515cdffb08cb36094cda6c018ed6786b03507326942250211a24c9b",
+        "host-dmesg-bound.log": "6b9ff5797ceb38d8f4f9c2a31095df4eae82cd5f1e809916cd7b048ecfe9da89",
+        "host-input-concurrent-report.json": "5c050d1cc0009e85414aeb6c2ca42ecb936caed26246d1f0587ce63edb057b53",
+        "host-input-report.json": "797f4676a74a4a86f36280fd6b0bb2f08e26beedd904ae4639677299bf0521d6",
+        "host-kernel-live.log": "c0475a4bd65737f3a4ba30d0f2f61745c40a22bb9956f7a80514c6967fc75164",
+        "host-lsusb-after.log": "7db17167051c826897e2e9b325fcad38a222e57a91be9595b0ae6133134e5c77",
+        "host-lsusb-before.log": "311432db1222ebda25390907ea026f64d389d9717368e2bc70be7a3820abefa1",
+        "host-lsusb-bound.log": "43e43da49b1609800805ac40295524fce86fde1a692c4879288ab9baf0240d43",
+        "host-lsusb-tree-after.log": "2d3e4f5561c227f9ce650e7dcde42c8dae670a42f051ca801693f8defafb0a8f",
+        "host-lsusb-tree-before.log": "aab25351b5d9cdb163ed4ff222fb5a38413a23550158094758a30329cec706a5",
+        "host-lsusb-tree-bound.log": "4b99acfe657be99eec3630618b49e158e970f9ce62b5d33fe65d04ee1156d086",
+        "host-report-descriptor.hex": "91a9a9c4bcb2bfc68454959c280f3624360a06d88967ba6c7362553cdf251b94",
+        "host-udev-events.log": "8c0f672ff518374a5c19c60e3c0d30dd1d039aa6411a144c0a655f182cd40896",
+        "initramfs.cpio.gz": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+        "ip-addr-before.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "ip-addr.log": "f58ad24f1f658072466c7b8b6c75fb5fa39904dd71eafa6d8e74306b3230e1a7",
+        "ip-link-before.log": "0be250202f51aa27bb5d8567777ff236617b4aa28df4b6e0cb0d3ba9e8b3d913",
+        "ip-link.log": "8ca152feffa3596f495c720fb828c994fd6461ed202330b25729163e1d568274",
+        "ip-route.log": "02c1043811ba355b17a3093f6e466483fc0c8b549d7b3095fa1308e82d983d2c",
+        "link-up.log": "b9db5ab53322ded5a10e0a3adaec7055b0e654eea5e494b729374447fd9cc802",
+        "linux.config": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+        "lsblk.log": "042959ea2010681656364f67d52e2b1ea9edbac318ae8cdbc7c77328263d2fa4",
+        "lsusb-tree.log": "191d57a44f6940df7c583077825f034a8440cfd5b8bc552d0920453aee6be48c",
+        "lsusb.log": "42f9e85326c0da704887aa6c2a77a05603201adb9c8ddbd4624b263b743925ce",
+        "manifest.json": "6869734359ee570235904f5b85157fb795c76d6de1831554317e5de7c5367412",
+        "metadata.json": "90590e31f40e099ad8d47bffe987680e44638531490fd8193417312cf8ef8835",
+        "mmc-dmesg-after-mount.log": "3a4bc8c1dd408d2bf0800ad4c6fa5aeaf17346761bd296a247752052e0b60201",
+        "mmc-dmesg.log": "a775857ee439ab866ab81e96a6ccdf96b7a8710a1eaffc5184f360234c44666b",
+        "mmc-enumeration.log": "09416ee5848748a200396bfa4f74f96dc72526682174993f06562f510a419c6b",
+        "mmc-identify.log": "7b9214dc5be278678f28c536156a3f24f7177e884662e377584dd7e46f976c3c",
+        "mount-readonly.log": "2db2ee8dc3d160599a607b26096e155862ea9791c1bf02af0d5b26115689d726",
+        "partition-table.log": "3931d844a2a1aba0895962a8c1a490060a5083653f014a00797751b32f3b1732",
+        "phy-mdio.log": "8be02ed4854f4ea6c84273e22062477f2d2068eadc56fd2cb36b763881be849d",
+        "ping.log": "ed4a4c772d0e73463069ebf1886f485a4b54d10e3e4a2bfbd43917b564e029c9",
+        "proc-partitions.log": "58e14190e60b18098a25d964ce4cebafed5f366978a264ffbb0244d8c3ca62c8",
+        "sun50i-h616-blikvm-v4.dtb": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+        "test-results.json": "ef1b4dc9933636017e61228a0d51ece02ac8cddb264a80c81270840c029aad0f",
+        "uart.log": "c55ce8382c3f141e4d13b232e9da33ceb81695c42e35e62c75c678ed75c5393d",
+        "uart.raw": "0be026517256eeb733390e2b397b8e0fd77531ec612fe18e75f9ce36a9ca414e",
+        "uboot.log": "a76f87b549c4a6d80f237ba0def954c51a4cdb976d5bab6a04d438024da9c6ca",
+        "udc-before.log": "f756ce70b07d5adae8c4b3bfd882536355e3a637f86c36cbded8ad0a0b9d2a62",
+        "usb-controller-phy.log": "e5ee0cde87e70136ae7c7e8ecde994358dacce126ec2aa7e1eb5ff9fd4497d93",
+        "usb-dmesg.log": "327b75535206316d85d913ef4a9193f38ad1e9edddc5d23a904a3449b3eb5f73",
+        "usb-enumeration-wait.log": "c49f712d57c64e3cc846230ce0d348d80aa24175f717360f5dd67803d2f78e46",
+        "usb-interface-bindings.log": "6842e86afb7c7533a8fbde1afa512d1c23365a676767f828431b4a21034bdf78",
+        "uvc-detection.log": "bcd7032bd6ad4a586b745f4700e20498ee885fa04c7518a2073fffbf2607d75e",
+        "uvc-dmesg.log": "cb5180dc4c17d4d608f698bd0988d49a9fcfd7fa90c6c117a00721165a67bdcc",
+        "v4l2-capabilities.log": "329f2d3548db6e031c0714e6544ca79451128368986e516c1ae417397b0f4e37",
+        "v4l2-stream.log": "b06ceaa0cda681fce080eaa2946015d350624d3d8371fe3c3ead1df6102dd836",
+        "video-node-map.log": "1fe003be95f59fb8e89a7b469d8fee3fd3c2c25f596abd0790e6ca8a8ebc087b"
+      },
+      "finished_at": "2026-09-06T03:30:39.652051+00:00",
+      "hid": {
+        "concurrent_input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 572118,
+              "seconds": 1788665433,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 572118,
+              "seconds": 1788665433,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 572118,
+              "seconds": 1788665433,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 739853,
+              "seconds": 1788665433,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 739853,
+              "seconds": 1788665433,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 739853,
+              "seconds": 1788665433,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.000B/input/input20",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "enumeration": {
+          "device": "1-3",
+          "device_number": "14",
+          "interfaces": [
+            {
+              "class": "03",
+              "driver": "usbhid",
+              "name": "1-3:1.0",
+              "protocol": "01",
+              "subclass": "01"
+            }
+          ],
+          "passed": true,
+          "serial": "blikvm-v4-m5-keyboard",
+          "speed": "480"
+        },
+        "error": null,
+        "failed_stage": null,
+        "input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 746747,
+              "seconds": 1788665429,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 746747,
+              "seconds": 1788665429,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 746747,
+              "seconds": 1788665429,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 914733,
+              "seconds": 1788665429,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 914733,
+              "seconds": 1788665429,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 914733,
+              "seconds": 1788665429,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.000B/input/input20",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "physical_reconnect": {
+          "evidence_run": "20260906T032847Z-9edcd3a-824830",
+          "passed": true,
+          "repeated_this_boot": false
+        },
+        "result": "passed",
+        "unbind_rebind": {
+          "after": "15",
+          "before": "14",
+          "passed": true
+        },
+        "usb_errors": {
+          "matching_lines": [],
+          "passed": true
+        }
+      },
+      "mmc": {
+        "block_device": {
+          "fstype": "-",
+          "kname": "/dev/mmcblk0",
+          "maj:min": "179:0",
+          "mountpoint": "-",
+          "name": "mmcblk0",
+          "ro": "1",
+          "size_sectors": "125173760",
+          "type": "disk"
+        },
+        "card": "mmc0",
+        "controller": "4020000.mmc",
+        "file_read": "/etc/os-release",
+        "filesystem": "ext4",
+        "mount_options": [
+          "ro",
+          "noload"
+        ],
+        "mounted_partition": "/dev/mmcblk0p1",
+        "partitions": [
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p1",
+            "maj:min": "179:1",
+            "mountpoint": "-",
+            "name": "mmcblk0p1",
+            "ro": "1",
+            "size_sectors": "10641408",
+            "type": "part"
+          },
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p2",
+            "maj:min": "179:2",
+            "mountpoint": "-",
+            "name": "mmcblk0p2",
+            "ro": "1",
+            "size_sectors": "6144",
+            "type": "part"
+          },
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p3",
+            "maj:min": "179:3",
+            "mountpoint": "-",
+            "name": "mmcblk0p3",
+            "ro": "1",
+            "size_sectors": "114524160",
+            "type": "part"
+          }
+        ],
+        "storage_writes_attempted": false,
+        "unmounted_after_test": true
+      },
+      "result": "passed",
+      "retained_stack": {
+        "init_reached": true,
+        "kernel_started": true,
+        "serial_shell_usable": true,
+        "tftp_transfer": true,
+        "uart_available": true,
+        "uboot_ping": true,
+        "uboot_prompt": true
+      },
+      "run_id": "20260906T033008Z-9edcd3a-215238",
+      "stage": "hid_keyboard_and_uvc",
+      "started_at": "2026-09-06T03:30:08.477647+00:00",
+      "usb": {
+        "checks": {
+          "controller_probe": {
+            "expected_controller": "5200000.usb",
+            "other_host_controllers_enabled": false,
+            "status": "pass"
+          },
+          "ms2131_enumeration": {
+            "expected_vid_pid": "345f:2131",
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "phy_probe": {
+            "expected_phy": "5100400.phy",
+            "expected_port": 1,
+            "status": "pass"
+          },
+          "root_hub": {
+            "status": "pass"
+          },
+          "topology_speed": {
+            "expected_interface_drivers": {
+              "0": "uvcvideo",
+              "1": "uvcvideo",
+              "2": "[none]",
+              "3": "[none]",
+              "4": "[none]"
+            },
+            "expected_topology": "USB1 root port 1, direct, 480 Mbit/s",
+            "status": "pass"
+          },
+          "vbus_power": {
+            "enable_gpio": "PC8 active-high",
+            "expected_regulator": "usb1-vbus",
+            "status": "pass"
+          }
+        },
+        "controller": {
+          "device": "5200000.usb",
+          "driver": "ehci-platform",
+          "other_host_controllers_enabled": false,
+          "type": "EHCI"
+        },
+        "device": {
+          "audio_or_hid_drivers_bound": false,
+          "bus": 1,
+          "device_number": 2,
+          "interface_drivers": [
+            "uvcvideo",
+            "uvcvideo",
+            "[none]",
+            "[none]",
+            "[none]"
+          ],
+          "manufacturer": "MACROSILICON",
+          "product": "USB2 Video",
+          "serial": "29404080",
+          "speed_mbps": 480,
+          "sysfs_name": "1-1",
+          "topology": "USB1 root port 1 (direct)",
+          "uvc_interfaces_bound": 2,
+          "vid_pid": "345f:2131"
+        },
+        "failed_stage": null,
+        "phy": {
+          "device": "5100400.phy",
+          "driver": "sun4i-usb-phy",
+          "index": 1
+        },
+        "power": {
+          "enable_active_high": true,
+          "enable_gpio": "PC8",
+          "microvolts": 5000000,
+          "regulator": "usb1-vbus"
+        },
+        "result": "passed"
+      },
+      "uvc": {
+        "capture_summary": {
+          "changing_transitions": "59",
+          "device": "/dev/video0",
+          "error_frames": "0",
+          "frames": "60",
+          "nonempty_frames": "60",
+          "result": "pass",
+          "startup_error_frames": "0",
+          "total_bytes": "36864000",
+          "total_nonzero_bytes": "36862711",
+          "unique_hashes": "60"
+        },
+        "checks": {
+          "bounded_stream": {
+            "error_frames": 0,
+            "frames": 60,
+            "startup_error_frames": 0,
+            "status": "pass",
+            "utility_exit_status": 0
+          },
+          "capability_enumeration": {
+            "inputs": 1,
+            "standards": 0,
+            "status": "pass"
+          },
+          "capture_mode": {
+            "negotiated": {
+              "bytesperline": "1280",
+              "device": "/dev/video0",
+              "field": "1",
+              "interval": "1/30",
+              "negotiated_fourcc": "YUYV",
+              "negotiated_height": "480",
+              "negotiated_width": "640",
+              "requested_fourcc": "YUYV",
+              "requested_fps": "30",
+              "requested_height": "480",
+              "requested_width": "640",
+              "sizeimage": "614400"
+            },
+            "requested": "YUYV 640x480 at 30 fps",
+            "status": "pass"
+          },
+          "changing_frames": {
+            "changing_transitions": 59,
+            "status": "pass",
+            "unique_hashes": 60
+          },
+          "device_detection": {
+            "status": "pass"
+          },
+          "driver_binding": {
+            "interface_drivers": {
+              "00": "uvcvideo",
+              "01": "uvcvideo",
+              "02": "[none]",
+              "03": "[none]",
+              "04": "[none]"
+            },
+            "status": "pass"
+          },
+          "format_enumeration": {
+            "formats": [
+              "MJPG",
+              "YUYV"
+            ],
+            "interval_count": 84,
+            "size_count": 22,
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "nonempty_payload": {
+            "status": "pass",
+            "total_bytes": 36864000,
+            "total_nonzero_bytes": 36862711
+          },
+          "video_nodes": {
+            "capture_node_count": 1,
+            "status": "pass",
+            "uvc_node_count": 2
+          }
+        },
+        "result": "passed"
+      }
+    },
+    {
+      "artifacts": {
+        "Image": {
+          "name": "Image",
+          "sha256": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+          "size": 6291464
+        },
+        "initramfs.cpio.gz": {
+          "name": "initramfs.cpio.gz",
+          "sha256": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+          "size": 4298923
+        },
+        "linux.config": {
+          "name": "linux.config",
+          "sha256": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+          "size": 65127
+        },
+        "sun50i-h616-blikvm-v4.dtb": {
+          "name": "sun50i-h616-blikvm-v4.dtb",
+          "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+          "size": 20580
+        }
+      },
+      "automation_sha256": {
+        "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "lab/hidlab.py": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+        "lab/labctl": "9a12367af868a354045db423ea58cd65844e2b6e0b12568f77d96f8ed376d4f4"
+      },
+      "ethernet": {
+        "checks": {
+          "carrier": {
+            "status": "pass"
+          },
+          "interface_present": {
+            "interface": "eth0",
+            "status": "pass"
+          },
+          "mac_probe": {
+            "status": "pass"
+          },
+          "mdio_bus": {
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "phy_detected": {
+            "expected_address": 0,
+            "expected_phy_id": "0x00441400",
+            "status": "pass"
+          },
+          "ping": {
+            "peer": "192.168.88.1",
+            "status": "pass"
+          },
+          "static_address": {
+            "address": "192.168.88.2/24",
+            "default_route_added": false,
+            "dhcp_used": false,
+            "dns_configured": false,
+            "status": "pass"
+          }
+        },
+        "collection_timeout": null,
+        "controller": "5030000.ethernet",
+        "failed_stage": null,
+        "interface": "eth0",
+        "ip": {
+          "address": "192.168.88.2/24",
+          "default_gateway_configured": false,
+          "dhcp_used": false,
+          "dns_configured": false,
+          "peer": "192.168.88.1"
+        },
+        "link": {
+          "carrier": true,
+          "duplex": "full",
+          "mac_address": "02:00:eb:b5:cf:cd",
+          "speed_mbps": "100"
+        },
+        "phy": {
+          "address": 0,
+          "binding": "ethernet-phy-ieee802.3-c22",
+          "device": "stmmac-0:00",
+          "id": "0x00441400",
+          "mdio_bus": "stmmac-0"
+        },
+        "ping": {
+          "requested_probes": 5,
+          "successful_probes": 5
+        },
+        "result": "passed"
+      },
+      "evidence_sha256": {
+        "Image": "dce17c18ba67a8bb227b5dd6573aa4ebd38c6b347fa24b18ecb3ca8c9ccbaa04",
+        "SHA256SUMS": "32d8637d31d7e40b48fac13f7402967df1378eca832c1aee96e9720f001d3610",
+        "blkid.log": "7ae4e11f76d085bf5465d9365df1251e2ecd8a29771b70b5df3673172caa0368",
+        "block-readonly.log": "bf31d1867cb14f86da77a6c5b3bf7213d612ce6a7dd24c5eed966107b59c346a",
+        "boot-console.log": "78952190aaeaa5697df2aa3314524d7cf0121d3bf700948c661948d22ead2165",
+        "carrier-state.log": "e203805130e13dd72fd3e94ab01e0539acc81e0ea27c797a8b1f439bb3bd92d5",
+        "console-loglevel-restore.log": "4c974866a6567df933d233f0c3ab1b9f6be241013442d9f9145f0abe4cb881e2",
+        "console-loglevel.log": "06fea68d526579eb4a922435aa024c28ff920e3f40c83934686c4d4be4861d64",
+        "dmesg.log": "60884e82a4ab579c8426a285a9b9e99ba76bc37b8d00040e2e102a3f86116510",
+        "ethernet-dmesg-probe.log": "0d8a603023f58b1b14591a7d04164b4f6d400de9fa38070cbe32cac25e530d56",
+        "ethernet-dmesg.log": "5b0c44597808340f5203cc9cfc38583225fa369adc9bec9e91cbeeedde5ae2f6",
+        "hid-bind.log": "48b71650bd8f685ffc30692388b3a12fb60a382d07c5509ceccc0370d10ba2f3",
+        "hid-concurrent-release.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-console-quiet.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "hid-console-restore.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "hid-dmesg-after.log": "7f6329d54e5820c0b2ba3ab911d4f3b7571ce61e93933d31795846af56fa1e7d",
+        "hid-emergency-release.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-final-state.log": "13d035d39da8181ecc36952eca46368aa715e89f2ce17df226a32f7d82f203ae",
+        "hid-modifier-report.log": "e8363fc9875a49774db49a91bf959e01d2f3695434e7ab290c6934d412648d33",
+        "hid-rebind.log": "48b71650bd8f685ffc30692388b3a12fb60a382d07c5509ceccc0370d10ba2f3",
+        "hid-setup.log": "9bd23444cda21143540671f08df394a5d1c8a3e08a3047ea32eea73fd167fab8",
+        "hid-state-after-uvc.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-bound.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-reconnected.log": "66aacfccc62d5ada7dd2150f5155232f117b049614ddb56b1dc927a3028f1e22",
+        "hid-state-unbound.log": "fe89cfa80cfa72b7a33436d7e3edb5ece5a51e4782571e2694785392c42a2441",
+        "hid-unbind.log": "1f0407d8308ba03bafec57ce0fa939829fad7f07828f841a217b47b1718de7ea",
+        "host-descriptors-after.log": "1af8ed6fe96c07312203637117ce5a210d6be2aff3164724437587abb240d6de",
+        "host-descriptors-before.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "host-descriptors-bound.log": "195aea4796fb0520caaed6c8d80c048d9b88d54dbbbb9110c9ac5b71842c6f04",
+        "host-dmesg-after.log": "9535ed52aa974bde89630d18acc9835a1aac6be52796e617f10d0974bee1cb8e",
+        "host-dmesg-before.log": "daf2b69c42bcb07a9f75809a83dd4face6b15d779c38fb4516f353ecc6a5a59c",
+        "host-dmesg-bound.log": "c73a8dd65ad07bebc6496f6e75c2005f2c582032ecde49cd814e143785445466",
+        "host-input-concurrent-report.json": "335b0f089b62213ddcb5d3fcce9fea026c88261ec62523db288ca552d0951f9f",
+        "host-input-report.json": "dc3d6c4ca564118ca15edbc76f4c2cb5ee30c724318acfa89670200479f28ca7",
+        "host-kernel-live.log": "27a7f2635ae47817eeaba64862fb14d9fb7d1d9c19ab4a601d4fdb16b840206e",
+        "host-lsusb-after.log": "17021febed7cd24e9d9167b642abb34657c305a5a9c9b08c7b2662463a58a012",
+        "host-lsusb-before.log": "311432db1222ebda25390907ea026f64d389d9717368e2bc70be7a3820abefa1",
+        "host-lsusb-bound.log": "795fe3f4a91139e9ca15067da7f02444b9a75dbd51f3fb2099ed7b6e7b8bdbde",
+        "host-lsusb-tree-after.log": "a6f356c822aa4cceebf61e45f6133591702b1819148359f6556966cc2e774518",
+        "host-lsusb-tree-before.log": "aab25351b5d9cdb163ed4ff222fb5a38413a23550158094758a30329cec706a5",
+        "host-lsusb-tree-bound.log": "c46c61d9b150e2535f84d527eca9ab3bbcdcdeb0f8287284a7511f3321c2808f",
+        "host-report-descriptor.hex": "91a9a9c4bcb2bfc68454959c280f3624360a06d88967ba6c7362553cdf251b94",
+        "host-udev-events.log": "bd91c74872f86480a3e9d81691a63d307232e1a27edf5a1e100899b8f40619a3",
+        "initramfs.cpio.gz": "b2e7bd1e18493a15a684b4fb590c1601d45bad249756ecedd125ccfa4409bc3b",
+        "ip-addr-before.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+        "ip-addr.log": "f58ad24f1f658072466c7b8b6c75fb5fa39904dd71eafa6d8e74306b3230e1a7",
+        "ip-link-before.log": "0be250202f51aa27bb5d8567777ff236617b4aa28df4b6e0cb0d3ba9e8b3d913",
+        "ip-link.log": "8ca152feffa3596f495c720fb828c994fd6461ed202330b25729163e1d568274",
+        "ip-route.log": "02c1043811ba355b17a3093f6e466483fc0c8b549d7b3095fa1308e82d983d2c",
+        "link-up.log": "24261a06e71186088ecf31758948bec434942c08d71044a78fb9aa49a91610c1",
+        "linux.config": "2067d71d941c0748ec0739b849635805534e945d87d271b53b3a9673c31b8dad",
+        "lsblk.log": "042959ea2010681656364f67d52e2b1ea9edbac318ae8cdbc7c77328263d2fa4",
+        "lsusb-tree.log": "191d57a44f6940df7c583077825f034a8440cfd5b8bc552d0920453aee6be48c",
+        "lsusb.log": "42f9e85326c0da704887aa6c2a77a05603201adb9c8ddbd4624b263b743925ce",
+        "manifest.json": "6869734359ee570235904f5b85157fb795c76d6de1831554317e5de7c5367412",
+        "metadata.json": "b370c2c272d7177bccbe271cf2a11721ad57d1d9fbfe5d7311bb8e3f3b9ed3d6",
+        "mmc-dmesg-after-mount.log": "c6313e4e543324e252dacc6d63fbcd9557632bbd68be0c7342df016aa75377bb",
+        "mmc-dmesg.log": "03136fe63e366df1e3e994c0966cf13fb0c9ba2a00d65bd37da0b14f89a7c122",
+        "mmc-enumeration.log": "09416ee5848748a200396bfa4f74f96dc72526682174993f06562f510a419c6b",
+        "mmc-identify.log": "7b9214dc5be278678f28c536156a3f24f7177e884662e377584dd7e46f976c3c",
+        "mount-readonly.log": "510e8bd7f1376e6de76ebc0fbffbbad8a6343c1db23748786422f0eb70ed1df8",
+        "partition-table.log": "3931d844a2a1aba0895962a8c1a490060a5083653f014a00797751b32f3b1732",
+        "phy-mdio.log": "8be02ed4854f4ea6c84273e22062477f2d2068eadc56fd2cb36b763881be849d",
+        "ping.log": "682afdc7d9cc75d0088857af2d62393eb5d7da0d94bfff5d9fa967d33a735310",
+        "proc-partitions.log": "58e14190e60b18098a25d964ce4cebafed5f366978a264ffbb0244d8c3ca62c8",
+        "sun50i-h616-blikvm-v4.dtb": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+        "test-results.json": "11ad17864edc8d1c9d60a2260578b062ba4fab986f0a461385fd3d51cb217430",
+        "uart.log": "14b0003e8160632000cecc4a61b0f84ab359120e8c8cc293a6e3ca2e6d24f997",
+        "uart.raw": "1ab61773e3d93785f55f70a5f3db1f42d2e0b738a49c0bd9410ae390cc1b8b04",
+        "uboot.log": "f3e2f22c7170b004761b641e9df605ab598e20255f0e260afdeb7c2d7832da7d",
+        "udc-before.log": "f756ce70b07d5adae8c4b3bfd882536355e3a637f86c36cbded8ad0a0b9d2a62",
+        "usb-controller-phy.log": "e5ee0cde87e70136ae7c7e8ecde994358dacce126ec2aa7e1eb5ff9fd4497d93",
+        "usb-dmesg.log": "342de4b97a7d8da182d7789d9466c03c2eb8f75bd5605eddacbc74f1b667481c",
+        "usb-enumeration-wait.log": "c49f712d57c64e3cc846230ce0d348d80aa24175f717360f5dd67803d2f78e46",
+        "usb-interface-bindings.log": "6842e86afb7c7533a8fbde1afa512d1c23365a676767f828431b4a21034bdf78",
+        "uvc-detection.log": "bcd7032bd6ad4a586b745f4700e20498ee885fa04c7518a2073fffbf2607d75e",
+        "uvc-dmesg.log": "735c05a68cf32e815e87d9eb9f9b7527efe729303f7431d04f9c3629e715e5c9",
+        "v4l2-capabilities.log": "329f2d3548db6e031c0714e6544ca79451128368986e516c1ae417397b0f4e37",
+        "v4l2-stream.log": "2e6096ee91d94c78a76645b744edad7e7bbe16f485b16ac0c519fab9b78c01dd",
+        "video-node-map.log": "1fe003be95f59fb8e89a7b469d8fee3fd3c2c25f596abd0790e6ca8a8ebc087b"
+      },
+      "finished_at": "2026-09-06T03:31:45.407245+00:00",
+      "hid": {
+        "concurrent_input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 304025,
+              "seconds": 1788665499,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 304025,
+              "seconds": 1788665499,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 304025,
+              "seconds": 1788665499,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 471765,
+              "seconds": 1788665499,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 471765,
+              "seconds": 1788665499,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 471765,
+              "seconds": 1788665499,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.000D/input/input22",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "enumeration": {
+          "device": "1-3",
+          "device_number": "16",
+          "interfaces": [
+            {
+              "class": "03",
+              "driver": "usbhid",
+              "name": "1-3:1.0",
+              "protocol": "01",
+              "subclass": "01"
+            }
+          ],
+          "passed": true,
+          "serial": "blikvm-v4-m5-keyboard",
+          "speed": "480"
+        },
+        "error": null,
+        "failed_stage": null,
+        "input_report": {
+          "code": 42,
+          "events": [
+            {
+              "code": 4,
+              "microseconds": 477702,
+              "seconds": 1788665495,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 477702,
+              "seconds": 1788665495,
+              "type": 1,
+              "value": 1
+            },
+            {
+              "code": 0,
+              "microseconds": 477702,
+              "seconds": 1788665495,
+              "type": 0,
+              "value": 0
+            },
+            {
+              "code": 4,
+              "microseconds": 645905,
+              "seconds": 1788665495,
+              "type": 4,
+              "value": 458977
+            },
+            {
+              "code": 42,
+              "microseconds": 645905,
+              "seconds": 1788665495,
+              "type": 1,
+              "value": 0
+            },
+            {
+              "code": 0,
+              "microseconds": 645905,
+              "seconds": 1788665495,
+              "type": 0,
+              "value": 0
+            }
+          ],
+          "identity": {
+            "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+            "id/product": "0106",
+            "id/vendor": "1d6b",
+            "name": "BliKVM BliKVM M5 keyboard",
+            "node": "/dev/input/event10",
+            "phys": "usb-0000:00:14.0-3/input0",
+            "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.000D/input/input22",
+            "uniq": "blikvm-v4-m5-keyboard"
+          },
+          "key": "KEY_LEFTSHIFT",
+          "passed": true,
+          "press_verified": true,
+          "release_verified": true
+        },
+        "physical_reconnect": {
+          "evidence_run": "20260906T032847Z-9edcd3a-824830",
+          "passed": true,
+          "repeated_this_boot": false
+        },
+        "result": "passed",
+        "unbind_rebind": {
+          "after": "17",
+          "before": "16",
+          "passed": true
+        },
+        "usb_errors": {
+          "matching_lines": [],
+          "passed": true
+        }
+      },
+      "mmc": {
+        "block_device": {
+          "fstype": "-",
+          "kname": "/dev/mmcblk0",
+          "maj:min": "179:0",
+          "mountpoint": "-",
+          "name": "mmcblk0",
+          "ro": "1",
+          "size_sectors": "125173760",
+          "type": "disk"
+        },
+        "card": "mmc0",
+        "controller": "4020000.mmc",
+        "file_read": "/etc/os-release",
+        "filesystem": "ext4",
+        "mount_options": [
+          "ro",
+          "noload"
+        ],
+        "mounted_partition": "/dev/mmcblk0p1",
+        "partitions": [
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p1",
+            "maj:min": "179:1",
+            "mountpoint": "-",
+            "name": "mmcblk0p1",
+            "ro": "1",
+            "size_sectors": "10641408",
+            "type": "part"
+          },
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p2",
+            "maj:min": "179:2",
+            "mountpoint": "-",
+            "name": "mmcblk0p2",
+            "ro": "1",
+            "size_sectors": "6144",
+            "type": "part"
+          },
+          {
+            "fstype": "ext4",
+            "kname": "/dev/mmcblk0p3",
+            "maj:min": "179:3",
+            "mountpoint": "-",
+            "name": "mmcblk0p3",
+            "ro": "1",
+            "size_sectors": "114524160",
+            "type": "part"
+          }
+        ],
+        "storage_writes_attempted": false,
+        "unmounted_after_test": true
+      },
+      "result": "passed",
+      "retained_stack": {
+        "init_reached": true,
+        "kernel_started": true,
+        "serial_shell_usable": true,
+        "tftp_transfer": true,
+        "uart_available": true,
+        "uboot_ping": true,
+        "uboot_prompt": true
+      },
+      "run_id": "20260906T033114Z-9edcd3a-029399",
+      "stage": "hid_keyboard_and_uvc",
+      "started_at": "2026-09-06T03:31:14.218480+00:00",
+      "usb": {
+        "checks": {
+          "controller_probe": {
+            "expected_controller": "5200000.usb",
+            "other_host_controllers_enabled": false,
+            "status": "pass"
+          },
+          "ms2131_enumeration": {
+            "expected_vid_pid": "345f:2131",
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "phy_probe": {
+            "expected_phy": "5100400.phy",
+            "expected_port": 1,
+            "status": "pass"
+          },
+          "root_hub": {
+            "status": "pass"
+          },
+          "topology_speed": {
+            "expected_interface_drivers": {
+              "0": "uvcvideo",
+              "1": "uvcvideo",
+              "2": "[none]",
+              "3": "[none]",
+              "4": "[none]"
+            },
+            "expected_topology": "USB1 root port 1, direct, 480 Mbit/s",
+            "status": "pass"
+          },
+          "vbus_power": {
+            "enable_gpio": "PC8 active-high",
+            "expected_regulator": "usb1-vbus",
+            "status": "pass"
+          }
+        },
+        "controller": {
+          "device": "5200000.usb",
+          "driver": "ehci-platform",
+          "other_host_controllers_enabled": false,
+          "type": "EHCI"
+        },
+        "device": {
+          "audio_or_hid_drivers_bound": false,
+          "bus": 1,
+          "device_number": 2,
+          "interface_drivers": [
+            "uvcvideo",
+            "uvcvideo",
+            "[none]",
+            "[none]",
+            "[none]"
+          ],
+          "manufacturer": "MACROSILICON",
+          "product": "USB2 Video",
+          "serial": "29404080",
+          "speed_mbps": 480,
+          "sysfs_name": "1-1",
+          "topology": "USB1 root port 1 (direct)",
+          "uvc_interfaces_bound": 2,
+          "vid_pid": "345f:2131"
+        },
+        "failed_stage": null,
+        "phy": {
+          "device": "5100400.phy",
+          "driver": "sun4i-usb-phy",
+          "index": 1
+        },
+        "power": {
+          "enable_active_high": true,
+          "enable_gpio": "PC8",
+          "microvolts": 5000000,
+          "regulator": "usb1-vbus"
+        },
+        "result": "passed"
+      },
+      "uvc": {
+        "capture_summary": {
+          "changing_transitions": "59",
+          "device": "/dev/video0",
+          "error_frames": "0",
+          "frames": "60",
+          "nonempty_frames": "60",
+          "result": "pass",
+          "startup_error_frames": "0",
+          "total_bytes": "36864000",
+          "total_nonzero_bytes": "36862690",
+          "unique_hashes": "60"
+        },
+        "checks": {
+          "bounded_stream": {
+            "error_frames": 0,
+            "frames": 60,
+            "startup_error_frames": 0,
+            "status": "pass",
+            "utility_exit_status": 0
+          },
+          "capability_enumeration": {
+            "inputs": 1,
+            "standards": 0,
+            "status": "pass"
+          },
+          "capture_mode": {
+            "negotiated": {
+              "bytesperline": "1280",
+              "device": "/dev/video0",
+              "field": "1",
+              "interval": "1/30",
+              "negotiated_fourcc": "YUYV",
+              "negotiated_height": "480",
+              "negotiated_width": "640",
+              "requested_fourcc": "YUYV",
+              "requested_fps": "30",
+              "requested_height": "480",
+              "requested_width": "640",
+              "sizeimage": "614400"
+            },
+            "requested": "YUYV 640x480 at 30 fps",
+            "status": "pass"
+          },
+          "changing_frames": {
+            "changing_transitions": 59,
+            "status": "pass",
+            "unique_hashes": 60
+          },
+          "device_detection": {
+            "status": "pass"
+          },
+          "driver_binding": {
+            "interface_drivers": {
+              "00": "uvcvideo",
+              "01": "uvcvideo",
+              "02": "[none]",
+              "03": "[none]",
+              "04": "[none]"
+            },
+            "status": "pass"
+          },
+          "format_enumeration": {
+            "formats": [
+              "MJPG",
+              "YUYV"
+            ],
+            "interval_count": 84,
+            "size_count": 22,
+            "status": "pass"
+          },
+          "no_persistent_errors": {
+            "status": "pass"
+          },
+          "nonempty_payload": {
+            "status": "pass",
+            "total_bytes": 36864000,
+            "total_nonzero_bytes": 36862690
+          },
+          "video_nodes": {
+            "capture_node_count": 1,
+            "status": "pass",
+            "uvc_node_count": 2
+          }
+        },
+        "result": "passed"
+      }
+    }
+  ],
+  "schema_version": 1,
+  "source_dirty": true,
+  "source_revision_before_commit": "9edcd3aaac9090312874a8f83d6fab60b664ed8a"
+}

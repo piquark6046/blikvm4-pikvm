@@ -18,7 +18,7 @@ sleep 2
 echo
 echo "BLIKVM_INITRAMFS_READY kernel=$(uname -r)"
 echo "Minimal Alpine/BusyBox serial shell with MMC, Ethernet, USB host, and UVC diagnostics."
-echo "Ethernet is left unconfigured; USB audio, gadget, display, and codec functions remain disabled."
+echo "Ethernet and the HID gadget are left unconfigured; USB audio, display, and codecs remain disabled."
 echo
 
 export PS1='blikvm-initramfs:/ # '

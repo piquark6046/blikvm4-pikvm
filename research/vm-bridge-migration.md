@@ -1,8 +1,7 @@
 # VM / LattePanda migration sanity check
 
-Date: 2026-09-06. Status: local builds passed, bridge setup restored, and the
-VM-built baseline booted successfully. Migration fails the changing-frame
-UVC check; the current HDMI input path needs confirmation. M5 has not started.
+Date: 2026-09-06. Status: **migration passed** with direct HDMI in run
+`20260906T024143Z-8cd48fc-903152`. M5 keyboard bring-up is now in progress.
 
 ## Repository and retained baseline
 
@@ -208,3 +207,23 @@ through SFTP into `out/migration/bridge-runs/`. Original bridge logs retain
 the raw bytes; local text copies retain connector redactions. The full boot
 run's artifacts are the already verified VM baseline. Do not mark migration
 passed until a fresh complete boot-uvc run captures changing frames.
+
+### Direct HDMI and successful migration gate
+
+The user confirmed that the LattePanda had been connected to an HDMI dummy
+plug, then connected its HDMI output directly to the BliKVM HDMI input. The
+bridge was also rebooted. Read-only reinspection verified that sudo, the lab
+address, UART stable path, TFTP binding, and staged artifacts survived. DRM
+card numbering changed from card1 to card0; HDMI-A-2 retained connector 287
+and now reports the expected HDMI TO USB EDID.
+
+Full RAM-only `boot-uvc` run `20260906T024143Z-8cd48fc-903152` passed all
+retained checks and captured 60 full frames (36,864,000 bytes), 60 unique
+hashes, 59 transitions, zero startup discards, and zero stream errors. This
+validates the regenerated VM artifacts despite the historical Image/initramfs
+hash differences. It also isolates the earlier frozen capture to the absent
+physical HDMI source in that setup. The result is saved on the VM at
+`out/migration/direct-hdmi-result.json`; full originals remain in the bridge
+checkout's immutable run directory.
+
+M5 work began only after this pass. Builds remain incremental on the VM.
