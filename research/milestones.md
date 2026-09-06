@@ -60,7 +60,7 @@ results](m5-storage-bringup.md) and [accepted HID evidence](m5-hid-bringup.md).
 
 ## M6 — GPIO/ATX
 
-**Current: DEFERRED by explicit user decision. Not passed. Do not attempt during M7.**
+**Current: DEFERRED by explicit user decision. Not passed. Do not attempt during M7 or M8-A.**
 
 Name/read status lines with libgpiod first. Use a meter/test fixture before outputs. **Pass:** inputs track known signals; power/reset pulses have verified polarity/duration; lines return inactive; no legacy sysfs GPIO dependency.
 
@@ -81,11 +81,22 @@ three automatic HDMI-loss recoveries, and all frozen M5 gadget regressions.
 No uStreamer ERROR-level messages or unexpected USB/UVC errors occurred in the
 accepted runs. Annotated baseline: `ubuntu-26.04.1-ustreamer-baseline`.
 See [M7.5 qualification and rejected attempts](m75-ustreamer-bringup.md).
-M6 remains deferred; kvmd has not started.
+M6 remains deferred; this frozen standalone baseline is preserved.
 
 ## M8 — PiKVM
 
 Package uStreamer, kvmd, web UI/nginx/auth, HID, MSD, and ATX in that order. **Pass:** authenticated browser video, keyboard/mouse, virtual read-only media, ATX state/pulse, service restart, and 24-hour soak with no memory/USB failures.
+
+### M8-A — Minimal video-only kvmd
+
+**Current: PASSED.** Pinned kvmd v4.213, reproducible ARM64 Debian package
+`4.213-1blikvm1`, BliKVM platform, one kvmd-owned frozen uStreamer and Unix-only
+API. Two full HIL boots pass lifecycle and three HDMI-loss recoveries each;
+three further clean boots repeat API, 120-second 1080p30 and M5/M7 regressions.
+All five deliver 29.7–29.8 fps with exact 30-fps device mode. Baseline:
+`ubuntu-26.04.1-kvmd-video-baseline`. See [acceptance evidence](m8a-kvmd-video-bringup.md).
+M8 as a whole remains incomplete. M8-B web/auth is proposed only; no nginx,
+LAN API, kvmd HID/MSD/ATX control or optional integrations were enabled.
 
 ## M9 — Optional hardware
 

@@ -1,0 +1,103 @@
+{
+  "run_id": "20260906T113659Z-unknown-191283",
+  "boot_id": "239d4f05-9e2d-4967-98aa-f86e8626e0cc",
+  "boot_run": "20260906T113602Z-unknown-682226",
+  "streams": {
+    "sustained": {
+      "seconds_requested": 120,
+      "elapsed": 120.03685,
+      "frames": 3580,
+      "bytes": 148507140,
+      "unique_hashes": 3580,
+      "transitions": 3579
+    },
+    "concurrent-gadget-stream": {
+      "seconds_requested": 15,
+      "elapsed": 15.020591,
+      "frames": 438,
+      "bytes": 18169197,
+      "unique_hashes": 438,
+      "transitions": 437
+    },
+    "start-stream-0": {
+      "seconds_requested": 10,
+      "elapsed": 10.003152,
+      "frames": 289,
+      "bytes": 11988294,
+      "unique_hashes": 288,
+      "transitions": 287
+    },
+    "restart-stream-0": {
+      "seconds_requested": 10,
+      "elapsed": 10.025306,
+      "frames": 288,
+      "bytes": 11946958,
+      "unique_hashes": 288,
+      "transitions": 287
+    },
+    "start-stream-1": {
+      "seconds_requested": 10,
+      "elapsed": 10.027232,
+      "frames": 289,
+      "bytes": 11988391,
+      "unique_hashes": 289,
+      "transitions": 288
+    },
+    "restart-stream-1": {
+      "seconds_requested": 10,
+      "elapsed": 10.026312,
+      "frames": 288,
+      "bytes": 11947014,
+      "unique_hashes": 288,
+      "transitions": 287
+    },
+    "start-stream-2": {
+      "seconds_requested": 10,
+      "elapsed": 10.029583,
+      "frames": 289,
+      "bytes": 11988260,
+      "unique_hashes": 289,
+      "transitions": 288
+    },
+    "restart-stream-2": {
+      "seconds_requested": 10,
+      "elapsed": 10.022922,
+      "frames": 289,
+      "bytes": 11988176,
+      "unique_hashes": 289,
+      "transitions": 288
+    },
+    "recovery-0": {
+      "seconds_requested": 15,
+      "elapsed": 15.005493,
+      "frames": 437,
+      "bytes": 18127949,
+      "unique_hashes": 437,
+      "transitions": 436
+    },
+    "recovery-1": {
+      "seconds_requested": 15,
+      "elapsed": 15.006216,
+      "frames": 436,
+      "bytes": 18086463,
+      "unique_hashes": 436,
+      "transitions": 435
+    },
+    "recovery-2": {
+      "seconds_requested": 15,
+      "elapsed": 15.004474,
+      "frames": 436,
+      "bytes": 18086470,
+      "unique_hashes": 436,
+      "transitions": 435
+    }
+  },
+  "resources": {
+    "samples": 111,
+    "rss_kib_min": 55208,
+    "rss_kib_max": 55604,
+    "process_lifetime_cpu_percent_min": 3.2,
+    "process_lifetime_cpu_percent_max": 16.3
+  },
+  "ustreamer_errors": []
+}

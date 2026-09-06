@@ -1,0 +1,55 @@
+{
+    "ok": true,
+    "result": {
+        "applied": {
+            "desired_fps": 30,
+            "resolution": "1920x1080"
+        },
+        "features": {
+            "h264": false,
+            "quality": false,
+            "resolution": true
+        },
+        "limits": {
+            "available_resolutions": [
+                "1920x1080"
+            ],
+            "desired_fps": {
+                "max": 30,
+                "min": 30
+            }
+        },
+        "params": {
+            "desired_fps": 30,
+            "resolution": "1920x1080"
+        },
+        "snapshot": {
+            "saved": null
+        },
+        "streamer": {
+            "encoder": {
+                "quality": 0,
+                "type": "HW"
+            },
+            "instance_id": "",
+            "source": {
+                "captured_fps": 30,
+                "desired_fps": 30,
+                "online": true,
+                "resolution": {
+                    "height": 1080,
+                    "width": 1920
+                }
+            },
+            "stream": {
+                "clients": 0,
+                "clients_stat": {},
+                "queued_fps": 0
+            }
+        }
+    }
+}
+7956d61fb9e34d51265b2fba62bd0a435b0f00acbf76b1c244346389243c95a3  -
+7956d61fb9e34d51265b2fba62bd0a435b0f00acbf76b1c244346389243c95a3  -
+7956d61fb9e34d51265b2fba62bd0a435b0f00acbf76b1c244346389243c95a3  -
+7956d61fb9e34d51265b2fba62bd0a435b0f00acbf76b1c244346389243c95a3  -

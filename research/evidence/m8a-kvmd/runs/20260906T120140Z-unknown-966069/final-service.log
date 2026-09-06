@@ -1,0 +1,87 @@
+● kvmd.service - BliKVM video-only kvmd
+     Loaded: loaded (/usr/lib/systemd/system/kvmd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-07-27 20:44:06 UTC; 3min 3s ago
+ Invocation: a41d988c181946f3b32a9c5e00201b87
+   Main PID: 161 (kvmd/main: /usr)
+        CPU: 10.581s
+     CGroup: /system.slice/kvmd.service
+             ├─161 "kvmd/main: /usr/bin/python3 /usr/bin/kvmd --run"
+             └─191 /usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors
+
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'DELETE /streamer/snapshot HTTP/1.1' => 200; size=195 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /hid HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /atx HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /msd HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /gpio HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /switch HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /auth/login HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:54 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [177.552      http] -- HTTP: NEW client (now=1): [localhost]:0, id=5ec6364fe0c1d41e
+Jul 27 20:47:09 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [192.201      http] -- HTTP: DEL client (now=0): [localhost]:0, id=5ec6364fe0c1d41e, Resource temporarily unavailable (reading,eof)
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+0::/system.slice/kvmd.service
+0::/system.slice/kvmd.service
+/usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors 161
+191
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                       
+tcp   LISTEN 0      0       192.168.88.2:22        0.0.0.0:*    users:(("sshd",pid=187,fd=6))
+Netid State  Recv-Q Send-Q                                Local Address:Port Peer Address:PortProcess                                                          
+u_str LISTEN 0      0                              /run/systemd/private 196             * 0    users:(("systemd",pid=1,fd=23))                                 
+u_str LISTEN 0      0        /run/systemd/userdb/io.systemd.DynamicUser 197             * 0    users:(("systemd",pid=1,fd=24))                                 
+u_str LISTEN 0      0                /run/systemd/io.systemd.ManagedOOM 198             * 0    users:(("systemd",pid=1,fd=25))                                 
+u_str LISTEN 0      0                   /run/systemd/io.systemd.Manager 199             * 0    users:(("systemd",pid=1,fd=26))                                 
+u_str LISTEN 0      0               /run/systemd/io.systemd.AskPassword 204             * 0    users:(("systemd",pid=1,fd=34))                                 
+u_str LISTEN 0      0               /run/systemd/io.systemd.Credentials 205             * 0    users:(("systemd",pid=1,fd=35))                                 
+u_str LISTEN 0      0              /run/systemd/io.systemd.FactoryReset 206             * 0    users:(("systemd",pid=1,fd=36))                                 
+u_str LISTEN 0      0                       /run/systemd/journal/stdout 211             * 0    users:(("systemd-journal",pid=82,fd=4),("systemd",pid=1,fd=39)) 
+u_str LISTEN 0      0               /run/systemd/io.systemd.MuteConsole 212             * 0    users:(("systemd",pid=1,fd=40))                                 
+u_str LISTEN 0      0             /run/systemd/netif/io.systemd.Network 213             * 0    users:(("systemd-network",pid=125,fd=3),("systemd",pid=1,fd=41))
+u_str LISTEN 0      0                         /run/udev/io.systemd.Udev 217             * 0    users:(("systemd-udevd",pid=117,fd=4),("systemd",pid=1,fd=45))  
+u_str LISTEN 0      0      /run/systemd/resolve.hook/io.systemd.Network 328             * 0    users:(("systemd-network",pid=125,fd=4),("systemd",pid=1,fd=46))
+u_str LISTEN 0      0                       /run/dbus/system_bus_socket 518             * 0    users:(("dbus-daemon",pid=159,fd=3),("systemd",pid=1,fd=52))    
+u_str LISTEN 0      0                        /run/ssh-unix-local/socket 519             * 0    users:(("systemd",pid=1,fd=54))                                 
+u_str LISTEN 0      0                  /run/systemd/io.systemd.Hostname 520             * 0    users:(("systemd",pid=1,fd=55))                                 
+u_str LISTEN 0      0                     /run/systemd/io.systemd.Login 521             * 0    users:(("systemd-logind",pid=163,fd=3),("systemd",pid=1,fd=57)) 
+u_str LISTEN 0      0                           /run/kvmd/api/kvmd.sock 575             * 0    users:(("kvmd/main: /usr",pid=161,fd=4))                        
+u_str LISTEN 0      0           /run/systemd/journal/io.systemd.journal 2084            * 0    users:(("systemd-journal",pid=82,fd=9))                         
+u_str LISTEN 0      0                    /run/systemd/io.systemd.sysext 2166            * 0    users:(("systemd",pid=1,fd=48))                                 
+u_str LISTEN 0      0                /run/kvmd/ustreamer/ustreamer.sock 3441            * 0    users:(("main",pid=191,fd=7))                                   
+u_seq LISTEN 0      0                                 /run/udev/control 215             * 0    users:(("systemd-udevd",pid=117,fd=5),("systemd",pid=1,fd=43))  
+# /usr/lib/systemd/system/kvmd.service
+[Unit]
+Description=BliKVM video-only kvmd
+BindsTo=dev-kvmd\x2dvideo.device
+After=dev-kvmd\x2dvideo.device
+Conflicts=ustreamer.service
+
+[Service]
+Type=exec
+User=kvmd
+Group=ustreamer
+RuntimeDirectory=kvmd/api kvmd/ustreamer
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/kvmd --run
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+KillMode=mixed
+UMask=0007
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+DevicePolicy=closed
+DeviceAllow=/dev/kvmd-video rw
+
+[Install]
+WantedBy=multi-user.target
+# Unit ustreamer.service is masked.
+-- No entries --

@@ -1,0 +1,1196 @@
+{
+  "boot_id": "b9a424df-e2aa-4942-8fcd-abe03ee5d61f",
+  "boot_run": "20260906T114433Z-unknown-398516",
+  "concurrent_storage": {
+    "continuous_reads": [
+      {
+        "finished": 1788695557.8489602,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695557.2197077
+      },
+      {
+        "finished": 1788695558.5873384,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695557.9516218
+      },
+      {
+        "finished": 1788695559.3211482,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695558.6902468
+      },
+      {
+        "finished": 1788695560.0505059,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695559.4239616
+      },
+      {
+        "finished": 1788695560.7558248,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695560.1530359
+      },
+      {
+        "finished": 1788695561.4569867,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695560.8586886
+      },
+      {
+        "finished": 1788695562.15722,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695561.559979
+      },
+      {
+        "finished": 1788695562.8591964,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695562.2601173
+      },
+      {
+        "finished": 1788695563.5605748,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695562.9622169
+      },
+      {
+        "finished": 1788695564.272206,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695563.664088
+      },
+      {
+        "finished": 1788695564.9632857,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695564.3746414
+      },
+      {
+        "finished": 1788695565.6603627,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695565.0657709
+      },
+      {
+        "finished": 1788695566.356032,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695565.7633083
+      },
+      {
+        "finished": 1788695567.0482652,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695566.45903
+      },
+      {
+        "finished": 1788695567.7482166,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695567.152669
+      },
+      {
+        "finished": 1788695568.4395475,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695567.8523266
+      },
+      {
+        "finished": 1788695569.1302094,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695568.542378
+      },
+      {
+        "finished": 1788695569.8293262,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695569.2327287
+      },
+      {
+        "finished": 1788695570.5269732,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695569.9319813
+      },
+      {
+        "finished": 1788695571.2245598,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695570.629434
+      },
+      {
+        "finished": 1788695571.9144619,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695571.3274505
+      },
+      {
+        "finished": 1788695572.6149235,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695572.0182567
+      },
+      {
+        "finished": 1788695573.3085535,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695572.7182777
+      },
+      {
+        "finished": 1788695574.0022967,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695573.4115298
+      },
+      {
+        "finished": 1788695574.702964,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695574.1048334
+      },
+      {
+        "finished": 1788695575.4020731,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695574.8060203
+      },
+      {
+        "finished": 1788695576.0937643,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695575.5045223
+      },
+      {
+        "finished": 1788695576.7934573,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695576.1964262
+      },
+      {
+        "finished": 1788695577.492375,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695576.8961112
+      },
+      {
+        "finished": 1788695578.180868,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695577.5952783
+      },
+      {
+        "finished": 1788695578.8759336,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695578.284053
+      },
+      {
+        "finished": 1788695579.569653,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788695578.9788933
+      }
+    ],
+    "expected": {
+      "fat_type": "FAT16",
+      "files": {
+        "PATTERN.BIN": {
+          "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+          "size": 1024
+        },
+        "README.TXT": {
+          "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+          "size": 54
+        }
+      },
+      "filesystem": "vfat",
+      "label": "BLIKVM_G4",
+      "logical_block_size": 512,
+      "partition_table": null,
+      "sectors": 16384,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uuid": "4734-0001"
+    },
+    "identity": {
+      "dev": "8:0",
+      "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3",
+      "model": "G4 RAM RO",
+      "node": "/dev/sda",
+      "queue/logical_block_size": "512",
+      "rev": "0001",
+      "ro": "1",
+      "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+      "sg": "/dev/sg0",
+      "size": "16384",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+      "type": "0",
+      "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+      "vendor": "BliKVM"
+    },
+    "mode": "direct whole-image reads; mount and write tests run sequentially",
+    "passed": true
+  },
+  "concurrent_stream": {
+    "bytes": 18169249,
+    "command": [
+      "ssh",
+      "-i",
+      "/home/user/.local/share/blikvm-m7/id_ed25519",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+      "-o",
+      "ConnectTimeout=10",
+      "blikvm@192.168.88.2",
+      "sudo -n curl --silent --show-error --no-buffer --include --max-time 25 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+    ],
+    "elapsed": 15.016758,
+    "frames": 438,
+    "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/e6d10f22696bf1f8; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+    "result": "passed",
+    "seconds_requested": 15,
+    "transitions": 437,
+    "unique_hashes": 438
+  },
+  "finished_at": "2026-09-06T11:53:05.548650+00:00",
+  "hid": {
+    "absolute": {
+      "events": [
+        {
+          "code": 0,
+          "microseconds": 18561,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 256
+        },
+        {
+          "code": 1,
+          "microseconds": 18561,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 512
+        },
+        {
+          "code": 0,
+          "microseconds": 18561,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 195567,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 32511
+        },
+        {
+          "code": 1,
+          "microseconds": 195567,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 32255
+        },
+        {
+          "code": 0,
+          "microseconds": 195567,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 363299,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 16384
+        },
+        {
+          "code": 1,
+          "microseconds": 363299,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 8192
+        },
+        {
+          "code": 0,
+          "microseconds": 363299,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 531572,
+          "seconds": 1788695558,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 531572,
+          "seconds": 1788695558,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 531572,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 699332,
+          "seconds": 1788695558,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 699332,
+          "seconds": 1788695558,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 699332,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 875329,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 875329,
+          "seconds": 1788695558,
+          "type": 3,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 875329,
+          "seconds": 1788695558,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "frames": [
+        [
+          [
+            3,
+            0,
+            256
+          ],
+          [
+            3,
+            1,
+            512
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            32511
+          ],
+          [
+            3,
+            1,
+            32255
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            16384
+          ],
+          [
+            3,
+            1,
+            8192
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ]
+        ]
+      ],
+      "identity": {
+        "capabilities/key": "70000 0 0 0 0",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 1,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event11",
+        "phys": "usb-0000:00:14.0-3/input1",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.1/0003:1D6B:0106.00AF/input/input184",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "neutral_verified": true,
+      "passed": true,
+      "reports": [
+        [
+          0,
+          256,
+          512
+        ],
+        [
+          0,
+          32511,
+          32255
+        ],
+        [
+          0,
+          16384,
+          8192
+        ],
+        [
+          1,
+          16384,
+          8192
+        ],
+        [
+          0,
+          16384,
+          8192
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "keyboard": {
+      "code": 42,
+      "events": [
+        {
+          "code": 4,
+          "microseconds": 682293,
+          "seconds": 1788695557,
+          "type": 4,
+          "value": 458977
+        },
+        {
+          "code": 42,
+          "microseconds": 682293,
+          "seconds": 1788695557,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 682293,
+          "seconds": 1788695557,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 864567,
+          "seconds": 1788695557,
+          "type": 4,
+          "value": 458977
+        },
+        {
+          "code": 42,
+          "microseconds": 864567,
+          "seconds": 1788695557,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 864567,
+          "seconds": 1788695557,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "identity": {
+        "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 0,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event10",
+        "phys": "usb-0000:00:14.0-3/input0",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.00AE/input/input183",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "key": "KEY_LEFTSHIFT",
+      "passed": true,
+      "press_verified": true,
+      "release_verified": true
+    },
+    "relative": {
+      "events": [
+        {
+          "code": 0,
+          "microseconds": 179332,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": 17
+        },
+        {
+          "code": 0,
+          "microseconds": 179332,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 295614,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": -23
+        },
+        {
+          "code": 0,
+          "microseconds": 295614,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 411362,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": 31
+        },
+        {
+          "code": 0,
+          "microseconds": 411362,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 527625,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": -47
+        },
+        {
+          "code": 0,
+          "microseconds": 527625,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 643355,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": -11
+        },
+        {
+          "code": 1,
+          "microseconds": 643355,
+          "seconds": 1788695559,
+          "type": 2,
+          "value": 13
+        },
+        {
+          "code": 0,
+          "microseconds": 643355,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 759624,
+          "seconds": 1788695559,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 759624,
+          "seconds": 1788695559,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 759624,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 874361,
+          "seconds": 1788695559,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 874361,
+          "seconds": 1788695559,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 874361,
+          "seconds": 1788695559,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "frames": [
+        [
+          [
+            2,
+            0,
+            17
+          ]
+        ],
+        [
+          [
+            2,
+            0,
+            -23
+          ]
+        ],
+        [
+          [
+            2,
+            1,
+            31
+          ]
+        ],
+        [
+          [
+            2,
+            1,
+            -47
+          ]
+        ],
+        [
+          [
+            2,
+            0,
+            -11
+          ],
+          [
+            2,
+            1,
+            13
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ]
+      ],
+      "identity": {
+        "capabilities/key": "70000 0 0 0 0",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 2,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event12",
+        "phys": "usb-0000:00:14.0-3/input2",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.2/0003:1D6B:0106.00B0/input/input185",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "neutral_generates_no_event": true,
+      "neutral_verified": true,
+      "passed": true,
+      "reports": [
+        [
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          -23,
+          0
+        ],
+        [
+          0,
+          0,
+          31
+        ],
+        [
+          0,
+          0,
+          -47
+        ],
+        [
+          0,
+          -11,
+          13
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "restarts": [
+    {
+      "bytes": 11988303,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.017557,
+      "frames": 289,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/d4f56457fc30b181; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 288,
+      "unique_hashes": 289
+    },
+    {
+      "bytes": 11946948,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.024412,
+      "frames": 288,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/e3bc6ff1d9bbeaf8; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 287,
+      "unique_hashes": 288
+    },
+    {
+      "bytes": 11988391,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.027767,
+      "frames": 289,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/888209d565757908; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 288,
+      "unique_hashes": 289
+    },
+    {
+      "bytes": 11946930,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.025567,
+      "frames": 288,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/7d83514a1b3b217b; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 287,
+      "unique_hashes": 288
+    },
+    {
+      "bytes": 11988285,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.025538,
+      "frames": 289,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/78de7841e186c4b4; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 288,
+      "unique_hashes": 289
+    },
+    {
+      "bytes": 11988297,
+      "command": [
+        "ssh",
+        "-i",
+        "/home/user/.local/share/blikvm-m7/id_ed25519",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+        "-o",
+        "ConnectTimeout=10",
+        "blikvm@192.168.88.2",
+        "sudo -n curl --silent --show-error --no-buffer --include --max-time 20 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+      ],
+      "elapsed": 10.018373,
+      "frames": 289,
+      "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/e6cb8799387cafc; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+      "result": "passed",
+      "seconds_requested": 10,
+      "transitions": 288,
+      "unique_hashes": 289
+    }
+  ],
+  "result": "passed",
+  "run_directory": "/home/user/blikvm-kvmd/runs/20260906T114530Z-unknown-281194",
+  "run_id": "20260906T114530Z-unknown-281194",
+  "schema_version": 1,
+  "signal_cycles": [
+    {
+      "automatic": true,
+      "loss": {
+        "bytes": 17821728,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl -sS -N -i --max-time 15 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 10.011268,
+        "error": "frozen or empty five-second window 0",
+        "frames": 288,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/62f875ac802c19ed; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "failed",
+        "seconds_requested": 10,
+        "transitions": 0,
+        "unique_hashes": 1
+      },
+      "pid": "2792",
+      "recovery": {
+        "bytes": 17505665,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl --silent --show-error --no-buffer --include --max-time 25 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 15.029658,
+        "frames": 422,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/5a08560ab67ce627; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "passed",
+        "seconds_requested": 15,
+        "transitions": 421,
+        "unique_hashes": 422
+      }
+    },
+    {
+      "automatic": true,
+      "loss": {
+        "bytes": 16893513,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl -sS -N -i --max-time 15 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 10.019476,
+        "error": "frozen or empty five-second window 0",
+        "frames": 273,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/5ed4848e47ab006a; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "failed",
+        "seconds_requested": 10,
+        "transitions": 0,
+        "unique_hashes": 1
+      },
+      "pid": "2792",
+      "recovery": {
+        "bytes": 18127966,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl --silent --show-error --no-buffer --include --max-time 25 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 15.02941,
+        "frames": 437,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/98eb6f59c5c755ae; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "passed",
+        "seconds_requested": 15,
+        "transitions": 436,
+        "unique_hashes": 437
+      }
+    },
+    {
+      "automatic": true,
+      "loss": {
+        "bytes": 17821728,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl -sS -N -i --max-time 15 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 10.004774,
+        "error": "frozen or empty five-second window 0",
+        "frames": 288,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/45439e6b9aab3aa5; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "failed",
+        "seconds_requested": 10,
+        "transitions": 0,
+        "unique_hashes": 1
+      },
+      "pid": "2792",
+      "recovery": {
+        "bytes": 18127966,
+        "command": [
+          "ssh",
+          "-i",
+          "/home/user/.local/share/blikvm-m7/id_ed25519",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "StrictHostKeyChecking=yes",
+          "-o",
+          "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+          "-o",
+          "ConnectTimeout=10",
+          "blikvm@192.168.88.2",
+          "sudo -n curl --silent --show-error --no-buffer --include --max-time 25 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+        ],
+        "elapsed": 15.030318,
+        "frames": 437,
+        "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/39dbea59ea929397; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+        "result": "passed",
+        "seconds_requested": 15,
+        "transitions": 436,
+        "unique_hashes": 437
+      }
+    }
+  ],
+  "stage": "kvmd_video_qualification",
+  "storage": {
+    "expected": {
+      "fat_type": "FAT16",
+      "files": {
+        "PATTERN.BIN": {
+          "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+          "size": 1024
+        },
+        "README.TXT": {
+          "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+          "size": 54
+        }
+      },
+      "filesystem": "vfat",
+      "label": "BLIKVM_G4",
+      "logical_block_size": 512,
+      "partition_table": null,
+      "sectors": 16384,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uuid": "4734-0001"
+    },
+    "files": {
+      "PATTERN.BIN": {
+        "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+        "size": 1024
+      },
+      "README.TXT": {
+        "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+        "size": 54
+      }
+    },
+    "filesystem": {
+      "BLOCK_SIZE": "512",
+      "DEVNAME": "/dev/sda",
+      "FSBLOCKSIZE": "1024",
+      "FSSIZE": "8388608",
+      "LABEL": "BLIKVM_G4",
+      "LABEL_FATBOOT": "BLIKVM_G4",
+      "SEC_TYPE": "msdos",
+      "TYPE": "vfat",
+      "USAGE": "filesystem",
+      "UUID": "4734-0001",
+      "VERSION": "FAT16"
+    },
+    "filesystem_write": {
+      "errno": 30,
+      "error": "[Errno 30] Read-only file system: '/home/user/blikvm-kvmd/runs/20260906T114530Z-unknown-281194/storage-ustreamer-mount/REJECT.TXT'",
+      "rejected": true
+    },
+    "identity": {
+      "dev": "8:0",
+      "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3",
+      "model": "G4 RAM RO",
+      "node": "/dev/sda",
+      "queue/logical_block_size": "512",
+      "rev": "0001",
+      "ro": "1",
+      "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+      "sg": "/dev/sg0",
+      "size": "16384",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+      "type": "0",
+      "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+      "vendor": "BliKVM"
+    },
+    "image_sha256_after": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "image_sha256_before": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "passed": true,
+    "scsi_write": {
+      "returncode": 7,
+      "stderr": "SCSI Status: Check Condition \n\nSense Information:\nFixed format, current; Sense key: Data Protect\nAdditional sense: Write protected\n\n\n",
+      "stdout": ""
+    }
+  },
+  "sustained": {
+    "bytes": 147884893,
+    "command": [
+      "ssh",
+      "-i",
+      "/home/user/.local/share/blikvm-m7/id_ed25519",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T114433Z-unknown-398516/known_hosts",
+      "-o",
+      "ConnectTimeout=10",
+      "blikvm@192.168.88.2",
+      "sudo -n curl --silent --show-error --no-buffer --include --max-time 130 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+    ],
+    "elapsed": 120.035671,
+    "frames": 3565,
+    "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/686ea7f183b8eddb; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+    "result": "passed",
+    "seconds_requested": 120,
+    "transitions": 3563,
+    "unique_hashes": 3564
+  },
+  "usb_errors": []
+}

@@ -1,0 +1,879 @@
+{
+  "boot_id": "297d7e32-4dec-4ea6-8a65-2a4d16d518eb",
+  "boot_run": "20260906T120041Z-unknown-958608",
+  "concurrent_storage": {
+    "continuous_reads": [
+      {
+        "finished": 1788696243.4865081,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696242.864699
+      },
+      {
+        "finished": 1788696244.2140334,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696243.5896947
+      },
+      {
+        "finished": 1788696244.933777,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696244.3169138
+      },
+      {
+        "finished": 1788696245.6682255,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696245.036347
+      },
+      {
+        "finished": 1788696246.3874779,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696245.770848
+      },
+      {
+        "finished": 1788696247.085349,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696246.4906821
+      },
+      {
+        "finished": 1788696247.7962306,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696247.1882238
+      },
+      {
+        "finished": 1788696248.4913092,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696247.8989673
+      },
+      {
+        "finished": 1788696249.198629,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696248.5954216
+      },
+      {
+        "finished": 1788696249.9009633,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696249.3011742
+      },
+      {
+        "finished": 1788696250.587311,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696250.0035245
+      },
+      {
+        "finished": 1788696251.2622466,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696250.6910477
+      },
+      {
+        "finished": 1788696251.936137,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696251.3651328
+      },
+      {
+        "finished": 1788696252.608277,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696252.0387433
+      },
+      {
+        "finished": 1788696253.2793257,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696252.7109303
+      },
+      {
+        "finished": 1788696253.9538696,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696253.3824098
+      },
+      {
+        "finished": 1788696254.6288939,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696254.05711
+      },
+      {
+        "finished": 1788696255.2982047,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696254.731694
+      },
+      {
+        "finished": 1788696255.9710999,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696255.400794
+      },
+      {
+        "finished": 1788696256.6416292,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696256.0736291
+      },
+      {
+        "finished": 1788696257.31867,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696256.7441776
+      },
+      {
+        "finished": 1788696257.995495,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696257.4214265
+      },
+      {
+        "finished": 1788696258.6760597,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696258.0980568
+      },
+      {
+        "finished": 1788696259.353062,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696258.7784731
+      },
+      {
+        "finished": 1788696260.0342414,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696259.456287
+      },
+      {
+        "finished": 1788696260.7123086,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696260.1367571
+      },
+      {
+        "finished": 1788696261.3909302,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696260.815808
+      },
+      {
+        "finished": 1788696262.0724037,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696261.4948354
+      },
+      {
+        "finished": 1788696262.7479942,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696262.1751423
+      },
+      {
+        "finished": 1788696263.435333,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696262.850852
+      },
+      {
+        "finished": 1788696264.1181529,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696263.5379255
+      },
+      {
+        "finished": 1788696264.807755,
+        "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+        "started": 1788696264.2211668
+      }
+    ],
+    "expected": {
+      "fat_type": "FAT16",
+      "files": {
+        "PATTERN.BIN": {
+          "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+          "size": 1024
+        },
+        "README.TXT": {
+          "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+          "size": 54
+        }
+      },
+      "filesystem": "vfat",
+      "label": "BLIKVM_G4",
+      "logical_block_size": 512,
+      "partition_table": null,
+      "sectors": 16384,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uuid": "4734-0001"
+    },
+    "identity": {
+      "dev": "8:0",
+      "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3",
+      "model": "G4 RAM RO",
+      "node": "/dev/sda",
+      "queue/logical_block_size": "512",
+      "rev": "0001",
+      "ro": "1",
+      "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+      "sg": "/dev/sg0",
+      "size": "16384",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+      "type": "0",
+      "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+      "vendor": "BliKVM"
+    },
+    "mode": "direct whole-image reads; mount and write tests run sequentially",
+    "passed": true
+  },
+  "concurrent_stream": {
+    "bytes": 17546928,
+    "command": [
+      "ssh",
+      "-i",
+      "/home/user/.local/share/blikvm-m7/id_ed25519",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T120041Z-unknown-958608/known_hosts",
+      "-o",
+      "ConnectTimeout=10",
+      "blikvm@192.168.88.2",
+      "sudo -n curl --silent --show-error --no-buffer --include --max-time 25 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+    ],
+    "elapsed": 15.014419,
+    "frames": 423,
+    "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/5ec6364fe0c1d41e; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+    "result": "passed",
+    "seconds_requested": 15,
+    "transitions": 422,
+    "unique_hashes": 423
+  },
+  "finished_at": "2026-09-06T12:04:30.646829+00:00",
+  "hid": {
+    "absolute": {
+      "events": [
+        {
+          "code": 0,
+          "microseconds": 753820,
+          "seconds": 1788696243,
+          "type": 3,
+          "value": 256
+        },
+        {
+          "code": 1,
+          "microseconds": 753820,
+          "seconds": 1788696243,
+          "type": 3,
+          "value": 512
+        },
+        {
+          "code": 0,
+          "microseconds": 753820,
+          "seconds": 1788696243,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 922876,
+          "seconds": 1788696243,
+          "type": 3,
+          "value": 32511
+        },
+        {
+          "code": 1,
+          "microseconds": 922876,
+          "seconds": 1788696243,
+          "type": 3,
+          "value": 32255
+        },
+        {
+          "code": 0,
+          "microseconds": 922876,
+          "seconds": 1788696243,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 99568,
+          "seconds": 1788696244,
+          "type": 3,
+          "value": 16384
+        },
+        {
+          "code": 1,
+          "microseconds": 99568,
+          "seconds": 1788696244,
+          "type": 3,
+          "value": 8192
+        },
+        {
+          "code": 0,
+          "microseconds": 99568,
+          "seconds": 1788696244,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 266585,
+          "seconds": 1788696244,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 266585,
+          "seconds": 1788696244,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 266585,
+          "seconds": 1788696244,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 435578,
+          "seconds": 1788696244,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 435578,
+          "seconds": 1788696244,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 435578,
+          "seconds": 1788696244,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 602551,
+          "seconds": 1788696244,
+          "type": 3,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 602551,
+          "seconds": 1788696244,
+          "type": 3,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 602551,
+          "seconds": 1788696244,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "frames": [
+        [
+          [
+            3,
+            0,
+            256
+          ],
+          [
+            3,
+            1,
+            512
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            32511
+          ],
+          [
+            3,
+            1,
+            32255
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            16384
+          ],
+          [
+            3,
+            1,
+            8192
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ],
+        [
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ]
+        ]
+      ],
+      "identity": {
+        "capabilities/key": "70000 0 0 0 0",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 1,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event11",
+        "phys": "usb-0000:00:14.0-3/input1",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.1/0003:1D6B:0106.00B8/input/input193",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "neutral_verified": true,
+      "passed": true,
+      "reports": [
+        [
+          0,
+          256,
+          512
+        ],
+        [
+          0,
+          32511,
+          32255
+        ],
+        [
+          0,
+          16384,
+          8192
+        ],
+        [
+          1,
+          16384,
+          8192
+        ],
+        [
+          0,
+          16384,
+          8192
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    "keyboard": {
+      "code": 42,
+      "events": [
+        {
+          "code": 4,
+          "microseconds": 425541,
+          "seconds": 1788696243,
+          "type": 4,
+          "value": 458977
+        },
+        {
+          "code": 42,
+          "microseconds": 425541,
+          "seconds": 1788696243,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 425541,
+          "seconds": 1788696243,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 618833,
+          "seconds": 1788696243,
+          "type": 4,
+          "value": 458977
+        },
+        {
+          "code": 42,
+          "microseconds": 618833,
+          "seconds": 1788696243,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 618833,
+          "seconds": 1788696243,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "identity": {
+        "capabilities/key": "e080ffdf01cfffff fffffffffffffffe",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 0,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event10",
+        "phys": "usb-0000:00:14.0-3/input0",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.00B7/input/input192",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "key": "KEY_LEFTSHIFT",
+      "passed": true,
+      "press_verified": true,
+      "release_verified": true
+    },
+    "relative": {
+      "events": [
+        {
+          "code": 0,
+          "microseconds": 923583,
+          "seconds": 1788696244,
+          "type": 2,
+          "value": 17
+        },
+        {
+          "code": 0,
+          "microseconds": 923583,
+          "seconds": 1788696244,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 38609,
+          "seconds": 1788696245,
+          "type": 2,
+          "value": -23
+        },
+        {
+          "code": 0,
+          "microseconds": 38609,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 158588,
+          "seconds": 1788696245,
+          "type": 2,
+          "value": 31
+        },
+        {
+          "code": 0,
+          "microseconds": 158588,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 1,
+          "microseconds": 274621,
+          "seconds": 1788696245,
+          "type": 2,
+          "value": -47
+        },
+        {
+          "code": 0,
+          "microseconds": 274621,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 394634,
+          "seconds": 1788696245,
+          "type": 2,
+          "value": -11
+        },
+        {
+          "code": 1,
+          "microseconds": 394634,
+          "seconds": 1788696245,
+          "type": 2,
+          "value": 13
+        },
+        {
+          "code": 0,
+          "microseconds": 394634,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 509765,
+          "seconds": 1788696245,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 509765,
+          "seconds": 1788696245,
+          "type": 1,
+          "value": 1
+        },
+        {
+          "code": 0,
+          "microseconds": 509765,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        },
+        {
+          "code": 4,
+          "microseconds": 625601,
+          "seconds": 1788696245,
+          "type": 4,
+          "value": 589825
+        },
+        {
+          "code": 272,
+          "microseconds": 625601,
+          "seconds": 1788696245,
+          "type": 1,
+          "value": 0
+        },
+        {
+          "code": 0,
+          "microseconds": 625601,
+          "seconds": 1788696245,
+          "type": 0,
+          "value": 0
+        }
+      ],
+      "frames": [
+        [
+          [
+            2,
+            0,
+            17
+          ]
+        ],
+        [
+          [
+            2,
+            0,
+            -23
+          ]
+        ],
+        [
+          [
+            2,
+            1,
+            31
+          ]
+        ],
+        [
+          [
+            2,
+            1,
+            -47
+          ]
+        ],
+        [
+          [
+            2,
+            0,
+            -11
+          ],
+          [
+            2,
+            1,
+            13
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ]
+      ],
+      "identity": {
+        "capabilities/key": "70000 0 0 0 0",
+        "id/product": "0106",
+        "id/vendor": "1d6b",
+        "interface": 2,
+        "name": "BliKVM BliKVM M5 keyboard",
+        "node": "/dev/input/event12",
+        "phys": "usb-0000:00:14.0-3/input2",
+        "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.2/0003:1D6B:0106.00B9/input/input194",
+        "uniq": "blikvm-v4-m5-keyboard"
+      },
+      "neutral_generates_no_event": true,
+      "neutral_verified": true,
+      "passed": true,
+      "reports": [
+        [
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          -23,
+          0
+        ],
+        [
+          0,
+          0,
+          31
+        ],
+        [
+          0,
+          0,
+          -47
+        ],
+        [
+          0,
+          -11,
+          13
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "restarts": [],
+  "result": "passed",
+  "run_directory": "/home/user/blikvm-kvmd/runs/20260906T120140Z-unknown-966069",
+  "run_id": "20260906T120140Z-unknown-966069",
+  "schema_version": 1,
+  "signal_cycles": [],
+  "stage": "kvmd_boot_smoke",
+  "storage": {
+    "expected": {
+      "fat_type": "FAT16",
+      "files": {
+        "PATTERN.BIN": {
+          "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+          "size": 1024
+        },
+        "README.TXT": {
+          "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+          "size": 54
+        }
+      },
+      "filesystem": "vfat",
+      "label": "BLIKVM_G4",
+      "logical_block_size": 512,
+      "partition_table": null,
+      "sectors": 16384,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uuid": "4734-0001"
+    },
+    "files": {
+      "PATTERN.BIN": {
+        "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+        "size": 1024
+      },
+      "README.TXT": {
+        "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff",
+        "size": 54
+      }
+    },
+    "filesystem": {
+      "BLOCK_SIZE": "512",
+      "DEVNAME": "/dev/sda",
+      "FSBLOCKSIZE": "1024",
+      "FSSIZE": "8388608",
+      "LABEL": "BLIKVM_G4",
+      "LABEL_FATBOOT": "BLIKVM_G4",
+      "SEC_TYPE": "msdos",
+      "TYPE": "vfat",
+      "USAGE": "filesystem",
+      "UUID": "4734-0001",
+      "VERSION": "FAT16"
+    },
+    "filesystem_write": {
+      "errno": 30,
+      "error": "[Errno 30] Read-only file system: '/home/user/blikvm-kvmd/runs/20260906T120140Z-unknown-966069/storage-ustreamer-mount/REJECT.TXT'",
+      "rejected": true
+    },
+    "identity": {
+      "dev": "8:0",
+      "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3",
+      "model": "G4 RAM RO",
+      "node": "/dev/sda",
+      "queue/logical_block_size": "512",
+      "rev": "0001",
+      "ro": "1",
+      "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+      "sg": "/dev/sg0",
+      "size": "16384",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+      "type": "0",
+      "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+      "vendor": "BliKVM"
+    },
+    "image_sha256_after": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "image_sha256_before": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "passed": true,
+    "scsi_write": {
+      "returncode": 7,
+      "stderr": "SCSI Status: Check Condition \n\nSense Information:\nFixed format, current; Sense key: Data Protect\nAdditional sense: Write protected\n\n\n",
+      "stdout": ""
+    }
+  },
+  "sustained": {
+    "bytes": 148507183,
+    "command": [
+      "ssh",
+      "-i",
+      "/home/user/.local/share/blikvm-m7/id_ed25519",
+      "-o",
+      "BatchMode=yes",
+      "-o",
+      "StrictHostKeyChecking=yes",
+      "-o",
+      "UserKnownHostsFile=/home/user/blikvm-kvmd/runs/20260906T120041Z-unknown-958608/known_hosts",
+      "-o",
+      "ConnectTimeout=10",
+      "blikvm@192.168.88.2",
+      "sudo -n curl --silent --show-error --no-buffer --include --max-time 130 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream"
+    ],
+    "elapsed": 120.037498,
+    "frames": 3580,
+    "http_headers": "HTTP/1.0 200 OK\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/5271d0c0dd816151; path=/; max-age=30\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross",
+    "result": "passed",
+    "seconds_requested": 120,
+    "transitions": 3579,
+    "unique_hashes": 3580
+  },
+  "usb_errors": []
+}

@@ -1,0 +1,77 @@
+{
+  "result": "passed",
+  "rootfs_sha256": "1424e8b3fd65d8702e70f70dc14dabc95a36e524f0d3efa8d4d9bbfffc80643f",
+  "boots": [
+    {
+      "boot_id": "239d4f05-9e2d-4967-98aa-f86e8626e0cc",
+      "boot_run": "20260906T113602Z-unknown-682226",
+      "hil_run": "20260906T113659Z-unknown-191283",
+      "kind": "full",
+      "sustained": {
+        "seconds_requested": 120,
+        "elapsed": 120.03685,
+        "frames": 3580,
+        "bytes": 148507140,
+        "unique_hashes": 3580,
+        "transitions": 3579
+      }
+    },
+    {
+      "boot_id": "b9a424df-e2aa-4942-8fcd-abe03ee5d61f",
+      "boot_run": "20260906T114433Z-unknown-398516",
+      "hil_run": "20260906T114530Z-unknown-281194",
+      "kind": "full",
+      "sustained": {
+        "seconds_requested": 120,
+        "elapsed": 120.035671,
+        "frames": 3565,
+        "bytes": 147884893,
+        "unique_hashes": 3564,
+        "transitions": 3563
+      }
+    },
+    {
+      "boot_id": "0bfffb86-82f4-4d2f-97f1-4f2a70cbceac",
+      "boot_run": "20260906T115305Z-unknown-199193",
+      "hil_run": "20260906T115402Z-unknown-981789",
+      "kind": "boot_smoke",
+      "sustained": {
+        "seconds_requested": 120,
+        "elapsed": 120.039556,
+        "frames": 3565,
+        "bytes": 147884873,
+        "unique_hashes": 3565,
+        "transitions": 3564
+      }
+    },
+    {
+      "boot_id": "e27d6161-0067-4b08-8460-9deb23a005c7",
+      "boot_run": "20260906T115653Z-unknown-279514",
+      "hil_run": "20260906T115750Z-unknown-252440",
+      "kind": "boot_smoke",
+      "sustained": {
+        "seconds_requested": 120,
+        "elapsed": 120.032279,
+        "frames": 3565,
+        "bytes": 147884912,
+        "unique_hashes": 3565,
+        "transitions": 3564
+      }
+    },
+    {
+      "boot_id": "297d7e32-4dec-4ea6-8a65-2a4d16d518eb",
+      "boot_run": "20260906T120041Z-unknown-958608",
+      "hil_run": "20260906T120140Z-unknown-966069",
+      "kind": "boot_smoke",
+      "sustained": {
+        "seconds_requested": 120,
+        "elapsed": 120.037498,
+        "frames": 3580,
+        "bytes": 148507183,
+        "unique_hashes": 3580,
+        "transitions": 3579
+      }
+    }
+  ],
+  "build_reproducibility": "separate_required_gate"
+}

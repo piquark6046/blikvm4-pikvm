@@ -1,0 +1,408 @@
+{
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "sha256": "5337307fe1b5bb8c2d5417ef3a2f7b0facc81dcb0144cfd42a47948810c95d42",
+      "size": 6780936
+    },
+    "build-packages.tsv": {
+      "name": "build-packages.tsv",
+      "sha256": "fbaa7473e4f92c7527c3556f91ae5b91a807f37de45022503c8042b2a5a6fb5c",
+      "size": 5958
+    },
+    "effective-config.yaml": {
+      "name": "effective-config.yaml",
+      "sha256": "70b436bda5822f9faaf3e56214212e3c602e8a3c599ff6d9d4da8b334fe860bf",
+      "size": 10402
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "1424e8b3fd65d8702e70f70dc14dabc95a36e524f0d3efa8d4d9bbfffc80643f",
+      "size": 86475086
+    },
+    "kvmd-video_4.213-1blikvm1_arm64.deb": {
+      "name": "kvmd-video_4.213-1blikvm1_arm64.deb",
+      "sha256": "58db76c4cea63e73182fdce104c808c88dba00393454771907fae2121372770d",
+      "size": 284924
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "40f1579d1323483af01cfa847583e077173cd03dcb7e5e370775156d1c59ca65",
+      "size": 65957
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "sha256": "37e4a84fb0fc6de0bc3cd7ad5108e5be6a51a1c407a6ab62378f76b603015091",
+      "size": 7740
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "sha256": "97e9fba2674a29bf8f4af6b3c2ac19c66e140243748d5d289cb5e8547d75b0cc",
+      "size": 86714040
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    }
+  },
+  "automation_sha256": {
+    "build/make-storage-image.py": "df8924412b9461534cf45d70eed67726769dd859cc0f3b8b25df9316afbfab99",
+    "initramfs/gadget-storage": "8a3ff132824b7eda12f9d24285f413993740ee13d533b91fee63947a4fc11af6",
+    "initramfs/hid-absolute-mouse": "db4cafff81ccb0a879c82746145af083b29f4b7836c6702316680a5002780fea",
+    "initramfs/hid-absolute-mouse.report.hex": "5042740020f35caf4499f86d30e6197b01c1574a4009e5ac9df4a9ffcf262a2c",
+    "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+    "initramfs/hid-relative-mouse": "23f2b379898312bc01cbd9883533527957c3c75592dc58a3e0812aa4db7a8dfa",
+    "initramfs/hid-relative-mouse.report.hex": "79ec371dc11213eb4a8d7dd6ced9c0fe28d8270e8ef862f717b0027498097bdb",
+    "lab/absolutelab.py": "5dbc726ea04dcf52c9ab838c40b41b8a3746bfc94d6d7d2603a2456f6d27333e",
+    "lab/hdmi-off.py": "0609c3d9d2275fdfc9811449718f53155c3d05f1050e5a5799a67a6ce2c07ec8",
+    "lab/hidlab.py": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+    "lab/kvmd-api.py": "43ad2a387d94c49530b37211573ace0f9800a17569d5bf49d6bb76ff74830d7a",
+    "lab/kvmd-hil.py": "a371c47e3775b61d672a7d1910defda7b28c937fe4d60b29d6055f5a8134102b",
+    "lab/labctl": "26c82c7dcd311c6d5512c0bed9446b0ff3f6c134dbcedbad48855ab4cf6a5068",
+    "lab/relativelab.py": "4487e8f4eff0ff4d44e90165085354aed46b9b0b53dd85470985121917371a9f",
+    "lab/storagelab.py": "1c8f4aa0a619216117e1e8f923e5b2eb8e81bda1b3d8a53400adaf6ed813e33e",
+    "lab/stream-client.py": "197a883432f1a21d5aa7221d39f90afe290b17024555727a1de23514ac4b7e54"
+  },
+  "boot_run": "20260906T113602Z-unknown-682226",
+  "build_source": {
+    "commit": "4358af726a4487fac9366637f898f29c3ce19749",
+    "files": {
+      "board/linux-7.2-bli-v4.patch": {
+        "sha256": "5da10e3400d26d3a2e644944fadc66a091ee03bdb1b79ff272189725ffb951d9",
+        "size": 1704
+      },
+      "board/linux-7.2-h616-emac1.patch": {
+        "sha256": "010ab2959e7b3137b5f40d38a0fbdbe929059810403f51cc9db8d2f42ad8196a",
+        "size": 3791
+      },
+      "board/linux-7.2-musb-rx-queue.patch": {
+        "sha256": "35dea2c63b24164a25e4322e441f9e7a7ed03729de8916c07c3a990321e47fc6",
+        "size": 625
+      },
+      "board/sun50i-h616-blikvm-v4.dts": {
+        "sha256": "4d6d90330b4b6c9a4107e82c52592f05beb2a4729918be35e74c4b951dedc144",
+        "size": 2921
+      },
+      "build/Containerfile": {
+        "sha256": "829ee9ef08749263d7de6e9024484947eb0513ccf0bed4e1061b4f7cc9389492",
+        "size": 919
+      },
+      "build/README.md": {
+        "sha256": "b9152084211f015e6c2782d8470a27c4e9c5e253ba1998b6e0eac2898daa9e78",
+        "size": 10403
+      },
+      "build/build.sh": {
+        "sha256": "54545ff696865565a0807faf4f70628aace53333385bbd34e40c0cf54858b09d",
+        "size": 2260
+      },
+      "build/in-container-build.sh": {
+        "sha256": "aedc645477df36c25e5d1560cf5ee1bd77a0b31442660d49f570713994149223",
+        "size": 6841
+      },
+      "build/kvmd/README.md": {
+        "sha256": "9f82070e46375adf2b43e2afed38d73fa59bcc03c2e37f36c3b53b7f359b0573",
+        "size": 2392
+      },
+      "build/kvmd/build.sh": {
+        "sha256": "bd84fc3e594b08ba5e7ade1445d55a263a98afb3bdbcb0729b769622854e1041",
+        "size": 1526
+      },
+      "build/kvmd/in-container.sh": {
+        "sha256": "8a94c18b380b399365f87a46e8676dd002e4cd3ae8899f0c71286bddf177d21c",
+        "size": 5273
+      },
+      "build/kvmd/kvmd.service": {
+        "sha256": "7714737e10ec94ca9a350d3e7c57b47bdda6968aadcc31a2f18c10f2e5f2beec",
+        "size": 684
+      },
+      "build/kvmd/main.yaml": {
+        "sha256": "81da1c5005142afb88cf4d12f6da2578e2e960233ed23b8b2303c9ec5c4ef132",
+        "size": 1088
+      },
+      "build/kvmd/package.py": {
+        "sha256": "3fde0f879a19142e347098864b2aa5691574aa8481c932515e503b07a953baf7",
+        "size": 2817
+      },
+      "build/kvmd/package.sha256": {
+        "sha256": "356cd4e8a29cf977e3dd0a59dc1cc7a52cfbcbe5ea06e961a5dc0c3e96cbab04",
+        "size": 121
+      },
+      "build/kvmd/packages.lock.tsv": {
+        "sha256": "37e4a84fb0fc6de0bc3cd7ad5108e5be6a51a1c407a6ab62378f76b603015091",
+        "size": 7740
+      },
+      "build/kvmd/versions.env": {
+        "sha256": "9e18a03a5193e5cfa035a5d9a8869739dbcd52d4a757ad40b6a61d18740c0034",
+        "size": 447
+      },
+      "build/kvmd/video-only.patch": {
+        "sha256": "b63cc3e6db0f28cfe389ac404eaa8b51d7e05ed1393d472b436d5aca21cad45f",
+        "size": 12970
+      },
+      "build/kvmd/write-manifest.py": {
+        "sha256": "ede0dc2856a7795c6df0c48766df06ae1380b493727870d4edb8db138a4b3360",
+        "size": 1904
+      },
+      "build/linux-serial.config": {
+        "sha256": "2d61356b332c44e4744df52935830e472219005d2cd9c0df0df0e8f33b4130af",
+        "size": 3551
+      },
+      "build/make-storage-image.py": {
+        "sha256": "df8924412b9461534cf45d70eed67726769dd859cc0f3b8b25df9316afbfab99",
+        "size": 2324
+      },
+      "build/ubuntu/Containerfile": {
+        "sha256": "5e605843f81318e0c1510afeb4ce28dc6623ea0eb58e3f2e7773c3c2ea416ce5",
+        "size": 667
+      },
+      "build/ubuntu/README.md": {
+        "sha256": "c0fcb5c3400ce60c9ed78345a3df1648fdbdc2d2556a504f95f037a3bad7439d",
+        "size": 5363
+      },
+      "build/ubuntu/binfmt-rule.py": {
+        "sha256": "46773fcd3b9c70df48499bbdc301a9a57bf75676b420e163ed3b43477f48733f",
+        "size": 939
+      },
+      "build/ubuntu/build-kernel.sh": {
+        "sha256": "b11949d654656105514e3a4a3d7462193c4f563fb53c1390a2560d2d7b5086e1",
+        "size": 1502
+      },
+      "build/ubuntu/build.sh": {
+        "sha256": "b069964cbf3766535d6b36708cf2f009d1bca2f8bfea71be0265f083c8f6f196",
+        "size": 2954
+      },
+      "build/ubuntu/in-container.sh": {
+        "sha256": "eed83763e36ce78613e92401e0ca304f8e4c6d94d767b6c10810d9df05e02929",
+        "size": 9781
+      },
+      "build/ubuntu/linux-systemd.config": {
+        "sha256": "3518395dfc520db01fd9c87c3ac8898a25770fe3f3dc9850536898c6bc720be2",
+        "size": 861
+      },
+      "build/ubuntu/m5-artifacts.sha256": {
+        "sha256": "0e4fb27375d66c5b15e8ed5d867e5968a3839a2a989cd0d1b2a0d9efab947b0c",
+        "size": 507
+      },
+      "build/ubuntu/versions.env": {
+        "sha256": "93d418c5a347a3f6cd0d8fbc0243e65c1347304f6bbbb93d259780ec2a738985",
+        "size": 511
+      },
+      "build/ubuntu/write-manifest.py": {
+        "sha256": "db453f1196e162d05297b277dfd1f8701aa38c42d6f362a17f97b78257a49b72",
+        "size": 2026
+      },
+      "build/ustreamer/.gitattributes": {
+        "sha256": "437ee8791304553b5c7c5638dc8caebd9b63b67d2c7a23a13d2ea073ce7b3f12",
+        "size": 113
+      },
+      "build/ustreamer/99-blikvm-video.rules": {
+        "sha256": "2812de839a3ffb4183a3ea03c90dc1df09b59c7ccf8bf3f0106ca8d053ebd7b7",
+        "size": 392
+      },
+      "build/ustreamer/README.md": {
+        "sha256": "b6e541d695bf8afe39324fa03e2ed6e9a1926c09136626ec4095fd05221fd866",
+        "size": 3426
+      },
+      "build/ustreamer/build.sh": {
+        "sha256": "f74173bcff45d741753a912e21e682b0ba1c16b9ff5bfb4c60a54770fa589005",
+        "size": 1641
+      },
+      "build/ustreamer/capture-controls.patch": {
+        "sha256": "7b425f0954c25e35176f59aca157cfe2148b710c9ba40b119438d9a220e8cf4e",
+        "size": 4995
+      },
+      "build/ustreamer/in-container.sh": {
+        "sha256": "6655075ce5fbb76121be11c49ccd8b4c942a5d57144d60275e52b1e0cdb076f3",
+        "size": 8004
+      },
+      "build/ustreamer/m7-artifacts.sha256": {
+        "sha256": "52cfc8cb830dddcc78abf74990e93ddc335372dd1f54cfa1742addb3e20fcad2",
+        "size": 306
+      },
+      "build/ustreamer/ustreamer.service": {
+        "sha256": "e5154207cff9fabeaace5b3233df64a6ab10cb51ce7641de20236da5ace1c100",
+        "size": 824
+      },
+      "build/ustreamer/versions.env": {
+        "sha256": "3d316fa29c6a51448ed4009c57d15a1fa3b6022dc6adaf878a2053d24e3101ec",
+        "size": 652
+      },
+      "build/ustreamer/write-manifest.py": {
+        "sha256": "e7ea44bfd8a236c781711e06618cb5fe212a478a647ff96124c32c06f771be45",
+        "size": 1940
+      },
+      "build/versions.env": {
+        "sha256": "21d8c23648ef38dd9496ca0bdf4fcb562742987b03fc5a84b3ef29196f0fad3a",
+        "size": 469
+      },
+      "build/write-manifest.py": {
+        "sha256": "8f3cf05277caa057de92a6f00f53beb6e7cb5c92bd3670b873627e6adcd506f2",
+        "size": 2163
+      },
+      "initramfs/gadget-storage": {
+        "sha256": "8a3ff132824b7eda12f9d24285f413993740ee13d533b91fee63947a4fc11af6",
+        "size": 1274
+      },
+      "initramfs/hid-absolute-mouse": {
+        "sha256": "db4cafff81ccb0a879c82746145af083b29f4b7836c6702316680a5002780fea",
+        "size": 1223
+      },
+      "initramfs/hid-absolute-mouse.report.hex": {
+        "sha256": "5042740020f35caf4499f86d30e6197b01c1574a4009e5ac9df4a9ffcf262a2c",
+        "size": 103
+      },
+      "initramfs/hid-keyboard": {
+        "sha256": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+        "size": 2940
+      },
+      "initramfs/hid-relative-mouse": {
+        "sha256": "23f2b379898312bc01cbd9883533527957c3c75592dc58a3e0812aa4db7a8dfa",
+        "size": 1218
+      },
+      "initramfs/hid-relative-mouse.report.hex": {
+        "sha256": "79ec371dc11213eb4a8d7dd6ced9c0fe28d8270e8ef862f717b0027498097bdb",
+        "size": 150
+      },
+      "initramfs/init": {
+        "sha256": "dd304ac469b26af7b9d58aac988abb57827185ad5a8803ca31f1a30d25653744",
+        "size": 954
+      },
+      "initramfs/inittab": {
+        "sha256": "b016036a389e78f66726450c13ac122d233976c57cba591c5ff6baf4be513db9",
+        "size": 332
+      },
+      "initramfs/lsblk": {
+        "sha256": "120d8ff5e71a5947892b0d678395a00eb9d809949d72fe9f8c91a00f0cd9c177",
+        "size": 891
+      },
+      "initramfs/lsusb": {
+        "sha256": "494925d694262f1c7c025f90a030e80ec64ea9f01836e60cb06235b4c9b995cf",
+        "size": 3592
+      },
+      "initramfs/v4l2-test.c": {
+        "sha256": "1ec544c47977e36453a6c61f58794a14d76549dc66c97e59816a1633c12bb956",
+        "size": 25286
+      },
+      "lab/absolute-live.py": {
+        "sha256": "93cc52815a590e0bba6fe7f8018035ccb743ed21e29722af906af7213dcb3137",
+        "size": 9529
+      },
+      "lab/absolutelab.py": {
+        "sha256": "5dbc726ea04dcf52c9ab838c40b41b8a3746bfc94d6d7d2603a2456f6d27333e",
+        "size": 16318
+      },
+      "lab/dnsmasq-blikvm-tftp.conf": {
+        "sha256": "b4b6a4f290336fe42ab1c9bee0c803b2abd3e2fe7363afb5a5640c53cd2c474d",
+        "size": 224
+      },
+      "lab/dnsmasq-blikvm-tftp.service": {
+        "sha256": "081b6cd94760dfb8e77a5ddb7c6fbf9ea422b13b3ea8103f14a29a5361df1831",
+        "size": 412
+      },
+      "lab/hdmi-off.py": {
+        "sha256": "0609c3d9d2275fdfc9811449718f53155c3d05f1050e5a5799a67a6ce2c07ec8",
+        "size": 1603
+      },
+      "lab/hid-live.py": {
+        "sha256": "12d932a3e3f7a99c9e300d683d8fe18ca93777915bc7f213c2a8897c765ea418",
+        "size": 4032
+      },
+      "lab/hidlab.py": {
+        "sha256": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+        "size": 13824
+      },
+      "lab/kvmd-api.py": {
+        "sha256": "43ad2a387d94c49530b37211573ace0f9800a17569d5bf49d6bb76ff74830d7a",
+        "size": 3477
+      },
+      "lab/kvmd-boot.py": {
+        "sha256": "3026931ab23c82856147812683208c2b1b7a1557eb6576793c17d36f77c86320",
+        "size": 9516
+      },
+      "lab/kvmd-gate.py": {
+        "sha256": "ea46b1a2e51a319a58762d66db07ef6f7d17388b467826c50cc5a328bf8313ff",
+        "size": 7169
+      },
+      "lab/kvmd-hil.py": {
+        "sha256": "a371c47e3775b61d672a7d1910defda7b28c937fe4d60b29d6055f5a8134102b",
+        "size": 16691
+      },
+      "lab/kvmd-series.py": {
+        "sha256": "a8ac59d1dea95082bcabc2e3d5d8d14f03705566d284c37f89eaef6a270663a2",
+        "size": 2026
+      },
+      "lab/labctl": {
+        "sha256": "26c82c7dcd311c6d5512c0bed9446b0ff3f6c134dbcedbad48855ab4cf6a5068",
+        "size": 126449
+      },
+      "lab/relative-live.py": {
+        "sha256": "e0c17ec79762b7a481f8de3a31082a601e5d458eec6c3a3614c2297ce5db0545",
+        "size": 9642
+      },
+      "lab/relativelab.py": {
+        "sha256": "4487e8f4eff0ff4d44e90165085354aed46b9b0b53dd85470985121917371a9f",
+        "size": 23568
+      },
+      "lab/storage-live.py": {
+        "sha256": "01e717b0a873eec41ce94fe939975388a8b49222b925e5223700a11fb182c473",
+        "size": 13050
+      },
+      "lab/storagelab.py": {
+        "sha256": "1c8f4aa0a619216117e1e8f923e5b2eb8e81bda1b3d8a53400adaf6ed813e33e",
+        "size": 22279
+      },
+      "lab/stream-client.py": {
+        "sha256": "197a883432f1a21d5aa7221d39f90afe290b17024555727a1de23514ac4b7e54",
+        "size": 5379
+      },
+      "lab/tftp/test.txt": {
+        "sha256": "5e6fc42f65b3a83e369ca6cc63cfc735534ae2adb220ecf54a5c682d5ab77940",
+        "size": 39
+      },
+      "lab/ubuntu-boot.py": {
+        "sha256": "137d8274b328e060825166e05c08c5daa5504dececd4853c4e7996c149e746af",
+        "size": 9337
+      },
+      "lab/ubuntu-reboot-gate.py": {
+        "sha256": "db131bf4f6cb69e4cbaedb74085184e7b9d1e919e517c247664aed3ee68dbebf",
+        "size": 5097
+      },
+      "lab/ubuntu-recover.py": {
+        "sha256": "51da8f057ff9fb564e57653a5cc61e5753a5fe9f4c2f22953496478c9fc38dc3",
+        "size": 2230
+      },
+      "lab/ubuntu-regressions.py": {
+        "sha256": "2595378b82e13695551d615bda4e5c33f3e1d50b60d572735bb21cf9905e75d3",
+        "size": 8531
+      },
+      "lab/ustreamer-gate.py": {
+        "sha256": "8c2846460e22a810e57fca502de8b130d960974ed254447910c75ad42327c0ee",
+        "size": 5834
+      },
+      "lab/ustreamer-hil.py": {
+        "sha256": "96076af313934b69dee214e40e2638cc6d2be29feeec0ec3fa0e4d71e4b4b22d",
+        "size": 14365
+      }
+    },
+    "status": "?? build/kvmd/\n?? lab/kvmd-api.py\n?? lab/kvmd-boot.py\n?? lab/kvmd-gate.py\n?? lab/kvmd-hil.py\n?? lab/kvmd-series.py\n?? research/evidence/m8a-kvmd/\n?? tests/test_kvmd_gate.py"
+  },
+  "command": "kvmd-hil",
+  "finished_at": "2026-09-06T11:44:33.800908+00:00",
+  "host": {
+    "kernel": "7.0.0-31-generic",
+    "machine": "x86_64",
+    "platform": "Linux"
+  },
+  "repository_dirty": null,
+  "repository_revision": "unknown",
+  "repository_status": "unavailable",
+  "result": "passed",
+  "run_id": "20260906T113659Z-unknown-191283",
+  "safety": {
+    "persistent_uboot_environment_written": false
+  },
+  "schema_version": 1,
+  "stage": "kvmd_video_qualification",
+  "started_at": "2026-09-06T11:36:59.085255+00:00"
+}

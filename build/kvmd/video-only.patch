@@ -1,0 +1,380 @@
+--- a/kvmd/apps/__init__.py
++++ b/kvmd/apps/__init__.py
+@@ -167,7 +167,7 @@
+         config = _init_config(
+             cps=cps,
+             test_override=test_override,
+-            load_all=dump_only,
++            load_all=False,  # M8-A has no dynamic hardware/auth plugins.
+             **load,
+         )
+     except ConfigError as ex:
+--- a/kvmd/apps/kvmd/__init__.py
++++ b/kvmd/apps/kvmd/__init__.py
+@@ -20,41 +20,19 @@
+ # ========================================================================== #
+ 
+ 
+-from ...plugins.hid import get_hid_class
+-from ...plugins.atx import get_atx_class
+-from ...plugins.msd import get_msd_class
+-
++# BliKVM M8-A package: only the upstream video subsystem is instantiated.
+ from .. import init
+-
+-from .auth import AuthManager
+ from .info import InfoManager
+-from .logreader import LogReader
+-from .ugpio import UserGpio
+ from .streamer import Streamer
+-from .snapshoter import Snapshoter
+ from .ocr import Ocr
+-from .switch import Switch
+ from .server import KvmdServer
+ 
+ 
+-# =====
+ def main() -> None:
+-    ia = init(
+-        prog="kvmd",
+-        description="The main PiKVM daemon",
+-        check_run=True,
+-        load_auth=True,
+-        load_hid=True,
+-        load_atx=True,
+-        load_msd=True,
+-        load_gpio=True,
+-    )
+-
+-    global_config = ia.config
++    ia = init(prog="kvmd", description="BliKVM video-only kvmd", check_run=True)
+     config = ia.config.kvmd
+-
+-    hid = get_hid_class(config.hid.type)(config.hid)
+-
++    if config.auth.enabled or not config.streamer.forever:
++        raise SystemExit("M8-A requires local Unix permissions and streamer.forever")
+     streamer = Streamer(
+         **config.streamer._unpack(ignore=["forever", "desired_fps", "resolution", "h264_bitrate", "h264_gop"]),
+         **config.streamer.resolution._unpack(),
+@@ -62,49 +40,9 @@
+         **config.streamer.h264_bitrate._unpack(),
+         **config.streamer.h264_gop._unpack(),
+     )
+-
+     KvmdServer(
+-        auth=AuthManager(
+-            enabled=config.auth.enabled,
+-            expire=config.auth.expire,
+-            extend=config.auth.extend,
+-            usc_users=(config.auth.usc.kvmd_users + config.auth.usc.users),
+-            usc_groups=(config.auth.usc.kvmd_groups + config.auth.usc.groups),
+-            unauth_paths=([] if config.prometheus.auth.enabled else ["/export/prometheus/metrics"]),
+-
+-            int_c=config.auth.internal,
+-            ext_c=config.auth.external,
+-
+-            force_int_users=config.auth.internal.force_users,
+-
+-            totp_secret_path=config.auth.totp.secret.file,
+-        ),
+-        im=InfoManager(global_config),
+-        log_reader=(LogReader() if config.log_reader.enabled else None),
+-        ugpio=UserGpio(config.gpio),
++        im=InfoManager(ia.config),
+         ocr=Ocr(**config.ocr._unpack()),
+-
+-        switch=Switch(
+-            device_path=config.switch.device,
+-            default_edid_path=config.switch.default_edid,
+-            ignore_hpd_on_top=config.switch.ignore_hpd_on_top,
+-            pst=ia.make_pst_client("__switch__", "KVMD"),
+-        ),
+-
+-        hid=hid,
+-        atx=get_atx_class(config.atx.type)(config.atx),
+-        msd=get_msd_class(config.msd.type)(config.msd, ia.make_nbd_client("KVMD")),
+         streamer=streamer,
+-
+-        snapshoter=Snapshoter(
+-            hid=hid,
+-            streamer=streamer,
+-            **config.snapshot._unpack(),
+-        ),
+-
+-        allow_redirects=config.auth.allow_redirects,
+-
+-        keymap_path=config.hid.keymap,
+-
+         stream_forever=config.streamer.forever,
+     ).run(**config.server._unpack())
+--- a/kvmd/apps/kvmd/api/info.py
++++ b/kvmd/apps/kvmd/api/info.py
+@@ -41,14 +41,14 @@
+ 
+     @exposed_http("GET", "/info")
+     async def __state_handler(self, req: Request) -> Response:
+-        legacy = valid_bool(req.query.get("legacy", True))
++        legacy = valid_bool(req.query.get("legacy", False))
+ 
+         available = self.__im.get_subs()
+         if legacy:
+-            available.add("hw")
++            legacy = False
+         default = set(available)
+         if legacy:
+-            default.remove("health")
++            default.discard("health")
+ 
+         fields = sorted(valid_info_fields(
+             arg=req.query.get("fields", ",".join(default)),
+--- a/kvmd/apps/kvmd/info/__init__.py
++++ b/kvmd/apps/kvmd/info/__init__.py
+@@ -27,14 +27,10 @@
+ from ....yamlconf import Section
+ 
+ from .base import BaseInfoSubmanager
+-from .auth import AuthInfoSubmanager
+ from .system import SystemInfoSubmanager
+ from .meta import MetaInfoSubmanager
+-from .extras import ExtrasInfoSubmanager
+-from .health import HealthInfoSubmanager
+ from .uptime import UptimeInfoSubmanager
+ from .node import NodeInfoSubmanager
+-from .fan import FanInfoSubmanager
+ 
+ 
+ # =====
+@@ -42,13 +38,9 @@
+     def __init__(self, config: Section) -> None:
+         self.__subs: dict[str, BaseInfoSubmanager] = {
+             "system": SystemInfoSubmanager(config.kvmd.info.hw.platform, config.kvmd.streamer.cmd),
+-            "auth":   AuthInfoSubmanager(config.kvmd.auth.enabled),
+             "meta":   MetaInfoSubmanager(config.kvmd.info.meta),
+-            "extras": ExtrasInfoSubmanager(config),
+-            "health": HealthInfoSubmanager(**config.kvmd.info.hw._unpack(ignore="platform")),
+             "uptime": UptimeInfoSubmanager(),
+             "node":   NodeInfoSubmanager(),
+-            "fan":    FanInfoSubmanager(**config.kvmd.info.fan._unpack()),
+         }
+         self.__queue: "asyncio.Queue[tuple[str, (dict | None)]]" = asyncio.Queue()
+ 
+@@ -82,7 +74,6 @@
+ 
+         if hw:
+             state["hw"] = {
+-                "health":   state.pop("health"),
+                 "platform": (state["system"] or {}).pop("platform"),  # {} makes mypy happy
+             }
+             if not system:
+--- a/kvmd/apps/kvmd/info/system.py
++++ b/kvmd/apps/kvmd/info/system.py
+@@ -72,7 +72,7 @@
+                 for field in ["system", "release", "version", "machine"]
+             },
+             "platform": {
+-                "type": "rpi",
++                "type": "blikvm",
+                 "base": base,
+                 "serial": serial,
+                 **pl,  # type: ignore
+--- a/kvmd/apps/kvmd/ocr.py
++++ b/kvmd/apps/kvmd/ocr.py
+@@ -83,7 +83,7 @@
+         return None
+ 
+ 
+-_libtess = _load_libtesseract()
++_libtess = None  # OCR is excluded from the M8-A package.
+ 
+ 
+ @contextlib.contextmanager
+--- a/kvmd/apps/kvmd/server.py
++++ b/kvmd/apps/kvmd/server.py
+@@ -48,9 +48,6 @@
+ from ...htserver import HttpServer
+ 
+ from ...plugins import BasePlugin
+-from ...plugins.hid import BaseHid
+-from ...plugins.atx import BaseAtx
+-from ...plugins.msd import BaseMsd
+ 
+ from ...validators.basic import valid_bool
+ from ...validators.kvm import valid_stream_quality
+@@ -59,30 +56,13 @@
+ from ...validators.kvm import valid_stream_h264_bitrate
+ from ...validators.kvm import valid_stream_h264_gop
+ 
+-from .auth import AuthManager
+ from .info import InfoManager
+-from .logreader import LogReader
+-from .ugpio import UserGpio
+ from .streamer import Streamer
+-from .snapshoter import Snapshoter
+ from .ocr import Ocr
+-from .switch import Switch
+-
+-from .api.auth import AuthApi
+-from .api.auth import check_request_auth
++
+ 
+ from .api.info import InfoApi
+-from .api.log import LogApi
+-from .api.ugpio import UserGpioApi
+-from .api.hid import HidApi
+-from .api.atx import AtxApi
+-from .api.msd import MsdApi
+ from .api.streamer import StreamerApi
+-from .api.switch import SwitchApi
+-from .api.export import ExportApi
+-from .api.redfish.root import RedfishRootApi
+-from .api.redfish.atx import RedfishAtxApi
+-from .api.redfish.msd import RedfishMsdApi
+ 
+ 
+ # =====
+@@ -146,62 +126,23 @@
+ 
+     def __init__(  # pylint: disable=too-many-arguments,too-many-locals
+         self,
+-        auth: AuthManager,
+         im: InfoManager,
+-        log_reader: (LogReader | None),
+-        ugpio: UserGpio,
+         ocr: Ocr,
+-        switch: Switch,
+-
+-        hid: BaseHid,
+-        atx: BaseAtx,
+-        msd: BaseMsd,
+         streamer: Streamer,
+-        snapshoter: Snapshoter,
+-
+-        allow_redirects: list[str],
+-
+-        keymap_path: str,
+-
+         stream_forever: bool,
+     ) -> None:
+ 
+         super().__init__()
+ 
+-        self.__auth = auth
+-        self.__hid = hid
+         self.__streamer = streamer
+-        self.__snapshoter = snapshoter  # Not a component: No state or cleanup
+ 
+         self.__stream_forever = stream_forever
+ 
+-        self.__hid_api = HidApi(hid, keymap_path)  # Ugly hack to get keymaps state
+-        self.__apis: list[object] = [
+-            self,
+-            AuthApi(auth, allow_redirects),
+-            InfoApi(im),
+-            LogApi(log_reader),
+-            UserGpioApi(ugpio),
+-            self.__hid_api,
+-            AtxApi(atx),
+-            MsdApi(msd),
+-            StreamerApi(streamer, ocr),
+-            SwitchApi(switch),
+-            ExportApi(im, atx, ugpio),
+-            RedfishRootApi(),
+-            RedfishAtxApi(im, atx, switch),
+-            RedfishMsdApi(msd),
+-        ]
++        # Excluded integrations have no API routes, tasks, or device handles.
++        self.__apis: list[object] = [self, InfoApi(im), StreamerApi(streamer, ocr)]
+         self.__subsystems = [
+-            _Subsystem.make(auth,     "Auth"),
+-            _Subsystem.make(ugpio,    "GPIO",     self.__EV_GPIO_STATE),
+-            _Subsystem.make(hid,      "HID",      self.__EV_HID_STATE),
+-            _Subsystem.make(atx,      "ATX",      self.__EV_ATX_STATE),
+-            _Subsystem.make(msd,      "MSD",      self.__EV_MSD_STATE),
+             _Subsystem.make(streamer, "Streamer", self.__EV_STREAMER_STATE),
+-            _Subsystem.make(ocr,      "OCR",      self.__EV_OCR_STATE),
+-            _Subsystem.make(im,       "Info",     self.__EV_INFO_STATE),
+-            _Subsystem.make(switch,   "Switch",   self.__EV_SWITCH_STATE),
++            _Subsystem.make(im, "Info", self.__EV_INFO_STATE),
+         ]
+ 
+         self.__streamer_notifier = aiotools.AioNotifier()
+@@ -254,7 +195,6 @@
+                 if sub.event_type:
+                     assert sub.trigger_state
+                     await sub.trigger_state()
+-            await self._broadcast_ws_event(self.__EV_HID_KEYMAPS_STATE, await self.__hid_api.get_keymaps())  # FIXME
+             await self._broadcast_ws_event(self.__EV_CLIENTS_STATE, {"count": self.__get_stream_clients()})  # FIXME
+             return (await self._ws_loop(ws))
+ 
+@@ -273,7 +213,8 @@
+         super().run(**kwargs)
+ 
+     async def _check_request_auth(self, exposed: HttpExposed, req: Request) -> None:
+-        await check_request_auth(self.__auth, exposed, req)
++        # Native Unix-only listener; access is enforced by directory/socket modes.
++        pass
+ 
+     async def _before_app(self) -> None:
+         for sub in self.__subsystems:
+@@ -288,7 +229,6 @@
+             if sub.event_type:
+                 assert sub.poll_state
+                 aiotools.create_deadly_task(f"{sub.name} [poller]", self.__poll_state(sub.event_type, sub.poll_state()))
+-        aiotools.create_deadly_task("Stream snapshoter", self.__stream_snapshoter())
+         self._add_exposed(*self.__apis)
+ 
+     async def _on_shutdown(self) -> None:
+@@ -313,13 +253,9 @@
+         logger.info("On-Cleanup complete")
+ 
+     def _on_ws_added(self, ws: WsSession) -> None:
+-        self.__auth.start_ws_session(ws.token)
+-        self.__hid.clear_events()
+         self.__streamer_notifier.notify()
+ 
+     def _on_ws_removed(self, ws: WsSession) -> None:
+-        self.__auth.stop_ws_session(ws.token)
+-        self.__hid.clear_events()
+         self.__streamer_notifier.notify()
+ 
+     def __get_stream_clients(self) -> int:
+@@ -338,7 +274,6 @@
+ 
+             cur = (
+                 bool(clients)
+-                or self.__snapshoter.snapshoting()
+                 or self.__stream_forever
+             )
+             if not prev and cur:
+@@ -360,12 +295,6 @@
+ 
+             await self.__streamer_notifier.wait()
+ 
+-    async def __stream_snapshoter(self) -> None:
+-        await self.__snapshoter.run(
+-            is_live=(lambda: bool(self.__get_stream_clients())),
+-            notifier=self.__streamer_notifier,
+-        )
+-
+     async def __poll_state(self, event_type: str, poller: AsyncGenerator[dict]) -> None:
+         async for state in poller:
+             await self._broadcast_ws_event(event_type, state)
+--- a/kvmd/clients/streamer.py
++++ b/kvmd/clients/streamer.py
+@@ -33,7 +33,6 @@
+ from typing import AsyncGenerator
+ 
+ import aiohttp
+-import ustreamer
+ 
+ from PIL import Image as PilImage
+ 
+@@ -256,6 +255,7 @@
+ 
+     @contextlib.asynccontextmanager
+     async def reading(self) -> AsyncGenerator[Callable[[bool], Awaitable[dict]]]:
++        import ustreamer  # Optional shared-memory transport, absent from M8-A.
+         with _memsink_reading_handle_errors():
+             with ustreamer.Memsink(**self.__kwargs) as sink:
+                 async def read_frame(key_required: bool) -> dict:

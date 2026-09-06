@@ -1,0 +1,32 @@
+{
+  "milestone": "M8-A",
+  "result": "passed",
+  "baseline_parent": "4358af7",
+  "tag": "ubuntu-26.04.1-kvmd-video-baseline",
+  "hardware_gate": "m8a-kvmd/acceptance-gate.json",
+  "reproducibility_gate": "m8a-kvmd/reproducibility.json",
+  "local_tests": 70,
+  "archive": {
+    "path": "out/kvmd/m8a-evidence.tar.gz",
+    "bytes": 4730209,
+    "sha256": "f790eb382b6ecc61f9c1c9351cae347d2ba37c0d3ed72630a0bbc34a5491a14d",
+    "bridge_archive": {
+      "size": 3215466,
+      "sha256": "59fdccfcb6ef415ca926a96b189800368801b0cac24b7051a6468abc1570619d"
+    }
+  },
+  "criteria": {
+    "pinned_inputs": "passed",
+    "explicit_dependencies": "passed",
+    "reproducible_arm64_package_and_rootfs": "passed",
+    "blikvm_platform": "passed",
+    "single_streamer_owner": "passed",
+    "service_lifecycle": "passed",
+    "native_local_video_api": "passed",
+    "qualified_1080p30": "passed",
+    "hdmi_recovery": "passed",
+    "m5_m7_regressions": "passed",
+    "five_clean_boots": "passed"
+  },
+  "scope": "Video only, Unix sockets; M6 deferred; no nginx, auth/web, LAN API, kvmd HID/MSD/ATX integration"
+}

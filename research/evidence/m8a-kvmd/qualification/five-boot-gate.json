@@ -1,0 +1,89 @@
+{
+  "result": "passed",
+  "consecutive_clean_boots": 5,
+  "final_20_boot_gate": false,
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "sha256": "5337307fe1b5bb8c2d5417ef3a2f7b0facc81dcb0144cfd42a47948810c95d42",
+      "size": 6780936
+    },
+    "build-packages.tsv": {
+      "name": "build-packages.tsv",
+      "sha256": "fbaa7473e4f92c7527c3556f91ae5b91a807f37de45022503c8042b2a5a6fb5c",
+      "size": 5958
+    },
+    "effective-config.yaml": {
+      "name": "effective-config.yaml",
+      "sha256": "70b436bda5822f9faaf3e56214212e3c602e8a3c599ff6d9d4da8b334fe860bf",
+      "size": 10402
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "1424e8b3fd65d8702e70f70dc14dabc95a36e524f0d3efa8d4d9bbfffc80643f",
+      "size": 86475086
+    },
+    "kvmd-video_4.213-1blikvm1_arm64.deb": {
+      "name": "kvmd-video_4.213-1blikvm1_arm64.deb",
+      "sha256": "58db76c4cea63e73182fdce104c808c88dba00393454771907fae2121372770d",
+      "size": 284924
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "40f1579d1323483af01cfa847583e077173cd03dcb7e5e370775156d1c59ca65",
+      "size": 65957
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "sha256": "37e4a84fb0fc6de0bc3cd7ad5108e5be6a51a1c407a6ab62378f76b603015091",
+      "size": 7740
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "sha256": "97e9fba2674a29bf8f4af6b3c2ac19c66e140243748d5d289cb5e8547d75b0cc",
+      "size": 86714040
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    }
+  },
+  "runs": [
+    {
+      "run_id": "20260906T113602Z-unknown-682226",
+      "boot_id": "239d4f05-9e2d-4967-98aa-f86e8626e0cc",
+      "started_at": "2026-09-06T11:36:02.485968+00:00",
+      "finished_at": "2026-09-06T11:36:58.887440+00:00",
+      "uart_sha256": "cff97d29e7c5c9cb6715d49d8ecc37696a5d395093041d092b4d660ce7594269"
+    },
+    {
+      "run_id": "20260906T114433Z-unknown-398516",
+      "boot_id": "b9a424df-e2aa-4942-8fcd-abe03ee5d61f",
+      "started_at": "2026-09-06T11:44:33.951664+00:00",
+      "finished_at": "2026-09-06T11:45:30.092014+00:00",
+      "uart_sha256": "b83b822074dd386e099db43c7c2de8ee2d4fd2a782d16f415abda55dd0e17d36"
+    },
+    {
+      "run_id": "20260906T115305Z-unknown-199193",
+      "boot_id": "0bfffb86-82f4-4d2f-97f1-4f2a70cbceac",
+      "started_at": "2026-09-06T11:53:05.939470+00:00",
+      "finished_at": "2026-09-06T11:54:02.155692+00:00",
+      "uart_sha256": "da5d7832f1585d42c260e99c439e374ee797d2e8df505084aa288372574d7fa8"
+    },
+    {
+      "run_id": "20260906T115653Z-unknown-279514",
+      "boot_id": "e27d6161-0067-4b08-8460-9deb23a005c7",
+      "started_at": "2026-09-06T11:56:53.907388+00:00",
+      "finished_at": "2026-09-06T11:57:50.489445+00:00",
+      "uart_sha256": "b84cd0bcaaa7848f3438704fb36d9bf358a3f5f050d04f45f36528676e069b4c"
+    },
+    {
+      "run_id": "20260906T120041Z-unknown-958608",
+      "boot_id": "297d7e32-4dec-4ea6-8a65-2a4d16d518eb",
+      "started_at": "2026-09-06T12:00:41.860074+00:00",
+      "finished_at": "2026-09-06T12:01:40.013692+00:00",
+      "uart_sha256": "124bad9c13649df365b87857c40831a01ea1c37cb62ae056dfb8cd7b1d686461"
+    }
+  ]
+}

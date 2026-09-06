@@ -1,0 +1,1 @@
+["gst-launch-1.0", "-q", "videotestsrc", "is-live=true", "pattern=ball", "animation-mode=frames", "!", "video/x-raw,width=1920,height=1080,framerate=30/1", "!", "videoconvert", "!", "kmssink", "connector-id=287", "force-modesetting=true", "restore-crtc=true"]

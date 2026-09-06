@@ -1,0 +1,17 @@
+239d4f05-9e2d-4967-98aa-f86e8626e0cc
+Linux blikvm-m7 7.2.3-blikvm-v4-m7 #6 SMP PREEMPT 1970-01-01T00:00:00Z aarch64 GNU/Linux
+milestone=M7
+ubuntu_base=26.04.1
+apt_snapshot=20260906T000000Z
+source_date_epoch=1788652800
+root_transport=ram-rw
+builder_sha256=eed83763e36ce78613e92401e0ca304f8e4c6d94d767b6c10810d9df05e02929
+kernel_sha256=5337307fe1b5bb8c2d5417ef3a2f7b0facc81dcb0144cfd42a47948810c95d42
+ustreamer=6.65-1blikvm2
+ustreamer_commit=db87e03ce769d06ba62314ca7537e1cb3369b4de
+kvmd=4.213-1blikvm1
+kvmd_commit=387846d22fa807f97de09750c32c1c9b26d36c1c
+kvmd-video	4.213-1blikvm1
+ustreamer	6.65-1blikvm2
+6.65
+e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b  /usr/bin/ustreamer

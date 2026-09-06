@@ -1,0 +1,21 @@
+● kvmd.service - BliKVM video-only kvmd
+     Loaded: loaded (/usr/lib/systemd/system/kvmd.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-07-27 20:48:44 UTC; 3min 12s ago
+ Invocation: ec97401cc59c430b8d10c56fafca0e9e
+   Main PID: 2767 (kvmd/main: /usr)
+        CPU: 12.350s
+     CGroup: /system.slice/kvmd.service
+             ├─2767 "kvmd/main: /usr/bin/python3 /usr/bin/kvmd --run"
+             └─2804 /usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors
+
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'DELETE /streamer/snapshot HTTP/1.1' => 200; size=195 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /hid HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /atx HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /msd HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /gpio HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /switch HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:36 blikvm-m7 kvmd[2767]: aiohttp.access                    INFO --- [- / -] 'GET /auth/login HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:51:37 blikvm-m7 kvmd[2767]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [460.125      http] -- HTTP: NEW client (now=1): [localhost]:0, id=f24654e6145e7ed1
+Jul 27 20:51:51 blikvm-m7 kvmd[2767]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [474.773      http] -- HTTP: DEL client (now=0): [localhost]:0, id=f24654e6145e7ed1, Resource temporarily unavailable (reading,eof)
+lrwxrwxrwx 1 root root 6 Jul 27 20:44 /dev/kvmd-video -> video0

@@ -1,0 +1,49 @@
+{
+  "result": "passed",
+  "package_build_logs": [
+    "out/kvmd/package-build3.log",
+    "out/kvmd/package-build4.log"
+  ],
+  "rootfs_build_logs": [
+    "out/kvmd/rootfs-build2.log",
+    "out/kvmd/rootfs-build3.log"
+  ],
+  "artifacts": {
+    "kvmd-video_4.213-1blikvm1_arm64.deb": {
+      "size": 284924,
+      "sha256": "58db76c4cea63e73182fdce104c808c88dba00393454771907fae2121372770d"
+    },
+    "rootfs.tar.gz": {
+      "size": 86714040,
+      "sha256": "97e9fba2674a29bf8f4af6b3c2ac19c66e140243748d5d289cb5e8547d75b0cc"
+    },
+    "initramfs.cpio.gz": {
+      "size": 86475086,
+      "sha256": "1424e8b3fd65d8702e70f70dc14dabc95a36e524f0d3efa8d4d9bbfffc80643f"
+    },
+    "packages.tsv": {
+      "size": 7740,
+      "sha256": "37e4a84fb0fc6de0bc3cd7ad5108e5be6a51a1c407a6ab62378f76b603015091"
+    }
+  },
+  "frozen_inputs": {
+    "build/kvmd/video-only.patch": {
+      "size": 12970,
+      "sha256": "b63cc3e6db0f28cfe389ac404eaa8b51d7e05ed1393d472b436d5aca21cad45f"
+    },
+    "out/kvmd/downloads/kvmd.tar.gz": {
+      "size": 1317510,
+      "sha256": "669a21aafd7e08ca85d02a965a8f3f76b3ba63ac8539ece385b1f676bdf7fdf7"
+    },
+    "out/ustreamer/artifacts/rootfs.tar.gz": {
+      "size": 62154035,
+      "sha256": "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c"
+    },
+    "out/ustreamer/artifacts/ustreamer_6.65-1blikvm2_arm64.deb": {
+      "size": 164146,
+      "sha256": "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1"
+    }
+  },
+  "hardware_acceptance": "passed",
+  "acceptance_record": "../m8a-kvmd.json"
+}

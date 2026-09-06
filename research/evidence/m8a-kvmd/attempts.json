@@ -1,0 +1,47 @@
+{
+  "acceptance": "passed",
+  "attempts": [
+    {
+      "log": "out/kvmd/package-build1.log",
+      "result": "failed",
+      "reason": "native builder lacks patch; retained staging; add Ubuntu build-only patch dependency"
+    },
+    {
+      "log": "out/kvmd/package-build2.log",
+      "result": "provisional",
+      "reason": "built before final metadata and explicit OCR exclusion correction"
+    },
+    {
+      "log": "out/kvmd/package-build3.log",
+      "result": "passed",
+      "scope": "Debian package assembly only"
+    },
+    {
+      "log": "out/kvmd/rootfs-build1.log",
+      "result": "failed",
+      "reason": "wrapper edited during execution; output reserved for provisional hardware, not reproducibility acceptance"
+    },
+    {
+      "log": "out/kvmd/package-build4.log",
+      "result": "passed",
+      "scope": "fresh byte-identical package assembly"
+    },
+    {
+      "log": "out/kvmd/rootfs-build2.log",
+      "result": "passed",
+      "scope": "complete fresh runtime build with exact inventory check"
+    },
+    {
+      "log": "out/kvmd/rootfs-build3.log",
+      "result": "passed",
+      "scope": "second complete byte-identical fresh runtime build"
+    },
+    {
+      "boot_run": "20260906T112642Z-unknown-424496",
+      "hil_run": "20260906T112757Z-unknown-671691",
+      "result": "provisional_pass",
+      "scope": "expanded RAM window, daemon/API/lifecycle/HDMI/gadget qualification before final five-boot sequence"
+    }
+  ],
+  "acceptance_record": "../m8a-kvmd.json"
+}

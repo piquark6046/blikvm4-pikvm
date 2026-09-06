@@ -36,7 +36,7 @@ The internal device is standard USB2 UVC, not CSI. Linux 7.2.3 now binds its
 video interfaces to upstream `uvcvideo`, enumerates the complete MJPEG/YUYV
 mode table, and captures non-empty changing frames across two full RAM-only
 boots. Use serial `29404080` for the eventual `/dev/kvmd-video` link; uStreamer
-and PiKVM integration have not started. See [video-capture.md](video-capture.md)
+and PiKVM video integration are now qualified in the userspace slices below. See [video-capture.md](video-capture.md)
 and [uvc-v4l2-bringup.md](uvc-v4l2-bringup.md).
 
 ## 9. USB gadget
@@ -140,4 +140,13 @@ The next isolated [M7.5 uStreamer slice](m75-ustreamer-bringup.md) is qualified:
 pinned Debian package, stable MS2131 capture identity, unprivileged systemd
 service, real native 1080p30 MJPEG, automatic HDMI recovery and retained M5
 functionality across two clean RAM boots. Its baseline tag is
-`ubuntu-26.04.1-ustreamer-baseline`. M6 remains deferred; kvmd is not installed.
+`ubuntu-26.04.1-ustreamer-baseline`. M6 remains deferred; the standalone M7.5 baseline remains frozen.
+
+## 24. M8-A video-only kvmd
+
+[M8-A is qualified](m8a-kvmd-video-bringup.md) at
+`ubuntu-26.04.1-kvmd-video-baseline`: pinned/reproducible ARM64 package, BliKVM
+configuration, one owner of the frozen uStreamer, local Unix API, moving
+1080p30 video, HDMI recovery and five clean boots with retained M5/M7 gates.
+No nginx, web/auth, LAN API or kvmd gadget/ATX control is enabled. M8-B is
+proposed only; M6 remains deferred.

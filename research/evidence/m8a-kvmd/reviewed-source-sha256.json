@@ -1,0 +1,20 @@
+{
+  "build/kvmd/build.sh": "bd84fc3e594b08ba5e7ade1445d55a263a98afb3bdbcb0729b769622854e1041",
+  "build/kvmd/in-container.sh": "8a94c18b380b399365f87a46e8676dd002e4cd3ae8899f0c71286bddf177d21c",
+  "build/kvmd/kvmd.service": "7714737e10ec94ca9a350d3e7c57b47bdda6968aadcc31a2f18c10f2e5f2beec",
+  "build/kvmd/main.yaml": "81da1c5005142afb88cf4d12f6da2578e2e960233ed23b8b2303c9ec5c4ef132",
+  "build/kvmd/package.py": "3fde0f879a19142e347098864b2aa5691574aa8481c932515e503b07a953baf7",
+  "build/kvmd/package.sha256": "356cd4e8a29cf977e3dd0a59dc1cc7a52cfbcbe5ea06e961a5dc0c3e96cbab04",
+  "build/kvmd/packages.lock.tsv": "37e4a84fb0fc6de0bc3cd7ad5108e5be6a51a1c407a6ab62378f76b603015091",
+  "build/kvmd/versions.env": "9e18a03a5193e5cfa035a5d9a8869739dbcd52d4a757ad40b6a61d18740c0034",
+  "build/kvmd/video-only.patch": "b63cc3e6db0f28cfe389ac404eaa8b51d7e05ed1393d472b436d5aca21cad45f",
+  "build/kvmd/write-manifest.py": "ede0dc2856a7795c6df0c48766df06ae1380b493727870d4edb8db138a4b3360",
+  "lab/kvmd-acceptance-gate.py": "888b6766a30acbe94398765ac5c78280422676bd1699abf1ae0c2b117b83f04e",
+  "lab/kvmd-api.py": "43ad2a387d94c49530b37211573ace0f9800a17569d5bf49d6bb76ff74830d7a",
+  "lab/kvmd-boot.py": "3026931ab23c82856147812683208c2b1b7a1557eb6576793c17d36f77c86320",
+  "lab/kvmd-gate.py": "f1706cb59bcec55e5a069a791d7aadde234296f3b3b21d271463f68d0448de42",
+  "lab/kvmd-hil.py": "26ada6286cc84b8434b331e617d7dcd686e43afb7508498eceb6e17b890972d2",
+  "lab/kvmd-resources.py": "75eeedfe282d611c278deddc7223e06588fd3bd847b27f4dff0176bc549a2fcd",
+  "lab/kvmd-series.py": "a8ac59d1dea95082bcabc2e3d5d8d14f03705566d284c37f89eaef6a270663a2",
+  "tests/test_kvmd_gate.py": "ccb3a3c15c9d048253a7f053eea3bdaf240208261a4c0abc9880a80427820165"
+}

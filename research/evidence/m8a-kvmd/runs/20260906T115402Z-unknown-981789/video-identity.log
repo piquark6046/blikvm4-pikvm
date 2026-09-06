@@ -1,0 +1,217 @@
+/dev/video0
+DEVPATH=/devices/platform/soc/5200000.usb/usb1/1-1/1-1:1.0/video4linux/video0
+DEVNAME=/dev/video0
+MAJOR=81
+MINOR=0
+SUBSYSTEM=video4linux
+USEC_INITIALIZED=8694064
+ID_V4L_VERSION=2
+ID_V4L_PRODUCT=USB2 Video: USB2 Video
+ID_V4L_CAPABILITIES=:capture:
+ID_BUS=usb
+ID_MODEL=USB2_Video
+ID_MODEL_ENC=USB2\x20Video
+ID_MODEL_ID=2131
+ID_SERIAL=MACROSILICON_USB2_Video_29404080
+ID_SERIAL_SHORT=29404080
+ID_VENDOR=MACROSILICON
+ID_VENDOR_ENC=MACROSILICON
+ID_VENDOR_ID=345f
+ID_REVISION=2100
+ID_TYPE=video
+ID_USB_MODEL=USB2_Video
+ID_USB_MODEL_ENC=USB2\x20Video
+ID_USB_MODEL_ID=2131
+ID_USB_SERIAL=MACROSILICON_USB2_Video_29404080
+ID_USB_SERIAL_SHORT=29404080
+ID_USB_VENDOR=MACROSILICON
+ID_USB_VENDOR_ENC=MACROSILICON
+ID_USB_VENDOR_ID=345f
+ID_USB_REVISION=2100
+ID_USB_TYPE=video
+ID_USB_INTERFACES=:0e0100:0e0200:010100:010200:030000:
+ID_USB_INTERFACE_NUM=00
+ID_USB_DRIVER=uvcvideo
+ID_PATH_WITH_USB_REVISION=platform-5200000.usb-usbv2-0:1:1.0
+ID_PATH=platform-5200000.usb-usb-0:1:1.0
+ID_PATH_TAG=platform-5200000_usb-usb-0_1_1_0
+ID_FOR_SEAT=video4linux-platform-5200000_usb-usb-0_1_1_0
+SYSTEMD_ALIAS=/dev/kvmd-video
+SYSTEMD_WANTS=kvmd.service
+DEVLINKS=/dev/v4l/by-path/platform-5200000.usb-usb-0:1:1.0-video-index0 /dev/v4l/by-path/platform-5200000.usb-usbv2-0:1:1.0-video-index0 /dev/v4l/by-id/usb-MACROSILICON_USB2_Video_29404080-video-index0 /dev/kvmd-video
+TAGS=:uaccess:seat:systemd:
+CURRENT_TAGS=:uaccess:seat:systemd:
+Driver Info:
+	Driver name      : uvcvideo
+	Card type        : USB2 Video: USB2 Video
+	Bus info         : usb-5200000.usb-1
+	Driver version   : 7.2.3
+	Capabilities     : 0x84a00001
+		Video Capture
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04200001
+		Video Capture
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : uvcvideo
+	Model            : USB2 Video: USB2 Video
+	Serial           : 29404080
+	Bus info         : usb-5200000.usb-1
+	Media version    : 7.2.3
+	Hardware revision: 0x00002100 (8448)
+	Driver version   : 7.2.3
+Interface Info:
+	ID               : 0x03000002
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000001 (1)
+	Name             : USB2 Video: USB2 Video
+	Function         : V4L2 I/O
+	Flags            : default
+	Pad 0x01000007   : 0: Sink
+	  Link 0x0200000d: from remote pad 0x100000a of entity 'Processing 2' (Video Pixel Formatter): Data, Enabled, Immutable
+Priority: 2
+Video input : 0 (Camera 1: ok)
+Format Video Capture:
+	Width/Height      : 1920/1080
+	Pixel Format      : 'MJPG' (Motion-JPEG)
+	Field             : None
+	Bytes per Line    : 0
+	Size Image        : 4147200
+	Colorspace        : sRGB
+	Transfer Function : Rec. 709
+	YCbCr/HSV Encoding: ITU-R 601
+	Quantization      : Default (maps to Full Range)
+	Flags             : 
+Crop Capability Video Capture:
+	Bounds      : Left 0, Top 0, Width 1920, Height 1080
+	Default     : Left 0, Top 0, Width 1920, Height 1080
+	Pixel Aspect: 1/1
+Selection Video Capture: crop_default, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+Selection Video Capture: crop_bounds, Left 0, Top 0, Width 1920, Height 1080, Flags: 
+Streaming Parameters Video Capture:
+	Capabilities     : timeperframe
+	Frames per second: 30.000 (30/1)
+	Read buffers     : 0
+
+User Controls
+
+                     brightness 0x00980900 (int)    : min=0 max=100 step=1 default=50 value=50 flags=has-min-max
+                       contrast 0x00980901 (int)    : min=0 max=100 step=1 default=50 value=50 flags=has-min-max
+                     saturation 0x00980902 (int)    : min=0 max=100 step=1 default=50 value=50 flags=has-min-max
+                            hue 0x00980903 (int)    : min=0 max=100 step=1 default=50 value=50 flags=has-min-max
+ioctl: VIDIOC_ENUM_FMT
+	Type: Video Capture
+
+	[0]: 'MJPG' (Motion-JPEG, compressed)
+		Size: Discrete 1920x1080
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1600x1200
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1360x768
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1280x1024
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1280x960
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1280x720
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1024x768
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 800x600
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 720x576
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 720x480
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 640x480
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+	[1]: 'YUYV' (YUYV 4:2:2)
+		Size: Discrete 1920x1080
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1600x1200
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1360x768
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.125s (8.000 fps)
+		Size: Discrete 1280x1024
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.125s (8.000 fps)
+		Size: Discrete 1280x960
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.125s (8.000 fps)
+		Size: Discrete 1280x720
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 1024x768
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 800x600
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 720x576
+			Interval: Discrete 0.020s (50.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 720x480
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+		Size: Discrete 640x480
+			Interval: Discrete 0.017s (60.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)

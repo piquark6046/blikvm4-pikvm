@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "boot_run": "20260906T120041Z-unknown-958608",
+  "kvmd_pid": 161,
+  "snapshots": [
+    {
+      "file": "snapshot-0.jpg",
+      "bytes": 41491,
+      "sha256": "9875d72240a4bcc416214f48c8b9c383fba00b2ccdf3446b8622d2aa62c4151e"
+    },
+    {
+      "file": "snapshot-1.jpg",
+      "bytes": 41463,
+      "sha256": "8bd5bdfe1f3e4205f585cbb6e397d4f05a9407b8b7c2e45bfa420e15c90bd362"
+    },
+    {
+      "file": "snapshot-2.jpg",
+      "bytes": 41495,
+      "sha256": "7469611d0dfb17c47896fa3afa9a4d565cd843f65c5d64773b88f173dfd0d6b6"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Preserve native command output exactly, including padding and blank lines.
+*.log -whitespace
+effective-config.yaml -whitespace

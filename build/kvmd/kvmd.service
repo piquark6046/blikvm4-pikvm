@@ -1,0 +1,33 @@
+[Unit]
+Description=BliKVM video-only kvmd
+BindsTo=dev-kvmd\x2dvideo.device
+After=dev-kvmd\x2dvideo.device
+Conflicts=ustreamer.service
+
+[Service]
+Type=exec
+User=kvmd
+Group=ustreamer
+RuntimeDirectory=kvmd/api kvmd/ustreamer
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/kvmd --run
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+KillMode=mixed
+UMask=0007
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+DevicePolicy=closed
+DeviceAllow=/dev/kvmd-video rw
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,92 @@
+Jul 27 20:44:06 blikvm-m7 systemd[1]: Starting kvmd.service - BliKVM video-only kvmd...
+Jul 27 20:44:06 blikvm-m7 systemd[1]: Started kvmd.service - BliKVM video-only kvmd.
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer           INFO --- Installing SIGUSR2 streamer handler ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.htserver                     INFO --- (Press CTRL+C to quit)
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- Starting streamer ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- PRE-START-CMD: /bin/true pre-start
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- Started streamer pid=191: /usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.442      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.515      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.516    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.516      http] -- HTTP: Starting eventloop ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.516    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.516    stream] -- CAP: Using input channel: 0
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.535    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.536    stream] -- CAP: Using format: MJPEG
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.556    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.556    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.566    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.577    stream] -- CAP: Capturing started
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.577    stream] -- Using JPEG quality: encoder default
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.577    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [13.578    stream] -- Capturing ...
+Jul 27 20:44:10 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer           INFO --- Got SIGUSR2, checking the stream state ...
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /info?legacy=false HTTP/1.1' => 200; size=1726 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819276160, {'stream': True}); clients now: 1
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819276160, {'stream': True}); clients now: 0
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819397968, {'stream': True}); clients now: 1
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819397968, {'stream': True}); clients now: 0
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819399248, {'stream': True}); clients now: 1
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819399248, {'stream': True}); clients now: 0
+Jul 27 20:44:33 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:34 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot?save=true HTTP/1.1' => 200; size=42114 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:34 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42121 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:34 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42133 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:34 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42120 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:35 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42113 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:35 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42098 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:35 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42134 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:35 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42129 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42134 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42124 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42136 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42127 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1457 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'DELETE /streamer/snapshot HTTP/1.1' => 200; size=195 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /hid HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /atx HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /msd HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /gpio HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:36 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /switch HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:37 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /auth/login HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:44:37 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [40.967      http] -- HTTP: NEW client (now=1): [localhost]:0, id=5271d0c0dd816151
+Jul 27 20:46:37 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [160.644      http] -- HTTP: DEL client (now=0): [localhost]:0, id=5271d0c0dd816151, Broken pipe (writing,error)
+Jul 27 20:46:49 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /info?legacy=false HTTP/1.1' => 200; size=1727 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:49 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:49 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819301904, {'stream': True}); clients now: 1
+Jul 27 20:46:49 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819301904, {'stream': True}); clients now: 0
+Jul 27 20:46:49 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819298560, {'stream': True}); clients now: 1
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819298560, {'stream': True}); clients now: 0
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473819461104, {'stream': True}); clients now: 1
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473819461104, {'stream': True}); clients now: 0
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /ws?stream=true HTTP/1.1' => 101; size=0 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot?save=true HTTP/1.1' => 200; size=42130 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:50 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42136 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:51 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42084 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:51 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42135 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:51 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42133 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:51 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42132 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:52 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42134 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:52 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42118 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:52 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42104 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:52 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42097 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42123 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer/snapshot HTTP/1.1' => 200; size=42149 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1457 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'DELETE /streamer/snapshot HTTP/1.1' => 200; size=195 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /streamer HTTP/1.1' => 200; size=1352 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /hid HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /atx HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /msd HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /gpio HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /switch HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:53 blikvm-m7 kvmd[161]: aiohttp.access                    INFO --- [- / -] 'GET /auth/login HTTP/1.1' => 404; size=174 --- referer='-'; user_agent='Python/3.14 aiohttp/3.13.3'
+Jul 27 20:46:54 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [177.552      http] -- HTTP: NEW client (now=1): [localhost]:0, id=5ec6364fe0c1d41e
+Jul 27 20:47:09 blikvm-m7 kvmd[161]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [192.201      http] -- HTTP: DEL client (now=0): [localhost]:0, id=5ec6364fe0c1d41e, Resource temporarily unavailable (reading,eof)

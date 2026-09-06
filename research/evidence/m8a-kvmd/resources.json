@@ -1,0 +1,91 @@
+{
+  "result": "passed",
+  "runs": [
+    {
+      "run_id": "20260906T113659Z-unknown-191283",
+      "rss_kib": {
+        "kvmd": {
+          "min": 55208,
+          "max": 55604,
+          "samples": 112
+        },
+        "ustreamer": {
+          "min": 30832,
+          "max": 30832,
+          "samples": 1
+        }
+      },
+      "service_cpu_one_core_percent": 3.940715873015873,
+      "cpu_sample_seconds": 126.0
+    },
+    {
+      "run_id": "20260906T114530Z-unknown-281194",
+      "rss_kib": {
+        "kvmd": {
+          "min": 55184,
+          "max": 55568,
+          "samples": 113
+        },
+        "ustreamer": {
+          "min": 29892,
+          "max": 30264,
+          "samples": 113
+        }
+      },
+      "service_cpu_one_core_percent": 3.9181184,
+      "cpu_sample_seconds": 125.0
+    },
+    {
+      "run_id": "20260906T115402Z-unknown-981789",
+      "rss_kib": {
+        "kvmd": {
+          "min": 55212,
+          "max": 55600,
+          "samples": 113
+        },
+        "ustreamer": {
+          "min": 30704,
+          "max": 30792,
+          "samples": 113
+        }
+      },
+      "service_cpu_one_core_percent": 3.9239407999999996,
+      "cpu_sample_seconds": 125.0
+    },
+    {
+      "run_id": "20260906T115750Z-unknown-252440",
+      "rss_kib": {
+        "kvmd": {
+          "min": 55188,
+          "max": 55572,
+          "samples": 113
+        },
+        "ustreamer": {
+          "min": 30704,
+          "max": 30792,
+          "samples": 113
+        }
+      },
+      "service_cpu_one_core_percent": 3.8887960317460313,
+      "cpu_sample_seconds": 126.0
+    },
+    {
+      "run_id": "20260906T120140Z-unknown-966069",
+      "rss_kib": {
+        "kvmd": {
+          "min": 55224,
+          "max": 55632,
+          "samples": 113
+        },
+        "ustreamer": {
+          "min": 30704,
+          "max": 30792,
+          "samples": 113
+        }
+      },
+      "service_cpu_one_core_percent": 3.9239448,
+      "cpu_sample_seconds": 125.0
+    }
+  ],
+  "memory_accounting": "per-process RSS; frozen kernel has no cgroup MemoryCurrent value"
+}
