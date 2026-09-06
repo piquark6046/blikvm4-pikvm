@@ -1,0 +1,31 @@
+[Unit]
+Description=BliKVM MS2131 native MJPEG streamer
+BindsTo=dev-kvmd\x2dvideo.device
+After=dev-kvmd\x2dvideo.device
+
+[Service]
+Type=exec
+User=ustreamer
+Group=ustreamer
+RuntimeDirectory=kvmd/ustreamer
+RuntimeDirectoryMode=0750
+ExecStart=/usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=10
+KillMode=control-group
+UMask=0007
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+DevicePolicy=closed
+DeviceAllow=/dev/kvmd-video rw
+
+[Install]
+WantedBy=multi-user.target

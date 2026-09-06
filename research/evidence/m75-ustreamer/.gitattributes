@@ -1,0 +1,2 @@
+# Preserve exact tool output, including V4L2's trailing spaces in empty fields.
+*.log -whitespace

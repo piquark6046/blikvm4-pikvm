@@ -1,0 +1,43 @@
+{
+  "ustreamer": {
+    "hashes": [
+      "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+      "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b"
+    ],
+    "identical": true
+  },
+  "ustreamer_6.65-1blikvm2_arm64.deb": {
+    "hashes": [
+      "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1",
+      "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1"
+    ],
+    "identical": true
+  },
+  "rootfs.tar.gz": {
+    "hashes": [
+      "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c",
+      "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c"
+    ],
+    "identical": true
+  },
+  "initramfs.cpio.gz": {
+    "hashes": [
+      "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c",
+      "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c"
+    ],
+    "identical": true
+  },
+  "packages.tsv": {
+    "hashes": [
+      "82c79bcf2a5f17e2f82d7c1a2ae8d04d0024ea3ec37460a14b9bb380839c9513",
+      "82c79bcf2a5f17e2f82d7c1a2ae8d04d0024ea3ec37460a14b9bb380839c9513"
+    ],
+    "identical": true
+  },
+  "successful_build_logs": [
+    "package-blikvm2-build1.log",
+    "package-blikvm2-build3.log",
+    "rootfs-blikvm2-build1.log",
+    "rootfs-blikvm2-build2.log"
+  ]
+}

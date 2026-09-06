@@ -131,3 +131,13 @@ mass storage is qualified as G4 with the focused MUSB receive-queue fix,
 physical reconnect and two consecutive full RAM boots. All retained HID,
 storage protection and concurrent zero-error UVC checks pass; M5 is complete. See [G4 status](m5-storage-bringup.md) and
 [the accepted HID qualification](m5-hid-bringup.md).
+
+
+## 23. Ubuntu and uStreamer userspace baselines
+
+M7 Ubuntu 26.04.1 ARM64 is frozen at `ubuntu-26.04.1-rootfs-baseline`.
+The next isolated [M7.5 uStreamer slice](m75-ustreamer-bringup.md) is qualified:
+pinned Debian package, stable MS2131 capture identity, unprivileged systemd
+service, real native 1080p30 MJPEG, automatic HDMI recovery and retained M5
+functionality across two clean RAM boots. Its baseline tag is
+`ubuntu-26.04.1-ustreamer-baseline`. M6 remains deferred; kvmd is not installed.

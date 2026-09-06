@@ -1,0 +1,196 @@
+Jul 27 20:44:06 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:44:06 blikvm-m7 ustreamer[163]: -- INFO  [8.625      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:44:07 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.702      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.702    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.702    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.702    stream] -- CAP: Using input channel: 0
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.703      http] -- HTTP: Starting eventloop ...
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.722    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.722    stream] -- CAP: Using format: MJPEG
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.742    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.743    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.752    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.763    stream] -- CAP: Capturing started
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.763    stream] -- Using JPEG quality: encoder default
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.763    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:44:07 blikvm-m7 ustreamer[163]: -- INFO  [8.764    stream] -- Capturing ...
+Jul 27 20:45:09 blikvm-m7 ustreamer[163]: -- INFO  [71.012      http] -- HTTP: NEW client (now=1): [localhost]:0, id=31118aa5ea2ccab1
+Jul 27 20:47:08 blikvm-m7 ustreamer[163]: -- INFO  [190.625      http] -- HTTP: DEL client (now=0): [localhost]:0, id=31118aa5ea2ccab1, Resource temporarily unavailable (reading,eof)
+Jul 27 20:47:10 blikvm-m7 ustreamer[163]: -- INFO  [191.794      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:47:10 blikvm-m7 ustreamer[163]: -- INFO  [191.794      http] -- HTTP: Eventloop stopped
+Jul 27 20:47:10 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:10 blikvm-m7 ustreamer[163]: -- INFO  [191.900    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:47:10 blikvm-m7 ustreamer[163]: -- INFO  [191.930    stream] -- CAP: Capturing stopped
+Jul 27 20:47:10 blikvm-m7 ustreamer[163]: -- INFO  [191.933      main] -- Bye-bye
+Jul 27 20:47:10 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:47:10 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:10 blikvm-m7 systemd[1]: ustreamer.service: Consumed 3.973s CPU time over 3min 3.444s wall clock time.
+Jul 27 20:47:12 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:12 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.796      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.872      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.873    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.873    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.873    stream] -- CAP: Using input channel: 0
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.873      http] -- HTTP: Starting eventloop ...
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.893    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.893    stream] -- CAP: Using format: MJPEG
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.914    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.914    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.923    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.934    stream] -- CAP: Capturing started
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.934    stream] -- Using JPEG quality: encoder default
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.934    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [193.935    stream] -- Capturing ...
+Jul 27 20:47:12 blikvm-m7 ustreamer[1309]: -- INFO  [194.195      http] -- HTTP: NEW client (now=1): [localhost]:0, id=e2b229ba567aded5
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [203.863      http] -- HTTP: DEL client (now=0): [localhost]:0, id=e2b229ba567aded5, Broken pipe (writing,error)
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [204.203      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [204.203      http] -- HTTP: Eventloop stopped
+Jul 27 20:47:22 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [204.296    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [204.326    stream] -- CAP: Capturing stopped
+Jul 27 20:47:22 blikvm-m7 ustreamer[1309]: -- INFO  [204.330      main] -- Bye-bye
+Jul 27 20:47:22 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:47:22 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:22 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:22 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.475      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.555      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.556      http] -- HTTP: Starting eventloop ...
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.556    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.556    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.556    stream] -- CAP: Using input channel: 0
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.576    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.576    stream] -- CAP: Using format: MJPEG
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.597    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.597    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.606    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.617    stream] -- CAP: Capturing started
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.617    stream] -- Using JPEG quality: encoder default
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.617    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:47:22 blikvm-m7 ustreamer[1401]: -- INFO  [204.618    stream] -- Capturing ...
+Jul 27 20:47:23 blikvm-m7 ustreamer[1401]: -- INFO  [205.283      http] -- HTTP: NEW client (now=1): [localhost]:0, id=dbaa9b73d60f8829
+Jul 27 20:47:33 blikvm-m7 ustreamer[1401]: -- INFO  [214.976      http] -- HTTP: DEL client (now=0): [localhost]:0, id=dbaa9b73d60f8829, Resource temporarily unavailable (reading,eof)
+Jul 27 20:47:34 blikvm-m7 ustreamer[1401]: -- INFO  [215.718      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:47:34 blikvm-m7 ustreamer[1401]: -- INFO  [215.719      http] -- HTTP: Eventloop stopped
+Jul 27 20:47:34 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:34 blikvm-m7 ustreamer[1401]: -- INFO  [215.804    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:47:34 blikvm-m7 ustreamer[1401]: -- INFO  [215.834    stream] -- CAP: Capturing stopped
+Jul 27 20:47:34 blikvm-m7 ustreamer[1401]: -- INFO  [215.837      main] -- Bye-bye
+Jul 27 20:47:34 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:47:34 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:35 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:36 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.679      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.753      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.754    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.754    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.754    stream] -- CAP: Using input channel: 0
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.754      http] -- HTTP: Starting eventloop ...
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.774    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.774    stream] -- CAP: Using format: MJPEG
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.795    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.795    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.805    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.815    stream] -- CAP: Capturing started
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.815    stream] -- Using JPEG quality: encoder default
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.815    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [217.817    stream] -- Capturing ...
+Jul 27 20:47:36 blikvm-m7 ustreamer[1627]: -- INFO  [218.083      http] -- HTTP: NEW client (now=1): [localhost]:0, id=b189e92e3dc6d05c
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [227.740      http] -- HTTP: DEL client (now=0): [localhost]:0, id=b189e92e3dc6d05c, Resource temporarily unavailable (reading,eof)
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [228.086      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [228.086      http] -- HTTP: Eventloop stopped
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [228.176    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [228.206    stream] -- CAP: Capturing stopped
+Jul 27 20:47:46 blikvm-m7 ustreamer[1627]: -- INFO  [228.209      main] -- Bye-bye
+Jul 27 20:47:46 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.351      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.425      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.426    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.426      http] -- HTTP: Starting eventloop ...
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.426    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.426    stream] -- CAP: Using input channel: 0
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.446    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.446    stream] -- CAP: Using format: MJPEG
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.467    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.467    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.476    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.487    stream] -- CAP: Capturing started
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.487    stream] -- Using JPEG quality: encoder default
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.487    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:47:46 blikvm-m7 ustreamer[1674]: -- INFO  [228.488    stream] -- Capturing ...
+Jul 27 20:47:47 blikvm-m7 ustreamer[1674]: -- INFO  [229.135      http] -- HTTP: NEW client (now=1): [localhost]:0, id=cb58655e5ecdd31
+Jul 27 20:47:57 blikvm-m7 ustreamer[1674]: -- INFO  [238.808      http] -- HTTP: DEL client (now=0): [localhost]:0, id=cb58655e5ecdd31, Resource temporarily unavailable (reading,eof)
+Jul 27 20:47:57 blikvm-m7 ustreamer[1674]: -- INFO  [239.550      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:47:57 blikvm-m7 ustreamer[1674]: -- INFO  [239.550      http] -- HTTP: Eventloop stopped
+Jul 27 20:47:57 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:58 blikvm-m7 ustreamer[1674]: -- INFO  [239.652    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:47:58 blikvm-m7 ustreamer[1674]: -- INFO  [239.682    stream] -- CAP: Capturing stopped
+Jul 27 20:47:58 blikvm-m7 ustreamer[1674]: -- INFO  [239.685      main] -- Bye-bye
+Jul 27 20:47:58 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:47:58 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:59 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:47:59 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.515      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.591      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.592    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.592      http] -- HTTP: Starting eventloop ...
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.592    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.592    stream] -- CAP: Using input channel: 0
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.612    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.613    stream] -- CAP: Using format: MJPEG
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.633    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:47:59 blikvm-m7 ustreamer[1860]: -- INFO  [241.633    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.643    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.653    stream] -- CAP: Capturing started
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.654    stream] -- Using JPEG quality: encoder default
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.654    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.655    stream] -- Capturing ...
+Jul 27 20:48:00 blikvm-m7 ustreamer[1860]: -- INFO  [241.914      http] -- HTTP: NEW client (now=1): [localhost]:0, id=61e0b9e2ff5c7e74
+Jul 27 20:48:09 blikvm-m7 ustreamer[1860]: -- INFO  [251.576      http] -- HTTP: DEL client (now=0): [localhost]:0, id=61e0b9e2ff5c7e74, Resource temporarily unavailable (reading,eof)
+Jul 27 20:48:10 blikvm-m7 ustreamer[1860]: -- INFO  [251.927      main] -- ===== Stopping by SIGTERM =====
+Jul 27 20:48:10 blikvm-m7 ustreamer[1860]: -- INFO  [251.927      http] -- HTTP: Eventloop stopped
+Jul 27 20:48:10 blikvm-m7 systemd[1]: Stopping ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:48:10 blikvm-m7 ustreamer[1860]: -- INFO  [252.040    stream] -- Destroying workers pool JPEG ...
+Jul 27 20:48:10 blikvm-m7 ustreamer[1860]: -- INFO  [252.070    stream] -- CAP: Capturing stopped
+Jul 27 20:48:10 blikvm-m7 ustreamer[1860]: -- INFO  [252.073      main] -- Bye-bye
+Jul 27 20:48:10 blikvm-m7 systemd[1]: ustreamer.service: Deactivated successfully.
+Jul 27 20:48:10 blikvm-m7 systemd[1]: Stopped ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:48:10 blikvm-m7 systemd[1]: Starting ustreamer.service - BliKVM MS2131 native MJPEG streamer...
+Jul 27 20:48:10 blikvm-m7 systemd[1]: Started ustreamer.service - BliKVM MS2131 native MJPEG streamer.
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.219      main] -- Starting PiKVM uStreamer 6.65 ...
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.295      main] -- HTTP: Listening HTTP on UNIX socket '/run/kvmd/ustreamer/ustreamer.sock'
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.295    stream] -- Using V4L2 device: /dev/kvmd-video
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.295    stream] -- CAP: Using capture type: single-planar
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.295    stream] -- CAP: Using input channel: 0
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.296      http] -- HTTP: Starting eventloop ...
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.316    stream] -- CAP: Using resolution: 1920x1080
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.316    stream] -- CAP: Using format: MJPEG
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.336    stream] -- CAP: Using HW FPS: 1/30
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.336    stream] -- CAP: Using IO method: MMAP
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.346    stream] -- CAP: Requested 5 device buffers, got 5
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.356    stream] -- CAP: Capturing started
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.357    stream] -- Using JPEG quality: encoder default
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.357    stream] -- Creating pool JPEG with 1 workers ...
+Jul 27 20:48:10 blikvm-m7 ustreamer[1907]: -- INFO  [252.358    stream] -- Capturing ...
+Jul 27 20:48:11 blikvm-m7 ustreamer[1907]: -- INFO  [253.010      http] -- HTTP: NEW client (now=1): [localhost]:0, id=35ec53c0fb7ebdd0
+Jul 27 20:48:21 blikvm-m7 ustreamer[1907]: -- INFO  [262.677      http] -- HTTP: DEL client (now=0): [localhost]:0, id=35ec53c0fb7ebdd0, Resource temporarily unavailable (reading,eof)
+Jul 27 20:48:23 blikvm-m7 ustreamer[1907]: -- INFO  [265.475      http] -- HTTP: NEW client (now=1): [localhost]:0, id=d4e1da120f63cffd
+Jul 27 20:48:33 blikvm-m7 ustreamer[1907]: -- INFO  [275.142      http] -- HTTP: DEL client (now=0): [localhost]:0, id=d4e1da120f63cffd, Broken pipe (writing,error)
+Jul 27 20:48:37 blikvm-m7 ustreamer[1907]: -- INFO  [279.281      http] -- HTTP: NEW client (now=1): [localhost]:0, id=5804270da2a1727f
+Jul 27 20:48:52 blikvm-m7 ustreamer[1907]: -- INFO  [293.940      http] -- HTTP: DEL client (now=0): [localhost]:0, id=5804270da2a1727f, Broken pipe (writing,error)
+Jul 27 20:48:55 blikvm-m7 ustreamer[1907]: -- INFO  [297.165      http] -- HTTP: NEW client (now=1): [localhost]:0, id=3965a4b9cc03ac04
+Jul 27 20:49:05 blikvm-m7 ustreamer[1907]: -- INFO  [306.808      http] -- HTTP: DEL client (now=0): [localhost]:0, id=3965a4b9cc03ac04, Broken pipe (writing,error)
+Jul 27 20:49:09 blikvm-m7 ustreamer[1907]: -- INFO  [310.945      http] -- HTTP: NEW client (now=1): [localhost]:0, id=8e8241041be1a166
+Jul 27 20:49:24 blikvm-m7 ustreamer[1907]: -- INFO  [325.640      http] -- HTTP: DEL client (now=0): [localhost]:0, id=8e8241041be1a166, Resource temporarily unavailable (reading,eof)
+Jul 27 20:49:27 blikvm-m7 ustreamer[1907]: -- INFO  [328.873      http] -- HTTP: NEW client (now=1): [localhost]:0, id=a963f84466c2394c
+Jul 27 20:49:36 blikvm-m7 ustreamer[1907]: -- INFO  [338.536      http] -- HTTP: DEL client (now=0): [localhost]:0, id=a963f84466c2394c, Broken pipe (writing,error)
+Jul 27 20:49:41 blikvm-m7 ustreamer[1907]: -- INFO  [342.667      http] -- HTTP: NEW client (now=1): [localhost]:0, id=ea224589c1dd62d0
+Jul 27 20:49:55 blikvm-m7 ustreamer[1907]: -- INFO  [357.328      http] -- HTTP: DEL client (now=0): [localhost]:0, id=ea224589c1dd62d0, Resource temporarily unavailable (reading,eof)
+Jul 27 20:50:05 blikvm-m7 ustreamer[1907]: -- INFO  [367.494      http] -- HTTP: NEW client (now=1): [localhost]:0, id=398e479afa51e204
+Jul 27 20:50:20 blikvm-m7 ustreamer[1907]: -- INFO  [381.992      http] -- HTTP: DEL client (now=0): [localhost]:0, id=398e479afa51e204, Resource temporarily unavailable (reading,eof)

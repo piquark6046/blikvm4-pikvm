@@ -1,0 +1,22 @@
+● ustreamer.service - BliKVM MS2131 native MJPEG streamer
+     Loaded: loaded (/usr/lib/systemd/system/ustreamer.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-07-27 20:48:13 UTC; 2min 11s ago
+ Invocation: 3d12782218f348dab4697d9a1dc50489
+   Main PID: 1927 (main)
+        CPU: 3.304s
+     CGroup: /system.slice/ustreamer.service
+             └─1927 /usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm
+
+Jul 27 20:48:58 blikvm-m7 ustreamer[1927]: -- INFO  [300.357      http] -- HTTP: NEW client (now=1): [localhost]:0, id=c4cc26b1539ad6e7
+Jul 27 20:49:08 blikvm-m7 ustreamer[1927]: -- INFO  [310.031      http] -- HTTP: DEL client (now=0): [localhost]:0, id=c4cc26b1539ad6e7, Broken pipe (writing,error)
+Jul 27 20:49:12 blikvm-m7 ustreamer[1927]: -- INFO  [314.147      http] -- HTTP: NEW client (now=1): [localhost]:0, id=8b6e0e8ab1ae4050
+Jul 27 20:49:27 blikvm-m7 ustreamer[1927]: -- INFO  [328.824      http] -- HTTP: DEL client (now=0): [localhost]:0, id=8b6e0e8ab1ae4050, Broken pipe (writing,error)
+Jul 27 20:49:30 blikvm-m7 ustreamer[1927]: -- INFO  [331.994      http] -- HTTP: NEW client (now=1): [localhost]:0, id=8485597ede60d74e
+Jul 27 20:49:40 blikvm-m7 ustreamer[1927]: -- INFO  [341.659      http] -- HTTP: DEL client (now=0): [localhost]:0, id=8485597ede60d74e, Broken pipe (writing,error)
+Jul 27 20:49:44 blikvm-m7 ustreamer[1927]: -- INFO  [345.780      http] -- HTTP: NEW client (now=1): [localhost]:0, id=ddba42fd33161944
+Jul 27 20:49:58 blikvm-m7 ustreamer[1927]: -- INFO  [360.456      http] -- HTTP: DEL client (now=0): [localhost]:0, id=ddba42fd33161944, Broken pipe (writing,error)
+Jul 27 20:50:08 blikvm-m7 ustreamer[1927]: -- INFO  [370.556      http] -- HTTP: NEW client (now=1): [localhost]:0, id=7c6f247b094c1dd5
+Jul 27 20:50:23 blikvm-m7 ustreamer[1927]: -- INFO  [385.145      http] -- HTTP: DEL client (now=0): [localhost]:0, id=7c6f247b094c1dd5, Resource temporarily unavailable (reading,eof)
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.

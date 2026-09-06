@@ -70,6 +70,19 @@ Name/read status lines with libgpiod first. Use a meter/test fixture before outp
 
 Boot the pinned Ubuntu Base build. **Pass:** systemd reaches multi-user, network/SSH work, logs identify the artifact, clean reboot succeeds 20 times. Read-only policy is a later sub-gate.
 
+## M7.5 — Pinned uStreamer and service-level video
+
+**Current: PASSED.** Pinned uStreamer 6.65 plus a hashed device-FPS/native-quality
+patch, Debian package `6.65-1blikvm2`, reproducible Ubuntu RAM image, serial and
+capture-capability selected `/dev/kvmd-video`, and an unprivileged systemd
+service. Two clean boots each passed 120 seconds of native MJPEG 1920x1080 at
+30 device fps (29.7-29.8 delivered fps), three stop/start/restart iterations,
+three automatic HDMI-loss recoveries, and all frozen M5 gadget regressions.
+No uStreamer ERROR-level messages or unexpected USB/UVC errors occurred in the
+accepted runs. Annotated baseline: `ubuntu-26.04.1-ustreamer-baseline`.
+See [M7.5 qualification and rejected attempts](m75-ustreamer-bringup.md).
+M6 remains deferred; kvmd has not started.
+
 ## M8 — PiKVM
 
 Package uStreamer, kvmd, web UI/nginx/auth, HID, MSD, and ATX in that order. **Pass:** authenticated browser video, keyboard/mouse, virtual read-only media, ATX state/pulse, service restart, and 24-hour soak with no memory/USB failures.

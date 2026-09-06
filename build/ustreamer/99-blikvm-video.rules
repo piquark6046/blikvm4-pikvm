@@ -1,0 +1,2 @@
+# USB parent identity and probed capture capability exclude the metadata node.
+ACTION!="remove", SUBSYSTEM=="video4linux", ATTRS{idVendor}=="345f", ATTRS{idProduct}=="2131", ATTRS{serial}=="29404080", ENV{ID_V4L_CAPABILITIES}=="*:capture:*", GROUP="ustreamer", MODE="0660", SYMLINK+="kvmd-video", TAG+="systemd", ENV{SYSTEMD_ALIAS}+="/dev/kvmd-video", ENV{SYSTEMD_WANTS}+="ustreamer.service"

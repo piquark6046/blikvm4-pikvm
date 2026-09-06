@@ -1,0 +1,518 @@
+{
+  "archive": {
+    "path": "out/ustreamer/m75-evidence.tar.gz",
+    "sha256": "7cbf878e5cac59435794afa479bd373d19525f77c9ae44ef0ae3a3dff44f8088",
+    "size": 2873866
+  },
+  "hardware": [
+    {
+      "boot_id": "8230e086-57fa-4568-ab8e-3a058531b961",
+      "boot_run": "20260906T103359Z-unknown-021196",
+      "concurrent_storage_reads": 22,
+      "concurrent_stream_frames": 431,
+      "cpu_percent_one_core_during_sampling": 2.857327731092437,
+      "hid": {
+        "absolute": true,
+        "keyboard": true,
+        "relative": true
+      },
+      "read_only_storage_passed": true,
+      "run_id": "20260906T103530Z-unknown-473926",
+      "signal_cycles": [
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1907",
+          "recovery_frames": 436
+        },
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1907",
+          "recovery_frames": 437
+        },
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1907",
+          "recovery_frames": 436
+        }
+      ]
+    },
+    {
+      "boot_id": "db1189b8-d5df-4fe9-9e20-faf0dff853fc",
+      "boot_run": "20260906T104141Z-unknown-151173",
+      "concurrent_storage_reads": 22,
+      "concurrent_stream_frames": 434,
+      "cpu_percent_one_core_during_sampling": 2.8541857142857143,
+      "hid": {
+        "absolute": true,
+        "keyboard": true,
+        "relative": true
+      },
+      "read_only_storage_passed": true,
+      "run_id": "20260906T104315Z-unknown-542887",
+      "signal_cycles": [
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1927",
+          "recovery_frames": 437
+        },
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1927",
+          "recovery_frames": 437
+        },
+        {
+          "automatic": true,
+          "expected_no_signal_reason": "frozen or empty five-second window 0",
+          "expected_no_signal_result": "failed",
+          "pid": "1927",
+          "recovery_frames": 437
+        }
+      ]
+    }
+  ],
+  "kvmd": "not_started",
+  "limitations": [
+    "Qualification is bounded: two 120-second sustained streams, plus lifecycle/recovery/concurrent tests; not a 24-hour soak.",
+    "MS2131 retains an online USB stream of static frames during HDMI DPMS Off; uStreamer online is not an HDMI-signal-presence flag.",
+    "M7 lacks BPF_SYSCALL: the declared cgroup device filter is not relied on; dedicated UID/GID and udev device modes enforce access.",
+    "M7 masked/generated-unit preset diagnostics remain unchanged; both boots have zero failed units.",
+    "INFO-level client EOF/broken-pipe messages are expected when bounded clients deliberately disconnect.",
+    "RAM-only root; vendor SD and permanent U-Boot environment unchanged; final read-only-root policy remains deferred."
+  ],
+  "local_tests_passed": 65,
+  "m6": "deferred",
+  "m75": "passed",
+  "m7_baseline": "ubuntu-26.04.1-rootfs-baseline",
+  "other_attempts_not_used_for_acceptance": [
+    {
+      "result": "passed",
+      "run_id": "20260906T095805Z-unknown-188136",
+      "stage": "ubuntu_network_ssh"
+    },
+    {
+      "error": "sustained: {'result': 'failed', 'command': ['ssh', '-i', '/home/user/.local/share/blikvm-m7/id_ed25519', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=yes', '-o', 'UserKnownHostsFile=/home/user/blikvm-ustreamer/runs/20260906T095805Z-unknown-188136/known_hosts', '-o', 'ConnectTimeout=10', 'blikvm@192.168.88.2', 'sudo -n curl --silent --show-error --no-buffer --include --max-time 70 --unix-socket /run/kvmd/ustreamer/ustreamer.sock http://localhost/stream'], 'seconds_requested': 60, 'error': 'HTTP stream connection failed', 'elapsed': 0.446885, 'frames': 0, 'bytes': 0, 'unique_hashes': 0, 'transitions': 0, 'http_headers': 'HTTP/1.0 200 OK\\r\\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\\r\\nPragma: no-cache\\r\\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\\r\\nSet-Cookie: stream_client=0/b9bde46bb4eb10d1; path=/; max-age=30\\r\\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross'}",
+      "result": "failed",
+      "run_id": "20260906T095929Z-unknown-508516",
+      "stage": "sustained_stream"
+    },
+    {
+      "error": "HDMI DPMS off not verified",
+      "result": "failed",
+      "run_id": "20260906T100004Z-unknown-167969",
+      "stage": "signal_loss"
+    },
+    {
+      "result": "passed",
+      "run_id": "20260906T100555Z-unknown-650516",
+      "stage": "ubuntu_network_ssh"
+    },
+    {
+      "error": "final-service: localhost]:0, id=f287ec8338404b84\nJul 27 20:48:40 blikvm-m7 ustreamer[1492]: -- INFO  [281.824      http] -- HTTP: DEL client (now=0): [localhost]:0, id=f287ec8338404b84, Broken pipe (writing,error)\nJul 27 20:48:44 blikvm-m7 ustreamer[1492]: -- INFO  [285.978      http] -- HTTP: NEW client (now=1): [localhost]:0, id=a846495abac8cc33\nJul 27 20:48:58 blikvm-m7 ustreamer[1492]: -- INFO  [300.627      http] -- HTTP: DEL client (now=0): [localhost]:0, id=a846495abac8cc33, Broken pipe (writing,error)\nJul 27 20:49:02 blikvm-m7 ustreamer[1492]: -- INFO  [303.883      http] -- HTTP: NEW client (now=1): [localhost]:0, id=155569f6fde16923\nJul 27 20:49:11 blikvm-m7 ustreamer[1492]: -- INFO  [313.523      http] -- HTTP: DEL client (now=0): [localhost]:0, id=155569f6fde16923, Broken pipe (writing,error)\nJul 27 20:49:16 blikvm-m7 ustreamer[1492]: -- INFO  [317.683      http] -- HTTP: NEW client (now=1): [localhost]:0, id=adf86141a69770dd\nJul 27 20:49:30 blikvm-m7 ustreamer[1492]: -- INFO  [332.340      http] -- HTTP: DEL client (now=0): [localhost]:0, id=adf86141a69770dd, Resource temporarily unavailable (reading,eof)\nJul 27 20:49:40 blikvm-m7 ustreamer[1492]: -- INFO  [342.479      http] -- HTTP: NEW client (now=1): [localhost]:0, id=7d998ba86a0dada8\nJul 27 20:49:55 blikvm-m7 ustreamer[1492]: -- INFO  [357.054      http] -- HTTP: DEL client (now=0): [localhost]:0, id=7d998ba86a0dada8, Resource temporarily unavailable (reading,eof)\n  UNIT LOAD ACTIVE SUB DESCRIPTION\n\n0 loaded units listed.\n",
+      "result": "failed",
+      "run_id": "20260906T100704Z-unknown-669951",
+      "stage": "m5_regression"
+    },
+    {
+      "result": "passed",
+      "run_id": "20260906T101315Z-unknown-201636",
+      "stage": "ubuntu_network_ssh"
+    },
+    {
+      "result": "passed",
+      "run_id": "20260906T101436Z-unknown-860501",
+      "stage": "ustreamer_qualification"
+    },
+    {
+      "result": "passed",
+      "run_id": "20260906T102103Z-unknown-662077",
+      "stage": "ubuntu_network_ssh"
+    }
+  ],
+  "package_version": "6.65-1blikvm2",
+  "reboot_gate": {
+    "artifacts": {
+      "Image": {
+        "name": "Image",
+        "sha256": "5337307fe1b5bb8c2d5417ef3a2f7b0facc81dcb0144cfd42a47948810c95d42",
+        "size": 6780936
+      },
+      "binary-libraries.txt": {
+        "name": "binary-libraries.txt",
+        "sha256": "67d01e91432f586384ed0483424f5761f2fdf7de403bbc74582fd75d2e573c82",
+        "size": 713
+      },
+      "build-packages.tsv": {
+        "name": "build-packages.tsv",
+        "sha256": "27308f69e7366fa1886d3c80b856679ef91263ce88a25238d523874d13cf5f14",
+        "size": 8118
+      },
+      "help.txt": {
+        "name": "help.txt",
+        "sha256": "31c76ad9e2be5aed6310a83a43515cea4dd8f8543f4a6fb7ce1a4069b2d8c2d7",
+        "size": 14484
+      },
+      "initramfs.cpio.gz": {
+        "name": "initramfs.cpio.gz",
+        "sha256": "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c",
+        "size": 61987947
+      },
+      "invalid-device-fps.txt": {
+        "name": "invalid-device-fps.txt",
+        "sha256": "4d7a7d7113c7ad8a4fa5432702c3f7d17b02d4dccb179efce5dfed03bc6d8821",
+        "size": 52
+      },
+      "invalid-quality.txt": {
+        "name": "invalid-quality.txt",
+        "sha256": "4c801b9fdd029403225ee178560ebe2cd8252bbc7036185cde688d796fa4ca2b",
+        "size": 50
+      },
+      "linux.config": {
+        "name": "linux.config",
+        "sha256": "40f1579d1323483af01cfa847583e077173cd03dcb7e5e370775156d1c59ca65",
+        "size": 65957
+      },
+      "packages.tsv": {
+        "name": "packages.tsv",
+        "sha256": "82c79bcf2a5f17e2f82d7c1a2ae8d04d0024ea3ec37460a14b9bb380839c9513",
+        "size": 5934
+      },
+      "rootfs.tar.gz": {
+        "name": "rootfs.tar.gz",
+        "sha256": "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c",
+        "size": 62154035
+      },
+      "sun50i-h616-blikvm-v4.dtb": {
+        "name": "sun50i-h616-blikvm-v4.dtb",
+        "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+        "size": 20580
+      },
+      "ustreamer": {
+        "name": "ustreamer",
+        "sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+        "size": 460904
+      },
+      "ustreamer_6.65-1blikvm2_arm64.deb": {
+        "name": "ustreamer_6.65-1blikvm2_arm64.deb",
+        "sha256": "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1",
+        "size": 164146
+      },
+      "version.txt": {
+        "name": "version.txt",
+        "sha256": "6e6d398a30699eb0e2ba304ef348345bc205dc7f8358464c30229cef752b8037",
+        "size": 5
+      }
+    },
+    "consecutive_clean_boots": 2,
+    "final_20_boot_gate": false,
+    "result": "passed",
+    "runs": [
+      {
+        "boot_id": "8230e086-57fa-4568-ab8e-3a058531b961",
+        "finished_at": "2026-09-06T10:34:50.015568+00:00",
+        "run_id": "20260906T103359Z-unknown-021196",
+        "started_at": "2026-09-06T10:33:59.660307+00:00",
+        "uart_sha256": "0959169e374afde40d5181de6842ffcc403daee58a2fa3221082e522ddeeac65"
+      },
+      {
+        "boot_id": "db1189b8-d5df-4fe9-9e20-faf0dff853fc",
+        "finished_at": "2026-09-06T10:42:32.767084+00:00",
+        "run_id": "20260906T104141Z-unknown-151173",
+        "started_at": "2026-09-06T10:41:41.578309+00:00",
+        "uart_sha256": "f5a1e9263f824a8a23f948014d677e688008625ec5643bbf038a8587d923afaa"
+      }
+    ]
+  },
+  "rejected_unpatched_payload": {
+    "desired_delivery_fps": 30,
+    "device_readback_fps": 50,
+    "observed_delivery_fps_approx": 25,
+    "original_evidence_preserved": true,
+    "original_runner_pass_rejected": "20260906T101436Z-unknown-860501",
+    "reason": "Upstream always requested maximum V4L2 camera FPS; --desired-fps only thinned delivered frames. Does not qualify the requested MJPEG 1920x1080 at 30 device fps.",
+    "result": "failed",
+    "scope": "All unpatched ustreamer 6.65-1blikvm1 video runs",
+    "stage": "independent_mode_audit"
+  },
+  "reproducibility": {
+    "initramfs.cpio.gz": {
+      "hashes": [
+        "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c",
+        "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c"
+      ],
+      "identical": true
+    },
+    "packages.tsv": {
+      "hashes": [
+        "82c79bcf2a5f17e2f82d7c1a2ae8d04d0024ea3ec37460a14b9bb380839c9513",
+        "82c79bcf2a5f17e2f82d7c1a2ae8d04d0024ea3ec37460a14b9bb380839c9513"
+      ],
+      "identical": true
+    },
+    "rootfs.tar.gz": {
+      "hashes": [
+        "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c",
+        "9cd7f5bfdd683febd2b6a1fc1d91801e03953e19beee166fd0855b2a24c3f87c"
+      ],
+      "identical": true
+    },
+    "successful_build_logs": [
+      "package-blikvm2-build1.log",
+      "package-blikvm2-build3.log",
+      "rootfs-blikvm2-build1.log",
+      "rootfs-blikvm2-build2.log"
+    ],
+    "ustreamer": {
+      "hashes": [
+        "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+        "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b"
+      ],
+      "identical": true
+    },
+    "ustreamer_6.65-1blikvm2_arm64.deb": {
+      "hashes": [
+        "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1",
+        "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1"
+      ],
+      "identical": true
+    }
+  },
+  "schema_version": 1,
+  "source": {
+    "archive": {
+      "sha256": "af99973b821b1e06ad9dbebc063ceb8ca868e06af7a6ccd90e67dc1d0a7fafea",
+      "size": 163607
+    },
+    "commit": "db87e03ce769d06ba62314ca7537e1cb3369b4de",
+    "downstream_patches": {
+      "build/ustreamer/capture-controls.patch": {
+        "sha256": "7b425f0954c25e35176f59aca157cfe2148b710c9ba40b119438d9a220e8cf4e",
+        "size": 4995
+      }
+    },
+    "tag": "v6.65",
+    "url": "https://github.com/pikvm/ustreamer"
+  },
+  "tag": "ubuntu-26.04.1-ustreamer-baseline",
+  "video_gate": {
+    "result": "passed",
+    "rootfs_sha256": "70a81764b2b3f46f9e46f2ff520a4ab70ca5f846b4cd946cfc664bef11dbb21c",
+    "runs": [
+      {
+        "boot_id": "8230e086-57fa-4568-ab8e-3a058531b961",
+        "boot_run": "20260906T103359Z-unknown-021196",
+        "resources": {
+          "process_lifetime_cpu_percent_max": 2.1,
+          "process_lifetime_cpu_percent_min": 0.8,
+          "rss_kib_max": 30780,
+          "rss_kib_min": 30780,
+          "samples": 105
+        },
+        "run_id": "20260906T103530Z-unknown-473926",
+        "streams": {
+          "concurrent-gadget-stream": {
+            "bytes": 17878652,
+            "elapsed": 15.009396,
+            "frames": 431,
+            "seconds_requested": 15,
+            "transitions": 430,
+            "unique_hashes": 431
+          },
+          "recovery-0": {
+            "bytes": 18086368,
+            "elapsed": 15.003388,
+            "frames": 436,
+            "seconds_requested": 15,
+            "transitions": 435,
+            "unique_hashes": 436
+          },
+          "recovery-1": {
+            "bytes": 18127855,
+            "elapsed": 15.032916,
+            "frames": 437,
+            "seconds_requested": 15,
+            "transitions": 435,
+            "unique_hashes": 436
+          },
+          "recovery-2": {
+            "bytes": 18086368,
+            "elapsed": 15.012106,
+            "frames": 436,
+            "seconds_requested": 15,
+            "transitions": 435,
+            "unique_hashes": 436
+          },
+          "restart-stream-0": {
+            "bytes": 11283399,
+            "elapsed": 10.035746,
+            "frames": 272,
+            "seconds_requested": 10,
+            "transitions": 271,
+            "unique_hashes": 272
+          },
+          "restart-stream-1": {
+            "bytes": 11947180,
+            "elapsed": 10.019857,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 287,
+            "unique_hashes": 288
+          },
+          "restart-stream-2": {
+            "bytes": 11946693,
+            "elapsed": 10.007564,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 287,
+            "unique_hashes": 288
+          },
+          "start-stream-0": {
+            "bytes": 11946725,
+            "elapsed": 10.009631,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 286,
+            "unique_hashes": 287
+          },
+          "start-stream-1": {
+            "bytes": 11946755,
+            "elapsed": 10.007512,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 287,
+            "unique_hashes": 288
+          },
+          "start-stream-2": {
+            "bytes": 11905168,
+            "elapsed": 10.009424,
+            "frames": 287,
+            "seconds_requested": 10,
+            "transitions": 286,
+            "unique_hashes": 287
+          },
+          "sustained": {
+            "bytes": 147801730,
+            "elapsed": 120.014844,
+            "frames": 3563,
+            "seconds_requested": 120,
+            "transitions": 3562,
+            "unique_hashes": 3563
+          }
+        },
+        "ustreamer_errors": []
+      },
+      {
+        "boot_id": "db1189b8-d5df-4fe9-9e20-faf0dff853fc",
+        "boot_run": "20260906T104141Z-unknown-151173",
+        "resources": {
+          "process_lifetime_cpu_percent_max": 2.1,
+          "process_lifetime_cpu_percent_min": 0.7,
+          "rss_kib_max": 30236,
+          "rss_kib_min": 30036,
+          "samples": 105
+        },
+        "run_id": "20260906T104315Z-unknown-542887",
+        "streams": {
+          "concurrent-gadget-stream": {
+            "bytes": 18003112,
+            "elapsed": 15.021863,
+            "frames": 434,
+            "seconds_requested": 15,
+            "transitions": 433,
+            "unique_hashes": 434
+          },
+          "recovery-0": {
+            "bytes": 18127859,
+            "elapsed": 15.016415,
+            "frames": 437,
+            "seconds_requested": 15,
+            "transitions": 436,
+            "unique_hashes": 437
+          },
+          "recovery-1": {
+            "bytes": 18127859,
+            "elapsed": 15.012115,
+            "frames": 437,
+            "seconds_requested": 15,
+            "transitions": 436,
+            "unique_hashes": 437
+          },
+          "recovery-2": {
+            "bytes": 18127859,
+            "elapsed": 15.002391,
+            "frames": 437,
+            "seconds_requested": 15,
+            "transitions": 436,
+            "unique_hashes": 437
+          },
+          "restart-stream-0": {
+            "bytes": 11905647,
+            "elapsed": 10.031455,
+            "frames": 287,
+            "seconds_requested": 10,
+            "transitions": 286,
+            "unique_hashes": 287
+          },
+          "restart-stream-1": {
+            "bytes": 11947238,
+            "elapsed": 10.020608,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 287,
+            "unique_hashes": 288
+          },
+          "restart-stream-2": {
+            "bytes": 11988165,
+            "elapsed": 10.023417,
+            "frames": 289,
+            "seconds_requested": 10,
+            "transitions": 288,
+            "unique_hashes": 289
+          },
+          "start-stream-0": {
+            "bytes": 11324471,
+            "elapsed": 10.009087,
+            "frames": 273,
+            "seconds_requested": 10,
+            "transitions": 272,
+            "unique_hashes": 273
+          },
+          "start-stream-1": {
+            "bytes": 11946753,
+            "elapsed": 10.009629,
+            "frames": 288,
+            "seconds_requested": 10,
+            "transitions": 287,
+            "unique_hashes": 288
+          },
+          "start-stream-2": {
+            "bytes": 11905095,
+            "elapsed": 10.006344,
+            "frames": 287,
+            "seconds_requested": 10,
+            "transitions": 286,
+            "unique_hashes": 287
+          },
+          "sustained": {
+            "bytes": 148465402,
+            "elapsed": 120.034712,
+            "frames": 3579,
+            "seconds_requested": 120,
+            "transitions": 3577,
+            "unique_hashes": 3578
+          }
+        },
+        "ustreamer_errors": []
+      }
+    ]
+  }
+}
