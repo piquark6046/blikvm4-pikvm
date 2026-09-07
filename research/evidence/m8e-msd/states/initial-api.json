@@ -1,0 +1,39 @@
+{
+  "busy": false,
+  "drive": {
+    "cdrom": false,
+    "connected": true,
+    "image": {
+      "complete": true,
+      "in_storage": true,
+      "mod_ts": 4.920000002,
+      "name": "g4-storage.img",
+      "removable": false,
+      "size": 8388608,
+      "writable": false
+    },
+    "rw": false
+  },
+  "enabled": true,
+  "online": true,
+  "storage": {
+    "downloading": null,
+    "images": {
+      "g4-storage.img": {
+        "complete": true,
+        "mod_ts": 4.920000002,
+        "removable": false,
+        "size": 8388608,
+        "writable": false
+      }
+    },
+    "parts": {
+      "": {
+        "free": 0,
+        "size": 8388608,
+        "writable": false
+      }
+    },
+    "uploading": null
+  }
+}

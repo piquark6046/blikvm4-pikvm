@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "dd",
+    "if=/dev/sda",
+    "of=/dev/null",
+    "bs=512",
+    "count=1",
+    "iflag=direct"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "dd: IO error: Input/output error\n"
+}

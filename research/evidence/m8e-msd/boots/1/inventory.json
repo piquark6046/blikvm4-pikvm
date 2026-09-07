@@ -1,0 +1,73 @@
+{
+  "result": "passed",
+  "boot_id": "56b54b48-c484-4c80-870f-b726ee1e8038",
+  "listeners_proc": [
+    {
+      "address": "192.168.88.2",
+      "port": 22
+    },
+    {
+      "address": "192.168.88.2",
+      "port": 443
+    }
+  ],
+  "kvmd_pid": 1831,
+  "ustreamer": {
+    "pid": 1841,
+    "ppid": 1831,
+    "uid": "988\t988\t988\t988",
+    "gid": "989\t989\t989\t989",
+    "cmdline": "/usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors ",
+    "cgroup": "0::/system.slice/kvmd.service\n"
+  },
+  "ustreamer_version": "6.65-1blikvm2",
+  "ustreamer_sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+  "hid_errors": [],
+  "hid_mapping": [
+    {
+      "role": "keyboard",
+      "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+      "dev": "251:0",
+      "sysfs": "/sys/devices/virtual/hidg/hidg0",
+      "node": "/dev/hidg0",
+      "stable": "/dev/kvmd-hid-keyboard",
+      "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+    },
+    {
+      "role": "absolute",
+      "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+      "dev": "251:1",
+      "sysfs": "/sys/devices/virtual/hidg/hidg1",
+      "node": "/dev/hidg1",
+      "stable": "/dev/kvmd-hid-absolute",
+      "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+    },
+    {
+      "role": "relative",
+      "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+      "dev": "251:2",
+      "sysfs": "/sys/devices/virtual/hidg/hidg2",
+      "node": "/dev/hidg2",
+      "stable": "/dev/kvmd-hid-relative",
+      "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+    }
+  ],
+  "denied_devices": [
+    "/dev/mmcblk0p3",
+    "/dev/mmcblk0p2",
+    "/dev/mmcblk0p1",
+    "/dev/mmcblk0",
+    "/dev/ttyS0",
+    "/dev/video1"
+  ],
+  "msd_lun": {
+    "file": "/usr/share/kvmd-msd/images/g4-storage.img",
+    "ro": "1",
+    "cdrom": "0",
+    "removable": "0",
+    "nofua": "0",
+    "inquiry_string": "BliKVM  G4 RAM RO       0001"
+  },
+  "msd_image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+  "failed_units": ""
+}

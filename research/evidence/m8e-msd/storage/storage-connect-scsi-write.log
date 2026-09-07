@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "sg_raw",
+    "--send=512",
+    "--infile=/home/user/blikvm-msd/qualification/final-preflight-narrow/api-lifecycle/storage-connect-rejected-write.bin",
+    "/dev/sg0",
+    "2a",
+    "00",
+    "00",
+    "00",
+    "3f",
+    "ff",
+    "00",
+    "00",
+    "01",
+    "00"
+  ],
+  "returncode": 7,
+  "stdout": "",
+  "stderr": "SCSI Status: Check Condition \n\nSense Information:\nFixed format, current; Sense key: Data Protect\nAdditional sense: Write protected\n\n\n"
+}

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "sg_raw",
+    "/dev/sg0",
+    "00",
+    "00",
+    "00",
+    "00",
+    "00",
+    "00"
+  ],
+  "returncode": 2,
+  "stdout": "",
+  "stderr": "SCSI Status: Check Condition \n\nSense Information:\nFixed format, current; Sense key: Not Ready\nAdditional sense: Medium not present\n\n\n"
+}

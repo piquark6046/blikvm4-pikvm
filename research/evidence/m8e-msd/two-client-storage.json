@@ -1,0 +1,184 @@
+{
+  "result": "passed",
+  "direct_reads": 254,
+  "hid_video": {
+    "result": "passed",
+    "hid": [
+      {
+        "start": 1788758793.5494354,
+        "end": 1788758805.443257,
+        "result": "passed"
+      },
+      {
+        "start": 1788758805.4432874,
+        "end": 1788758817.4833193,
+        "result": "passed"
+      },
+      {
+        "start": 1788758817.483339,
+        "end": 1788758829.325901,
+        "result": "passed"
+      },
+      {
+        "start": 1788758829.3259194,
+        "end": 1788758841.0180175,
+        "result": "passed"
+      },
+      {
+        "start": 1788758841.018043,
+        "end": 1788758853.7632062,
+        "result": "passed"
+      },
+      {
+        "start": 1788758853.7632298,
+        "end": 1788758865.958116,
+        "result": "passed"
+      },
+      {
+        "start": 1788758865.9581504,
+        "end": 1788758877.902781,
+        "result": "passed"
+      },
+      {
+        "start": 1788758877.9027996,
+        "end": 1788758889.9950736,
+        "result": "passed"
+      },
+      {
+        "start": 1788758889.9951072,
+        "end": 1788758901.8895838,
+        "result": "passed"
+      },
+      {
+        "start": 1788758901.8896387,
+        "end": 1788758914.1839561,
+        "result": "passed"
+      },
+      {
+        "start": 1788758914.1839886,
+        "end": 1788758926.0791414,
+        "result": "passed"
+      },
+      {
+        "start": 1788758926.079162,
+        "end": 1788758937.2750227,
+        "result": "passed"
+      }
+    ],
+    "video": {
+      "result": "passed",
+      "clients": [
+        {
+          "result": "passed",
+          "command": [
+            "curl",
+            "--config",
+            "private/capacity-54346-0.conf",
+            "--cacert",
+            "private/ca.crt",
+            "--interface",
+            "192.168.88.1",
+            "--http1.1",
+            "-sS",
+            "--no-buffer",
+            "--include",
+            "--max-time",
+            "130",
+            "https://blikvm-v4.lab/streamer/stream"
+          ],
+          "seconds_requested": 120.0,
+          "elapsed": 120.034442,
+          "frames": 3573,
+          "bytes": 148216536,
+          "unique_hashes": 3573,
+          "transitions": 3572,
+          "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 20:47:00 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/bc85d878442dc561; path=/; max-age=30",
+          "fps": 29.766456530868034,
+          "max_gap": 0.14832900000000393,
+          "measurement_start_unix": 1788758793.7963815,
+          "capacity_passed": true
+        },
+        {
+          "result": "passed",
+          "command": [
+            "curl",
+            "--config",
+            "private/capacity-54346-1.conf",
+            "--cacert",
+            "private/ca.crt",
+            "--interface",
+            "192.168.88.1",
+            "--http1.1",
+            "-sS",
+            "--no-buffer",
+            "--include",
+            "--max-time",
+            "130",
+            "https://blikvm-v4.lab/streamer/stream"
+          ],
+          "seconds_requested": 120.0,
+          "elapsed": 120.033707,
+          "frames": 3574,
+          "bytes": 148258029,
+          "unique_hashes": 3574,
+          "transitions": 3573,
+          "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 20:47:00 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/ef416da630550f7e; path=/; max-age=30",
+          "fps": 29.774969792443382,
+          "max_gap": 0.13906699999999717,
+          "measurement_start_unix": 1788758793.7963815,
+          "capacity_passed": true
+        }
+      ],
+      "seconds": 120,
+      "target_fps": 27,
+      "client_count": 2,
+      "path": "192.168.88.1 enp1s0 -> 192.168.88.2 eth0 TCP/443; no tunnel",
+      "automation_sha256": {
+        "lan-capacity.py": "cd17cb4ad4f3f34e8510230b63536910992cc469490a327354e4d4542a3eca96",
+        "lan-resources.py": "844448de62e208541eeb19a3a1842ce65c3f5cad33d47ac855db635f0a9992d5",
+        "stream-client.py": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82"
+      },
+      "measurement_processes": [
+        54351,
+        54352
+      ],
+      "reconnect": [
+        {
+          "client": 0,
+          "authenticated_state": true,
+          "snapshot_bytes": 41493,
+          "frames": 145,
+          "unique_hashes": 145,
+          "stream_result": "passed"
+        },
+        {
+          "client": 1,
+          "authenticated_state": true,
+          "snapshot_bytes": 41486,
+          "frames": 147,
+          "unique_hashes": 147,
+          "stream_result": "passed"
+        }
+      ]
+    }
+  },
+  "elapsed": 151.9525068829971,
+  "host_transport_errors": [],
+  "transitions": [
+    {
+      "label": "workload-before",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "workload-after",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "workload-after-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    }
+  ]
+}

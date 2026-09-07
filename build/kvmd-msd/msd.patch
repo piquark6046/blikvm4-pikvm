@@ -1,0 +1,510 @@
+--- a/kvmd/plugins/msd/otg/drive.py
++++ b/kvmd/plugins/msd/otg/drive.py
+@@ -22,6 +22,9 @@
+ 
+ import os
+ import errno
++import re
++import json
++import socket
+ 
+ from .... import usb
+ 
+@@ -46,8 +49,14 @@
+ 
+ # =====
+ class Drive:
+-    def __init__(self, instance: int, lun: int) -> None:
+-        func = f"mass_storage.usb{instance}"
++    def __init__(self, instance: int, lun: int, function: str="", media_socket: str="", media_root: str="") -> None:
++        self.__media_socket = media_socket
++        self.__media_root = media_root
++        func = function or f"mass_storage.usb{instance}"
++        if re.fullmatch(r"mass_storage\.[A-Za-z0-9_-]+", func) is None:
++            raise ValueError("Invalid MSD configfs function name")
++        if lun < 0:
++            raise ValueError("Invalid MSD LUN number")
+         self.__profile_func_path = usb.get_gadget_path(usb.G_PROFILE, func)
+         self.__profile_path = usb.get_gadget_path(usb.G_PROFILE)
+         self.__lun_path = usb.get_gadget_path(usb.G_FUNCTIONS, func, f"lun.{lun}")
+@@ -68,6 +77,22 @@
+     # =====
+ 
+     def set_image_path(self, path: str) -> None:
++        if self.__media_socket:
++            request = {"operation": "attach" if path else "eject", "gadget": usb.GADGET,
++                       "function": self.__name.split("/")[0], "lun": self.__name.split("/")[1]}
++            if path:
++                if os.path.dirname(path) != self.__media_root:
++                    raise MsdOperationError("Unapproved media path")
++                request["image"] = os.path.basename(path)
++            with socket.socket(socket.AF_UNIX) as client:
++                client.settimeout(3)
++                client.connect(self.__media_socket)
++                client.sendall(json.dumps(request).encode() + b"\n")
++                with client.makefile("rb") as response:
++                    result = json.loads(response.readline(4096))
++                if not result.get("ok"):
++                    raise MsdOperationError(result.get("error", "Media helper refused"))
++            return
+         if path:
+             try:
+                 self.__set_param("file", path)
+@@ -85,12 +110,20 @@
+         return (os.path.normpath(path) if path else "")
+ 
+     def set_cdrom_flag(self, flag: bool) -> None:
++        if self.__media_socket:
++            if flag or self.get_cdrom_flag():
++                raise MsdOperationError("CD-ROM mode disabled")
++            return
+         self.__set_param("cdrom", str(int(flag)))
+ 
+     def get_cdrom_flag(self) -> bool:
+         return bool(int(self.__get_param("cdrom")))
+ 
+     def set_rw_flag(self, flag: bool) -> None:
++        if self.__media_socket:
++            if flag or self.get_rw_flag():
++                raise MsdOperationError("Writable media disabled")
++            return
+         self.__set_param("ro", str(int(not flag)))
+ 
+     def get_rw_flag(self) -> bool:
+--- a/kvmd/plugins/msd/otg/__init__.py
++++ b/kvmd/plugins/msd/otg/__init__.py
+@@ -38,11 +38,13 @@
+ 
+ from ....clients.nbd import NbdClient
+ 
++from ....validators.basic import valid_stripped_string
+ from ....validators.basic import valid_number
+ from ....validators.os import valid_command
+ 
+ from .... import aiotools
+ 
++from .. import MsdOperationError
+ from .. import MsdIsBusyError
+ from .. import MsdOfflineError
+ from .. import MsdConnectedError
+@@ -55,6 +57,7 @@
+ from .. import MsdFileReader
+ from .. import MsdFileWriter
+ 
++from .static_storage import StaticStorage
+ from .storage import Image
+ from .storage import Storage
+ from .drive import Drive
+@@ -185,8 +188,12 @@
+         self.__write_chunk_size = c.write_chunk_size
+         self.__sync_chunk_size = c.sync_chunk_size
+ 
+-        self.__drive = Drive(instance=0, lun=0)
+-        self.__storage = Storage(c.remount_cmd)
++        self.__drive = Drive(instance=0, lun=0, function=c.function, media_socket=c.media_socket, media_root=c.media_root)
++        self.__readonly = bool(c.read_only_catalog)
++        if self.__readonly != bool(c.media_socket) or (self.__readonly and not c.media_root):
++            raise ValueError("Static catalog requires the bounded media helper")
++        self.__storage = (StaticStorage(c.read_only_catalog, c.media_root)
++                          if self.__readonly else Storage(c.remount_cmd))
+ 
+         self.__reader: (MsdFileReader | None) = None
+         self.__writer: (MsdFileWriter | None) = None
+@@ -198,6 +205,10 @@
+     @classmethod
+     def get_plugin_options(cls) -> dict:
+         return {
++            "read_only_catalog": Option("", type=valid_stripped_string),
++            "media_root": Option("", type=valid_stripped_string),
++            "media_socket": Option("", type=valid_stripped_string),
++            "function":          Option("", type=valid_stripped_string),
+             "read_chunk_size":   Option(65536,   type=valid_number.mk(min=1024)),
+             "write_chunk_size":  Option(65536,   type=valid_number.mk(min=1024)),
+             "sync_chunk_size":   Option(4194304, type=valid_number.mk(min=1024)),
+@@ -285,6 +296,8 @@
+         remote_params: (dict[str, Any] | None)=None,
+     ) -> None:
+ 
++        if self.__readonly and (rw or cdrom):
++            raise MsdOperationError("Writable and CD-ROM modes are disabled")
+         if remote_url is not None:
+             _ = remote_params
+             raise MsdRemoteDisabledError()
+@@ -528,6 +541,8 @@
+         image: (Image | None) = None
+         if path:
+             image = await self.__storage.get_image_by_path(path)
++        if self.__readonly and (self.__drive.get_rw_flag() or self.__drive.get_cdrom_flag()):
++            raise MsdOperationError("Frozen LUN mode drift")
+         return _VirtualDrive(
+             image=image,
+             connected=bool(path),
+--- /dev/null
++++ b/kvmd/plugins/msd/otg/static_storage.py
+@@ -0,0 +1,65 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Build-time catalog for the upstream OTG state machine; no remount/write paths."""
++import json
++from pathlib import Path
++from .storage import _make_image
++from .. import MsdOperationError, MsdUnknownImageError
++
++
++class StaticStorage:
++    def __init__(self, manifest: str, root: str) -> None:
++        self.__manifest = Path(manifest)
++        self.__root = Path(root)
++        self.__images = {}
++
++    async def is_probably_enabled(self) -> bool:
++        return self.__manifest.is_file() and self.__root.is_dir()
++
++    async def reload(self):
++        yield str(self.__root)
++        data = json.loads(self.__manifest.read_text())
++        images = {}
++        for name, expected in data.items():
++            if Path(name).name != name or name.startswith('.'):
++                raise MsdOperationError('Invalid catalog name')
++            path = self.__root / name
++            if path.is_symlink() or not path.is_file() or path.stat().st_size != expected['size']:
++                raise MsdOperationError('Invalid catalog image')
++            image = await _make_image(name, str(path), True, True)
++            if image.removable or image.writable:
++                raise MsdOperationError('Catalog must be read-only')
++            images[name] = image
++        self.__images = images
++
++    def get_state(self):
++        return {'images': {name: {'size': im.size, 'mod_ts': im.mod_ts, 'complete': True,
++                                 'removable': False, 'writable': False}
++                           for name, im in self.__images.items()},
++                'parts': {'': {'size': sum(im.size for im in self.__images.values()),
++                               'free': 0, 'writable': False}}}
++
++    async def get_image_by_name(self, name):
++        if name not in self.__images:
++            raise MsdUnknownImageError()
++        return self.__images[name]
++
++    async def get_image_by_path(self, path):
++        for image in self.__images.values():
++            if image.path == path:
++                return image
++        raise MsdUnknownImageError()
++
++    async def remount_ro(self):
++        pass
++
++    async def remount_probe(self):
++        pass
++
++    async def remount_rw(self, image):
++        raise MsdOperationError('Read-only catalog')
++
++    async def make_image(self, name):
++        raise MsdOperationError('Uploads disabled')
++
++    async def remove_image(self, image, fatal):
++        raise MsdOperationError('Deletion disabled')
+--- a/kvmd/apps/kvmd/__init__.py
++++ b/kvmd/apps/kvmd/__init__.py
+@@ -21,6 +21,7 @@
+ 
+ 
+ # BliKVM M8-A package: only the upstream video subsystem is instantiated.
++from ...plugins.msd import get_msd_class
+ from ...plugins.hid import get_hid_class
+ from .. import init
+ from .auth import AuthManager
+@@ -31,7 +32,7 @@
+ 
+ 
+ def main() -> None:
+-    ia = init(prog="kvmd", description="BliKVM video-only kvmd", check_run=True, load_auth=True, load_hid=True)
++    ia = init(prog="kvmd", description="BliKVM video-only kvmd", check_run=True, load_auth=True, load_hid=True, load_msd=True)
+     config = ia.config.kvmd
+     if not config.auth.enabled or not config.streamer.forever:
+         raise SystemExit("M8-B requires authentication and streamer.forever")
+@@ -61,6 +62,7 @@
+         allow_redirects=config.auth.allow_redirects,
+         hid=get_hid_class(config.hid.type)(config.hid),
+         keymap_path=config.hid.keymap,
++        msd=get_msd_class(config.msd.type)(config.msd, None),
+         im=InfoManager(ia.config),
+         ocr=Ocr(**config.ocr._unpack()),
+         streamer=streamer,
+--- a/kvmd/apps/kvmd/server.py
++++ b/kvmd/apps/kvmd/server.py
+@@ -65,6 +65,8 @@
+ 
+ from ...plugins.hid import BaseHid
+ from .api.hid import HidApi
++from .api.msd import MsdApi
++from ...plugins.msd import BaseMsd
+ from .api.info import InfoApi
+ from .api.streamer import StreamerApi
+ 
+@@ -134,6 +136,7 @@
+         allow_redirects: list[str],
+         hid: BaseHid,
+         keymap_path: str,
++        msd: BaseMsd,
+         im: InfoManager,
+         ocr: Ocr,
+         streamer: Streamer,
+@@ -150,9 +153,10 @@
+         self.__stream_forever = stream_forever
+ 
+         # Excluded integrations have no API routes, tasks, or device handles.
+-        self.__apis: list[object] = [self, AuthApi(auth, allow_redirects, self.__on_logout), self.__hid_api, InfoApi(im), StreamerApi(streamer, ocr)]
++        self.__apis: list[object] = [self, AuthApi(auth, allow_redirects, self.__on_logout), self.__hid_api, MsdApi(msd), InfoApi(im), StreamerApi(streamer, ocr)]
+         self.__subsystems = [
+             _Subsystem.make(auth, "Auth"),
++            _Subsystem.make(msd, "MSD", self.__EV_MSD_STATE),
+             _Subsystem.make(hid, "HID", self.__EV_HID_STATE),
+             _Subsystem.make(streamer, "Streamer", self.__EV_STREAMER_STATE),
+             _Subsystem.make(im, "Info", self.__EV_INFO_STATE),
+--- a/kvmd/apps/kvmd/api/msd.py
++++ b/kvmd/apps/kvmd/api/msd.py
+@@ -21,39 +21,11 @@
+ 
+ 
+ import re
+-import asyncio
+-import lzma
+-import time
+-
+-from typing import AsyncGenerator
+-
+-import aiohttp
+-import zstandard
+-
+-from aiohttp.web import Request
+-from aiohttp.web import Response
+-from aiohttp.web import StreamResponse
+-
+-from ....logging import get_logger
+-
+-from ....htserver import exposed_http
+-from ....htserver import make_json_response
+-from ....htserver import make_json_exception
+-from ....htserver import start_streaming
+-from ....htserver import stream_json
+-from ....htserver import stream_json_exception
+-
+-from ....plugins.msd import BaseMsd
+-
+-from ....validators import check_string_in_list
+-from ....validators.basic import valid_stripped_string
+-from ....validators.basic import valid_bool
+-from ....validators.basic import valid_int_f0
+-from ....validators.basic import valid_float_f01
+-from ....validators.net import valid_url
++from aiohttp.web import Request, Response
++from ....htserver import exposed_http, make_json_response
++from ....plugins.msd import BaseMsd, MsdOperationError
++from ....validators.basic import valid_stripped_string, valid_bool
+ from ....validators.kvm import valid_msd_image_name
+-
+-from .. import downloader
+ 
+ 
+ # ======
+@@ -70,6 +42,8 @@
+     @exposed_http("POST", "/msd/set_params")
+     async def __set_params_handler(self, req: Request) -> Response:
+         query = dict(req.query)
++        if len(req.query) != len(query) or set(query) - {"image", "cdrom", "rw"}:
++            raise MsdOperationError("Unsupported MSD parameters")
+ 
+         params = {
+             key: validator(query.pop(param))  # type: ignore
+@@ -95,140 +69,10 @@
+ 
+     @exposed_http("POST", "/msd/set_connected")
+     async def __set_connected_handler(self, req: Request) -> Response:
++        if len(req.query) != 1 or set(req.query) != {"connected"}:
++            raise MsdOperationError("Unsupported MSD parameters")
+         await self.__msd.set_connected(valid_bool(req.query.get("connected")))
+         return make_json_response()
+ 
+     # =====
+ 
+-    @exposed_http("GET", "/msd/read")
+-    async def __read_handler(self, req: Request) -> StreamResponse:
+-        name = valid_msd_image_name(req.query.get("image"))
+-        compressors = {
+-            "": ("", None),
+-            "none": ("", None),
+-            "lzma": (".xz", (lambda: lzma.LZMACompressor())),  # pylint: disable=unnecessary-lambda
+-            "zstd": (".zst", (lambda: zstandard.ZstdCompressor().compressobj())),  # pylint: disable=unnecessary-lambda
+-        }
+-        (suffix, make_compressor) = compressors[check_string_in_list(
+-            arg=req.query.get("compress", ""),
+-            name="Compression mode",
+-            variants=set(compressors),
+-        )]
+-
+-        async with self.__msd.read_image(name) as reader:
+-            if make_compressor is None:
+-                src = reader.read_chunked()
+-                size = reader.get_total_size()
+-
+-            else:
+-                async def compressed() -> AsyncGenerator[bytes]:
+-                    assert make_compressor is not None
+-                    compressor = make_compressor()  # pylint: disable=not-callable
+-                    limit = reader.get_chunk_size()
+-                    buf = b""
+-                    try:
+-                        async for chunk in reader.read_chunked():
+-                            buf += await asyncio.to_thread(compressor.compress, chunk)
+-                            if len(buf) >= limit:
+-                                yield buf
+-                                buf = b""
+-                    finally:
+-                        # Закрыть в любом случае
+-                        buf += await asyncio.to_thread(compressor.flush)
+-                    if len(buf) > 0:
+-                        yield buf
+-
+-                src = compressed()
+-                size = -1
+-
+-            resp = await start_streaming(req, "application/octet-stream", size, name + suffix)
+-            async for chunk in src:
+-                await resp.write(chunk)
+-            return resp
+-
+-    # =====
+-
+-    @exposed_http("POST", "/msd/write")
+-    async def __write_handler(self, req: Request) -> Response:
+-        unsafe_prefix = req.query.get("prefix", "") + "/"
+-        name = valid_msd_image_name(unsafe_prefix + req.query.get("image", ""))
+-
+-        size = valid_int_f0(req.content_length)
+-        remove_incomplete = valid_bool(req.query.get("remove_incomplete", False))
+-
+-        written = 0
+-        async with self.__msd.write_image(name, size, remove_incomplete) as writer:
+-            chunk_size = writer.get_chunk_size()
+-            while True:
+-                chunk = await req.content.read(chunk_size)
+-                if not chunk:
+-                    break
+-                written = await writer.write_chunk(chunk)
+-        return make_json_response(self.__make_write_info(name, size, written))
+-
+-    @exposed_http("POST", "/msd/write_remote")
+-    async def __write_remote_handler(self, req: Request) -> (Response | StreamResponse):  # pylint: disable=too-many-locals
+-        url = valid_url(req.query.get("url"))
+-        insecure = valid_bool(req.query.get("insecure", False))
+-        timeout = valid_float_f01(req.query.get("timeout", 10.0))
+-        remove_incomplete = valid_bool(req.query.get("remove_incomplete", False))
+-
+-        resp: (StreamResponse | None) = None
+-        name = ""
+-        size = written = 0
+-
+-        async def stream_write_info() -> None:
+-            assert resp is not None
+-            await stream_json(resp, self.__make_write_info(name, size, written))
+-
+-        try:
+-            async with downloader.download(
+-                url=url,
+-                verify=(not insecure),
+-                timeout=timeout,
+-                read_timeout=(7 * 24 * 3600),
+-            ) as file:
+-
+-                unsafe_prefix = req.query.get("prefix", "") + "/"
+-                name = valid_msd_image_name(unsafe_prefix + req.query.get("image", file.name))
+-
+-                get_logger(0).info("Downloading image %r as %r to MSD ...", url, name)
+-
+-                async with self.__msd.write_image(name, file.size, remove_incomplete) as writer:
+-                    size = file.size
+-                    resp = await start_streaming(req, "application/x-ndjson")
+-                    await stream_write_info()
+-
+-                    last_report_ts = 0
+-                    async for chunk in file.read(writer.get_chunk_size()):
+-                        written = await writer.write_chunk(chunk)
+-                        now = int(time.monotonic())
+-                        if last_report_ts + 1 < now:
+-                            await stream_write_info()
+-                            last_report_ts = now
+-
+-                await stream_write_info()
+-                return resp
+-
+-        except Exception as ex:
+-            if resp is not None:
+-                await stream_write_info()
+-                await stream_json_exception(resp, ex)
+-            elif isinstance(ex, aiohttp.ClientError):
+-                return make_json_exception(ex, 400)
+-            raise
+-
+-    def __make_write_info(self, name: str, size: int, written: int) -> dict:
+-        return {"image": {"name": name, "size": size, "written": written}}
+-
+-    # =====
+-
+-    @exposed_http("POST", "/msd/remove")
+-    async def __remove_handler(self, req: Request) -> Response:
+-        await self.__msd.remove(valid_msd_image_name(req.query.get("image")))
+-        return make_json_response()
+-
+-    @exposed_http("POST", "/msd/reset")
+-    async def __reset_handler(self, _: Request) -> Response:
+-        await self.__msd.reset()
+-        return make_json_response()
+--- a/web/share/js/kvm/msd.js
++++ b/web/share/js/kvm/msd.js
+@@ -50,24 +50,16 @@
+ 		tools.selector.addOption($("msd-image-selector"), "\u2500 Not selected \u2500", "");
+ 		$("msd-image-selector").onchange = __selectImage;
+ 
+-		tools.el.setOnClick($("msd-download-button"), __clickDownloadButton);
+-		tools.el.setOnClick($("msd-remove-button"), __clickRemoveButton);
+-
+-		tools.radio.setOnClick("msd-mode-radio", () => __sendParam("cdrom", tools.radio.getValue("msd-mode-radio")));
+-		tools.el.setOnClick($("msd-rw-switch"), () => __sendParam("rw", $("msd-rw-switch").checked));
+-
+-		tools.el.setOnClick($("msd-select-new-button"), __toggleSelectSub);
++
++
+ 		$("msd-new-file").onchange = __selectNewFile;
+ 		$("msd-new-url").oninput = __selectNewUrl;
+ 		$("msd-new-part-selector").onchange = __selectNewFile;
+ 
+-		tools.el.setOnClick($("msd-upload-new-button"), __clickUploadNewButton);
+-		tools.el.setOnClick($("msd-abort-new-button"), __clickAbortNewButton);
+ 
+ 		tools.el.setOnClick($("msd-connect-button"), () => __clickConnectButton(true));
+ 		tools.el.setOnClick($("msd-disconnect-button"), () => __clickConnectButton(false));
+ 
+-		tools.el.setOnClick($("msd-reset-button"), __clickResetButton);
+ 	};
+ 
+ 	/************************************************************************/
+@@ -119,6 +111,15 @@
+ 
+ 	var __refreshControls = function() {
+ 		__updateControls(__state && (__state.online !== undefined) ? __state : null);
++        for (let id of ["msd-download-button", "msd-remove-button", "msd-rw-switch",
++                        "msd-select-new-button", "msd-upload-new-button", "msd-abort-new-button",
++                        "msd-reset-button", "msd-new-file", "msd-new-url", "msd-new-part-selector"]) {
++            let el = $(id); el.disabled = true; el.style.display = "none";
++        }
++        tools.radio.setEnabled("msd-mode-radio", false);
++        for (let el of document.querySelectorAll('[name="msd-mode-radio"], label[for="msd-rw-switch"]')) {
++            el.style.display = "none";
++        }
+ 	};
+ 
+ 	var __updateControls = function(state) {

@@ -1,0 +1,52 @@
+--- a/kvmd/plugins/msd/otg/drive.py
++++ b/kvmd/plugins/msd/otg/drive.py
+@@ -22,6 +22,7 @@
+ 
+ import os
+ import errno
++import re
+ 
+ from .... import usb
+ 
+@@ -46,8 +47,12 @@
+ 
+ # =====
+ class Drive:
+-    def __init__(self, instance: int, lun: int) -> None:
+-        func = f"mass_storage.usb{instance}"
++    def __init__(self, instance: int, lun: int, function: str="") -> None:
++        func = function or f"mass_storage.usb{instance}"
++        if re.fullmatch(r"mass_storage\.[A-Za-z0-9_-]+", func) is None:
++            raise ValueError("Invalid MSD configfs function name")
++        if lun < 0:
++            raise ValueError("Invalid MSD LUN number")
+         self.__profile_func_path = usb.get_gadget_path(usb.G_PROFILE, func)
+         self.__profile_path = usb.get_gadget_path(usb.G_PROFILE)
+         self.__lun_path = usb.get_gadget_path(usb.G_FUNCTIONS, func, f"lun.{lun}")
+--- a/kvmd/plugins/msd/otg/__init__.py
++++ b/kvmd/plugins/msd/otg/__init__.py
+@@ -38,6 +38,7 @@
+ 
+ from ....clients.nbd import NbdClient
+ 
++from ....validators.basic import valid_stripped_string
+ from ....validators.basic import valid_number
+ from ....validators.os import valid_command
+ 
+@@ -185,7 +186,7 @@
+         self.__write_chunk_size = c.write_chunk_size
+         self.__sync_chunk_size = c.sync_chunk_size
+ 
+-        self.__drive = Drive(instance=0, lun=0)
++        self.__drive = Drive(instance=0, lun=0, function=c.function)
+         self.__storage = Storage(c.remount_cmd)
+ 
+         self.__reader: (MsdFileReader | None) = None
+@@ -198,6 +199,7 @@
+     @classmethod
+     def get_plugin_options(cls) -> dict:
+         return {
++            "function":          Option("", type=valid_stripped_string),
+             "read_chunk_size":   Option(65536,   type=valid_number.mk(min=1024)),
+             "write_chunk_size":  Option(65536,   type=valid_number.mk(min=1024)),
+             "sync_chunk_size":   Option(4194304, type=valid_number.mk(min=1024)),

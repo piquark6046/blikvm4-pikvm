@@ -176,5 +176,16 @@ was qualified separately in M8-D below.
 mouse modes through trusted HTTPS, the real Web UI and grabbed host evdev.
 It retains the sole frozen gadget owner, narrow permissions, exact descriptors,
 read-only MSD regression and two-client 1080p30 video. Cleanup, reconnect and
-five clean boots pass. M8-E read-only MSD integration is proposed only;
+five clean boots pass. M8-E read-only MSD integration follows below;
 M6 GPIO/ATX remains deferred.
+
+
+## 28. M8-E authenticated read-only MSD
+
+[M8-E bring-up](m8e-kvmd-msd-bringup.md) qualifies approved read-only media
+selection, attach and eject through upstream API and real Chromium UI.
+The [ownership record](m8e-msd-ownership.md) preserves the sole frozen gadget
+owner and documents narrow privilege delegation and approved eject semantics.
+SCSI write protection, immutable hashes, physical reconnect, concurrent
+HID/storage/two-client 1080p30 video and five clean boots pass. Writable media,
+M6 GPIO/ATX and later integrations remain excluded.

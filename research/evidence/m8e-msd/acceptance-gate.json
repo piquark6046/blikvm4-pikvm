@@ -1,0 +1,55 @@
+{
+  "result": "passed",
+  "boots": [
+    {
+      "number": 1,
+      "boot_id": "56b54b48-c484-4c80-870f-b726ee1e8038",
+      "run_id": "20260907T053207Z-unknown-373143"
+    },
+    {
+      "number": 2,
+      "boot_id": "7b66c019-f0cc-4dbe-affd-84a62217382e",
+      "run_id": "20260907T053610Z-unknown-724587"
+    },
+    {
+      "number": 3,
+      "boot_id": "29cb6859-12b3-4d00-af0a-52ba7f5d2fb9",
+      "run_id": "20260907T054014Z-unknown-739861"
+    },
+    {
+      "number": 4,
+      "boot_id": "8535254f-3069-44ad-bf00-7904eac8f23b",
+      "run_id": "20260907T054417Z-unknown-012442"
+    },
+    {
+      "number": 5,
+      "boot_id": "febbcc5a-f117-4195-ac10-e77c205c5cae",
+      "run_id": "20260907T054820Z-unknown-061706"
+    }
+  ],
+  "api_runs": 23,
+  "browser_stages": 631,
+  "video": [
+    {
+      "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+      "client": 0,
+      "fps": 29.766456530868034,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+      "client": 1,
+      "fps": 29.774969792443382,
+      "frames": 3574
+    },
+    {
+      "path": "qualification/final-preflight-narrow/browser-storage/hid-video/concurrent-video",
+      "client": 0,
+      "fps": 29.77550088782479,
+      "frames": 3574
+    }
+  ],
+  "storage_checks": 83,
+  "msd_transitions": 243,
+  "scope": "complete-M8-E"
+}

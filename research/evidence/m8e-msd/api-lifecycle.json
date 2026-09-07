@@ -1,0 +1,453 @@
+{
+  "result": "passed",
+  "identity": {
+    "dev": "8:0",
+    "ro": "1",
+    "size": "16384",
+    "queue/logical_block_size": "512",
+    "vendor": "BliKVM",
+    "model": "G4 RAM RO",
+    "rev": "0001",
+    "type": "0",
+    "node": "/dev/sda",
+    "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+    "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+    "sg": "/dev/sg0",
+    "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+    "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3"
+  },
+  "transitions": [
+    {
+      "label": "initial",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "initial-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "eject",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "disconnected-negative-before",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "disconnected-negative-after",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "connect-selected",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "connect",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "connect-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "second-eject",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "reconnect-selected",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "reconnect",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "reconnect-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "auth-before",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "auth-denied-after",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "logout-retained",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "lifecycle-disconnected",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-False-before",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-False-after",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-False",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-False-before",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-False-after",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-False",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "lifecycle-connected-selected",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "lifecycle-connected",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "lifecycle-connected-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-True-before",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-True-after",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "kvmd-True-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-True-before",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-True-after",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "nginx-True-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "post-lifecycle-eject",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "post-lifecycle-connect-selected",
+      "connected": false,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "post-lifecycle-connect",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    },
+    {
+      "label": "post-lifecycle-connect-after-writes",
+      "connected": true,
+      "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b"
+    }
+  ],
+  "denials": [
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "rw": "true"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "g4-storage.img",
+        "rw": "true"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "cdrom": "true"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "../g4-storage.img"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "unknown.img"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "/dev/mmcblk0"
+      },
+      "status": 400
+    },
+    {
+      "label": "disconnected-forbidden",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "http://192.168.88.1/invalid"
+      },
+      "status": 400
+    },
+    {
+      "path": "/msd/set_params?rw=false&rw=true",
+      "status": 400
+    },
+    {
+      "path": "/msd/set_connected?connected=true&rw=true",
+      "status": 400
+    },
+    {
+      "path": "/msd/set_connected?connected=false&connected=true",
+      "status": 400
+    },
+    {
+      "label": "unauth",
+      "path": "/msd",
+      "params": null,
+      "status": 401
+    },
+    {
+      "label": "unauth",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "g4-storage.img"
+      },
+      "status": 401
+    },
+    {
+      "label": "unauth",
+      "path": "/msd/set_connected",
+      "params": {
+        "connected": "false"
+      },
+      "status": 401
+    },
+    {
+      "label": "disabled-write",
+      "path": "/msd/write",
+      "params": {
+        "image": "g4-storage.img",
+        "url": "http://192.168.88.1/invalid"
+      },
+      "status": 404
+    },
+    {
+      "label": "disabled-write_remote",
+      "path": "/msd/write_remote",
+      "params": {
+        "image": "g4-storage.img",
+        "url": "http://192.168.88.1/invalid"
+      },
+      "status": 404
+    },
+    {
+      "label": "disabled-remove",
+      "path": "/msd/remove",
+      "params": {
+        "image": "g4-storage.img",
+        "url": "http://192.168.88.1/invalid"
+      },
+      "status": 404
+    },
+    {
+      "label": "disabled-reset",
+      "path": "/msd/reset",
+      "params": {
+        "image": "g4-storage.img",
+        "url": "http://192.168.88.1/invalid"
+      },
+      "status": 404
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "rw": "true"
+      },
+      "status": 400
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "cdrom": "true"
+      },
+      "status": 400
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "/dev/mmcblk0"
+      },
+      "status": 400
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "../g4-storage.img"
+      },
+      "status": 400
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "http://192.168.88.1/invalid"
+      },
+      "status": 400
+    },
+    {
+      "label": "forbidden-params",
+      "path": "/msd/set_params",
+      "params": {
+        "path": "/etc/passwd"
+      },
+      "status": 400
+    },
+    {
+      "label": "logged-out",
+      "path": "/msd",
+      "params": null,
+      "status": 403
+    },
+    {
+      "label": "logged-out",
+      "path": "/msd/set_params",
+      "params": {
+        "image": "g4-storage.img"
+      },
+      "status": 403
+    },
+    {
+      "label": "logged-out",
+      "path": "/msd/set_connected",
+      "params": {
+        "connected": "false"
+      },
+      "status": 403
+    }
+  ],
+  "restart_readiness": [
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-False",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "nginx-False",
+      "error": "<urlopen error [Errno 111] Connection refused>"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "kvmd-True",
+      "error": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "label": "nginx-True",
+      "error": "<urlopen error [Errno 111] Connection refused>"
+    }
+  ]
+}

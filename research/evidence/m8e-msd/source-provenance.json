@@ -1,0 +1,123 @@
+{
+  "parent": "4bb4d7c65b80423025be4133b715b59f29facea2",
+  "status": "?? build/kvmd-msd/\n?? lab/msd-audit-archive.py\n?? lab/msd-boot-qualification.py\n?? lab/msd-browser-hil.py\n?? lab/msd-browser.mjs\n?? lab/msd-five-boots.py\n?? lab/msd-helper-negative.py\n?? lab/msd-hil.py\n?? lab/msd-inventory.py\n?? lab/msd-preflight.py\n?? lab/msd-privilege-inventory.py\n?? lab/msd-reconnect.py\n?? lab/msd-workload.py\n?? lab/verify-msd-evidence.py\n?? research/evidence/m8e-e0-eject.json\n?? research/evidence/m8e-e0-restored-workload.json\n?? research/m8e-msd-ownership.md\n?? tests/test_kvmd_msd.py\n",
+  "enrolled_image_sha256": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb",
+  "files": {
+    "build/kvmd-msd/build.sh": {
+      "sha256": "8abe61816beb4f21c4abfa8a3a2465fa89a757ac7de43846059572b62dd4e3dd",
+      "size": 1674
+    },
+    "build/kvmd-msd/check-api.py": {
+      "sha256": "85b52a20bc8adab31cf08b67271723532d0aafd0694f1337871b61316e45f8ed",
+      "size": 2365
+    },
+    "build/kvmd-msd/check-candidate.py": {
+      "sha256": "e0be14136b7e59c5a517a5daff7c7755be7a04724bebdd696eedd9de4b437e45",
+      "size": 2614
+    },
+    "build/kvmd-msd/check-function-name.py": {
+      "sha256": "e8626e3da24f13df6eff3f9b02766a01d6a4f2e7d854fe081e353cf1e80a817e",
+      "size": 3088
+    },
+    "build/kvmd-msd/function-name.patch": {
+      "sha256": "314cdd173701b68a48df38f04576a89f8f0df7efee6ddd2636f58c1297f23a84",
+      "size": 1943
+    },
+    "build/kvmd-msd/helper.service": {
+      "sha256": "1690566cfbf8f33a6ba0c6e96b42b49b7aac71633ba7cebe451db726a5a1d989",
+      "size": 791
+    },
+    "build/kvmd-msd/in-container.sh": {
+      "sha256": "00a340b82000cd5f9dfe48b81891ce9c068c033df18574414da68b6571a4c403",
+      "size": 6093
+    },
+    "build/kvmd-msd/media-helper.py": {
+      "sha256": "81c79056878acea1d7bcae09bbad84ea380122166f2eabf6c95bb673031f4e17",
+      "size": 6833
+    },
+    "build/kvmd-msd/msd.conf": {
+      "sha256": "2ea7c985ca425dfe76b8a4e1deba5017c0dec3f0caf5b35e3928d2ac547bba12",
+      "size": 74
+    },
+    "build/kvmd-msd/msd.patch": {
+      "sha256": "999fad68759e518ca0342aadac57d13fb40c6db54d59c3e9e31bf435c72900be",
+      "size": 20524
+    },
+    "build/kvmd-msd/msd.yaml": {
+      "sha256": "4ee52fb3a9c2739adfe43536ed75f463f638c5feb9c44a95f4ca8d6d0df7f0c6",
+      "size": 223
+    },
+    "build/kvmd-msd/package.py": {
+      "sha256": "f6c0efaf5b9f43f3595ba26d1d6acafaad73142c3d54b8b798a65c4283abc8d4",
+      "size": 2363
+    },
+    "build/kvmd-msd/package.sha256": {
+      "sha256": "caa2a6e1370351e2184d663afa92b9a3f17b5ec5e080eb9382cc7a756d2a6c38",
+      "size": 123
+    },
+    "build/kvmd-msd/packages.lock.tsv": {
+      "sha256": "2ed621d449d060aa76b4af06aabce35a98fe22db97870f44795442f4e8c6bc19",
+      "size": 8130
+    },
+    "build/kvmd-msd/write-manifest.py": {
+      "sha256": "03852e8b9ad6661d89b911923e9a4b6cc050951e8438bf7155fc1ac9e32009a5",
+      "size": 1680
+    },
+    "lab/msd-audit-archive.py": {
+      "sha256": "55974de0fe24da7d79f3388277a9cb88411b6458247e33c404baf13c39f5a005",
+      "size": 1467
+    },
+    "lab/msd-boot-qualification.py": {
+      "sha256": "700e788cbc22b20ff233858c9c9f620676aa24a79325d10a68083e9f9a139258",
+      "size": 2611
+    },
+    "lab/msd-browser-hil.py": {
+      "sha256": "17277c711a67d3ae0f6a43e982f29c4c613e987533a341907f64c5100aabaf21",
+      "size": 2992
+    },
+    "lab/msd-browser.mjs": {
+      "sha256": "b17860c1adf0c7d6d436492526f6c40e606cb592606cdb761a90ce98b784911b",
+      "size": 5835
+    },
+    "lab/msd-five-boots.py": {
+      "sha256": "03dd32f7bdb2e53ee699a7628734982303ad952cdbdb818457fd65304a10f23f",
+      "size": 1186
+    },
+    "lab/msd-helper-negative.py": {
+      "sha256": "4a801935eb0daba536de85dbee6306695f1e9f3ba6682506233500b83aef5c47",
+      "size": 2524
+    },
+    "lab/msd-hil.py": {
+      "sha256": "3a7b5e27070ef42d7ebcc14b6eaf062735c16bfb9e1b654f34857f8a993c8b85",
+      "size": 10333
+    },
+    "lab/msd-inventory.py": {
+      "sha256": "dd3afdca6390a51326f5923a92a59e6b0cce2f0b6086aa28565d239f4da3b079",
+      "size": 2006
+    },
+    "lab/msd-preflight.py": {
+      "sha256": "43b60d53ae166fadd9c9fe3f81b45d2c4fd4ad8ca4004aa3dea651baea58f3ac",
+      "size": 2604
+    },
+    "lab/msd-privilege-inventory.py": {
+      "sha256": "9b2277c865ab0d88edeca2e360369d74afe4d2be4a4fbbfe86080dd164c74e15",
+      "size": 1314
+    },
+    "lab/msd-reconnect.py": {
+      "sha256": "c2abd9e8745c090016a4f9e8bde4c2355d2c841251feadf8b9807fcf5f29bce8",
+      "size": 3863
+    },
+    "lab/msd-workload.py": {
+      "sha256": "3fb32f4b2d1942457373a6c06263357c39c5ff1becf69ea04d1f744b8ad3d61b",
+      "size": 3284
+    },
+    "lab/verify-msd-evidence.py": {
+      "sha256": "c88019fa87ecd92f1bb15734933c47d4c24864efac0e8b6f26a4bd228bd454ba",
+      "size": 8393
+    },
+    "tests/test_kvmd_msd.py": {
+      "sha256": "1c2ed5dcae3ea2a5133dd090134cd67438767eac03c832813555895f21c9e80a",
+      "size": 3386
+    }
+  }
+}

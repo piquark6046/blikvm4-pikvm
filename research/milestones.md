@@ -137,11 +137,25 @@ Baseline: `ubuntu-26.04.1-kvmd-hid-baseline`.
 See [M8-D report and evidence](m8d-kvmd-hid-bringup.md).
 M6 GPIO/ATX remains **DEFERRED**; kvmd MSD control is not enabled.
 
-### M8-E — Proposed only
+### M8-E — Authenticated read-only MSD
 
-Scoped authenticated read-only MSD integration with explicit backing-store
-ownership and regression gates. Not started. GPIO/ATX/M6, optional media
-transports, VNC/IPMI and final read-only-root remain excluded.
+**Current: PASSED.** Pinned kvmd 4.213 controls the approved immutable G4 image
+through authenticated upstream API and actual Chromium UI. The sole configfs
+owner remains `blikvm-gadget.service`; `mass_storage.g4/lun.0` and all frozen
+USB/HID semantics are retained. A bounded helper delegates only attach/eject,
+with the real namespace restricted to two writable LUN attributes. Upload,
+remove, remote media and RW/CD-ROM modes remain unavailable.
+
+Direct SCSI write protection, exact image/file hashes, daemon/session
+lifecycles, fresh physical reconnect, concurrent storage/HID/two-client video,
+and five consecutive clean boots pass. Video remains exact 1080p30, with
+measured clients delivering 29.766–29.776 fps. Eject uses the explicitly
+user-approved empty-LUN/MEDIUM NOT PRESENT policy; physical unplug removes
+host objects. Baseline: `ubuntu-26.04.1-kvmd-msd-baseline`.
+See [M8-E report](m8e-kvmd-msd-bringup.md) and [ownership record](m8e-msd-ownership.md).
+M6 GPIO/ATX remains **DEFERRED**. Writable MSD, optional transports, VNC/IPMI
+and final read-only-root remain excluded. A bounded integration soak and
+image-production preparation slice is proposed only.
 
 ## M9 — Optional hardware
 

@@ -1,0 +1,6 @@
+{
+  "changed_payload_files": [
+    "./usr/lib/systemd/system/blikvm-msd-helper.service"
+  ],
+  "other_payload_files_unchanged": true
+}

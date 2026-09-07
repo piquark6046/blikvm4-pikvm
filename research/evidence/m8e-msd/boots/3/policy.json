@@ -1,0 +1,934 @@
+{
+  "result": "passed",
+  "path": "bridge enp1s0 192.168.88.1 -> target eth0 192.168.88.2",
+  "tunnel": false,
+  "probes": [
+    {
+      "source": "192.168.88.1",
+      "destination": "192.168.88.2",
+      "port": 22,
+      "errno": 0,
+      "seconds": 0.0004339310107752681
+    },
+    {
+      "source": "192.168.88.1",
+      "destination": "192.168.88.2",
+      "port": 80,
+      "errno": 11,
+      "seconds": 2.0023107570013963
+    },
+    {
+      "source": "192.168.88.1",
+      "destination": "192.168.88.2",
+      "port": 443,
+      "errno": 0,
+      "seconds": 0.0004321020096540451
+    },
+    {
+      "source": "192.168.88.1",
+      "destination": "192.168.88.2",
+      "port": 8000,
+      "errno": 11,
+      "seconds": 2.002326465997612
+    },
+    {
+      "source": "192.168.88.1",
+      "destination": "192.168.88.2",
+      "port": 8080,
+      "errno": 11,
+      "seconds": 2.0023762580094626
+    },
+    {
+      "source": "192.168.88.99",
+      "destination": "192.168.88.2",
+      "port": 443,
+      "errno": 11,
+      "seconds": 2.0023960179969436
+    }
+  ],
+  "tls": [
+    {
+      "identity": "blikvm-v4.lab",
+      "version": "TLSv1.2",
+      "sha256": "2a360c4010ed3250254ec5a243e6fcfeb39127b6671e8661e4f7f7437acbaab2",
+      "certificate": {
+        "subject": [
+          [
+            [
+              "commonName",
+              "blikvm-v4.lab"
+            ]
+          ]
+        ],
+        "issuer": [
+          [
+            [
+              "commonName",
+              "BliKVM M8-C Development CA"
+            ]
+          ]
+        ],
+        "version": 3,
+        "serialNumber": "5B133BEEA8084EEBF9488E7F4A29A3AE52BCFA9C",
+        "notBefore": "Sep  6 23:09:34 2026 GMT",
+        "notAfter": "Oct  6 23:09:34 2026 GMT",
+        "subjectAltName": [
+          [
+            "DNS",
+            "blikvm-v4.lab"
+          ],
+          [
+            "IP Address",
+            "192.168.88.2"
+          ]
+        ]
+      },
+      "source": [
+        "192.168.88.1",
+        60512
+      ],
+      "verified": true
+    },
+    {
+      "identity": "192.168.88.2",
+      "version": "TLSv1.2",
+      "sha256": "2a360c4010ed3250254ec5a243e6fcfeb39127b6671e8661e4f7f7437acbaab2",
+      "certificate": {
+        "subject": [
+          [
+            [
+              "commonName",
+              "blikvm-v4.lab"
+            ]
+          ]
+        ],
+        "issuer": [
+          [
+            [
+              "commonName",
+              "BliKVM M8-C Development CA"
+            ]
+          ]
+        ],
+        "version": 3,
+        "serialNumber": "5B133BEEA8084EEBF9488E7F4A29A3AE52BCFA9C",
+        "notBefore": "Sep  6 23:09:34 2026 GMT",
+        "notAfter": "Oct  6 23:09:34 2026 GMT",
+        "subjectAltName": [
+          [
+            "DNS",
+            "blikvm-v4.lab"
+          ],
+          [
+            "IP Address",
+            "192.168.88.2"
+          ]
+        ]
+      },
+      "source": [
+        "192.168.88.1",
+        60528
+      ],
+      "verified": true
+    },
+    {
+      "identity": "blikvm-v4.lab",
+      "version": "TLSv1.3",
+      "sha256": "2a360c4010ed3250254ec5a243e6fcfeb39127b6671e8661e4f7f7437acbaab2",
+      "certificate": {
+        "subject": [
+          [
+            [
+              "commonName",
+              "blikvm-v4.lab"
+            ]
+          ]
+        ],
+        "issuer": [
+          [
+            [
+              "commonName",
+              "BliKVM M8-C Development CA"
+            ]
+          ]
+        ],
+        "version": 3,
+        "serialNumber": "5B133BEEA8084EEBF9488E7F4A29A3AE52BCFA9C",
+        "notBefore": "Sep  6 23:09:34 2026 GMT",
+        "notAfter": "Oct  6 23:09:34 2026 GMT",
+        "subjectAltName": [
+          [
+            "DNS",
+            "blikvm-v4.lab"
+          ],
+          [
+            "IP Address",
+            "192.168.88.2"
+          ]
+        ]
+      },
+      "source": [
+        "192.168.88.1",
+        60530
+      ],
+      "verified": true
+    },
+    {
+      "identity": "192.168.88.2",
+      "version": "TLSv1.3",
+      "sha256": "2a360c4010ed3250254ec5a243e6fcfeb39127b6671e8661e4f7f7437acbaab2",
+      "certificate": {
+        "subject": [
+          [
+            [
+              "commonName",
+              "blikvm-v4.lab"
+            ]
+          ]
+        ],
+        "issuer": [
+          [
+            [
+              "commonName",
+              "BliKVM M8-C Development CA"
+            ]
+          ]
+        ],
+        "version": 3,
+        "serialNumber": "5B133BEEA8084EEBF9488E7F4A29A3AE52BCFA9C",
+        "notBefore": "Sep  6 23:09:34 2026 GMT",
+        "notAfter": "Oct  6 23:09:34 2026 GMT",
+        "subjectAltName": [
+          [
+            "DNS",
+            "blikvm-v4.lab"
+          ],
+          [
+            "IP Address",
+            "192.168.88.2"
+          ]
+        ]
+      },
+      "source": [
+        "192.168.88.1",
+        60546
+      ],
+      "verified": true
+    },
+    {
+      "negative": "wrong-name",
+      "rejected": true,
+      "reason": "Hostname mismatch, certificate is not valid for 'wrong.blikvm-v4.lab'."
+    },
+    {
+      "negative": "untrusted",
+      "rejected": true,
+      "reason": "unable to get local issuer certificate"
+    }
+  ],
+  "host_interfaces": "lo               UNKNOWN        127.0.0.1/8 ::1/128 \nenp1s0           UP             192.168.88.1/24 \nwlo1             UP             172.16.10.118/24 fd72:6acf:c28c:0:cc71:de4c:15e:a085/64 fd72:6acf:c28c:0:c2a5:e8ff:fe54:8d14/64 2406:5900:1180:f079:336a:f1fa:933a:a4de/64 2406:5900:1180:f079:c2a5:e8ff:fe54:8d14/64 fe80::c2a5:e8ff:fe54:8d14/64 \n",
+  "route": "192.168.88.2 dev enp1s0 src 192.168.88.1 uid 0 \n    cache \n",
+  "target_loopback_denial_errno": 11,
+  "firewall_before": {
+    "nftables": [
+      {
+        "metainfo": {
+          "version": "1.1.6",
+          "release_name": "Commodore Bullmoose #7",
+          "json_schema_version": 1
+        }
+      },
+      {
+        "table": {
+          "family": "ip",
+          "name": "blikvm_lab",
+          "handle": 1
+        }
+      },
+      {
+        "chain": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "name": "input",
+          "handle": 1,
+          "type": "filter",
+          "hook": "input",
+          "prio": 0,
+          "policy": "drop"
+        }
+      },
+      {
+        "chain": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "name": "forward",
+          "handle": 2,
+          "type": "filter",
+          "hook": "forward",
+          "prio": 0,
+          "policy": "drop"
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 3,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 443
+              }
+            },
+            {
+              "counter": {
+                "packets": 0,
+                "bytes": 0
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 4,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 443
+              }
+            },
+            {
+              "counter": {
+                "packets": 0,
+                "bytes": 0
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 5,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 80
+              }
+            },
+            {
+              "counter": {
+                "packets": 0,
+                "bytes": 0
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 6,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "lo"
+              }
+            },
+            {
+              "counter": {
+                "packets": 0,
+                "bytes": 0
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 7,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 22
+              }
+            },
+            {
+              "counter": {
+                "packets": 137,
+                "bytes": 42034
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 8,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "protocol"
+                  }
+                },
+                "right": "icmp"
+              }
+            },
+            {
+              "counter": {
+                "packets": 5,
+                "bytes": 420
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 9,
+          "expr": [
+            {
+              "counter": {
+                "packets": 3,
+                "bytes": 927
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "firewall_after": {
+    "nftables": [
+      {
+        "metainfo": {
+          "version": "1.1.6",
+          "release_name": "Commodore Bullmoose #7",
+          "json_schema_version": 1
+        }
+      },
+      {
+        "table": {
+          "family": "ip",
+          "name": "blikvm_lab",
+          "handle": 1
+        }
+      },
+      {
+        "chain": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "name": "input",
+          "handle": 1,
+          "type": "filter",
+          "hook": "input",
+          "prio": 0,
+          "policy": "drop"
+        }
+      },
+      {
+        "chain": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "name": "forward",
+          "handle": 2,
+          "type": "filter",
+          "hook": "forward",
+          "prio": 0,
+          "policy": "drop"
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 3,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 443
+              }
+            },
+            {
+              "counter": {
+                "packets": 4,
+                "bytes": 216
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 4,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 443
+              }
+            },
+            {
+              "counter": {
+                "packets": 4,
+                "bytes": 240
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 5,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 80
+              }
+            },
+            {
+              "counter": {
+                "packets": 2,
+                "bytes": 120
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 6,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "lo"
+              }
+            },
+            {
+              "counter": {
+                "packets": 0,
+                "bytes": 0
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 7,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "tcp",
+                    "field": "dport"
+                  }
+                },
+                "right": 22
+              }
+            },
+            {
+              "counter": {
+                "packets": 232,
+                "bytes": 62666
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 8,
+          "expr": [
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "meta": {
+                    "key": "iifname"
+                  }
+                },
+                "right": "eth0"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "saddr"
+                  }
+                },
+                "right": "192.168.88.1"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "daddr"
+                  }
+                },
+                "right": "192.168.88.2"
+              }
+            },
+            {
+              "match": {
+                "op": "==",
+                "left": {
+                  "payload": {
+                    "protocol": "ip",
+                    "field": "protocol"
+                  }
+                },
+                "right": "icmp"
+              }
+            },
+            {
+              "counter": {
+                "packets": 5,
+                "bytes": 420
+              }
+            },
+            {
+              "accept": null
+            }
+          ]
+        }
+      },
+      {
+        "rule": {
+          "family": "ip",
+          "table": "blikvm_lab",
+          "chain": "input",
+          "handle": 9,
+          "expr": [
+            {
+              "counter": {
+                "packets": 8,
+                "bytes": 1476
+              }
+            },
+            {
+              "drop": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -186,3 +186,9 @@ M8-D's reproducible authenticated HID package/rootfs recipe is documented in
 [build/kvmd-hid](kvmd-hid/README.md), with [hardware qualification](../research/m8d-kvmd-hid-bringup.md).
 It inherits the frozen M8-C build and M5 gadget bytes; it does not require a
 Linux rebuild or migrate gadget ownership to kvmd-otg.
+
+
+M8-E's authenticated read-only MSD build is documented in
+[build/kvmd-msd](kvmd-msd/README.md), with [hardware qualification](../research/m8e-kvmd-msd-bringup.md).
+It reuses the frozen gadget and kernel; its bounded helper delegates only the
+approved image's attachment/eject operations to unprivileged kvmd.

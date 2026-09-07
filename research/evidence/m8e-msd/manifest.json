@@ -1,0 +1,57 @@
+{
+  "source": {
+    "commit": "4bb4d7c65b80423025be4133b715b59f29facea2",
+    "dirty": true
+  },
+  "parent": "ubuntu-26.04.1-kvmd-hid-baseline",
+  "acceptance": {
+    "m8e": "not_qualified"
+  },
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "size": 6914056,
+      "sha256": "d6f4235904b0b482e78f449139f539adc4370be923ec16f4a0d8451842501ee8"
+    },
+    "build-packages.tsv": {
+      "name": "build-packages.tsv",
+      "size": 8154,
+      "sha256": "200a929ee4a0a2613bc676c39216ce09f36ee22695a7522ffac16b76c32ab575"
+    },
+    "effective-config.yaml": {
+      "name": "effective-config.yaml",
+      "size": 12036,
+      "sha256": "d1087182aab9bf38fd927547b54c044329d19e05154627a7a4ebcd76e905fb9d"
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "size": 90271240,
+      "sha256": "aaf93f7df5da74577bdfa84de2136e8f7f3e38c93f6d008e4407e6c63802d3cb"
+    },
+    "kvmd-web_4.213-1blikvm4_arm64.deb": {
+      "name": "kvmd-web_4.213-1blikvm4_arm64.deb",
+      "size": 911982,
+      "sha256": "228d2f6dc1114b4516943249d25ddf1f10e4161c9cb53c6603b286b2b4e7f85e"
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "size": 67386,
+      "sha256": "fc384a32d86107ad416d2b20fd8557ff895c767a9876be5f6f2e059c0581a7fe"
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "size": 8130,
+      "sha256": "2ed621d449d060aa76b4af06aabce35a98fe22db97870f44795442f4e8c6bc19"
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "size": 90527979,
+      "sha256": "563ed45f6705657b8a52f97e2c5a408c182a5dc5fe9b32ac5af4cdb2d7b97f0a"
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    }
+  }
+}

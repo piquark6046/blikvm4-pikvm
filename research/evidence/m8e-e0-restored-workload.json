@@ -1,0 +1,166 @@
+{
+  "result": "passed",
+  "hid": [
+    {
+      "start": 1788755108.1818237,
+      "end": 1788755119.27981,
+      "result": "passed"
+    },
+    {
+      "start": 1788755119.2798378,
+      "end": 1788755130.4291844,
+      "result": "passed"
+    },
+    {
+      "start": 1788755130.4292197,
+      "end": 1788755141.5258923,
+      "result": "passed"
+    },
+    {
+      "start": 1788755141.5259104,
+      "end": 1788755152.5752347,
+      "result": "passed"
+    },
+    {
+      "start": 1788755152.57528,
+      "end": 1788755163.7251315,
+      "result": "passed"
+    },
+    {
+      "start": 1788755163.7251499,
+      "end": 1788755174.81792,
+      "result": "passed"
+    },
+    {
+      "start": 1788755174.8179388,
+      "end": 1788755185.9136755,
+      "result": "passed"
+    },
+    {
+      "start": 1788755185.9136968,
+      "end": 1788755197.0100818,
+      "result": "passed"
+    },
+    {
+      "start": 1788755197.0101027,
+      "end": 1788755208.1060326,
+      "result": "passed"
+    },
+    {
+      "start": 1788755208.1060565,
+      "end": 1788755219.2507253,
+      "result": "passed"
+    },
+    {
+      "start": 1788755219.250762,
+      "end": 1788755230.3986385,
+      "result": "passed"
+    },
+    {
+      "start": 1788755230.3986685,
+      "end": 1788755241.399119,
+      "result": "passed"
+    },
+    {
+      "start": 1788755241.3991427,
+      "end": 1788755252.2999063,
+      "result": "passed"
+    }
+  ],
+  "video": {
+    "result": "passed",
+    "clients": [
+      {
+        "result": "passed",
+        "command": [
+          "curl",
+          "--config",
+          "private/capacity-49201-0.conf",
+          "--cacert",
+          "private/ca.crt",
+          "--interface",
+          "192.168.88.1",
+          "--http1.1",
+          "-sS",
+          "--no-buffer",
+          "--include",
+          "--max-time",
+          "130",
+          "https://blikvm-v4.lab/streamer/stream"
+        ],
+        "seconds_requested": 120.0,
+        "elapsed": 120.02407,
+        "frames": 3588,
+        "bytes": 148838842,
+        "unique_hashes": 3588,
+        "transitions": 3587,
+        "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 22:27:55 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/c2c6d892985963b7; path=/; max-age=30",
+        "fps": 29.894003761078924,
+        "max_gap": 0.139579,
+        "measurement_start_unix": 1788755108.4130845,
+        "capacity_passed": true
+      },
+      {
+        "result": "passed",
+        "command": [
+          "curl",
+          "--config",
+          "private/capacity-49201-1.conf",
+          "--cacert",
+          "private/ca.crt",
+          "--interface",
+          "192.168.88.1",
+          "--http1.1",
+          "-sS",
+          "--no-buffer",
+          "--include",
+          "--max-time",
+          "130",
+          "https://blikvm-v4.lab/streamer/stream"
+        ],
+        "seconds_requested": 120.0,
+        "elapsed": 120.024701,
+        "frames": 3588,
+        "bytes": 148838842,
+        "unique_hashes": 3588,
+        "transitions": 3587,
+        "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 22:27:55 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/ab989e7ceb8e6cc4; path=/; max-age=30",
+        "fps": 29.893846600792617,
+        "max_gap": 0.138992,
+        "measurement_start_unix": 1788755108.4130845,
+        "capacity_passed": true
+      }
+    ],
+    "seconds": 120,
+    "target_fps": 27,
+    "client_count": 2,
+    "path": "192.168.88.1 enp1s0 -> 192.168.88.2 eth0 TCP/443; no tunnel",
+    "automation_sha256": {
+      "lan-capacity.py": "cd17cb4ad4f3f34e8510230b63536910992cc469490a327354e4d4542a3eca96",
+      "lan-resources.py": "844448de62e208541eeb19a3a1842ce65c3f5cad33d47ac855db635f0a9992d5",
+      "stream-client.py": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82"
+    },
+    "measurement_processes": [
+      49206,
+      49207
+    ],
+    "reconnect": [
+      {
+        "client": 0,
+        "authenticated_state": true,
+        "snapshot_bytes": 41442,
+        "frames": 148,
+        "unique_hashes": 148,
+        "stream_result": "passed"
+      },
+      {
+        "client": 1,
+        "authenticated_state": true,
+        "snapshot_bytes": 41444,
+        "frames": 148,
+        "unique_hashes": 148,
+        "stream_result": "passed"
+      }
+    ]
+  }
+}

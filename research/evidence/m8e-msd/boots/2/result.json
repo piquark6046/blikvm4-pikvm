@@ -1,0 +1,14 @@
+{
+  "result": "passed",
+  "boot": {
+    "result": "passed",
+    "stage": "ubuntu_network_ssh",
+    "hardware_regressions": "pending",
+    "final_20_boot_gate": false,
+    "schema_version": 1,
+    "run_id": "20260907T053610Z-unknown-724587",
+    "run_directory": "/home/user/blikvm-msd/runs/20260907T053610Z-unknown-724587",
+    "finished_at": "2026-09-07T05:37:11.413339+00:00"
+  },
+  "boot_id": "7b66c019-f0cc-4dbe-affd-84a62217382e"
+}

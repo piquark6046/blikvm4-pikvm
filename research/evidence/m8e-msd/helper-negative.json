@@ -1,0 +1,192 @@
+{
+  "result": "passed",
+  "before": {
+    "lun": {
+      "file": "/usr/share/kvmd-msd/images/g4-storage.img",
+      "ro": "1",
+      "cdrom": "0",
+      "removable": "0",
+      "nofua": "0",
+      "inquiry_string": "BliKVM  G4 RAM RO       0001"
+    },
+    "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "catalog": "{\n  \"g4-storage.img\": {\n    \"size\": 8388608,\n    \"sha256\": \"14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b\"\n  }\n}\n"
+  },
+  "denials": [
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "other",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "identity mismatch"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.usb0",
+        "lun": "lun.0",
+        "image": "g4-storage.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "identity mismatch"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.1",
+        "image": "g4-storage.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "identity mismatch"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "/dev/mmcblk0"
+      },
+      "response": {
+        "ok": false,
+        "error": "unapproved image"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "../g4-storage.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "unapproved image"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "/etc/passwd"
+      },
+      "response": {
+        "ok": false,
+        "error": "unapproved image"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "unknown.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "unapproved image"
+      }
+    },
+    {
+      "request": {
+        "operation": "write",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img"
+      },
+      "response": {
+        "ok": false,
+        "error": "unsupported operation"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img",
+        "rw": true
+      },
+      "response": {
+        "ok": false,
+        "error": "unexpected fields"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img",
+        "cdrom": true
+      },
+      "response": {
+        "ok": false,
+        "error": "unexpected fields"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img",
+        "path": true
+      },
+      "response": {
+        "ok": false,
+        "error": "unexpected fields"
+      }
+    },
+    {
+      "request": {
+        "operation": "attach",
+        "gadget": "blikvm_m5",
+        "function": "mass_storage.g4",
+        "lun": "lun.0",
+        "image": "g4-storage.img",
+        "command": true
+      },
+      "response": {
+        "ok": false,
+        "error": "unexpected fields"
+      }
+    }
+  ],
+  "unrelated_user_socket_denied": true,
+  "unit": "# /usr/lib/systemd/system/blikvm-msd-helper.service\n[Unit]\nDescription=BliKVM approved read-only media delegate\nRequires=blikvm-gadget.service\nAfter=blikvm-gadget.service\nBefore=kvmd.service\n\n[Service]\nType=exec\nExecStart=/usr/lib/kvmd-msd/media-helper\nRestart=on-failure\nRestartSec=2\nRuntimeDirectory=kvmd-msd\nRuntimeDirectoryMode=0755\nUMask=0077\nNoNewPrivileges=yes\nProtectSystem=strict\nProtectHome=yes\nPrivateTmp=yes\nProtectKernelTunables=yes\nProtectKernelModules=yes\nProtectControlGroups=yes\nRestrictAddressFamilies=AF_UNIX\nCapabilityBoundingSet=CAP_CHOWN\nDevicePolicy=closed\nReadOnlyPaths=/sys/kernel/config\nReadWritePaths=/sys/kernel/config/usb_gadget/blikvm_m5/functions/mass_storage.g4/lun.0/file\nReadWritePaths=/sys/kernel/config/usb_gadget/blikvm_m5/functions/mass_storage.g4/lun.0/forced_eject\n\n[Install]\nWantedBy=multi-user.target\n",
+  "kvmd_policy": "CapabilityBoundingSet=\nUser=kvmd\nReadWritePaths=\nNoNewPrivileges=yes\n",
+  "after": {
+    "lun": {
+      "file": "/usr/share/kvmd-msd/images/g4-storage.img",
+      "ro": "1",
+      "cdrom": "0",
+      "removable": "0",
+      "nofua": "0",
+      "inquiry_string": "BliKVM  G4 RAM RO       0001"
+    },
+    "image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "catalog": "{\n  \"g4-storage.img\": {\n    \"size\": 8388608,\n    \"sha256\": \"14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b\"\n  }\n}\n"
+  }
+}

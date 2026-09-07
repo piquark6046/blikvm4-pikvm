@@ -1,0 +1,7 @@
+{
+  "path": "out/kvmd-msd/m8e-evidence.tar.gz",
+  "bridge": "/home/user/blikvm-msd/m8e-evidence.tar.gz",
+  "bytes": 5853416,
+  "sha256": "7a9ec724379436e12ffe349b401814a111e83943b471f3a42d5e9b7b44db7917",
+  "transfer": "authenticated SFTP, matching SHA-256"
+}

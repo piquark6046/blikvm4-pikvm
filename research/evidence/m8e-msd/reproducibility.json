@@ -1,0 +1,14 @@
+{
+  "rootfs.tar.gz": {
+    "sha256": "563ed45f6705657b8a52f97e2c5a408c182a5dc5fe9b32ac5af4cdb2d7b97f0a",
+    "reproduced": true
+  },
+  "initramfs.cpio.gz": {
+    "sha256": "aaf93f7df5da74577bdfa84de2136e8f7f3e38c93f6d008e4407e6c63802d3cb",
+    "reproduced": true
+  },
+  "kvmd-web_4.213-1blikvm4_arm64.deb": {
+    "sha256": "228d2f6dc1114b4516943249d25ddf1f10e4161c9cb53c6603b286b2b4e7f85e",
+    "reproduced": true
+  }
+}

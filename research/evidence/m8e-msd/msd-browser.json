@@ -1,0 +1,55 @@
+{
+  "result": "passed",
+  "steps": [
+    {
+      "name": "normal-login",
+      "connected": true
+    },
+    {
+      "name": "excluded-controls",
+      "connected": true
+    },
+    {
+      "name": "ui-eject",
+      "connected": false
+    },
+    {
+      "name": "ui-select",
+      "connected": false
+    },
+    {
+      "name": "ui-connect",
+      "connected": true
+    },
+    {
+      "name": "ui-second-eject",
+      "connected": false
+    },
+    {
+      "name": "ui-reconnect",
+      "connected": true
+    },
+    {
+      "name": "logout-stale-websocket",
+      "connected": true,
+      "stale_socket_state": 3,
+      "loggedout_status": 403,
+      "reauth": true
+    },
+    {
+      "name": "normal-relogin",
+      "connected": true
+    },
+    {
+      "name": "browser-close",
+      "connected": true,
+      "browser_process_closed": true
+    },
+    {
+      "name": "browser-reopen",
+      "connected": true
+    }
+  ],
+  "errors": [],
+  "version": "145.0.7632.6"
+}

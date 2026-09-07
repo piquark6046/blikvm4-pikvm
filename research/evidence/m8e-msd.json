@@ -1,0 +1,51 @@
+{
+  "result": "passed",
+  "milestone": "M8-E",
+  "parent": "ubuntu-26.04.1-kvmd-hid-baseline",
+  "tag": "ubuntu-26.04.1-kvmd-msd-baseline",
+  "enrolled_image_sha256": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb",
+  "media_image_sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+  "clean_boots": 5,
+  "eject_policy": "User-approved empty LUN / MEDIUM NOT PRESENT; host objects disappear on physical USB-PC disconnect",
+  "gadget_owner": "blikvm-gadget.service",
+  "function": "mass_storage.g4/lun.0",
+  "archive": {
+    "path": "out/kvmd-msd/m8e-evidence.tar.gz",
+    "bridge": "/home/user/blikvm-msd/m8e-evidence.tar.gz",
+    "bytes": 5853416,
+    "sha256": "7a9ec724379436e12ffe349b401814a111e83943b471f3a42d5e9b7b44db7917",
+    "transfer": "authenticated SFTP, matching SHA-256"
+  },
+  "deferred": [
+    "writable MSD",
+    "uploads/deletion/remote media",
+    "GPIO/ATX",
+    "M6",
+    "Janus/H.264/VNC/IPMI",
+    "final read-only-root"
+  ],
+  "api_runs": 23,
+  "browser_stages": 631,
+  "video": [
+    {
+      "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+      "client": 0,
+      "fps": 29.766456530868034,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+      "client": 1,
+      "fps": 29.774969792443382,
+      "frames": 3574
+    },
+    {
+      "path": "qualification/final-preflight-narrow/browser-storage/hid-video/concurrent-video",
+      "client": 0,
+      "fps": 29.77550088782479,
+      "frames": 3574
+    }
+  ],
+  "storage_checks": 83,
+  "msd_transitions": 243
+}

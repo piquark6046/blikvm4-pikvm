@@ -1,0 +1,7 @@
+kvmd:
+    msd:
+        type: otg
+        function: mass_storage.g4
+        read_only_catalog: /usr/share/kvmd-msd/catalog.json
+        media_root: /usr/share/kvmd-msd/images
+        media_socket: /run/kvmd-msd/control.sock
