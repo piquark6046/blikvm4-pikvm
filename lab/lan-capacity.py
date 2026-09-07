@@ -16,6 +16,7 @@ import urllib.request
 p=argparse.ArgumentParser();p.add_argument('--known-hosts',required=True)
 p.add_argument('--private-dir',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
 p.add_argument('--clients',type=int,choices=(1,2),required=True);p.add_argument('--seconds',type=int,default=120)
+p.add_argument('--keep-sessions',action='store_true')
 a=p.parse_args();assert a.seconds>=120
 a.output.mkdir(exist_ok=False,parents=True)
 ssh=['ssh','-i','/home/user/.local/share/blikvm-m7/id_ed25519','-o','BatchMode=yes',
@@ -85,7 +86,7 @@ finally:
     for proc in processes:
         if proc.poll() is None:proc.terminate();proc.wait(timeout=5)
     if sampler is not None and sampler.poll() is None:sampler.terminate();sampler.wait(timeout=5)
-    for opener in openers:
+    for opener in ([] if a.keep_sessions else openers):
         try:opener.open(urllib.request.Request(base+'/api/auth/logout',data=b'',method='POST'),timeout=5).close()
         except Exception:pass
     for config in cookies:config.unlink(missing_ok=True)

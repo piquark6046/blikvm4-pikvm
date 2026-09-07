@@ -1,0 +1,124 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "logout-held-input",
+    "kind": "exact",
+    "held": [
+      [
+        42
+      ],
+      [
+        272
+      ],
+      []
+    ]
+  },
+  "details": {
+    "expected": [
+      [
+        [
+          [
+            1,
+            42,
+            1
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ]
+      ],
+      []
+    ],
+    "sent": []
+  },
+  "actual": [
+    [
+      [
+        [
+          1,
+          42,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ]
+    ],
+    []
+  ],
+  "raw": [
+    [
+      {
+        "seconds": 1788748959,
+        "microseconds": 383719,
+        "type": 4,
+        "code": 4,
+        "value": 458977
+      },
+      {
+        "seconds": 1788748959,
+        "microseconds": 383719,
+        "type": 1,
+        "code": 42,
+        "value": 1
+      },
+      {
+        "seconds": 1788748959,
+        "microseconds": 383719,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    [
+      {
+        "seconds": 1788748959,
+        "microseconds": 486712,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748959,
+        "microseconds": 486712,
+        "type": 1,
+        "code": 272,
+        "value": 1
+      },
+      {
+        "seconds": 1788748959,
+        "microseconds": 486712,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [
+      42
+    ],
+    [
+      272
+    ],
+    []
+  ]
+}

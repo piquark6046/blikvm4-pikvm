@@ -1,0 +1,82 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "websocket-held-shift",
+    "kind": "exact",
+    "held": [
+      [
+        42
+      ],
+      [],
+      []
+    ]
+  },
+  "details": {
+    "expected": [
+      [
+        [
+          [
+            1,
+            42,
+            1
+          ]
+        ]
+      ],
+      [],
+      []
+    ],
+    "sent": []
+  },
+  "actual": [
+    [
+      [
+        [
+          1,
+          42,
+          1
+        ]
+      ]
+    ],
+    [],
+    []
+  ],
+  "raw": [
+    [
+      {
+        "seconds": 1788748958,
+        "microseconds": 65662,
+        "type": 4,
+        "code": 4,
+        "value": 458977
+      },
+      {
+        "seconds": 1788748958,
+        "microseconds": 65662,
+        "type": 1,
+        "code": 42,
+        "value": 1
+      },
+      {
+        "seconds": 1788748958,
+        "microseconds": 65662,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [
+      42
+    ],
+    [],
+    []
+  ]
+}

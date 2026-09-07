@@ -1,0 +1,247 @@
+{
+  "events": [
+    [],
+    [],
+    [
+      {
+        "seconds": 1788748924,
+        "microseconds": 79603,
+        "type": 2,
+        "code": 0,
+        "value": 9
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 79603,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 250617,
+        "type": 2,
+        "code": 0,
+        "value": -9
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 250617,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 422612,
+        "type": 2,
+        "code": 1,
+        "value": 7
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 422612,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 594631,
+        "type": 2,
+        "code": 1,
+        "value": -7
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 594631,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 766606,
+        "type": 2,
+        "code": 0,
+        "value": 5
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 766606,
+        "type": 2,
+        "code": 1,
+        "value": -4
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 766606,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 938630,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 938630,
+        "type": 1,
+        "code": 272,
+        "value": 1
+      },
+      {
+        "seconds": 1788748924,
+        "microseconds": 938630,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748925,
+        "microseconds": 109657,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748925,
+        "microseconds": 109657,
+        "type": 1,
+        "code": 272,
+        "value": 0
+      },
+      {
+        "seconds": 1788748925,
+        "microseconds": 109657,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ]
+  ],
+  "actual": [
+    [],
+    [],
+    [
+      [
+        [
+          2,
+          0,
+          9
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          -9
+        ]
+      ],
+      [
+        [
+          2,
+          1,
+          7
+        ]
+      ],
+      [
+        [
+          2,
+          1,
+          -7
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          5
+        ],
+        [
+          2,
+          1,
+          -4
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ]
+  ],
+  "expected": [
+    [],
+    [],
+    [
+      [
+        [
+          2,
+          0,
+          9
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          -9
+        ]
+      ],
+      [
+        [
+          2,
+          1,
+          7
+        ]
+      ],
+      [
+        [
+          2,
+          1,
+          -7
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          5
+        ],
+        [
+          2,
+          1,
+          -4
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ]
+  ]
+}

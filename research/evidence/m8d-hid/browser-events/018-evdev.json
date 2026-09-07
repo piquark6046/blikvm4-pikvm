@@ -1,0 +1,40 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "mode-usb-1",
+    "kind": "exact"
+  },
+  "details": {
+    "expected": [
+      [],
+      [],
+      []
+    ],
+    "mode": "usb",
+    "sent": [
+      [
+        0
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

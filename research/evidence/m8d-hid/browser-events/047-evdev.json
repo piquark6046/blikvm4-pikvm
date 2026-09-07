@@ -1,0 +1,130 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "kvmd-restart-cleanup",
+    "kind": "restart",
+    "service": "kvmd"
+  },
+  "details": {
+    "readiness": [
+      502,
+      502,
+      502,
+      403
+    ],
+    "sent": []
+  },
+  "actual": [
+    [
+      [
+        [
+          1,
+          42,
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ]
+      ]
+    ],
+    []
+  ],
+  "raw": [
+    [
+      {
+        "seconds": 1788748962,
+        "microseconds": 165827,
+        "type": 4,
+        "code": 4,
+        "value": 458977
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 165827,
+        "type": 1,
+        "code": 42,
+        "value": 0
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 165827,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    [
+      {
+        "seconds": 1788748962,
+        "microseconds": 164820,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 164820,
+        "type": 1,
+        "code": 272,
+        "value": 0
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 164820,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 281826,
+        "type": 3,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 281826,
+        "type": 3,
+        "code": 1,
+        "value": 0
+      },
+      {
+        "seconds": 1788748962,
+        "microseconds": 281826,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

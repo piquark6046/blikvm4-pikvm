@@ -1,0 +1,73 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "websocket-close-cleanup",
+    "kind": "exact"
+  },
+  "details": {
+    "expected": [
+      [
+        [
+          [
+            1,
+            42,
+            0
+          ]
+        ]
+      ],
+      [],
+      []
+    ],
+    "sent": []
+  },
+  "actual": [
+    [
+      [
+        [
+          1,
+          42,
+          0
+        ]
+      ]
+    ],
+    [],
+    []
+  ],
+  "raw": [
+    [
+      {
+        "seconds": 1788748958,
+        "microseconds": 403673,
+        "type": 4,
+        "code": 4,
+        "value": 458977
+      },
+      {
+        "seconds": 1788748958,
+        "microseconds": 403673,
+        "type": 1,
+        "code": 42,
+        "value": 0
+      },
+      {
+        "seconds": 1788748958,
+        "microseconds": 403673,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

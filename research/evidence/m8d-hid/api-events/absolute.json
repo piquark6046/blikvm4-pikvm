@@ -1,0 +1,225 @@
+{
+  "events": [
+    [],
+    [
+      {
+        "seconds": 1788748922,
+        "microseconds": 653555,
+        "type": 3,
+        "code": 0,
+        "value": 255
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 653555,
+        "type": 3,
+        "code": 1,
+        "value": 511
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 653555,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 824560,
+        "type": 3,
+        "code": 0,
+        "value": 16383
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 824560,
+        "type": 3,
+        "code": 1,
+        "value": 8191
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 824560,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 995574,
+        "type": 3,
+        "code": 0,
+        "value": 32511
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 995574,
+        "type": 3,
+        "code": 1,
+        "value": 32255
+      },
+      {
+        "seconds": 1788748922,
+        "microseconds": 995574,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 176574,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 176574,
+        "type": 1,
+        "code": 272,
+        "value": 1
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 176574,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 348579,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 348579,
+        "type": 1,
+        "code": 272,
+        "value": 0
+      },
+      {
+        "seconds": 1788748923,
+        "microseconds": 348579,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    []
+  ],
+  "actual": [
+    [],
+    [
+      [
+        [
+          3,
+          0,
+          255
+        ],
+        [
+          3,
+          1,
+          511
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          16383
+        ],
+        [
+          3,
+          1,
+          8191
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          32511
+        ],
+        [
+          3,
+          1,
+          32255
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ],
+    []
+  ],
+  "expected": [
+    [],
+    [
+      [
+        [
+          3,
+          0,
+          255
+        ],
+        [
+          3,
+          1,
+          511
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          16383
+        ],
+        [
+          3,
+          1,
+          8191
+        ]
+      ],
+      [
+        [
+          3,
+          0,
+          32511
+        ],
+        [
+          3,
+          1,
+          32255
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ],
+    []
+  ]
+}

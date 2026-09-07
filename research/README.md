@@ -167,4 +167,14 @@ LAN qualification is recorded separately as M8-C below.
 [M8-C bring-up](m8c-lan-access-bringup.md) qualifies restricted direct HTTPS,
 normal development-CA trust, upstream authentication, two-client 1080p30
 capacity, lifecycle recovery and five clean boots. Hardware-control integration
-remains deferred to the proposed M8-D keyboard/mouse slice.
+was qualified separately in M8-D below.
+
+
+## 27. M8-D authenticated HID
+
+[M8-D bring-up](m8d-kvmd-hid-bringup.md) qualifies upstream keyboard and both
+mouse modes through trusted HTTPS, the real Web UI and grabbed host evdev.
+It retains the sole frozen gadget owner, narrow permissions, exact descriptors,
+read-only MSD regression and two-client 1080p30 video. Cleanup, reconnect and
+five clean boots pass. M8-E read-only MSD integration is proposed only;
+M6 GPIO/ATX remains deferred.

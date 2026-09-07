@@ -1,0 +1,7 @@
+{
+  "path": "out/kvmd-hid/m8d-evidence.tar.gz",
+  "bridge": "/home/user/blikvm-hid/m8d-evidence.tar.gz",
+  "bytes": 4877067,
+  "sha256": "b4727300566db7334c3c2a8c44489ee44298854c65725e8a969db145abbc77e0",
+  "transfer": "authenticated SFTP, matching SHA-256"
+}

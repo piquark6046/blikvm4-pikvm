@@ -1,0 +1,13 @@
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/8p, 480M
+    |__ Port 001: Dev 058, If 0, Class=Vendor Specific Class, Driver=ch341, 12M
+    |__ Port 003: Dev 127, If 0, Class=Human Interface Device, Driver=usbhid, 480M
+    |__ Port 003: Dev 127, If 1, Class=Human Interface Device, Driver=usbhid, 480M
+    |__ Port 003: Dev 127, If 2, Class=Human Interface Device, Driver=usbhid, 480M
+    |__ Port 003: Dev 127, If 3, Class=Mass Storage, Driver=usb-storage, 480M
+    |__ Port 004: Dev 003, If 0, Class=Vendor Specific Class, Driver=rtsx_usb, 480M
+    |__ Port 005: Dev 004, If 0, Class=Communications, Driver=cdc_acm, 12M
+    |__ Port 005: Dev 004, If 1, Class=CDC Data, Driver=cdc_acm, 12M
+    |__ Port 007: Dev 005, If 0, Class=Hub, Driver=hub/4p, 480M
+    |__ Port 008: Dev 006, If 0, Class=Wireless, Driver=btusb, 12M
+    |__ Port 008: Dev 006, If 1, Class=Wireless, Driver=btusb, 12M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 10000M

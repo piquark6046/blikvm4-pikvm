@@ -1,0 +1,30 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "prepare-mode-2",
+    "kind": "setup"
+  },
+  "details": {
+    "sent": []
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "relative-0-4",
+    "kind": "relative"
+  },
+  "details": {
+    "moves": [
+      [
+        5,
+        -4
+      ]
+    ],
+    "requested": [
+      5,
+      -4
+    ],
+    "sent": [
+      [
+        4,
+        1,
+        5,
+        252
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [],
+    [
+      [
+        [
+          2,
+          0,
+          5
+        ],
+        [
+          2,
+          1,
+          -4
+        ]
+      ]
+    ]
+  ],
+  "raw": [
+    [],
+    [],
+    [
+      {
+        "seconds": 1788748946,
+        "microseconds": 328283,
+        "type": 2,
+        "code": 0,
+        "value": 5
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 328283,
+        "type": 2,
+        "code": 1,
+        "value": -4
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 328283,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ]
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

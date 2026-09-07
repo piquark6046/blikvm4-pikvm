@@ -1,0 +1,76 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "pointer-lock-0",
+    "kind": "setup"
+  },
+  "details": {
+    "pointerLock": true,
+    "sent": [
+      [
+        4,
+        1,
+        71,
+        24
+      ],
+      [
+        0
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [],
+    [
+      [
+        [
+          2,
+          0,
+          71
+        ],
+        [
+          2,
+          1,
+          24
+        ]
+      ]
+    ]
+  ],
+  "raw": [
+    [],
+    [],
+    [
+      {
+        "seconds": 1788748943,
+        "microseconds": 749205,
+        "type": 2,
+        "code": 0,
+        "value": 71
+      },
+      {
+        "seconds": 1788748943,
+        "microseconds": 749205,
+        "type": 2,
+        "code": 1,
+        "value": 24
+      },
+      {
+        "seconds": 1788748943,
+        "microseconds": 749205,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ]
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

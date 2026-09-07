@@ -124,11 +124,24 @@ Baseline: `ubuntu-26.04.1-kvmd-lan-baseline`.
 See [M8-C evidence and capacity scope](m8c-lan-access-bringup.md).
 No kvmd HID/MSD/ATX control is enabled; M6 remains deferred.
 
-### M8-D — Proposed only
+### M8-D — Authenticated keyboard and mouse
 
-kvmd keyboard and absolute/relative mouse control, with real host-event,
-authorization, reconnect and concurrent video regressions. Not started.
-MSD/ATX, M6, optional media transports and final read-only-root remain excluded.
+**Current: PASSED.** Pinned kvmd 4.213 controls the frozen keyboard, absolute
+mouse and relative mouse through authenticated upstream API/WebSocket and the
+actual Web UI. The sole M5 configfs owner is retained; deterministic function
+identity grants only three nodes to unprivileged kvmd. Exact grabbed host
+evdev events, repeated mode switching, logout/disconnect/restart cleanup,
+fresh physical reconnect and five consecutive clean boots pass. Simultaneous
+120-second video/HID workloads deliver 29.77–29.78 fps, including two clients.
+Baseline: `ubuntu-26.04.1-kvmd-hid-baseline`.
+See [M8-D report and evidence](m8d-kvmd-hid-bringup.md).
+M6 GPIO/ATX remains **DEFERRED**; kvmd MSD control is not enabled.
+
+### M8-E — Proposed only
+
+Scoped authenticated read-only MSD integration with explicit backing-store
+ownership and regression gates. Not started. GPIO/ATX/M6, optional media
+transports, VNC/IPMI and final read-only-root remain excluded.
 
 ## M9 — Optional hardware
 

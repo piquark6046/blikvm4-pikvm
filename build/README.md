@@ -180,3 +180,9 @@ this correction, HID activity can coincide with lost storage commands and
 mount/write checks run sequentially, and direct image reads run during UVC.
 Failed historical pass flags and the final corrected-kernel acceptance are
 preserved in the G4 research record. M6 has not started.
+
+
+M8-D's reproducible authenticated HID package/rootfs recipe is documented in
+[build/kvmd-hid](kvmd-hid/README.md), with [hardware qualification](../research/m8d-kvmd-hid-bringup.md).
+It inherits the frozen M8-C build and M5 gadget bytes; it does not require a
+Linux rebuild or migrate gadget ownership to kvmd-otg.

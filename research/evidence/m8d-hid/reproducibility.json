@@ -1,0 +1,14 @@
+{
+  "rootfs.tar.gz": {
+    "first": "8f7488d12e98662655aa84cc9e4d2bf0920d5a5e1dd2917bb4793288c2a7d663",
+    "second": "8f7488d12e98662655aa84cc9e4d2bf0920d5a5e1dd2917bb4793288c2a7d663"
+  },
+  "initramfs.cpio.gz": {
+    "first": "f713623f565859370168234c41ceafd200ea8c69941ff1b78061ed829c97ad2a",
+    "second": "f713623f565859370168234c41ceafd200ea8c69941ff1b78061ed829c97ad2a"
+  },
+  "kvmd-web_4.213-1blikvm3_arm64.deb": {
+    "first": "5fefaed7f8cd7202c775c7d41110e0408a0225d04621d59da29f4a6c65943788",
+    "second": "5fefaed7f8cd7202c775c7d41110e0408a0225d04621d59da29f4a6c65943788"
+  }
+}

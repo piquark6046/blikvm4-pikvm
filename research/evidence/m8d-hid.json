@@ -1,0 +1,45 @@
+{
+  "result": "passed",
+  "milestone": "M8-D",
+  "parent": "ubuntu-26.04.1-kvmd-lan-baseline",
+  "tag": "ubuntu-26.04.1-kvmd-hid-baseline",
+  "image_sha256": "d881f1da38c25976b2446ff62d5039e73246b8c78248ab3c4ea7588ea4c98857",
+  "clean_boots": 5,
+  "api_runs": 25,
+  "browser_stages": 615,
+  "video": [
+    {
+      "path": "qualification/direct-two-client/two-clients",
+      "client": 0,
+      "fps": 29.771825827169728,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/direct-two-client/two-clients",
+      "client": 1,
+      "fps": 29.7713222493248,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/direct-browser-workload/concurrent-video",
+      "client": 0,
+      "fps": 29.779966211820316,
+      "frames": 3574
+    }
+  ],
+  "archive": {
+    "path": "out/kvmd-hid/m8d-evidence.tar.gz",
+    "bridge": "/home/user/blikvm-hid/m8d-evidence.tar.gz",
+    "bytes": 4877067,
+    "sha256": "b4727300566db7334c3c2a8c44489ee44298854c65725e8a969db145abbc77e0",
+    "transfer": "authenticated SFTP, matching SHA-256"
+  },
+  "deferred": [
+    "kvmd MSD control",
+    "GPIO/ATX",
+    "M6",
+    "Janus/H.264",
+    "VNC/IPMI",
+    "final read-only-root"
+  ]
+}

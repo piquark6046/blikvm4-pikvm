@@ -1,0 +1,102 @@
+{
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "sha256": "d6f4235904b0b482e78f449139f539adc4370be923ec16f4a0d8451842501ee8",
+      "size": 6914056
+    },
+    "build-packages.tsv": {
+      "name": "build-packages.tsv",
+      "sha256": "e5e6fee0a7ffe8937391bc11a5fa2dca5ede09a2cf6532749468ed7f3e9d4206",
+      "size": 8081
+    },
+    "effective-config.yaml": {
+      "name": "effective-config.yaml",
+      "sha256": "c540994be008b1b162de811030c26649ad7878445cd735b840ff793081a3012a",
+      "size": 11515
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "d881f1da38c25976b2446ff62d5039e73246b8c78248ab3c4ea7588ea4c98857",
+      "size": 90210608
+    },
+    "kvmd-web_4.213-1blikvm3_arm64.deb": {
+      "name": "kvmd-web_4.213-1blikvm3_arm64.deb",
+      "sha256": "5fefaed7f8cd7202c775c7d41110e0408a0225d04621d59da29f4a6c65943788",
+      "size": 899864
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "fc384a32d86107ad416d2b20fd8557ff895c767a9876be5f6f2e059c0581a7fe",
+      "size": 67386
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "sha256": "de5dd35948904cd197b439138de0fc6b65d5e8a1c7259f05034bdc313013aae0",
+      "size": 8130
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "sha256": "8f7488d12e98662655aa84cc9e4d2bf0920d5a5e1dd2917bb4793288c2a7d663",
+      "size": 90457285
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    }
+  },
+  "automation_sha256": {
+    "build/make-storage-image.py": "df8924412b9461534cf45d70eed67726769dd859cc0f3b8b25df9316afbfab99",
+    "initramfs/gadget-storage": "8a3ff132824b7eda12f9d24285f413993740ee13d533b91fee63947a4fc11af6",
+    "initramfs/hid-absolute-mouse": "db4cafff81ccb0a879c82746145af083b29f4b7836c6702316680a5002780fea",
+    "initramfs/hid-absolute-mouse.report.hex": "5042740020f35caf4499f86d30e6197b01c1574a4009e5ac9df4a9ffcf262a2c",
+    "initramfs/hid-keyboard": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+    "initramfs/hid-relative-mouse": "23f2b379898312bc01cbd9883533527957c3c75592dc58a3e0812aa4db7a8dfa",
+    "initramfs/hid-relative-mouse.report.hex": "79ec371dc11213eb4a8d7dd6ced9c0fe28d8270e8ef862f717b0027498097bdb",
+    "lab/absolutelab.py": "5dbc726ea04dcf52c9ab838c40b41b8a3746bfc94d6d7d2603a2456f6d27333e",
+    "lab/hidlab.py": "728af5708cf711482cc4abccdc83e8ffd6cdfed2849d34dbdb0501640508f7e5",
+    "lab/labctl": "26c82c7dcd311c6d5512c0bed9446b0ff3f6c134dbcedbad48855ab4cf6a5068",
+    "lab/relativelab.py": "4487e8f4eff0ff4d44e90165085354aed46b9b0b53dd85470985121917371a9f",
+    "lab/storagelab.py": "1c8f4aa0a619216117e1e8f923e5b2eb8e81bda1b3d8a53400adaf6ed813e33e",
+    "lab/ubuntu-boot.py": "3026931ab23c82856147812683208c2b1b7a1557eb6576793c17d36f77c86320"
+  },
+  "build_source": {
+    "commit": "67c9d34a46b846b52be36d855b8209b6c6628742",
+    "dirty": true
+  },
+  "command": "boot-ubuntu",
+  "finished_at": "2026-09-07T02:20:45.950649+00:00",
+  "host": {
+    "kernel": "7.0.0-31-generic",
+    "machine": "x86_64",
+    "platform": "Linux"
+  },
+  "phy_workaround": {
+    "address_field": "0x7bf4466c",
+    "applied": true,
+    "control_dt_phy_address": 16,
+    "persistent": false,
+    "reason": "vendor_control_dt_phy_address_mismatch",
+    "runtime_phy_address": 0
+  },
+  "ramdisk_window": {
+    "exclusive_end": "0x55f00000",
+    "limit_bytes": 100663296,
+    "qualification": "M8-A",
+    "start": "0x4ff00000"
+  },
+  "repository_dirty": null,
+  "repository_revision": "unknown",
+  "repository_status": "unavailable",
+  "result": "passed",
+  "root_transport": "ram-rw",
+  "run_id": "20260907T021946Z-unknown-388565",
+  "safety": {
+    "persistent_uboot_environment_written": false
+  },
+  "schema_version": 1,
+  "stage": "ubuntu_network_ssh",
+  "started_at": "2026-09-07T02:19:46.077510+00:00",
+  "target_storage_writes": false
+}

@@ -1,0 +1,15 @@
+kvmd:
+    hid:
+        type: otg
+        keymap: /usr/share/kvmd/keymaps/en-us
+        jiggler:
+            enabled: false
+        keyboard:
+            device: /dev/kvmd-hid-keyboard
+        mouse:
+            device: /dev/kvmd-hid-absolute
+            absolute: true
+            horizontal_wheel: false
+        mouse_alt:
+            device: /dev/kvmd-hid-relative
+            horizontal_wheel: false

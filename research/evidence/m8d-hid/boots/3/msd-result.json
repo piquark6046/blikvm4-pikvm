@@ -1,0 +1,95 @@
+{
+  "result": "passed",
+  "descriptors": [
+    {
+      "interface": 0,
+      "hex": "05010906a101050719e029e71500250175019508810295017508810195057501050819012905910295017503910195067508150025650507190029658100c0",
+      "sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+    },
+    {
+      "interface": 1,
+      "hex": "05010902a1010901a10005091901290315002501950375018102950175058101050109300931150026ff7f751095028102c0c0",
+      "sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+    },
+    {
+      "interface": 2,
+      "hex": "05010902a1010901a100050919012903150025019503750181029501750581010501093009311581257f750895028106c0c0",
+      "sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+    }
+  ],
+  "storage": {
+    "identity": {
+      "dev": "8:0",
+      "ro": "1",
+      "size": "16384",
+      "queue/logical_block_size": "512",
+      "vendor": "BliKVM",
+      "model": "G4 RAM RO",
+      "rev": "0001",
+      "type": "0",
+      "node": "/dev/sda",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0/block/sda",
+      "scsi": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3/host1/target1:0:0/1:0:0:0",
+      "sg": "/dev/sg0",
+      "usb": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3",
+      "interface": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.3"
+    },
+    "expected": {
+      "size": 8388608,
+      "logical_block_size": 512,
+      "sectors": 16384,
+      "filesystem": "vfat",
+      "fat_type": "FAT16",
+      "label": "BLIKVM_G4",
+      "uuid": "4734-0001",
+      "partition_table": null,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "files": {
+        "README.TXT": {
+          "size": 54,
+          "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff"
+        },
+        "PATTERN.BIN": {
+          "size": 1024,
+          "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9"
+        }
+      }
+    },
+    "filesystem": {
+      "DEVNAME": "/dev/sda",
+      "SEC_TYPE": "msdos",
+      "LABEL_FATBOOT": "BLIKVM_G4",
+      "LABEL": "BLIKVM_G4",
+      "UUID": "4734-0001",
+      "VERSION": "FAT16",
+      "FSBLOCKSIZE": "1024",
+      "BLOCK_SIZE": "512",
+      "FSSIZE": "8388608",
+      "TYPE": "vfat",
+      "USAGE": "filesystem"
+    },
+    "image_sha256_before": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "files": {
+      "README.TXT": {
+        "size": 54,
+        "sha256": "59211b2073343cb2384f92cd725e5e7875e2abef83445c41109b249c3244bdff"
+      },
+      "PATTERN.BIN": {
+        "size": 1024,
+        "sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9"
+      }
+    },
+    "filesystem_write": {
+      "errno": 30,
+      "error": "[Errno 30] Read-only file system: '/home/user/blikvm-hid/qualification/direct-boot3/msd/storage-regression-mount/REJECT.TXT'",
+      "rejected": true
+    },
+    "scsi_write": {
+      "returncode": 7,
+      "stdout": "",
+      "stderr": "SCSI Status: Check Condition \n\nSense Information:\nFixed format, current; Sense key: Data Protect\nAdditional sense: Write protected\n\n\n"
+    },
+    "image_sha256_after": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+    "passed": true
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "absolute-return-3",
+    "kind": "absolute"
+  },
+  "details": {
+    "x": 19669,
+    "y": 13106,
+    "tolerance": 1,
+    "view": {
+      "w": 1432,
+      "h": 808,
+      "rw": 1920,
+      "rh": 1080
+    },
+    "geo": {
+      "x": 0,
+      "y": 1,
+      "w": 1432,
+      "h": 806
+    },
+    "box": {
+      "x": 4,
+      "y": 75,
+      "width": 1432,
+      "height": 808.34375
+    },
+    "pointer": [
+      863,
+      398
+    ],
+    "sent": [
+      [
+        3,
+        25,
+        171,
+        230,
+        102
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [
+      [
+        [
+          3,
+          0,
+          19669
+        ],
+        [
+          3,
+          1,
+          13106
+        ]
+      ]
+    ],
+    []
+  ],
+  "raw": [
+    [],
+    [
+      {
+        "seconds": 1788748954,
+        "microseconds": 905562,
+        "type": 3,
+        "code": 0,
+        "value": 19669
+      },
+      {
+        "seconds": 1788748954,
+        "microseconds": 905562,
+        "type": 3,
+        "code": 1,
+        "value": 13106
+      },
+      {
+        "seconds": 1788748954,
+        "microseconds": 905562,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "axes": {
+    "0": {
+      "value": 19669,
+      "min": 0,
+      "max": 32767,
+      "fuzz": 0,
+      "flat": 0,
+      "resolution": 0
+    },
+    "1": {
+      "value": 13106,
+      "min": 0,
+      "max": 32767,
+      "fuzz": 0,
+      "flat": 0,
+      "resolution": 0
+    }
+  },
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

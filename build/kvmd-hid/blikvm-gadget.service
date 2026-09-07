@@ -1,0 +1,17 @@
+[Unit]
+Description=Frozen BliKVM M5 gadget lifecycle
+After=systemd-udev-trigger.service sys-kernel-config.mount
+Requires=sys-kernel-config.mount
+Before=kvmd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/gadget-storage setup
+ExecStart=/usr/bin/hid-keyboard bind
+ExecStart=/usr/bin/udevadm settle --timeout=10
+ExecStart=/usr/lib/kvmd-hid/resolve-hid
+ExecStop=/usr/bin/hid-keyboard unbind
+
+[Install]
+WantedBy=multi-user.target

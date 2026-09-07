@@ -1,0 +1,197 @@
+{
+  "result": "passed",
+  "boots": [
+    {
+      "number": 1,
+      "boot_id": "aa697231-fa0b-437f-8afe-52e655c2990a",
+      "run_id": "20260907T021946Z-unknown-388565",
+      "mapping": [
+        {
+          "role": "keyboard",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+          "dev": "251:0",
+          "sysfs": "/sys/devices/virtual/hidg/hidg0",
+          "node": "/dev/hidg0",
+          "stable": "/dev/kvmd-hid-keyboard",
+          "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+        },
+        {
+          "role": "absolute",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+          "dev": "251:1",
+          "sysfs": "/sys/devices/virtual/hidg/hidg1",
+          "node": "/dev/hidg1",
+          "stable": "/dev/kvmd-hid-absolute",
+          "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+        },
+        {
+          "role": "relative",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+          "dev": "251:2",
+          "sysfs": "/sys/devices/virtual/hidg/hidg2",
+          "node": "/dev/hidg2",
+          "stable": "/dev/kvmd-hid-relative",
+          "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "boot_id": "df78cbc9-5863-4807-b10d-177937568252",
+      "run_id": "20260907T023234Z-unknown-677965",
+      "mapping": [
+        {
+          "role": "keyboard",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+          "dev": "251:0",
+          "sysfs": "/sys/devices/virtual/hidg/hidg0",
+          "node": "/dev/hidg0",
+          "stable": "/dev/kvmd-hid-keyboard",
+          "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+        },
+        {
+          "role": "absolute",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+          "dev": "251:1",
+          "sysfs": "/sys/devices/virtual/hidg/hidg1",
+          "node": "/dev/hidg1",
+          "stable": "/dev/kvmd-hid-absolute",
+          "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+        },
+        {
+          "role": "relative",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+          "dev": "251:2",
+          "sysfs": "/sys/devices/virtual/hidg/hidg2",
+          "node": "/dev/hidg2",
+          "stable": "/dev/kvmd-hid-relative",
+          "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "boot_id": "341b21bd-cca3-4515-86e6-d06f7811d5b4",
+      "run_id": "20260907T023515Z-unknown-398715",
+      "mapping": [
+        {
+          "role": "keyboard",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+          "dev": "251:0",
+          "sysfs": "/sys/devices/virtual/hidg/hidg0",
+          "node": "/dev/hidg0",
+          "stable": "/dev/kvmd-hid-keyboard",
+          "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+        },
+        {
+          "role": "absolute",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+          "dev": "251:1",
+          "sysfs": "/sys/devices/virtual/hidg/hidg1",
+          "node": "/dev/hidg1",
+          "stable": "/dev/kvmd-hid-absolute",
+          "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+        },
+        {
+          "role": "relative",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+          "dev": "251:2",
+          "sysfs": "/sys/devices/virtual/hidg/hidg2",
+          "node": "/dev/hidg2",
+          "stable": "/dev/kvmd-hid-relative",
+          "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "boot_id": "2847dedc-2355-4c3c-9f09-79c039f2ef11",
+      "run_id": "20260907T023757Z-unknown-321825",
+      "mapping": [
+        {
+          "role": "keyboard",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+          "dev": "251:0",
+          "sysfs": "/sys/devices/virtual/hidg/hidg0",
+          "node": "/dev/hidg0",
+          "stable": "/dev/kvmd-hid-keyboard",
+          "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+        },
+        {
+          "role": "absolute",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+          "dev": "251:1",
+          "sysfs": "/sys/devices/virtual/hidg/hidg1",
+          "node": "/dev/hidg1",
+          "stable": "/dev/kvmd-hid-absolute",
+          "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+        },
+        {
+          "role": "relative",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+          "dev": "251:2",
+          "sysfs": "/sys/devices/virtual/hidg/hidg2",
+          "node": "/dev/hidg2",
+          "stable": "/dev/kvmd-hid-relative",
+          "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "boot_id": "c79c8b6b-9ea7-44e3-9412-f3e50b97ceb4",
+      "run_id": "20260907T024038Z-unknown-245573",
+      "mapping": [
+        {
+          "role": "keyboard",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.keyboard",
+          "dev": "251:0",
+          "sysfs": "/sys/devices/virtual/hidg/hidg0",
+          "node": "/dev/hidg0",
+          "stable": "/dev/kvmd-hid-keyboard",
+          "descriptor_sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+        },
+        {
+          "role": "absolute",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.absolute",
+          "dev": "251:1",
+          "sysfs": "/sys/devices/virtual/hidg/hidg1",
+          "node": "/dev/hidg1",
+          "stable": "/dev/kvmd-hid-absolute",
+          "descriptor_sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+        },
+        {
+          "role": "relative",
+          "function": "/sys/kernel/config/usb_gadget/blikvm_m5/functions/hid.relative",
+          "dev": "251:2",
+          "sysfs": "/sys/devices/virtual/hidg/hidg2",
+          "node": "/dev/hidg2",
+          "stable": "/dev/kvmd-hid-relative",
+          "descriptor_sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+        }
+      ]
+    }
+  ],
+  "api_runs": 25,
+  "browser_stages": 615,
+  "video": [
+    {
+      "path": "qualification/direct-two-client/two-clients",
+      "client": 0,
+      "fps": 29.771825827169728,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/direct-two-client/two-clients",
+      "client": 1,
+      "fps": 29.7713222493248,
+      "frames": 3573
+    },
+    {
+      "path": "qualification/direct-browser-workload/concurrent-video",
+      "client": 0,
+      "fps": 29.779966211820316,
+      "frames": 3574
+    }
+  ]
+}

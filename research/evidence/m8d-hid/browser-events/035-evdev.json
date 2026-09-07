@@ -1,0 +1,30 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "focus-keyboard",
+    "kind": "setup"
+  },
+  "details": {
+    "sent": []
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

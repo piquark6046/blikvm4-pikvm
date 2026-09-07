@@ -1,0 +1,158 @@
+{
+  "result": "passed",
+  "checks": [
+    "keyboard",
+    "absolute",
+    "relative-switch-0",
+    "absolute-switch-1",
+    "relative-switch-2",
+    "absolute-switch-3"
+  ],
+  "descriptors": [
+    {
+      "interface": 0,
+      "hex": "05010906a101050719e029e71500250175019508810295017508810195057501050819012905910295017503910195067508150025650507190029658100c0",
+      "sha256": "14bdd69b3b46b4e8a093865c10c75b6a9aaf85f7986f146d87a437e7f7afa476"
+    },
+    {
+      "interface": 1,
+      "hex": "05010902a1010901a10005091901290315002501950375018102950175058101050109300931150026ff7f751095028102c0c0",
+      "sha256": "b17306893223490b3e65f4b99477cad3380bcfcb0d3fa2ee0971fbf41e90111a"
+    },
+    {
+      "interface": 2,
+      "hex": "05010902a1010901a100050919012903150025019503750181029501750581010501093009311581257f750895028106c0c0",
+      "sha256": "58b727cee37368e5916b515aa8cd89e3f0a570e8086d8aa868a154e6d6f87e7e"
+    }
+  ],
+  "usb": {
+    "passed": true,
+    "device": "1-3",
+    "serial": "blikvm-v4-m5-keyboard",
+    "speed": "480",
+    "interfaces": [
+      {
+        "name": "1-3:1.0",
+        "class": "03",
+        "subclass": "01",
+        "protocol": "01",
+        "driver": "usbhid"
+      },
+      {
+        "name": "1-3:1.1",
+        "class": "03",
+        "subclass": "00",
+        "protocol": "00",
+        "driver": "usbhid"
+      },
+      {
+        "name": "1-3:1.2",
+        "class": "03",
+        "subclass": "00",
+        "protocol": "00",
+        "driver": "usbhid"
+      },
+      {
+        "name": "1-3:1.3",
+        "class": "08",
+        "subclass": "06",
+        "protocol": "50",
+        "driver": "usb-storage"
+      }
+    ],
+    "device_number": "125",
+    "identity": {
+      "idVendor": "1d6b",
+      "idProduct": "0106",
+      "bcdDevice": "0100",
+      "manufacturer": "BliKVM",
+      "product": "BliKVM M5 keyboard",
+      "serial": "blikvm-v4-m5-keyboard"
+    },
+    "usb_descriptors_sha256": "733b5003b2c57a865b6366a1e4a8aa6429e9a6d3a827a79b64ba8473b445a52e"
+  },
+  "usb_descriptor_sha256": "733b5003b2c57a865b6366a1e4a8aa6429e9a6d3a827a79b64ba8473b445a52e",
+  "evdev": [
+    {
+      "node": "/dev/input/event10",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.0/0003:1D6B:0106.00F9/input/input258",
+      "interface": 0,
+      "name": "BliKVM BliKVM M5 keyboard",
+      "phys": "usb-0000:00:14.0-3/input0",
+      "uniq": "blikvm-v4-m5-keyboard",
+      "id/vendor": "1d6b",
+      "id/product": "0106",
+      "capabilities/key": "e080ffdf01cfffff fffffffffffffffe"
+    },
+    {
+      "node": "/dev/input/event11",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.1/0003:1D6B:0106.00FA/input/input259",
+      "interface": 1,
+      "name": "BliKVM BliKVM M5 keyboard",
+      "phys": "usb-0000:00:14.0-3/input1",
+      "uniq": "blikvm-v4-m5-keyboard",
+      "id/vendor": "1d6b",
+      "id/product": "0106",
+      "capabilities/key": "70000 0 0 0 0"
+    },
+    {
+      "node": "/dev/input/event12",
+      "sysfs": "/sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3:1.2/0003:1D6B:0106.00FB/input/input260",
+      "interface": 2,
+      "name": "BliKVM BliKVM M5 keyboard",
+      "phys": "usb-0000:00:14.0-3/input2",
+      "uniq": "blikvm-v4-m5-keyboard",
+      "id/vendor": "1d6b",
+      "id/product": "0106",
+      "capabilities/key": "70000 0 0 0 0"
+    }
+  ],
+  "authorization": [
+    {
+      "case": "unauth-keyboard",
+      "status": 401
+    },
+    {
+      "case": "unauth-absolute",
+      "status": 401
+    },
+    {
+      "case": "unauth-relative",
+      "status": 401
+    },
+    {
+      "case": "invalid-credentials",
+      "status": 403
+    },
+    {
+      "case": "logged-out-keyboard",
+      "status": 403
+    },
+    {
+      "case": "logged-out-mouse",
+      "status": 403
+    }
+  ],
+  "excluded_routes": [
+    {
+      "route": "/hid/print",
+      "status": 404
+    },
+    {
+      "route": "/hid/events/send_shortcut",
+      "status": 404
+    },
+    {
+      "route": "/msd/reset",
+      "status": 404
+    },
+    {
+      "route": "/atx/power",
+      "status": 404
+    },
+    {
+      "route": "/gpio/switch",
+      "status": 404
+    }
+  ]
+}

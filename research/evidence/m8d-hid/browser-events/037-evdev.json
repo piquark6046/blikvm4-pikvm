@@ -1,0 +1,87 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "browser-close-cleanup",
+    "kind": "exact"
+  },
+  "details": {
+    "expected": [
+      [
+        [
+          [
+            1,
+            42,
+            0
+          ]
+        ]
+      ],
+      [],
+      []
+    ],
+    "sent": [
+      [
+        1,
+        0,
+        83,
+        104,
+        105,
+        102,
+        116,
+        76,
+        101,
+        102,
+        116
+      ]
+    ]
+  },
+  "actual": [
+    [
+      [
+        [
+          1,
+          42,
+          0
+        ]
+      ]
+    ],
+    [],
+    []
+  ],
+  "raw": [
+    [
+      {
+        "seconds": 1788748955,
+        "microseconds": 931606,
+        "type": 4,
+        "code": 4,
+        "value": 458977
+      },
+      {
+        "seconds": 1788748955,
+        "microseconds": 931606,
+        "type": 1,
+        "code": 42,
+        "value": 0
+      },
+      {
+        "seconds": 1788748955,
+        "microseconds": 931606,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

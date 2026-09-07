@@ -1,0 +1,38 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "video-motion",
+    "kind": "setup"
+  },
+  "details": {
+    "hashes": [
+      "ed8866c92940c57fbbb8795e27a96a66678574d28e91679804aca34baa3cc48f",
+      "3543c8c8a3b0918fc189c9150da703bb4f4227977ac3a70228a64fac047d820d",
+      "e921edae65571e7761460f3afaa9834593fd7690e396f2b05bbf15a6497d21f4",
+      "94bb665c847f81069f5df2adc0f9091260025ef179930959964fe66c80aa6256",
+      "6b03da40b6dc3e500f4c2b66890a465bf95864ff054b8031e520c9e0804cbea0",
+      "2d4bd937b70bc9a132855929973a9f34b87f60980310daeccb3e5df36ae078a7"
+    ],
+    "sent": []
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

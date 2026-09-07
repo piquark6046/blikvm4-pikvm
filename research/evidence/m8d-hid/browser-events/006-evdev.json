@@ -1,0 +1,125 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "absolute-button",
+    "kind": "exact"
+  },
+  "details": {
+    "expected": [
+      [],
+      [
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ]
+      ],
+      []
+    ],
+    "sent": [
+      [
+        2,
+        1,
+        108,
+        101,
+        102,
+        116
+      ],
+      [
+        2,
+        0,
+        108,
+        101,
+        102,
+        116
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ],
+    []
+  ],
+  "raw": [
+    [],
+    [
+      {
+        "seconds": 1788748941,
+        "microseconds": 925161,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748941,
+        "microseconds": 925161,
+        "type": 1,
+        "code": 272,
+        "value": 1
+      },
+      {
+        "seconds": 1788748941,
+        "microseconds": 925161,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748942,
+        "microseconds": 30139,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748942,
+        "microseconds": 30139,
+        "type": 1,
+        "code": 272,
+        "value": 0
+      },
+      {
+        "seconds": 1788748942,
+        "microseconds": 30139,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

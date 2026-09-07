@@ -19,6 +19,7 @@ class Frames:
         self.buffer = bytearray()
         self.headers = None
         self.length = None
+        self.invalid_frame = None
 
     def feed(self, data):
         self.buffer.extend(data)
@@ -52,6 +53,7 @@ class Frames:
             del self.buffer[:self.length]
             self.length = None
             if not frame.startswith(b'\xff\xd8') or not frame.endswith(b'\xff\xd9'):
+                self.invalid_frame = frame
                 raise ValueError('invalid JPEG markers')
             frames.append(frame)
         return frames
@@ -92,6 +94,9 @@ def qualify(command, seconds, output, max_gap=3):
             result['result'] = 'passed'
     except Exception as error:
         result['error'] = str(error)
+        if parser.invalid_frame is not None:
+            (output / 'invalid-frame.jpg').write_bytes(parser.invalid_frame)
+            result['invalid_frame'] = {'bytes':len(parser.invalid_frame),'sha256':hashlib.sha256(parser.invalid_frame).hexdigest(),'first16':parser.invalid_frame[:16].hex(),'last16':parser.invalid_frame[-16:].hex()}
     finally:
         if process is not None:
             process.terminate()

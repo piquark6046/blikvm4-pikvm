@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "nginx-restart",
+    "kind": "restart",
+    "service": "nginx"
+  },
+  "details": {
+    "sent": []
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

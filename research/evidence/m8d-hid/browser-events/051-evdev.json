@@ -1,0 +1,30 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "nginx-reconnect",
+    "kind": "setup"
+  },
+  "details": {
+    "sent": []
+  },
+  "actual": [
+    [],
+    [],
+    []
+  ],
+  "raw": [
+    [],
+    [],
+    []
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

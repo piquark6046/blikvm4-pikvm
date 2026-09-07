@@ -1,0 +1,70 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "relative-0-1",
+    "kind": "relative"
+  },
+  "details": {
+    "moves": [
+      [
+        -8,
+        0
+      ]
+    ],
+    "requested": [
+      -8,
+      0
+    ],
+    "sent": [
+      [
+        4,
+        1,
+        248,
+        0
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [],
+    [
+      [
+        [
+          2,
+          0,
+          -8
+        ]
+      ]
+    ]
+  ],
+  "raw": [
+    [],
+    [],
+    [
+      {
+        "seconds": 1788748944,
+        "microseconds": 838258,
+        "type": 2,
+        "code": 0,
+        "value": -8
+      },
+      {
+        "seconds": 1788748944,
+        "microseconds": 838258,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ]
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

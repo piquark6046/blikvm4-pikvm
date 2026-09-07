@@ -1,0 +1,125 @@
+{
+  "result": "passed",
+  "spec": {
+    "name": "relative-button-0",
+    "kind": "exact"
+  },
+  "details": {
+    "expected": [
+      [],
+      [],
+      [
+        [
+          [
+            1,
+            272,
+            1
+          ]
+        ],
+        [
+          [
+            1,
+            272,
+            0
+          ]
+        ]
+      ]
+    ],
+    "sent": [
+      [
+        2,
+        1,
+        108,
+        101,
+        102,
+        116
+      ],
+      [
+        2,
+        0,
+        108,
+        101,
+        102,
+        116
+      ]
+    ]
+  },
+  "actual": [
+    [],
+    [],
+    [
+      [
+        [
+          1,
+          272,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          272,
+          0
+        ]
+      ]
+    ]
+  ],
+  "raw": [
+    [],
+    [],
+    [
+      {
+        "seconds": 1788748946,
+        "microseconds": 805296,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 805296,
+        "type": 1,
+        "code": 272,
+        "value": 1
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 805296,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 908323,
+        "type": 4,
+        "code": 4,
+        "value": 589825
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 908323,
+        "type": 1,
+        "code": 272,
+        "value": 0
+      },
+      {
+        "seconds": 1788748946,
+        "microseconds": 908323,
+        "type": 0,
+        "code": 0,
+        "value": 0
+      }
+    ]
+  ],
+  "before": [
+    [],
+    [],
+    []
+  ],
+  "held": [
+    [],
+    [],
+    []
+  ]
+}

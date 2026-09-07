@@ -1,0 +1,1161 @@
+{
+  "result": "passed",
+  "steps": [
+    {
+      "name": "login-and-open",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "keyboard",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              42,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              30,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              30,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              30,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              30,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              42,
+              0
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": [
+        [
+          1,
+          1,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ],
+        [
+          0
+        ],
+        [
+          1,
+          0,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ],
+        [
+          1,
+          1,
+          75,
+          101,
+          121,
+          65
+        ],
+        [
+          1,
+          0,
+          75,
+          101,
+          121,
+          65
+        ],
+        [
+          1,
+          1,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ],
+        [
+          1,
+          1,
+          75,
+          101,
+          121,
+          65
+        ],
+        [
+          1,
+          0,
+          75,
+          101,
+          121,
+          65
+        ],
+        [
+          1,
+          0,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "absolute-near-min",
+      "kind": "absolute",
+      "x": 663,
+      "y": 651,
+      "tolerance": 1,
+      "view": {
+        "w": 1432,
+        "h": 808,
+        "rw": 1920,
+        "rh": 1080
+      },
+      "geo": {
+        "x": 0,
+        "y": 1,
+        "w": 1432,
+        "h": 806
+      },
+      "box": {
+        "x": 4,
+        "y": 75,
+        "width": 1432,
+        "height": 808.34375
+      },
+      "pointer": [
+        33,
+        92
+      ],
+      "sent": [
+        [
+          3,
+          133,
+          48,
+          133,
+          23
+        ]
+      ]
+    },
+    {
+      "name": "absolute-center",
+      "kind": "absolute",
+      "x": 16394,
+      "y": 16403,
+      "tolerance": 1,
+      "view": {
+        "w": 1432,
+        "h": 808,
+        "rw": 1920,
+        "rh": 1080
+      },
+      "geo": {
+        "x": 0,
+        "y": 1,
+        "w": 1432,
+        "h": 806
+      },
+      "box": {
+        "x": 4,
+        "y": 75,
+        "width": 1432,
+        "height": 808.34375
+      },
+      "pointer": [
+        720,
+        479
+      ],
+      "sent": [
+        [
+          3,
+          0,
+          22,
+          0,
+          40
+        ]
+      ]
+    },
+    {
+      "name": "absolute-near-max",
+      "kind": "absolute",
+      "x": 32103,
+      "y": 32115,
+      "tolerance": 1,
+      "view": {
+        "w": 1432,
+        "h": 808,
+        "rw": 1920,
+        "rh": 1080
+      },
+      "geo": {
+        "x": 0,
+        "y": 1,
+        "w": 1432,
+        "h": 806
+      },
+      "box": {
+        "x": 4,
+        "y": 75,
+        "width": 1432,
+        "height": 808.34375
+      },
+      "pointer": [
+        1406,
+        865
+      ],
+      "sent": [
+        [
+          3,
+          122,
+          207,
+          122,
+          232
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "absolute-button",
+      "kind": "exact",
+      "expected": [
+        [],
+        [
+          [
+            [
+              1,
+              272,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              272,
+              0
+            ]
+          ]
+        ],
+        []
+      ],
+      "sent": [
+        [
+          2,
+          1,
+          108,
+          101,
+          102,
+          116
+        ],
+        [
+          2,
+          0,
+          108,
+          101,
+          102,
+          116
+        ]
+      ]
+    },
+    {
+      "name": "prepare-mode-0",
+      "kind": "setup",
+      "sent": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mode-usb_rel-0",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        []
+      ],
+      "mode": "usb_rel",
+      "sent": []
+    },
+    {
+      "name": "close-menu-0",
+      "kind": "setup",
+      "sent": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "pointer-lock-0",
+      "kind": "setup",
+      "pointerLock": true,
+      "sent": [
+        [
+          4,
+          1,
+          71,
+          24
+        ]
+      ]
+    },
+    {
+      "name": "relative-0-0",
+      "kind": "relative",
+      "moves": [
+        [
+          8,
+          0
+        ]
+      ],
+      "requested": [
+        8,
+        0
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          8,
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-0-1",
+      "kind": "relative",
+      "moves": [
+        [
+          -8,
+          0
+        ]
+      ],
+      "requested": [
+        -8,
+        0
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          248,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-0-2",
+      "kind": "relative",
+      "moves": [
+        [
+          0,
+          6
+        ]
+      ],
+      "requested": [
+        0,
+        6
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          0,
+          6
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-0-3",
+      "kind": "relative",
+      "moves": [
+        [
+          0,
+          -6
+        ]
+      ],
+      "requested": [
+        0,
+        -6
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          0,
+          250
+        ]
+      ]
+    },
+    {
+      "name": "relative-0-4",
+      "kind": "relative",
+      "moves": [
+        [
+          5,
+          -4
+        ]
+      ],
+      "requested": [
+        5,
+        -4
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          5,
+          252
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-button-0",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        [
+          [
+            [
+              1,
+              272,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              272,
+              0
+            ]
+          ]
+        ]
+      ],
+      "sent": [
+        [
+          2,
+          1,
+          108,
+          101,
+          102,
+          116
+        ],
+        [
+          2,
+          0,
+          108,
+          101,
+          102,
+          116
+        ]
+      ]
+    },
+    {
+      "name": "prepare-mode-1",
+      "kind": "setup",
+      "sent": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "mode-usb-1",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        []
+      ],
+      "mode": "usb",
+      "sent": []
+    },
+    {
+      "name": "close-menu-1",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "absolute-return-1",
+      "kind": "absolute",
+      "x": 13097,
+      "y": 19660,
+      "tolerance": 1,
+      "view": {
+        "w": 1432,
+        "h": 808,
+        "rw": 1920,
+        "rh": 1080
+      },
+      "geo": {
+        "x": 0,
+        "y": 1,
+        "w": 1432,
+        "h": 806
+      },
+      "box": {
+        "x": 4,
+        "y": 75,
+        "width": 1432,
+        "height": 808.34375
+      },
+      "pointer": [
+        576,
+        559
+      ],
+      "sent": [
+        [
+          3,
+          230,
+          84,
+          25,
+          153
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "prepare-mode-2",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "mode-usb_rel-2",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        []
+      ],
+      "mode": "usb_rel",
+      "sent": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "close-menu-2",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "pointer-lock-2",
+      "kind": "setup",
+      "pointerLock": true,
+      "sent": [
+        [
+          4,
+          1,
+          71,
+          24
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-2-0",
+      "kind": "relative",
+      "moves": [
+        [
+          8,
+          0
+        ]
+      ],
+      "requested": [
+        8,
+        0
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-2-1",
+      "kind": "relative",
+      "moves": [
+        [
+          -8,
+          0
+        ]
+      ],
+      "requested": [
+        -8,
+        0
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          248,
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-2-2",
+      "kind": "relative",
+      "moves": [
+        [
+          0,
+          6
+        ]
+      ],
+      "requested": [
+        0,
+        6
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          0,
+          6
+        ]
+      ]
+    },
+    {
+      "name": "relative-2-3",
+      "kind": "relative",
+      "moves": [
+        [
+          0,
+          -6
+        ]
+      ],
+      "requested": [
+        0,
+        -6
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          0,
+          250
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "relative-2-4",
+      "kind": "relative",
+      "moves": [
+        [
+          5,
+          -4
+        ]
+      ],
+      "requested": [
+        5,
+        -4
+      ],
+      "sent": [
+        [
+          4,
+          1,
+          5,
+          252
+        ]
+      ]
+    },
+    {
+      "name": "relative-button-2",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        [
+          [
+            [
+              1,
+              272,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              272,
+              0
+            ]
+          ]
+        ]
+      ],
+      "sent": [
+        [
+          2,
+          1,
+          108,
+          101,
+          102,
+          116
+        ],
+        [
+          2,
+          0,
+          108,
+          101,
+          102,
+          116
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "prepare-mode-3",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "mode-usb-3",
+      "kind": "exact",
+      "expected": [
+        [],
+        [],
+        []
+      ],
+      "mode": "usb",
+      "sent": []
+    },
+    {
+      "name": "close-menu-3",
+      "kind": "setup",
+      "sent": [
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "absolute-return-3",
+      "kind": "absolute",
+      "x": 19669,
+      "y": 13106,
+      "tolerance": 1,
+      "view": {
+        "w": 1432,
+        "h": 808,
+        "rw": 1920,
+        "rh": 1080
+      },
+      "geo": {
+        "x": 0,
+        "y": 1,
+        "w": 1432,
+        "h": 806
+      },
+      "box": {
+        "x": 4,
+        "y": 75,
+        "width": 1432,
+        "height": 808.34375
+      },
+      "pointer": [
+        863,
+        398
+      ],
+      "sent": [
+        [
+          3,
+          25,
+          171,
+          230,
+          102
+        ]
+      ]
+    },
+    {
+      "name": "focus-keyboard",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "browser-held-shift",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": [
+        [
+          1,
+          1,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "name": "browser-close-cleanup",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              0
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": [
+        [
+          1,
+          0,
+          83,
+          104,
+          105,
+          102,
+          116,
+          76,
+          101,
+          102,
+          116
+        ]
+      ]
+    },
+    {
+      "name": "reopen",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "api-websocket-open",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "websocket-held-shift",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": []
+    },
+    {
+      "name": "websocket-close-cleanup",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              0
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": []
+    },
+    {
+      "name": "revocation-socket-open",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "logout-held-input",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              272,
+              1
+            ]
+          ]
+        ],
+        []
+      ],
+      "sent": []
+    },
+    {
+      "name": "logout-cleanup-and-stale-socket",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              0
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              272,
+              0
+            ]
+          ]
+        ],
+        []
+      ],
+      "staleHttp": 403,
+      "staleSocket": 3,
+      "sent": []
+    },
+    {
+      "name": "reauth",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "restart-held-input",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              42,
+              1
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              1,
+              272,
+              1
+            ]
+          ]
+        ],
+        []
+      ],
+      "sent": []
+    },
+    {
+      "name": "kvmd-restart-cleanup",
+      "kind": "restart",
+      "readiness": [
+        502,
+        502,
+        502,
+        403
+      ],
+      "sent": []
+    },
+    {
+      "name": "restart-reauth",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "keyboard-after-restart",
+      "kind": "exact",
+      "expected": [
+        [
+          [
+            [
+              1,
+              30,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              30,
+              0
+            ]
+          ]
+        ],
+        [],
+        []
+      ],
+      "sent": []
+    },
+    {
+      "name": "nginx-restart",
+      "kind": "restart",
+      "sent": []
+    },
+    {
+      "name": "nginx-reconnect",
+      "kind": "setup",
+      "sent": []
+    },
+    {
+      "name": "video-motion",
+      "kind": "setup",
+      "hashes": [
+        "ce0054fa189e27c14eca2f968f26f2672f8fbd5d451f90f893f2bce643104d56",
+        "8c6476eb7e63bb9ce6cab113bff9e902f015c239668a3e90cc7b9bcffaff0b66",
+        "97fc04b3794f0929277eb7f7c395cdd32b45d8e7c6308d0863e88437eed9f37f",
+        "c87034c53d4bcecb60cc1f02b21a88660e63fb2c5b5d5aa7b499b9cbb07241d3",
+        "a544d22b431bd30ad0500aa4aaaffd0f12867d7ba31cfd75c492361445127fb1",
+        "b8691912e26af2723efa084526d06437d092b7432fa9f4bfb95183c8141a57e4"
+      ],
+      "sent": []
+    },
+    {
+      "name": "final-close",
+      "kind": "setup",
+      "sent": []
+    }
+  ],
+  "errors": [
+    {
+      "status": 502,
+      "path": "/api/auth/check"
+    },
+    {
+      "status": 502,
+      "path": "/api/auth/check"
+    },
+    {
+      "status": 502,
+      "path": "/api/auth/check"
+    },
+    {
+      "status": 502,
+      "path": "/api/auth/check"
+    },
+    {
+      "status": 403,
+      "path": "/api/auth/check"
+    }
+  ],
+  "version": "145.0.7632.6"
+}
