@@ -1,0 +1,42 @@
+{
+  "source": {
+    "commit": "aa8e6a3c55ef6362b53a3d44c9e4f171f2a6a677",
+    "dirty": true
+  },
+  "parent": "ubuntu-26.04.1-kvmd-web-baseline",
+  "acceptance": {
+    "m8c": "not_qualified"
+  },
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "size": 6914056,
+      "sha256": "d6f4235904b0b482e78f449139f539adc4370be923ec16f4a0d8451842501ee8"
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "size": 89032439,
+      "sha256": "2abe4b663aa016501460c40443b52b62d605da6c0599651870bd66f44d98a8da"
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "size": 67386,
+      "sha256": "fc384a32d86107ad416d2b20fd8557ff895c767a9876be5f6f2e059c0581a7fe"
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "size": 8057,
+      "sha256": "15462fbb12ff90cf7ed570e54381ece213b29a32b0b8224f1b3a9741288e2b22"
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "size": 89283882,
+      "sha256": "c79135fa661968323137d2618f035988d20d37c978f9517c504199d15c616ad1"
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    }
+  }
+}

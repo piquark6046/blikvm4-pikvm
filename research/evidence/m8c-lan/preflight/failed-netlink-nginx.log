@@ -1,0 +1,879 @@
+Jul 27 20:44:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:08 blikvm-m7 nginx[192]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:08 blikvm-m7 nginx[192]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:08 blikvm-m7 nft[193]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:08 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:08 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:08 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:10 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 1.
+Jul 27 20:44:10 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:11 blikvm-m7 nginx[244]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:11 blikvm-m7 nginx[244]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:11 blikvm-m7 nft[254]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:11 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:11 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:11 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:13 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 2.
+Jul 27 20:44:13 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:13 blikvm-m7 nginx[348]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:13 blikvm-m7 nginx[348]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:13 blikvm-m7 nft[351]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:13 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:13 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:13 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:16 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 3.
+Jul 27 20:44:16 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:16 blikvm-m7 nginx[402]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:16 blikvm-m7 nginx[402]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:16 blikvm-m7 nft[405]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:16 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:16 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:16 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:18 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 4.
+Jul 27 20:44:18 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:18 blikvm-m7 nginx[409]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:18 blikvm-m7 nginx[409]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:18 blikvm-m7 nft[411]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:18 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:18 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:18 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:20 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 5.
+Jul 27 20:44:20 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:21 blikvm-m7 nginx[473]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:21 blikvm-m7 nginx[473]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:21 blikvm-m7 nft[487]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:21 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:21 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:21 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:23 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 6.
+Jul 27 20:44:23 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:23 blikvm-m7 nginx[511]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:23 blikvm-m7 nginx[511]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:23 blikvm-m7 nft[513]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:23 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:23 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:23 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:25 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 7.
+Jul 27 20:44:26 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:26 blikvm-m7 nginx[517]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:26 blikvm-m7 nginx[517]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:26 blikvm-m7 nft[518]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:26 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:26 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:26 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:28 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 8.
+Jul 27 20:44:28 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:28 blikvm-m7 nginx[523]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:28 blikvm-m7 nginx[523]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:28 blikvm-m7 nft[525]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:28 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:28 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:28 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:31 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 9.
+Jul 27 20:44:31 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:31 blikvm-m7 nginx[529]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:31 blikvm-m7 nginx[529]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:31 blikvm-m7 nft[531]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:31 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:31 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:31 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:33 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 10.
+Jul 27 20:44:33 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:33 blikvm-m7 nginx[535]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:33 blikvm-m7 nginx[535]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:33 blikvm-m7 nft[537]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:33 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:33 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:33 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:36 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 11.
+Jul 27 20:44:36 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:36 blikvm-m7 nginx[541]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:36 blikvm-m7 nginx[541]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:36 blikvm-m7 nft[543]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:36 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:36 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:36 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:38 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 12.
+Jul 27 20:44:38 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:38 blikvm-m7 nginx[547]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:38 blikvm-m7 nginx[547]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:38 blikvm-m7 nft[549]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:38 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:38 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:38 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:41 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 13.
+Jul 27 20:44:41 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:41 blikvm-m7 nginx[553]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:41 blikvm-m7 nginx[553]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:41 blikvm-m7 nft[555]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:41 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:41 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:41 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:43 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 14.
+Jul 27 20:44:43 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:43 blikvm-m7 nginx[559]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:43 blikvm-m7 nginx[559]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:43 blikvm-m7 nft[561]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:43 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:43 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:43 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:46 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 15.
+Jul 27 20:44:46 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:46 blikvm-m7 nginx[565]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:46 blikvm-m7 nginx[565]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:46 blikvm-m7 nft[566]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:46 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:46 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:46 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:48 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 16.
+Jul 27 20:44:48 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:48 blikvm-m7 nginx[571]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:48 blikvm-m7 nginx[571]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:48 blikvm-m7 nft[573]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:48 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:48 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:48 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:51 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 17.
+Jul 27 20:44:51 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:51 blikvm-m7 nginx[577]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:51 blikvm-m7 nginx[577]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:51 blikvm-m7 nft[579]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:51 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:51 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:51 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:53 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 18.
+Jul 27 20:44:53 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:53 blikvm-m7 nginx[583]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:53 blikvm-m7 nginx[583]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:53 blikvm-m7 nft[585]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:53 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:53 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:53 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:56 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 19.
+Jul 27 20:44:56 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:56 blikvm-m7 nginx[589]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:56 blikvm-m7 nginx[589]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:56 blikvm-m7 nft[591]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:56 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:56 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:56 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:44:58 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 20.
+Jul 27 20:44:58 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:58 blikvm-m7 nginx[595]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:58 blikvm-m7 nginx[595]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:58 blikvm-m7 nft[597]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:44:58 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:44:58 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:44:58 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:01 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 21.
+Jul 27 20:45:01 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:01 blikvm-m7 nginx[601]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:01 blikvm-m7 nginx[601]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:01 blikvm-m7 nft[603]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:01 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:01 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:01 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:03 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 22.
+Jul 27 20:45:03 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:03 blikvm-m7 nginx[607]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:03 blikvm-m7 nginx[607]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:03 blikvm-m7 nft[609]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:03 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:03 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:03 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:06 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 23.
+Jul 27 20:45:06 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:06 blikvm-m7 nginx[613]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:06 blikvm-m7 nginx[613]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:06 blikvm-m7 nft[614]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:06 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:06 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:06 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:08 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 24.
+Jul 27 20:45:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:08 blikvm-m7 nginx[619]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:08 blikvm-m7 nginx[619]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:08 blikvm-m7 nft[621]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:08 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:08 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:08 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:11 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 25.
+Jul 27 20:45:11 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:11 blikvm-m7 nginx[625]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:11 blikvm-m7 nginx[625]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:11 blikvm-m7 nft[627]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:11 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:11 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:11 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:13 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 26.
+Jul 27 20:45:13 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:13 blikvm-m7 nginx[631]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:13 blikvm-m7 nginx[631]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:13 blikvm-m7 nft[633]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:13 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:13 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:13 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:16 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 27.
+Jul 27 20:45:16 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:16 blikvm-m7 nginx[637]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:16 blikvm-m7 nginx[637]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:16 blikvm-m7 nft[638]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:16 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:16 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:16 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:18 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 28.
+Jul 27 20:45:18 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:18 blikvm-m7 nginx[643]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:18 blikvm-m7 nginx[643]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:18 blikvm-m7 nft[645]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:18 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:18 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:18 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:21 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 29.
+Jul 27 20:45:21 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:21 blikvm-m7 nginx[649]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:21 blikvm-m7 nginx[649]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:21 blikvm-m7 nft[651]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:21 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:21 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:21 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:23 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 30.
+Jul 27 20:45:23 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:23 blikvm-m7 nginx[655]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:23 blikvm-m7 nginx[655]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:23 blikvm-m7 nft[657]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:23 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:23 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:23 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:26 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 31.
+Jul 27 20:45:26 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:26 blikvm-m7 nginx[661]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:26 blikvm-m7 nginx[661]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:26 blikvm-m7 nft[663]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:26 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:26 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:26 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:28 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 32.
+Jul 27 20:45:28 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:28 blikvm-m7 nginx[667]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:28 blikvm-m7 nginx[667]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:28 blikvm-m7 nft[669]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:28 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:28 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:28 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:31 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 33.
+Jul 27 20:45:31 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:31 blikvm-m7 nginx[673]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:31 blikvm-m7 nginx[673]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:31 blikvm-m7 nft[674]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:31 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:31 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:31 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:33 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 34.
+Jul 27 20:45:33 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:33 blikvm-m7 nginx[696]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:33 blikvm-m7 nginx[696]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:33 blikvm-m7 nft[698]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:33 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:33 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:33 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:36 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 35.
+Jul 27 20:45:36 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:36 blikvm-m7 nginx[702]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:36 blikvm-m7 nginx[702]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:36 blikvm-m7 nft[704]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:36 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:36 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:36 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:38 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 36.
+Jul 27 20:45:38 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:38 blikvm-m7 nginx[708]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:38 blikvm-m7 nginx[708]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:38 blikvm-m7 nft[710]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:38 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:38 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:38 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:41 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 37.
+Jul 27 20:45:41 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:41 blikvm-m7 nginx[714]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:41 blikvm-m7 nginx[714]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:41 blikvm-m7 nft[716]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:41 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:41 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:41 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:43 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 38.
+Jul 27 20:45:43 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:43 blikvm-m7 nginx[720]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:43 blikvm-m7 nginx[720]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:43 blikvm-m7 nft[722]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:43 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:43 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:43 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:46 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 39.
+Jul 27 20:45:46 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:46 blikvm-m7 nginx[726]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:46 blikvm-m7 nginx[726]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:46 blikvm-m7 nft[728]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:46 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:46 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:46 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:48 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 40.
+Jul 27 20:45:48 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:48 blikvm-m7 nginx[732]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:48 blikvm-m7 nginx[732]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:48 blikvm-m7 nft[734]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:48 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:48 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:48 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:51 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 41.
+Jul 27 20:45:51 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:51 blikvm-m7 nginx[738]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:51 blikvm-m7 nginx[738]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:51 blikvm-m7 nft[740]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:51 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:51 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:51 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:53 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 42.
+Jul 27 20:45:53 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:53 blikvm-m7 nginx[744]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:53 blikvm-m7 nginx[744]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:53 blikvm-m7 nft[746]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:53 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:53 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:53 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:56 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 43.
+Jul 27 20:45:56 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:56 blikvm-m7 nginx[750]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:56 blikvm-m7 nginx[750]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:56 blikvm-m7 nft[752]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:56 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:56 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:56 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:45:58 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 44.
+Jul 27 20:45:58 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:45:58 blikvm-m7 nginx[756]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:45:58 blikvm-m7 nginx[756]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:45:58 blikvm-m7 nft[758]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:45:58 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:45:58 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:45:58 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:01 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 45.
+Jul 27 20:46:01 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:01 blikvm-m7 nginx[762]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:01 blikvm-m7 nginx[762]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:01 blikvm-m7 nft[764]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:01 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:01 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:01 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:03 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 46.
+Jul 27 20:46:03 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:03 blikvm-m7 nginx[768]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:03 blikvm-m7 nginx[768]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:03 blikvm-m7 nft[770]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:03 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:03 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:03 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:06 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 47.
+Jul 27 20:46:06 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:06 blikvm-m7 nginx[774]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:06 blikvm-m7 nginx[774]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:06 blikvm-m7 nft[776]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:06 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:06 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:06 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:08 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 48.
+Jul 27 20:46:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:08 blikvm-m7 nginx[780]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:08 blikvm-m7 nginx[780]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:08 blikvm-m7 nft[782]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:08 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:08 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:08 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:11 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 49.
+Jul 27 20:46:11 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:11 blikvm-m7 nginx[786]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:11 blikvm-m7 nginx[786]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:11 blikvm-m7 nft[788]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:11 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:11 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:11 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:13 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 50.
+Jul 27 20:46:13 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:13 blikvm-m7 nginx[792]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:13 blikvm-m7 nginx[792]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:13 blikvm-m7 nft[794]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:13 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:13 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:13 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:16 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 51.
+Jul 27 20:46:16 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:16 blikvm-m7 nginx[798]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:16 blikvm-m7 nginx[798]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:16 blikvm-m7 nft[800]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:16 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:16 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:16 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:18 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 52.
+Jul 27 20:46:18 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:18 blikvm-m7 nginx[804]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:18 blikvm-m7 nginx[804]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:18 blikvm-m7 nft[806]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:18 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:18 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:18 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:21 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 53.
+Jul 27 20:46:21 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:21 blikvm-m7 nginx[810]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:21 blikvm-m7 nginx[810]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:21 blikvm-m7 nft[812]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:21 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:21 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:21 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:23 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 54.
+Jul 27 20:46:23 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:23 blikvm-m7 nginx[816]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:23 blikvm-m7 nginx[816]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:23 blikvm-m7 nft[818]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:23 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:23 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:23 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:26 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 55.
+Jul 27 20:46:26 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:26 blikvm-m7 nginx[822]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:26 blikvm-m7 nginx[822]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:26 blikvm-m7 nft[824]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:26 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:26 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:26 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:28 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 56.
+Jul 27 20:46:28 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:28 blikvm-m7 nginx[828]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:28 blikvm-m7 nginx[828]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:28 blikvm-m7 nft[830]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:28 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:28 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:28 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:31 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 57.
+Jul 27 20:46:31 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:31 blikvm-m7 nginx[834]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:31 blikvm-m7 nginx[834]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:31 blikvm-m7 nft[836]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:31 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:31 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:31 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:33 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 58.
+Jul 27 20:46:33 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:33 blikvm-m7 nginx[840]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:33 blikvm-m7 nginx[840]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:33 blikvm-m7 nft[842]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:33 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:33 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:33 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:36 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 59.
+Jul 27 20:46:36 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:36 blikvm-m7 nginx[846]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:36 blikvm-m7 nginx[846]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:36 blikvm-m7 nft[848]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:36 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:36 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:36 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:38 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 60.
+Jul 27 20:46:38 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:38 blikvm-m7 nginx[852]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:38 blikvm-m7 nginx[852]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:38 blikvm-m7 nft[854]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:38 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:38 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:38 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:41 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 61.
+Jul 27 20:46:41 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:41 blikvm-m7 nginx[858]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:41 blikvm-m7 nginx[858]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:41 blikvm-m7 nft[860]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:41 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:41 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:41 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:43 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 62.
+Jul 27 20:46:43 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:43 blikvm-m7 nginx[864]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:43 blikvm-m7 nginx[864]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:43 blikvm-m7 nft[866]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:43 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:43 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:43 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:46 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 63.
+Jul 27 20:46:46 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:46 blikvm-m7 nginx[870]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:46 blikvm-m7 nginx[870]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:46 blikvm-m7 nft[872]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:46 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:46 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:46 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:48 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 64.
+Jul 27 20:46:48 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:48 blikvm-m7 nginx[876]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:48 blikvm-m7 nginx[876]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:48 blikvm-m7 nft[878]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:48 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:48 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:48 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:51 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 65.
+Jul 27 20:46:51 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:51 blikvm-m7 nginx[882]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:51 blikvm-m7 nginx[882]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:51 blikvm-m7 nft[884]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:51 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:51 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:51 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:53 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 66.
+Jul 27 20:46:53 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:53 blikvm-m7 nginx[888]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:53 blikvm-m7 nginx[888]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:53 blikvm-m7 nft[890]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:53 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:53 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:53 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:56 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 67.
+Jul 27 20:46:56 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:56 blikvm-m7 nginx[894]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:56 blikvm-m7 nginx[894]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:56 blikvm-m7 nft[897]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:56 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:56 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:56 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:46:58 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 68.
+Jul 27 20:46:58 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:46:58 blikvm-m7 nginx[901]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:46:58 blikvm-m7 nginx[901]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:46:58 blikvm-m7 nft[903]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:46:58 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:46:58 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:46:58 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:01 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 69.
+Jul 27 20:47:01 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:01 blikvm-m7 nginx[907]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:01 blikvm-m7 nginx[907]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:01 blikvm-m7 nft[909]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:01 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:01 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:01 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:03 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 70.
+Jul 27 20:47:03 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:03 blikvm-m7 nginx[913]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:03 blikvm-m7 nginx[913]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:03 blikvm-m7 nft[915]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:03 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:03 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:03 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:06 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 71.
+Jul 27 20:47:06 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:06 blikvm-m7 nginx[919]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:06 blikvm-m7 nginx[919]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:06 blikvm-m7 nft[921]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:06 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:06 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:06 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:08 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 72.
+Jul 27 20:47:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:08 blikvm-m7 nginx[953]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:08 blikvm-m7 nginx[953]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:08 blikvm-m7 nft[955]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:08 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:08 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:08 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:11 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 73.
+Jul 27 20:47:11 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:11 blikvm-m7 nginx[959]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:11 blikvm-m7 nginx[959]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:11 blikvm-m7 nft[961]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:11 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:11 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:11 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:13 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 74.
+Jul 27 20:47:13 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:13 blikvm-m7 nginx[965]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:13 blikvm-m7 nginx[965]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:13 blikvm-m7 nft[967]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:13 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:13 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:13 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:16 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 75.
+Jul 27 20:47:16 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:16 blikvm-m7 nginx[971]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:16 blikvm-m7 nginx[971]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:16 blikvm-m7 nft[973]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:16 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:16 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:16 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:18 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 76.
+Jul 27 20:47:18 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:18 blikvm-m7 nginx[977]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:18 blikvm-m7 nginx[977]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:18 blikvm-m7 nft[979]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:18 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:18 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:18 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:21 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 77.
+Jul 27 20:47:21 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:21 blikvm-m7 nginx[983]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:21 blikvm-m7 nginx[983]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:21 blikvm-m7 nft[985]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:21 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:21 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:21 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:23 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 78.
+Jul 27 20:47:23 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:23 blikvm-m7 nginx[989]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:23 blikvm-m7 nginx[989]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:23 blikvm-m7 nft[991]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:23 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:23 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:23 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:26 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 79.
+Jul 27 20:47:26 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:26 blikvm-m7 nginx[995]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:26 blikvm-m7 nginx[995]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:26 blikvm-m7 nft[997]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:26 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:26 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:26 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:28 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 80.
+Jul 27 20:47:28 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:28 blikvm-m7 nginx[1001]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:28 blikvm-m7 nginx[1001]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:28 blikvm-m7 nft[1003]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:28 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:28 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:28 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:31 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 81.
+Jul 27 20:47:31 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:31 blikvm-m7 nginx[1007]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:31 blikvm-m7 nginx[1007]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:31 blikvm-m7 nft[1009]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:31 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:31 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:31 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:33 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 82.
+Jul 27 20:47:33 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:33 blikvm-m7 nginx[1013]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:33 blikvm-m7 nginx[1013]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:33 blikvm-m7 nft[1015]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:33 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:33 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:33 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:36 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 83.
+Jul 27 20:47:36 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:36 blikvm-m7 nginx[1019]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:36 blikvm-m7 nginx[1019]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:36 blikvm-m7 nft[1021]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:36 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:36 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:36 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:38 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 84.
+Jul 27 20:47:38 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:38 blikvm-m7 nginx[1025]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:38 blikvm-m7 nginx[1025]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:38 blikvm-m7 nft[1027]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:38 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:38 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:38 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:41 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 85.
+Jul 27 20:47:41 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:41 blikvm-m7 nginx[1031]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:41 blikvm-m7 nginx[1031]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:41 blikvm-m7 nft[1033]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:41 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:41 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:41 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:43 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 86.
+Jul 27 20:47:43 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:43 blikvm-m7 nginx[1037]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:43 blikvm-m7 nginx[1037]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:43 blikvm-m7 nft[1039]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:43 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:43 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:43 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:46 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 87.
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:46 blikvm-m7 nginx[1043]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:46 blikvm-m7 nginx[1043]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:46 blikvm-m7 nft[1045]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:46 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:46 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:46 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:48 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 88.
+Jul 27 20:47:48 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:48 blikvm-m7 nginx[1049]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:48 blikvm-m7 nginx[1049]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:48 blikvm-m7 nft[1051]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:48 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:48 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:48 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:51 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 89.
+Jul 27 20:47:51 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:51 blikvm-m7 nginx[1055]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:51 blikvm-m7 nginx[1055]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:51 blikvm-m7 nft[1057]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:51 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:51 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:51 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:53 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 90.
+Jul 27 20:47:53 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:53 blikvm-m7 nginx[1061]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:53 blikvm-m7 nginx[1061]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:53 blikvm-m7 nft[1063]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:53 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:53 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:53 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:56 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 91.
+Jul 27 20:47:56 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:56 blikvm-m7 nginx[1067]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:56 blikvm-m7 nginx[1067]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:56 blikvm-m7 nft[1069]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:56 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:56 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:56 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:47:58 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 92.
+Jul 27 20:47:58 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:47:58 blikvm-m7 nginx[1073]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:47:58 blikvm-m7 nginx[1073]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:47:58 blikvm-m7 nft[1075]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:47:58 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:47:58 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:47:58 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:01 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 93.
+Jul 27 20:48:01 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:01 blikvm-m7 nginx[1079]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:01 blikvm-m7 nginx[1079]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:01 blikvm-m7 nft[1081]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:01 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:01 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:01 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:03 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 94.
+Jul 27 20:48:03 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:03 blikvm-m7 nginx[1085]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:03 blikvm-m7 nginx[1085]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:03 blikvm-m7 nft[1087]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:03 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:03 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:03 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:06 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 95.
+Jul 27 20:48:06 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:06 blikvm-m7 nginx[1091]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:06 blikvm-m7 nginx[1091]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:06 blikvm-m7 nft[1093]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:06 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:06 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:06 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:08 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 96.
+Jul 27 20:48:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:08 blikvm-m7 nginx[1097]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:08 blikvm-m7 nginx[1097]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:08 blikvm-m7 nft[1099]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:08 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:08 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:08 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:11 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 97.
+Jul 27 20:48:11 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:11 blikvm-m7 nginx[1103]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:11 blikvm-m7 nginx[1103]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:11 blikvm-m7 nft[1105]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:11 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:11 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:11 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:13 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 98.
+Jul 27 20:48:13 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:13 blikvm-m7 nginx[1126]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:13 blikvm-m7 nginx[1126]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:13 blikvm-m7 nft[1128]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:13 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:13 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:13 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:16 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 99.
+Jul 27 20:48:16 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:16 blikvm-m7 nginx[1132]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:16 blikvm-m7 nginx[1132]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:16 blikvm-m7 nft[1133]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:16 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:16 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:16 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:18 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 100.
+Jul 27 20:48:18 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:18 blikvm-m7 nginx[1138]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:18 blikvm-m7 nginx[1138]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:18 blikvm-m7 nft[1140]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:18 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:18 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:18 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:21 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 101.
+Jul 27 20:48:21 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:21 blikvm-m7 nginx[1144]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:21 blikvm-m7 nginx[1144]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:21 blikvm-m7 nft[1146]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:21 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:21 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:21 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:23 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 102.
+Jul 27 20:48:23 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:23 blikvm-m7 nginx[1150]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:23 blikvm-m7 nginx[1150]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:23 blikvm-m7 nft[1152]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:23 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:23 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:23 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:26 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 103.
+Jul 27 20:48:26 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:26 blikvm-m7 nginx[1156]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:26 blikvm-m7 nginx[1156]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:26 blikvm-m7 nft[1158]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:26 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:26 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:26 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:28 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 104.
+Jul 27 20:48:28 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:28 blikvm-m7 nginx[1162]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:28 blikvm-m7 nginx[1162]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:28 blikvm-m7 nft[1164]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:28 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:28 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:28 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:31 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 105.
+Jul 27 20:48:31 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:31 blikvm-m7 nginx[1168]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:31 blikvm-m7 nginx[1168]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:31 blikvm-m7 nft[1170]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:31 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:31 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:31 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:33 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 106.
+Jul 27 20:48:33 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:33 blikvm-m7 nginx[1174]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:33 blikvm-m7 nginx[1174]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:33 blikvm-m7 nft[1176]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:33 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:33 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:33 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:36 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 107.
+Jul 27 20:48:36 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:36 blikvm-m7 nginx[1180]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:36 blikvm-m7 nginx[1180]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:36 blikvm-m7 nft[1181]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:36 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:36 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:36 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:38 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 108.
+Jul 27 20:48:38 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:38 blikvm-m7 nginx[1186]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:38 blikvm-m7 nginx[1186]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:38 blikvm-m7 nft[1187]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:38 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:38 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:38 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.
+Jul 27 20:48:41 blikvm-m7 systemd[1]: nginx.service: Scheduled restart job, restart counter is at 109.
+Jul 27 20:48:41 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:48:41 blikvm-m7 nginx[1192]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:48:41 blikvm-m7 nginx[1192]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:48:41 blikvm-m7 nft[1194]: src/mnl.c:66: Unable to initialize Netlink socket: Address family not supported by protocol
+Jul 27 20:48:41 blikvm-m7 systemd[1]: nginx.service: Control process exited, code=exited, status=3/NOTIMPLEMENTED
+Jul 27 20:48:41 blikvm-m7 systemd[1]: nginx.service: Failed with result 'exit-code'.
+Jul 27 20:48:41 blikvm-m7 systemd[1]: Failed to start nginx.service - BliKVM loopback HTTPS Web UI.

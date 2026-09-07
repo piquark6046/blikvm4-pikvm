@@ -1,0 +1,19 @@
+Jul 27 20:44:08 blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI...
+Jul 27 20:44:08 blikvm-m7 nginx[191]: nginx: the configuration file /etc/kvmd/nginx/nginx.conf syntax is ok
+Jul 27 20:44:08 blikvm-m7 nginx[191]: nginx: configuration file /etc/kvmd/nginx/nginx.conf test is successful
+Jul 27 20:44:08 blikvm-m7 nft[192]: table ip blikvm_lab {
+Jul 27 20:44:08 blikvm-m7 nft[192]:         chain input {
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 type filter hook input priority filter; policy drop;
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 443 counter packets 0 bytes 0 accept
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 tcp dport 443 counter packets 0 bytes 0 drop
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 tcp dport 80 counter packets 0 bytes 0 drop
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 iifname "lo" counter packets 0 bytes 0 accept
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 22 counter packets 0 bytes 0 accept
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 ip protocol icmp counter packets 0 bytes 0 accept
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 counter packets 0 bytes 0 drop
+Jul 27 20:44:08 blikvm-m7 nft[192]:         }
+Jul 27 20:44:08 blikvm-m7 nft[192]:         chain forward {
+Jul 27 20:44:08 blikvm-m7 nft[192]:                 type filter hook forward priority filter; policy drop;
+Jul 27 20:44:08 blikvm-m7 nft[192]:         }
+Jul 27 20:44:08 blikvm-m7 nft[192]: }
+Jul 27 20:44:08 blikvm-m7 systemd[1]: Started nginx.service - BliKVM loopback HTTPS Web UI.

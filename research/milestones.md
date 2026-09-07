@@ -111,12 +111,24 @@ qualified; the two-client diagnostic remains below the rate gate. Baseline:
 `ubuntu-26.04.1-kvmd-web-baseline`. See [M8-B evidence](m8b-web-auth-bringup.md).
 No LAN exposure or kvmd HID/MSD/ATX control is enabled. M6 remains deferred.
 
-### M8-C — Proposed only
+### M8-C — Controlled LAN HTTPS and client capacity
 
-Separately authorize controlled LAN HTTPS on an explicit interface, certificate
-trust/access policy and client-capacity gates, then repeat authenticated
-browser/video, recovery and reboot qualification. Hardware-control APIs remain
-a separate slice. No M8-C implementation is started.
+**Current: PASSED.** Direct HTTPS binds only `192.168.88.2:443`; nftables
+allows only bridge source `192.168.88.1` on target eth0. Normal development-CA
+browser trust and upstream kvmd authentication are mandatory. Direct browser,
+API/WebSocket, lifecycle and HDMI recovery pass. Five consecutive clean boots
+restore the same policy, exact 1080p30 mode and frozen M5/M7 regressions.
+Two concurrent authenticated video clients each exceed the unchanged 27-fps
+120-second gate in eight paired trials (29.785–29.919 fps).
+Baseline: `ubuntu-26.04.1-kvmd-lan-baseline`.
+See [M8-C evidence and capacity scope](m8c-lan-access-bringup.md).
+No kvmd HID/MSD/ATX control is enabled; M6 remains deferred.
+
+### M8-D — Proposed only
+
+kvmd keyboard and absolute/relative mouse control, with real host-event,
+authorization, reconnect and concurrent video regressions. Not started.
+MSD/ATX, M6, optional media transports and final read-only-root remain excluded.
 
 ## M9 — Optional hardware
 

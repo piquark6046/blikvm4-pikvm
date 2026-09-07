@@ -1,0 +1,16 @@
+table ip blikvm_lab {
+	chain input {
+		type filter hook input priority filter; policy drop;
+		iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 443 counter packets 136731 bytes 7426468 accept
+		tcp dport 443 counter packets 4 bytes 240 drop
+		tcp dport 80 counter packets 2 bytes 120 drop
+		iifname "lo" counter packets 0 bytes 0 accept
+		iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 22 counter packets 10634 bytes 736254 accept
+		iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 ip protocol icmp counter packets 10 bytes 840 accept
+		counter packets 14 bytes 3330 drop
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy drop;
+	}
+}

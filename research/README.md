@@ -159,4 +159,12 @@ HTTPS, upstream htpasswd sessions, real PiKVM Web UI through SSH forwarding,
 exact frozen video ownership/mode, HDMI and service recovery, and five clean
 boots with 120-second HTTPS video and retained gadget regressions. LAN exposure
 and kvmd HID/MSD/ATX control remain excluded; M6 remains deferred. Controlled
-LAN qualification is proposed separately as M8-C.
+LAN qualification is recorded separately as M8-C below.
+
+
+## 26. M8-C controlled LAN HTTPS
+
+[M8-C bring-up](m8c-lan-access-bringup.md) qualifies restricted direct HTTPS,
+normal development-CA trust, upstream authentication, two-client 1080p30
+capacity, lifecycle recovery and five clean boots. Hardware-control integration
+remains deferred to the proposed M8-D keyboard/mouse slice.

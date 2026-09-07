@@ -1,0 +1,54 @@
+# file: /run/kvmd
+# owner: root
+# group: root
+user::rwx
+user:www-data:--x
+group::r-x
+mask::r-x
+other::r-x
+
+# file: /run/kvmd/api
+# owner: kvmd
+# group: ustreamer
+user::rwx
+user:www-data:r-x
+group::r-x
+mask::r-x
+other::---
+default:user::rwx
+default:user:www-data:rwx
+default:group::r-x
+default:mask::rwx
+default:other::---
+
+# file: /run/kvmd/api/kvmd.sock
+# owner: kvmd
+# group: ustreamer
+user::rw-
+user:www-data:rwx	#effective:rw-
+group::r-x	#effective:r--
+mask::rw-
+other::---
+
+# file: /run/kvmd/ustreamer
+# owner: kvmd
+# group: ustreamer
+user::rwx
+user:www-data:r-x
+group::r-x
+mask::r-x
+other::---
+default:user::rwx
+default:user:www-data:rwx
+default:group::r-x
+default:mask::rwx
+default:other::---
+
+# file: /run/kvmd/ustreamer/ustreamer.sock
+# owner: kvmd
+# group: ustreamer
+user::rw-
+user:www-data:rwx	#effective:rw-
+group::r-x	#effective:r--
+mask::rw-
+other::---

@@ -1,0 +1,14 @@
+{
+  "result": "passed",
+  "frozen_files_compared": 421,
+  "allowed_changed_files": [
+    "./etc/kvmd/nginx/nginx.conf"
+  ],
+  "additional_packages": [
+    "libjansson4",
+    "libnftables1",
+    "libnftnl11",
+    "nftables"
+  ],
+  "public_image_has_no_enrollment": true
+}

@@ -1,0 +1,15 @@
+Format Video Capture:
+	Width/Height      : 1920/1080
+	Pixel Format      : 'MJPG' (Motion-JPEG)
+	Field             : None
+	Bytes per Line    : 0
+	Size Image        : 4147200
+	Colorspace        : sRGB
+	Transfer Function : Rec. 709
+	YCbCr/HSV Encoding: ITU-R 601
+	Quantization      : Default (maps to Full Range)
+	Flags             :
+Streaming Parameters Video Capture:
+	Capabilities     : timeperframe
+	Frames per second: 30.000 (30/1)
+	Read buffers     : 0

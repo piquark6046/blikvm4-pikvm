@@ -1,0 +1,74 @@
+{
+  "result": "passed",
+  "consecutive_clean_boots": 5,
+  "final_20_boot_gate": false,
+  "artifacts": {
+    "Image": {
+      "name": "Image",
+      "sha256": "d6f4235904b0b482e78f449139f539adc4370be923ec16f4a0d8451842501ee8",
+      "size": 6914056
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "b9617300a246a20aa7d58d74a878f586bc03abeabed83bd66a16c1e48fc7d93e",
+      "size": 89035970
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "fc384a32d86107ad416d2b20fd8557ff895c767a9876be5f6f2e059c0581a7fe",
+      "size": 67386
+    },
+    "packages.tsv": {
+      "name": "packages.tsv",
+      "sha256": "15462fbb12ff90cf7ed570e54381ece213b29a32b0b8224f1b3a9741288e2b22",
+      "size": 8057
+    },
+    "rootfs.tar.gz": {
+      "name": "rootfs.tar.gz",
+      "sha256": "c79135fa661968323137d2618f035988d20d37c978f9517c504199d15c616ad1",
+      "size": 89283882
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    }
+  },
+  "runs": [
+    {
+      "run_id": "20260906T235327Z-unknown-740955",
+      "boot_id": "210c76a7-7ba4-44d0-860a-82feb18caa5d",
+      "started_at": "2026-09-06T23:53:27.414002+00:00",
+      "finished_at": "2026-09-06T23:54:27.452000+00:00",
+      "uart_sha256": "0a2904774522a434d20fedfdba99a29e1ac9be599c3d8e8bac2c06003f681775"
+    },
+    {
+      "run_id": "20260907T000041Z-unknown-734269",
+      "boot_id": "aac96dd2-1ec2-446c-851a-eaa56490e414",
+      "started_at": "2026-09-07T00:00:41.064014+00:00",
+      "finished_at": "2026-09-07T00:01:38.868686+00:00",
+      "uart_sha256": "e29ff654d378201636ea16cd54d68bb50de184f1f4c51f12013ebf6c183ce9ed"
+    },
+    {
+      "run_id": "20260907T000752Z-unknown-461163",
+      "boot_id": "0bb32368-d413-4be0-8c7b-1b38516823d7",
+      "started_at": "2026-09-07T00:07:52.106675+00:00",
+      "finished_at": "2026-09-07T00:08:51.333560+00:00",
+      "uart_sha256": "5596e69a5ab6b8b1eadd7d46d94efaca00a4a4c3adabb75369fe717882f5df15"
+    },
+    {
+      "run_id": "20260907T001504Z-unknown-982028",
+      "boot_id": "4840a8ef-eda4-49fa-81ef-0806e64f1500",
+      "started_at": "2026-09-07T00:15:04.593170+00:00",
+      "finished_at": "2026-09-07T00:16:04.671521+00:00",
+      "uart_sha256": "9e4e00c523cacf3f363937da07a6aded8d90cad8795109ed35b8ec335a6dc96e"
+    },
+    {
+      "run_id": "20260907T002501Z-unknown-075830",
+      "boot_id": "44377e9f-7a87-4874-a053-93200d6e8430",
+      "started_at": "2026-09-07T00:25:01.450167+00:00",
+      "finished_at": "2026-09-07T00:26:01.110584+00:00",
+      "uart_sha256": "a99ae9d26c3a5f36cc420bb2771493d543fd99c7fcb0006bdc8ad1573cb362a6"
+    }
+  ]
+}

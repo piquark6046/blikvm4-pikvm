@@ -1,0 +1,20 @@
+# Isolated M8-C target: only the bridge is an authorized development client.
+# IPv6 is compiled out. No NAT, forwarding, or connection tracking is needed.
+# Reload atomically replaces this owned table only.
+add table ip blikvm_lab
+flush table ip blikvm_lab
+table ip blikvm_lab {
+    chain input {
+        type filter hook input priority 0; policy drop;
+        iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 443 counter accept
+        tcp dport 443 counter drop
+        tcp dport 80 counter drop
+        iifname "lo" counter accept
+        iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 tcp dport 22 counter accept
+        iifname "eth0" ip saddr 192.168.88.1 ip daddr 192.168.88.2 ip protocol icmp counter accept
+        counter drop
+    }
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+    }
+}

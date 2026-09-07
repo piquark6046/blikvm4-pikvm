@@ -1,0 +1,417 @@
+clients:
+    kvmd:
+        timeout: 5.0
+    nbd:
+        timeout: 5.0
+    pst:
+        timeout: 5.0
+    streamer:
+        http:
+            timeout: 5.0
+kvmd:
+    server:
+        unix: /run/kvmd/api/kvmd.sock
+        unix_rm: true
+        unix_mode: 0o660
+        heartbeat: 15.0
+        access_log_format: "[%P / %{X-Real-IP}i] '%r' => %s; size=%b --- referer='%{Referer}i';
+            user_agent='%{User-Agent}i'"
+    auth:
+        enabled: true ### Default: false
+        expire: 0
+        extend: false
+        allow_redirects:
+            - /
+            - /kvm
+            - /kvm/
+        usc:
+            users: []
+            groups: []
+            kvmd_users:
+                - root
+            kvmd_groups: [] ### Default: - kvmd-selfauth
+        internal:
+            type: htpasswd ### Default: forbidden
+            force_users: []
+            file: /etc/kvmd/htpasswd
+        external:
+            type: ''
+        totp:
+            secret:
+                file: '' ### Default: /etc/kvmd/totp.secret
+    info:
+        meta: /etc/kvmd/meta.yaml
+        extras: /usr/share/kvmd/extras
+        hw:
+            platform: /usr/lib/kvmd/platform
+            vcgencmd_cmd:
+                - /usr/bin/vcgencmd
+            ignore_past: false
+            state_poll: 5.0
+        fan:
+            daemon: kvmd-fan
+            unix: ''
+            timeout: 5.0
+            state_poll: 5.0
+    log_reader:
+        enabled: false
+    prometheus:
+        auth:
+            enabled: true
+    hid:
+        type: disabled
+        keymap: /usr/share/kvmd/keymaps/en-us
+    atx:
+        type: disabled
+    msd:
+        type: disabled
+    streamer:
+        forever: true
+        reset_delay: 1.0
+        shutdown_delay: 10.0
+        state_poll: 1.0
+        quality: 0
+        resolution:
+            default: 1920x1080
+            available:
+                - 1920x1080
+        desired_fps:
+            default: 30
+            min: 30
+            max: 30
+        h264_bitrate:
+            default: 0
+            min: 25
+            max: 20000
+        h264_gop:
+            default: 0
+            min: 0
+            max: 60
+        h264_boost: false
+        slowdown: false
+        passthrough: false
+        unix: /run/kvmd/ustreamer/ustreamer.sock
+        timeout: 2.0
+        snapshot_timeout: 5.0
+        process_name_prefix: kvmd/streamer
+        pre_start_cmd:
+            - /bin/true
+            - pre-start
+        pre_start_cmd_remove: []
+        pre_start_cmd_append: []
+        cmd:
+            - /usr/bin/ustreamer
+            - --device=/dev/kvmd-video
+            - --resolution={resolution}
+            - --desired-fps={desired_fps}
+            - --device-fps=30
+            - --quality=0
+            - --format=MJPEG
+            - --encoder=HW
+            - --unix={unix}
+            - --unix-mode=0660
+            - --unix-rm
+            - --exit-on-parent-death
+            - --notify-parent
+            - --no-log-colors
+        cmd_remove: []
+        cmd_append: []
+        post_stop_cmd:
+            - /bin/true
+            - post-stop
+        post_stop_cmd_remove: []
+        post_stop_cmd_append: []
+    ocr:
+        langs:
+            - eng
+        tessdata: /usr/share/tessdata
+    snapshot:
+        idle_interval: 0.0
+        live_interval: 0.0
+        wakeup_key: ''
+        wakeup_move: 0
+        online_delay: 5.0
+        retries: 10
+        retries_delay: 3.0
+    gpio:
+        state_poll: 0.1
+        drivers: {}
+        scheme: {}
+        view:
+            header:
+                title: GPIO
+            table: []
+    switch:
+        device: /dev/kvmd-switch
+        default_edid: /etc/kvmd/switch-edid.hex
+        ignore_hpd_on_top: false
+media:
+    server:
+        unix: /run/kvmd/media.sock
+        unix_rm: true
+        unix_mode: 0o660
+        heartbeat: 15.0
+        access_log_format: "[%P / %{X-Real-IP}i] '%r' => %s; size=%b --- referer='%{Referer}i';
+            user_agent='%{User-Agent}i'"
+    memsink:
+        jpeg:
+            sink: ''
+            lock_timeout: 1.0
+            wait_timeout: 1.0
+            drop_same_frames: 0.0
+        h264:
+            sink: ''
+            lock_timeout: 1.0
+            wait_timeout: 1.0
+            drop_same_frames: 0.0
+pst:
+    server:
+        unix: /run/kvmd/pst.sock
+        unix_rm: true
+        unix_mode: 0o660
+        heartbeat: 15.0
+        access_log_format: "[%P / %{X-Real-IP}i] '%r' => %s; size=%b --- referer='%{Referer}i';
+            user_agent='%{User-Agent}i'"
+    ro_retries_delay: 10.0
+    ro_cleanup_delay: 3.0
+    remount_cmd:
+        - /usr/bin/sudo
+        - --non-interactive
+        - /usr/bin/kvmd-helper-pst-remount
+        - '{mode}'
+otg:
+    vendor_id: 0x1D6B
+    product_id: 0x104
+    manufacturer: PiKVM
+    product: PiKVM Composite Device
+    serial: CAFEBABE
+    config: null
+    device_version: -1
+    usb_version: 0x200
+    max_power: 250
+    remote_wakeup: true
+    udc: ''
+    endpoints: 9
+    init_delay: 3.0
+    user: kvmd
+    meta: /run/kvmd/otg
+    devices:
+        hid:
+            keyboard:
+                start: true
+            mouse:
+                start: true
+            mouse_alt:
+                start: true
+        msd:
+            start: true
+            default:
+                file: ''
+                stall: false
+                cdrom: true
+                rw: false
+                removable: true
+                fua: true
+                inquiry_string:
+                    cdrom:
+                        vendor: null
+                        product: Optical Drive
+                        revision: '1.00'
+                    flash:
+                        vendor: null
+                        product: Flash Drive
+                        revision: '1.00'
+        serial:
+            enabled: false
+            start: true
+        ethernet:
+            enabled: false
+            start: true
+            driver: ecm
+            host_mac: ''
+            kvm_mac: ''
+        audio:
+            enabled: false
+            start: true
+            speakers:
+                enabled: false
+            mic:
+                enabled: true
+        camera:
+            enabled: false
+            start: true
+            safe: false
+            controls:
+                ct_mask: 14
+                pu_mask: 5979
+        drives:
+            enabled: false
+            start: true
+            count: 1
+            default:
+                stall: false
+                cdrom: false
+                rw: true
+                removable: true
+                fua: true
+                inquiry_string:
+                    cdrom:
+                        vendor: null
+                        product: Optical Drive
+                        revision: '1.00'
+                    flash:
+                        vendor: null
+                        product: Flash Drive
+                        revision: '1.00'
+otgnet:
+    iface:
+        net: 172.30.30.0/24
+    firewall:
+        allow_icmp: true
+        allow_tcp: []
+        allow_udp:
+            - 67
+        forward_iface: ''
+    commands:
+        ip_cmd:
+            - /usr/bin/ip
+        iptables_cmd:
+            - /usr/sbin/iptables
+            - --wait=5
+        sysctl_cmd:
+            - /usr/sbin/sysctl
+        pre_start_cmd:
+            - /bin/true
+            - pre-start
+        pre_start_cmd_remove: []
+        pre_start_cmd_append: []
+        post_start_cmd:
+            - /usr/bin/systemd-run
+            - --unit=kvmd-otgnet-dnsmasq
+            - /usr/sbin/dnsmasq
+            - --conf-file=/dev/null
+            - --pid-file
+            - --user=dnsmasq
+            - --interface={iface}
+            - --port=0
+            - --dhcp-range={dhcp_ip_begin},{dhcp_ip_end},24h
+            - --dhcp-leasefile=/run/kvmd/dnsmasq.lease
+            - --dhcp-option={dhcp_option_3}
+            - --dhcp-option=6
+            - --keep-in-foreground
+        post_start_cmd_remove: []
+        post_start_cmd_append: []
+        pre_stop_cmd:
+            - /usr/bin/systemctl
+            - stop
+            - kvmd-otgnet-dnsmasq
+        pre_stop_cmd_remove: []
+        pre_stop_cmd_append: []
+        post_stop_cmd:
+            - /bin/true
+            - post-stop
+        post_stop_cmd_remove: []
+        post_stop_cmd_append: []
+nbd:
+    server:
+        unix: /run/kvmd/nbd.sock
+        unix_rm: true
+        unix_mode: 0o660
+        heartbeat: 15.0
+        access_log_format: "[%P / %{X-Real-IP}i] '%r' => %s; size=%b --- referer='%{Referer}i';
+            user_agent='%{User-Agent}i'"
+    device: /dev/kvmd-nbd
+    use_blkroset: false
+ipmi:
+    server:
+        host: ''
+        port: 623
+        timeout: 10.0
+    auth:
+        file: /etc/kvmd/ipmipasswd
+    sol:
+        device: ''
+        speed: 115200
+        select_timeout: 0.1
+        proxy_port: 0
+vnc:
+    desired_fps: 30
+    mouse_output: usb
+    keymap: /usr/share/kvmd/keymaps/en-us
+    scroll_rate: 4
+    server:
+        host: ''
+        port: 5900
+        max_clients: 10
+        no_delay: true
+        keepalive:
+            enabled: true
+            idle: 10
+            interval: 3
+            count: 3
+        tls:
+            ciphers: ALL:@SECLEVEL=0
+            timeout: 30.0
+            x509:
+                cert: /etc/kvmd/vnc/ssl/server.crt
+                key: /etc/kvmd/vnc/ssl/server.key
+    memsink:
+        jpeg:
+            sink: ''
+            lock_timeout: 1.0
+            wait_timeout: 1.0
+            drop_same_frames: 1.0
+        h264:
+            sink: ''
+            lock_timeout: 1.0
+            wait_timeout: 1.0
+            drop_same_frames: 0.0
+    auth:
+        vncauth:
+            enabled: false
+            file: /etc/kvmd/vncpasswd
+        vencrypt:
+            enabled: true
+nginx:
+    http:
+        ipv4: 0.0.0.0
+        ipv6: '::'
+        port: 80
+    https:
+        enabled: true
+        ipv4: 0.0.0.0
+        ipv6: '::'
+        port: 443
+janus:
+    stun:
+        host: stun.l.google.com
+        port: 19302
+        timeout: 5.0
+        retries: 5
+        retries_delay: 5.0
+    check:
+        interval: 10.0
+        retries: 5
+        retries_delay: 5.0
+    cmd:
+        - /usr/bin/janus
+        - --disable-colors
+        - --plugins-folder=/usr/lib/ustreamer/janus
+        - --configs-folder=/etc/kvmd/janus
+        - --interface={src_ip}
+        - '{o_stun_server}'
+    cmd_remove: []
+    cmd_append: []
+watchdog:
+    rtc: 0
+    timeout: 300
+    interval: 30
+oled:
+    width: 128
+    height: 32
+    rotate: 0
+    fahrenheit: false
+    credentials: /run/kvmd/creds.json
+    contrast:
+        low: 1
+        normal: 64

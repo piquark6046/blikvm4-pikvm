@@ -1,0 +1,81 @@
+{
+  "result": "passed",
+  "completed": [
+    {
+      "index": 1,
+      "boot_id": "210c76a7-7ba4-44d0-860a-82feb18caa5d",
+      "single_fps": 29.91576525256458,
+      "capacity": [
+        {
+          "result": "passed",
+          "path": "two-capacity-1",
+          "fps": [
+            29.78629768650867,
+            29.785637805361215
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "boot_id": "aac96dd2-1ec2-446c-851a-eaa56490e414",
+      "single_fps": 29.913516524097375,
+      "capacity": [
+        {
+          "result": "passed",
+          "path": "two-capacity-1",
+          "fps": [
+            29.787635406674966,
+            29.78752471135555
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "boot_id": "0bb32368-d413-4be0-8c7b-1b38516823d7",
+      "single_fps": 29.78783644736348,
+      "capacity": [
+        {
+          "result": "passed",
+          "path": "two-capacity-1",
+          "fps": [
+            29.915783445716766,
+            29.91637436136226
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "boot_id": "4840a8ef-eda4-49fa-81ef-0806e64f1500",
+      "single_fps": 29.791643692208034,
+      "capacity": [
+        {
+          "result": "passed",
+          "path": "two-capacity-1",
+          "fps": [
+            29.908284869831895,
+            29.908682294689083
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "boot_id": "44377e9f-7a87-4874-a053-93200d6e8430",
+      "single_fps": 29.916610634462828,
+      "capacity": [
+        {
+          "result": "passed",
+          "path": "two-capacity-1",
+          "fps": [
+            29.784880181717263,
+            29.78499457967253
+          ]
+        }
+      ]
+    }
+  ],
+  "two_client_gate": true
+}

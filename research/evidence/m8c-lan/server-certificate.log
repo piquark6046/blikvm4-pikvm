@@ -1,0 +1,7 @@
+subject=CN=blikvm-v4.lab
+issuer=CN=BliKVM M8-C Development CA
+notBefore=Sep  6 23:09:34 2026 GMT
+notAfter=Oct  6 23:09:34 2026 GMT
+X509v3 Subject Alternative Name:
+    DNS:blikvm-v4.lab, IP Address:192.168.88.2
+sha256 Fingerprint=2A:36:0C:40:10:ED:32:50:25:4E:C5:A2:43:E6:FC:FE:B3:91:27:B6:67:1E:86:61:E4:F7:F7:43:7A:CB:AA:B2

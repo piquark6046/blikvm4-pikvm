@@ -1,0 +1,8 @@
+{
+  "reason": "controller interrupted; HIL stdout pipe closed after successful immutable result",
+  "index": 4,
+  "boot_id": "4840a8ef-eda4-49fa-81ef-0806e64f1500",
+  "hil_source": "/home/user/blikvm-lan/runs/20260907T001623Z-unknown-419768/test-results.json",
+  "target_repaired": false,
+  "additional_reboot": false
+}

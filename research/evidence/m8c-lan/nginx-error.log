@@ -1,0 +1,2 @@
+2026/07/27 20:45:59 [error] 196#196: *10 "/usr/share/kvmd/web/vnc/index.html" is not found (2: No such file or directory) while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: "GET /vnc/ HTTP/1.1", host: "blikvm-v4.lab"
+2026/07/27 20:45:59 [error] 196#196: *10 "/usr/share/kvmd/web/ipmi/index.html" is not found (2: No such file or directory) while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: "GET /ipmi/ HTTP/1.1", host: "blikvm-v4.lab"

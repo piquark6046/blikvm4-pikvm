@@ -1,0 +1,1 @@
+{"result": "passed", "stage": "ubuntu_network_ssh", "hardware_regressions": "pending", "final_20_boot_gate": false, "schema_version": 1, "run_id": "20260907T000041Z-unknown-734269", "run_directory": "/home/user/blikvm-lan/runs/20260907T000041Z-unknown-734269", "finished_at": "2026-09-07T00:01:38.868686+00:00"}

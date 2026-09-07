@@ -1,0 +1,16 @@
+{
+  "source": "out/kvmd-web/preflight-evidence/runs/20260906T130839Z-unknown-348902/resources.log",
+  "scope": "M8-B native single-client HIL; nginx/whole-target CPU not separately sampled",
+  "seconds": 125.0,
+  "kvmd_service_cpu_one_core_percent": 3.9164727999999998,
+  "rss_kib": {
+    "kvmd": {
+      "min": 57572,
+      "max": 58084
+    },
+    "ustreamer": {
+      "min": 29884,
+      "max": 30300
+    }
+  }
+}

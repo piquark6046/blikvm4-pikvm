@@ -1,0 +1,5 @@
+subject=CN=BliKVM M8-C Development CA
+issuer=CN=BliKVM M8-C Development CA
+notBefore=Sep  6 23:09:34 2026 GMT
+notAfter=Sep  6 23:09:34 2027 GMT
+sha256 Fingerprint=27:18:C1:77:F0:B6:56:C6:C0:01:46:9A:D3:E0:53:25:15:FB:BD:21:45:8D:08:0E:F7:F8:26:E1:6C:DC:3A:A5

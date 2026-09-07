@@ -1,0 +1,269 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 7.2.3-blikvm-v4-m7 (blikvm@linux-builder) (aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40) #8 SMP PREEMPT 1970-01-01T00:00:00Z
+[    0.000000] Machine model: BliKVM v4 (serial + MMC + Ethernet + USB host bring-up)
+[    0.000000] earlycon: uart0 at MMIO32 0x0000000005000000 (options '115200n8')
+[    0.000000] printk: legacy bootconsole [uart0] enabled
+[    0.000000] OF: reserved mem: 0x0000000040000000..0x000000004003ffff (256 KiB) nomap non-reusable secmon@40000000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000040000000-0x000000007fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x000000004003ffff]
+[    0.000000]   node   0: [mem 0x0000000040040000-0x000000007fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000007fffffff]
+[    0.000000] percpu: Embedded 14 pages/cpu s27224 r0 d30120 u57344
+[    0.000000] pcpu-alloc: s27224 r0 d30120 u57344 alloc=14*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=ttyS0,115200n8 earlycon loglevel=6 printk.time=1 rdinit=/sbin/init net.ifnames=0 panic=-1
+[    0.000000] printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+[    0.000000] Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 1MB
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: mapped [mem 0x000000007eb00000-0x000000007ec00000] (1MB)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 262144
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] Root IRQ handler: 0xffff800080010000
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer running at 24.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000154] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000518] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.000535] pid_max: default: 32768 minimum: 301
+[    0.000807] Mount-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.000825] Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.001192] VFS: Finished mounting rootfs on nullfs
+[    0.002959] rcu: Hierarchical SRCU implementation.
+[    0.002981] rcu: 	Max phase no-delay instances is 1000.
+[    0.003519] smp: Bringing up secondary CPUs ...
+[    0.004063] Detected VIPT I-cache on CPU1
+[    0.004265] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.004889] Detected VIPT I-cache on CPU2
+[    0.005057] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+[    0.005661] Detected VIPT I-cache on CPU3
+[    0.005831] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+[    0.005929] smp: Brought up 1 node, 4 CPUs
+[    0.005950] SMP: Total of 4 processors activated.
+[    0.005957] CPU: All CPU(s) started at EL2
+[    0.005963] CPU features: detected: 32-bit EL0 Support
+[    0.005971] CPU features: detected: CRC32 instructions
+[    0.006016] alternatives: applying system-wide alternatives
+[    0.007032] Memory: 929544K/1048576K available (4544K kernel code, 672K rwdata, 984K rodata, 448K init, 227K bss, 115768K reserved, 0K cma-reserved)
+[    0.007760] devtmpfs: initialized
+[    0.012919] posixtimers hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[    0.013055] futex hash table entries: 1024 (65536 bytes on 1 NUMA nodes, total 64 KiB, linear).
+[    0.013938] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.014644] DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
+[    0.014838] ASID allocator initialised with 65536 entries
+[    0.017130] /soc/clock@3001000: Fixed dependency cycle(s) with /soc/rtc@7000000
+[    0.017215] /soc/interrupt-controller@3021000: Fixed dependency cycle(s) with /soc/interrupt-controller@3021000
+[    0.017377] /soc/rtc@7000000: Fixed dependency cycle(s) with /soc/clock@3001000
+[    0.017398] /soc/rtc@7000000: Fixed dependency cycle(s) with /soc/clock@7010000
+[    0.017421] /soc/clock@7010000: Fixed dependency cycle(s) with /soc/clock@3001000
+[    0.017442] /soc/clock@7010000: Fixed dependency cycle(s) with /soc/rtc@7000000
+[    0.017887] /soc/clock@3001000: Fixed dependency cycle(s) with /soc/rtc@7000000
+[    0.020543] /soc/clock@3001000: Fixed dependency cycle(s) with /soc/rtc@7000000
+[    0.020708] /soc/rtc@7000000: Fixed dependency cycle(s) with /soc/clock@3001000
+[    0.020787] /soc/rtc@7000000: Fixed dependency cycle(s) with /soc/clock@7010000
+[    0.020896] /soc/rtc@7000000: Fixed dependency cycle(s) with /soc/clock@7010000
+[    0.020972] /soc/clock@7010000: Fixed dependency cycle(s) with /soc/clock@3001000
+[    0.021054] /soc/clock@7010000: Fixed dependency cycle(s) with /soc/rtc@7000000
+[    0.023977] usbcore: registered new interface driver usbfs
+[    0.024030] usbcore: registered new interface driver hub
+[    0.024072] usbcore: registered new device driver usb
+[    0.024281] mc: Linux media interface: v0.10
+[    0.024317] videodev: Linux video capture interface: v2.00
+[    0.025633] clocksource: Switched to clocksource arch_sys_counter
+[    0.026859] NET: Registered PF_INET protocol family
+[    0.027055] IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.028382] tcp_listen_portaddr_hash hash table entries: 512 (order: 1, 8192 bytes, linear)
+[    0.028413] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.028439] TCP established hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.028514] TCP bind hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    0.028811] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.028983] UDP hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.029228] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.029646] Unpacking initramfs...
+[    0.042653] workingset: timestamp_bits=62 (anon: 57) max_order=18 bucket_order=0 (anon: 0)
+[    0.054663] Serial: 8250/16550 driver, 1 ports, IRQ sharing disabled
+[    0.055845] printk: legacy console [ttyS0] disabled
+[    0.056255] 5000000.serial: ttyS0 at MMIO 0x5000000 (irq = 17, base_baud = 1500000) is a 16550A
+[    0.056450] printk: legacy console [ttyS0] enabled
+[    0.056463] printk: legacy bootconsole [uart0] disabled
+[    0.071377] usbcore: registered new interface driver uvcvideo
+[    0.072197] NET: Registered PF_PACKET protocol family
+[    0.086353] gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.106650] sun50i-h616-pinctrl 300b000.pinctrl: initialized sunXi PIO driver
+[    0.107200] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.117666] dwmac-sun8i 5030000.ethernet: IRQ eth_wake_irq not found
+[    0.117697] dwmac-sun8i 5030000.ethernet: IRQ sfty not found
+[    0.117972] dwmac-sun8i 5030000.ethernet: PTP uses main clock
+[    0.118299] dwmac-sun8i 5030000.ethernet: No HW DMA feature register supported
+[    0.118314] dwmac-sun8i 5030000.ethernet: RX Checksum Offload Engine supported
+[    0.118323] dwmac-sun8i 5030000.ethernet: COE Type 2
+[    0.118332] dwmac-sun8i 5030000.ethernet: TX Checksum insertion supported
+[    0.118342] dwmac-sun8i 5030000.ethernet: Normal descriptors
+[    0.118351] dwmac-sun8i 5030000.ethernet: Chain mode enabled
+[    0.130662] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.139897] sun50i-h616-pinctrl 300b000.pinctrl: supply vcc-pc not found, using dummy regulator
+[    0.151134] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.160588] sunxi-mmc 4020000.mmc: Got CD GPIO
+[    0.161273] ehci-platform 5200000.usb: EHCI Host Controller
+[    0.161344] ehci-platform 5200000.usb: new USB bus registered, assigned bus number 1
+[    0.161472] ehci-platform 5200000.usb: irq 284, io mem 0x05200000
+[    0.162463] usb_phy_generic usb_phy_generic.0.auto: dummy supplies not allowed for exclusive requests (id=vbus)
+[    0.173704] ehci-platform 5200000.usb: USB 2.0 started, EHCI 1.00
+[    0.173826] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 7.02
+[    0.173888] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.173993] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.182820] usb usb1: Product: EHCI Host Controller
+[    0.182839] usb usb1: Manufacturer: Linux 7.2.3-blikvm-v4-m7 ehci_hcd
+[    0.182849] usb usb1: SerialNumber: 5200000.usb
+[    0.183581] hub 1-0:1.0: USB hub found
+[    0.183641] hub 1-0:1.0: 1 port detected
+[    0.183798] clk: Disabling unused clocks
+[    0.184236] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.186052] sunxi-mmc 4020000.mmc: initialized, max. request size: 16384 KB, uses new timings mode
+[    0.198200] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.242969] mmc0: new high speed SDXC card at address 59b4
+[    0.244059] mmcblk0: mmc0:59b4 EC1S5 59.7 GiB
+[    0.246058]  mmcblk0: p1 p2 p3
+[    0.247085] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.429715] usb 1-1: new high-speed USB device number 2 using ehci-platform
+[    0.576360] usb 1-1: New USB device found, idVendor=345f, idProduct=2131, bcdDevice=21.00
+[    0.603569] usb 1-1: New USB device strings: Mfr=1, Product=5, SerialNumber=7
+[    0.603601] usb 1-1: Product: USB2 Video
+[    0.603611] usb 1-1: Manufacturer: MACROSILICON
+[    0.603620] usb 1-1: SerialNumber: 29404080
+[    0.623748] uvcvideo 1-1:1.0: Found UVC 1.00 device USB2 Video (345f:2131)
+[    0.655966] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.668671] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    5.204459] Freeing initrd memory: 86948K
+[    5.205223] Freeing unused kernel memory: 448K
+[    5.205341] Run /sbin/init as init process
+[    5.205348]   with arguments:
+[    5.205353]     /sbin/init
+[    5.205359]   with environment:
+[    5.205364]     HOME=/
+[    5.205369]     TERM=linux
+[    5.227713] systemd[1]: System time advanced to built-in epoch: Mon 2026-07-27 20:44:02 UTC
+[    5.929742] systemd[1]: systemd 259.5-0ubuntu3.4 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF -XKBCOMMON -UTMP +SYSVINIT +LIBARCHIVE)
+[    5.929844] systemd[1]: Detected architecture arm64.
+[    5.930045] systemd[1]: Detected first boot.
+[    5.942151] systemd[1]: Initializing machine ID from random generator.
+[    5.942817] systemd[1]: Hostname set to <blikvm-m7>.
+[    5.983526] systemd[1]: bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.
+[    6.070690] systemd[1]: Applying preset policy.
+[    6.690277] systemd[1]: Failed to preset all unit: Unit /run/systemd/generator/sshd-unix-local.socket is transient or generated
+[    6.701911] systemd[1]: Failed to preset all unit: Unit /usr/lib/systemd/system/x11-common.service is masked
+[    6.711864] systemd[1]: Failed to preset all unit: Unit /usr/lib/systemd/system/sudo.service is masked
+[    6.721181] systemd[1]: Failed to preset all unit: Unit /usr/lib/systemd/system/hwclock.service is masked
+[    6.730757] systemd[1]: Failed to preset all unit: Unit /usr/lib/systemd/system/cryptdisks.service is masked
+[    6.740590] systemd[1]: Failed to preset all unit: Unit /usr/lib/systemd/system/cryptdisks-early.service is masked
+[    6.750946] systemd[1]: Unit /usr/lib/systemd/system/x11-common.service is masked, ignoring.
+[    6.750991] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-udev-load-credentials.service' → '/usr/lib/systemd/system/systemd-udev-load-credentials.service'.
+[    6.751010] systemd[1]: Created symlink '/etc/systemd/system/factory-reset.target.wants/systemd-tpm2-clear.service' → '/usr/lib/systemd/system/systemd-tpm2-clear.service'.
+[    6.751028] systemd[1]: Created symlink '/etc/systemd/system/sockets.target.wants/systemd-sysext.socket' → '/usr/lib/systemd/system/systemd-sysext.socket'.
+[    6.751044] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-sysext.service' → '/usr/lib/systemd/system/systemd-sysext.service'.
+[    6.751061] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-secureboot-policy.service' → '/usr/lib/systemd/system/systemd-pcrlock-secureboot-policy.service'.
+[    6.751080] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-secureboot-authority.service' → '/usr/lib/systemd/system/systemd-pcrlock-secureboot-authority.service'.
+[    6.751097] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-make-policy.service' → '/usr/lib/systemd/system/systemd-pcrlock-make-policy.service'.
+[    6.751115] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-machine-id.service' → '/usr/lib/systemd/system/systemd-pcrlock-machine-id.service'.
+[    6.751132] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-firmware-config.service' → '/usr/lib/systemd/system/systemd-pcrlock-firmware-config.service'.
+[    6.751149] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-firmware-code.service' → '/usr/lib/systemd/system/systemd-pcrlock-firmware-code.service'.
+[    6.751167] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-pcrlock-file-system.service' → '/usr/lib/systemd/system/systemd-pcrlock-file-system.service'.
+[    6.751184] systemd[1]: Created symlink '/etc/systemd/system/sockets.target.wants/systemd-pcrextend.socket' → '/usr/lib/systemd/system/systemd-pcrextend.socket'.
+[    6.751201] systemd[1]: Created symlink '/etc/systemd/system/sockets.target.wants/systemd-journald-audit.socket' → '/usr/lib/systemd/system/systemd-journald-audit.socket'.
+[    6.751218] systemd[1]: Created symlink '/etc/systemd/system/systemd-journald.service.wants/systemd-journald-audit.socket' → '/usr/lib/systemd/system/systemd-journald-audit.socket'.
+[    6.751235] systemd[1]: Created symlink '/etc/systemd/system/sockets.target.wants/systemd-factory-reset.socket' → '/usr/lib/systemd/system/systemd-factory-reset.socket'.
+[    6.751252] systemd[1]: Created symlink '/etc/systemd/system/sysinit.target.wants/systemd-confext.service' → '/usr/lib/systemd/system/systemd-confext.service'.
+[    6.751267] systemd[1]: Unit /usr/lib/systemd/system/sudo.service is masked, ignoring.
+[    6.751283] systemd[1]: Created symlink '/etc/systemd/system/multi-user.target.wants/rsync.service' → '/usr/lib/systemd/system/rsync.service'.
+[    6.751299] systemd[1]: Created symlink '/etc/systemd/system/ctrl-alt-del.target' → '/usr/lib/systemd/system/reboot.target'.
+[    6.751313] systemd[1]: Unit /usr/lib/systemd/system/hwclock.service is masked, ignoring.
+[    6.751328] systemd[1]: Unit /usr/lib/systemd/system/cryptdisks.service is masked, ignoring.
+[    6.751342] systemd[1]: Unit /usr/lib/systemd/system/cryptdisks-early.service is masked, ignoring.
+[    7.143847] systemd[1]: Queued start job for default target multi-user.target.
+[    7.151183] systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+[    7.167403] systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+[    7.183331] systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[    7.198647] systemd[1]: Created slice user.slice - User and Session Slice.
+[    7.214190] systemd[1]: Started systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch.
+[    7.230160] systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[    7.246041] systemd[1]: proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point skipped, unmet condition check ConditionPathExists=/proc/sys/fs/binfmt_misc
+[    7.246186] systemd[1]: Expecting device dev-kvmd\x2dvideo.device - /dev/kvmd-video...
+[    7.257779] systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+[    7.269856] systemd[1]: Reached target imports.target - Image Downloads.
+[    7.281947] systemd[1]: Reached target paths.target - Path Units.
+[    7.293875] systemd[1]: Reached target remote-fs.target - Remote File Systems.
+[    7.305852] systemd[1]: Reached target slices.target - Slice Units.
+[    7.317894] systemd[1]: Reached target swap.target - Swaps.
+[    7.336685] systemd[1]: Listening on systemd-ask-password.socket - Query the User Interactively for a Password.
+[    7.354579] systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
+[    7.377244] systemd[1]: Listening on systemd-factory-reset.socket - Factory Reset Management.
+[    7.395643] systemd[1]: systemd-journald-audit.socket - Journal Audit Socket skipped, unmet condition check ConditionSecurity=audit
+[    7.396419] systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[    7.410553] systemd[1]: Listening on systemd-journald.socket - Journal Sockets.
+[    7.436997] systemd[1]: Listening on systemd-mute-console.socket - Console Output Muting Service Socket.
+[    7.450897] systemd[1]: Listening on systemd-networkd-varlink.socket - Network Management Varlink Socket.
+[    7.466646] systemd[1]: Listening on systemd-networkd.socket - Network Management Netlink Socket.
+[    7.481899] systemd[1]: systemd-pcrextend.socket - TPM PCR Measurements skipped, unmet condition check ConditionSecurity=measured-uki
+[    7.482027] systemd[1]: systemd-pcrlock.socket - Make TPM PCR Policy skipped, unmet condition check ConditionSecurity=measured-uki
+[    7.482718] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[    7.498277] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[    7.514345] systemd[1]: Listening on systemd-udevd-varlink.socket - udev Varlink Socket.
+[    7.530454] systemd[1]: dev-hugepages.mount - Huge Pages File System skipped, unmet condition check ConditionPathExists=/sys/kernel/mm/hugepages
+[    7.530986] systemd[1]: dev-mqueue.mount - POSIX Message Queue File System skipped, unmet condition check ConditionPathExists=/proc/sys/fs/mqueue
+[    7.531514] systemd[1]: sys-kernel-debug.mount - Kernel Debug File System skipped, unmet condition check ConditionPathExists=/sys/kernel/debug
+[    7.531967] systemd[1]: sys-kernel-tracing.mount - Kernel Trace File System skipped, unmet condition check ConditionPathExists=/sys/kernel/tracing
+[    7.532570] systemd[1]: tmp.mount: x-systemd.graceful-option=usrquota specified, but option is not available, suppressing.
+[    7.535586] systemd[1]: Mounting tmp.mount - Temporary Directory /tmp...
+[    7.550919] systemd[1]: systemd-journald.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[    7.563868] systemd[1]: systemd-journald.service: (This warning is only shown for the first unit using IP firewalling.)
+[    7.580685] systemd[1]: Starting systemd-journald.service - Journal Service...
+[    7.598196] systemd[1]: kmod-static-nodes.service - Create List of Static Device Nodes skipped, unmet condition check ConditionFileNotEmpty=/lib/modules/7.2.3-blikvm-v4-m7/modules.devname
+[    7.598605] systemd[1]: modprobe@configfs.service - Load Kernel Module configfs skipped, unmet condition check ConditionKernelModuleLoaded=!configfs
+[    7.601833] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+[    7.644223] systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+[    7.662133] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[    7.684915] systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+[    7.702331] systemd[1]: systemd-hibernate-clear.service - Clear Stale Hibernate Storage Info skipped, unmet condition check ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67
+[    7.707535] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[    7.730147] systemd[1]: Starting systemd-network-generator.service - Generate Network Units from Kernel Command Line...
+[    7.745756] systemd-journald[84]: Collecting audit messages is disabled.
+[    7.746379] systemd[1]: systemd-pcrmachine.service - TPM PCR Machine ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+[    7.746658] systemd[1]: systemd-pcrproduct.service - TPM NvPCR Product ID Measurement skipped, unmet condition check ConditionSecurity=measured-uki
+[    7.754062] systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+[    7.778237] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+[    7.789404] systemd[1]: systemd-tpm2-setup-early.service - Early TPM SRK Setup skipped, unmet condition check ConditionSecurity=measured-uki
+[    7.797937] systemd[1]: Starting systemd-udev-load-credentials.service - Load udev Rules from Credentials...
+[    7.822237] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[    7.850728] systemd[1]: Started systemd-journald.service - Journal Service.
+[    8.146761] systemd-journald[84]: Received client request to flush runtime journal.
+[    9.023204] dwmac-sun8i 5030000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
+[    9.072440] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    9.074837] dwmac-sun8i 5030000.ethernet eth0: PHY [stmmac-0:00] driver [Generic PHY] (irq=POLL)
+[    9.097738] random: crng init done
+[    9.177694] dwmac-sun8i 5030000.ethernet eth0: No Safety Features support found
+[    9.177733] dwmac-sun8i 5030000.ethernet eth0: No MAC Management Counters available
+[    9.273698] dwmac-sun8i 5030000.ethernet eth0: PTP not supported by HW
+[    9.273733] dwmac-sun8i 5030000.ethernet eth0: configuring for phy/rmii link mode
+[   11.413738] dwmac-sun8i 5030000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+[   79.534305] Mass Storage Function, version: 2009/09/11
+[   79.534333] LUN: removable file: (no medium)
+[   79.547986] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.

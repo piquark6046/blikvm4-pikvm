@@ -1,0 +1,96 @@
+{
+  "result": "passed",
+  "clients": [
+    {
+      "result": "passed",
+      "command": [
+        "curl",
+        "--config",
+        "/home/user/blikvm-lan/private/capacity-38862-0.conf",
+        "--cacert",
+        "/home/user/blikvm-lan/private/ca.crt",
+        "--interface",
+        "192.168.88.1",
+        "--http1.1",
+        "-sS",
+        "--no-buffer",
+        "--include",
+        "--max-time",
+        "130",
+        "https://blikvm-v4.lab/streamer/stream"
+      ],
+      "seconds_requested": 120.0,
+      "elapsed": 120.026243,
+      "frames": 3590,
+      "bytes": 148921702,
+      "unique_hashes": 3583,
+      "transitions": 3582,
+      "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 20:57:47 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/63b083902d81a653; path=/; max-age=30",
+      "fps": 29.910125571455236,
+      "max_gap": 0.135719,
+      "measurement_start_unix": 1788738252.6265595,
+      "capacity_passed": true
+    },
+    {
+      "result": "passed",
+      "command": [
+        "curl",
+        "--config",
+        "/home/user/blikvm-lan/private/capacity-38862-1.conf",
+        "--cacert",
+        "/home/user/blikvm-lan/private/ca.crt",
+        "--interface",
+        "192.168.88.1",
+        "--http1.1",
+        "-sS",
+        "--no-buffer",
+        "--include",
+        "--max-time",
+        "130",
+        "https://blikvm-v4.lab/streamer/stream"
+      ],
+      "seconds_requested": 120.0,
+      "elapsed": 120.024011,
+      "frames": 3591,
+      "bytes": 148963182,
+      "unique_hashes": 3584,
+      "transitions": 3583,
+      "http_headers": "HTTP/1.1 200 OK\r\nServer: nginx/1.28.3\r\nDate: Mon, 27 Jul 2026 20:57:47 GMT\r\nContent-Type: multipart/x-mixed-replace;boundary=boundarydonotcross\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, pre-check=0, post-check=0, max-age=0\r\nPragma: no-cache\r\nExpires: Mon, 3 Jan 2000 12:34:56 GMT\r\nSet-Cookie: stream_client=0/ec757ff696bb75df; path=/; max-age=30",
+      "fps": 29.91901345473282,
+      "max_gap": 0.101281,
+      "measurement_start_unix": 1788738252.6265595,
+      "capacity_passed": true
+    }
+  ],
+  "seconds": 120,
+  "target_fps": 27,
+  "client_count": 2,
+  "path": "192.168.88.1 enp1s0 -> 192.168.88.2 eth0 TCP/443; no tunnel",
+  "automation_sha256": {
+    "lan-capacity.py": "3231b5a22682dbc16de2948217d21815c0e1416d69ada3dab50c3aba8ac8e460",
+    "lan-resources.py": "844448de62e208541eeb19a3a1842ce65c3f5cad33d47ac855db635f0a9992d5",
+    "stream-client.py": "197a883432f1a21d5aa7221d39f90afe290b17024555727a1de23514ac4b7e54"
+  },
+  "measurement_processes": [
+    38865,
+    38866
+  ],
+  "reconnect": [
+    {
+      "client": 0,
+      "authenticated_state": true,
+      "snapshot_bytes": 41497,
+      "frames": 148,
+      "unique_hashes": 148,
+      "stream_result": "passed"
+    },
+    {
+      "client": 1,
+      "authenticated_state": true,
+      "snapshot_bytes": 41461,
+      "frames": 149,
+      "unique_hashes": 149,
+      "stream_result": "passed"
+    }
+  ]
+}

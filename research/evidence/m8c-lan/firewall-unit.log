@@ -1,0 +1,14 @@
+# /etc/systemd/system/blikvm-access.service
+[Unit]
+Description=BliKVM isolated development access policy
+Before=nginx.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/nft -f /etc/kvmd/access.nft
+ExecReload=/usr/sbin/nft -f /etc/kvmd/access.nft
+RemainAfterExit=yes
+# Deliberately retain filtering on stop/failure.
+
+[Install]
+WantedBy=multi-user.target

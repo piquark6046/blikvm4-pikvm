@@ -1,0 +1,78 @@
+{
+  "sample_seconds": 123.62515089200002,
+  "cpu_total_percent": 3.0393723079411945,
+  "processes": [
+    {
+      "pid": 184,
+      "comm": "kvmd/main: /usr",
+      "ppid": 1,
+      "sample_seconds": 123.62515089200002,
+      "cpu_one_core_percent": 0.5500498847472015,
+      "rss_min_kib": 58224,
+      "rss_max_kib": 58224
+    },
+    {
+      "pid": 194,
+      "comm": "nginx",
+      "ppid": 1,
+      "sample_seconds": 123.62515089200002,
+      "cpu_one_core_percent": 0.0,
+      "rss_min_kib": 9696,
+      "rss_max_kib": 9696
+    },
+    {
+      "pid": 195,
+      "comm": "nginx",
+      "ppid": 194,
+      "sample_seconds": 123.62515089200002,
+      "cpu_one_core_percent": 6.349840581272839,
+      "rss_min_kib": 9520,
+      "rss_max_kib": 9520
+    },
+    {
+      "pid": 204,
+      "comm": "ustreamer",
+      "ppid": 184,
+      "sample_seconds": 123.62515089200002,
+      "cpu_one_core_percent": 3.267943432909844,
+      "rss_min_kib": 29912,
+      "rss_max_kib": 29912
+    }
+  ],
+  "ethernet_delta": {
+    "tx_errors": 0,
+    "rx_length_errors": 0,
+    "rx_packets": 84615,
+    "tx_carrier_errors": 0,
+    "tx_dropped": 0,
+    "rx_missed_errors": 0,
+    "rx_over_errors": 0,
+    "tx_aborted_errors": 0,
+    "rx_crc_errors": 0,
+    "rx_frame_errors": 0,
+    "rx_nohandler": 0,
+    "tx_fifo_errors": 0,
+    "multicast": 0,
+    "tx_packets": 219731,
+    "tx_window_errors": 0,
+    "rx_bytes": 5584864,
+    "collisions": 0,
+    "rx_dropped": 0,
+    "tx_bytes": 314405264,
+    "tx_heartbeat_errors": 0,
+    "rx_fifo_errors": 0,
+    "rx_errors": 0,
+    "tx_compressed": 0,
+    "rx_compressed": 0
+  },
+  "ethernet_tx_mbps": 20.345715203189815,
+  "tcp_delta": {
+    "RetransSegs": 0,
+    "InErrs": 0,
+    "OutRsts": 0
+  },
+  "streamer_client_count_samples": {
+    "0": 3,
+    "2": 56
+  }
+}

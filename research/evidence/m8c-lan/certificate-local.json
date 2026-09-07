@@ -1,0 +1,31 @@
+{
+  "result": "passed",
+  "scope": "local certificate verification only; live TLS/browser pending",
+  "checks": {
+    "trusted_hostname": {
+      "passed": true,
+      "returncode": 0,
+      "output": "out/kvmd-lan/private/server.crt: OK\n"
+    },
+    "trusted_ip": {
+      "passed": true,
+      "returncode": 0,
+      "output": "out/kvmd-lan/private/server.crt: OK\n"
+    },
+    "wrong_name_rejected": {
+      "passed": true,
+      "returncode": 2,
+      "output": "CN=blikvm-v4.lab\nerror 62 at 0 depth lookup: hostname mismatch\nerror out/kvmd-lan/private/server.crt: verification failed\n"
+    },
+    "untrusted_rejected": {
+      "passed": true,
+      "returncode": 2,
+      "output": "CN=blikvm-v4.lab\nerror 20 at 0 depth lookup: unable to get local issuer certificate\nerror out/kvmd-lan/private/server.crt: verification failed\n"
+    },
+    "not_expiring_24h": {
+      "passed": true,
+      "returncode": 0,
+      "output": "Certificate will not expire\n"
+    }
+  }
+}

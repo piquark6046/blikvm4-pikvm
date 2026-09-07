@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "boot_id": "4840a8ef-eda4-49fa-81ef-0806e64f1500",
+  "listeners_proc": [
+    {
+      "address": "192.168.88.2",
+      "port": 22
+    },
+    {
+      "address": "192.168.88.2",
+      "port": 443
+    }
+  ],
+  "kvmd_pid": 186,
+  "ustreamer": {
+    "pid": 205,
+    "ppid": 186,
+    "uid": "988\t988\t988\t988",
+    "gid": "989\t989\t989\t989",
+    "cmdline": "/usr/bin/ustreamer --device=/dev/kvmd-video --resolution=1920x1080 --desired-fps=30 --device-fps=30 --quality=0 --format=MJPEG --encoder=HW --unix=/run/kvmd/ustreamer/ustreamer.sock --unix-mode=0660 --unix-rm --exit-on-parent-death --notify-parent --no-log-colors ",
+    "cgroup": "0::/system.slice/kvmd.service\n"
+  },
+  "ustreamer_version": "6.65-1blikvm2",
+  "ustreamer_sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b"
+}
