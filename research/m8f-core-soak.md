@@ -453,3 +453,22 @@ tolerance into root-cause proof or permission to trim the nonzero tail.
 Observation 02's unit entered active state at **2026-09-08 08:26:46 UTC**;
 collection should finish around **14:27 UTC**, followed by its final snapshot
 and replay. An active/cleanly exited unit alone is not a diagnostic result.
+
+### Next diagnostic candidate prepared offline — M8-F0 remains OPEN
+
+The [diagnostic-only uStreamer patch and continuation procedure](../build/ustreamer/diagnostics/README.md)
+are prepared separately from all accepted build recipes. Hooks observe dequeue
+before validation, completed HW-JPEG preparation, and the HTTP exposed copy.
+Bounded records preserve exact tails, all marker offsets, complete/through-EOI
+hashes and V4L2/timestamp correlation; an explicit UVC-header-shaped classifier
+never changes acceptance or bytes. Recent normal hashes support detection of
+a tail first appearing during copying. The strict qualification parser and
+running observation sources are unchanged.
+
+Preparation is Build-VM-only. Observation 02 and the target have not been
+modified by this work. No branch is selected before the complete observation
+archive, both client results, independent VM path replays, shared timestamp/hash
+comparison, every anomaly inspection, credential scan and full transfer/hash
+verification. Branches A/B/C/D and observation 03's root-cause-only 24-hour bound
+are recorded in the continuation procedure. No ARM64 deployment, kernel patch,
+production fix, qualification restart, P1 or M6/ATX work is implied.

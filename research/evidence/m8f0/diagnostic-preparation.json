@@ -1,0 +1,68 @@
+{
+  "prepared_at": "2026-09-08T10:46:12.495385+00:00",
+  "status": "OFFLINE_DIAGNOSTIC_PREPARED_NOT_DEPLOYED",
+  "m8f0": "OPEN",
+  "qualification_run02": "PERMANENTLY_FAILED_ZERO_CREDIT",
+  "observation02_modified": false,
+  "observation02_archive_replay": "PENDING",
+  "selected_branch": null,
+  "target_modified": false,
+  "p1": "GATED",
+  "m6_atx": "DEFERRED",
+  "parent_commit": "2d21abbd6de39d52a0d31b8eb31f3dc5bb4bd766",
+  "upstream_commit": "db87e03ce769d06ba62314ca7537e1cb3369b4de",
+  "source_hashes": {
+    "build/ustreamer/diagnostics/jpeg-tail-diagnostic.patch": "b572bed901e9f701616901071b2f96b8451473a2c4b1f0f6156c91d1c801c2c0",
+    "build/ustreamer/diagnostics/prepare.py": "5c546aa0e5b4c8cbc8dd6bc932e8c5f7faf755506eb76c975bb2e65a4c15deb4",
+    "build/ustreamer/diagnostics/encoder-driver.c": "467eaa52a0e955a0858264772375dd1e5fec9c9e1e7bc574fd49edb96729f6fc",
+    "build/ustreamer/diagnostics/fixture-driver.c": "f40e9070bc86f6f35aa3d6663edd8b302b5754d9584b74cd1e5045fcb02c9c34",
+    "build/ustreamer/diagnostics/taildiag.c": "761b80f023d666e214cbc0d2bc4d50ba5a494694f2fcc3dc7144573dbbba0806",
+    "build/ustreamer/diagnostics/.gitattributes": "5c49a7b6c66b863c7726fefca1a8c30dc521a270b9d406a554f9472716756b17",
+    "build/ustreamer/diagnostics/README.md": "381af2bef63472cb6488467702fbf4e8049a3e4816087e5b234725c89bc9af4f",
+    "build/ustreamer/diagnostics/verify-encoder.py": "2b3fc110ae4e602cce6f57398d55d3d7c6223bc1da1b7a4aab9b492ed05e45b5",
+    "build/ustreamer/diagnostics/taildiag.h": "dcb97a6ea63b33924290597f3ec0934a5ef9dee41ffcfcba2cfac634d6ee5e13",
+    "lab/mjpeg-taildiag-correlate.py": "00f7a625adcee5255c61e4d60133462ab6e1f82cf30b188f7b38701b7726891c",
+    "tests/test_ustreamer_taildiag.py": "1b6bc464ea0bdf182ceb589191e4a9907c06b889d75d89ac25108777db729c1e"
+  },
+  "frozen_inputs_unchanged": {
+    "build/ustreamer/capture-controls.patch": "7b425f0954c25e35176f59aca157cfe2148b710c9ba40b119438d9a220e8cf4e",
+    "build/ustreamer/versions.env": "3d316fa29c6a51448ed4009c57d15a1fa3b6022dc6adaf878a2053d24e3101ec",
+    "lab/stream-client.py": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82",
+    "lab/soak-video.py": "d57439c502a6a8bd535ff4dd5c037af7f96947a8fc887f3faaeb969b222da328",
+    "lab/verify-core-soak.py": "04d1fae36ebf8b8d5aad641a83bdffe2c5baa496da3b20cf2e00b18b4c56c538",
+    "lab/mjpeg-observe.py": "dd1fb7f546a27753f0a6af83df422da827e4b2e3b42afa48c110e9ff2c845766",
+    "lab/mjpeg-observe-run.py": "f7e6fe987de9a7346444120ac5a42576a5e7df1e39a712c10b5232e450611e2b",
+    "lab/mjpeg-observe-compare.py": "c7c65c16b7696084a782a8c8307ab693235d5603f2d0d6ae21df6cd28c032935"
+  },
+  "validation": {
+    "repository_tests": 111,
+    "diagnostic_tests": 13,
+    "native_build": "passed",
+    "native_arch": "AMD64",
+    "native_optional_setproctitle": false,
+    "compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "openssl": "3.5.5",
+    "sanitizers": "AddressSanitizer and UndefinedBehaviorSanitizer: preserved JPEG burst and explicit recent-ring flush passed; leak checking disabled",
+    "encoder_fixture_comparisons": 8,
+    "encoder_executions": 24,
+    "encoder_outputs_identical": true,
+    "patch_application": "pinned archive plus accepted patch, no fuzz",
+    "runtime_hil": "NOT_RUN",
+    "arm64_build": "NOT_BUILT"
+  },
+  "artifacts": {
+    "out/m8f0/diag-ready-source/src/ustreamer.bin": "38a902098fb19cfc00599c6c3447a3682a3d99055f6aa220acc07e6e8b8fa02d",
+    "out/m8f0/diag-ready-native-build.log": "f40f48d8a6b6a89acca56bc98948b9910c44e61ca5e7bdd6abb64c4b696464d2",
+    "out/m8f0/diag-ready-unit-tests.log": "2baf80925ceb541dcc55cc14fdb41f659779bbfc0c52cb8165129ac829be7a6d",
+    "out/m8f0/diag-ready-encoder-check/result.json": "9339c7050023747612043e7488120cbcea024e0c960dcbe82cffe00962094817",
+    "out/m8f0/diag-ready-source/diagnostic-source-manifest.json": "e4dd35530d15cd39b7be2fa4e6edc1b4b9d195acd9ca6fac1853d93cd58e680a"
+  },
+  "native_dependency_archives": {
+    "libjpeg-turbo8-dev_2.1.5-4ubuntu4_amd64.deb": "1f75dadc130553848448621d10fcc7cf750e43fece5e6250bef3e34c0cb31653",
+    "libevent-dev_2.1.12-stable-10ubuntu0.1_amd64.deb": "4f531e4ecb3052981f8147ff6a73bc6ef1a958ed048bd4e528b4279c3eb64d8d",
+    "libevent-pthreads-2.1-7t64_2.1.12-stable-10ubuntu0.1_amd64.deb": "5d397e4a7b865e90083a15f3bb85cd876437e5b183166d29b4daee0d4189a77d",
+    "libjpeg-turbo8_2.1.5-4ubuntu4_amd64.deb": "07672ce1f4d187e005ea0cc35d03e515ba056f3d3e7a9a25d3ef386e184da8c5",
+    "libevent-2.1-7t64_2.1.12-stable-10ubuntu0.1_amd64.deb": "f79b787664acf1127fd0dbee876e4f10f1a43c35f27d18da3c8bb3cfb98cfc67",
+    "libbsd-dev_0.12.2-2build2_amd64.deb": "d604964ec637a620781b52fa7b8ce6c3bdb974011c1d129e952b7cc09e47ec01"
+  }
+}
