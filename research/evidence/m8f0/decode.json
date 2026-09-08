@@ -1,0 +1,44 @@
+{
+  "decodes": [
+    {
+      "name": "complete",
+      "djpeg_exit": 0,
+      "djpeg_stderr": "",
+      "djpeg": {
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "rgb_sha256": "d71801ead5cdc40294a31a94918d7d5000907a80ccd0fe08c00293e63f1fc872"
+      },
+      "pillow": {
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "rgb_sha256": "d71801ead5cdc40294a31a94918d7d5000907a80ccd0fe08c00293e63f1fc872"
+      }
+    },
+    {
+      "name": "eoi",
+      "djpeg_exit": 0,
+      "djpeg_stderr": "",
+      "djpeg": {
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "rgb_sha256": "d71801ead5cdc40294a31a94918d7d5000907a80ccd0fe08c00293e63f1fc872"
+      },
+      "pillow": {
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "rgb_sha256": "d71801ead5cdc40294a31a94918d7d5000907a80ccd0fe08c00293e63f1fc872"
+      }
+    }
+  ],
+  "caveat": "Pillow and djpeg both use libjpeg-turbo; independent invocations, not independent codec implementations. Tolerant decoding does not prove padding.",
+  "jpeg_version": "8.0"
+}

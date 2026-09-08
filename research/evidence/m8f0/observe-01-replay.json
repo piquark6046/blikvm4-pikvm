@@ -1,0 +1,43 @@
+{
+  "qualification": "NOT_RUN",
+  "clients": {
+    "direct": {
+      "frames": 26863,
+      "observed_seconds": 899.5856488479767,
+      "fps_120s": [
+        29.808333333333334,
+        29.816666666666666,
+        29.975,
+        29.841666666666665,
+        29.933333333333334,
+        29.8,
+        29.933333333333334
+      ],
+      "fps_gate_met": true,
+      "motion_failure_windows": [],
+      "max_gap": 0.09297325799707323,
+      "anomalies": 0
+    },
+    "https": {
+      "frames": 26873,
+      "observed_seconds": 899.9213056750013,
+      "fps_120s": [
+        29.808333333333334,
+        29.816666666666666,
+        29.975,
+        29.841666666666665,
+        29.933333333333334,
+        29.8,
+        29.933333333333334
+      ],
+      "fps_gate_met": true,
+      "motion_failure_windows": [],
+      "max_gap": 0.07123007002519444,
+      "anomalies": 0
+    }
+  },
+  "shared_capture_keys": 26863,
+  "payload_mismatches": [],
+  "shared_anomalies": [],
+  "interpretation": "No anomaly reproduced does not establish the source of run 02 trailing bytes."
+}

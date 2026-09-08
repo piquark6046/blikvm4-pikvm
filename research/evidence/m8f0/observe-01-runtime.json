@@ -1,0 +1,334 @@
+{
+  "before": {
+    "boot_id": "febbcc5a-f117-4195-ac10-e77c205c5cae",
+    "processes": [
+      {
+        "pid": 13695,
+        "comm": "nginx",
+        "ppid": 1,
+        "start_ticks": 1814959,
+        "ticks": 12,
+        "rss_bytes": 9945088,
+        "fds": 8
+      },
+      {
+        "pid": 13697,
+        "comm": "nginx",
+        "ppid": 13695,
+        "start_ticks": 1814973,
+        "ticks": 301046,
+        "rss_bytes": 9830400,
+        "fds": 9
+      },
+      {
+        "pid": 22481,
+        "comm": "kvmd/main: /usr",
+        "ppid": 1,
+        "start_ticks": 3254921,
+        "ticks": 64778,
+        "rss_bytes": 75141120,
+        "fds": 28
+      },
+      {
+        "pid": 22505,
+        "comm": "kvmd/hid-keyboa",
+        "ppid": 22481,
+        "start_ticks": 3255258,
+        "ticks": 79348,
+        "rss_bytes": 45981696,
+        "fds": 22
+      },
+      {
+        "pid": 22506,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255259,
+        "ticks": 61280,
+        "rss_bytes": 46026752,
+        "fds": 24
+      },
+      {
+        "pid": 22507,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255260,
+        "ticks": 61364,
+        "rss_bytes": 46026752,
+        "fds": 26
+      },
+      {
+        "pid": 22510,
+        "comm": "ustreamer",
+        "ppid": 22481,
+        "start_ticks": 3255269,
+        "ticks": 112897,
+        "rss_bytes": 30760960,
+        "fds": 10
+      }
+    ],
+    "video_mode": {
+      "rc": 0,
+      "stdout": "Format Video Capture:\n\tWidth/Height      : 1920/1080\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 4147200\n\tColorspace        : sRGB\n\tTransfer Function : Rec. 709\n\tYCbCr/HSV Encoding: ITU-R 601\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+      "stderr": ""
+    },
+    "streamer": {
+      "ok": true,
+      "result": {
+        "instance_id": "",
+        "encoder": {
+          "type": "HW",
+          "quality": 0
+        },
+        "source": {
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "online": true,
+          "desired_fps": 30,
+          "captured_fps": 29
+        },
+        "stream": {
+          "queued_fps": 0,
+          "clients": 0,
+          "clients_stat": {}
+        }
+      }
+    },
+    "udc": {
+      "musb-hdrc.1.auto": "default"
+    },
+    "failed_units": {
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "during": {
+    "boot_id": "febbcc5a-f117-4195-ac10-e77c205c5cae",
+    "processes": [
+      {
+        "pid": 13695,
+        "comm": "nginx",
+        "ppid": 1,
+        "start_ticks": 1814959,
+        "ticks": 12,
+        "rss_bytes": 9945088,
+        "fds": 8
+      },
+      {
+        "pid": 13697,
+        "comm": "nginx",
+        "ppid": 13695,
+        "start_ticks": 1814973,
+        "ticks": 304061,
+        "rss_bytes": 9830400,
+        "fds": 11
+      },
+      {
+        "pid": 22481,
+        "comm": "kvmd/main: /usr",
+        "ppid": 1,
+        "start_ticks": 3254921,
+        "ticks": 65173,
+        "rss_bytes": 75141120,
+        "fds": 28
+      },
+      {
+        "pid": 22505,
+        "comm": "kvmd/hid-keyboa",
+        "ppid": 22481,
+        "start_ticks": 3255258,
+        "ticks": 79758,
+        "rss_bytes": 45981696,
+        "fds": 22
+      },
+      {
+        "pid": 22506,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255259,
+        "ticks": 61735,
+        "rss_bytes": 46026752,
+        "fds": 24
+      },
+      {
+        "pid": 22507,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255260,
+        "ticks": 61782,
+        "rss_bytes": 46026752,
+        "fds": 26
+      },
+      {
+        "pid": 22510,
+        "comm": "ustreamer",
+        "ppid": 22481,
+        "start_ticks": 3255269,
+        "ticks": 114982,
+        "rss_bytes": 30760960,
+        "fds": 12
+      }
+    ],
+    "video_mode": {
+      "rc": 0,
+      "stdout": "Format Video Capture:\n\tWidth/Height      : 1920/1080\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 4147200\n\tColorspace        : sRGB\n\tTransfer Function : Rec. 709\n\tYCbCr/HSV Encoding: ITU-R 601\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+      "stderr": ""
+    },
+    "streamer": {
+      "ok": true,
+      "result": {
+        "instance_id": "",
+        "encoder": {
+          "type": "HW",
+          "quality": 0
+        },
+        "source": {
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "online": true,
+          "desired_fps": 30,
+          "captured_fps": 30
+        },
+        "stream": {
+          "queued_fps": 30,
+          "clients": 2,
+          "clients_stat": {
+            "8a2e4f0df59619f3": {
+              "fps": 30,
+              "extra_headers": true,
+              "advance_headers": false,
+              "dual_final_frames": false,
+              "zero_data": false,
+              "key": "0"
+            },
+            "8f2b02c75ce566ae": {
+              "fps": 30,
+              "extra_headers": true,
+              "advance_headers": false,
+              "dual_final_frames": false,
+              "zero_data": false,
+              "key": "0"
+            }
+          }
+        }
+      }
+    },
+    "udc": {
+      "musb-hdrc.1.auto": "default"
+    },
+    "failed_units": {
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "after": {
+    "boot_id": "febbcc5a-f117-4195-ac10-e77c205c5cae",
+    "processes": [
+      {
+        "pid": 13695,
+        "comm": "nginx",
+        "ppid": 1,
+        "start_ticks": 1814959,
+        "ticks": 12,
+        "rss_bytes": 9945088,
+        "fds": 8
+      },
+      {
+        "pid": 13697,
+        "comm": "nginx",
+        "ppid": 13695,
+        "start_ticks": 1814973,
+        "ticks": 306035,
+        "rss_bytes": 9830400,
+        "fds": 9
+      },
+      {
+        "pid": 22481,
+        "comm": "kvmd/main: /usr",
+        "ppid": 1,
+        "start_ticks": 3254921,
+        "ticks": 65419,
+        "rss_bytes": 75141120,
+        "fds": 28
+      },
+      {
+        "pid": 22505,
+        "comm": "kvmd/hid-keyboa",
+        "ppid": 22481,
+        "start_ticks": 3255258,
+        "ticks": 80011,
+        "rss_bytes": 45981696,
+        "fds": 22
+      },
+      {
+        "pid": 22506,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255259,
+        "ticks": 62019,
+        "rss_bytes": 46026752,
+        "fds": 24
+      },
+      {
+        "pid": 22507,
+        "comm": "kvmd/hid-mouse:",
+        "ppid": 22481,
+        "start_ticks": 3255260,
+        "ticks": 62036,
+        "rss_bytes": 46026752,
+        "fds": 26
+      },
+      {
+        "pid": 22510,
+        "comm": "ustreamer",
+        "ppid": 22481,
+        "start_ticks": 3255269,
+        "ticks": 116268,
+        "rss_bytes": 30760960,
+        "fds": 10
+      }
+    ],
+    "video_mode": {
+      "rc": 0,
+      "stdout": "Format Video Capture:\n\tWidth/Height      : 1920/1080\n\tPixel Format      : 'MJPG' (Motion-JPEG)\n\tField             : None\n\tBytes per Line    : 0\n\tSize Image        : 4147200\n\tColorspace        : sRGB\n\tTransfer Function : Rec. 709\n\tYCbCr/HSV Encoding: ITU-R 601\n\tQuantization      : Default (maps to Full Range)\n\tFlags             : \nStreaming Parameters Video Capture:\n\tCapabilities     : timeperframe\n\tFrames per second: 30.000 (30/1)\n\tRead buffers     : 0\n",
+      "stderr": ""
+    },
+    "streamer": {
+      "ok": true,
+      "result": {
+        "instance_id": "",
+        "encoder": {
+          "type": "HW",
+          "quality": 0
+        },
+        "source": {
+          "resolution": {
+            "width": 1920,
+            "height": 1080
+          },
+          "online": true,
+          "desired_fps": 30,
+          "captured_fps": 30
+        },
+        "stream": {
+          "queued_fps": 30,
+          "clients": 0,
+          "clients_stat": {}
+        }
+      }
+    },
+    "udc": {
+      "musb-hdrc.1.auto": "default"
+    },
+    "failed_units": {
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  }
+}

@@ -231,3 +231,225 @@ active kvmd/nginx/gadget/MSD-helper services and zero failed units.
 work must isolate the payload/transport/parser boundary without changing the
 frozen stack or retroactively accepting this incomplete run. A new continuous
 24-hour qualification is required after that investigation.
+
+## M8-F0 — MJPEG trailing-byte anomaly isolation (September 8)
+
+**Diagnostic phase only; run 02 remains FAILED verbatim above.** The production
+baseline remains `ubuntu-26.04.1-kvmd-msd-baseline`. No JPEG acceptance rule,
+frame-rate threshold, continuity threshold, production package, or target image
+has been changed. No new 24-hour qualification or P1 work has started.
+
+### Exact preserved-payload analysis
+
+Offsets below are zero-based and identify the first byte of the marker.
+The original downloaded payload was independently rehashed on the Build VM.
+The explicitly selected binary regression fixture is
+`tests/fixtures/m8f0/observed-trailing-data.jpg`; this is the original malformed
+payload, **not proven padding**. Machine-readable results are under
+`research/evidence/m8f0/analysis.json` and `decode.json`. Separate local analysis
+copies are under `out/m8f0/initial/`; nothing was written into run 02.
+
+| Measurement | Result |
+| --- | --- |
+| Complete payload | 41,448 bytes |
+| All FFD9 offsets | `[41434]` |
+| Final EOI offset | 41,434; marker ends at exclusive offset 41,436 |
+| Trailing length | 12 bytes |
+| Exact trailing hex | `0c8fcf214aa5e06389a5d900` |
+| Tail all zero | **false** |
+| Complete SHA-256 | `d2cd33ac727787d035aef578156fc269a7b796c25b5ff5fb5873c844cf561d3c` |
+| Exactly through EOI SHA-256 | `5edc9ede820277d83ed6d282e836e23b07812982317cbe8554f5fc447c62acbd` |
+
+First 64 bytes, hex:
+
+```text
+ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d
+```
+
+Last 64 bytes, hex:
+
+```text
+5140051400514005140051400514005140051400514005140051400514005140051400514005140051400514005140051401ffd90c8fcf214aa5e06389a5d900
+```
+
+Installed `libjpeg-turbo-progs` and `python3-pil` on the **Build VM only**.
+`djpeg -rgb` independently decoded both complete and EOI-ended files with exit
+0 and empty stderr. Pillow also loaded both. All four RGB results have dimensions
+1920×1080 and pixel SHA-256
+`d71801ead5cdc40294a31a94918d7d5000907a80ccd0fe08c00293e63f1fc872`.
+These are separate decoding invocations but both frontends use libjpeg-turbo;
+they are not independent codec implementations. Identical tolerant decoding
+neither proves padding nor makes the complete payload qualification-valid.
+
+### Pinned upstream length trace
+
+The local upstream archive matches the frozen v6.65 commit
+`db87e03ce769d06ba62314ca7537e1cb3369b4de`, archive SHA-256
+`af99973b821b1e06ad9dbebc063ceb8ca868e06af7a6ccd90e67dc1d0a7fafea`.
+`research/evidence/m8f0/upstream-manifest.json` records inspected source hashes.
+Paths and line numbers below refer to that exact upstream archive, extracted
+under `out/m8f0/upstream`, before the accepted capture-controls patch.
+
+1. `src/libs/capture.c:395–420`: `VIDIOC_DQBUF` returns the V4L2 buffer;
+   multiplanar capture copies plane-zero `bytesused` to the buffer field before
+   validation. `_capture_is_buffer_valid` sees that length and mapped data.
+2. `capture.c:462`: the selected buffer's `buf.bytesused` becomes
+   `hw->raw.used` unchanged. V4L2 timestamp and buffer metadata are also retained.
+3. `src/ustreamer/encoder.c:121–123,215–217`: MJPEG selects the HW encoder.
+   `encoders/hw/encoder.c:54–87` copies `src->used` bytes. If a Huffman table is
+   absent, it inserts the standard table before SOF0 and appends **all** remaining
+   source bytes, including any trailing data; otherwise it copies the whole
+   source unchanged. Thus the encoded length can be capture length plus the
+   inserted table, but no branch canonicalizes the JPEG tail.
+4. `src/libs/frame.c:55–70` sets `used` to the copied size and increments it for
+   appended bytes. `stream.c:716–730` copies the encoded frame to the HTTP ring;
+   `http/server.c:985` copies the selected frame into the exposed frame.
+5. `http/server.c:709–718` formats multipart `Content-Length` from
+   `ex->frame->used`. Lines 756–759 append exactly that many bytes from the same
+   frame, then CRLF and the next boundary. The diagnostic requests normal body
+   mode, not `zero_data` or `advance_headers`.
+6. The accepted nginx configuration proxies `/streamer/` to this Unix socket
+   with buffering disabled. The new observer measures the delivered entity body
+   up to the exact advertised multipart boundary independently of the part's
+   length declaration; curl handles HTTP transfer coding. TLS/SSH framing is
+   outside this multipart entity measurement.
+
+Upstream `capture.c:585–635` first enforces the configured minimum frame size,
+then for JPEG requires at least 125 bytes and SOI at offset zero. It accepts any
+buffer whose **last two bytes** are `FFD9`, `D900`, or `0000`. Other endings are
+rejected unless `allow_truncated_frames` is enabled. It does **not** find a final
+EOI or inspect all bytes after it. Its comment describes inexpensive-camera
+padding as the rationale; it does not prove any MS2131-specific padding pattern.
+The observed payload ends in `D900`, so this shallow validation would admit it
+even with truncated-frame permission disabled. This explains an admission path,
+not the origin of the eleven nonterminal bytes following EOI.
+
+### Observation-only dual-path diagnostic
+
+`lab/mjpeg-observe.py` and `lab/mjpeg-observe-run.py` are separate from the frozen
+soak parser/controller. They never emit a qualification pass and never trim or
+rewrite a frame. Body/length discrepancies and strict SOI/EOI failures remain
+anomalies while collection continues for neighboring evidence. Split HTTP and
+multipart headers, split bodies, and multiple frames per read are supported.
+
+Every complete frame records source path, bridge UTC/monotonic receipt time,
+part length and actual boundary-delimited length, SOI/EOI offsets, full tail hex,
+first/last 64 bytes, SHA-256, upstream capture/encode timestamps and other part
+headers, following boundary bytes, and explicit lifecycle state. Each anomaly
+gets its original raw payload, full metadata, previous/next frame metadata, and
+an immediately requested read-only target runtime snapshot including uStreamer
+PID/start time, exact V4L2 mode, UDC and boot identity. Snapshot time is separate
+from receipt time; it is not represented as an atomic capture-time PID reading.
+
+The diagnostic has no scheduled lifecycle disruptions or exemption windows.
+The three-second continuity limit, changing-frame five-second windows, and
+27-fps 120-second windows remain recorded gates. Any observation failures remain
+visible. `lab/mjpeg-observe-compare.py` independently replays those windows and
+correlates capture/encode timestamps and payload SHA-256 across direct and HTTPS
+paths; a clean bounded observation cannot qualify the soak or establish where
+the rare failed payload originated.
+
+Initial fixture validation: 96 repository unit tests passed, including the
+exact valid EOI-ended image, observed trailing-data image, arbitrary nonzero
+trailer, truncated JPEG, synthetic zero padding (still anomalous), bytewise
+headers/body delivery, consecutive frames, a false Content-Length, and continued
+strict rejection by the unchanged qualification parser.
+
+The first bounded observation is `qualification/m8f0-observe-01` on the bridge,
+unit `blikvm-m8f0-observe-01.service`, requested duration 900 seconds. It uses
+one direct Unix-socket client through authenticated SSH and one authenticated,
+CA-verified client through the accepted nginx HTTPS LAN path, concurrently.
+The bridge supplies the accepted moving-ball 1080p30 source. Target binary
+SHA-256 remains
+`e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b`;
+boot ID remains `febbcc5a-f117-4195-ac10-e77c205c5cae`.
+The initial live bridge check found no USB-PC gadget enumeration and target
+UDC state `default`; this is not a passing HID/MSD regression.
+
+No canonicalization is justified by the nonzero tail. If direct uStreamer
+observation reproduces it, the next diagnostic-only build must instrument the
+V4L2 dequeue path before validation/copying, recording buffer index, sequence,
+timestamp, bytesused, final EOI, exact tail and first/last bytes without altering
+contents. A candidate must not be promoted until capture evidence establishes
+the source, bounded stress and frozen HID/MSD/two-client regressions pass, and
+no anomalous payload escapes. Only then may a new continuous 24-hour run start
+at time zero. Run 02's 14h54m contributes nothing; P1 also requires independent
+review of the fresh qualification.
+
+Additional static boundary inspection of the accepted Linux 7.2.3 source:
+`drivers/media/usb/uvc/uvc_video.c:1590–1605` removes each isochronous UVC
+header and passes `actual_length - header_size` to `uvc_video_decode_data`.
+Lines 1360–1380 add the scheduled payload-copy length to `buf->bytesused`;
+`uvc_queue.c:365` exports that count through `vb2_set_plane_payload` after the
+copy references are released. The driver uses UVC FID/EOF framing, not JPEG
+EOI, to complete buffers. This identifies the next instrumentation boundary;
+it is static code evidence and does not prove that run 02's tail was present
+in USB payload data. No USB trace or capture-buffer dump of that event exists.
+
+### Tail resembles a UVC payload header — hypothesis, not padding proof
+
+The exact 12 bytes also parse as a UVC payload header: `bHeaderLength=0x0c`,
+`bmHeaderInfo=0x8f` (EOH, SCR, PTS, EOF and FID set; ERR/STI/reserved clear),
+little-endian PTS `2773098959`, SCR clock `2777244640`, and SCR SOF `217`.
+The PTS/SCR combination requires a 12-byte header in the accepted kernel's
+`uvc_video.c:565–568,597–608`; the flag definitions are in
+`include/uapi/linux/usb/video.h:167–174`. Upstream corroboration:
+[UVC flags](https://github.com/torvalds/linux/blob/master/include/uapi/linux/usb/video.h)
+and [UVC timestamp field decoding](https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux/+/c7decec2f2d2ab0366567f9e30c0e1418cece43f/drivers/media/usb/uvc/uvc_video.c).
+The decoded hypothesis is archived in `tail-uvc-hypothesis.json`.
+
+This strongly motivates checking for a misplaced UVC header at capture, but
+byte-layout compatibility alone does not prove it came from a particular USB
+packet or identify whether the device, driver, or later copying misplaced it.
+The apparent SOF field happens to be `d9 00`, which explains why this candidate
+header also satisfies uStreamer's shallow terminal-byte rule. Do not classify
+these timestamp-like, nonzero bytes as deterministic padding or trim them.
+
+The observer archive/negative tests were subsequently expanded to 98 passing
+repository tests: they also exercise cross-path hash mismatches, low-rate/frozen
+replay failures, and exact raw-payload/neighbor preservation when the runtime
+snapshot command fails. The next diagnostic runner snapshots its own sources
+at startup and coalesces runtime queries during anomaly bursts to avoid
+unbounded SSH process creation. Run 01 retains its original source snapshots.
+
+### Completed bounded observation and continuing collection
+
+Observation 01 completed its 900-second requested interval with no observation
+errors or gate violations. Direct: **26,863 frames**; HTTPS: **26,873 frames**.
+All **26,863 shared capture/encode timestamp keys** have matching payload hashes.
+There were **zero anomalies** on either path. Every complete 120-second replay
+window delivered **29.8–29.975 fps**; every complete five-second window changed.
+Maximum delivery gaps were **0.09298 seconds direct** and **0.07124 seconds
+HTTPS**. This is a clean bounded diagnostic, not a reproduced fault or acceptance.
+
+The complete immutable private archive is
+`/home/user/blikvm-msd/m8f0-observe-01-private.tar.gz` on the bridge and
+`out/m8f0/m8f0-observe-01-private.tar.gz` on the Build VM: **9,072,095 bytes**,
+SHA-256 `66fae2c55872080814a70868996d67d92546c78cd291e53b9ea144c6f32679ac`.
+Its 23 files passed the exact qualification-password/private-key/session-header
+scan. Authenticated SFTP byte-array transfer preserved the full archive; the VM
+verified size/SHA-256, safely extracted it under `out/m8f0/evidence-01/`, and
+independently replayed every frame. VM and bridge replay JSON agree exactly.
+Selected replay/audit results are in `research/evidence/m8f0/`.
+
+A separate **six-hour observation**, `qualification/m8f0-observe-02`, is running
+under `blikvm-m8f0-observe-02.service`, with a 21,600-second collection interval
+and 21,800-second outer safety limit. This is M8-F0 observation 02, **not** a
+restart or replacement of failed M8-F qualification run 02. Both diagnostic
+clients were verified active with over 3,400 frames each and no initial anomaly.
+The source, authentication, two paths, strict anomaly classification and gates
+are unchanged. No target service restart, target binary replacement, V4L2
+capture instrumentation patch, canonicalization, fresh 24-hour qualification,
+P1 action, or release commit has been performed.
+
+**Isolation remains incomplete.** No direct anomaly has yet triggered the
+conditional capture-instrumentation step. After this collection, inspect both
+clients' `result.json`, `anomaly-*` directories and per-frame evidence; compare
+matching capture timestamps and raw bytes. If the direct path reproduces the
+fault, proceed with the requested diagnostic-only dequeue instrumentation.
+Do not promote this clean short sample, the UVC-header hypothesis, or decoder
+tolerance into root-cause proof or permission to trim the nonzero tail.
+
+Observation 02's unit entered active state at **2026-09-08 08:26:46 UTC**;
+collection should finish around **14:27 UTC**, followed by its final snapshot
+and replay. An active/cleanly exited unit alone is not a diagnostic result.

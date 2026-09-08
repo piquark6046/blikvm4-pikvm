@@ -1,0 +1,19 @@
+{
+  "classification": "hypothesis, not proven origin or padding",
+  "tail_hex": "0c8fcf214aa5e06389a5d900",
+  "uvc_header_length": 12,
+  "uvc_flags_hex": "0x8f",
+  "flags": {
+    "FID": true,
+    "EOF": true,
+    "PTS": true,
+    "SCR": true,
+    "RESERVED": false,
+    "STI": false,
+    "ERR": false,
+    "EOH": true
+  },
+  "pts_le": 2773098959,
+  "scr_stc_le": 2777244640,
+  "scr_sof_le": 217
+}

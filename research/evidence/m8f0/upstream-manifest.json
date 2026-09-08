@@ -1,0 +1,18 @@
+{
+  "commit": "db87e03ce769d06ba62314ca7537e1cb3369b4de",
+  "archive_sha256": "af99973b821b1e06ad9dbebc063ceb8ca868e06af7a6ccd90e67dc1d0a7fafea",
+  "files": {
+    "src/libs/capture.c": "1868ac2d12cb6fe329ced3b87dee6d2ad729415c7c7481cfe178bfe7f585292f",
+    "src/libs/frame.c": "0c6e2a5b713a02f0d36600c1169b5b37b9eaa63889f2a561c67f234983e590ef",
+    "src/ustreamer/encoders/hw/encoder.c": "25ede21d12b546cfbc1c796f2244cc396f3a0466efae365643c878032deba172",
+    "src/ustreamer/encoder.c": "7a5df4615ee3ff9b839f37c04a2d0efaa6b98c127984972f63fedb096f5976e2",
+    "src/ustreamer/stream.c": "faa0168eb4d89676836035f72a34fe20f1c142b1684637bb7011799abefd6d09",
+    "src/ustreamer/http/server.c": "356e52b1d2db63e516629b00f2cc6403eaf2bdd4cc5682089ef2e32158bd9427"
+  },
+  "accepted_capture_controls_patch_sha256": "7b425f0954c25e35176f59aca157cfe2148b710c9ba40b119438d9a220e8cf4e",
+  "kernel_files": {
+    "drivers/media/usb/uvc/uvc_video.c": "580535c5587e76dfc32d205c7c2532d6f7e9d75e3d559f6febbf0dcb8a2000e5",
+    "drivers/media/usb/uvc/uvc_queue.c": "2877050073b0fd82b0a09f0d669d3efdb7595d278841dc1e1b083aeeebd5bb31",
+    "include/uapi/linux/usb/video.h": "12d79be26de67e86d2bab3712873ba3a5e3a21fb46e375071bfd63d96576176f"
+  }
+}
