@@ -157,6 +157,18 @@ M6 GPIO/ATX remains **DEFERRED**. Writable MSD, optional transports, VNC/IPMI
 and final read-only-root remain excluded. A bounded integration soak and
 image-production preparation slice is proposed only.
 
+### M8-F — 24-hour core KVM soak
+
+**Current: QUALIFICATION FAILED at 14h54m; NOT PASSED.** An unexpected JPEG
+marker failure stopped run 02; the raw frame and failure evidence are retained.
+Preserve the frozen
+M8-E core stack through one continuous 24-hour qualification with two
+authenticated video clients, a real Web UI, moving HDMI, real host HID/MSD
+checks, bounded lifecycle events and resource-growth review. See
+[M8-F procedure and status](m8f-core-soak.md). M6 GPIO/ATX remains **DEFERRED**.
+P1 standalone image assembly begins only after M8-F acceptance; physical
+flashing remains a separate P2 qualification.
+
 ## M9 — Optional hardware
 
 Add PCF8563 DTS, LCD, fan, buzzer, Wi-Fi/BT, and unused USB only after core KVM. **Pass:** individual HIL tests and no regression of M1-M8. LCD and wireless remain explicitly non-blocking.
