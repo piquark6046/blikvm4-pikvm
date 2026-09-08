@@ -1,0 +1,1234 @@
+{
+  "qualification": "NOT_RUN",
+  "events": [
+    {
+      "diagnostic": {
+        "file": "dqbuf-001.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 62.145852487,
+          "realtime": 1785185098.7909417,
+          "grab_begin_time": "62.112000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "fc6a852c7870796ee15410032d2d9ae2490c5635a1eb14a8fb0a124e5325307a",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 2,
+            "sequence": 1382,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 62,
+            "timestamp_usec": 112409
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": "dqbuf-001.bin",
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8eb0ce436ca20d836c1802",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 1816383152,
+            "SCR_clock": 1820528034,
+            "SCR_SOF_raw": 536,
+            "SCR_SOF": 536,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2803fffd90c8eb0ce436ca20d836c1802",
+          "sha256": "fc6a852c7870796ee15410032d2d9ae2490c5635a1eb14a8fb0a124e5325307a",
+          "through_final_eoi_sha256": "3ae4b6ad16d1c6cd0a22208a34423efe8c6088997dac8677a8463738d6886443"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-002.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 73.377090743,
+          "realtime": 1785185110.02218,
+          "grab_begin_time": "73.343000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "c1fc20611a98e57ef7d32575b570ce6d3e6cfe9afce2a1357210d92a5d13b7fa",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 1719,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 73,
+            "timestamp_usec": 343782
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": "dqbuf-002.bin",
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f1c722bc017b76ac0f705",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 3224072732,
+            "SCR_clock": 3228219159,
+            "SCR_SOF_raw": 1527,
+            "SCR_SOF": 1527,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "28a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00ffd90c8f1c722bc017b76ac0f705",
+          "sha256": "c1fc20611a98e57ef7d32575b570ce6d3e6cfe9afce2a1357210d92a5d13b7fa",
+          "through_final_eoi_sha256": "4a0c0cbae33ce807d8161bc717565914b96172a50a5b43a8d9e08ca726bca03d"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-003.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 76.310238702,
+          "realtime": 1785185112.955328,
+          "grab_begin_time": "76.276000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "56c310dddc4b352ec55e4b8ecaa6edcb71ee79d46459d7f057dd394be2ce39b8",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 2,
+            "sequence": 1807,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 76,
+            "timestamp_usec": 276906
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": "dqbuf-003.bin",
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8fbc5f14d6d0a553d66c01",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 3591659452,
+            "SCR_clock": 3595806160,
+            "SCR_SOF_raw": 364,
+            "SCR_SOF": 364,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "5140051400514005140051400514005140051400514005140051400514005140051400514005140051400514005140051401ffd90c8fbc5f14d6d0a553d66c01",
+          "sha256": "56c310dddc4b352ec55e4b8ecaa6edcb71ee79d46459d7f057dd394be2ce39b8",
+          "through_final_eoi_sha256": "aa9bc07a08c16fb89d4fbd4b4e61f2ee99503d7756783c4107c58c5b4a0a1a5f"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-004.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 99.806747339,
+          "realtime": 1785185136.4518368,
+          "grab_begin_time": "99.773000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "d6eaceab4475197f0e23c0e7fdf0940546df68b7cd1f20956cba7cad915e1986",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 2,
+            "sequence": 2512,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 99,
+            "timestamp_usec": 773184
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": "dqbuf-004.bin",
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8ea9969b8574d8da853505",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2241566377,
+            "SCR_clock": 2245711988,
+            "SCR_SOF_raw": 1333,
+            "SCR_SOF": 1333,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "28a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00ffd90c8ea9969b8574d8da853505",
+          "sha256": "d6eaceab4475197f0e23c0e7fdf0940546df68b7cd1f20956cba7cad915e1986",
+          "through_final_eoi_sha256": "72418bc343afdf8de9e6e67518a65842b54304838181987836065fcce39feb10"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-005.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 132.634851521,
+          "realtime": 1785185169.2799408,
+          "grab_begin_time": "132.601000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "154be7fecc99e646732be8fbb2770b6b88864eed59aba9c39b47832ed231580d",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 2,
+            "sequence": 3497,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 132,
+            "timestamp_usec": 601397
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f2661d97a92a5187b7105",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2061066534,
+            "SCR_clock": 2065212818,
+            "SCR_SOF_raw": 1393,
+            "SCR_SOF": 1393,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "4500145001450014500145001450014500145001450014500145001450014500145001450014500145001450014500145007ffd90c8f2661d97a92a5187b7105",
+          "sha256": "154be7fecc99e646732be8fbb2770b6b88864eed59aba9c39b47832ed231580d",
+          "through_final_eoi_sha256": "12b65225e824a188eb02e1511c67fc70959eb58546bf7a85266b782bd85274e8"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-006.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 140.033338649,
+          "realtime": 1785185176.6784282,
+          "grab_begin_time": "140.000000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "7429dd98ed393a19155193912a7b659de1822c03a60dc2d5dc4bcc0dd497c889",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 3719,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 140,
+            "timestamp_usec": 57
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f80321fb227745eb25802",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2988388992,
+            "SCR_clock": 2992534567,
+            "SCR_SOF_raw": 600,
+            "SCR_SOF": 600,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "28a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00ffd90c8f80321fb227745eb25802",
+          "sha256": "7429dd98ed393a19155193912a7b659de1822c03a60dc2d5dc4bcc0dd497c889",
+          "through_final_eoi_sha256": "927d997a846f10e830e21075c7c21d2dd95a10d1dcae38d40f6f2f973c04b6be"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-007.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 163.029736202,
+          "realtime": 1785185199.6748254,
+          "grab_begin_time": "162.996000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "324bc5b10ba704add9fec5e55521457873fc5ad033cd7b142e18200b5e4e5e8c",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 4409,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 162,
+            "timestamp_usec": 996411
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8fcf51ea5d6295295e2c04",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 1575637455,
+            "SCR_clock": 1579783522,
+            "SCR_SOF_raw": 1068,
+            "SCR_SOF": 1068,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "28a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00ffd90c8fcf51ea5d6295295e2c04",
+          "sha256": "324bc5b10ba704add9fec5e55521457873fc5ad033cd7b142e18200b5e4e5e8c",
+          "through_final_eoi_sha256": "3700455e03f5d84b6b161efcc50708abd3e17c63f86e94268b9e3eef82a49afb"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-008.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 166.196233454,
+          "realtime": 1785185202.8413227,
+          "grab_begin_time": "166.162000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "53374fb97e19a32c7a0eb2516fc8db46e2159c8425cdc7b568fc6384a643cb9e",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 4504,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 166,
+            "timestamp_usec": 162901
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8ef36a91755daed0758a00",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 1972464371,
+            "SCR_clock": 1976610397,
+            "SCR_SOF_raw": 138,
+            "SCR_SOF": 138,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2803ffd90c8ef36a91755daed0758a00",
+          "sha256": "53374fb97e19a32c7a0eb2516fc8db46e2159c8425cdc7b568fc6384a643cb9e",
+          "through_final_eoi_sha256": "869a4da71900a90adc54ee3c4d0c201fdb9eb9af6af4437830078c2996234b06"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-009.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 202.823959346,
+          "realtime": 1785185239.4690487,
+          "grab_begin_time": "202.790000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "57337f40033cc8fd97e343e1f2e05235539440be010668fe8b4365b582e99d00",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 5603,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 202,
+            "timestamp_usec": 790520
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8ff9583187739970879e07",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2268158201,
+            "SCR_clock": 2272303475,
+            "SCR_SOF_raw": 1950,
+            "SCR_SOF": 1950,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "4500145001450014500145001450014500145001450014500145001450014500145001450014500145001450014500145007ffd90c8ff9583187739970879e07",
+          "sha256": "57337f40033cc8fd97e343e1f2e05235539440be010668fe8b4365b582e99d00",
+          "through_final_eoi_sha256": "70e0a2a16010b7d3bbdd68a862a5e2294665e2b7f3b93b812360f0cb31be1767"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-010.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 205.989712431,
+          "realtime": 1785185242.6348019,
+          "grab_begin_time": "205.956000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "cb383d45f9f635016c6ca4a4d5c3df2584add63dd8f7b4334b45c2b853408761",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 5698,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 205,
+            "timestamp_usec": 956405
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8e6368d89e6db2179ffc03",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2664982627,
+            "SCR_clock": 2669130349,
+            "SCR_SOF_raw": 1020,
+            "SCR_SOF": 1020,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "140051400514005140051400514005140051400514005140051400514005140051400514005140051400514005140051401fffd90c8e6368d89e6db2179ffc03",
+          "sha256": "cb383d45f9f635016c6ca4a4d5c3df2584add63dd8f7b4334b45c2b853408761",
+          "through_final_eoi_sha256": "55b240c54e52cb43a7743b6ad66918407ffd3fabafad66453156fdc911699933"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-011.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 222.820867272,
+          "realtime": 1785185259.465957,
+          "grab_begin_time": "222.787000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "22c66851d870765afd94f7add3fe788367dbfc40c81af6d6c37113b2ef4c1eac",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 6203,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 222,
+            "timestamp_usec": 787396
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f6e0e941c2c52d31cbb05",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 479465070,
+            "SCR_clock": 483611180,
+            "SCR_SOF_raw": 1467,
+            "SCR_SOF": 1467,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "8d00709e2ef8dde1cd0ede48b4b986a57d8c2ac5f714fb9af9afc41e20d43c4dac4da9ea53192794fe0a3b01ed4019745007ffd90c8f6e0e941c2c52d31cbb05",
+          "sha256": "22c66851d870765afd94f7add3fe788367dbfc40c81af6d6c37113b2ef4c1eac",
+          "through_final_eoi_sha256": "acfe2dec09b847ff146db3b44d7f5147c1b812c3cb5626ae8479fa8ecf88023c"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-012.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 227.486777733,
+          "realtime": 1785185264.1318672,
+          "grab_begin_time": "227.453000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "fcb21ef34621526e19be4461121eb6002817c6e19e1b1de118d3d8e4c281eefd",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 6343,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 227,
+            "timestamp_usec": 453396
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f6f5b6f3f689fae3ff507",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 1064262511,
+            "SCR_clock": 1068408680,
+            "SCR_SOF_raw": 2037,
+            "SCR_SOF": 2037,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "8a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00fffd90c8f6f5b6f3f689fae3ff507",
+          "sha256": "fcb21ef34621526e19be4461121eb6002817c6e19e1b1de118d3d8e4c281eefd",
+          "through_final_eoi_sha256": "ad0b552148f2b696810bb731a97aef1429e968f2981a9e6f34e7a81bacfcff89"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-013.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 237.218610737,
+          "realtime": 1785185273.8637002,
+          "grab_begin_time": "237.185000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "54c35d53414b8e7e4a5899deab2ed958ae9e662448a0ed75e8948de353f340bb",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 0,
+            "sequence": 6635,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 237,
+            "timestamp_usec": 185151
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8f0bd522889a146288f905",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 143,
+            "FID": 1,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2283984139,
+            "SCR_clock": 2288129178,
+            "SCR_SOF_raw": 1529,
+            "SCR_SOF": 1529,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2803ffd90c8f0bd522889a146288f905",
+          "sha256": "54c35d53414b8e7e4a5899deab2ed958ae9e662448a0ed75e8948de353f340bb",
+          "through_final_eoi_sha256": "f5aa0313561469e1f31b5fb7e779b53b473fedb45378d013a97fc0ba6705578b"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-014.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 274.84608913,
+          "realtime": 1785185311.4911785,
+          "grab_begin_time": "274.812000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "6c1c8e1de981a35c59d4ec888731d71fa19124371b4b501e656f730cd7b82e60",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 7764,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 274,
+            "timestamp_usec": 812649
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8e60e13aa188227aa1f400",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 2704990560,
+            "SCR_clock": 2709136008,
+            "SCR_SOF_raw": 244,
+            "SCR_SOF": 244,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2803ffd90c8e60e13aa188227aa1f400",
+          "sha256": "6c1c8e1de981a35c59d4ec888731d71fa19124371b4b501e656f730cd7b82e60",
+          "through_final_eoi_sha256": "48d632131168200f9816978343315dd510b54c07b2fe426aceb1793c8cc1336b"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-015.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 285.977326802,
+          "realtime": 1785185322.6224163,
+          "grab_begin_time": "285.944000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "ce016cc81f912cb4560ff9b3af0ea2f420f44be2012f4b5b34008b6b2dd2e3f4",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 8098,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 285,
+            "timestamp_usec": 944042
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8e525063f44f95a2f47004",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 4100149330,
+            "SCR_clock": 4104295759,
+            "SCR_SOF_raw": 1136,
+            "SCR_SOF": 1136,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "5140051400514005140051400514005140051400514005140051400514005140051400514005140051400514005140051401ffd90c8e525063f44f95a2f47004",
+          "sha256": "ce016cc81f912cb4560ff9b3af0ea2f420f44be2012f4b5b34008b6b2dd2e3f4",
+          "through_final_eoi_sha256": "c6d38604946958c2d3f09bd09fdecc55fbc2f5a0c8fb904bed127c127cd9022c"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-016.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 323.038583737,
+          "realtime": 1785185359.6836731,
+          "grab_begin_time": "323.005000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "4a5d4e0cd5076332019d9e1b7ef23cafddeb026150e430084215ed26ef1c33d4",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 0,
+            "sequence": 9210,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 323,
+            "timestamp_usec": 5154
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8e07d23f0907187f093505",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 155177479,
+            "SCR_clock": 159324167,
+            "SCR_SOF_raw": 1333,
+            "SCR_SOF": 1333,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "4500145001450014500145001450014500145001450014500145001450014500145001450014500145001450014500145007ffd90c8e07d23f0907187f093505",
+          "sha256": "4a5d4e0cd5076332019d9e1b7ef23cafddeb026150e430084215ed26ef1c33d4",
+          "through_final_eoi_sha256": "3e09921035c7980a56f70d5b4a0294a23ec0458eedc7de04809f7d1a02564a79"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-017.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 329.63720974,
+          "realtime": 1785185366.2822993,
+          "grab_begin_time": "329.603000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "615d876f66869fbd0ff337a69c01bacd8af4a84b9889c7d04acf4e46e5419445",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 3,
+            "sequence": 9408,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 329,
+            "timestamp_usec": 603900
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8ea7e98b3a2331cb3afc06",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 982247847,
+            "SCR_clock": 986394915,
+            "SCR_SOF_raw": 1788,
+            "SCR_SOF": 1788,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "28a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a0028a00ffd90c8ea7e98b3a2331cb3afc06",
+          "sha256": "615d876f66869fbd0ff337a69c01bacd8af4a84b9889c7d04acf4e46e5419445",
+          "through_final_eoi_sha256": "e2df94104fee32206b3e5c5a42429aaa058d2801235edbce917953890189ab46"
+        }
+      },
+      "multipart_matches": []
+    },
+    {
+      "diagnostic": {
+        "file": "dqbuf-018.json",
+        "qualification": "NOT_RUN",
+        "boundary": {
+          "stage": "dqbuf",
+          "pid": 294,
+          "monotonic": 351.167471292,
+          "realtime": 1785185387.8125608,
+          "grab_begin_time": "351.134000",
+          "encode_end_time": "0.000000",
+          "bytesused": 41448,
+          "suspicious": true,
+          "sha256": "c2c9da88536a00e4df66009ad848a7cae4b28b505bcfd9a297b70bffd3141ae2",
+          "correlation_ambiguous": false,
+          "v4l2": {
+            "index": 4,
+            "sequence": 10054,
+            "flags": 73729,
+            "bytesused": 41448,
+            "timestamp_sec": 351,
+            "timestamp_usec": 134157
+          }
+        },
+        "prior_boundaries": [],
+        "payload_file": null,
+        "jpeg": {
+          "bytesused": 41448,
+          "soi_offset": 0,
+          "eoi_offsets": [
+            41434
+          ],
+          "structural_eoi_exists": true,
+          "suspicious": true,
+          "final_eoi_offset": 41434,
+          "trailing_length": 12,
+          "trailing_hex": "0c8efd9962db03dba1db1603",
+          "uvc_candidate": {
+            "bHeaderLength": 12,
+            "bmHeaderInfo": 142,
+            "FID": 0,
+            "EOF": 1,
+            "PTS_present": true,
+            "SCR_present": true,
+            "ERR": 0,
+            "STI": 0,
+            "reserved": 0,
+            "EOH": 1,
+            "required_length": 12,
+            "length_matches_tail": true,
+            "fields_complete": true,
+            "header_shaped_only": true,
+            "PTS": 3680672253,
+            "SCR_clock": 3684817667,
+            "SCR_SOF_raw": 790,
+            "SCR_SOF": 790,
+            "SCR_reserved": 0
+          },
+          "first64_hex": "ffd8ffdb004300080606070605080707070909080a0c140d0c0b0b0c1912130f141d1a1f1e1d1a1c1c20242e2720222c231c1c2837292c30313434341f27393d",
+          "last64_hex": "2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2800a2803fffd90c8efd9962db03dba1db1603",
+          "sha256": "c2c9da88536a00e4df66009ad848a7cae4b28b505bcfd9a297b70bffd3141ae2",
+          "through_final_eoi_sha256": "ae3b67c99e6e6556a8a83eea4f5a71b959a7c94244a0b72bfe43467f150b8cb5"
+        }
+      },
+      "multipart_matches": []
+    }
+  ],
+  "diagnostic_summary": {
+    "qualification": "NOT_RUN",
+    "stages": [
+      {
+        "stage": "dqbuf",
+        "accepted": 18,
+        "written": 18,
+        "suppressed": 3,
+        "oversized_or_invalid_length": 0,
+        "inspected": 10680,
+        "suspicious_seen": 21,
+        "metadata_misses": 0
+      },
+      {
+        "stage": "hw_jpeg",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8967,
+        "suspicious_seen": 0,
+        "metadata_misses": 0
+      },
+      {
+        "stage": "http_exposed",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8967,
+        "suspicious_seen": 0,
+        "metadata_misses": 0
+      }
+    ],
+    "snapshots": 0,
+    "snapshots_written": 0
+  },
+  "recent_boundary_matches": [],
+  "multipart_anomalies_without_capture_key": 0,
+  "clean_shutdown_summary_present": true,
+  "interpretation": "Missing records are not proof of a clean boundary. DHT insertion can change HW-JPEG hashes. Header shape alone does not identify origin."
+}

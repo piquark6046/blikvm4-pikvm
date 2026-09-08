@@ -1,6 +1,18 @@
 # M8-F0 next uStreamer instrumentation — offline diagnostic candidate
 
-Status: **prepared on the Build VM; not deployed or hardware-qualified**.
+Status: **ARM64 diagnostic preflight FAILED; observation 03 not started**.
+
+Observation 02 completed, was privately archived/transferred/independently
+replayed, and supports exactly Branch A. The separate diagnostic ARM64 RAM
+image then passed stream/HID/MSD/resource checks but failed the required
+coverage gates: three suppressed DQBUF events, consumption of the four-raw-frame
+allowance, and root-owned flush requests rejected by the writer. No retry or
+kernel diagnostic was started. The complete result, archive hashes and bounded
+DQBUF proof are in [M8-F0 status](../../../research/m8f-core-soak.md).
+`lab/mjpeg-taildiag-preflight.py` and `lab/mjpeg-taildiag-runtime.py` retain the
+failed-run harness; **do not reuse their root-owned flush path as an observation
+03 launcher**. The offline preparation procedure below remains source evidence,
+not a passing runtime preflight.
 M8-F0 remains OPEN. Qualification run 02 remains permanently FAILED and supplies
 zero time to any new qualification. P1 stays gated; M6/ATX stays DEFERRED.
 

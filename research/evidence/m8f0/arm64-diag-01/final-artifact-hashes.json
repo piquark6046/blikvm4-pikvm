@@ -1,0 +1,13 @@
+{
+  "package": {
+    "path": "ustreamer_6.65-1blikvm2+taildiag1-complete-v2_arm64.deb",
+    "size": 171456,
+    "sha256": "eb154cad1269c38954e957dc7683372578c1e0b8e61b3125edda714c28717e3a"
+  },
+  "binary_sha256": "cd1b6adceedb71f7c13d20c5f0dad868ea7a79c1ab46e4ec0ffc32dc5d7c720a",
+  "ram_image": {
+    "name": "initramfs.cpio.gz",
+    "sha256": "b75d14c015a1eb13abdef93813f48dbdabb728d53c5015d164ae3f268c4f0e2b",
+    "size": 90278718
+  }
+}

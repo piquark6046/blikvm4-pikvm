@@ -1,0 +1,13 @@
+{
+  "branch": "A",
+  "shared_capture_keys": 645555,
+  "anomaly": {
+    "utc": "2026-09-08T11:45:39.888468+00:00",
+    "capture": "107804.817000",
+    "encode": "107804.851000",
+    "sha256": "3e473fc68e67ee0439ea28760886f65259492f1e024e468c7bf10530a9953cf3",
+    "size": 41448,
+    "tail": "0c8eed6907f539af46f50000"
+  },
+  "snapshot_failures": []
+}

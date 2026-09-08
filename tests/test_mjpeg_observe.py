@@ -30,6 +30,22 @@ class ObserveTests(unittest.TestCase):
         self.assertFalse(rows[1][0]['tail_all_zero'])
         self.assertIsNone(rows[3][0]['trailing_length'])
 
+    def test_observation_02_nonzero_tail_ending_in_zeroes_is_not_padding(self):
+        import hashlib
+        payload=(ROOT/'tests/fixtures/m8f0/observation-02-trailing-data.jpg').read_bytes()
+        self.assertEqual(hashlib.sha256(payload).hexdigest(),
+                         '3e473fc68e67ee0439ea28760886f65259492f1e024e468c7bf10530a9953cf3')
+        [(row,body)]=self.parse([payload],7)
+        self.assertEqual(body,payload)
+        self.assertTrue(row['anomaly'])
+        self.assertTrue(row['length_matches'])
+        self.assertEqual(row['trailing_hex'],'0c8eed6907f539af46f50000')
+        self.assertFalse(row['tail_all_zero'])
+        strict=runpy.run_path(str(ROOT/'lab/stream-client.py'))['Frames']()
+        with self.assertRaisesRegex(ValueError,'invalid JPEG markers'):
+            strict.feed(HEADER+part(payload)+b'--test\r\n')
+        self.assertEqual(strict.invalid_frame,payload)
+
     def test_split_headers_body_consecutive(self):
         for chunk in (1, 2, 7, 64, 4096, 1000000):
             with self.subTest(chunk=chunk):

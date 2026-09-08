@@ -1,0 +1,154 @@
+{
+  "result": "failed",
+  "qualification": "NOT_RUN",
+  "branch": "A",
+  "archive_sha256": "b8a6f8fcd3bcad0d81a07544e52685c9e85baf28824700e631152a392b2c9426",
+  "archive_bytes": 3180688,
+  "contained_files_verified": 242,
+  "failure_reasons": [
+    "DQBUF suppressed 3 of 21 suspicious frames",
+    "Both flush requests were root-owned; writer requires its own uid, so no recent-ring snapshot was written",
+    "The four-payload DQBUF raw-dump allowance was consumed; 14 further accepted events contain metadata only"
+  ],
+  "summary": {
+    "qualification": "NOT_RUN",
+    "stages": [
+      {
+        "stage": "dqbuf",
+        "accepted": 18,
+        "written": 18,
+        "suppressed": 3,
+        "oversized_or_invalid_length": 0,
+        "inspected": 10680,
+        "suspicious_seen": 21,
+        "metadata_misses": 0
+      },
+      {
+        "stage": "hw_jpeg",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8967,
+        "suspicious_seen": 0,
+        "metadata_misses": 0
+      },
+      {
+        "stage": "http_exposed",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8967,
+        "suspicious_seen": 0,
+        "metadata_misses": 0
+      }
+    ],
+    "snapshots": 0,
+    "snapshots_written": 0
+  },
+  "flush_request_owner": {
+    "uid": 0,
+    "gid": 0,
+    "mode": "0o600",
+    "size": 0
+  },
+  "verified_raw_dqbuf_frames": [
+    {
+      "file": "dqbuf-001.bin",
+      "sha256": "fc6a852c7870796ee15410032d2d9ae2490c5635a1eb14a8fb0a124e5325307a",
+      "bytesused": 41448,
+      "trailing_hex": "0c8eb0ce436ca20d836c1802",
+      "v4l2": {
+        "index": 2,
+        "sequence": 1382,
+        "flags": 73729,
+        "bytesused": 41448,
+        "timestamp_sec": 62,
+        "timestamp_usec": 112409
+      },
+      "pid": 294,
+      "capture": "62.112000"
+    },
+    {
+      "file": "dqbuf-002.bin",
+      "sha256": "c1fc20611a98e57ef7d32575b570ce6d3e6cfe9afce2a1357210d92a5d13b7fa",
+      "bytesused": 41448,
+      "trailing_hex": "0c8f1c722bc017b76ac0f705",
+      "v4l2": {
+        "index": 4,
+        "sequence": 1719,
+        "flags": 73729,
+        "bytesused": 41448,
+        "timestamp_sec": 73,
+        "timestamp_usec": 343782
+      },
+      "pid": 294,
+      "capture": "73.343000"
+    },
+    {
+      "file": "dqbuf-003.bin",
+      "sha256": "56c310dddc4b352ec55e4b8ecaa6edcb71ee79d46459d7f057dd394be2ce39b8",
+      "bytesused": 41448,
+      "trailing_hex": "0c8fbc5f14d6d0a553d66c01",
+      "v4l2": {
+        "index": 2,
+        "sequence": 1807,
+        "flags": 73729,
+        "bytesused": 41448,
+        "timestamp_sec": 76,
+        "timestamp_usec": 276906
+      },
+      "pid": 294,
+      "capture": "76.276000"
+    },
+    {
+      "file": "dqbuf-004.bin",
+      "sha256": "d6eaceab4475197f0e23c0e7fdf0940546df68b7cd1f20956cba7cad915e1986",
+      "bytesused": 41448,
+      "trailing_hex": "0c8ea9969b8574d8da853505",
+      "v4l2": {
+        "index": 2,
+        "sequence": 2512,
+        "flags": 73729,
+        "bytesused": 41448,
+        "timestamp_sec": 99,
+        "timestamp_usec": 773184
+      },
+      "pid": 294,
+      "capture": "99.773000"
+    }
+  ],
+  "dqbuf_records": 18,
+  "raw_payloads": 4,
+  "normal_hashes_shared_with_production_observation_02": 8938,
+  "diagnostic_session": {
+    "diagnostic_only": true,
+    "pid": 294,
+    "max_payload_bytes": 8388608,
+    "queue_slots": 4,
+    "per_stage_limit": 64,
+    "min_interval_seconds": 1,
+    "full_payloads_per_stage": 4,
+    "recent_summaries": 2048,
+    "disk_budget_bytes": 134217728
+  },
+  "resources": {
+    "cpu_percent_one_core": 8.834982914701365,
+    "maximum_rss_bytes": 36397056,
+    "baseline_cpu_percent": 3.755,
+    "baseline_rss_bytes": 30760960
+  },
+  "usb_uvc_musb_transport_errors": [],
+  "observation_03_started": false,
+  "kernel_diagnostic_created": false,
+  "postfailure_archive": {
+    "sha256": "0c0f4ef7905f8bc0d8b15d6e529d8db07f3de0bd7ce96a6c9971e4df99c2c5b4",
+    "bytes": 35680
+  },
+  "target_service_state": "ActiveState=inactive\nSubState=dead\nMainPID=0\nResult=success\nUser=kvmd\nGroup=ustreamer\n",
+  "target_diagnostic_ownership": "/var/lib/ustreamer-taildiag:988:989:700\n/var/lib/ustreamer-taildiag/session.json:988:989:600\n/var/lib/ustreamer-taildiag/flush.request:0:0:600\n",
+  "missing_final_host_inventory_in_original": true,
+  "interpretation": "Trailing bytes are proven in four saved pre-validation DQBUF buffers in this preflight. No delivered multipart anomaly was captured in this preflight. Suppressed events and missing recent rings remain evidence gaps; no earlier USB boundary is proven.",
+  "raw_payload_quota_exhausted": true
+}

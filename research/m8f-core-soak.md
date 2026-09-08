@@ -472,3 +472,194 @@ comparison, every anomaly inspection, credential scan and full transfer/hash
 verification. Branches A/B/C/D and observation 03's root-cause-only 24-hour bound
 are recorded in the continuation procedure. No ARM64 deployment, kernel patch,
 production fix, qualification restart, P1 or M6/ATX work is implied.
+
+### Observation 02 complete — Branch A selected after full archive replay
+
+Both clients stopped naturally after 21,600 seconds; the bridge journal records
+successful unit deactivation at 2026-09-08 14:26:52 UTC. The runner completed its
+final snapshot while the moving HDMI source remained alive. No target service
+was restarted or repaired to complete this review. The entire original directory
+`/home/user/blikvm-msd/qualification/m8f0-observe-02` remains unchanged.
+
+The separate private archive is
+`/home/user/blikvm-msd/m8f0-review-02/observation-02-private.tar.gz`, copied by
+authenticated SFTP with strict bridge host-key checking to
+`out/m8f0/review-02/observation-02-private.tar.gz` on the VM. It contains all 28
+original files, is **216,845,208 bytes**, and has SHA-256
+`82cbaef58b8094331c99647daef95874789d4876be61e8b1f300e2d62016d66a`.
+The bridge archive and sidecars are mode 0400 with the immutable flag set.
+Original file content hashes, sizes, modes and modification times matched before
+and after archiving. The existing private credential/key/session-header scan
+passed for all 28 files. The VM verified archive size/hash, safely extracted
+all files and independently verified every contained-file hash and size.
+
+Independent VM replay and a separate record audit checked both full frame logs,
+all multipart header metadata, sequential indices, lifecycle state, startup/end
+gaps, every anomaly's original bytes, neighboring records and runtime snapshots.
+Direct delivered **645,555 frames**, HTTPS **645,565**. All **645,555 shared
+capture/encode keys** have identical payload hashes. Complete 120-second windows
+range from **29.7 to 29.991667 fps direct** and **29.691667 to 29.991667 fps HTTPS**.
+Every complete five-second window changes. Maximum inter-frame gaps are
+**0.101857 seconds direct** and **0.101205 seconds HTTPS**. No rate, motion or
+continuity violation occurred. Both anomaly snapshots succeeded with empty
+stderr, as did before/after snapshots; no anomaly directory was skipped.
+
+At **2026-09-08 11:45:39.888468 UTC**, both paths delivered the same anomalous
+41,448-byte payload at capture timestamp **107804.817000**, encode-end timestamp
+**107804.851000**, SHA-256
+`3e473fc68e67ee0439ea28760886f65259492f1e024e468c7bf10530a9953cf3`.
+Its exact 12-byte tail is **`0c8eed6907f539af46f50000`**. No frame was trimmed,
+rewritten or canonicalized. The two anomaly directories are direct index 356508
+and HTTPS index 356518. uStreamer PID/start identity and target boot ID match
+between before/after samples. UDC changed from `default` before collection to
+`configured` afterward; this observation alone does not establish gadget
+regression acceptance.
+
+**Exactly Branch A is selected:** matching anomalous bytes under the same
+capture/encode identity place the fault below nginx. This does **not** yet
+identify V4L2, HW encoding or HTTP exposure as the first faulty boundary.
+Proceed only with the separate diagnostic ARM64 candidate and a bounded
+preflight. Selected machine-readable evidence is under
+`research/evidence/m8f0/observation-02-*`; the complete private VM review is under
+`out/m8f0/review-02`. All 111 existing local tests pass.
+
+M8-F0 remains OPEN; M8-F qualification remains FAILED/open. No qualification
+duration is credited. P1 remains gated and M6/ATX remains DEFERRED.
+
+### Separate ARM64 diagnostic artifact and RAM preflight
+
+The VM built diagnostic uStreamer **6.65-1blikvm2+taildiag1** in a fresh root at
+`out/m8f0/arm64-diag-01/build-root`, using the verified container ID
+`sha256:4b424588fc99a71195dc54659ea19c77508a7d457b15cdf5101b23551fbabcbc`,
+frozen M7 rootfs and Ubuntu snapshot `20260906T000000Z`. Upstream v6.65 remains
+at `db87e03ce769d06ba62314ca7537e1cb3369b4de`; the accepted capture-controls patch
+was verified unchanged and applied first, then `jpeg-tail-diagnostic.patch`.
+Compilation used ARM64 GCC **15.2.0-16ubuntu1** inside the isolated builder.
+Exact source, patch, source-file, dependency archive and installed dependency
+versions are recorded in `research/evidence/m8f0/arm64-diag-01/`, together with
+the actual build/image recipes. No production recipe or pin was changed.
+
+* ARM64 binary SHA-256:
+  `cd1b6adceedb71f7c13d20c5f0dad868ea7a79c1ab46e4ec0ffc32dc5d7c720a`.
+* Complete diagnostic package: **171,456 bytes**, SHA-256
+  `eb154cad1269c38954e957dc7683372578c1e0b8e61b3125edda714c28717e3a`.
+* Enrolled diagnostic RAM image: **90,278,718 bytes**, SHA-256
+  `b75d14c015a1eb13abdef93813f48dbdabb728d53c5015d164ae3f268c4f0e2b`.
+
+The image starts with the exact accepted M8-E rootfs. A full file-content/link
+comparison permits only `/usr/bin/ustreamer`, diagnostic provenance, package
+status, and a new environment/storage drop-in. It passes
+`USTREAMER_TAILDIAG_DIR=/var/lib/ustreamer-taildiag` through kvmd's unchanged
+child-launch path and creates a private systemd StateDirectory. This directory
+is on the RAM root and survives controlled service stop so the writer's final
+`summary.json` is retained. All original kvmd/nginx/auth/firewall/gadget/HID/MSD
+files remain identical, as do kernel and DTB. The existing libcrypto runtime
+bytes exactly match those used to link the candidate; no runtime dependency
+was replaced. The complete package preserves inherited service/udev files;
+staging the binary and package metadata deliberately avoids maintainer-script
+side effects. Production package/rootfs pins remain untouched.
+
+An initial undeployed RAM image under `ram-artifacts` is retained: review found
+that its diagnostic RuntimeDirectory would be removed during service stop.
+Only corrected `ram-artifacts-v2` was transferred and booted. The ARM64
+artifact is distinct from the production package, and the unchanged production
+baseline remains the accepted release. Fresh native encoder comparison again
+passes all 24 executions with byte-identical outputs; this is semantic evidence,
+not ARM64 HIL or qualification. A second original malformed payload from
+observation 02 is retained as a regression fixture, including its nonzero tail
+ending in `0000`. All **112** current local tests pass.
+
+Diagnostic boot `20260908T230327Z-unknown-859175` passed RAM serial/systemd,
+network and authenticated SSH checks. Its immutable artifact manifest records
+VM Git identity despite the bridge's non-Git working directory. A separate
+300-second preflight is collected under
+`/home/user/blikvm-msd/m8f0-diag-01/preflight`. The predeclared resource bounds
+allow at most 25 additional percentage points of one CPU core and 64 MiB RSS
+above observation 02. The harness requires exact mode, both authenticated
+paths, frozen HID and SCSI/media tests, real diagnostic process environment,
+controlled writer drain and complete counters. Observation 03 remains gated
+until independent VM review of all preflight evidence.
+
+### Diagnostic preflight FAILED — observation 03 not started
+
+The five-minute preflight ended naturally and its controlled kvmd stop drained
+the writer. **Do not begin observation 03 or retry this candidate from this
+result.** The final counters invalidate preflight acceptance:
+
+* DQBUF inspected 10,680 frames, saw 21 suspicious frames, admitted/wrote 18,
+  and **suppressed 3**. The four-whole-payload allowance was consumed; the
+  remaining 14 admitted records contain metadata/tails/hashes only.
+* Both flush requests were incorrectly created as root by the preflight
+  harness. The writer requires its own uid. The archived request is uid/gid
+  `0:0`, while the diagnostic directory/session are `988:989`. Consequently
+  **zero recent-ring snapshots** were written and `flush.request` remained.
+  This is a harness defect, not a successful flush or proof of clean earlier
+  boundaries. No runtime repair or retry was performed.
+* The early counter assertion skipped the harness's final host inventory.
+  That omission remains in the original archive. A separate, read-only
+  post-failure inventory is preserved outside it; no service was restarted.
+
+All 18 admitted diagnostic records are present, and `summary.json` exists.
+There are no oversized-buffer or missing-V4L2-metadata counters. These facts
+preserve useful evidence but do not override suppression, raw-quota exhaustion,
+or failed ring flushes. The combined suppression counter does not prove which
+specific internal limiter suppressed the three events.
+
+The failed preflight's **242 files** are retained unchanged in the immutable,
+private bridge archive
+`/home/user/blikvm-msd/m8f0-diag-preflight-review-01/preflight-private.tar.gz`.
+It is **3,180,688 bytes**, SHA-256
+`b8a6f8fcd3bcad0d81a07544e52685c9e85baf28824700e631152a392b2c9426`.
+The credential scan passed; authenticated SFTP copied the archive/sidecars to
+`out/m8f0/preflight-review-01/`, where all 242 contained-file hashes and the
+archive size/hash were independently verified. The separate post-failure
+archive is **35,680 bytes**, SHA-256
+`0c0f4ef7905f8bc0d8b15d6e529d8db07f3de0bd7ce96a6c9971e4df99c2c5b4`;
+its size/hash and credential scan also pass. Original failed VM audit attempts
+are retained: one exposed the omitted final host inventory; another detected
+normal eviction of old, pre-preflight bridge kernel-ring entries. The final
+review verifies exact retained log overlap through the preflight start and
+reviews the complete subsequent log interval rather than assuming an unbounded
+kernel log.
+
+Independent video replay agrees with the bridge: direct **8,955 frames**, HTTPS
+**8,965**, **8,955 shared capture/encode keys**, no payload mismatches or delivered
+anomalies. Both complete 120-second windows deliver **29.816667–29.933333 fps**;
+all five-second motion windows change. Maximum delivery gaps are **0.069557 s
+direct**, **0.087746 s HTTPS**. Mode remains exact MJPEG 1920×1080, V4L2 30/1.
+A total of **8,938 distinct normal payload hashes** also occur in production
+observation 02's accepted moving-source output. Together with the independent
+24-execution encoder comparison, this provides directly comparable normal-byte
+evidence without modifying frames. Diagnostic CPU was **8.835% of one core**,
+maximum RSS **36,397,056 bytes**, within the declared bounds. Frozen host HID,
+MSD image hashes, SCSI write protection and eject/reconnect semantics passed.
+Target/host log review finds no new USB/UVC/MUSB/transport regression in the
+covered preflight interval. These component passes do not make preflight pass.
+
+#### Runtime DQBUF evidence, with explicit limits
+
+`lab/mjpeg-taildiag-correlate.py` was run against the archived preflight. It
+verifies 18 diagnostic records, including all four complete saved payloads;
+none has a matching delivered multipart frame in either client. No multipart
+anomaly occurred in this preflight. In particular, this does **not** reconstruct
+the earlier observation 02 event at DQBUF.
+
+The four saved buffers do independently prove that this **anomaly class already
+exists at V4L2 DQBUF before uStreamer validation/copying**. All are 41,448 bytes
+with EOI at offset 41,434 and 12 nonzero, UVC-header-shaped trailing bytes.
+For example, PID 294, V4L2 buffer index 2, sequence 1382, timestamp 62.112409,
+flags 73729, contains tail **`0c8eb0ce436ca20d836c1802`**, whole SHA-256
+`fc6a852c7870796ee15410032d2d9ae2490c5635a1eb14a8fb0a124e5325307a`.
+The VM verified raw length/hash, EOI offsets, exact tail, first/last bytes,
+through-EOI hash and recorded V4L2 identity for every saved payload. All 18 event
+records are unambiguous at DQBUF. The first instrumented boundary containing
+these preserved tails is therefore **DQBUF**, not HW encoding or HTTP. USB
+packet provenance and the device-versus-uvcvideo distinction remain unproven.
+Target realtime differs from bridge UTC after RAM boot; correlation uses the
+recorded capture keys, monotonic clocks and boot/process identities instead.
+
+The preflight stop rule remains in force. No observation 03, trimming,
+production fix, kernel diagnostic, new qualification, P1 or M6/ATX work was
+started after the failure. A post-failure read-only sample confirms kvmd is
+**inactive/dead**, MainPID 0, Result success; evidence remains on the RAM root
+and in both archives. **M8-F0 remains OPEN; M8-F remains FAILED/open.**
