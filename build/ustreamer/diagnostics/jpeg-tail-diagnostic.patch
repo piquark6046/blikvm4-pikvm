@@ -38,7 +38,7 @@
  			broken = !_capture_is_buffer_valid(cap, &new, FRAME_DATA(new));
 --- /dev/null
 +++ b/src/libs/taildiag.c
-@@ -0,0 +1,329 @@
+@@ -0,0 +1,362 @@
 +/* SPDX-License-Identifier: GPL-3.0-or-later
 + * M8-F0 diagnostic only. No frame mutation, policy or recovery decisions.
 + */
@@ -56,10 +56,13 @@
 +#include <unistd.h>
 +
 +#define MAX_BYTES (8U * 1024U * 1024U)
-+#define SLOTS 4
++#define SLOTS 512
++#define QUEUE_BYTES (32U * 1024U * 1024U)
++#define RAW_LIMIT 32
++#define RAW_BUDGET (64U * 1024U * 1024U)
 +#define RECENT 2048
-+#define LIMIT 64
-+#define DISK_BUDGET (128U * 1024U * 1024U)
++#define LIMIT 8192
++#define DISK_BUDGET (64U * 1024U * 1024U)
 +static const char *stages[] = {"dqbuf", "hw_jpeg", "http_exposed"};
 +static void hex(FILE *f, const unsigned char *p, size_t n) {
 +    fputc('"', f);
@@ -160,7 +163,7 @@
 +    unsigned char hash[32];
 +} summary;
 +typedef struct {
-+    bool ready;
++    bool ready, save_raw;
 +    summary row, prior[2];
 +    unsigned prior_count;
 +    unsigned ordinal;
@@ -175,7 +178,8 @@
 +static unsigned recent_pos, recent_count, accepted[3], written[3], full[3];
 +static unsigned snapshots, snapshots_written;
 +static uint64_t suppressed[3], oversized[3], inspected[3], suspicious_seen[3], metadata_misses[3], reserved_bytes;
-+static struct timespec last[3];
++static uint64_t raw_bytes, queued_bytes, raw_skipped[3], write_errors;
++static unsigned raw_reserved[3];
 +static int directory = -1;
 +static bool enabled, stopping;
 +
@@ -194,43 +198,66 @@
 +    fputc('}',f);
 +}
 +static FILE *create(const char *name) {
-+    int fd=openat(directory,name,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,0600);
++    struct stat st;
++    if(!fstatat(directory,name,&st,AT_SYMLINK_NOFOLLOW) || errno!=ENOENT) return NULL;
++    char partial[128];snprintf(partial,sizeof(partial),"%s.partial",name);
++    int fd=openat(directory,partial,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,0600);
 +    if(fd<0) return NULL;
 +    FILE *f=fdopen(fd,"wb");if(!f) close(fd);return f;
 +}
-+/* Observation 03 may create an empty flush.request when its multipart client
-+ * sees an anomaly. This preserves normal upstream hashes without HTTP changes.
-+ * Never called under the producer mutex; no regular frame payload is saved. */
++static bool complete(FILE *f, const char *name) {
++    bool ok=!ferror(f);
++    if(fclose(f)) ok=false;
++    char partial[128];snprintf(partial,sizeof(partial),"%s.partial",name);
++    if(ok && linkat(directory,partial,directory,name,0)) ok=false;
++    if(ok && unlinkat(directory,partial,0)) ok=false;
++    if(!ok) ++write_errors;
++    return ok;
++}
++/* Serialized writer consumes a service-UID request containing 32 hex bytes.
++ * Snapshot publication precedes acknowledgement; absence is always failure. */
 +static void flush_requested(void) {
-+    if(snapshots>=4) return;
 +    int fd=openat(directory,"flush.request",O_RDONLY|O_NONBLOCK|O_NOFOLLOW|O_CLOEXEC);
 +    if(fd<0) return;
-+    struct stat st;
-+    bool valid=fstat(fd,&st)==0 && S_ISREG(st.st_mode) && st.st_uid==geteuid() && st.st_size==0;
++    struct stat st;char nonce[33]={0};
++    bool valid=fstat(fd,&st)==0 && S_ISREG(st.st_mode) && st.st_uid==geteuid() && st.st_size==32;
++    if(valid) valid=read(fd,nonce,32)==32;
 +    close(fd);
-+    if(!valid) return;
++    for(unsigned i=0;valid && i<32;++i)
++        if(!((nonce[i]>='0' && nonce[i]<='9') || (nonce[i]>='a' && nonce[i]<='f'))) valid=false;
++    if(!valid) return; /* Caller deadline fails; request remains evidence. */
 +    summary *copy=malloc(sizeof(recent));
 +    if(!copy) return;
 +    pthread_mutex_lock(&lock);
 +    uint64_t cost=RECENT*2048U+8192;
-+    if(cost>DISK_BUDGET-reserved_bytes) {pthread_mutex_unlock(&lock);free(copy);return;}
-+    reserved_bytes+=cost;
-+    unsigned count=recent_count;
-+    for(unsigned i=0;i<count;++i) copy[i]=recent[(recent_pos+RECENT-count+i)%RECENT];
++    bool admitted=snapshots<8 && cost<=DISK_BUDGET-reserved_bytes;
++    unsigned count=0;
++    if(admitted) {
++        reserved_bytes+=cost;count=recent_count;
++        for(unsigned i=0;i<count;++i) copy[i]=recent[(recent_pos+RECENT-count+i)%RECENT];
++    }
 +    pthread_mutex_unlock(&lock);
-+    /* A new request created during this write remains for the next snapshot. */
-+    if(unlinkat(directory,"flush.request",0)) {free(copy);return;}
-+    char name[64];snprintf(name,sizeof(name),"recent-%03u.json",++snapshots);
-+    FILE *f=create(name);
-+    if(f) {
-+        fprintf(f,"{\"diagnostic_only\":true,\"request_realtime\":%lld.%09ld,\"boundaries\":[",
-+            (long long)st.st_mtim.tv_sec,st.st_mtim.tv_nsec);
-+        for(unsigned i=0;i<count;++i) {if(i) fputc(',',f);metadata(f,&copy[i]);}
-+        fputs("]}\n",f);
-+        bool ok=!ferror(f);if(fclose(f)) ok=false;
-+        if(ok) ++snapshots_written;
++    char name[96];snprintf(name,sizeof(name),"recent-%03u.json",++snapshots);
++    bool ok=false;
++    if(admitted) {
++        FILE *f=create(name);
++        if(f) {
++            fprintf(f,"{\"diagnostic_only\":true,\"nonce\":\"%s\",\"request_realtime\":%lld.%09ld,\"boundaries\":[",
++                nonce,(long long)st.st_mtim.tv_sec,st.st_mtim.tv_nsec);
++            for(unsigned i=0;i<count;++i) {if(i) fputc(',',f);metadata(f,&copy[i]);}
++            fputs("]}\n",f);ok=complete(f,name);
++            if(ok) ++snapshots_written;
++        } else ++write_errors;
 +    }
 +    free(copy);
++    /* Only one outstanding request is permitted by the harness. */
++    if(unlinkat(directory,"flush.request",0)) return;
++    char ack[96];snprintf(ack,sizeof(ack),"flush-%s.json",nonce);
++    FILE *f=create(ack);
++    if(f) {
++        fprintf(f,"{\"nonce\":\"%s\",\"result\":\"%s\",\"snapshot\":\"%s\"}\n",
++                nonce,ok?"passed":"failed",name);complete(f,ack);
++    } else ++write_errors;
 +}
 +static void *writer(void *unused) {
 +    (void)unused;
@@ -253,11 +280,11 @@
 +        snprintf(name,sizeof(name),"%s-%03u.json",stages[e->row.stage],e->ordinal);
 +        snprintf(payload,sizeof(payload),"%s-%03u.bin",stages[e->row.stage],e->ordinal);
 +        bool saved=false;
-+        if(full[e->row.stage]<4) {
++        if(e->save_raw) {
 +            FILE *f=create(payload);
 +            if(f) {
 +                bool ok=fwrite(e->data,1,e->row.used,f)==e->row.used;
-+                if(fclose(f)!=0) ok=false;
++                if(!complete(f,payload)) ok=false;
 +                saved=ok;
 +                if(ok) ++full[e->row.stage];
 +            }
@@ -269,11 +296,11 @@
 +            for(unsigned i=0;i<e->prior_count;++i) {if(i) fputc(',',f);metadata(f,&e->prior[i]);}
 +            fputs("],\"payload_file\":",f);
 +            if(saved) fprintf(f,"\"%s\"",payload);else fputs("null",f);
-+            fputs(",\"jpeg\":",f);us_taildiag_describe(f,e->data,e->row.used);fputs("}\n",f);
-+            bool ok=!ferror(f);if(fclose(f)!=0) ok=false;
++            fprintf(f,",\"metadata_suppressed\":false,\"raw_dump_status\":\"%s\",\"jpeg\":", saved?"saved":(e->save_raw?"write_failed":"quota_exhausted"));us_taildiag_describe(f,e->data,e->row.used);fputs("}\n",f);
++            bool ok=complete(f,name);
 +            if(ok) ++written[e->row.stage];
 +        }
-+        pthread_mutex_lock(&lock);e->ready=false;pthread_mutex_unlock(&lock);
++        pthread_mutex_lock(&lock);queued_bytes-=e->row.used;free(e->data);e->data=NULL;e->ready=false;pthread_mutex_unlock(&lock);
 +        flush_requested();
 +    }
 +    return NULL;
@@ -282,14 +309,15 @@
 +    if(!enabled) return;
 +    pthread_mutex_lock(&lock);stopping=true;pthread_cond_signal(&wake);pthread_mutex_unlock(&lock);
 +    pthread_join(thread,NULL);
++    flush_requested();
 +    FILE *f=create("summary.json");
 +    if(f) {
 +        fputs("{\"qualification\":\"NOT_RUN\",\"stages\":[",f);
 +        for(unsigned i=0;i<3;++i) fprintf(f,"%s{\"stage\":\"%s\",\"accepted\":%u,\"written\":%u,"
 +            "\"suppressed\":%"PRIu64",\"oversized_or_invalid_length\":%"PRIu64",\"inspected\":%"PRIu64","
-+            "\"suspicious_seen\":%"PRIu64",\"metadata_misses\":%"PRIu64"}",
-+            i?",":"",stages[i],accepted[i],written[i],suppressed[i],oversized[i],inspected[i],suspicious_seen[i],metadata_misses[i]);
-+        fprintf(f,"],\"snapshots\":%u,\"snapshots_written\":%u}\n",snapshots,snapshots_written);fclose(f);
++            "\"suspicious_seen\":%"PRIu64",\"metadata_misses\":%"PRIu64",\"raw_written\":%u,\"raw_skipped\":%"PRIu64"}",
++            i?",":"",stages[i],accepted[i],written[i],suppressed[i],oversized[i],inspected[i],suspicious_seen[i],metadata_misses[i],full[i],raw_skipped[i]);
++        fprintf(f,"],\"snapshots\":%u,\"snapshots_written\":%u,\"write_errors\":%"PRIu64",\"metadata_reserved_bytes\":%"PRIu64",\"raw_reserved_bytes\":%"PRIu64"}\n",snapshots,snapshots_written,write_errors,reserved_bytes,raw_bytes);complete(f,"summary.json");
 +    }
 +    close(directory);
 +    for(unsigned i=0;i<SLOTS;++i) free(queue[i].data);
@@ -304,10 +332,9 @@
 +    FILE *f=create("session.json");
 +    if(!f) goto fail;
 +    fprintf(f,"{\"diagnostic_only\":true,\"pid\":%ld,\"max_payload_bytes\":%u,"
-+        "\"queue_slots\":%u,\"per_stage_limit\":%u,\"min_interval_seconds\":1,"
-+        "\"full_payloads_per_stage\":4,\"recent_summaries\":%u,\"disk_budget_bytes\":%u}\n",(long)getpid(),MAX_BYTES,SLOTS,LIMIT,RECENT,DISK_BUDGET);
-+    if(fclose(f)) goto fail;
-+    for(unsigned i=0;i<SLOTS;++i) if(!(queue[i].data=malloc(MAX_BYTES))) goto fail;
++        "\"queue_slots\":%u,\"per_stage_limit\":%u,\"min_interval_seconds\":0,"
++        "\"full_payloads_per_stage\":32,\"raw_budget_bytes\":67108864,\"queue_byte_limit\":33554432,\"recent_summaries\":%u,\"disk_budget_bytes\":%u}\n",(long)getpid(),MAX_BYTES,SLOTS,LIMIT,RECENT,DISK_BUDGET);
++    if(!complete(f,"session.json")) goto fail;
 +    if(pthread_create(&thread,NULL,writer,NULL)) goto fail;
 +    enabled=true;atexit(finish);return;
 +fail:
@@ -353,15 +380,21 @@
 +    if(s.suspicious) {
 +        unsigned slot;
 +        for(slot=0;slot<SLOTS;++slot) if(!queue[slot].ready) break;
-+        double elapsed=(double)(s.mono.tv_sec-last[stage].tv_sec)+(s.mono.tv_nsec-last[stage].tv_nsec)/1e9;
-+        /* Conservative upper bound: all raw EOI offsets, full tail hex, raw payload, metadata. */
-+        uint64_t cost=12*(uint64_t)n+8192;
-+        if(accepted[stage]>=LIMIT || (accepted[stage] && elapsed<1) || slot==SLOTS || cost>DISK_BUDGET-reserved_bytes) ++suppressed[stage];
++        /* Conservative upper bound: all raw EOI offsets, full tail hex, metadata. Raw disk budget is independent. */
++        uint64_t eois=0;
++        for(size_t j=0;j+1<n;++j) if(p[j]==255 && p[j+1]==217) ++eois;
++        uint64_t cost=22*eois+2*(uint64_t)(n-end-2)+8192;
++        if(accepted[stage]>=LIMIT || slot==SLOTS || n>QUEUE_BYTES-queued_bytes || cost>DISK_BUDGET-reserved_bytes) ++suppressed[stage];
 +        else {
-+            reserved_bytes+=cost;
-+            event *e=&queue[slot];e->row=s;e->ordinal=++accepted[stage];
++            event *e=&queue[slot];
++            e->data=malloc(n?n:1);
++            if(!e->data) {++suppressed[stage];pthread_mutex_unlock(&lock);goto done;}
++            queued_bytes+=n;reserved_bytes+=cost;
++            e->save_raw=raw_reserved[stage]<RAW_LIMIT && n<=RAW_BUDGET-raw_bytes;
++            if(e->save_raw) {++raw_reserved[stage];raw_bytes+=n;} else ++raw_skipped[stage];
++            e->row=s;e->ordinal=++accepted[stage];
 +            e->prior_count=count;memcpy(e->prior,prior,count*sizeof(summary));
-+            memcpy(e->data,p,n);last[stage]=s.mono;e->ready=true;pthread_cond_signal(&wake);
++            memcpy(e->data,p,n);e->ready=true;pthread_cond_signal(&wake);
 +        }
 +    }
 +    pthread_mutex_unlock(&lock);

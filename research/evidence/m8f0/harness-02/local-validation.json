@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "repository_tests": 113,
+  "encoder_comparisons": 24,
+  "sanitizer_burst_events": 300,
+  "sanitizer_raw_payloads": 96,
+  "anomaly_metadata_suppressed": 0,
+  "arm64_preflight": "passed_independent_vm_review",
+  "qualification": "NOT_RUN",
+  "checkpoint": "ae030e6",
+  "hashes": {
+    "build/ustreamer/diagnostics/taildiag.c": "3e667ab6c41dcba8b4ec219995cd9dd4669f517ac5c6b60197a654f6ead9778a",
+    "lab/mjpeg-taildiag-preflight.py": "c146063433784c764784b39d9fcac5d202beceee3f2d04097c155e5414bc4959",
+    "lab/mjpeg-taildiag-runtime.py": "68f60ee5d249424b2c45e479fcaa6d77251a0fa592001ae6853eebf49715c3c6"
+  }
+}

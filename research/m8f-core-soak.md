@@ -663,3 +663,57 @@ production fix, kernel diagnostic, new qualification, P1 or M6/ATX work was
 started after the failure. A post-failure read-only sample confirms kvmd is
 **inactive/dead**, MainPID 0, Result success; evidence remains on the RAM root
 and in both archives. **M8-F0 remains OPEN; M8-F remains FAILED/open.**
+
+### Hardened M8-F0 diagnostic harness — passed, zero qualification time
+
+The Branch-A DQBUF proof and explicitly failed first preflight were checkpointed
+as `ae030e6` (`diag: preserve M8-F0 Branch A DQBUF evidence`), with no tag.
+The selected public scan covered 36 files and found no credentials; all 112
+then-current tests passed. Four original saved runtime buffers remain sufficient
+to proceed below uStreamer; USB-device versus Linux origin is still unproven.
+The old uStreamer-only Observation 03 is superseded.
+
+Harness revision 2 separates metadata and raw-file budgets, removes the
+one-second anomaly limiter, increases raw retention to 32 files per stage under
+a fixed 64 MiB total allowance, and keeps exact metadata after raw exhaustion.
+The bounded queue and metadata output reservations remain explicit; exhaustion
+fails diagnostic coverage. Files publish atomically without replacing evidence.
+The live process UID/GID is verified from `/proc`, and each flush is created as
+that UID with a fresh nonce, a correlated snapshot/result and a five-second
+acknowledgement deadline. Missing acknowledgements fail preflight.
+
+All 113 harness-era tests passed, including 300 admitted burst events with zero
+metadata suppression and 96 raw files. Sanitizers passed, and all 24 HW encoder
+comparisons remained byte-identical. The separate ARM64 binary hash is
+`502e044d5c06a95b87b77b80b7795915be4e90aada7a2dc4f8456033619571e8`;
+its enrolled diagnostic RAM image is 90,275,855 bytes, SHA-256
+`617455ba722e4e28b87174bf9888f9b7e2dbb3ca0850ac15ea2eb7346d553f01`.
+Kernel, DTB and frozen functional userspace files are unchanged.
+
+Two TFTP publication-permission failures remain failed runs. The subsequent
+boot `20260908T233625Z-unknown-923966` and five-minute preflight passed independent
+VM review. DQBUF inspected 10,763 buffers and retained all **21 suspicious
+buffers**, with 21 metadata records and 21 complete raw files, **zero suppressed
+metadata**, no missing V4L2 correlation and no partial output. All three nonce
+requests produced matching snapshots and acknowledgements. Every summary and
+raw length/tail/hash reconciles. Exact MJPEG 1920x1080 30/1, both clients' >=27-fps
+windows, moving frames, HID and read-only MSD regressions pass. CPU use was
+8.818877% of one core and peak RSS 36,929,536 bytes, within declared bounds.
+The host log evicted only old entries predating the run; retained overlap and
+the complete new interval were independently checked. No new transport fault
+was found. kvmd was stopped normally to drain the diagnostic writer.
+
+The immutable bridge archive has **291 files**, **3,967,276 bytes**, SHA-256
+`bfcd0c6dde89ffe8642a7d4026dfe43a87726d5a720a8391222ce9c72c003c14`.
+It was secret-scanned, transferred by authenticated SFTP with independently
+verified bridge host key, and every contained file hash was checked on the VM.
+The original failed VM overlap assertion remains preserved; the succeeding
+review explicitly handles the bounded historical kernel ring. Selected evidence
+is in `research/evidence/m8f0/harness-02/`; the complete private archive/replay
+is in `out/m8f0/harness-review-02/`.
+
+Live descriptors now independently establish **bulk IN endpoint 0x83**, video
+interface 1, alternate 0, wMaxPacketSize 512, for MS2131 serial 29404080. This
+requires instrumentation of the actual bulk path in the separate Linux diagnostic.
+The harness gate is sound; it does not qualify M8-F or prove USB provenance.
+M8-F0 remains OPEN, Run 02 permanently FAILED, P1 gated and M6/ATX DEFERRED.

@@ -1,0 +1,22 @@
+{
+  "etc/systemd/system/kvmd.service.d": {
+    "before": null,
+    "after": "directory"
+  },
+  "etc/systemd/system/kvmd.service.d/90-taildiag.conf": {
+    "before": null,
+    "after": "f2c94930bfcea0b5262d610725a5677b5ccaacba4e26eb9584549182d9d6d1bc"
+  },
+  "usr/bin/ustreamer": {
+    "before": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+    "after": "502e044d5c06a95b87b77b80b7795915be4e90aada7a2dc4f8456033619571e8"
+  },
+  "usr/share/doc/ustreamer/taildiag.json": {
+    "before": null,
+    "after": "4bc6be26463c97900a9fb327ab9f5fab072418d06c7258657420a1dfbf533549"
+  },
+  "var/lib/dpkg/status": {
+    "before": "5b29ca6cd545dbc91bab379aa88619bd43d5f91608f3d59a30e659a7e80bf66a",
+    "after": "19ce25b6c7047fb91ba8915f3e0ab2ae53e3a44dc452cbc7f7a4d800233718b7"
+  }
+}

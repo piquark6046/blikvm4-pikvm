@@ -1,0 +1,7 @@
+{
+  "result": "passed",
+  "files_scanned": 291,
+  "archive_sha256": "bfcd0c6dde89ffe8642a7d4026dfe43a87726d5a720a8391222ce9c72c003c14",
+  "archive_bytes": 3967276,
+  "findings": []
+}

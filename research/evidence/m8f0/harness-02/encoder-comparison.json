@@ -1,0 +1,126 @@
+{
+  "result": "passed",
+  "qualification": "NOT_RUN",
+  "comparisons": [
+    {
+      "fixture": "exact-with-dht",
+      "input_sha256": "5edc9ede820277d83ed6d282e836e23b07812982317cbe8554f5fc447c62acbd",
+      "input_bytes": 41436,
+      "output_sha256": {
+        "base": "5edc9ede820277d83ed6d282e836e23b07812982317cbe8554f5fc447c62acbd",
+        "off": "5edc9ede820277d83ed6d282e836e23b07812982317cbe8554f5fc447c62acbd",
+        "on": "5edc9ede820277d83ed6d282e836e23b07812982317cbe8554f5fc447c62acbd"
+      },
+      "output_bytes": {
+        "base": 41436,
+        "off": 41436,
+        "on": 41436
+      }
+    },
+    {
+      "fixture": "exact-without-dht",
+      "input_sha256": "ffd1425b59335c69d54d50e8c58219b3b7efd1dc375bf12b15c3a7b40dc6f473",
+      "input_bytes": 41004,
+      "output_sha256": {
+        "base": "d54187ba90ef5210c758fddeb0d148fd15a2db1405c9af92fb3c7ecbe85c82be",
+        "off": "d54187ba90ef5210c758fddeb0d148fd15a2db1405c9af92fb3c7ecbe85c82be",
+        "on": "d54187ba90ef5210c758fddeb0d148fd15a2db1405c9af92fb3c7ecbe85c82be"
+      },
+      "output_bytes": {
+        "base": 41424,
+        "off": 41424,
+        "on": 41424
+      }
+    },
+    {
+      "fixture": "preserved-with-dht",
+      "input_sha256": "d2cd33ac727787d035aef578156fc269a7b796c25b5ff5fb5873c844cf561d3c",
+      "input_bytes": 41448,
+      "output_sha256": {
+        "base": "d2cd33ac727787d035aef578156fc269a7b796c25b5ff5fb5873c844cf561d3c",
+        "off": "d2cd33ac727787d035aef578156fc269a7b796c25b5ff5fb5873c844cf561d3c",
+        "on": "d2cd33ac727787d035aef578156fc269a7b796c25b5ff5fb5873c844cf561d3c"
+      },
+      "output_bytes": {
+        "base": 41448,
+        "off": 41448,
+        "on": 41448
+      }
+    },
+    {
+      "fixture": "preserved-without-dht",
+      "input_sha256": "c3a6c39c1326bb3d1ac95498a908890df15e40890e583f56e31a736546feba2a",
+      "input_bytes": 41016,
+      "output_sha256": {
+        "base": "cc29097b4aab9d4f7b097a987b6292672b0f8f9f7253d4a6825005ac44b40f01",
+        "off": "cc29097b4aab9d4f7b097a987b6292672b0f8f9f7253d4a6825005ac44b40f01",
+        "on": "cc29097b4aab9d4f7b097a987b6292672b0f8f9f7253d4a6825005ac44b40f01"
+      },
+      "output_bytes": {
+        "base": 41436,
+        "off": 41436,
+        "on": 41436
+      }
+    },
+    {
+      "fixture": "zero-with-dht",
+      "input_sha256": "77edefe7e0c1b7ba1b7eeffdf5b84b89d0b5571a3794b93f54abbf38bf7b49b6",
+      "input_bytes": 41448,
+      "output_sha256": {
+        "base": "77edefe7e0c1b7ba1b7eeffdf5b84b89d0b5571a3794b93f54abbf38bf7b49b6",
+        "off": "77edefe7e0c1b7ba1b7eeffdf5b84b89d0b5571a3794b93f54abbf38bf7b49b6",
+        "on": "77edefe7e0c1b7ba1b7eeffdf5b84b89d0b5571a3794b93f54abbf38bf7b49b6"
+      },
+      "output_bytes": {
+        "base": 41448,
+        "off": 41448,
+        "on": 41448
+      }
+    },
+    {
+      "fixture": "zero-without-dht",
+      "input_sha256": "f48ac19a4d42eaa889010f9ee2c4cbbaac0088396f67fdaaac329b3ae7971ed3",
+      "input_bytes": 41016,
+      "output_sha256": {
+        "base": "60763ed342eb0360cc09c13deb941d5db66a2b7c266677b03bff740596a7778a",
+        "off": "60763ed342eb0360cc09c13deb941d5db66a2b7c266677b03bff740596a7778a",
+        "on": "60763ed342eb0360cc09c13deb941d5db66a2b7c266677b03bff740596a7778a"
+      },
+      "output_bytes": {
+        "base": 41436,
+        "off": 41436,
+        "on": 41436
+      }
+    },
+    {
+      "fixture": "garbage-with-dht",
+      "input_sha256": "4223d62daa0953aef2db050d9937e31881a67ef5b893d6eb69bcd5ac6b5cd98a",
+      "input_bytes": 41443,
+      "output_sha256": {
+        "base": "4223d62daa0953aef2db050d9937e31881a67ef5b893d6eb69bcd5ac6b5cd98a",
+        "off": "4223d62daa0953aef2db050d9937e31881a67ef5b893d6eb69bcd5ac6b5cd98a",
+        "on": "4223d62daa0953aef2db050d9937e31881a67ef5b893d6eb69bcd5ac6b5cd98a"
+      },
+      "output_bytes": {
+        "base": 41443,
+        "off": 41443,
+        "on": 41443
+      }
+    },
+    {
+      "fixture": "garbage-without-dht",
+      "input_sha256": "259204b665bf7f11f8c749ca5d19f8b7bf491e7ac16fd3c01e60840dbbba4896",
+      "input_bytes": 41011,
+      "output_sha256": {
+        "base": "d4653c7c9bf948cf282d50668596db725153a774f962ccbcb92b65e0e00d4a12",
+        "off": "d4653c7c9bf948cf282d50668596db725153a774f962ccbcb92b65e0e00d4a12",
+        "on": "d4653c7c9bf948cf282d50668596db725153a774f962ccbcb92b65e0e00d4a12"
+      },
+      "output_bytes": {
+        "base": 41431,
+        "off": 41431,
+        "on": 41431
+      }
+    }
+  ]
+}

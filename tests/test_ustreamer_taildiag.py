@@ -98,7 +98,7 @@ class TailDiagnosticTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); payload=root/'input';payload.write_bytes(data)
             logs=root/'logs';logs.mkdir(mode=0o700)
-            if mode=='flush': (logs/'flush.request').touch(mode=0o600)
+            if mode=='flush': (logs/'flush.request').write_text('0123456789abcdef0123456789abcdef'); (logs/'flush.request').chmod(0o600)
             env=os.environ.copy();env['USTREAMER_TAILDIAG_DIR']=str(logs)
             subprocess.run([str(self.exe), str(payload), mode], env=env, check=True)
             rows={p.name:json.loads(p.read_text()) for p in logs.glob('*.json')}
@@ -145,6 +145,9 @@ class TailDiagnosticTests(unittest.TestCase):
         self.assertTrue(all(not b['suspicious'] for b in boundaries))
         self.assertTrue(all(b['sha256']==hashlib.sha256(VALID).hexdigest() for b in boundaries))
         self.assertEqual(rows['summary.json']['snapshots_written'],1)
+        ack=rows['flush-0123456789abcdef0123456789abcdef.json']
+        self.assertEqual(ack['result'],'passed')
+        self.assertEqual(rows[ack['snapshot']]['nonce'],ack['nonce'])
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);diag=root/'diag';diag.mkdir();clients=root/'clients'
             for name,row in rows.items(): (diag/name).write_text(json.dumps(row))
@@ -160,13 +163,38 @@ class TailDiagnosticTests(unittest.TestCase):
             self.assertEqual(len(result['recent_boundary_matches']),3)
             self.assertTrue(all(not m['payload_matches'] for r in result['recent_boundary_matches'] for m in r['multipart_matches']))
 
+    def test_runtime_flush_acknowledgement_and_deadline(self):
+        import runpy
+        import time
+        request=runpy.run_path(str(ROOT/'lab/mjpeg-taildiag-runtime.py'))['request_flush']
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); payload=root/'input';payload.write_bytes(VALID)
+            logs=root/'logs';logs.mkdir(mode=0o700)
+            env=dict(os.environ,USTREAMER_TAILDIAG_DIR=str(logs))
+            process=subprocess.Popen([str(self.exe),str(payload),'flush'],env=env)
+            try:
+                deadline=time.monotonic()+2
+                while not (logs/'session.json').exists():
+                    self.assertLess(time.monotonic(),deadline);time.sleep(.01)
+                ack=request(logs,os.getuid(),os.getgid(),timeout=2)
+                self.assertEqual(ack['result'],'passed')
+            finally:process.wait(timeout=4)
+            self.assertEqual(process.returncode,0)
+            self.assertFalse(list(logs.glob('*.partial')))
+            with self.assertRaisesRegex(TimeoutError,'missing flush acknowledgement'):
+                request(logs,os.getuid(),os.getgid(),timeout=.1)
+
     def test_rate_limit_bounds_and_no_normal_payloads(self):
         rows,bins=self.runtime('burst')
-        self.assertEqual(len(bins),3)
+        self.assertEqual(len(bins),96)
         for row in rows['summary.json']['stages']:
-            self.assertEqual(row['accepted'],1)
-            self.assertEqual(row['written'],1)
-            self.assertEqual(row['suppressed'],99)
+            self.assertEqual(row['accepted'],100)
+            self.assertEqual(row['written'],100)
+            self.assertEqual(row['suppressed'],0)
+            self.assertEqual(row['raw_written'],32)
+            self.assertEqual(row['raw_skipped'],68)
+        self.assertEqual(rows['dqbuf-100.json']['raw_dump_status'],'quota_exhausted')
+        self.assertEqual(rows['dqbuf-100.json']['jpeg'],self.describe(OBSERVED))
         rows,_=self.runtime('bounds')
         self.assertEqual(rows['summary.json']['stages'][0]['oversized_or_invalid_length'],2)
         rows,bins=self.runtime('once',VALID)

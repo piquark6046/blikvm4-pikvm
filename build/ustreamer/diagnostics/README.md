@@ -1,6 +1,14 @@
-# M8-F0 next uStreamer instrumentation — offline diagnostic candidate
+# M8-F0 uStreamer diagnostic instrumentation
 
-Status: **ARM64 diagnostic preflight FAILED; observation 03 not started**.
+Current work: [harness revision 2](HARDENING.md). The historical Observation 03
+plan below is superseded by the confirmed DQBUF gate: after harness preflight,
+proceed directly to a separate Linux uvcvideo diagnostic.
+
+
+Status: **hardened ARM64 harness preflight PASSED; original preflight remains FAILED**.
+
+The following failed-preflight description is historical and retained. Current
+evidence and limits are in [harness revision 2](HARDENING.md).
 
 Observation 02 completed, was privately archived/transferred/independently
 replayed, and supports exactly Branch A. The separate diagnostic ARM64 RAM

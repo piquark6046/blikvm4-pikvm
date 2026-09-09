@@ -56,7 +56,7 @@ def main():
         while not (out/'observation/clients/direct/frames.jsonl').exists() or not (out/'observation/clients/https/frames.jsonl').exists():
             assert process.poll() is None,'observer runner exited during startup'
             assert time.monotonic()<deadline,'observer startup timeout';time.sleep(.25)
-        time.sleep(3);sample('diagnostic-start')
+        time.sleep(3);sample('diagnostic-start',True)
         run('hid-regression',[sys.executable,str(HERE/'hid-api-hil.py'),'--private-dir',str(Path('private').resolve()),'--output',str(out/'hid-regression')],timeout=120)
         run('msd-regression',[sys.executable,str(HERE/'msd-hil.py'),'--output',str(out/'msd-regression'),'--boot-result',str(a.boot_result.resolve())],timeout=120)
         i=0
@@ -75,7 +75,7 @@ def main():
         assert not replay['payload_mismatches']
         identity={(s['boot_id'],s['ustreamer']['pid'],s['ustreamer']['start_ticks']) for s in samples};assert len(identity)==1
         first,last=samples[0],samples[-1]
-        cpu=(last['ustreamer']['ticks']-first['ustreamer']['ticks'])/(last['monotonic']-first['monotonic'])
+        cpu=(last['ustreamer']['ticks']-first['ustreamer']['ticks'])/(last['monotonic']-first['monotonic'])*100/last['ustreamer']['clock_ticks']
         rss=max(s['ustreamer']['rss_bytes'] for s in samples)
         result['resources']={'cpu_percent_one_core':cpu,'maximum_rss_bytes':rss,'baseline_cpu_percent':3.755,'baseline_rss_bytes':30760960}
         assert cpu<=3.755+25 and rss<=30760960+64*1024*1024,'diagnostic resource overhead exceeds bounded preflight limit'
@@ -91,8 +91,8 @@ def main():
                 result['observer_forced_stop']=True
         try:
             # Preserve recent records and let the writer drain before normal service shutdown.
-            run('final-flush',ssh+['sudo -n touch '+DIAG+'/flush.request'])
-            time.sleep(3)
+            try:sample('final-flush',True)
+            except Exception as ex:result['flush_error']=str(ex)
             run('target-before-stop-dmesg',ssh+['sudo -n dmesg'])
             run('controlled-stop',ssh+['sudo -n systemctl stop kvmd.service'],timeout=40)
             # StateDirectory lives on the RAM root and survives RuntimeDirectory cleanup.
@@ -101,17 +101,42 @@ def main():
             diag=out/'target-diagnostics';diag.mkdir()
             with tarfile.open(archive) as t:t.extractall(diag,filter='data')
             summary=json.loads((diag/'summary.json').read_text());result['diagnostic_summary']=summary
-            assert summary['snapshots']==summary['snapshots_written'] and summary['snapshots']<4
+            acks=[v['ustreamer']['flush_acknowledgement'] for v in samples if v['flush_requested']]
+            assert 'flush_error' not in result
+            assert summary['snapshots']==summary['snapshots_written']==len(acks)==3
+            assert summary['write_errors']==0
+            assert len(list(diag.glob('flush-*.json')))==len(acks)
+            for ack in acks:
+                disk=json.loads((diag/('flush-'+ack['nonce']+'.json')).read_text())
+                assert disk['nonce']==ack['nonce'] and disk['result']=='passed'
+                assert json.loads((diag/disk['snapshot']).read_text())['nonce']==ack['nonce']
             for s in summary['stages']:
                 assert s['accepted']==s['written'] and s['suppressed']==0 and s['oversized_or_invalid_length']==0
-                assert s['accepted']<64 and s['inspected']>0
+                assert s['suspicious_seen']==s['accepted']+s['suppressed']
+                assert s['accepted']==s['raw_written']+s['raw_skipped']
+                assert s['metadata_misses']==0 and s['inspected']>0
+                events=[json.loads(p.read_text()) for p in diag.glob(s['stage']+'-*.json')]
+                assert len(events)==s['written']
+                assert sum(e['payload_file'] is not None for e in events)==s['raw_written']
+                assert len(list(diag.glob(s['stage']+'-*.bin')))==s['raw_written']
+                for event in events:
+                    assert event['metadata_suppressed'] is False
+                    j=event['jpeg'];b=event['boundary']
+                    assert len(bytes.fromhex(j['trailing_hex']))==j['trailing_length']
+                    assert j['bytesused']==b['bytesused'] and j['sha256']==b['sha256']
+                    if event['payload_file']:
+                        payload=(diag/event['payload_file']).read_bytes()
+                        assert len(payload)==j['bytesused'] and hashlib.sha256(payload).hexdigest()==j['sha256']
+                        assert payload[j['final_eoi_offset']+2:].hex()==j['trailing_hex']
+                        assert hashlib.sha256(payload[:j['final_eoi_offset']+2]).hexdigest()==j['through_final_eoi_sha256']
             assert not list(diag.glob('*.partial')) and not (diag/'flush.request').exists()
             for f in diag.glob('*.json'):json.loads(f.read_text())
-            for n in ('lsusb','lsusb-tree','dmesg'):
-                run('host-after-'+n,['lsusb','-t'] if n=='lsusb-tree' else [n])
             if result.get('stream_and_regression_gates')=='passed' and 'error' not in result:
                 result['result']='pending_independent_vm_review'
         except Exception as ex:result['drain_or_archive_error']=str(ex)
+        for n in ('lsusb','lsusb-tree','dmesg'):
+            try:run('host-after-'+n,['lsusb','-t'] if n=='lsusb-tree' else [n])
+            except Exception as ex:result['inventory_error']=str(ex);result['result']='failed'
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result));return result['result']=='pending_independent_vm_review'
 

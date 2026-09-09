@@ -1,0 +1,103 @@
+{
+  "result": "passed",
+  "qualification": "NOT_RUN",
+  "long_observation_started": false,
+  "thresholds": {
+    "fps_per_client": 27,
+    "gap_seconds": 3,
+    "rss_delta_bytes": 67108864,
+    "cpu_additional_percentage_points": 25
+  },
+  "resources": {
+    "cpu_percent_one_core": 8.818876647566658,
+    "maximum_rss_bytes": 36929536,
+    "baseline_cpu_percent": 3.755,
+    "baseline_rss_bytes": 30760960
+  },
+  "stream_and_regression_gates": "passed",
+  "diagnostic_summary": {
+    "qualification": "NOT_RUN",
+    "stages": [
+      {
+        "stage": "dqbuf",
+        "accepted": 21,
+        "written": 21,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 10763,
+        "suspicious_seen": 21,
+        "metadata_misses": 0,
+        "raw_written": 21,
+        "raw_skipped": 0
+      },
+      {
+        "stage": "hw_jpeg",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8966,
+        "suspicious_seen": 0,
+        "metadata_misses": 0,
+        "raw_written": 0,
+        "raw_skipped": 0
+      },
+      {
+        "stage": "http_exposed",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8966,
+        "suspicious_seen": 0,
+        "metadata_misses": 0,
+        "raw_written": 0,
+        "raw_skipped": 0
+      }
+    ],
+    "snapshots": 3,
+    "snapshots_written": 3,
+    "write_errors": 0,
+    "metadata_reserved_bytes": 12780486,
+    "raw_reserved_bytes": 870408
+  },
+  "archive_sha256": "bfcd0c6dde89ffe8642a7d4026dfe43a87726d5a720a8391222ce9c72c003c14",
+  "contained_files_verified": 291,
+  "live_uid": 988,
+  "live_gid": 989,
+  "acknowledgements_verified": 3,
+  "active_endpoint": "bulk IN 0x83 interface 1 alt 0",
+  "video_replay": {
+    "qualification": "NOT_RUN",
+    "clients": {
+      "direct": {
+        "frames": 8954,
+        "observed_seconds": 299.528334024013,
+        "fps_120s": [
+          29.808333333333334,
+          29.941666666666666
+        ],
+        "fps_gate_met": true,
+        "motion_failure_windows": [],
+        "max_gap": 0.076776667003287,
+        "anomalies": 0
+      },
+      "https": {
+        "frames": 8965,
+        "observed_seconds": 299.8932252509985,
+        "fps_120s": [
+          29.808333333333334,
+          29.941666666666666
+        ],
+        "fps_gate_met": true,
+        "motion_failure_windows": [],
+        "max_gap": 0.0767029169946909,
+        "anomalies": 0
+      }
+    },
+    "shared_capture_keys": 8954,
+    "payload_mismatches": [],
+    "shared_anomalies": [],
+    "interpretation": "No anomaly reproduced does not establish the source of run 02 trailing bytes."
+  }
+}
