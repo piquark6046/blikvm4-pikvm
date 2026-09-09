@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "files_scanned": 5,
+  "known_private_segments_checked": 86,
+  "findings": [],
+  "sha256": {
+    "research/evidence/m8f0/ms2131-candidate02/full-replay.json": "0f5c825bb8564cff9b14eaf7c83e1ba13eed021e3e3e2eb550667dfc77b7f746",
+    "research/evidence/m8f0/ms2131-candidate02/reconnect-archive.json": "3aa6b9b6c0c87b036420f69472d03e53a4df813eac9937d984a1230b79a9fa40",
+    "research/evidence/m8f0/ms2131-candidate02/reconnect-vm-audit.json": "64197e6b4a2734798fb29fd1176f20fd51e5db97bb60c9c30ecef294dc13594a",
+    "research/m8f-core-soak.md": "1340e5d666c4ac555b94ac69f9f29c24d5621fda87a62fca24977991f1b0c123",
+    "research/milestones.md": "a77ef6255e73ec2373ef66c2aff10a4fdb4872a7b6bb291964f52fe929f329bb"
+  }
+}

@@ -180,3 +180,33 @@ Add PCF8563 DTS, LCD, fan, buzzer, Wi-Fi/BT, and unused USB only after core KVM.
 ## Recovery progression
 
 Known-good SD is mandatory through M8. FEL can become a recovery milestone only after `version`, `sid`, SPL, and a full RAM-only U-Boot handoff are repeatable. Upstream U-Boot replacement is a separate project after Linux/PiKVM success, because the vendor bootloader already supplies the required TFTP loop.
+
+
+### Candidate 2 physical reconnect and recovery review (2026-09-09)
+
+Physical reconnect 03 passed on the recovered candidate boot. Independent VM
+replay now passes the complete M8-E gate: five boots, 23 HID API runs, 615 browser
+stages, 83 storage checks and 243 media transitions. The fresh recovery workload
+also independently passes unchanged HID/video checks and 254 full-image direct
+read-only storage reads. The target remained on the same boot across reconnect,
+with identical USB descriptors and no kernel warning or unexpected target USB
+reset in the final inventory.
+
+The archive includes all three reconnect attempts. Attempt 01 timed out waiting
+for disconnect. Attempt 02 recorded disconnect but the bridge reboot interrupted
+it before a final result. The bridge boot time was 02:17 UTC; the shutdown cause
+is unproven. UART recovery captured U-Boot and restored the exact candidate RAM
+Image and accepted root/DTB. Recovery preflight 03 remains FAILED because an extra
+host Shift autorepeat event violated the unchanged keyboard check. A separate,
+unchanged repeat workload passed; this does not erase the first failure.
+
+The reconnect/recovery archive SHA-256 is
+`f53337a0c9d847afad3ec2e3238fd920b653dd26bbb671b977057f1ca16b9222`
+(1,045,831 bytes, 1,480 files independently hash-verified). Raw evidence stays
+private. Public replay and review are in
+`research/evidence/m8f0/ms2131-candidate02/reconnect-vm-audit.json`.
+
+This completes the candidate's prerequisite regression evidence, not M8-F
+qualification. A NEW continuous 24-hour run must start from zero. Run 02 remains
+permanently FAILED; diagnostics contribute zero time. P1 remains gated and
+M6/ATX DEFERRED. No release/baseline tag is created.

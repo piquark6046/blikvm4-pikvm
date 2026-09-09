@@ -1,0 +1,80 @@
+{
+  "result": "passed",
+  "qualification": "NOT_RUN",
+  "archive": {
+    "sha256": "f53337a0c9d847afad3ec2e3238fd920b653dd26bbb671b977057f1ca16b9222",
+    "bytes": 1045831,
+    "files": 1480
+  },
+  "full_m8e_replay": {
+    "result": "passed",
+    "boots": [
+      {
+        "number": 1,
+        "boot_id": "a7d723e9-40a4-460f-9b89-8db24fb76a4b",
+        "run_id": "20260909T011629Z-unknown-096300"
+      },
+      {
+        "number": 2,
+        "boot_id": "ee54b949-abd9-4710-a4ef-d9332afd0bab",
+        "run_id": "20260909T012026Z-unknown-826631"
+      },
+      {
+        "number": 3,
+        "boot_id": "720dd53f-7efa-4a37-833b-6575bf39afa1",
+        "run_id": "20260909T012429Z-unknown-882616"
+      },
+      {
+        "number": 4,
+        "boot_id": "1ec161d5-10dc-4a98-b79d-4fdd11bebfcb",
+        "run_id": "20260909T012831Z-unknown-775810"
+      },
+      {
+        "number": 5,
+        "boot_id": "2caf59de-2b11-4450-877e-aa8858725c0a",
+        "run_id": "20260909T013236Z-unknown-686380"
+      }
+    ],
+    "api_runs": 23,
+    "browser_stages": 615,
+    "video": [
+      {
+        "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+        "client": 0,
+        "fps": 29.769259990519494,
+        "frames": 3573
+      },
+      {
+        "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+        "client": 1,
+        "fps": 29.752482507648203,
+        "frames": 3571
+      },
+      {
+        "path": "qualification/final-preflight-narrow/browser-storage/hid-video/concurrent-video",
+        "client": 0,
+        "fps": 29.78798611274922,
+        "frames": 3575
+      }
+    ],
+    "storage_checks": 83,
+    "msd_transitions": 243,
+    "scope": "complete-M8-E"
+  },
+  "recovery_workload": {
+    "result": "passed",
+    "direct_reads": 254,
+    "fps": [
+      29.895888567924697,
+      29.895454147068154
+    ]
+  },
+  "current_boot_id": "f16c60de-354f-4496-9d7d-ed2d6fab8c92",
+  "failed_attempts_preserved": [
+    "reconnect01 timeout",
+    "reconnect02 bridge reboot interrupted without final result",
+    "recovery preflight03 keyboard Shift autorepeat mismatch"
+  ],
+  "shutdown_cause": "unproven",
+  "target_kernel_warning_or_reset": false
+}
