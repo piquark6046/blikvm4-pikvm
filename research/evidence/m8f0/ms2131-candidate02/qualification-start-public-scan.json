@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "files_scanned": 2,
+  "known_private_segments_checked": 86,
+  "findings": [],
+  "sha256": {
+    "research/evidence/m8f0/ms2131-candidate02/qualification-run03-start.json": "f301f56e8c806e35562753610e46de75e442b05d5174f506e4efc16951157624",
+    "research/m8f-core-soak.md": "42243845df177edcb5ae51ab7b0f56d3383c1f4ccfe5628787c814a8c9d24e3e"
+  }
+}

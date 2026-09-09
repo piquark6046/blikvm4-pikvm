@@ -800,3 +800,11 @@ This completes the candidate's prerequisite regression evidence, not M8-F
 qualification. A NEW continuous 24-hour run must start from zero. Run 02 remains
 permanently FAILED; diagnostics contribute zero time. P1 remains gated and
 M6/ATX DEFERRED. No release/baseline tag is created.
+
+
+NEW qualification Run 03 started from zero at **2026-09-09 02:38:16 UTC**
+with candidate 2 and source checkpoint `7351b1d`. Both authenticated clients
+were active before the clock began; the first HID/MSD cycle completed. Earliest
+24-hour completion is **2026-09-10 02:38:16 UTC**, subject to uninterrupted
+passing evidence and independent final replay. This is RUNNING, not accepted.
+See `research/evidence/m8f0/ms2131-candidate02/qualification-run03-start.json`.

@@ -1,0 +1,19 @@
+{
+  "result": "running_not_accepted",
+  "qualification": "M8-F",
+  "required_seconds": 86400,
+  "start_utc": "2026-09-09T02:38:16.030039+00:00",
+  "earliest_finish_utc": "2026-09-10T02:38:16.030039+00:00",
+  "source_commit": "7351b1dafa60126b2bfc430d57c3c5e4a0cf8b90",
+  "image_sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328",
+  "automation_hashes_verified": 92,
+  "systemd_unit": "m8f-soak03-candidate02",
+  "bridge_output": "/home/user/blikvm-msd/m8f0-ms2131-candidate02/qualification-run03",
+  "first_status_elapsed_seconds": 65.200770012,
+  "first_status_completed_cycles": 1,
+  "both_client_heartbeats_present": true,
+  "run02": "permanently_failed",
+  "diagnostic_qualification_seconds": 0,
+  "p1": "gated",
+  "m6_atx": "deferred"
+}
