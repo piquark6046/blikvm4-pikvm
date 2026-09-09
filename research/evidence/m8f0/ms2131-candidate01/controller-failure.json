@@ -1,0 +1,8 @@
+{
+  "result": "failed",
+  "qualification": "NOT_RUN",
+  "reason": "Live accepted uvcvideo.nodrop=1 contradicts candidate1 assumed nodrop=0; error marking alone does not guarantee rejection. Controller stopped preflight and preserved incomplete output.",
+  "archive_sha256": "9857730710c33730d763e1161ede8cb24778a8086822bc7af6b1763b93bfba94",
+  "archive_bytes": 173653,
+  "independent_archive_review": "hash_verified_and_failure_confirmed"
+}

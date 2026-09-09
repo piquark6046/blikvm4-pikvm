@@ -1,0 +1,11 @@
+{
+  "result": "built_without_warnings",
+  "builder_image": "sha256:331768b7ef44c217ecbc114ed0a5ac4d1aa916c603cf8f91ef05aad82dcbf6cd",
+  "build_script_sha256": "3397930219326a21293ec26a103f10a6801918cbb242a583d48f88c650e80db5",
+  "build_log_sha256": "872222555f721ddede9bd721485188c1476c6c5e49bf738e952da67765fdc845",
+  "local_tests": 123,
+  "configuration_delta": [
+    "CONFIG_LOCALVERSION"
+  ],
+  "normal_kernel_tree_unchanged": true
+}

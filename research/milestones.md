@@ -161,6 +161,10 @@ image-production preparation slice is proposed only.
 
 **Current: QUALIFICATION FAILED at 14h54m; NOT PASSED.** An unexpected JPEG
 marker failure stopped run 02; the raw frame and failure evidence are retained.
+M8-F0 diagnostics have demonstrated coalesced MS2131 bulk EOF framing before
+uvcvideo copying. A narrow non-diagnostic rejection candidate is undergoing
+M8-E regressions. Candidate stress and five clean boots pass; physical USB-PC
+reconnect is pending. No new 24-hour qualification has started.
 Preserve the frozen
 M8-E core stack through one continuous 24-hour qualification with two
 authenticated video clients, a real Web UI, moving HDMI, real host HID/MSD

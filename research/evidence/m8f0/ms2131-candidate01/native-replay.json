@@ -1,0 +1,6 @@
+{
+  "result": "passed",
+  "full_faulty_urb_reconstructions": 23,
+  "correlation": "complete kernel payload plus independently retained raw header and raw first/last boundaries",
+  "normal_split_transfer_pairs_preserved": 23
+}

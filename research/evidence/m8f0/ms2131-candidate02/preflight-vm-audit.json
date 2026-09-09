@@ -1,0 +1,52 @@
+{
+  "result": "passed",
+  "qualification": "NOT_RUN",
+  "strict_parser_sha256": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82",
+  "strict_parser_unchanged": true,
+  "malformed_payloads_observed": 0,
+  "strict_client_sessions": 6,
+  "strict_frames_checked": 11163,
+  "candidate_contract": {
+    "version": "7.2.3-blikvm-v4-m8f0-ms2131c2",
+    "nodrop": "1",
+    "quirks_override": "4294967295",
+    "ustreamer_sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+    "diagnostic_userspace": false
+  },
+  "archive": {
+    "sha256": "29ce85e1217f64c67809aeeac02b4c48e39791f87174e014775ac7b1923c2b7a",
+    "bytes": 1262834,
+    "files": 2588
+  },
+  "m8e_preflight_replay": {
+    "result": "passed",
+    "boots": [],
+    "api_runs": 12,
+    "browser_stages": 297,
+    "video": [
+      {
+        "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+        "client": 0,
+        "fps": 29.769259990519494,
+        "frames": 3573
+      },
+      {
+        "path": "qualification/final-preflight-narrow/two-client-storage/hid-video/two-clients",
+        "client": 1,
+        "fps": 29.752482507648203,
+        "frames": 3571
+      },
+      {
+        "path": "qualification/final-preflight-narrow/browser-storage/hid-video/concurrent-video",
+        "client": 0,
+        "fps": 29.78798611274922,
+        "frames": 3575
+      }
+    ],
+    "storage_checks": 17,
+    "msd_transitions": 54,
+    "scope": "preflight"
+  },
+  "five_boots": "pending",
+  "physical_reconnect": "pending"
+}

@@ -1,0 +1,36 @@
+{
+  "source": {
+    "commit": "f7d1132bb8547375245bc4c93a6d87e666c95155",
+    "dirty": true
+  },
+  "candidate_only": true,
+  "diagnostic": false,
+  "qualification": "NOT_RUN",
+  "patch_sha256": "da0a20e583117e7abe626d27f39a539188912c14d04fd0b60e61755a9a5720a3",
+  "artifacts": {
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    },
+    "Image": {
+      "name": "Image",
+      "size": 6914056,
+      "sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328"
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "size": 90274771,
+      "sha256": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb"
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "size": 67397,
+      "sha256": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b"
+    }
+  },
+  "configuration_delta": [
+    "CONFIG_LOCALVERSION"
+  ],
+  "rootfs": "byte-identical accepted enrolled M8-E image"
+}

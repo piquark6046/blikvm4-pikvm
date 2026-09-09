@@ -1,0 +1,21 @@
+{
+  "result": "only_four_source_files_changed",
+  "files": {
+    "drivers/media/usb/uvc/uvc_driver.c": {
+      "accepted_sha256": "78f313a7e8297f736960cd629170fbcf7c6b10f805659f48c4c4ba9168098e9c",
+      "candidate_sha256": "85f150feb1760a51683d949e95dcbad03daeccdf2a36a8733395a6beb508eedc"
+    },
+    "drivers/media/usb/uvc/uvc_queue.c": {
+      "accepted_sha256": "2877050073b0fd82b0a09f0d669d3efdb7595d278841dc1e1b083aeeebd5bb31",
+      "candidate_sha256": "dd3342f0c1899c531168763e11b28fe109d3d520e072b6238c23aedb11d2326f"
+    },
+    "drivers/media/usb/uvc/uvc_video.c": {
+      "accepted_sha256": "580535c5587e76dfc32d205c7c2532d6f7e9d75e3d559f6febbf0dcb8a2000e5",
+      "candidate_sha256": "24ca7e6230e460498832ff82a7be6a921cc9cf58cbb606cd210b110e7015aaf0"
+    },
+    "drivers/media/usb/uvc/uvcvideo.h": {
+      "accepted_sha256": "d74cd07ea83b099060fe9a720f56c18b761d936e1f5e67c470c5e26f8a8a234a",
+      "candidate_sha256": "30c0553c634163d3371a67ad88cd42db6fa1b879aa5022544da6d9eda36ff958"
+    }
+  }
+}

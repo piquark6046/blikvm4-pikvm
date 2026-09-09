@@ -1,0 +1,28 @@
+{
+  "result": "passed",
+  "files_scanned": 20,
+  "known_private_segments_checked": 86,
+  "findings": [],
+  "sha256": {
+    "build/linux-candidates/README.md": "026713c0b6cb588c84661903f0331cb7712430ae3007cb4a1a5446128bedbe4c",
+    "build/linux-candidates/build-candidate02-in-container.sh": "3397930219326a21293ec26a103f10a6801918cbb242a583d48f88c650e80db5",
+    "build/linux-candidates/check-drop.py": "7e3020c725613ff25049c65ee768b9d80591ec3d33cbd324eff5b9158c5d3b90",
+    "build/linux-candidates/ms2131-bulk-eof-reject.patch": "da0a20e583117e7abe626d27f39a539188912c14d04fd0b60e61755a9a5720a3",
+    "lab/core-soak.py": "4481d9a5a575a59ec70a10bd1c4efcb2635e6b5af354cdf62983dd2466f8a2ca",
+    "lab/ms2131-candidate-boots.py": "b8bcb9c84369462cd0bc3f46b7bd57af846f9c1c38ca332f3c6fee1c6dd6fce7",
+    "lab/ms2131-candidate-preflight.py": "d669cc04f6a0bb59a92e944f373944fb6091cbfec7fbbb42b037ebb8e7c404aa",
+    "lab/verify-ms2131-candidate.py": "4b5b2fa31fb14ea4fd7d286cd512d3dafa24d356122d37c3ed9373b1f367e385",
+    "research/evidence/m8f0/ms2131-candidate01/controller-failure.json": "d2b0c77d901924dcb3343455b354e59ede2067a07ab37b3a62d26f8c698005a4",
+    "research/evidence/m8f0/ms2131-candidate01/manifest.json": "88477820600d1b3694f0c0db7232b28e742bbae0434b53b69ec69456e822311d",
+    "research/evidence/m8f0/ms2131-candidate01/native-replay.json": "68faee6c3e3c5dbb3e1493b180b6472a70bba92b6d6d4a354183f21e5673b346",
+    "research/evidence/m8f0/ms2131-candidate02/before-reconnect-vm-audit.json": "94fde0d70ee63ee6af228afe83ba7d32240211a04a1471d51f2536bb2fbc9631",
+    "research/evidence/m8f0/ms2131-candidate02/build.json": "8efd48a334b4dbb7b79af777c4f2c01d4f7465549260b93ac156d5a05408e263",
+    "research/evidence/m8f0/ms2131-candidate02/manifest.json": "7886c40f8b8c006eb75d594004e8d5879338c3df246f59a74a4a640d5945bd72",
+    "research/evidence/m8f0/ms2131-candidate02/native-drop.json": "026eeccaeb55d65e71c0c01016b5cdcba5ae26bbfd669683a5d0eb97413ba275",
+    "research/evidence/m8f0/ms2131-candidate02/preflight-vm-audit.json": "524fc1daaf92e85c16fac9593b83ca06503d1069d18d7d6a17b4eb9ec7eeb948",
+    "research/evidence/m8f0/ms2131-candidate02/source-delta.json": "9b1d0ca628ae6a85bf1ab257df38ad9debe2f6e34c1edf9d3e4eb1a51b6358f0",
+    "research/m8f-core-soak.md": "435e80988bdb52f145855a34ee88928000495ac7b554a0c51876e37abe8e9b65",
+    "research/milestones.md": "eda17e09b77c35fbe8284937cd7da67361925de9926b1f7234a27c3a13dc8ee1",
+    "tests/test_ms2131_candidate.py": "21459390a60e28cd18cd9469edbb0af744b06f07572510ac0626f3ceeacfebe9"
+  }
+}

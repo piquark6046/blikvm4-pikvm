@@ -35,6 +35,7 @@ def main():
     p.add_argument('--boot-result', type=Path, required=True)
     p.add_argument('--artifacts', type=Path, required=True)
     p.add_argument('--provenance', type=Path, required=True)
+    p.add_argument('--expected-commit', default='6b2e4217df9d8e66950f960e1a6de6e5c4629e4d')
     p.add_argument('--pilot-seconds', type=int)
     a = p.parse_args()
     if a.pilot_seconds is not None and a.pilot_seconds < 900:
@@ -167,7 +168,8 @@ def main():
     try:
         provenance = json.loads(a.provenance.read_text())
         assert provenance['baseline_tag'] == 'ubuntu-26.04.1-kvmd-msd-baseline'
-        assert provenance['commit'] == '6b2e4217df9d8e66950f960e1a6de6e5c4629e4d'
+        assert re.fullmatch(r'[0-9a-f]{40}', a.expected_commit), 'invalid expected source commit'
+        assert provenance['commit'] == a.expected_commit, 'source provenance commit mismatch'
         for name, digest in provenance['automation_sha256'].items():
             assert hashlib.sha256((HERE/name).read_bytes()).hexdigest() == digest, 'automation hash mismatch: '+name
         shutil.copyfile(a.provenance, root/'provenance.json')

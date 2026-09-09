@@ -717,3 +717,56 @@ interface 1, alternate 0, wMaxPacketSize 512, for MS2131 serial 29404080. This
 requires instrumentation of the actual bulk path in the separate Linux diagnostic.
 The harness gate is sound; it does not qualify M8-F or prove USB provenance.
 M8-F0 remains OPEN, Run 02 permanently FAILED, P1 gated and M6/ATX DEFERRED.
+
+### Kernel diagnostic checkpoint and candidate work (2026-09-09)
+
+Checkpoint `f7d1132` preserves the separate kernel diagnostic, its failed first
+boot, corrected successful boot/preflight, and the subsequent cross-layer
+observation. Full evidence and limitations are in
+[`uvc-diag-02/README.md`](evidence/m8f0/uvc-diag-02/README.md).
+The five-minute kernel preflight passes independent replay: 21/21 kernel and
+DQBUF payload matches, exact tails/hashes, no required ring loss or suppression,
+three acknowledged flushes, exact 30/1, both clients above 29.8 fps, and HID/MSD,
+resource, reset and warning gates. The later observation captures two more
+matching events and is classified **A**: the suffix is present in received bulk
+data after the decoded header, before selection and asynchronous copying.
+
+The device sends a separate EOF-only header after ordinary frames. In the faulty
+case that header is coalesced immediately after JPEG EOI at a 512-byte boundary.
+This supports a device bulk-framing defect; omitted short/ZLP termination is an
+inference from completed URBs, not an electrical USB trace. No memcpy discrepancy
+or newly included leading UVC header was found. Observation 04 failed at API
+startup and remains failed. Observation 05 stopped at recurrence before HTTP
+frames were received, so its purpose is cross-layer origin, not capacity.
+
+The smallest candidate under evaluation rejects the entire specifically affected
+MS2131 bulk-MJPEG buffer. It does not trim bytes or alter the strict parser.
+Candidate 1 failed its live contract check: accepted `uvcvideo.nodrop=1` means
+ordinary corrupted-buffer marking alone cannot guarantee rejection. Candidate 2
+uses an explicit per-buffer rejection flag, reset on preparation/requeue, and
+retains that global setting. Its first regression attempt failed because the
+bridge browser could not access the root-owned private evidence parent. That
+failed attempt is preserved; the lab wrapper now gives the real browser account
+ownership of a private enclosing directory before a fresh complete preflight.
+
+Candidate details, hashes and tests are in `build/linux-candidates/README.md`.
+The accepted enrolled M8-E root and DTB remain byte-identical, and candidate 2
+has no diagnostic instrumentation. Candidate stress, all M8-E critical regressions
+and a new continuous 24-hour run remain required. No candidate is accepted here;
+M8-F0 stays OPEN with zero qualification time. Run 02 remains permanently FAILED,
+P1 remains gated and M6/ATX remains DEFERRED.
+
+Candidate 2's fresh preflight and five consecutive clean boots now pass
+independent VM replay. The strict parser is byte-identical and saw zero malformed
+payloads in 11,163 frames across six bounded sessions; both simultaneous clients
+exceeded 29.7 fps. Replay covers 22 HID API runs, 72 storage checks and 224 media
+transitions across preflight and boots. Twelve target kernel inventories show
+no warning/Oops or unexpected UVC/USB reset. The complete M8-E replay remains
+explicitly incomplete solely because the fresh physical USB-PC reconnect gate
+has not run. See `research/evidence/m8f0/ms2131-candidate02/`.
+
+The new source pin is explicit via `core-soak.py --expected-commit`; the original
+pin remains its default. This permits a future corrected-candidate qualification
+without mislabelling it as the old source commit. Automation hashes, exact
+artifact hashes, the strict parser and the continuous 86,400-second gate remain
+unchanged in strength. No qualification has started.

@@ -1,0 +1,14 @@
+{
+  "result": "passed",
+  "actual_functions": [
+    "uvc_queue_buffer_complete",
+    "uvc_queue_buffer_requeue"
+  ],
+  "nodrop_values": [
+    0,
+    1
+  ],
+  "error_and_quirk_combinations": 8,
+  "buffer_reuse_verified": true,
+  "sanitizer": "undefined"
+}

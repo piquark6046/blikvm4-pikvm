@@ -1,0 +1,111 @@
+--- a/drivers/media/usb/uvc/uvc_driver.c
++++ b/drivers/media/usb/uvc/uvc_driver.c
+@@ -2545,6 +2545,11 @@
+  * Sort these by vendor/product ID.
+  */
+ static const struct usb_device_id uvc_ids[] = {
++	/* MacroSilicon MS2131: coalesced header-only bulk EOF transfer. */
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x345f, 0x2131,
++		USB_CLASS_VIDEO, 1, 0),
++	  .driver_info = UVC_INFO_QUIRK(UVC_QUIRK_MS2131_BULK_EOF) },
++
+ 	/* HP Webcam HD 2300 */
+ 	{ .match_flags		= USB_DEVICE_ID_MATCH_DEVICE
+ 				| USB_DEVICE_ID_MATCH_INT_INFO,
+--- a/drivers/media/usb/uvc/uvc_video.c
++++ b/drivers/media/usb/uvc/uvc_video.c
+@@ -1612,6 +1612,32 @@
+ 	}
+ }
+ 
++/*
++ * The MS2131 can append its header-only EOF transfer to a JPEG payload
++ * ending on a 512-byte boundary. Reject this malformed frame; do not trim
++ * data that merely resembles a header. Normal EOF-only transfers, other
++ * formats and devices retain the ordinary decoder path.
++ */
++static bool uvc_video_ms2131_bad_eof(const u8 *data, unsigned int len,
++				  unsigned int requested,
++				  unsigned int maximum,
++				  unsigned int maxpacket)
++{
++	const u8 *eof;
++
++	if (maxpacket != 512 || len < 526 || len >= requested ||
++	    len >= maximum || (len - 12) % maxpacket)
++		return false;
++	if (data[0] != 12 || (data[1] != 0x8c && data[1] != 0x8d))
++		return false;
++
++	eof = data + len - 12;
++	return eof[-2] == 0xff && eof[-1] == JPEG_MARKER_EOI &&
++	       eof[0] == 12 && eof[1] == (data[1] | UVC_STREAM_EOF) &&
++	       !memcmp(eof + 2, data + 2, 4) &&
++	       !(eof[11] & 0xf8);
++}
++
+ static void uvc_video_decode_bulk(struct uvc_urb *uvc_urb,
+ 			struct uvc_buffer *buf, struct uvc_buffer *meta_buf)
+ {
+@@ -1651,6 +1677,16 @@
+ 			stream->bulk.header_size = ret;
+ 
+ 			uvc_video_decode_meta(stream, meta_buf, mem, ret);
++
++			if (stream->dev->quirks & UVC_QUIRK_MS2131_BULK_EOF &&
++			    stream->cur_format->fcc == V4L2_PIX_FMT_MJPEG &&
++			    ret == 12 &&
++			    uvc_video_ms2131_bad_eof(mem, len,
++					urb->transfer_buffer_length,
++					stream->bulk.max_payload_size,
++					usb_maxpacket(stream->dev->udev,
++						      urb->pipe)))
++				buf->ms2131_bad_eof = true;
+ 
+ 			mem += ret;
+ 			len -= ret;
+--- a/drivers/media/usb/uvc/uvc_queue.c
++++ b/drivers/media/usb/uvc/uvc_queue.c
+@@ -122,6 +122,7 @@
+ 
+ 	buf->state = UVC_BUF_STATE_QUEUED;
+ 	buf->error = 0;
++	buf->ms2131_bad_eof = false;
+ 	buf->mem = vb2_plane_vaddr(vb, 0);
+ 	buf->length = vb2_plane_size(vb, 0);
+ 	if (vb->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
+@@ -343,6 +344,7 @@
+ 				     struct uvc_buffer *buf)
+ {
+ 	buf->error = 0;
++	buf->ms2131_bad_eof = false;
+ 	buf->state = UVC_BUF_STATE_QUEUED;
+ 	buf->bytesused = 0;
+ 	vb2_set_plane_payload(&buf->buf.vb2_buf, 0, 0);
+@@ -356,7 +358,7 @@
+ 	struct vb2_buffer *vb = &buf->buf.vb2_buf;
+ 	struct uvc_video_queue *queue = vb2_get_drv_priv(vb->vb2_queue);
+ 
+-	if (buf->error && !uvc_no_drop_param) {
++	if (buf->ms2131_bad_eof || (buf->error && !uvc_no_drop_param)) {
+ 		uvc_queue_buffer_requeue(queue, buf);
+ 		return;
+ 	}
+--- a/drivers/media/usb/uvc/uvcvideo.h
++++ b/drivers/media/usb/uvc/uvcvideo.h
+@@ -81,6 +81,7 @@
+ #define UVC_QUIRK_INVALID_DEVICE_SOF	0x00010000
+ #define UVC_QUIRK_MJPEG_NO_EOF		0x00020000
+ #define UVC_QUIRK_MSXU_META		0x00040000
++#define UVC_QUIRK_MS2131_BULK_EOF	0x00080000
+ 
+ /* Format flags */
+ #define UVC_FMT_FLAG_COMPRESSED		0x00000001
+@@ -317,6 +318,7 @@
+ 
+ 	enum uvc_buffer_state state;
+ 	unsigned int error;
++	bool ms2131_bad_eof;
+ 
+ 	void *mem;
+ 	unsigned int length;
