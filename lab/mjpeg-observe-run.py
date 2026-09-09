@@ -19,6 +19,7 @@ def main():
     p.add_argument('--known-hosts', type=Path, required=True)
     p.add_argument('--private-dir', type=Path, required=True)
     p.add_argument('--seconds', type=int, default=900)
+    p.add_argument('--stop-file', type=Path)
     a = p.parse_args()
     os.umask(0o077)
     a.output.mkdir(exist_ok=False)
@@ -71,7 +72,8 @@ def main():
         config_path = a.output/'config.json'
         config_path.write_text(json.dumps(config,indent=2)+'\n')
         subprocess.run([sys.executable,str(HERE/'mjpeg-observe.py'),'--config',str(config_path),
-          '--output',str(a.output/'clients'),'--seconds',str(a.seconds)],check=True)
+          '--output',str(a.output/'clients'),'--seconds',str(a.seconds)]+
+          (['--stop-file',str(a.stop_file.resolve())] if a.stop_file else []),check=True)
         snapshot('after')
         results = {name:json.loads((a.output/'clients'/name/'result.json').read_text())
                    for name in ('direct','https')}

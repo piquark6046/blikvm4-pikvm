@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "files_scanned": 17,
+  "known_private_segments_checked": 86,
+  "findings": [],
+  "sha256": {
+    "build/linux-diagnostics/README.md": "95b30e22d6f57e8f20b08ad59eb62ec1b1ef7513ad85d489e0367b120915bd33",
+    "build/linux-diagnostics/uvc-taildiag-schema.json": "1676ecfd7165404f0e50ce8e21f27c0724138d283b72a66edbc3d9f9f2774cab",
+    "build/linux-diagnostics/uvc-taildiag.patch": "a401d3c3b33ea8d3bef81f02daa8d507bbb8027e31062752fff978754734359e",
+    "build/linux-diagnostics/uvc_taildiag.c": "267b8758df0a593bd8e87db23aac21874011302dad29234b7a2d10e2eb418bfa",
+    "build/linux-diagnostics/uvc_taildiag.h": "d2fb925d26bb9cb0551126b3464ecd4258fc8de5d9f3b084fc723e04f8d12acf",
+    "lab/mjpeg-observe-run.py": "e78c81a273336b51ff6b73c4d9e4d91d281ea12e4a47973196c1e33a3f7dca77",
+    "lab/mjpeg-observe.py": "2a35bab5688cb631279cf7cd204cae9253001e6cf88fa23a9dbad2260717efe8",
+    "lab/uvc-diag-boot.py": "fa92bedc551b48eb8b8a62fff952d0d8c1540c41928953455cbef833f4a7e1bf",
+    "lab/uvc-taildiag-observe.py": "44cd69f1c3c951a192d524e8aaaf8df1d67219c73259ae6d79195cbae43ddca1",
+    "lab/uvc-taildiag-preflight.py": "47e6abd41dd8ccb3c021a3f2c24d11d79757c54cb3f008b16f07db4a02a061e9",
+    "lab/uvc-taildiag-read.py": "d204004d3873f068ca931003af8c485481dcf82e844516ebef0c647217d4c41c",
+    "research/evidence/m8f0/uvc-diag-01-failed/result.json": "caf22053b7bbf90e3885471dd40691cb560c5b8d5a6fe7678eb8b17af3123fcc",
+    "research/evidence/m8f0/uvc-diag-02/README.md": "746496a21489b4adffcad419f39dea3438bf394ff73a2a320bb9532653f128f9",
+    "research/evidence/m8f0/uvc-diag-02/manifest.json": "1e5e438ec62fcd5aac08cb87f8dac2f37c871c6315e4da9aeecaae4c31e51ad9",
+    "research/evidence/m8f0/uvc-diag-02/observation05-vm-audit.json": "a063de6d75cbf5ac352e0364f2941618f06b3b34fcc7348b413cfe9593e17700",
+    "research/evidence/m8f0/uvc-diag-02/preflight-vm-audit.json": "de6df729b61236c710e502fbfd212990cbc3ce65a9e8c7dcb2a29390354a1245",
+    "tests/test_uvc_taildiag.py": "0c4d52dedb964c0e2b9d07dcd51cb98129c255ae3d0ac514af049996d97a91aa"
+  }
+}

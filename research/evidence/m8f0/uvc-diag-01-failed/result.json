@@ -1,0 +1,15 @@
+{
+  "result": "failed",
+  "stage": "boot_kernel_oops",
+  "qualification": "NOT_RUN",
+  "observation_started": false,
+  "archive_sha256": "4b5eca07a80eecf5bfc3d0050e817c5c6c806fae43fb4b3d67e58abadef86775",
+  "Image_sha256": "41bd1422ba462fc63ad2ca3652172dfb1868d7608923c541a1aeff603b6f29a3",
+  "patch_sha256": "590eb42c4edc3df6b566f5648da742efe88ad103e06c12dd003749fa09103d92",
+  "faults": {
+    "ffff80008011ee10": "__fget_light+0x38",
+    "ffff8000800fd848": "filp_flush+0x18"
+  },
+  "diagnostic_defect": "Added field preceded required offset-zero vb2_v4l2_buffer; violates documented vb2 driver buffer layout. Corrected placement and compile-time offset assertion require a fresh boot/preflight.",
+  "jpeg_tail_origin": "UNPROVEN"
+}

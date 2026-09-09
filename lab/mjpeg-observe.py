@@ -95,7 +95,7 @@ def dump(path, value):
     path.write_text(json.dumps(value, indent=2)+'\n')
 
 
-def observe(source, command, root, seconds, context_command):
+def observe(source, command, root, seconds, context_command, stop_file=None):
     root.mkdir(exist_ok=False)
     parser = Multipart()
     previous = pending = None
@@ -136,6 +136,8 @@ def observe(source, command, root, seconds, context_command):
         with (root/'transport.stderr').open('wb') as err, (root/'frames.jsonl').open('w') as log:
             process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=err)
             while time.monotonic()-start < seconds:
+                if stop_file and stop_file.exists():
+                    break
                 now = time.monotonic()
                 if now-last > 3:
                     raise ValueError('continuity gap exceeds 3 seconds')
@@ -196,6 +198,7 @@ def observe(source, command, root, seconds, context_command):
             dump(pending/'next.json', {'unavailable':'observation ended before next complete frame'})
         dump(root/'result.json', dict(result=status, qualification='NOT_RUN', source=source,
              frames=count, anomalies=anomalies, gate_violations=violations,
+             stop_reason='requested' if stop_file and stop_file.exists() else 'deadline_or_failure',
              start=start, end=time.monotonic(), seconds_requested=seconds))
 
 
@@ -204,13 +207,14 @@ def main():
     p.add_argument('--config', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--seconds', type=float, default=900)
+    p.add_argument('--stop-file', type=Path)
     a = p.parse_args()
     config = json.loads(a.config.read_text())
     a.output.mkdir(exist_ok=False)
     threads = []
     for name, source in config['sources'].items():
         thread = threading.Thread(target=observe, args=(source['path'], source['command'],
-                                  a.output/name, a.seconds, config['context_command']))
+                                  a.output/name, a.seconds, config['context_command'], a.stop_file))
         thread.start(); threads.append(thread)
     for thread in threads:
         thread.join()

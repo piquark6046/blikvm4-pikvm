@@ -1,0 +1,609 @@
+{
+  "result": "passed",
+  "qualification": "NOT_RUN",
+  "long_observation_started": false,
+  "thresholds": {
+    "fps_per_client": 27,
+    "gap_seconds": 3,
+    "rss_delta_bytes": 67108864,
+    "cpu_additional_percentage_points": 25
+  },
+  "resources": {
+    "cpu_percent_one_core": 8.855667121529132,
+    "maximum_rss_bytes": 36798464,
+    "baseline_cpu_percent": 3.755,
+    "baseline_rss_bytes": 30760960
+  },
+  "stream_and_regression_gates": "passed",
+  "diagnostic_summary": {
+    "qualification": "NOT_RUN",
+    "stages": [
+      {
+        "stage": "dqbuf",
+        "accepted": 21,
+        "written": 21,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 13647,
+        "suspicious_seen": 21,
+        "metadata_misses": 0,
+        "raw_written": 21,
+        "raw_skipped": 0
+      },
+      {
+        "stage": "hw_jpeg",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8952,
+        "suspicious_seen": 0,
+        "metadata_misses": 0,
+        "raw_written": 0,
+        "raw_skipped": 0
+      },
+      {
+        "stage": "http_exposed",
+        "accepted": 0,
+        "written": 0,
+        "suppressed": 0,
+        "oversized_or_invalid_length": 0,
+        "inspected": 8952,
+        "suspicious_seen": 0,
+        "metadata_misses": 0,
+        "raw_written": 0,
+        "raw_skipped": 0
+      }
+    ],
+    "snapshots": 3,
+    "snapshots_written": 3,
+    "write_errors": 0,
+    "metadata_reserved_bytes": 12780486,
+    "raw_reserved_bytes": 870408
+  },
+  "archive_sha256": "0fb999946b15483752bbc0f6bd86e0fbabed38cfa6a02e153f4879375505b906",
+  "kernel": {
+    "result": "collected",
+    "qualification": "NOT_RUN",
+    "events": 21,
+    "bytes": 10764936,
+    "state": {
+      "version": 1,
+      "packets_seen": 149147,
+      "packets_written": 149147,
+      "copies": 135493,
+      "frames": 13650,
+      "suspicious": 21,
+      "admitted": 21,
+      "acknowledged": 21,
+      "suppressed": 0,
+      "required_lost": 0,
+      "oversized": 0,
+      "packet_overwrites": 148635,
+      "copy_overwrites": 134981,
+      "memory_bytes": 37795112,
+      "packet_size": 584,
+      "copy_size": 336,
+      "event_header_size": 128
+    }
+  },
+  "contained_files_verified": 352,
+  "video_replay": {
+    "qualification": "NOT_RUN",
+    "clients": {
+      "direct": {
+        "frames": 8940,
+        "observed_seconds": 299.55883502500365,
+        "fps_120s": [
+          29.808333333333334,
+          29.941666666666666
+        ],
+        "fps_gate_met": true,
+        "motion_failure_windows": [],
+        "max_gap": 0.06998256102087907,
+        "anomalies": 0
+      },
+      "https": {
+        "frames": 8950,
+        "observed_seconds": 299.8912582670164,
+        "fps_120s": [
+          29.808333333333334,
+          29.941666666666666
+        ],
+        "fps_gate_met": true,
+        "motion_failure_windows": [],
+        "max_gap": 0.07134111798950471,
+        "anomalies": 0
+      }
+    },
+    "shared_capture_keys": 8940,
+    "payload_mismatches": [],
+    "shared_anomalies": [],
+    "interpretation": "No anomaly reproduced does not establish the source of run 02 trailing bytes."
+  },
+  "cross_layer": [
+    {
+      "kernel_event": 1,
+      "sequence": 4379,
+      "complete_sha256": "a4e81976d6805db57c61441b25faba4dbd58f1f43bdbacbacac55a7a24353ce3",
+      "tail_hex": "0c8f13a3038128e942815800",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 108894,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8f13a3038128e942815800",
+          "raw_hex": "0c8f13a3038128e942815800",
+          "selected_hex": "0c8f13a3038128e942815800",
+          "pre_memcpy_source_hex": "0c8f13a3038128e942815800",
+          "post_memcpy_destination_hex": "0c8f13a3038128e942815800",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 2,
+      "sequence": 4406,
+      "complete_sha256": "654fc0f6ee145311c109ae0891d3f311568a546c9c805bce706bf12afa17a93f",
+      "tail_hex": "0c8e838cbc874fd5fb87dc03",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 109002,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e838cbc874fd5fb87dc03",
+          "raw_hex": "0c8e838cbc874fd5fb87dc03",
+          "selected_hex": "0c8e838cbc874fd5fb87dc03",
+          "pre_memcpy_source_hex": "0c8e838cbc874fd5fb87dc03",
+          "post_memcpy_destination_hex": "0c8e838cbc874fd5fb87dc03",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 3,
+      "sequence": 4716,
+      "complete_sha256": "efcea1bbe196e7c44aa97b31caee57823ebd5129bea9081f6befb0319a89d1e9",
+      "tail_hex": "0c8e8d48ebd49d922ad53804",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 110242,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e8d48ebd49d922ad53804",
+          "raw_hex": "0c8e8d48ebd49d922ad53804",
+          "selected_hex": "0c8e8d48ebd49d922ad53804",
+          "pre_memcpy_source_hex": "0c8e8d48ebd49d922ad53804",
+          "post_memcpy_destination_hex": "0c8e8d48ebd49d922ad53804",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 4,
+      "sequence": 4804,
+      "complete_sha256": "d4bc10d39fa7ec7e7bbaa8b9e44149f7e9e4f1379cd717aaf843e82a7f882dbb",
+      "tail_hex": "0c8e2936d4ea568113ebad07",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 110594,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e2936d4ea568113ebad07",
+          "raw_hex": "0c8e2936d4ea568113ebad07",
+          "selected_hex": "0c8e2936d4ea568113ebad07",
+          "pre_memcpy_source_hex": "0c8e2936d4ea568113ebad07",
+          "post_memcpy_destination_hex": "0c8e2936d4ea568113ebad07",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 5,
+      "sequence": 5509,
+      "complete_sha256": "a2b09cd7311128ce56f487d9b1e7c552d660bec73261cc83da3a3b75a270c064",
+      "tail_hex": "0c8fe46c5b9afab39a9a7503",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 113414,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8fe46c5b9afab39a9a7503",
+          "raw_hex": "0c8fe46c5b9afab39a9a7503",
+          "selected_hex": "0c8fe46c5b9afab39a9a7503",
+          "pre_memcpy_source_hex": "0c8fe46c5b9afab39a9a7503",
+          "post_memcpy_destination_hex": "0c8fe46c5b9afab39a9a7503",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 6,
+      "sequence": 5516,
+      "complete_sha256": "f87de3589f0b92ed4f64e9e8c7b58b09b407082a0392a129d12e0a2517457604",
+      "tail_hex": "0c8e3396199c3ede589c5e04",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 113442,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e3396199c3ede589c5e04",
+          "raw_hex": "0c8e3396199c3ede589c5e04",
+          "selected_hex": "0c8e3396199c3ede589c5e04",
+          "pre_memcpy_source_hex": "0c8e3396199c3ede589c5e04",
+          "post_memcpy_destination_hex": "0c8e3396199c3ede589c5e04",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 7,
+      "sequence": 6494,
+      "complete_sha256": "dd18788ad3b814b614b28248abe0a9ed55c24e2d1309ef7a5203d920bfa18cde",
+      "tail_hex": "0c8ee439998f1881d88fb103",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 117354,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8ee439998f1881d88fb103",
+          "raw_hex": "0c8ee439998f1881d88fb103",
+          "selected_hex": "0c8ee439998f1881d88fb103",
+          "pre_memcpy_source_hex": "0c8ee439998f1881d88fb103",
+          "post_memcpy_destination_hex": "0c8ee439998f1881d88fb103",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 8,
+      "sequence": 6716,
+      "complete_sha256": "fb1317a93ad52ccd51f4be46926e740e7f110147291874709ae1c8a01ae1ba46",
+      "tail_hex": "0c8ef30adfc6ae4f1ec79800",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 118242,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8ef30adfc6ae4f1ec79800",
+          "raw_hex": "0c8ef30adfc6ae4f1ec79800",
+          "selected_hex": "0c8ef30adfc6ae4f1ec79800",
+          "pre_memcpy_source_hex": "0c8ef30adfc6ae4f1ec79800",
+          "post_memcpy_destination_hex": "0c8ef30adfc6ae4f1ec79800",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 9,
+      "sequence": 7406,
+      "complete_sha256": "cd8e1ef69d21585c8104d53358e6379cc39531c935b088d70de20c0df09e0e9f",
+      "tail_hex": "0c8e9c30aa72e870e9726d02",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 121002,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e9c30aa72e870e9726d02",
+          "raw_hex": "0c8e9c30aa72e870e9726d02",
+          "selected_hex": "0c8e9c30aa72e870e9726d02",
+          "pre_memcpy_source_hex": "0c8e9c30aa72e870e9726d02",
+          "post_memcpy_destination_hex": "0c8e9c30aa72e870e9726d02",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 10,
+      "sequence": 7501,
+      "complete_sha256": "93537836e5723e893c54603f7e00dc6be4cdc8e0759b7697de211c114a897b26",
+      "tail_hex": "0c8fa447518ae389908acb06",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 121382,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8fa447518ae389908acb06",
+          "raw_hex": "0c8fa447518ae389908acb06",
+          "selected_hex": "0c8fa447518ae389908acb06",
+          "pre_memcpy_source_hex": "0c8fa447518ae389908acb06",
+          "post_memcpy_destination_hex": "0c8fa447518ae389908acb06",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 11,
+      "sequence": 7527,
+      "complete_sha256": "8c92b11ff70337312f915efb959e5d1eea6ca8193c096ef52cade731e82c2960",
+      "tail_hex": "0c8ffa75ca9025b909912d02",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 121486,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8ffa75ca9025b909912d02",
+          "raw_hex": "0c8ffa75ca9025b909912d02",
+          "selected_hex": "0c8ffa75ca9025b909912d02",
+          "pre_memcpy_source_hex": "0c8ffa75ca9025b909912d02",
+          "post_memcpy_destination_hex": "0c8ffa75ca9025b909912d02",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 12,
+      "sequence": 8599,
+      "complete_sha256": "b5807e3bbe742b3de79e63b5fcc109cc8513b3205ee6a2f7c7ee42adf967e093",
+      "tail_hex": "0c8f5c74b19b14b8f09bbd05",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 125774,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8f5c74b19b14b8f09bbd05",
+          "raw_hex": "0c8f5c74b19b14b8f09bbd05",
+          "selected_hex": "0c8f5c74b19b14b8f09bbd05",
+          "pre_memcpy_source_hex": "0c8f5c74b19b14b8f09bbd05",
+          "post_memcpy_destination_hex": "0c8f5c74b19b14b8f09bbd05",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 13,
+      "sequence": 8694,
+      "complete_sha256": "a43792639a359a4fc880892d135f6d49c523cd8f0d7ad8a5471ce6c3b59156c9",
+      "tail_hex": "0c8e658b58b30fd197b31b02",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 126154,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e658b58b30fd197b31b02",
+          "raw_hex": "0c8e658b58b30fd197b31b02",
+          "selected_hex": "0c8e658b58b30fd197b31b02",
+          "pre_memcpy_source_hex": "0c8e658b58b30fd197b31b02",
+          "post_memcpy_destination_hex": "0c8e658b58b30fd197b31b02",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 14,
+      "sequence": 9199,
+      "complete_sha256": "b9e25d50520121b1013a84c2c3e6af083be78bb59a07022a806a27136ec71856",
+      "tail_hex": "0c8f2c2e1431cd705331da03",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 128174,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8f2c2e1431cd705331da03",
+          "raw_hex": "0c8f2c2e1431cd705331da03",
+          "selected_hex": "0c8f2c2e1431cd705331da03",
+          "pre_memcpy_source_hex": "0c8f2c2e1431cd705331da03",
+          "post_memcpy_destination_hex": "0c8f2c2e1431cd705331da03",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 15,
+      "sequence": 9339,
+      "complete_sha256": "b8dc3cd3ee435436112edc963843e6751d917b62286c48823be80414b0b29260",
+      "tail_hex": "0c8f0e76ef5309be2e541406",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 128734,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8f0e76ef5309be2e541406",
+          "raw_hex": "0c8f0e76ef5309be2e541406",
+          "selected_hex": "0c8f0e76ef5309be2e541406",
+          "pre_memcpy_source_hex": "0c8f0e76ef5309be2e541406",
+          "post_memcpy_destination_hex": "0c8f0e76ef5309be2e541406",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 16,
+      "sequence": 9631,
+      "complete_sha256": "995f04884817557d460cf320f8c130cd5e2a61784daabfc41420c5b364d518f8",
+      "tail_hex": "0c8f69eaa29c3c33e29c1804",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 129902,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8f69eaa29c3c33e29c1804",
+          "raw_hex": "0c8f69eaa29c3c33e29c1804",
+          "selected_hex": "0c8f69eaa29c3c33e29c1804",
+          "pre_memcpy_source_hex": "0c8f69eaa29c3c33e29c1804",
+          "post_memcpy_destination_hex": "0c8f69eaa29c3c33e29c1804",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 17,
+      "sequence": 10760,
+      "complete_sha256": "c9c7bc1f6a326b4fa81b62434163c29c8a10c21649ce432655da5a85716328c4",
+      "tail_hex": "0c8e36ffbab52a41fab51307",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 134418,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e36ffbab52a41fab51307",
+          "raw_hex": "0c8e36ffbab52a41fab51307",
+          "selected_hex": "0c8e36ffbab52a41fab51307",
+          "pre_memcpy_source_hex": "0c8e36ffbab52a41fab51307",
+          "post_memcpy_destination_hex": "0c8e36ffbab52a41fab51307",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 18,
+      "sequence": 11094,
+      "complete_sha256": "19ffeffbb2f185c6a15f098e6567d04ab9c85210a7de78a0ea082dcbb71120fb",
+      "tail_hex": "0c8e8872e308f0b322098f02",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 135754,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e8872e308f0b322098f02",
+          "raw_hex": "0c8e8872e308f0b322098f02",
+          "selected_hex": "0c8e8872e308f0b322098f02",
+          "pre_memcpy_source_hex": "0c8e8872e308f0b322098f02",
+          "post_memcpy_destination_hex": "0c8e8872e308f0b322098f02",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 19,
+      "sequence": 12207,
+      "complete_sha256": "64ddb02bd14b3afc384d65526bd380a4d39e926caee0cba82a85df7938873391",
+      "tail_hex": "0c8fa6b3ff1d8df33e1e7503",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 140206,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8fa6b3ff1d8df33e1e7503",
+          "raw_hex": "0c8fa6b3ff1d8df33e1e7503",
+          "selected_hex": "0c8fa6b3ff1d8df33e1e7503",
+          "pre_memcpy_source_hex": "0c8fa6b3ff1d8df33e1e7503",
+          "post_memcpy_destination_hex": "0c8fa6b3ff1d8df33e1e7503",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 20,
+      "sequence": 12405,
+      "complete_sha256": "cb83f2956fd5a4d494b506f1b45e450c13544a809598c11e2d41a1c8f0700ec6",
+      "tail_hex": "0c8fdbc54b4faa0c8b4f3c05",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 140998,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8fdbc54b4faa0c8b4f3c05",
+          "raw_hex": "0c8fdbc54b4faa0c8b4f3c05",
+          "selected_hex": "0c8fdbc54b4faa0c8b4f3c05",
+          "pre_memcpy_source_hex": "0c8fdbc54b4faa0c8b4f3c05",
+          "post_memcpy_destination_hex": "0c8fdbc54b4faa0c8b4f3c05",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    },
+    {
+      "kernel_event": 21,
+      "sequence": 13050,
+      "complete_sha256": "37d06d2b0dd233a44f472146547e2c79300767bd6e28e3c69238d105cc7e1308",
+      "tail_hex": "0c8e05b5e2efa4f921f03501",
+      "dqbuf_matched": true,
+      "segments": [
+        {
+          "packet_id": 143578,
+          "destination_offset": 41436,
+          "length": 12,
+          "expected_hex": "0c8e05b5e2efa4f921f03501",
+          "raw_hex": "0c8e05b5e2efa4f921f03501",
+          "selected_hex": "0c8e05b5e2efa4f921f03501",
+          "pre_memcpy_source_hex": "0c8e05b5e2efa4f921f03501",
+          "post_memcpy_destination_hex": "0c8e05b5e2efa4f921f03501",
+          "all_equal": true,
+          "source_offset_in_packet": 10752,
+          "decoded_header_length": 12,
+          "header_present": true
+        }
+      ]
+    }
+  ]
+}

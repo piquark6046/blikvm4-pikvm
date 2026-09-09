@@ -1,0 +1,61 @@
+{
+  "source": {
+    "commit": "ae030e6",
+    "dirty": true
+  },
+  "diagnostic_only": true,
+  "qualification": "NOT_RUN",
+  "patch_sha256": "a401d3c3b33ea8d3bef81f02daa8d507bbb8027e31062752fff978754734359e",
+  "source_delta": {
+    "drivers/media/usb/uvc/Makefile": {
+      "accepted": "a577b4a0b1bcad08052a7542f8331169ed9d523693ed32ebe99ea6eb53793ef3",
+      "diagnostic": "7cd3af858473236ad104e205cb118c85e8f262f61dcc76b39ab04ff601bcb446"
+    },
+    "drivers/media/usb/uvc/uvc_debugfs.c": {
+      "accepted": "1ccfa71b30f96f379a04d0d5630127acaac88cbbc70aab73ab1e3b60675a1f86",
+      "diagnostic": "5f0abcd810f4ad5bd6f39a7f5c9b0028244577c06e0653916e2e9ce822b67b9e"
+    },
+    "drivers/media/usb/uvc/uvc_queue.c": {
+      "accepted": "2877050073b0fd82b0a09f0d669d3efdb7595d278841dc1e1b083aeeebd5bb31",
+      "diagnostic": "7308ebfadf4dedfa595a95123a7559e7002308aeeffb57c28b498bd20769addd"
+    },
+    "drivers/media/usb/uvc/uvc_taildiag.c": {
+      "accepted": null,
+      "diagnostic": "267b8758df0a593bd8e87db23aac21874011302dad29234b7a2d10e2eb418bfa"
+    },
+    "drivers/media/usb/uvc/uvc_taildiag.h": {
+      "accepted": null,
+      "diagnostic": "d2fb925d26bb9cb0551126b3464ecd4258fc8de5d9f3b084fc723e04f8d12acf"
+    },
+    "drivers/media/usb/uvc/uvc_video.c": {
+      "accepted": "580535c5587e76dfc32d205c7c2532d6f7e9d75e3d559f6febbf0dcb8a2000e5",
+      "diagnostic": "9801a8269b15abc9fa8d290bbff71e24a63ace03c1eb235a9ede268b05f52224"
+    },
+    "drivers/media/usb/uvc/uvcvideo.h": {
+      "accepted": "d74cd07ea83b099060fe9a720f56c18b761d936e1f5e67c470c5e26f8a8a234a",
+      "diagnostic": "79166ead40127585b3fed18a4f4b8b8c1ee8e7ccd3b8f13270d286d69c164855"
+    }
+  },
+  "artifacts": {
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    },
+    "Image": {
+      "name": "Image",
+      "sha256": "4aefd2b4f02405ff4b450bd899d2ce04dce631c7dd70c45b772df6f584e38fd6",
+      "size": 7047176
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "sha256": "617455ba722e4e28b87174bf9888f9b7e2dbb3ca0850ac15ea2eb7346d553f01",
+      "size": 90275855
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "sha256": "539448513b5da353886ce5def57ec799acd13422e596ebeaa30cc0f55553c94a",
+      "size": 67779
+    }
+  }
+}
