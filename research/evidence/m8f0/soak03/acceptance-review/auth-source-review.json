@@ -1,0 +1,18 @@
+{
+  "source": "out/kvmd-msd/package-rootfs-narrow-first/build/pkg/usr/lib/python3/dist-packages/kvmd/apps/kvmd/auth.py",
+  "sha256": "430361b60316361aae238f815e4c266578af4027c5d5ecb23168fe4e78416de4",
+  "source_scope": "Local M8-E narrow package build; journal and archived effective configuration independently confirm expiry/session behavior. No heap attribution is claimed.",
+  "observed_effective_config": {
+    "expire": 0,
+    "extend": false
+  },
+  "evidence": "original/inventory-after.stdout logs.kvmd-effective",
+  "mechanism": {
+    "118": "AuthManager stores token-to-session dictionary",
+    "163-180": "Each successful login creates a new session and reports count",
+    "190-210": "Zero requested/global expiry produces infinite expiry",
+    "230-239": "Logout deletes all sessions for the user",
+    "242-258": "Infinite-expiry sessions stay valid; finite expired sessions removed on check"
+  },
+  "conclusion": "Repeated harness login with keep-session produces retained session objects by design. Their total memory footprint and role in the delayed RSS ramp were not measured. Not a proven continuing leak or a complete benign explanation."
+}

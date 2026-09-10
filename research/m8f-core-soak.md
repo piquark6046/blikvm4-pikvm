@@ -1,9 +1,11 @@
 # M8-F — 24-hour core KVM integration soak
 
-**Status: qualification FAILED after 14 hours 54 minutes; NOT PASSED.**
+**Status: M8-F OPEN — Run 03 MEMORY REVIEW INCONCLUSIVE (outcome B).**
 
-Rechecked on 2026-09-08. Run 02 stopped on an unexpected strict JPEG-marker
-failure; details are recorded below. P1 remains gated on M8-F acceptance.
+Independent acceptance review completed on 2026-09-10. Run 03 retains its
+completed functional soak and passing journal evidence, but is not accepted.
+Run 02 remains permanently **FAILED** at 14h54m; its record below is unchanged.
+P1 remains gated. No further soak or target change was performed for this review.
 
 Frozen parent: `ubuntu-26.04.1-kvmd-msd-baseline`, commit
 `6b2e4217df9d8e66950f960e1a6de6e5c4629e4d`. M6 GPIO/ATX remains **DEFERRED**.
@@ -824,3 +826,37 @@ under review. No kernel or userspace correction is authorized by this finding
 alone. M8-F stays OPEN, P1 gated, M6/ATX DEFERRED; Run 02 stays FAILED.
 See `research/evidence/m8f0/soak03/initial-review.json`. Raw evidence is private
 in `out/m8f0/soak03-review`; original run records are unchanged.
+
+### Run 03 independent acceptance decision — outcome B (2026-09-10)
+
+**MEMORY REVIEW INCONCLUSIVE. M8-F remains OPEN.** The independent VM replay
+again passes all 27 automated gates, byte-identical to the existing replay.
+All 12,320 original files and the private archive were rehashed successfully.
+The unchanged strict parser accepted **2,583,555 frames**. Run 02 remains
+permanently **FAILED**; these are distinct qualification runs.
+
+Review covers all 1,441 resource samples grouped by exact comm/PID/start_ticks,
+all 140,781 captured host/target journal lines and all 1,905 verifier candidates.
+Every candidate is explained by its mechanism and supporting recovery evidence.
+Nine additional nginx upstream errors coincide with the scheduled kvmd API
+socket removal and bounded recovery; no persistent USB/UVC/MUSB/SCSI/HID,
+service, kernel, network or malformed-JPEG failure is found.
+
+The first main kvmd generation grows through its scheduled restart. The
+post-8-hour generation independently reaches 84.414 MiB and has a real
+3.405-hour unchanged RSS tail. This does not establish the cause or bound of
+the repeated delayed growth. Infinite-expiry sessions continue accumulating,
+and system MemAvailable endpoint medians fall 91.527 MiB, largely alongside
+RAM-backed Cached/Shmem and AnonPages growth. The file/heap attribution needed
+to establish a bounded working set was not sampled. FD/process/socket counts
+are stable, and a continuing leak is **not demonstrated**. No arbitrary MiB
+threshold or aggregation across restarts is used to accept the run.
+
+The [complete review](evidence/m8f0/soak03/acceptance-review/README.md) includes
+every generation, hourly/half/final-six-hour statistics, lifecycle/cycle/login
+correlation, exact journal candidate lines and a proposed targeted memory
+diagnostic. The [machine-readable decision](evidence/m8f0/soak03/acceptance-review/final-review.json)
+records outcome **B**. The diagnostic is proposed only: do not rerun the full
+soak yet. P1 remains blocked; no acceptance commit, release tag or push is made.
+The target was not contacted, modified or rebooted. M6/ATX remains **DEFERRED**;
+no full-M8 completion is claimed.

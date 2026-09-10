@@ -1,0 +1,20 @@
+{
+  "result": "passed",
+  "archive": {
+    "sha256": "9e372330f715972b641f177ae5f616d797113580b61a426deea50767ded1d526",
+    "bytes": 150930034,
+    "files": 12320,
+    "symlinks_excluded": [
+      "ui/stop",
+      "ui/control.json"
+    ]
+  },
+  "original_files_checked": 12320,
+  "mismatches": [],
+  "manifest_sha256": "96d7ecaa68077430c27864ba1867ebe3f93b060a34e91d576107ae791dfb1afe",
+  "replay_sha256": "acb3fac0cbe90341251deb980e2c50cb2410be11d74847314fa538cd1c97c179",
+  "original_replay_identical": true,
+  "parser_sha256": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82",
+  "current_parser_identical": true,
+  "no_original_evidence_modified": true
+}

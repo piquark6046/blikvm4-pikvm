@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "outcome": "B",
+  "decision": "MEMORY REVIEW INCONCLUSIVE",
+  "run": "M8-F Run 03",
+  "m8f": "OPEN",
+  "run03": "completed_functional_soak_not_accepted",
+  "run02": "permanently_FAILED",
+  "m6_atx": "DEFERRED",
+  "p1": "gated_not_started",
+  "review_date_utc": "2026-09-10",
+  "duration_seconds": 86450.82389070399,
+  "automated_gates": {
+    "24_hours": true,
+    "bounded_lifecycle_windows": true,
+    "scheduled_events": true,
+    "event_actions_bounded": true,
+    "video_worker": true,
+    "browser_worker": true,
+    "video_continuity": true,
+    "moving_video": true,
+    "sustained_27fps": true,
+    "actual_ui_continuity": true,
+    "ui_auth_dimensions": true,
+    "actual_ui_motion": true,
+    "no_unexpected_ui_errors": true,
+    "logout_denied": true,
+    "msd_bytes": true,
+    "real_lun_read_only": true,
+    "periodic_exercises": true,
+    "host_evdev": true,
+    "resource_coverage": true,
+    "same_boot": true,
+    "uart_monitor": true,
+    "systemd": true,
+    "exact_mode": true,
+    "one_streamer": true,
+    "streamer_parent": true,
+    "udc_configured": true,
+    "two_clients": true
+  },
+  "automated_gate_count": 27,
+  "accepted_strict_parser_frames": 2583555,
+  "strict_parser_unchanged": true,
+  "minimum_120_second_fps": 29.641666666666666,
+  "resources": {
+    "result": "inconclusive",
+    "boundedness_established": false,
+    "continuing_leak_demonstrated": false,
+    "counts_stable": true,
+    "first_generation_rss_grows_to_restart": true,
+    "post_8h_kvmd_constant_tail_seconds": 12259.45757220799,
+    "system_memory_benign_attribution_established": false,
+    "new_arbitrary_acceptance_threshold": false
+  },
+  "journals": {
+    "result": "passed",
+    "complete_captured_lines_reviewed": 140781,
+    "verifier_candidates_reviewed": 1905,
+    "unexplained_candidates": 0,
+    "new_nginx_upstream_errors": 9,
+    "new_nginx_errors_explained": true,
+    "persistent_transport_or_service_failure": false
+  },
+  "reason": "First kvmd generation continues growing through its scheduled restart; the second has delayed growth then a 3.405-hour RSS plateau, without an allocation-bound explanation. Infinite retained login sessions and RAM-backed Shmem growth are confounders. System available-memory loss is broadly accounted by memory categories but not attributed to bounded owners. No continuing leak is demonstrated.",
+  "actions": {
+    "target_contacted": false,
+    "target_modified": false,
+    "target_rebooted": false,
+    "new_soak_started": false,
+    "p1_started": false,
+    "release_commit_created": false,
+    "tag_created": false,
+    "pushed": false,
+    "targeted_diagnostic": "proposed_only"
+  },
+  "evidence": {
+    "README.md": {
+      "sha256": "e205ee7f26104df83eb677249c674602a537a6446388ac4d137605dccaabdff9",
+      "bytes": 19589
+    },
+    "auth-source-review.json": {
+      "sha256": "de17d628be3e00d45de8a70736344d4d492a01991150d20f87148fb746921179",
+      "bytes": 1162
+    },
+    "cycle-correlation.json": {
+      "sha256": "febc22a4dc404df5d9e71c01caecd2d4f8bdf94eb435fe9796bf78ab59035654",
+      "bytes": 921767
+    },
+    "integrity-review.json": {
+      "sha256": "14434eb8e53fdee6c06fb0eefb4c51b129b01c79eac0bd44d8e177a89823ab0d",
+      "bytes": 677
+    },
+    "journal-candidates.jsonl": {
+      "sha256": "41982b53b3123454464c3f39f87dc760489c2fb80da4e41366fa38141af3977a",
+      "bytes": 1745375
+    },
+    "journal-full-coverage.json": {
+      "sha256": "008008a7eeaefe83d7bf32847b8097fb021ef2a40f5af7fcfc13eb583db7a3a7",
+      "bytes": 1856552
+    },
+    "journal-review.json": {
+      "sha256": "5b00f86ee6be1a437b0e683b876c75a01cd97fb8b7a0631a350baa94f4150e24",
+      "bytes": 39839
+    },
+    "lifecycle-correlation.json": {
+      "sha256": "f38827df0b2135589933afb4b6d0ba9e88fce79e375b8310ba2e475fd7db46ae",
+      "bytes": 17030
+    },
+    "resource-correlations.jsonl": {
+      "sha256": "1db5b4a11d1ed3ad7e5176fb563db711e5c81ebc1aa98211e0f442974e509f6b",
+      "bytes": 1864019
+    },
+    "resource-review.json": {
+      "sha256": "5978f90dc072f28bdb75eb309d44f34f9ec5f55428b43776edde10d72ff1efb1",
+      "bytes": 3436709
+    },
+    "run03_journal_review.py": {
+      "sha256": "992eab93e7ee6e0a73bfeb917a1cd7c8c0a40368335e231c277b0efc1e7c3ea7",
+      "bytes": 17305
+    },
+    "run03_resource_review.py": {
+      "sha256": "6a7c41fe0efb68affc161630ad7200d829ae8d9cf1c653ca9d704d35148a47d2",
+      "bytes": 10011
+    },
+    "validation.json": {
+      "sha256": "786b42e0f3fe8d0f944f8e4f8596c32d539293894cc0b8f58901542890e6ead7",
+      "bytes": 1119
+    }
+  }
+}

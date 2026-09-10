@@ -1,0 +1,809 @@
+{
+  "result": "passed",
+  "scope": "Every line of the complete archived host kernel follow log and target all-unit follow journal. Host all-unit userspace journal was not captured by original controller and is not claimed. Supplemented by full baseline/final nginx error log and kernel inventory; original file scopes are explicit.",
+  "sources": {
+    "host-kernel-live.log": {
+      "sha256": "49e3b82b7cd21b395caf604eb40fedbf3a65a2166a55d0a91b01bc7a366833e0",
+      "lines": 2080,
+      "first_monotonic": 1247.590525,
+      "last_monotonic": 87667.381762
+    },
+    "target-journal-live.log": {
+      "sha256": "be9e6bead415fcf3a397f12247d66b90fc0e132009824e91e8075fa2fe34a25f",
+      "lines": 138701,
+      "first_monotonic": 864.123298,
+      "last_monotonic": 87321.249016
+    }
+  },
+  "candidate_counts": {
+    "host-kernel-live.log": 544,
+    "target-journal-live.log": 1361
+  },
+  "full_coverage": [
+    {
+      "source": "host-kernel-live.log",
+      "classification": "unrelated bridge-host message",
+      "lines": 720
+    },
+    {
+      "source": "host-kernel-live.log",
+      "classification": "expected MSD eject/reattach consequence",
+      "lines": 1360
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected authentication activity",
+      "lines": 2196
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected successful workload",
+      "lines": 98696
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "known documented benign diagnostic",
+      "lines": 4527
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected SSH/inventory activity",
+      "lines": 29594
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected startup consequence",
+      "lines": 3
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected HID reset exercise",
+      "lines": 816
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected authentication negative test",
+      "lines": 1361
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected disabled-route negative test",
+      "lines": 1360
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected background service activity",
+      "lines": 25
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected lifecycle consequence",
+      "lines": 122
+    },
+    {
+      "source": "target-journal-live.log",
+      "classification": "expected cleanup consequence",
+      "lines": 1
+    }
+  ],
+  "candidate_classifications": {
+    "expected MSD eject/reattach consequence": 544,
+    "expected HID reset exercise": 816,
+    "expected authentication negative test": 272,
+    "expected disabled-route negative test": 272,
+    "known documented benign diagnostic": 1
+  },
+  "unexplained": [],
+  "explicit_searches": {
+    "USB resets": {
+      "pattern": "usb.*\\breset\\b|reset (?:high|full|low|super)-speed USB",
+      "count": 0,
+      "matches": []
+    },
+    "UVC errors": {
+      "pattern": "uvc.*(?:error|fail|timeout)|(?:error|fail).*uvc",
+      "count": 0,
+      "matches": []
+    },
+    "failed URB resubmission": {
+      "pattern": "(?:resubmit|resubmission).*urb|urb.*(?:resubmit|resubmission|error|fail)",
+      "count": 0,
+      "matches": []
+    },
+    "MUSB/UDC timeout or stall": {
+      "pattern": "(?:musb|udc).*(?:timeout|timed out|stall|error|fail)",
+      "count": 0,
+      "matches": []
+    },
+    "SCSI timeout/reset": {
+      "pattern": "(?:scsi|\\bsd \\d).*\\b(?:timeout|timed out|reset)\\b",
+      "count": 0,
+      "matches": []
+    },
+    "HID backend/write errors": {
+      "pattern": "(?:hid|hidg).*(?:ERROR|CRITICAL|write.*(?:fail|error)|timeout)",
+      "count": 0,
+      "matches": []
+    },
+    "kvmd traceback": {
+      "pattern": "Traceback|most recent call last",
+      "count": 0,
+      "matches": []
+    },
+    "unexpected service exit": {
+      "pattern": "Main process exited|Failed with result|Failed to start|status=\\d+/(?:FAILURE|ABRT|SEGV)|core.dump|exitcode=[^0]|retcode=[^0]",
+      "count": 0,
+      "matches": []
+    },
+    "nginx fatal errors": {
+      "pattern": "nginx.*(?:emerg|alert|crit|fatal|\\[error\\])",
+      "count": 0,
+      "matches": []
+    },
+    "kernel WARNING/Oops/BUG": {
+      "pattern": "\\bWARNING:|\\bOops\\b|\\bBUG:|kernel panic|Call trace:",
+      "count": 0,
+      "matches": []
+    },
+    "OOM": {
+      "pattern": "out of memory|oom.kill|invoked oom|Killed process \\d+",
+      "count": 0,
+      "matches": []
+    },
+    "network loss": {
+      "pattern": "Link is Down|NETDEV WATCHDOG|tx timeout|network is unreachable|No route to host|Connection timed out|wlo1:.*(?:disconnect|deauth)",
+      "count": 94,
+      "matches": [
+        {
+          "source": "host-kernel-live.log",
+          "line": 1,
+          "original_line": "[ 1247.590525] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 8,
+          "original_line": "[ 1247.675109] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 27,
+          "original_line": "[ 1854.857471] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 34,
+          "original_line": "[ 1854.947182] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 77,
+          "original_line": "[ 3674.538152] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 84,
+          "original_line": "[ 3674.611111] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 128,
+          "original_line": "[ 5798.877056] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 135,
+          "original_line": "[ 5798.968229] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 169,
+          "original_line": "[ 7619.551070] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 176,
+          "original_line": "[ 7619.653087] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 215,
+          "original_line": "[ 9439.889729] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 222,
+          "original_line": "[ 9439.968985] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 265,
+          "original_line": "[11565.672289] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 273,
+          "original_line": "[11565.773205] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 307,
+          "original_line": "[13386.409380] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 314,
+          "original_line": "[13386.505129] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 357,
+          "original_line": "[15511.778258] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 364,
+          "original_line": "[15511.863027] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 402,
+          "original_line": "[17332.118101] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 409,
+          "original_line": "[17332.224266] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 447,
+          "original_line": "[19153.435134] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 454,
+          "original_line": "[19153.585208] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 487,
+          "original_line": "[20973.845025] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 494,
+          "original_line": "[20973.929110] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 533,
+          "original_line": "[22793.167293] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 540,
+          "original_line": "[22793.262227] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 578,
+          "original_line": "[24614.812034] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 585,
+          "original_line": "[24615.018124] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 618,
+          "original_line": "[26435.979175] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 625,
+          "original_line": "[26436.057759] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 663,
+          "original_line": "[28255.650554] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 670,
+          "original_line": "[28255.859163] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 709,
+          "original_line": "[30077.953424] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 716,
+          "original_line": "[30078.038227] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 749,
+          "original_line": "[31899.450514] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 756,
+          "original_line": "[31899.530059] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 795,
+          "original_line": "[33719.932315] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 802,
+          "original_line": "[33720.029097] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 840,
+          "original_line": "[35541.031462] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 847,
+          "original_line": "[35541.188575] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 885,
+          "original_line": "[37363.558034] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 892,
+          "original_line": "[37363.683025] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 925,
+          "original_line": "[39185.263038] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 932,
+          "original_line": "[39185.365360] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 970,
+          "original_line": "[41007.113321] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 977,
+          "original_line": "[41007.217624] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1020,
+          "original_line": "[43132.140255] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1027,
+          "original_line": "[43132.222226] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1060,
+          "original_line": "[44952.467080] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1067,
+          "original_line": "[44952.547337] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1105,
+          "original_line": "[46775.527075] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1112,
+          "original_line": "[46775.693218] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1150,
+          "original_line": "[48597.706110] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1157,
+          "original_line": "[48597.880143] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1190,
+          "original_line": "[50419.410494] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1197,
+          "original_line": "[50419.591084] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1235,
+          "original_line": "[52240.301146] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1242,
+          "original_line": "[52240.456762] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1281,
+          "original_line": "[54061.391026] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1288,
+          "original_line": "[54061.499092] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1321,
+          "original_line": "[55881.868223] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1328,
+          "original_line": "[55882.164108] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1367,
+          "original_line": "[57704.013032] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1374,
+          "original_line": "[57704.168109] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1412,
+          "original_line": "[59526.075026] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1419,
+          "original_line": "[59526.192553] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1457,
+          "original_line": "[61347.648164] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1464,
+          "original_line": "[61347.758159] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1497,
+          "original_line": "[63167.278151] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1504,
+          "original_line": "[63167.451335] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1547,
+          "original_line": "[65292.445022] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1554,
+          "original_line": "[65292.630023] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1596,
+          "original_line": "[67418.487627] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1603,
+          "original_line": "[67418.630019] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1636,
+          "original_line": "[69240.061044] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1643,
+          "original_line": "[69240.234325] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1681,
+          "original_line": "[71060.960800] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1688,
+          "original_line": "[71061.216174] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1726,
+          "original_line": "[72883.485054] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1733,
+          "original_line": "[72883.709317] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1766,
+          "original_line": "[74705.785152] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1773,
+          "original_line": "[74705.900013] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1811,
+          "original_line": "[76527.484068] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1818,
+          "original_line": "[76527.682269] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1856,
+          "original_line": "[78348.568079] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1863,
+          "original_line": "[78348.685025] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1901,
+          "original_line": "[80169.859444] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1908,
+          "original_line": "[80169.970647] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1941,
+          "original_line": "[81992.240216] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1948,
+          "original_line": "[81992.400083] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1986,
+          "original_line": "[83813.745034] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 1993,
+          "original_line": "[83813.902274] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 2031,
+          "original_line": "[85635.648423] user-0 kernel: wlo1: disconnect from AP 94:83:c4:ca:dd:c2 for new auth to 94:83:c4:ca:dd:c3"
+        },
+        {
+          "source": "host-kernel-live.log",
+          "line": 2038,
+          "original_line": "[85635.759154] user-0 kernel: wlo1: deauthenticating from 94:83:c4:ca:dd:c3 by local choice (Reason: 13=INVALID_IE)"
+        }
+      ]
+    },
+    "Run02 malformed JPEG signature": {
+      "pattern": "invalid JPEG markers|malformed.*JPEG|trailing.*(?:JPEG|EOI)|invalid-frame-",
+      "count": 0,
+      "matches": []
+    }
+  },
+  "supplemental_logs": {
+    "nginx-error": {
+      "baseline_lines": 22,
+      "final_lines": 31,
+      "baseline_exact_prefix": true,
+      "new_lines": [
+        "2026/07/28 04:58:30 [error] 13030#13030: *19836 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:30 [error] 13030#13030: *19830 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\", referrer: \"https://blikvm-v4.lab/login/\"",
+        "2026/07/28 04:58:31 [error] 13030#13030: *19839 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:31 [crit] 13030#13030: *19841 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:32 [crit] 13030#13030: *19843 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:32 [crit] 13030#13030: *19845 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:33 [crit] 13030#13030: *19847 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:33 [crit] 13030#13030: *19849 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+        "2026/07/28 04:58:34 [crit] 13030#13030: *19851 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\""
+      ],
+      "before_sha256": "e37395d873f31491e2d25ab8c3301a1493706593bb429b4ee17f6203248778b4",
+      "after_sha256": "fb6f3b438e9baf734af881e8012ac55f66454c0551df7e761fbc8127f9f51137",
+      "new_line_reviews": [
+        {
+          "original_line": "2026/07/28 04:58:30 [error] 13030#13030: *19836 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29673.348370552063,
+          "bridge_monotonic_estimate": 30052.631715137726,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:30 [error] 13030#13030: *19830 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\", referrer: \"https://blikvm-v4.lab/login/\"",
+          "target_monotonic_estimate": 29673.348370552063,
+          "bridge_monotonic_estimate": 30052.631715137726,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:31 [error] 13030#13030: *19839 connect() to unix:/run/kvmd/api/kvmd.sock failed (111: Connection refused) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29674.348370552063,
+          "bridge_monotonic_estimate": 30053.63115864223,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:31 [crit] 13030#13030: *19841 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29674.348370552063,
+          "bridge_monotonic_estimate": 30053.63115864223,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:32 [crit] 13030#13030: *19843 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29675.348370552063,
+          "bridge_monotonic_estimate": 30054.630602146735,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:32 [crit] 13030#13030: *19845 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29675.348370552063,
+          "bridge_monotonic_estimate": 30054.630602146735,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:33 [crit] 13030#13030: *19847 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29676.348370552063,
+          "bridge_monotonic_estimate": 30055.6302319721,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:33 [crit] 13030#13030: *19849 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29676.348370552063,
+          "bridge_monotonic_estimate": 30055.6302319721,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        },
+        {
+          "original_line": "2026/07/28 04:58:34 [crit] 13030#13030: *19851 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"POST /api/auth/login HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/login\", host: \"blikvm-v4.lab\"",
+          "target_monotonic_estimate": 29677.348370552063,
+          "bridge_monotonic_estimate": 30056.629952202675,
+          "classification": "expected lifecycle consequence",
+          "supporting_evidence": "kvmd restart removes API listener; controller and video-events record bounded 502s; new kvmd starts and clients recover within original 60-second window."
+        }
+      ]
+    },
+    "target-dmesg": {
+      "baseline_lines": 268,
+      "final_lines": 268,
+      "baseline_exact_prefix": true,
+      "new_lines": [],
+      "before_sha256": "fc6c8bf9a68187406b810fc71470310833a81b66bcd63dcb80d837f473a005ca",
+      "after_sha256": "fc6c8bf9a68187406b810fc71470310833a81b66bcd63dcb80d837f473a005ca"
+    }
+  },
+  "strict_video": {
+    "accepted_frames": 2583555,
+    "parser_unchanged": true,
+    "parser_sha256": "cdc491c75ac07693203ab821559dc574aecda9f872c38c00d30eda1d2cbb0f82",
+    "malformed_jpeg_events": [],
+    "invalid_frame_files": [],
+    "worker_result": {
+      "result": "completed_pending_replay",
+      "start": 1245.721887613,
+      "end": 87701.873252552,
+      "frames": 2583555
+    },
+    "video_events": [
+      {
+        "t": 15653.831966582,
+        "error": "MJPEG EOF",
+        "planned": true
+      },
+      {
+        "t": 30052.500335891,
+        "error": "MJPEG EOF",
+        "planned": true
+      },
+      {
+        "t": 30053.1204572,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30053.665759731,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30054.218668739,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30054.765127508,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30055.309516352,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30055.854744749,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30056.39962164,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 30056.94425599,
+        "error": "HTTP Error 502: Bad Gateway",
+        "planned": true
+      },
+      {
+        "t": 73253.908091779,
+        "error": "MJPEG EOF",
+        "planned": true
+      }
+    ],
+    "does_not_override_journal_failure": true
+  },
+  "limitations": [
+    "One-minute resources cannot bound sub-sample spikes; target-to-bridge timestamp mapping includes unmeasured sample completion latency.",
+    "Historical nginx errors predate Run 03 and match baseline byte-for-byte; they are preserved, not reclassified as new Run 03 failures.",
+    "No new journal collection or target operation was performed."
+  ],
+  "review_notes": [
+    "272 expected host failed READ(10) blocks each contain DID_OK/DRIVER_OK and Medium not present, followed within the same cycle by three full matching direct reads. No USB/SCSI transport error is excused by mere proximity.",
+    "False lexical candidates include 816 successful /hid/reset requests, 272 excluded /msd/reset requests and inSTALLing SIGUSR2.",
+    "All full-journal message families are accounted for; unexpected meaningful messages default to unexplained."
+  ]
+}

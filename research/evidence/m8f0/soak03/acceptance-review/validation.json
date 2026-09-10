@@ -1,0 +1,30 @@
+{
+  "result": "passed",
+  "unit_tests": {
+    "command": "python3 -m unittest discover -s tests -p 'test_*soak*.py'",
+    "passed": 4
+  },
+  "offline_replay_gates_passed": 27,
+  "review_consistency": [
+    "all final evidence file hashes match",
+    "every full journal line classified exactly once",
+    "every candidate original line matches source line exactly",
+    "every cycle has exactly two host error candidates, three successful HID resets, one invalid login and one excluded MSD reset",
+    "every generation sample count and hourly bins reconcile",
+    "six-hour windows only when covered lifetime permits",
+    "Run 02 failed narrative byte-identical to HEAD"
+  ],
+  "run02_failed_narrative_sha256": "d59f265b04d9bd4ead1343673937637a68fe4b2a00242323d84665aca8cb53b4",
+  "secret_scan": {
+    "result": "passed",
+    "files_scanned": 15,
+    "checks": [
+      "exact locally available qualification passwords (values never emitted)",
+      "private key blocks",
+      "session Cookie/Set-Cookie header values",
+      "literal token values",
+      "GitHub credential prefixes"
+    ],
+    "findings": []
+  }
+}

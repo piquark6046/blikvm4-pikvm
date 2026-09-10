@@ -1,0 +1,384 @@
+[
+  {
+    "event": "nginx",
+    "id": "nginx-15651425534532",
+    "start": 15651.425537087,
+    "until": 15711.425537562,
+    "action_end": 15654.250905862,
+    "offset_hours": 4,
+    "browser_first_good_after_action": {
+      "t": 15656.950713906,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "ad0d42a3ca0ba876886c77169973783bfdc9bc38cce405f24206a6aff9995357",
+      "planned": true,
+      "api_status": 200
+    },
+    "browser_first_changed_after_action": {
+      "t": 15657.969357623,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "1523ee49dd872853c05a4e5be63bf8e4c14feaf7f22ccdc6c089fea2ef07b34c",
+      "planned": true,
+      "api_status": 200
+    },
+    "recovered_motion_seconds_after_event_start": 6.543820536000567,
+    "strict_recovery_120_second_fps": 29.841666666666665,
+    "mechanism": "Scheduled systemctl restart closes proxy sockets, service stops successfully, starts, accepts two new stream clients.",
+    "target_sequence": [
+      {
+        "line": 23209,
+        "original_line": "[15273.075733] blikvm-m7 sudo[13018]:   blikvm : PWD=/home/blikvm ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx"
+      },
+      {
+        "line": 23211,
+        "original_line": "[15273.111311] blikvm-m7 systemd[1]: Stopping nginx.service - BliKVM loopback HTTPS Web UI..."
+      },
+      {
+        "line": 23212,
+        "original_line": "[15274.089506] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [15274.088      http] -- HTTP: DEL client (now=1): [192.168.88.1]:0, id=ba67752cb4687d22, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 23213,
+        "original_line": "[15274.101222] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473624030432, {'stream': True}); clients now: 0"
+      },
+      {
+        "line": 23215,
+        "original_line": "[15275.114024] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [15275.112      http] -- HTTP: DEL client (now=0): [192.168.88.1]:0, id=487eb7a0a579839a, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 23216,
+        "original_line": "[15275.132048] blikvm-m7 systemd[1]: nginx.service: Deactivated successfully."
+      },
+      {
+        "line": 23217,
+        "original_line": "[15275.132875] blikvm-m7 systemd[1]: Stopped nginx.service - BliKVM loopback HTTPS Web UI."
+      },
+      {
+        "line": 23218,
+        "original_line": "[15275.133024] blikvm-m7 systemd[1]: nginx.service: Consumed 18min 29.046s CPU time over 4h 4min 58.846s wall clock time."
+      },
+      {
+        "line": 23219,
+        "original_line": "[15275.147070] blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI..."
+      },
+      {
+        "line": 23237,
+        "original_line": "[15275.520172] blikvm-m7 systemd[1]: Started nginx.service - BliKVM loopback HTTPS Web UI."
+      },
+      {
+        "line": 23243,
+        "original_line": "[15275.682332] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=191"
+      },
+      {
+        "line": 23248,
+        "original_line": "[15275.747323] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [15275.745      http] -- HTTP: NEW client (now=1): [192.168.88.1]:0, id=d105c5aaf2220e64"
+      },
+      {
+        "line": 23258,
+        "original_line": "[15276.508439] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=192"
+      },
+      {
+        "line": 23266,
+        "original_line": "[15276.918921] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473624028608, {'stream': True}); clients now: 1"
+      },
+      {
+        "line": 23268,
+        "original_line": "[15277.114063] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [15277.112      http] -- HTTP: NEW client (now=2): [192.168.88.1]:0, id=5a8292009612084e"
+      }
+    ]
+  },
+  {
+    "event": "kvmd",
+    "id": "kvmd-30051514981630",
+    "start": 30051.51498372,
+    "until": 30111.51498408,
+    "action_end": 30053.988428241,
+    "offset_hours": 8,
+    "browser_first_good_after_action": {
+      "t": 30071.385470249,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "37180e6c3890be5b19a46d02f5c77a8e2f3a3d38d862c9925e213795f9b6d42a",
+      "planned": true,
+      "api_status": 200
+    },
+    "browser_first_changed_after_action": {
+      "t": 30072.40264269,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "8851c00d9024284b9d32d4c90c3fac6fc346908f2215ac186fe8440d84b0a649",
+      "planned": true,
+      "api_status": 200
+    },
+    "recovered_motion_seconds_after_event_start": 20.887658970001212,
+    "strict_recovery_120_second_fps": 29.833333333333332,
+    "mechanism": "Scheduled restart runs orderly HID/streamer cleanup with exitcode/retcode 0, removes API socket temporarily, restarts exactly one streamer and three HID workers.",
+    "target_sequence": [
+      {
+        "line": 46264,
+        "original_line": "[29672.775117] blikvm-m7 sudo[21798]:   blikvm : PWD=/home/blikvm ; USER=root ; COMMAND=/usr/bin/systemctl restart kvmd"
+      },
+      {
+        "line": 46266,
+        "original_line": "[29672.807132] blikvm-m7 systemd[1]: Stopping kvmd.service - BliKVM video-only kvmd..."
+      },
+      {
+        "line": 46270,
+        "original_line": "[29672.818253] blikvm-m7 kvmd[3689]: kvmd.htserver                     INFO --- Removed client socket: WsSession(id=281473624028608, {'stream': True}); clients now: 0"
+      },
+      {
+        "line": 46276,
+        "original_line": "[29672.893141] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [29672.892      http] -- HTTP: DEL client (now=1): [192.168.88.1]:0, id=5a8292009612084e, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 46277,
+        "original_line": "[29672.938889] blikvm-m7 kvmd[3689]: kvmd.plugins.hid.otg.device       INFO --- Stopped kvmd/hid-keyboard: exitcode=0"
+      },
+      {
+        "line": 46279,
+        "original_line": "[29673.044279] blikvm-m7 kvmd[3689]: kvmd.plugins.hid.otg.device       INFO --- Stopped kvmd/hid-mouse: exitcode=0"
+      },
+      {
+        "line": 46281,
+        "original_line": "[29673.149729] blikvm-m7 kvmd[3689]: kvmd.plugins.hid.otg.device       INFO --- Stopped kvmd/hid-mouse: exitcode=0"
+      },
+      {
+        "line": 46285,
+        "original_line": "[29673.398627] blikvm-m7 kvmd[3689]: kvmd.apps.kvmd.streamer.runner    INFO --- Process killed: retcode=0"
+      },
+      {
+        "line": 46288,
+        "original_line": "[29674.606011] blikvm-m7 systemd[1]: kvmd.service: Deactivated successfully."
+      },
+      {
+        "line": 46289,
+        "original_line": "[29674.608436] blikvm-m7 systemd[1]: Stopped kvmd.service - BliKVM video-only kvmd."
+      },
+      {
+        "line": 46290,
+        "original_line": "[29674.608598] blikvm-m7 systemd[1]: kvmd.service: Consumed 43min 47.878s CPU time over 8h 5min 6.722s wall clock time."
+      },
+      {
+        "line": 46291,
+        "original_line": "[29674.621393] blikvm-m7 systemd[1]: Starting kvmd.service - BliKVM video-only kvmd..."
+      },
+      {
+        "line": 46292,
+        "original_line": "[29674.856787] blikvm-m7 systemd[1]: Started kvmd.service - BliKVM video-only kvmd."
+      },
+      {
+        "line": 46314,
+        "original_line": "[29678.201821] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer           INFO --- Installing SIGUSR2 streamer handler ..."
+      },
+      {
+        "line": 46317,
+        "original_line": "[29678.208931] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- Starting streamer ..."
+      },
+      {
+        "line": 46329,
+        "original_line": "[29678.409421] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=1"
+      },
+      {
+        "line": 46339,
+        "original_line": "[29678.434139] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [29678.431    stream] -- Capturing ..."
+      },
+      {
+        "line": 46341,
+        "original_line": "[29678.479753] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [29678.478      http] -- HTTP: NEW client (now=1): [192.168.88.1]:0, id=c7735315aee53fc0"
+      },
+      {
+        "line": 46344,
+        "original_line": "[29690.514454] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=2"
+      },
+      {
+        "line": 46352,
+        "original_line": "[29690.912109] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473024517056, {'stream': True}); clients now: 1"
+      },
+      {
+        "line": 46354,
+        "original_line": "[29691.123259] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [29691.121      http] -- HTTP: NEW client (now=2): [192.168.88.1]:0, id=11046d3310f51182"
+      }
+    ]
+  },
+  {
+    "event": "logout",
+    "id": "logout-44451456229428",
+    "start": 44451.456232099,
+    "until": 44511.45623258,
+    "action_end": 44453.661617717,
+    "offset_hours": 12,
+    "browser_first_good_after_action": {
+      "t": 44454.629925855,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "6e06096fa38e5c7d125bd7591b0f806b78ae58fd2da5e49d32a1523ad53f9e71",
+      "planned": true,
+      "api_status": 200
+    },
+    "browser_first_changed_after_action": {
+      "t": 44455.656284432,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "e11c6601160123725501c48d29a02ff6d3ddf2beb687318186c418c17074799c",
+      "planned": true,
+      "api_status": 200
+    },
+    "recovered_motion_seconds_after_event_start": 4.200052332998894,
+    "strict_recovery_120_second_fps": 29.85,
+    "mechanism": "Explicit UI logout revokes 182 sessions; denied MSD API then successful login restores browser session and motion.",
+    "target_sequence": [
+      {
+        "line": 69341,
+        "original_line": "[44072.993417] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [44072.992      http] -- HTTP: DEL client (now=1): [192.168.88.1]:0, id=11046d3310f51182, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 69342,
+        "original_line": "[44072.995895] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473024517056, {'stream': True}); clients now: 0"
+      },
+      {
+        "line": 69345,
+        "original_line": "[44073.271731] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged out user 'qualifier'; sessions_closed=182"
+      },
+      {
+        "line": 69349,
+        "original_line": "[44073.478689] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=1"
+      },
+      {
+        "line": 69357,
+        "original_line": "[44073.858421] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473024672144, {'stream': True}); clients now: 1"
+      },
+      {
+        "line": 69359,
+        "original_line": "[44074.057941] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [44074.057      http] -- HTTP: NEW client (now=2): [192.168.88.1]:0, id=886023a454f46f29"
+      }
+    ]
+  },
+  {
+    "event": "hdmi",
+    "id": "hdmi-58851435662088",
+    "start": 58851.435664332,
+    "until": 58911.435664797,
+    "action_end": 58866.87623965,
+    "offset_hours": 16,
+    "browser_first_good_after_action": {
+      "t": 58867.169452284,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "c895f6de45cf94fe27c4dad33bf2b9ef9a771437af7aa11aeaeb720ccdf76262",
+      "planned": true,
+      "api_status": 200
+    },
+    "browser_first_changed_after_action": {
+      "t": 58868.188367482,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "959d0c3306af58092fc58c1e9404265c80dd441e70ef4badbe6c4c53b5428a97",
+      "planned": true,
+      "api_status": 200
+    },
+    "recovered_motion_seconds_after_event_start": 16.752703149999434,
+    "strict_recovery_120_second_fps": 29.8,
+    "mechanism": "Controller stops source, records DRM DPMS value 3 for signal loss, waits 10 seconds, restores source/DPMS 0. Changed browser hashes and strict recovery window prove moving recovery.",
+    "target_sequence": []
+  },
+  {
+    "event": "nginx",
+    "id": "nginx-73251503778482",
+    "start": 73251.503780647,
+    "until": 73311.503781068,
+    "action_end": 73254.330790257,
+    "offset_hours": 20,
+    "browser_first_good_after_action": {
+      "t": 73257.397707452,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "a5198c028faee65be684710a512f3aa30da5e28a8127ac026d991f586d21aaf0",
+      "planned": true,
+      "api_status": 200
+    },
+    "browser_first_changed_after_action": {
+      "t": 73258.41874103,
+      "width": 1920,
+      "height": 1080,
+      "connected": true,
+      "sha256": "aad655a4a40d66128da5600b0c06ece114f51ef5e0e0bb8877ee074db5f1f677",
+      "planned": true,
+      "api_status": 200
+    },
+    "recovered_motion_seconds_after_event_start": 6.9149603829864645,
+    "strict_recovery_120_second_fps": 29.858333333333334,
+    "mechanism": "Scheduled systemctl restart closes proxy sockets, service stops successfully, starts, accepts two new stream clients.",
+    "target_sequence": [
+      {
+        "line": 115373,
+        "original_line": "[72871.613680] blikvm-m7 sudo[48231]:   blikvm : PWD=/home/blikvm ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx"
+      },
+      {
+        "line": 115375,
+        "original_line": "[72871.648070] blikvm-m7 systemd[1]: Stopping nginx.service - BliKVM loopback HTTPS Web UI..."
+      },
+      {
+        "line": 115376,
+        "original_line": "[72871.971687] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [72871.970      http] -- HTTP: DEL client (now=1): [192.168.88.1]:0, id=886023a454f46f29, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 115377,
+        "original_line": "[72871.981360] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473024672144, {'stream': True}); clients now: 0"
+      },
+      {
+        "line": 115379,
+        "original_line": "[72873.651449] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [72873.649      http] -- HTTP: DEL client (now=0): [192.168.88.1]:0, id=c7735315aee53fc0, Resource temporarily unavailable (reading,eof)"
+      },
+      {
+        "line": 115380,
+        "original_line": "[72873.670589] blikvm-m7 systemd[1]: nginx.service: Deactivated successfully."
+      },
+      {
+        "line": 115381,
+        "original_line": "[72873.671548] blikvm-m7 systemd[1]: Stopped nginx.service - BliKVM loopback HTTPS Web UI."
+      },
+      {
+        "line": 115382,
+        "original_line": "[72873.671735] blikvm-m7 systemd[1]: nginx.service: Consumed 1h 13min 54.166s CPU time over 15h 59min 58.523s wall clock time."
+      },
+      {
+        "line": 115383,
+        "original_line": "[72873.683751] blikvm-m7 systemd[1]: Starting nginx.service - BliKVM loopback HTTPS Web UI..."
+      },
+      {
+        "line": 115401,
+        "original_line": "[72874.046116] blikvm-m7 systemd[1]: Started nginx.service - BliKVM loopback HTTPS Web UI."
+      },
+      {
+        "line": 115407,
+        "original_line": "[72874.219376] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=362"
+      },
+      {
+        "line": 115413,
+        "original_line": "[72874.285020] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [72874.283      http] -- HTTP: NEW client (now=1): [192.168.88.1]:0, id=8ac3be5e42eeff55"
+      },
+      {
+        "line": 115422,
+        "original_line": "[72875.395026] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.auth               INFO --- Logged in user 'qualifier'; expire=INF, sessions_now=363"
+      },
+      {
+        "line": 115430,
+        "original_line": "[72875.806425] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.server             INFO --- Registered new client session: WsSession(id=281473024678544, {'stream': True}); clients now: 1"
+      },
+      {
+        "line": 115432,
+        "original_line": "[72876.023036] blikvm-m7 kvmd[21814]: kvmd.apps.kvmd.streamer.runner    INFO --- => -- INFO  [72876.021      http] -- HTTP: NEW client (now=2): [192.168.88.1]:0, id=181e7365293d42d1"
+      }
+    ]
+  }
+]

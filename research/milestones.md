@@ -159,12 +159,18 @@ image-production preparation slice is proposed only.
 
 ### M8-F — 24-hour core KVM soak
 
-**Current: QUALIFICATION FAILED at 14h54m; NOT PASSED.** An unexpected JPEG
-marker failure stopped run 02; the raw frame and failure evidence are retained.
-M8-F0 diagnostics have demonstrated coalesced MS2131 bulk EOF framing before
-uvcvideo copying. A narrow non-diagnostic rejection candidate is undergoing
-M8-E regressions. Candidate stress and five clean boots pass; physical USB-PC
-reconnect is pending. No new 24-hour qualification has started.
+**Current: OPEN — Run 03 MEMORY REVIEW INCONCLUSIVE (outcome B).** Run 02
+remains permanently **FAILED** at 14h54m on malformed JPEG markers. Candidate 2
+completed its M8-E/reconnect prerequisites and Run 03 completed the full soak.
+Independent review preserves all 27 passing automated gates, 2,583,555 frames
+accepted by the unchanged strict parser, and a passing complete journal review.
+Resource boundedness is not established: main kvmd grows through the first
+generation's restart; the later observed plateau does not explain delayed
+growth or attribute RAM-backed system-memory retention. FD/process/socket
+counts are stable; a continuing leak is not demonstrated. Retain Run 03 as
+completed functional evidence, not accepted M8-F. Propose a targeted memory
+diagnostic; do not rerun the full soak yet. See the
+[independent decision](evidence/m8f0/soak03/acceptance-review/README.md).
 Preserve the frozen
 M8-E core stack through one continuous 24-hour qualification with two
 authenticated video clients, a real Web UI, moving HDMI, real host HID/MSD
