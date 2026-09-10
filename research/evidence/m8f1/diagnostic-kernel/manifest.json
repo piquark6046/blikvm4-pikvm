@@ -1,0 +1,69 @@
+{
+  "source": {
+    "commit": "9ccb7df69c962aba4bbbf9784e7fa45b88a4977f",
+    "dirty": true
+  },
+  "diagnostic": true,
+  "qualification": false,
+  "purpose": "M8-F1 targeted memory attribution",
+  "configuration_delta": {
+    "CONFIG_LOCALVERSION": {
+      "before": "\"-blikvm-v4-m8f0-ms2131c2\"",
+      "after": "\"-blikvm-v4-m8f1-memory\""
+    },
+    "CONFIG_PROC_PAGE_MONITOR": {
+      "before": "n",
+      "after": "y"
+    },
+    "CONFIG_SLUB_DEBUG": {
+      "before": "n",
+      "after": "y"
+    },
+    "CONFIG_SLUB_DEBUG_ON": {
+      "before": null,
+      "after": "n"
+    },
+    "CONFIG_STACKDEPOT": {
+      "before": null,
+      "after": "y"
+    },
+    "CONFIG_STACKDEPOT_MAX_FRAMES": {
+      "before": null,
+      "after": "64"
+    },
+    "CONFIG_STACKTRACE": {
+      "before": "n",
+      "after": "y"
+    }
+  },
+  "userspace": "byte-identical Run 03 enrolled image",
+  "production_fix": false,
+  "artifacts": {
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    },
+    "Image": {
+      "name": "Image",
+      "size": 6914056,
+      "sha256": "700f8c72913ba0b375349b3a8fbc0d1d1c6dbe47752738a6cd66db8a82ec9ab0"
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "size": 90274771,
+      "sha256": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb"
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "size": 67448,
+      "sha256": "5dc4135a765fb47c9b8d75b074bb7a095e624a9a777ed0836aba0be3ec4d4b16"
+    }
+  },
+  "unchanged_uvc_source_sha256": {
+    "uvc_driver.c": "85f150feb1760a51683d949e95dcbad03daeccdf2a36a8733395a6beb508eedc",
+    "uvc_video.c": "24ca7e6230e460498832ff82a7be6a921cc9cf58cbb606cd210b110e7015aaf0",
+    "uvc_queue.c": "dd3342f0c1899c531168763e11b28fe109d3d520e072b6238c23aedb11d2326f",
+    "uvcvideo.h": "30c0553c634163d3371a67ad88cd42db6fa1b879aa5022544da6d9eda36ff958"
+  }
+}

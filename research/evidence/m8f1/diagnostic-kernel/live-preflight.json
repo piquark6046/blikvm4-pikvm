@@ -1,0 +1,18 @@
+{
+  "kernel": "7.2.3-blikvm-v4-m8f1-memory",
+  "boot_id": "d42e65fa-522d-4db0-b155-6600066c88a1",
+  "usr_files_checked": 10652,
+  "mismatches": [],
+  "interfaces": {
+    "/proc/self/smaps_rollup": true,
+    "/proc/slabinfo": true
+  },
+  "slab_debug_flags_checked": 640,
+  "slab_debug_flags_all_zero": true,
+  "sample_seconds": 0.5205685839999887,
+  "service_processes": 7,
+  "required_fields_present": true,
+  "m8f": "OPEN",
+  "p1": "GATED",
+  "qualification": false
+}

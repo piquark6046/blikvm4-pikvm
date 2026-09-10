@@ -118,7 +118,7 @@ def main():
             uart_errors.append(str(ex))
 
     def resources(label):
-        row = json.loads(target(label, (HERE/'memory-resources.py').read_text()))
+        row = json.loads(target(label, "BASE_SOURCE = " + repr((HERE/'soak-resources.py').read_text()) + '\n' + (HERE/'memory-resources.py').read_text()))
         row['bridge_monotonic'] = time.monotonic()
         row['planned'] = json.loads((root/'control.json').read_text())['until'] > time.monotonic()
         row['completed_cycles'] = len(result['cycles'])
@@ -217,6 +217,13 @@ def main():
         section = connectors.split(f'{connector}\t', 1)[1]
         dpms = int(re.search(r'\n\s*(\d+) DPMS:', section)[1])
         run('source-vt', ['chvt', '3']); source = start_source('initial')
+        target('preparatory-inventory-before', (HERE/'msd-inventory.py').read_text())
+        prep = {'start': time.monotonic(), 'authorized': True}
+        run('preparatory-restart', ssh+['sudo -n systemctl restart kvmd'], timeout=45)
+        prep['action_end'] = time.monotonic()
+        result['preparatory_restart'] = prep
+        time.sleep(5)
+        target('preparatory-inventory-after', (HERE/'msd-inventory.py').read_text())
         h = M['Harness'](root/'msd', a.boot_result)
         h.state('soak-initial', True); direct_reads('initial')
         event_window('startup', 60)

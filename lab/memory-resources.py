@@ -43,12 +43,13 @@ def sample(base):
         row['proc'][name] = path.read_text() if path.exists() else None
         if not path.exists():
             row.setdefault('unavailable', []).append('/proc/'+name)
+    row['mountinfo'] = Path('/proc/self/mountinfo').read_text()
     row['runtime_usage'] = {}
-    for name in ('/run', '/dev/shm', '/var/log', '/var/lib/kvmd', '/tmp'):
+    for name in ('/run', '/dev/shm', '/var/log', '/var/lib/kvmd', '/tmp', '/run/kvmd', '/run/log/journal', '/var/log/nginx', '/var/log/journal'):
         path = Path(name)
         if path.exists():
             v = os.statvfs(path)
-            r = subprocess.run(['du', '-sx', '-B1', name], capture_output=True, text=True, timeout=10)
+            r = subprocess.run(['du', '-sx', '-B1', str(path.resolve())], capture_output=True, text=True, timeout=10)
             row['runtime_usage'][name] = {'filesystem_total_bytes': v.f_blocks*v.f_frsize, 'filesystem_used_bytes': (v.f_blocks-v.f_bfree)*v.f_frsize, 'allocated_bytes': int(r.stdout.split()[0]) if r.returncode == 0 else None, 'du_rc': r.returncode}
     # Other processes, excluding this short-lived sampler; no cmdline/env/FD targets.
     row['other_processes'] = []
@@ -65,5 +66,7 @@ def sample(base):
     return row
 
 if __name__ == '__main__':
-    base = runpy.run_path('/run/m8f1-soak-resources.py')['sample']
+    namespace = {'__name__': 'm8f1_base'}
+    exec(compile(BASE_SOURCE, 'soak-resources.py', 'exec'), namespace)
+    base = namespace['sample']
     print(json.dumps(sample(base)))
