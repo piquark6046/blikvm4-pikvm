@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "diagnostic": "M8-F1",
+  "status": "blocked_required_interfaces_absent",
+  "stage0": "completed_inconclusive",
+  "checkpoint": "77d95ceb63314d562261d638ebe610c60290ae1b",
+  "checkpoint_remote_verified": true,
+  "push": "Everything up-to-date",
+  "bridge_artifacts_match_run03": true,
+  "same_target_boot_as_run03": true,
+  "target_main_identity": [
+    21814,
+    2967474
+  ],
+  "required_interfaces": {
+    "/proc/self/smaps_rollup": false,
+    "/proc/21814/smaps_rollup": false,
+    "/proc/slabinfo": false
+  },
+  "observation_started": false,
+  "kvmd_restarted": false,
+  "target_rebooted": false,
+  "production_runtime_changed": false,
+  "preflight_changes": [
+    "Restored bridge 192.168.88.1/24 on enp1s0",
+    "Uploaded diagnostic controller and sampler to bridge",
+    "Wrote /run/m8f1-soak-resources.py helper on target; no daemon configuration change"
+  ],
+  "local_validation": {
+    "syntax": "passed",
+    "test_labctl": {
+      "tests": 22,
+      "result": "passed"
+    }
+  },
+  "automation_status": "draft; not live validated; guarded against missing required interfaces",
+  "decision_needed": "Authorize diagnostic kernel to expose required interfaces, or explicitly reduce evidence requirements on exact runtime. Fresh-generation choice also remains pending.",
+  "m8f": "OPEN",
+  "run03": "completed functional evidence; not failed; not accepted",
+  "run02": "permanently FAILED",
+  "p1": "GATED",
+  "m6_atx": "DEFERRED"
+}

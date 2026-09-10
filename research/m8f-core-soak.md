@@ -860,3 +860,11 @@ records outcome **B**. The diagnostic is proposed only: do not rerun the full
 soak yet. P1 remains blocked; no acceptance commit, release tag or push is made.
 The target was not contacted, modified or rebooted. M6/ATX remains **DEFERRED**;
 no full-M8 completion is claimed.
+
+### M8-F1 targeted memory attribution — Stage 0 and preflight (2026-09-10)
+
+Outcome B was preserved in diagnostic checkpoint `77d95ce`; origin/main was independently verified at that commit and the requested push reported up to date. No release tag was created.
+
+[Stage 0](evidence/m8f1/README.md) compares four restart-boundary median windows from hash-pinned Run 03 resources. Stable post-restart versus final pre-restart five-minute medians show 29.598 MiB MemAvailable recovery and 17.195 MiB main-kvmd RSS reduction. This cannot isolate private memory or instantaneous release; the restart also replaces children/uStreamer. Attribution remains inconclusive.
+
+Live preflight finds the exact candidate kernel lacks `smaps_rollup` and `/proc/slabinfo`, confirmed by disabled `CONFIG_PROC_PAGE_MONITOR`/`CONFIG_SLUB_DEBUG`. The 12-hour diagnostic has not started. A diagnostic kernel or reduced evidence scope needs an explicit user decision. Draft automation is not yet live validated. No kvmd restart or target reboot occurred. Run 03 is not failed or accepted; M8-F remains OPEN, Run 02 permanently FAILED, P1 gated, M6/ATX DEFERRED.

@@ -1,0 +1,23 @@
+{
+  "boot_id": "f16c60de-354f-4496-9d7d-ed2d6fab8c92",
+  "kernel": "7.2.3-blikvm-v4-m8f0-ms2131c2",
+  "main_pid": 21814,
+  "stat": "21814 (kvmd/main: /usr) S 1 21814 21814 0 -1 4194560 61930 7145 0 0 90757 12252 13 16 20 0 10 0 2967474 784003072 21610 18446744073709551615 4194304 11052608 281474362258032 0 0 0 0 16781312 18434 0 0 0 17 3 0 0 0 0 0 11140488 11759920 189497344 281474362261164 281474362261201 281474362261201 281474362261482 0\n",
+  "status": "Name:\tkvmd/main: /usr\nUmask:\t0007\nState:\tS (sleeping)\nTgid:\t21814\nNgid:\t0\nPid:\t21814\nPPid:\t1\nTracerPid:\t0\nUid:\t988\t988\t988\t988\nGid:\t989\t989\t989\t989\nFDSize:\t128\nGroups:\t989 \nNStgid:\t21814\nNSpid:\t21814\nNSpgid:\t21814\nNSsid:\t21814\nKthread:\t0\nVmPeak:\t  765628 kB\nVmSize:\t  765628 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   86744 kB\nVmRSS:\t   86744 kB\nRssAnon:\t   67260 kB\nRssFile:\t      12 kB\nRssShmem:\t   19472 kB\nVmData:\t  161324 kB\nVmStk:\t     132 kB\nVmExe:\t    6700 kB\nVmLib:\t   19856 kB\nVmPTE:\t     316 kB\nVmSwap:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t0\nuntag_mask:\t0xffffffffffffff\nThreads:\t10\nSigQ:\t0/4012\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000100004802\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t5\nSpeculation_Store_Bypass:\tnot vulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tf\nCpus_allowed_list:\t0-3\nvoluntary_ctxt_switches:\t442910\nnonvoluntary_ctxt_switches:\t164400\n",
+  "interfaces": {
+    "/proc/self/smaps_rollup": false,
+    "/proc/21814/smaps_rollup": false,
+    "/proc/slabinfo": false
+  },
+  "sysfs_slab_available": true,
+  "config_evidence": [
+    "# CONFIG_PROC_PAGE_MONITOR is not set",
+    "# CONFIG_SLUB_DEBUG is not set"
+  ],
+  "artifact_hashes": {
+    "sun50i-h616-blikvm-v4.dtb": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+    "Image": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328",
+    "linux.config": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b",
+    "initramfs.cpio.gz": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb"
+  }
+}
