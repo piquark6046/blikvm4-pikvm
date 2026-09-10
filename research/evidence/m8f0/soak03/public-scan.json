@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "files_scanned": 2,
+  "known_private_segments_checked": 86,
+  "findings": [],
+  "sha256": {
+    "research/evidence/m8f0/soak03/initial-review.json": "28d6978ea607368c2a2c154f04c9bce4cafd3d4e6735fdda91d4f79eb3ed99d9",
+    "research/m8f-core-soak.md": "a4839ffd21bdd57f4a3b2a790f34a091a0a0ea7c209ce7b193ffd0baf7aa05b7"
+  }
+}

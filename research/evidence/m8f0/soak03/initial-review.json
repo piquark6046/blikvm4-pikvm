@@ -1,0 +1,101 @@
+{
+  "result": "completed_acceptance_pending_resource_and_journal_review",
+  "automated_replay_result": "evidence_gates_passed_review_pending",
+  "checks": {
+    "24_hours": true,
+    "bounded_lifecycle_windows": true,
+    "scheduled_events": true,
+    "event_actions_bounded": true,
+    "video_worker": true,
+    "browser_worker": true,
+    "video_continuity": true,
+    "moving_video": true,
+    "sustained_27fps": true,
+    "actual_ui_continuity": true,
+    "ui_auth_dimensions": true,
+    "actual_ui_motion": true,
+    "no_unexpected_ui_errors": true,
+    "logout_denied": true,
+    "msd_bytes": true,
+    "real_lun_read_only": true,
+    "periodic_exercises": true,
+    "host_evdev": true,
+    "resource_coverage": true,
+    "same_boot": true,
+    "uart_monitor": true,
+    "systemd": true,
+    "exact_mode": true,
+    "one_streamer": true,
+    "streamer_parent": true,
+    "udc_configured": true,
+    "two_clients": true
+  },
+  "duration_seconds": 86450.82389070399,
+  "start_utc": "2026-09-09T02:38:16.030039+00:00",
+  "end_utc": "2026-09-10T02:39:06.853929+00:00",
+  "strict_worker_frames": 2583555,
+  "minimum_120_second_fps": 29.641666666666666,
+  "hid_msd_cycles": 272,
+  "scheduled_events": 5,
+  "archive": {
+    "sha256": "9e372330f715972b641f177ae5f616d797113580b61a426deea50767ded1d526",
+    "bytes": 150930034,
+    "files": 12320,
+    "symlinks_excluded": [
+      "ui/stop",
+      "ui/control.json"
+    ]
+  },
+  "resource_review": {
+    "kvmd/main: /usr:3689:56801": {
+      "rss_bytes": {
+        "samples": 479,
+        "first_median": 61587456,
+        "last_median": 78233600,
+        "delta": 16646144,
+        "min": 60932096,
+        "max": 78495744,
+        "monotonic_nondecreasing": true
+      },
+      "fds": {
+        "samples": 479,
+        "first_median": 29,
+        "last_median": 29,
+        "delta": 0,
+        "min": 29,
+        "max": 29,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.5962453351588541
+    },
+    "kvmd/main: /usr:21814:2967474": {
+      "rss_bytes": {
+        "samples": 957,
+        "first_median": 60989440,
+        "last_median": 88514560,
+        "delta": 27525120,
+        "min": 60334080,
+        "max": 88514560,
+        "monotonic_nondecreasing": true
+      },
+      "fds": {
+        "samples": 957,
+        "first_median": 29,
+        "last_median": 29,
+        "delta": 0,
+        "min": 29,
+        "max": 30,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.60401967789404
+    }
+  },
+  "review_notes": [
+    "kvmd RSS rises within each process generation; second generation eventually plateaus near 84.4 MiB. Cause and boundedness are not established by this review.",
+    "Full journal candidates require correlation with deliberate negative API and media-eject exercises before acceptance."
+  ],
+  "m8f": "OPEN",
+  "p1": "gated",
+  "m6_atx": "DEFERRED",
+  "run02": "permanently_failed"
+}

@@ -808,3 +808,19 @@ were active before the clock began; the first HID/MSD cycle completed. Earliest
 24-hour completion is **2026-09-10 02:38:16 UTC**, subject to uninterrupted
 passing evidence and independent final replay. This is RUNNING, not accepted.
 See `research/evidence/m8f0/ms2131-candidate02/qualification-run03-start.json`.
+
+
+### Run 03 completed; acceptance review remains open (2026-09-10)
+
+The controller completed 86,450.824 seconds, five scheduled events and 272
+HID/MSD cycles. VM replay passed all 27 automated evidence gates after
+verifying 12,320 archived files. The strict video worker recorded 2,583,555
+frames and minimum evaluated 120-second throughput was 29.6417 fps.
+
+This is **not yet acceptance**. kvmd RSS increased within both process
+generations; the later generation reached about 84.4 MiB and plateaued late
+in the run. Its cause/boundedness and complete journal correlation remain
+under review. No kernel or userspace correction is authorized by this finding
+alone. M8-F stays OPEN, P1 gated, M6/ATX DEFERRED; Run 02 stays FAILED.
+See `research/evidence/m8f0/soak03/initial-review.json`. Raw evidence is private
+in `out/m8f0/soak03-review`; original run records are unchanged.
