@@ -43,3 +43,11 @@ The pinned kernel configuration has `CONFIG_PROC_PAGE_MONITOR` and `CONFIG_SLUB_
 The first sampler preflight failed at the missing slabinfo file; its per-process collection also encountered missing smaps_rollup. This is a diagnostic prerequisite failure, **not a Run 03 failure**. The draft controller now checks these prerequisites before launching workload. The sampler preserves explicit unavailable fields. Both scripts compile; 22 labctl tests pass, but neither the full controller nor overhead under two-client video has been validated. No A/B/C/D memory outcome is selected.
 
 A diagnostic kernel would violate the currently required exact runtime bytes and requires explicit authorization. Alternatively, the user can authorize reduced evidence on the original kernel. The pending choice must be resolved before the long run; no silent substitution or fourth qualification is scheduled. The existing generation is already aged, so a fresh warm-up observation also requires a preparatory restart decision.
+
+## Authorized diagnostic kernel and live observation
+
+The user subsequently authorized a diagnostic kernel retaining exact Run 03 userspace and one preparatory kvmd restart. This resolves the earlier preflight scope blocker without erasing it. See [diagnostic-kernel/README.md](diagnostic-kernel/README.md) and [observation-start.json](diagnostic-kernel/observation-start.json).
+
+M8-F1 observation 01 started at **2026-09-10 07:46:24 UTC**, main kvmd PID 889/start_ticks 22446. The first cycle passed; all four initial samples retain two clients and no failed units. The first complete 120-second video window is 29.8083 fps with 3,572 different hashes. Samples take 0.497–0.514 seconds, with maximum initial interval 60.116 seconds. This is startup evidence only, not a memory boundedness result.
+
+The planned single end restart is around **19:46:24 UTC**, with recovery sampling through approximately **20:01:24 UTC**. A bridge finalizer will produce descriptive analysis and a private hash-indexed archive. A VM collection service will transfer and verify that archive and independently regenerate the memory analysis. An independent decision remains required afterward; all acceptance gates remain unchanged.

@@ -1,0 +1,36 @@
+{
+  "diagnostic": "M8-F1",
+  "status": "RUNNING_NOT_ACCEPTED",
+  "qualification": false,
+  "source_commit": "eb7db8d8569c27b0cdb27824f8efb62b1d802220",
+  "start_utc": "2026-09-10T07:46:24.248480+00:00",
+  "observation_end_utc": "2026-09-10T19:46:24.248480+00:00",
+  "earliest_release_sampling_end_utc": "2026-09-10T20:01:24.248480+00:00",
+  "observation_identity": [
+    889,
+    22446
+  ],
+  "bridge_unit": "m8f1-observation01",
+  "bridge_finalizer_unit": "m8f1-evidence-finalizer",
+  "vm_collection_unit": "m8f1-vm-collection",
+  "bridge_output": "/home/user/blikvm-msd/m8f1/observation01",
+  "vm_expected_output": "out/m8f1/review",
+  "remaining": "12-hour observation, exactly one end restart and recovery sampling, complete archive/hash verification, independent memory decision",
+  "runtime_userspace_changed": false,
+  "diagnostic_kernel_changed": true,
+  "preparatory_restart_authorized": true,
+  "m8f": "OPEN",
+  "run03": "completed functional evidence; not failed or accepted",
+  "run02": "permanently FAILED",
+  "p1": "GATED",
+  "m6_atx": "DEFERRED",
+  "completion_helpers": {
+    "finalize.py": "18487dffa4cb1743e11a153d2ef0753bc1be98ec1cd8adc28c3e2c8d3cfcee00",
+    "collect-when-ready.py": "a7ca4914d8a9e765b31f8ccaa51c8137b91975caddee40a70196cd1a7c46ea0c"
+  },
+  "startup_vm_replay": {
+    "series": 1086,
+    "sample_correlations": 5,
+    "result": "descriptive_analysis_generated_independent_review_required"
+  }
+}

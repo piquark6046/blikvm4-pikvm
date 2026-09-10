@@ -1,0 +1,86 @@
+{
+  "elapsed_seconds": 196.6933935519919,
+  "start_utc": 1789026384.2484803,
+  "identity": [
+    889,
+    22446
+  ],
+  "cycles": 1,
+  "events": [],
+  "samples": 4,
+  "sampling_seconds": [
+    0.5136494170000105,
+    0.498979501000008,
+    0.4970034169999735,
+    0.49787950000001047
+  ],
+  "max_sample_gap": 60.11612803800381,
+  "clients": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "failed_units": [
+    "",
+    "",
+    "",
+    ""
+  ],
+  "video_windows": [
+    {
+      "offset": 0,
+      "fps": 29.808333333333334,
+      "hashes": 3572
+    }
+  ],
+  "latest_main": {
+    "pid": 889,
+    "comm": "kvmd/main: /usr",
+    "ppid": 1,
+    "start_ticks": 22446,
+    "ticks": 694,
+    "rss_bytes": 60985344,
+    "fds": 29,
+    "memory": {
+      "VmPeak_bytes": 747393024,
+      "VmSize_bytes": 682397696,
+      "VmLck_bytes": 0,
+      "VmPin_bytes": 0,
+      "VmHWM_bytes": 61448192,
+      "VmRSS_bytes": 61448192,
+      "RssAnon_bytes": 41496576,
+      "RssFile_bytes": 12288,
+      "RssShmem_bytes": 19939328,
+      "VmData_bytes": 128602112,
+      "VmStk_bytes": 135168,
+      "VmExe_bytes": 6860800,
+      "VmLib_bytes": 20332544,
+      "VmPTE_bytes": 258048,
+      "VmSwap_bytes": 0,
+      "Rss_bytes": 61448192,
+      "Pss_bytes": 30419968,
+      "Pss_Dirty_bytes": 30418944,
+      "Pss_Anon_bytes": 21771264,
+      "Pss_File_bytes": 0,
+      "Pss_Shmem_bytes": 8646656,
+      "Shared_Clean_bytes": 12288,
+      "Shared_Dirty_bytes": 39714816,
+      "Private_Clean_bytes": 0,
+      "Private_Dirty_bytes": 21721088,
+      "Referenced_bytes": 61448192,
+      "Anonymous_bytes": 41496576,
+      "KSM_bytes": 0,
+      "LazyFree_bytes": 0,
+      "AnonHugePages_bytes": 0,
+      "ShmemPmdMapped_bytes": 0,
+      "FilePmdMapped_bytes": 0,
+      "Shared_Hugetlb_bytes": 0,
+      "Private_Hugetlb_bytes": 0,
+      "Swap_bytes": 0,
+      "SwapPss_bytes": 0,
+      "Locked_bytes": 0
+    }
+  },
+  "failure_file": false
+}
