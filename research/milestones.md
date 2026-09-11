@@ -159,18 +159,18 @@ image-production preparation slice is proposed only.
 
 ### M8-F — 24-hour core KVM soak
 
-**Current: OPEN — Run 03 MEMORY REVIEW INCONCLUSIVE (outcome B).** Run 02
-remains permanently **FAILED** at 14h54m on malformed JPEG markers. Candidate 2
-completed its M8-E/reconnect prerequisites and Run 03 completed the full soak.
-Independent review preserves all 27 passing automated gates, 2,583,555 frames
-accepted by the unchanged strict parser, and a passing complete journal review.
-Resource boundedness is not established: main kvmd grows through the first
-generation's restart; the later observed plateau does not explain delayed
-growth or attribute RAM-backed system-memory retention. FD/process/socket
-counts are stable; a continuing leak is not demonstrated. Retain Run 03 as
-completed functional evidence, not accepted M8-F. Propose a targeted memory
-diagnostic; do not rerun the full soak yet. See the
-[independent decision](evidence/m8f0/soak03/acceptance-review/README.md).
+**Current: OPEN — M8-F1 independent review Outcome C: non-kvmd system growth.**
+Run 02 remains permanently **FAILED**. Run 03 retains its completed 24-hour
+functional evidence, 27 passing automated gates and passing journal review,
+but is not accepted. The 2026-09-11 independent raw-sample review confirms
+main kvmd's private/anonymous terminal plateau and restart release. System
+memory continues declining: during the final 75-minute plateau, Shmem and
+RAM-backed log allocations each grow 6.414 MiB while service Pss_Anon stays
+constant. This is not labeled a continuing kvmd leak. M8-F1 is supplemental
+diagnostic-kernel evidence with **zero qualification duration**. Investigate
+logging retention/rotation; do not rerun the 24-hour soak or begin P1.
+See the [new independent review](evidence/m8f1/independent-review-01/README.md)
+and the unchanged [historical Outcome-B review](evidence/m8f0/soak03/acceptance-review/README.md).
 Preserve the frozen
 M8-E core stack through one continuous 24-hour qualification with two
 authenticated video clients, a real Web UI, moving HDMI, real host HID/MSD

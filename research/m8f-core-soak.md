@@ -1,6 +1,15 @@
 # M8-F — 24-hour core KVM integration soak
 
-**Status: M8-F OPEN — Run 03 MEMORY REVIEW INCONCLUSIVE (outcome B).**
+**Status: M8-F OPEN — M8-F1 independent review Outcome C: non-kvmd system growth.**
+
+The 2026-09-11 [independent memory review](evidence/m8f1/independent-review-01/README.md)
+finds a terminal main-kvmd private/anonymous plateau, but continuing RAM-backed
+log growth. During the final 75-minute plateau, Shmem and `/var/log` each grow
+6.414 MiB while service Pss_Anon stays constant. Run 03 remains pending
+acceptance; the diagnostic observation contributes zero qualification time.
+P1 stays gated. The prior Outcome-B review remains unchanged historical evidence.
+The next proposed diagnostic concerns logging retention/rotation, not another
+soak or a presumed Python leak. This review made no target contact or change.
 
 Independent acceptance review completed on 2026-09-10. Run 03 retains its
 completed functional soak and passing journal evidence, but is not accepted.

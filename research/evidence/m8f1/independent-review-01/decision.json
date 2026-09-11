@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-09-11",
+  "review_kind": "independent_memory_review",
+  "outcome": "C",
+  "outcome_name": "NON-KVMD SYSTEM GROWTH",
+  "m8f": "OPEN",
+  "run03": "completed_pending_acceptance",
+  "run02": "permanently_FAILED",
+  "p1": "GATED",
+  "m6_atx": "DEFERRED",
+  "qualification_seconds_contributed": 0,
+  "final_acceptance": false,
+  "supersedes_prior_blocker_as_resolved": false,
+  "prior_review_preserved": "research/evidence/m8f0/soak03/acceptance-review",
+  "archive_sha256": "1cbe958805a2a10763143be662ef0988486d4867e488cd8a3a032a3cd553957b",
+  "main_generation": {
+    "comm": "kvmd/main: /usr",
+    "pid": 889,
+    "start_ticks": 22446
+  },
+  "terminal_private_plateau_samples": 76,
+  "terminal_private_plateau_minutes": 75.00509043773346,
+  "terminal_75m_deltas_MiB": {
+    "service_Pss_Anon": 0,
+    "MemAvailable": -5.84765625,
+    "AnonPages": -0.09765625,
+    "Shmem": 6.4140625,
+    "var_log_allocated": 6.4140625,
+    "Slab": 0.01953125
+  },
+  "reason": "Terminal service anonymous plateau coexists with continuing RAM-backed log growth; no system working-set bound established.",
+  "diagnostic_kernel": "supplemental_only_exact_documented_configuration_delta",
+  "next_proposed_investigation": "Offline logging retention and rotation policy; only if needed, separately authorized diagnostic collection around a log rotation boundary.",
+  "target_contacted": false,
+  "bridge_contacted": false,
+  "target_modified": false,
+  "new_soak_started": false,
+  "p1_started": false,
+  "release_tag_created": false
+}

@@ -51,3 +51,13 @@ The user subsequently authorized a diagnostic kernel retaining exact Run 03 user
 M8-F1 observation 01 started at **2026-09-10 07:46:24 UTC**, main kvmd PID 889/start_ticks 22446. The first cycle passed; all four initial samples retain two clients and no failed units. The first complete 120-second video window is 29.8083 fps with 3,572 different hashes. Samples take 0.497–0.514 seconds, with maximum initial interval 60.116 seconds. This is startup evidence only, not a memory boundedness result.
 
 The planned single end restart is around **19:46:24 UTC**, with recovery sampling through approximately **20:01:24 UTC**. A bridge finalizer will produce descriptive analysis and a private hash-indexed archive. A VM collection service will transfer and verify that archive and independently regenerate the memory analysis. An independent decision remains required afterward; all acceptance gates remain unchanged.
+
+## Independent completion review — September 11
+
+[Observation 01 review](independent-review-01/README.md) independently rehashes
+the completed archive and recomputes raw memory samples. **Outcome C —
+NON-KVMD SYSTEM GROWTH**: main private memory is terminally stable, but
+RAM-backed logs continue consuming system memory. M8-F remains OPEN; Run 03
+is not accepted; P1 remains GATED. Run 02 remains permanently FAILED and
+M6/ATX DEFERRED. The diagnostic observation contributes zero qualification
+duration. Earlier reviews and this observation archive remain unchanged.

@@ -1,0 +1,18 @@
+{
+  "result": "passed",
+  "raw_process_records_checked": 5155,
+  "raw_command_copies_checked": 737,
+  "all_accounting_identities_pass": true,
+  "all_swap_zero": true,
+  "status_rollup_RSS_difference_counts": {
+    "kvmd": 1
+  },
+  "note": "status and smaps_rollup are sequential non-atomic reads; differences are retained, not silently forced equal",
+  "journal_service_lifecycle_counts": {
+    "Stopping kvmd.service": 1,
+    "Stopped kvmd.service": 1,
+    "Starting kvmd.service": 1,
+    "Started kvmd.service": 1
+  },
+  "independent_hourly_Pss_Anon_crosscheck": 12
+}

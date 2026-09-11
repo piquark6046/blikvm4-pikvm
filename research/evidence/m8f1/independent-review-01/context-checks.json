@@ -1,0 +1,856 @@
+{
+  "diagnostic_qualification_seconds": 0,
+  "configuration_delta_verified": {
+    "CONFIG_LOCALVERSION": {
+      "before": "\"-blikvm-v4-m8f0-ms2131c2\"",
+      "after": "\"-blikvm-v4-m8f1-memory\""
+    },
+    "CONFIG_PROC_PAGE_MONITOR": {
+      "before": "n",
+      "after": "y"
+    },
+    "CONFIG_SLUB_DEBUG": {
+      "before": "n",
+      "after": "y"
+    },
+    "CONFIG_SLUB_DEBUG_ON": {
+      "before": null,
+      "after": "n"
+    },
+    "CONFIG_STACKDEPOT": {
+      "before": null,
+      "after": "y"
+    },
+    "CONFIG_STACKDEPOT_MAX_FRAMES": {
+      "before": null,
+      "after": "64"
+    },
+    "CONFIG_STACKTRACE": {
+      "before": "n",
+      "after": "y"
+    }
+  },
+  "artifact_hashes_verified": {
+    "sun50i-h616-blikvm-v4.dtb": {
+      "name": "sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    },
+    "Image": {
+      "name": "Image",
+      "size": 6914056,
+      "sha256": "700f8c72913ba0b375349b3a8fbc0d1d1c6dbe47752738a6cd66db8a82ec9ab0"
+    },
+    "initramfs.cpio.gz": {
+      "name": "initramfs.cpio.gz",
+      "size": 90274771,
+      "sha256": "dadf5f2839f42ae062f793a58a79afb5b2305f01e345a4c2434adbaca29467cb"
+    },
+    "linux.config": {
+      "name": "linux.config",
+      "size": 67448,
+      "sha256": "5dc4135a765fb47c9b8d75b074bb7a095e624a9a777ed0836aba0be3ec4d4b16"
+    }
+  },
+  "run03_archive_sha256": "9e372330f715972b641f177ae5f616d797113580b61a426deea50767ded1d526",
+  "run03_files_verified": 12320,
+  "runtime_audit_receipt": {
+    "sha256": "3fd2cf4efbdc8468ebd4c0af8343f355ed3d4eb16d6b4ffeda3ad374d920f065",
+    "files": 10652,
+    "mismatches": [],
+    "all_slab_debug_flags_zero": true
+  },
+  "identical_inventory_contracts": [
+    "kvmd-unit",
+    "nginx-unit",
+    "auth-config",
+    "kvmd-effective",
+    "gadget-owner-unit",
+    "firewall-config",
+    "firewall-unit",
+    "blikvm-access-unit"
+  ],
+  "identical_workload_workers": [
+    "soak-browser.mjs",
+    "soak-video.py",
+    "hid-api-hil.py",
+    "msd-workload.py"
+  ],
+  "cycles_verified": 139,
+  "direct_reads_verified": 837,
+  "ui_samples": 43263,
+  "steady_ui_samples": 43217,
+  "distinct_ui_hashes": 43064,
+  "run03_processes": {
+    "kvmd/main: /usr|3689|56801": {
+      "start_elapsed_h": 0.0002547787636111328,
+      "end_elapsed_h": 7.9836325970683335,
+      "first15_median_MiB": 58.734375,
+      "last15_median_MiB": 74.609375,
+      "hourly": [
+        {
+          "n": 60,
+          "median_MiB": 59.984375,
+          "min_MiB": 58.109375,
+          "max_MiB": 60.109375
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.109375,
+          "min_MiB": 60.109375,
+          "max_MiB": 60.109375
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.109375,
+          "min_MiB": 60.109375,
+          "max_MiB": 60.109375
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.359375,
+          "min_MiB": 60.109375,
+          "max_MiB": 61.484375
+        },
+        {
+          "n": 60,
+          "median_MiB": 63.609375,
+          "min_MiB": 61.859375,
+          "max_MiB": 65.234375
+        },
+        {
+          "n": 60,
+          "median_MiB": 66.859375,
+          "min_MiB": 65.234375,
+          "max_MiB": 68.484375
+        },
+        {
+          "n": 60,
+          "median_MiB": 70.234375,
+          "min_MiB": 68.484375,
+          "max_MiB": 71.859375
+        },
+        {
+          "n": 60,
+          "median_MiB": 73.484375,
+          "min_MiB": 71.859375,
+          "max_MiB": 74.859375
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "kvmd/main: /usr|21814|2967474": {
+      "start_elapsed_h": 8.016975098905,
+      "end_elapsed_h": 24.005702426672496,
+      "first15_median_MiB": 58.1640625,
+      "last15_median_MiB": 84.4140625,
+      "hourly": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "n": 59,
+          "median_MiB": 59.5390625,
+          "min_MiB": 57.5390625,
+          "max_MiB": 60.0390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.0390625,
+          "min_MiB": 60.0390625,
+          "max_MiB": 60.0390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.0390625,
+          "min_MiB": 60.0390625,
+          "max_MiB": 60.0390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 60.2890625,
+          "min_MiB": 60.0390625,
+          "max_MiB": 62.0390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 63.4140625,
+          "min_MiB": 62.0390625,
+          "max_MiB": 65.4140625
+        },
+        {
+          "n": 60,
+          "median_MiB": 66.9140625,
+          "min_MiB": 65.4140625,
+          "max_MiB": 68.6640625
+        },
+        {
+          "n": 60,
+          "median_MiB": 70.4140625,
+          "min_MiB": 68.6640625,
+          "max_MiB": 72.0390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 73.6640625,
+          "min_MiB": 72.0390625,
+          "max_MiB": 75.5390625
+        },
+        {
+          "n": 60,
+          "median_MiB": 76.6640625,
+          "min_MiB": 75.5390625,
+          "max_MiB": 78.6640625
+        },
+        {
+          "n": 60,
+          "median_MiB": 80.4140625,
+          "min_MiB": 78.6640625,
+          "max_MiB": 81.9140625
+        },
+        {
+          "n": 60,
+          "median_MiB": 83.5390625,
+          "min_MiB": 81.9140625,
+          "max_MiB": 84.2890625
+        },
+        {
+          "n": 60,
+          "median_MiB": 84.2890625,
+          "min_MiB": 84.2890625,
+          "max_MiB": 84.2890625
+        },
+        {
+          "n": 60,
+          "median_MiB": 84.2890625,
+          "min_MiB": 84.2890625,
+          "max_MiB": 84.4140625
+        },
+        {
+          "n": 60,
+          "median_MiB": 84.4140625,
+          "min_MiB": 84.4140625,
+          "max_MiB": 84.4140625
+        },
+        {
+          "n": 60,
+          "median_MiB": 84.4140625,
+          "min_MiB": 84.4140625,
+          "max_MiB": 84.4140625
+        },
+        {
+          "n": 60,
+          "median_MiB": 84.4140625,
+          "min_MiB": 84.4140625,
+          "max_MiB": 84.4140625
+        }
+      ]
+    }
+  },
+  "run03_system_hourly": {
+    "MemAvailable": [
+      {
+        "n": 60,
+        "median_MiB": 468.04296875,
+        "min_MiB": 449.51171875,
+        "max_MiB": 475.015625
+      },
+      {
+        "n": 60,
+        "median_MiB": 462.712890625,
+        "min_MiB": 450.1796875,
+        "max_MiB": 467.98046875
+      },
+      {
+        "n": 60,
+        "median_MiB": 461.810546875,
+        "min_MiB": 444.62890625,
+        "max_MiB": 467.4296875
+      },
+      {
+        "n": 60,
+        "median_MiB": 448.939453125,
+        "min_MiB": 435.0,
+        "max_MiB": 461.7265625
+      },
+      {
+        "n": 60,
+        "median_MiB": 439.921875,
+        "min_MiB": 422.35546875,
+        "max_MiB": 445.6875
+      },
+      {
+        "n": 60,
+        "median_MiB": 435.24609375,
+        "min_MiB": 420.01953125,
+        "max_MiB": 441.77734375
+      },
+      {
+        "n": 60,
+        "median_MiB": 426.654296875,
+        "min_MiB": 413.5703125,
+        "max_MiB": 436.359375
+      },
+      {
+        "n": 60,
+        "median_MiB": 420.25390625,
+        "min_MiB": 403.8046875,
+        "max_MiB": 426.796875
+      },
+      {
+        "n": 60,
+        "median_MiB": 445.546875,
+        "min_MiB": 432.6796875,
+        "max_MiB": 519.3203125
+      },
+      {
+        "n": 60,
+        "median_MiB": 438.529296875,
+        "min_MiB": 410.44921875,
+        "max_MiB": 448.1171875
+      },
+      {
+        "n": 60,
+        "median_MiB": 434.578125,
+        "min_MiB": 417.90625,
+        "max_MiB": 439.953125
+      },
+      {
+        "n": 60,
+        "median_MiB": 421.3671875,
+        "min_MiB": 398.6796875,
+        "max_MiB": 437.703125
+      },
+      {
+        "n": 60,
+        "median_MiB": 413.392578125,
+        "min_MiB": 403.66015625,
+        "max_MiB": 424.671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 406.896484375,
+        "min_MiB": 393.44921875,
+        "max_MiB": 413.26953125
+      },
+      {
+        "n": 60,
+        "median_MiB": 401.18359375,
+        "min_MiB": 384.9453125,
+        "max_MiB": 407.87109375
+      },
+      {
+        "n": 60,
+        "median_MiB": 395.568359375,
+        "min_MiB": 378.7578125,
+        "max_MiB": 404.53125
+      },
+      {
+        "n": 60,
+        "median_MiB": 388.47265625,
+        "min_MiB": 366.296875,
+        "max_MiB": 396.23828125
+      },
+      {
+        "n": 60,
+        "median_MiB": 384.337890625,
+        "min_MiB": 364.61328125,
+        "max_MiB": 392.71484375
+      },
+      {
+        "n": 60,
+        "median_MiB": 382.96484375,
+        "min_MiB": 365.171875,
+        "max_MiB": 388.1484375
+      },
+      {
+        "n": 60,
+        "median_MiB": 381.0703125,
+        "min_MiB": 352.08984375,
+        "max_MiB": 386.875
+      },
+      {
+        "n": 60,
+        "median_MiB": 384.884765625,
+        "min_MiB": 366.38671875,
+        "max_MiB": 390.00390625
+      },
+      {
+        "n": 60,
+        "median_MiB": 378.134765625,
+        "min_MiB": 351.59375,
+        "max_MiB": 384.09765625
+      },
+      {
+        "n": 60,
+        "median_MiB": 377.458984375,
+        "min_MiB": 361.21484375,
+        "max_MiB": 382.5
+      },
+      {
+        "n": 60,
+        "median_MiB": 377.228515625,
+        "min_MiB": 362.2734375,
+        "max_MiB": 381.65625
+      }
+    ],
+    "AnonPages": [
+      {
+        "n": 60,
+        "median_MiB": 111.138671875,
+        "min_MiB": 108.3984375,
+        "max_MiB": 111.71484375
+      },
+      {
+        "n": 60,
+        "median_MiB": 111.63671875,
+        "min_MiB": 111.17578125,
+        "max_MiB": 111.9765625
+      },
+      {
+        "n": 60,
+        "median_MiB": 111.9140625,
+        "min_MiB": 111.3359375,
+        "max_MiB": 113.15625
+      },
+      {
+        "n": 60,
+        "median_MiB": 123.255859375,
+        "min_MiB": 112.91015625,
+        "max_MiB": 124.44921875
+      },
+      {
+        "n": 60,
+        "median_MiB": 126.2421875,
+        "min_MiB": 124.4453125,
+        "max_MiB": 128.1328125
+      },
+      {
+        "n": 60,
+        "median_MiB": 129.82421875,
+        "min_MiB": 128.17578125,
+        "max_MiB": 131.5859375
+      },
+      {
+        "n": 60,
+        "median_MiB": 133.21875,
+        "min_MiB": 131.4140625,
+        "max_MiB": 134.7265625
+      },
+      {
+        "n": 60,
+        "median_MiB": 136.435546875,
+        "min_MiB": 134.59765625,
+        "max_MiB": 137.94140625
+      },
+      {
+        "n": 60,
+        "median_MiB": 110.08203125,
+        "min_MiB": 55.54296875,
+        "max_MiB": 110.96875
+      },
+      {
+        "n": 60,
+        "median_MiB": 110.73828125,
+        "min_MiB": 110.33203125,
+        "max_MiB": 111.421875
+      },
+      {
+        "n": 60,
+        "median_MiB": 110.994140625,
+        "min_MiB": 110.28515625,
+        "max_MiB": 112.19921875
+      },
+      {
+        "n": 60,
+        "median_MiB": 122.611328125,
+        "min_MiB": 112.0078125,
+        "max_MiB": 124.1328125
+      },
+      {
+        "n": 60,
+        "median_MiB": 125.880859375,
+        "min_MiB": 124.15234375,
+        "max_MiB": 127.69140625
+      },
+      {
+        "n": 60,
+        "median_MiB": 129.296875,
+        "min_MiB": 127.48046875,
+        "max_MiB": 131.72265625
+      },
+      {
+        "n": 60,
+        "median_MiB": 132.740234375,
+        "min_MiB": 130.67578125,
+        "max_MiB": 134.36328125
+      },
+      {
+        "n": 60,
+        "median_MiB": 135.951171875,
+        "min_MiB": 134.30859375,
+        "max_MiB": 137.6953125
+      },
+      {
+        "n": 60,
+        "median_MiB": 141.705078125,
+        "min_MiB": 139.98828125,
+        "max_MiB": 143.640625
+      },
+      {
+        "n": 60,
+        "median_MiB": 145.177734375,
+        "min_MiB": 143.296875,
+        "max_MiB": 146.7890625
+      },
+      {
+        "n": 60,
+        "median_MiB": 148.546875,
+        "min_MiB": 147.03515625,
+        "max_MiB": 149.3671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 149.078125,
+        "min_MiB": 148.7421875,
+        "max_MiB": 149.44921875
+      },
+      {
+        "n": 60,
+        "median_MiB": 149.091796875,
+        "min_MiB": 148.48046875,
+        "max_MiB": 149.46875
+      },
+      {
+        "n": 60,
+        "median_MiB": 149.1875,
+        "min_MiB": 148.796875,
+        "max_MiB": 149.5078125
+      },
+      {
+        "n": 60,
+        "median_MiB": 149.1484375,
+        "min_MiB": 148.69921875,
+        "max_MiB": 149.48046875
+      },
+      {
+        "n": 60,
+        "median_MiB": 149.1796875,
+        "min_MiB": 148.80078125,
+        "max_MiB": 149.48046875
+      }
+    ],
+    "Shmem": [
+      {
+        "n": 60,
+        "median_MiB": 346.107421875,
+        "min_MiB": 345.75,
+        "max_MiB": 350.05078125
+      },
+      {
+        "n": 60,
+        "median_MiB": 350.412109375,
+        "min_MiB": 350.0625,
+        "max_MiB": 350.76953125
+      },
+      {
+        "n": 60,
+        "median_MiB": 351.130859375,
+        "min_MiB": 350.77734375,
+        "max_MiB": 351.484375
+      },
+      {
+        "n": 60,
+        "median_MiB": 352.103515625,
+        "min_MiB": 351.49609375,
+        "max_MiB": 358.140625
+      },
+      {
+        "n": 60,
+        "median_MiB": 358.529296875,
+        "min_MiB": 358.16015625,
+        "max_MiB": 358.88671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 359.251953125,
+        "min_MiB": 358.8984375,
+        "max_MiB": 361.7109375
+      },
+      {
+        "n": 60,
+        "median_MiB": 362.078125,
+        "min_MiB": 361.71875,
+        "max_MiB": 368.11328125
+      },
+      {
+        "n": 60,
+        "median_MiB": 368.482421875,
+        "min_MiB": 368.125,
+        "max_MiB": 368.83203125
+      },
+      {
+        "n": 60,
+        "median_MiB": 369.2265625,
+        "min_MiB": 368.734375,
+        "max_MiB": 369.58203125
+      },
+      {
+        "n": 60,
+        "median_MiB": 373.275390625,
+        "min_MiB": 369.59375,
+        "max_MiB": 379.31640625
+      },
+      {
+        "n": 60,
+        "median_MiB": 379.685546875,
+        "min_MiB": 379.328125,
+        "max_MiB": 380.0390625
+      },
+      {
+        "n": 60,
+        "median_MiB": 380.400390625,
+        "min_MiB": 380.04296875,
+        "max_MiB": 380.7578125
+      },
+      {
+        "n": 60,
+        "median_MiB": 386.83203125,
+        "min_MiB": 380.796875,
+        "max_MiB": 389.30078125
+      },
+      {
+        "n": 60,
+        "median_MiB": 389.666015625,
+        "min_MiB": 389.3125,
+        "max_MiB": 390.01953125
+      },
+      {
+        "n": 60,
+        "median_MiB": 390.388671875,
+        "min_MiB": 390.03125,
+        "max_MiB": 390.73828125
+      },
+      {
+        "n": 60,
+        "median_MiB": 393.205078125,
+        "min_MiB": 390.75390625,
+        "max_MiB": 393.5625
+      },
+      {
+        "n": 60,
+        "median_MiB": 393.923828125,
+        "min_MiB": 393.578125,
+        "max_MiB": 394.28125
+      },
+      {
+        "n": 60,
+        "median_MiB": 394.6484375,
+        "min_MiB": 394.29296875,
+        "max_MiB": 394.99609375
+      },
+      {
+        "n": 60,
+        "median_MiB": 393.341796875,
+        "min_MiB": 392.9921875,
+        "max_MiB": 395.078125
+      },
+      {
+        "n": 60,
+        "median_MiB": 393.978515625,
+        "min_MiB": 393.62890625,
+        "max_MiB": 394.3359375
+      },
+      {
+        "n": 60,
+        "median_MiB": 391.19140625,
+        "min_MiB": 390.84375,
+        "max_MiB": 397.1875
+      },
+      {
+        "n": 60,
+        "median_MiB": 397.552734375,
+        "min_MiB": 397.1953125,
+        "max_MiB": 397.90234375
+      },
+      {
+        "n": 60,
+        "median_MiB": 398.271484375,
+        "min_MiB": 397.9140625,
+        "max_MiB": 398.62890625
+      },
+      {
+        "n": 60,
+        "median_MiB": 398.8359375,
+        "min_MiB": 397.08984375,
+        "max_MiB": 399.18359375
+      }
+    ],
+    "Slab": [
+      {
+        "n": 60,
+        "median_MiB": 29.55078125,
+        "min_MiB": 29.515625,
+        "max_MiB": 29.609375
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.63671875,
+        "min_MiB": 29.59375,
+        "max_MiB": 29.671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.75390625,
+        "min_MiB": 29.66796875,
+        "max_MiB": 29.7734375
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.755859375,
+        "min_MiB": 29.7421875,
+        "max_MiB": 29.7890625
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.796875,
+        "min_MiB": 29.765625,
+        "max_MiB": 29.859375
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.84765625,
+        "min_MiB": 29.83984375,
+        "max_MiB": 29.88671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.875,
+        "min_MiB": 29.8671875,
+        "max_MiB": 29.90234375
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.892578125,
+        "min_MiB": 29.87890625,
+        "max_MiB": 29.91015625
+      },
+      {
+        "n": 60,
+        "median_MiB": 29.90625,
+        "min_MiB": 29.89453125,
+        "max_MiB": 29.91796875
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.009765625,
+        "min_MiB": 29.89453125,
+        "max_MiB": 30.03125
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.0703125,
+        "min_MiB": 30.01953125,
+        "max_MiB": 30.0859375
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.078125,
+        "min_MiB": 30.0703125,
+        "max_MiB": 30.10546875
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.11328125,
+        "min_MiB": 30.078125,
+        "max_MiB": 30.13671875
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.125,
+        "min_MiB": 30.11328125,
+        "max_MiB": 30.15234375
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.13671875,
+        "min_MiB": 30.12890625,
+        "max_MiB": 30.1484375
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.15234375,
+        "min_MiB": 30.12890625,
+        "max_MiB": 30.17578125
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.1875,
+        "min_MiB": 30.171875,
+        "max_MiB": 30.203125
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.1953125,
+        "min_MiB": 30.18359375,
+        "max_MiB": 30.22265625
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.2109375,
+        "min_MiB": 30.203125,
+        "max_MiB": 30.22265625
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.21484375,
+        "min_MiB": 30.20703125,
+        "max_MiB": 30.23828125
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.23046875,
+        "min_MiB": 30.203125,
+        "max_MiB": 30.24609375
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.23046875,
+        "min_MiB": 30.22265625,
+        "max_MiB": 30.25
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.234375,
+        "min_MiB": 30.22265625,
+        "max_MiB": 30.24609375
+      },
+      {
+        "n": 60,
+        "median_MiB": 30.23046875,
+        "min_MiB": 30.20703125,
+        "max_MiB": 30.24609375
+      }
+    ]
+  }
+}
