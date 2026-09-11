@@ -1,0 +1,70 @@
+{
+  "result": "passed",
+  "raw_sample_copies_checked": 121,
+  "frozen_workers": [
+    "soak-video.py",
+    "soak-browser.mjs",
+    "stream-client.py",
+    "hid-api-hil.py",
+    "msd-hil.py",
+    "msd-workload.py"
+  ],
+  "frozen_contracts": [
+    "kvmd-unit",
+    "nginx-unit",
+    "auth-config",
+    "kvmd-effective",
+    "gadget-owner-unit",
+    "firewall-config",
+    "firewall-unit",
+    "blikvm-access-unit"
+  ],
+  "journal_generators": {
+    "m8f2-retention": {
+      "messages": 230740,
+      "rendered_bytes": 105217440
+    },
+    "kvmd": {
+      "messages": 8751,
+      "rendered_bytes": 2370271
+    },
+    "sshd-session": {
+      "messages": 6990,
+      "rendered_bytes": 854396
+    },
+    "sudo": {
+      "messages": 4194,
+      "rendered_bytes": 425997
+    },
+    "unix_chkpwd": {
+      "messages": 2796,
+      "rendered_bytes": 253406
+    },
+    "runuser": {
+      "messages": 1084,
+      "rendered_bytes": 115562
+    },
+    "systemd": {
+      "messages": 8,
+      "rendered_bytes": 937
+    }
+  },
+  "load_probe_count": 230740,
+  "load_probe_sequences_contiguous_from_zero": true,
+  "expected_auth_negative_errors": 23,
+  "expected_http_candidates": {
+    "POST /hid/reset 200": 69,
+    "POST /msd/reset 404": 23
+  },
+  "expected_ejected_medium_scsi_stanzas": 23,
+  "host_wifi_messages": 61,
+  "unclassified_candidates": 0,
+  "directory_minus_file_allocation_histogram": {
+    "0": 121
+  },
+  "max_individual_journal_allocated_bytes": 4194304,
+  "oldest_retained_entry_advanced_seconds": 7015.798652,
+  "PSS_available_samples": 0,
+  "manual_vacuum_or_rotation_commands_in_controller": false,
+  "note": "No manual retention action was issued; archived controller and load sources are preserved for inspection. Per-minute observations cannot exclude arbitrarily short unsampled resource peaks."
+}

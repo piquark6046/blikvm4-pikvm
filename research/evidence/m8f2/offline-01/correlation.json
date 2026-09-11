@@ -1,0 +1,223 @@
+{
+  "sampling_interval_median_seconds": 60.108119445998454,
+  "kvmd_modules": {
+    "aiohttp.access                    INFO": {
+      "count": 51998,
+      "rendered_bytes": 14267829
+    },
+    "kvmd.apps.kvmd.auth               INFO": {
+      "count": 1118,
+      "rendered_bytes": 151409
+    },
+    "kvmd.apps.kvmd.auth              ERROR": {
+      "count": 139,
+      "rendered_bytes": 20717
+    },
+    "kvmd.apps.kvmd.streamer.runner    INFO": {
+      "count": 24,
+      "rendered_bytes": 3781
+    },
+    "kvmd.apps.kvmd.server             INFO": {
+      "count": 10,
+      "rendered_bytes": 1102
+    },
+    "kvmd.plugins.hid.otg.device       INFO": {
+      "count": 6,
+      "rendered_bytes": 717
+    },
+    "kvmd.plugins.msd.otg              INFO": {
+      "count": 4,
+      "rendered_bytes": 563
+    },
+    "kvmd.htserver                     INFO": {
+      "count": 3,
+      "rendered_bytes": 417
+    },
+    "asyncio.events                    INFO": {
+      "count": 3,
+      "rendered_bytes": 330
+    },
+    "kvmd.apps.kvmd.streamer           INFO": {
+      "count": 2,
+      "rendered_bytes": 245
+    }
+  },
+  "hourly": [
+    {
+      "hour": 0,
+      "samples": 60,
+      "hid_msd_cycles_started": 12,
+      "messages_by_identifier": {
+        "kvmd": 4392,
+        "sudo": 286,
+        "sshd-session": 478,
+        "unix_chkpwd": 190,
+        "runuser": 504,
+        "systemd": 3
+      },
+      "rendered_bytes": 1346270
+    },
+    {
+      "hour": 1,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4322,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1323959
+    },
+    {
+      "hour": 2,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4323,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1324517
+    },
+    {
+      "hour": 3,
+      "samples": 60,
+      "hid_msd_cycles_started": 12,
+      "messages_by_identifier": {
+        "kvmd": 4394,
+        "unix_chkpwd": 192,
+        "sshd-session": 480,
+        "sudo": 288,
+        "runuser": 504,
+        "systemd": 3
+      },
+      "rendered_bytes": 1349023
+    },
+    {
+      "hour": 4,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4323,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462,
+        "systemd": 3
+      },
+      "rendered_bytes": 1325935
+    },
+    {
+      "hour": 5,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "kvmd": 4322,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1325395
+    },
+    {
+      "hour": 6,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4323,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1325679
+    },
+    {
+      "hour": 7,
+      "samples": 60,
+      "hid_msd_cycles_started": 12,
+      "messages_by_identifier": {
+        "unix_chkpwd": 192,
+        "sshd-session": 480,
+        "kvmd": 4394,
+        "sudo": 288,
+        "runuser": 504
+      },
+      "rendered_bytes": 1348720
+    },
+    {
+      "hour": 8,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4323,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1325679
+    },
+    {
+      "hour": 9,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "kvmd": 4322,
+        "sudo": 279,
+        "runuser": 462,
+        "systemd": 4
+      },
+      "rendered_bytes": 1325833
+    },
+    {
+      "hour": 10,
+      "samples": 60,
+      "hid_msd_cycles_started": 11,
+      "messages_by_identifier": {
+        "kvmd": 4322,
+        "unix_chkpwd": 186,
+        "sshd-session": 465,
+        "sudo": 279,
+        "runuser": 462
+      },
+      "rendered_bytes": 1325395
+    },
+    {
+      "hour": 11,
+      "samples": 60,
+      "hid_msd_cycles_started": 12,
+      "messages_by_identifier": {
+        "kvmd": 4394,
+        "unix_chkpwd": 192,
+        "sshd-session": 480,
+        "sudo": 288,
+        "runuser": 504
+      },
+      "rendered_bytes": 1348720
+    },
+    {
+      "hour": 12,
+      "samples": 17,
+      "hid_msd_cycles_started": 3,
+      "messages_by_identifier": {
+        "kvmd": 1153,
+        "unix_chkpwd": 56,
+        "sshd-session": 137,
+        "sudo": 83,
+        "runuser": 178,
+        "systemd": 6
+      },
+      "rendered_bytes": 356409
+    }
+  ],
+  "structured_units_available": false,
+  "kernel_and_nginx_messages_in_live_window": 0
+}

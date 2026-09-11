@@ -189,3 +189,7 @@ owner and documents narrow privilege delegation and approved eject semantics.
 SCSI write protection, immutable hashes, physical reconnect, concurrent
 HID/storage/two-client 1080p30 video and five clean boots pass. Writable media,
 M6 GPIO/ATX and later integrations remain excluded.
+
+## M8-F2 bounded logging
+
+[M8-F2](m8f2-bounded-logging.md) explains the M8-F1 log growth and demonstrates automatic bounded journal retention with passing two-hour browser/video/HID/MSD evidence. M8-F remains OPEN, P1 gated; a fresh full 24-hour qualification remains required.

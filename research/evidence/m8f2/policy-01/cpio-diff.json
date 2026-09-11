@@ -1,0 +1,12 @@
+{
+  "result": "passed",
+  "existing_entries_checked": 14596,
+  "changed_payloads": [
+    "etc/kvmd/nginx/nginx.conf"
+  ],
+  "new_entries": [
+    "etc/systemd/journald.conf.d",
+    "etc/systemd/journald.conf.d/zz-blikvm-bounded.conf"
+  ],
+  "all_existing_modes_owners_mtimes_devices_identical": true
+}

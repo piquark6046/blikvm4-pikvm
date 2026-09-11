@@ -1,0 +1,17 @@
+{
+  "rootfs.tar.gz": {
+    "sha256": "f7273765444773d10c1ce4a0bd5d786dfecbf5a00d7e5c70656a9efcdddb2164",
+    "bytes": 90462962,
+    "identical": true
+  },
+  "initramfs.cpio.gz": {
+    "sha256": "74a78b5b778d363d51ff89b4a7f3f9f8d68aab52c3e39dd903537f419f09c3c8",
+    "bytes": 90271306,
+    "identical": true
+  },
+  "file-diff.json": {
+    "sha256": "d86f74f80889dedcba8c6bf19041880b7415155cfb209d1e0d94fa31d470aa81",
+    "bytes": 715,
+    "identical": true
+  }
+}

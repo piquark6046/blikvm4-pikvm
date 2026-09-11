@@ -1,0 +1,20 @@
+{
+  "base_rootfs_sha256": "563ed45f6705657b8a52f97e2c5a408c182a5dc5fe9b32ac5af4cdb2d7b97f0a",
+  "changed_regular_files": [
+    {
+      "path": "./etc/kvmd/nginx/nginx.conf",
+      "before_sha256": "1be63c91604f524ae36da33e0c54297a71ab1cdc3d2eafd95fcbe0c54a7b588a",
+      "after_sha256": "3a68f35b163547602351d1a37f4a7e86c86872ce3f5302f0a0cfa3487a2bf462"
+    },
+    {
+      "path": "./etc/systemd/journald.conf.d/zz-blikvm-bounded.conf",
+      "before_sha256": null,
+      "after_sha256": "8b9cb035d9d2bceb9301a6ae178455b27a89ee0aa3bee81efcbbf6030bb6b9bc"
+    }
+  ],
+  "added_directories": [
+    "./etc/systemd/journald.conf.d"
+  ],
+  "all_other_payload_and_metadata_identical": true,
+  "packages_identical": true
+}

@@ -1,0 +1,15 @@
+{
+  "outcome": "A",
+  "label": "LOG GROWTH EXPLAINED AND BOUNDED",
+  "m8f": "OPEN",
+  "p1": "GATED",
+  "run02": "PERMANENTLY_FAILED",
+  "run03": "UNACCEPTED_FUNCTIONAL_EVIDENCE",
+  "m8f1": "SUPPLEMENTAL",
+  "atx": "DEFERRED",
+  "qualification_seconds": 0,
+  "fresh_24_hour_soak": "NOT_STARTED",
+  "candidate_manifest": "../policy-01/public-manifest.json",
+  "journal_policy_unchanged_from_predeclared_values": true,
+  "manual_vacuum": false
+}

@@ -1,0 +1,1809 @@
+{
+  "samples": 121,
+  "fixed_quota_bytes": 16777216,
+  "fixed_file_limit_bytes": 4194304,
+  "max_allocated_bytes": 14114816,
+  "automatic_file_removals": [
+    {
+      "elapsed_seconds": 362.0953517210146,
+      "inode": 70,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000000001-0006579dc86f51f5.journal",
+      "allocated_bytes": 2105344
+    },
+    {
+      "elapsed_seconds": 482.2990141190239,
+      "inode": 531,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000099f-0006579dd40abc3a.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 542.166446037998,
+      "inode": 547,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000143f-0006579dd8aff1c7.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 602.0761556969956,
+      "inode": 562,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000001ee2-0006579ddd5af3a8.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 722.2266800000216,
+      "inode": 577,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000002984-0006579de2056927.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 782.1282919369987,
+      "inode": 595,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000003457-0006579de6847ed3.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 841.9885392000142,
+      "inode": 611,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000003ef8-0006579deb29be1f.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 902.3525509480096,
+      "inode": 626,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000499b-0006579defd4b014.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1022.188647670002,
+      "inode": 641,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000543c-0006579df47f256f.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1081.9594999910041,
+      "inode": 659,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000005f10-0006579df8fe3acd.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 1142.226835931011,
+      "inode": 677,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000069a9-0006579dfda3a28d.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 1261.980296896014,
+      "inode": 692,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000007441-0006579e02492cd5.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1321.9051929670095,
+      "inode": 707,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000007ee4-0006579e06f4257f.journal",
+      "allocated_bytes": 2490368
+    },
+    {
+      "elapsed_seconds": 1382.1657640910125,
+      "inode": 723,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000089b2-0006579e0b8a12c7.journal",
+      "allocated_bytes": 2457600
+    },
+    {
+      "elapsed_seconds": 1442.002925680019,
+      "inode": 741,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000009451-0006579e101518dc.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1562.1776045419974,
+      "inode": 756,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000009ef2-0006579e14bf8dd9.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 1622.9821132240177,
+      "inode": 772,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000a993-0006579e1964d3d9.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 1682.040234977001,
+      "inode": 787,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000b43e-0006579e1e02e44c.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1802.3981656380056,
+      "inode": 805,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000beff-0006579e228a12b9.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1862.2579651650158,
+      "inode": 821,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000c9a0-0006579e27313c9d.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 1922.1351809980115,
+      "inode": 836,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000d440-0006579e2bd94fb3.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2042.016716337006,
+      "inode": 851,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000dee2-0006579e3083c540.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2102.390679781005,
+      "inode": 868,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000e9b7-0006579e350824d1.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 2162.304931015009,
+      "inode": 884,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000f458-0006579e39ad5f5b.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2222.176733183005,
+      "inode": 899,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000000fefb-0006579e3e584c45.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 2342.2420813020144,
+      "inode": 914,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001099c-0006579e4302d13d.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 2402.207523803023,
+      "inode": 933,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001146f-0006579e477ca0ee.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2462.011078036012,
+      "inode": 948,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000011f10-0006579e4c271758.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2583.064927925996,
+      "inode": 963,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000129b3-0006579e50d208b8.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2642.1016549550113,
+      "inode": 978,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000013456-0006579e557d0a59.journal",
+      "allocated_bytes": 2469888
+    },
+    {
+      "elapsed_seconds": 2702.1969020150136,
+      "inode": 997,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000013f29-0006579e59f6da77.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2762.0673613249965,
+      "inode": 1012,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000149cc-0006579e5ea1ccf9.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 2882.38022922902,
+      "inode": 1027,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001546d-0006579e634c4232.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 2942.4340712650155,
+      "inode": 1043,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000015f0e-0006579e67f1874e.journal",
+      "allocated_bytes": 2482176
+    },
+    {
+      "elapsed_seconds": 3002.3046523340163,
+      "inode": 1060,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000169e3-0006579e6c75d6f5.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3122.088665218005,
+      "inode": 1075,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000017485-0006579e71204c2f.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3181.984403345996,
+      "inode": 1090,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000017f27-0006579e75caf1f2.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 3241.968794245011,
+      "inode": 1106,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000189c8-0006579e7a708402.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 3302.2668991100218,
+      "inode": 1124,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001949c-0006579e7eef9386.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3422.431901283009,
+      "inode": 1139,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000019f3e-0006579e839a1816.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 3482.2296145230066,
+      "inode": 1155,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001a9df-0006579e883fcafd.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3543.483202544012,
+      "inode": 1170,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001b481-0006579e8cea4063.journal",
+      "allocated_bytes": 2482176
+    },
+    {
+      "elapsed_seconds": 3662.3564343519974,
+      "inode": 1187,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001bf57-0006579e91726d62.journal",
+      "allocated_bytes": 2469888
+    },
+    {
+      "elapsed_seconds": 3722.1256168080145,
+      "inode": 1204,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001c9f5-0006579e96107a40.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3781.951676427998,
+      "inode": 1219,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001d496-0006579e9ab88d51.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 3901.9162626909965,
+      "inode": 1234,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001df39-0006579e9f637f96.journal",
+      "allocated_bytes": 2494464
+    },
+    {
+      "elapsed_seconds": 3962.23084471302,
+      "inode": 1247,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001ea07-0006579ea407ca96.journal",
+      "allocated_bytes": 2453504
+    },
+    {
+      "elapsed_seconds": 4022.0735303560214,
+      "inode": 1267,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001f4a7-0006579ea889b95a.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 4081.864780413016,
+      "inode": 1282,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000001ff49-0006579ead343df8.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 4202.296891556005,
+      "inode": 1297,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000209eb-0006579eb1deb310.journal",
+      "allocated_bytes": 2465792
+    },
+    {
+      "elapsed_seconds": 4262.112437563017,
+      "inode": 1314,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000021489-0006579eb6761d7e.journal",
+      "allocated_bytes": 2482176
+    },
+    {
+      "elapsed_seconds": 4322.330809853011,
+      "inode": 1331,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000021f58-0006579ebafface3.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4441.990763701004,
+      "inode": 1346,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000229fb-0006579ebfaa9f46.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4504.257627195999,
+      "inode": 1361,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002349d-0006579ec455236f.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 4562.302809312008,
+      "inode": 1377,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000023f3d-0006579ec8fa5949.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4622.102581854007,
+      "inode": 1395,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000024a12-0006579ecd79e601.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4742.349186981999,
+      "inode": 1410,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000254b5-0006579ed224d840.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 4802.168964616023,
+      "inode": 1426,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000025f55-0006579ed6ca1dbc.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4862.08868244302,
+      "inode": 1441,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000269f7-0006579edb749828.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 4982.213649458019,
+      "inode": 1458,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000274cc-0006579edff8e282.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5042.069034911023,
+      "inode": 1473,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000027f6e-0006579ee4a3673c.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 5102.298423188011,
+      "inode": 1489,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000028a0f-0006579ee9489cd0.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5162.130028626008,
+      "inode": 1504,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000294b1-0006579eedf311fe.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 5282.2060472790035,
+      "inode": 1522,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000029f84-0006579ef272321c.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 5342.023514780012,
+      "inode": 1538,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002aa26-0006579ef717e3e4.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5402.395903739001,
+      "inode": 1553,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002b4c9-0006579efbc2d762.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5522.234287863015,
+      "inode": 1568,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002bf6a-0006579f006cd29a.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 5582.090274098999,
+      "inode": 1587,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002ca3d-0006579f04e92151.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5641.9654051270045,
+      "inode": 1602,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002d4de-0006579f0991238a.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 5762.061527928017,
+      "inode": 1617,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002df80-0006579f0e3ba885.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5822.088897870999,
+      "inode": 1632,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002ea22-0006579f12e69abd.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5881.861238686019,
+      "inode": 1650,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002f4f7-0006579f17662813.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 5942.231285728019,
+      "inode": 1665,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000002ff99-0006579f1c109cc0.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 6061.997659831017,
+      "inode": 1680,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000030a3c-0006579f20bb8efd.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6121.909048466012,
+      "inode": 1696,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000314dc-0006579f25607c3e.journal",
+      "allocated_bytes": 2486272
+    },
+    {
+      "elapsed_seconds": 6182.228323999996,
+      "inode": 1711,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000031fb4-0006579f29ef0a26.journal",
+      "allocated_bytes": 2469888
+    },
+    {
+      "elapsed_seconds": 6301.980208242021,
+      "inode": 1729,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000032a54-0006579f2e8b539a.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 6362.341657220997,
+      "inode": 1744,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000334f6-0006579f3335c94b.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6423.213336718007,
+      "inode": 1760,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000033f97-0006579f37db7b04.journal",
+      "allocated_bytes": 2490368
+    },
+    {
+      "elapsed_seconds": 6482.31393574801,
+      "inode": 1774,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000034a5b-0006579f3c7b1a49.journal",
+      "allocated_bytes": 2457600
+    },
+    {
+      "elapsed_seconds": 6602.037361735012,
+      "inode": 1793,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000035504-0006579f4100ca12.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6662.305538306013,
+      "inode": 1809,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000035fa4-0006579f45a5ff9d.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6722.125369695015,
+      "inode": 1824,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000036a46-0006579f4a508467.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6842.164380869013,
+      "inode": 1839,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000374e7-0006579f4ef25e1d.journal",
+      "allocated_bytes": 2482176
+    },
+    {
+      "elapsed_seconds": 6902.074875753024,
+      "inode": 1856,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000037fb6-0006579f537beded.journal",
+      "allocated_bytes": 2473984
+    },
+    {
+      "elapsed_seconds": 6961.928899328021,
+      "inode": 1872,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000038a56-0006579f58213367.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 7082.34017097202,
+      "inode": 1887,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-00000000000394f9-0006579f5ccc2556.journal",
+      "allocated_bytes": 2478080
+    },
+    {
+      "elapsed_seconds": 7142.177378768014,
+      "inode": 1902,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-0000000000039f9c-0006579f61771780.journal",
+      "allocated_bytes": 2469888
+    },
+    {
+      "elapsed_seconds": 7201.685973092011,
+      "inode": 1921,
+      "last_path": "/run/log/journal/393d3bf2544f4f53a08c089c34d263cb/system@db84cfba4bbd4d469b0751ae1e0c187e-000000000003aa70-0006579f65f1649b.journal",
+      "allocated_bytes": 2478080
+    }
+  ],
+  "first_probe_seen_initially": true,
+  "first_probe_absent_at_seconds": 362.0953517210146,
+  "all_journald_healthy": true,
+  "all_disk_usage_commands_pass": true,
+  "nginx_regular_files_always_empty": true,
+  "persistent_journal_always_empty": true,
+  "full": {
+    "journal_allocated": {
+      "n": 121,
+      "first": 4194304,
+      "last": 14102528,
+      "first15_median": 14102528,
+      "last15_median": 14098432,
+      "min": 4194304,
+      "max": 14114816
+    },
+    "journal_files": {
+      "n": 121,
+      "first": 1,
+      "last": 5,
+      "first15_median": 5,
+      "last15_median": 5,
+      "min": 1,
+      "max": 5
+    },
+    "processes": {
+      "n": 121,
+      "first": 114,
+      "last": 103,
+      "first15_median": 107,
+      "last15_median": 103,
+      "min": 102,
+      "max": 114
+    },
+    "sockets": {
+      "n": 121,
+      "first": 114,
+      "last": 109,
+      "first15_median": 109,
+      "last15_median": 109,
+      "min": 109,
+      "max": 114
+    },
+    "MemAvailable": {
+      "n": 121,
+      "first": 492711936,
+      "last": 471400448,
+      "first15_median": 479817728,
+      "last15_median": 474771456,
+      "min": 452509696,
+      "max": 492711936
+    },
+    "Shmem": {
+      "n": 121,
+      "first": 354394112,
+      "last": 364310528,
+      "first15_median": 364306432,
+      "last15_median": 364306432,
+      "min": 354394112,
+      "max": 364408832
+    },
+    "AnonPages": {
+      "n": 121,
+      "first": 123228160,
+      "last": 130359296,
+      "first15_median": 127418368,
+      "last15_median": 130433024,
+      "min": 123228160,
+      "max": 130707456
+    },
+    "Cached": {
+      "n": 121,
+      "first": 354394112,
+      "last": 364310528,
+      "first15_median": 364306432,
+      "last15_median": 364306432,
+      "min": 354394112,
+      "max": 364408832
+    },
+    "Slab": {
+      "n": 121,
+      "first": 30412800,
+      "last": 31657984,
+      "first15_median": 31133696,
+      "last15_median": 31649792,
+      "min": 30412800,
+      "max": 31657984
+    },
+    "SReclaimable": {
+      "n": 121,
+      "first": 8826880,
+      "last": 9052160,
+      "first15_median": 8949760,
+      "last15_median": 9052160,
+      "min": 8826880,
+      "max": 9052160
+    },
+    "SUnreclaim": {
+      "n": 121,
+      "first": 21585920,
+      "last": 22605824,
+      "first15_median": 22183936,
+      "last15_median": 22597632,
+      "min": 21585920,
+      "max": 22605824
+    },
+    "/var/log": {
+      "n": 121,
+      "first": 4096,
+      "last": 4096,
+      "first15_median": 4096,
+      "last15_median": 4096,
+      "min": 4096,
+      "max": 4096
+    },
+    "/var/log/journal": {
+      "n": 121,
+      "first": 0,
+      "last": 0,
+      "first15_median": 0,
+      "last15_median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "/run/log/journal": {
+      "n": 121,
+      "first": 4194304,
+      "last": 14102528,
+      "first15_median": 14102528,
+      "last15_median": 14098432,
+      "min": 4194304,
+      "max": 14114816
+    },
+    "/var/log/nginx": {
+      "n": 121,
+      "first": 0,
+      "last": 0,
+      "first15_median": 0,
+      "last15_median": 0,
+      "min": 0,
+      "max": 0
+    }
+  },
+  "quarter_hours": [
+    {
+      "quarter": 0,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 4194304,
+          "last": 14098432,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 4194304,
+          "max": 14102528
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 1,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 1,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 114,
+          "last": 104,
+          "first15_median": 107,
+          "last15_median": 107,
+          "min": 104,
+          "max": 114
+        },
+        "sockets": {
+          "n": 15,
+          "first": 114,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 114
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 492711936,
+          "last": 478109696,
+          "first15_median": 479817728,
+          "last15_median": 479817728,
+          "min": 452509696,
+          "max": 492711936
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 354394112,
+          "last": 364306432,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 354394112,
+          "max": 364310528
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 123228160,
+          "last": 127852544,
+          "first15_median": 127418368,
+          "last15_median": 127418368,
+          "min": 123228160,
+          "max": 127852544
+        },
+        "Cached": {
+          "n": 15,
+          "first": 354394112,
+          "last": 364306432,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 354394112,
+          "max": 364310528
+        },
+        "Slab": {
+          "n": 15,
+          "first": 30412800,
+          "last": 31277056,
+          "first15_median": 31133696,
+          "last15_median": 31133696,
+          "min": 30412800,
+          "max": 31277056
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 8826880,
+          "last": 8982528,
+          "first15_median": 8949760,
+          "last15_median": 8949760,
+          "min": 8826880,
+          "max": 8982528
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 21585920,
+          "last": 22294528,
+          "first15_median": 22183936,
+          "last15_median": 22183936,
+          "min": 21585920,
+          "max": 22294528
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 4194304,
+          "last": 14098432,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 4194304,
+          "max": 14102528
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 1,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14098432,
+          "last": 14106624,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14077952,
+          "max": 14110720
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 105,
+          "last": 105,
+          "first15_median": 105,
+          "last15_median": 105,
+          "min": 104,
+          "max": 105
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 468946944,
+          "last": 479510528,
+          "first15_median": 475840512,
+          "last15_median": 475840512,
+          "min": 468946944,
+          "max": 482607104
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364314624,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364285952,
+          "max": 364318720
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 127860736,
+          "last": 128913408,
+          "first15_median": 128266240,
+          "last15_median": 128266240,
+          "min": 127795200,
+          "max": 128913408
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364314624,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364285952,
+          "max": 364318720
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31277056,
+          "last": 31399936,
+          "first15_median": 31371264,
+          "last15_median": 31371264,
+          "min": 31277056,
+          "max": 31416320
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 8982528,
+          "last": 9035776,
+          "first15_median": 9019392,
+          "last15_median": 9019392,
+          "min": 8982528,
+          "max": 9035776
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22294528,
+          "last": 22364160,
+          "first15_median": 22351872,
+          "last15_median": 22351872,
+          "min": 22294528,
+          "max": 22380544
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14098432,
+          "last": 14106624,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14077952,
+          "max": 14110720
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 2,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14102528,
+          "last": 14106624,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14094336,
+          "max": 14106624
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 105,
+          "last": 105,
+          "first15_median": 105,
+          "last15_median": 105,
+          "min": 104,
+          "max": 105
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 474451968,
+          "last": 466337792,
+          "first15_median": 471932928,
+          "last15_median": 471932928,
+          "min": 466337792,
+          "max": 479354880
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364314624,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364302336,
+          "max": 364314624
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 128626688,
+          "last": 129835008,
+          "first15_median": 129196032,
+          "last15_median": 129196032,
+          "min": 128503808,
+          "max": 129835008
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364314624,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364302336,
+          "max": 364314624
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31404032,
+          "last": 31526912,
+          "first15_median": 31481856,
+          "last15_median": 31481856,
+          "min": 31404032,
+          "max": 31526912
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9035776,
+          "last": 9035776,
+          "first15_median": 9035776,
+          "last15_median": 9035776,
+          "min": 9035776,
+          "max": 9035776
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22368256,
+          "last": 22491136,
+          "first15_median": 22446080,
+          "last15_median": 22446080,
+          "min": 22368256,
+          "max": 22491136
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14102528,
+          "last": 14106624,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14094336,
+          "max": 14106624
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 3,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14106624,
+          "last": 14114816,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 14094336,
+          "max": 14114816
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 105,
+          "last": 104,
+          "first15_median": 105,
+          "last15_median": 105,
+          "min": 104,
+          "max": 105
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 471007232,
+          "last": 474505216,
+          "first15_median": 473227264,
+          "last15_median": 473227264,
+          "min": 464601088,
+          "max": 479227904
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364314624,
+          "last": 364322816,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364322816
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 129789952,
+          "last": 130387968,
+          "first15_median": 130068480,
+          "last15_median": 130068480,
+          "min": 129695744,
+          "max": 130461696
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364314624,
+          "last": 364322816,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364322816
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31522816,
+          "last": 31588352,
+          "first15_median": 31567872,
+          "last15_median": 31567872,
+          "min": 31522816,
+          "max": 31588352
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9035776,
+          "last": 9052160,
+          "first15_median": 9035776,
+          "last15_median": 9035776,
+          "min": 9035776,
+          "max": 9052160
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22487040,
+          "last": 22536192,
+          "first15_median": 22532096,
+          "last15_median": 22532096,
+          "min": 22487040,
+          "max": 22544384
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14106624,
+          "last": 14114816,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 14094336,
+          "max": 14114816
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 4,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14114816,
+          "last": 14098432,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14061568,
+          "max": 14114816
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 105,
+          "last": 105,
+          "first15_median": 105,
+          "last15_median": 105,
+          "min": 104,
+          "max": 105
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 477450240,
+          "last": 477388800,
+          "first15_median": 475246592,
+          "last15_median": 475246592,
+          "min": 469323776,
+          "max": 477450240
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364322816,
+          "last": 364310528,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364273664,
+          "max": 364322816
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 130576384,
+          "last": 130265088,
+          "first15_median": 130433024,
+          "last15_median": 130433024,
+          "min": 130240512,
+          "max": 130576384
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364322816,
+          "last": 364310528,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364273664,
+          "max": 364322816
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31584256,
+          "last": 31612928,
+          "first15_median": 31600640,
+          "last15_median": 31600640,
+          "min": 31584256,
+          "max": 31617024
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9052160,
+          "last": 9052160,
+          "first15_median": 9052160,
+          "last15_median": 9052160,
+          "min": 9052160,
+          "max": 9052160
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22532096,
+          "last": 22560768,
+          "first15_median": 22548480,
+          "last15_median": 22548480,
+          "min": 22532096,
+          "max": 22564864
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14114816,
+          "last": 14098432,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14061568,
+          "max": 14114816
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 5,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14102528,
+          "last": 14098432,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14094336,
+          "max": 14102528
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 105,
+          "last": 103,
+          "first15_median": 104,
+          "last15_median": 104,
+          "min": 103,
+          "max": 105
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 111
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 469381120,
+          "last": 474779648,
+          "first15_median": 473198592,
+          "last15_median": 473198592,
+          "min": 469282816,
+          "max": 477937664
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364306432,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364408832
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 130519040,
+          "last": 130129920,
+          "first15_median": 130473984,
+          "last15_median": 130473984,
+          "min": 129994752,
+          "max": 130670592
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364306432,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364408832
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31625216,
+          "last": 31625216,
+          "first15_median": 31625216,
+          "last15_median": 31625216,
+          "min": 31621120,
+          "max": 31625216
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9052160,
+          "last": 9052160,
+          "first15_median": 9052160,
+          "last15_median": 9052160,
+          "min": 9052160,
+          "max": 9052160
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22573056,
+          "last": 22573056,
+          "first15_median": 22573056,
+          "last15_median": 22573056,
+          "min": 22568960,
+          "max": 22573056
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14102528,
+          "last": 14098432,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14094336,
+          "max": 14102528
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 6,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14098432,
+          "last": 14094336,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 14094336,
+          "max": 14110720
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 103,
+          "last": 102,
+          "first15_median": 103,
+          "last15_median": 103,
+          "min": 102,
+          "max": 103
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 472387584,
+          "last": 472543232,
+          "first15_median": 473284608,
+          "last15_median": 473284608,
+          "min": 463912960,
+          "max": 479322112
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364302336,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364318720
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 130322432,
+          "last": 130658304,
+          "first15_median": 130441216,
+          "last15_median": 130441216,
+          "min": 130002944,
+          "max": 130658304
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364310528,
+          "last": 364302336,
+          "first15_median": 364310528,
+          "last15_median": 364310528,
+          "min": 364302336,
+          "max": 364318720
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31625216,
+          "last": 31629312,
+          "first15_median": 31629312,
+          "last15_median": 31629312,
+          "min": 31625216,
+          "max": 31645696
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9052160,
+          "last": 9052160,
+          "first15_median": 9052160,
+          "last15_median": 9052160,
+          "min": 9052160,
+          "max": 9052160
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22573056,
+          "last": 22577152,
+          "first15_median": 22577152,
+          "last15_median": 22577152,
+          "min": 22573056,
+          "max": 22593536
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14098432,
+          "last": 14094336,
+          "first15_median": 14102528,
+          "last15_median": 14102528,
+          "min": 14094336,
+          "max": 14110720
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    },
+    {
+      "quarter": 7,
+      "metrics": {
+        "journal_allocated": {
+          "n": 15,
+          "first": 14090240,
+          "last": 14102528,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14073856,
+          "max": 14106624
+        },
+        "journal_files": {
+          "n": 15,
+          "first": 5,
+          "last": 5,
+          "first15_median": 5,
+          "last15_median": 5,
+          "min": 5,
+          "max": 5
+        },
+        "processes": {
+          "n": 15,
+          "first": 103,
+          "last": 103,
+          "first15_median": 103,
+          "last15_median": 103,
+          "min": 102,
+          "max": 103
+        },
+        "sockets": {
+          "n": 15,
+          "first": 109,
+          "last": 109,
+          "first15_median": 109,
+          "last15_median": 109,
+          "min": 109,
+          "max": 109
+        },
+        "MemAvailable": {
+          "n": 15,
+          "first": 468983808,
+          "last": 478482432,
+          "first15_median": 474771456,
+          "last15_median": 474771456,
+          "min": 455380992,
+          "max": 479227904
+        },
+        "Shmem": {
+          "n": 15,
+          "first": 364298240,
+          "last": 364310528,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364281856,
+          "max": 364314624
+        },
+        "AnonPages": {
+          "n": 15,
+          "first": 130658304,
+          "last": 130535424,
+          "first15_median": 130502656,
+          "last15_median": 130502656,
+          "min": 130334720,
+          "max": 130707456
+        },
+        "Cached": {
+          "n": 15,
+          "first": 364298240,
+          "last": 364310528,
+          "first15_median": 364306432,
+          "last15_median": 364306432,
+          "min": 364281856,
+          "max": 364314624
+        },
+        "Slab": {
+          "n": 15,
+          "first": 31629312,
+          "last": 31649792,
+          "first15_median": 31649792,
+          "last15_median": 31649792,
+          "min": 31629312,
+          "max": 31657984
+        },
+        "SReclaimable": {
+          "n": 15,
+          "first": 9052160,
+          "last": 9052160,
+          "first15_median": 9052160,
+          "last15_median": 9052160,
+          "min": 9052160,
+          "max": 9052160
+        },
+        "SUnreclaim": {
+          "n": 15,
+          "first": 22577152,
+          "last": 22597632,
+          "first15_median": 22597632,
+          "last15_median": 22597632,
+          "min": 22577152,
+          "max": 22605824
+        },
+        "/var/log": {
+          "n": 15,
+          "first": 4096,
+          "last": 4096,
+          "first15_median": 4096,
+          "last15_median": 4096,
+          "min": 4096,
+          "max": 4096
+        },
+        "/var/log/journal": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        },
+        "/run/log/journal": {
+          "n": 15,
+          "first": 14090240,
+          "last": 14102528,
+          "first15_median": 14098432,
+          "last15_median": 14098432,
+          "min": 14073856,
+          "max": 14106624
+        },
+        "/var/log/nginx": {
+          "n": 15,
+          "first": 0,
+          "last": 0,
+          "first15_median": 0,
+          "last15_median": 0,
+          "min": 0,
+          "max": 0
+        }
+      }
+    }
+  ],
+  "decision": "independent_review_required",
+  "qualification_seconds": 0
+}

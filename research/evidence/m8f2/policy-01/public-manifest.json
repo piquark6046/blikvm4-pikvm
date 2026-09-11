@@ -1,0 +1,30 @@
+{
+  "source": {
+    "commit": "d51cc3f39e5a60add8cabc55a7fe9bacceea32e5",
+    "dirty": true
+  },
+  "candidate": "M8-F2 logging-only",
+  "qualification": "NOT_RUN",
+  "artifacts": {
+    "rootfs.tar.gz": {
+      "size": 90462962,
+      "sha256": "f7273765444773d10c1ce4a0bd5d786dfecbf5a00d7e5c70656a9efcdddb2164"
+    },
+    "initramfs.cpio.gz": {
+      "size": 90271306,
+      "sha256": "74a78b5b778d363d51ff89b4a7f3f9f8d68aab52c3e39dd903537f419f09c3c8"
+    },
+    "Image": {
+      "size": 6914056,
+      "sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328"
+    },
+    "linux.config": {
+      "size": 67397,
+      "sha256": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b"
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    }
+  }
+}

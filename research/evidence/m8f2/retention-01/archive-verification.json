@@ -1,0 +1,14 @@
+{
+  "archive": {
+    "files": 3619,
+    "bytes": 67245743,
+    "sha256": "7e9f0fe786db010dc1c133f36943620b0b19fa8530624600b5f0905e7b7bf72f",
+    "private": true,
+    "controller_result": "completed_pending_independent_review",
+    "qualification_seconds": 0,
+    "m8f": "OPEN",
+    "p1": "GATED"
+  },
+  "files_verified": 3619,
+  "result": "passed"
+}

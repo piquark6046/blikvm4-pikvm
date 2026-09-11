@@ -1,0 +1,1201 @@
+{
+  "archive_sha256": "1cbe958805a2a10763143be662ef0988486d4867e488cd8a3a032a3cd553957b",
+  "files_verified": 6393,
+  "samples": 737,
+  "directory_residual_histogram_bytes": {
+    "4096": 736,
+    "0": 1
+  },
+  "units": "bytes; OLS slopes bytes/hour; half-open elapsed-hour bins; last bin partial",
+  "full": {
+    "/var/log": {
+      "samples": 737,
+      "initial_bytes": 11956224,
+      "final_bytes": 47292416,
+      "delta_bytes": 35336192,
+      "median_bytes": 28516352,
+      "ols_bytes_per_hour": 3122628.575386353,
+      "decreases": 0,
+      "increases": 736,
+      "nondecreasing": true
+    },
+    "/var/log/journal": {
+      "samples": 737,
+      "initial_bytes": 11927552,
+      "final_bytes": 37986304,
+      "delta_bytes": 26058752,
+      "median_bytes": 23855104,
+      "ols_bytes_per_hour": 2368214.198970347,
+      "decreases": 0,
+      "increases": 5,
+      "nondecreasing": true
+    },
+    "/run/log/journal": {
+      "samples": 737,
+      "initial_bytes": 0,
+      "final_bytes": 0,
+      "delta_bytes": 0,
+      "median_bytes": 0,
+      "ols_bytes_per_hour": 0.0,
+      "decreases": 0,
+      "increases": 0,
+      "nondecreasing": true
+    },
+    "/var/log/nginx": {
+      "samples": 737,
+      "initial_bytes": 24576,
+      "final_bytes": 9302016,
+      "delta_bytes": 9277440,
+      "median_bytes": 4657152,
+      "ols_bytes_per_hour": 754416.4325960699,
+      "decreases": 0,
+      "increases": 736,
+      "nondecreasing": true
+    },
+    "Shmem": {
+      "samples": 737,
+      "initial_bytes": 362143744,
+      "final_bytes": 401231872,
+      "delta_bytes": 39088128,
+      "median_bytes": 378966016,
+      "ols_bytes_per_hour": 3452231.7531683664,
+      "decreases": 1,
+      "increases": 735,
+      "nondecreasing": false
+    },
+    "MemAvailable": {
+      "samples": 737,
+      "initial_bytes": 488132608,
+      "final_bytes": 453672960,
+      "delta_bytes": -34459648,
+      "median_bytes": 451743744,
+      "ols_bytes_per_hour": -6793255.4936568,
+      "decreases": 369,
+      "increases": 367,
+      "nondecreasing": false
+    }
+  },
+  "hourly": [
+    {
+      "hour": 0,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 11956224,
+          "final_bytes": 12705792,
+          "delta_bytes": 749568,
+          "median_bytes": 12331008.0,
+          "ols_bytes_per_hour": 754255.020985169,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 11927552,
+          "final_bytes": 11927552,
+          "delta_bytes": 0,
+          "median_bytes": 11927552.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 24576,
+          "final_bytes": 774144,
+          "delta_bytes": 749568,
+          "median_bytes": 399360.0,
+          "ols_bytes_per_hour": 754255.020985169,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 362143744,
+          "final_bytes": 362893312,
+          "delta_bytes": 749568,
+          "median_bytes": 362520576.0,
+          "ols_bytes_per_hour": 753517.7169035877,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 488132608,
+          "final_bytes": 491999232,
+          "delta_bytes": 3866624,
+          "median_bytes": 490373120.0,
+          "ols_bytes_per_hour": -597017.4530747992,
+          "decreases": 29,
+          "increases": 30,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 1,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 12718080,
+          "final_bytes": 13459456,
+          "delta_bytes": 741376,
+          "median_bytes": 13084672.0,
+          "ols_bytes_per_hour": 754505.8491592862,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 11927552,
+          "final_bytes": 11927552,
+          "delta_bytes": 0,
+          "median_bytes": 11927552.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 786432,
+          "final_bytes": 1527808,
+          "delta_bytes": 741376,
+          "median_bytes": 1153024.0,
+          "ols_bytes_per_hour": 754505.8491592862,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 362905600,
+          "final_bytes": 363646976,
+          "delta_bytes": 741376,
+          "median_bytes": 363272192.0,
+          "ols_bytes_per_hour": 754396.5889230799,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 486674432,
+          "final_bytes": 490962944,
+          "delta_bytes": 4288512,
+          "median_bytes": 488976384.0,
+          "ols_bytes_per_hour": 1646016.7597252112,
+          "decreases": 28,
+          "increases": 31,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 2,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 13467648,
+          "final_bytes": 20172800,
+          "delta_bytes": 6705152,
+          "median_bytes": 16820224.0,
+          "ols_bytes_per_hour": 9702789.435157536,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 11927552,
+          "final_bytes": 17891328,
+          "delta_bytes": 5963776,
+          "median_bytes": 14909440.0,
+          "ols_bytes_per_hour": 8948088.343725407,
+          "decreases": 0,
+          "increases": 1,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 1536000,
+          "final_bytes": 2277376,
+          "delta_bytes": 741376,
+          "median_bytes": 1906688.0,
+          "ols_bytes_per_hour": 754701.0914321262,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 363655168,
+          "final_bytes": 370360320,
+          "delta_bytes": 6705152,
+          "median_bytes": 367007744.0,
+          "ols_bytes_per_hour": 9702530.159788536,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 488095744,
+          "final_bytes": 469037056,
+          "delta_bytes": -19058688,
+          "median_bytes": 483885056.0,
+          "ols_bytes_per_hour": -16239568.319186626,
+          "decreases": 32,
+          "increases": 27,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 3,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 20185088,
+          "final_bytes": 20926464,
+          "delta_bytes": 741376,
+          "median_bytes": 20559872.0,
+          "ols_bytes_per_hour": 754400.4170333049,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 17891328,
+          "final_bytes": 17891328,
+          "delta_bytes": 0,
+          "median_bytes": 17891328.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 2289664,
+          "final_bytes": 3031040,
+          "delta_bytes": 741376,
+          "median_bytes": 2664448.0,
+          "ols_bytes_per_hour": 754400.4170333049,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 370372608,
+          "final_bytes": 371376128,
+          "delta_bytes": 1003520,
+          "median_bytes": 371009536.0,
+          "ols_bytes_per_hour": 1005457.6053794596,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 473595904,
+          "final_bytes": 467914752,
+          "delta_bytes": -5681152,
+          "median_bytes": 468228096.0,
+          "ols_bytes_per_hour": -4210909.7827068595,
+          "decreases": 30,
+          "increases": 29,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 4,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 20946944,
+          "final_bytes": 21684224,
+          "delta_bytes": 737280,
+          "median_bytes": 21311488.0,
+          "ols_bytes_per_hour": 753300.9632294984,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 17891328,
+          "final_bytes": 17891328,
+          "delta_bytes": 0,
+          "median_bytes": 17891328.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 3051520,
+          "final_bytes": 3788800,
+          "delta_bytes": 737280,
+          "median_bytes": 3416064.0,
+          "ols_bytes_per_hour": 753300.9632294984,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 371392512,
+          "final_bytes": 372133888,
+          "delta_bytes": 741376,
+          "median_bytes": 371761152.0,
+          "ols_bytes_per_hour": 753725.3480316298,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 455450624,
+          "final_bytes": 461950976,
+          "delta_bytes": 6500352,
+          "median_bytes": 464807936.0,
+          "ols_bytes_per_hour": -2960928.2945911856,
+          "decreases": 30,
+          "increases": 29,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 5,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 21696512,
+          "final_bytes": 28401664,
+          "delta_bytes": 6705152,
+          "median_bytes": 28026880.0,
+          "ols_bytes_per_hour": 8708860.174725534,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 17891328,
+          "final_bytes": 23855104,
+          "delta_bytes": 5963776,
+          "median_bytes": 23855104.0,
+          "ols_bytes_per_hour": 7954486.089413227,
+          "decreases": 0,
+          "increases": 1,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 3801088,
+          "final_bytes": 4542464,
+          "delta_bytes": 741376,
+          "median_bytes": 4167680.0,
+          "ols_bytes_per_hour": 754374.0853123073,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 372146176,
+          "final_bytes": 378851328,
+          "delta_bytes": 6705152,
+          "median_bytes": 378476544.0,
+          "ols_bytes_per_hour": 8708265.947777525,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 465702912,
+          "final_bytes": 454991872,
+          "delta_bytes": -10711040,
+          "median_bytes": 454643712.0,
+          "ols_bytes_per_hour": -13075381.536565851,
+          "decreases": 31,
+          "increases": 28,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 6,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 28413952,
+          "final_bytes": 31358976,
+          "delta_bytes": 2945024,
+          "median_bytes": 28786688.0,
+          "ols_bytes_per_hour": 2735600.3127035396,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 23855104,
+          "final_bytes": 26058752,
+          "delta_bytes": 2203648,
+          "median_bytes": 23855104.0,
+          "ols_bytes_per_hour": 1980658.055026986,
+          "decreases": 0,
+          "increases": 1,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 4554752,
+          "final_bytes": 5296128,
+          "delta_bytes": 741376,
+          "median_bytes": 4927488.0,
+          "ols_bytes_per_hour": 754942.2576765537,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 378863616,
+          "final_bytes": 381808640,
+          "delta_bytes": 2945024,
+          "median_bytes": 379236352.0,
+          "ols_bytes_per_hour": 2736644.35060244,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 448098304,
+          "final_bytes": 447000576,
+          "delta_bytes": -1097728,
+          "median_bytes": 449542144.0,
+          "ols_bytes_per_hour": -8074592.073245014,
+          "decreases": 29,
+          "increases": 30,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 7,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 31367168,
+          "final_bytes": 32108544,
+          "delta_bytes": 741376,
+          "median_bytes": 31741952.0,
+          "ols_bytes_per_hour": 753067.0879310924,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 26058752,
+          "final_bytes": 26058752,
+          "delta_bytes": 0,
+          "median_bytes": 26058752.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 5304320,
+          "final_bytes": 6045696,
+          "delta_bytes": 741376,
+          "median_bytes": 5679104.0,
+          "ols_bytes_per_hour": 753067.0879310924,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 381816832,
+          "final_bytes": 382558208,
+          "delta_bytes": 741376,
+          "median_bytes": 382191616.0,
+          "ols_bytes_per_hour": 752759.6602150811,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 445247488,
+          "final_bytes": 440967168,
+          "delta_bytes": -4280320,
+          "median_bytes": 443064320.0,
+          "ols_bytes_per_hour": -7253726.554087488,
+          "decreases": 29,
+          "increases": 30,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 8,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 32129024,
+          "final_bytes": 38834176,
+          "delta_bytes": 6705152,
+          "median_bytes": 38459392.0,
+          "ols_bytes_per_hour": 6111617.660454594,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 26058752,
+          "final_bytes": 32022528,
+          "delta_bytes": 5963776,
+          "median_bytes": 32022528.0,
+          "ols_bytes_per_hour": 5357591.859678882,
+          "decreases": 0,
+          "increases": 1,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 6066176,
+          "final_bytes": 6807552,
+          "delta_bytes": 741376,
+          "median_bytes": 6432768.0,
+          "ols_bytes_per_hour": 754025.800775711,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 382578688,
+          "final_bytes": 389283840,
+          "delta_bytes": 6705152,
+          "median_bytes": 388909056.0,
+          "ols_bytes_per_hour": 6111692.695182972,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 438890496,
+          "final_bytes": 430477312,
+          "delta_bytes": -8413184,
+          "median_bytes": 433246208.0,
+          "ols_bytes_per_hour": -9409649.286580287,
+          "decreases": 31,
+          "increases": 28,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 9,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 38842368,
+          "final_bytes": 39583744,
+          "delta_bytes": 741376,
+          "median_bytes": 39213056.0,
+          "ols_bytes_per_hour": 754960.2006783916,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 32022528,
+          "final_bytes": 32022528,
+          "delta_bytes": 0,
+          "median_bytes": 32022528.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 6815744,
+          "final_bytes": 7557120,
+          "delta_bytes": 741376,
+          "median_bytes": 7186432.0,
+          "ols_bytes_per_hour": 754960.2006783916,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 389292032,
+          "final_bytes": 393523200,
+          "delta_bytes": 4231168,
+          "median_bytes": 393152512.0,
+          "ols_bytes_per_hour": 5843380.551393511,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 429588480,
+          "final_bytes": 420298752,
+          "delta_bytes": -9289728,
+          "median_bytes": 426645504.0,
+          "ols_bytes_per_hour": -8637463.966110291,
+          "decreases": 31,
+          "increases": 28,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 10,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 39596032,
+          "final_bytes": 40337408,
+          "delta_bytes": 741376,
+          "median_bytes": 39970816.0,
+          "ols_bytes_per_hour": 754157.6046245534,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 32022528,
+          "final_bytes": 32022528,
+          "delta_bytes": 0,
+          "median_bytes": 32022528.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 7569408,
+          "final_bytes": 8310784,
+          "delta_bytes": 741376,
+          "median_bytes": 7944192.0,
+          "ols_bytes_per_hour": 754396.4164223807,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 393535488,
+          "final_bytes": 394276864,
+          "delta_bytes": 741376,
+          "median_bytes": 393910272.0,
+          "ols_bytes_per_hour": 754034.6488640796,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 422297600,
+          "final_bytes": 419692544,
+          "delta_bytes": -2605056,
+          "median_bytes": 420104192.0,
+          "ols_bytes_per_hour": -4003620.8390914374,
+          "decreases": 26,
+          "increases": 33,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 11,
+      "metrics": {
+        "/var/log": {
+          "samples": 60,
+          "initial_bytes": 40345600,
+          "final_bytes": 47063040,
+          "delta_bytes": 6717440,
+          "median_bytes": 46686208.0,
+          "ols_bytes_per_hour": 1908277.8885634053,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 60,
+          "initial_bytes": 32022528,
+          "final_bytes": 37986304,
+          "delta_bytes": 5963776,
+          "median_bytes": 37986304.0,
+          "ols_bytes_per_hour": 1153683.0954755927,
+          "decreases": 0,
+          "increases": 1,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 60,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0.0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 60,
+          "initial_bytes": 8318976,
+          "final_bytes": 9072640,
+          "delta_bytes": 753664,
+          "median_bytes": 8695808.0,
+          "ols_bytes_per_hour": 754594.7930878121,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 60,
+          "initial_bytes": 394285056,
+          "final_bytes": 401002496,
+          "delta_bytes": 6717440,
+          "median_bytes": 400625664.0,
+          "ols_bytes_per_hour": 1908339.7204933488,
+          "decreases": 0,
+          "increases": 59,
+          "nondecreasing": true
+        },
+        "MemAvailable": {
+          "samples": 60,
+          "initial_bytes": 417013760,
+          "final_bytes": 412700672,
+          "delta_bytes": -4313088,
+          "median_bytes": 413855744.0,
+          "ols_bytes_per_hour": -1294621.4009939297,
+          "decreases": 28,
+          "increases": 31,
+          "nondecreasing": false
+        }
+      }
+    },
+    {
+      "hour": 12,
+      "metrics": {
+        "/var/log": {
+          "samples": 17,
+          "initial_bytes": 47071232,
+          "final_bytes": 47292416,
+          "delta_bytes": 221184,
+          "median_bytes": 47185920,
+          "ols_bytes_per_hour": 810680.087555165,
+          "decreases": 0,
+          "increases": 16,
+          "nondecreasing": true
+        },
+        "/var/log/journal": {
+          "samples": 17,
+          "initial_bytes": 37986304,
+          "final_bytes": 37986304,
+          "delta_bytes": 0,
+          "median_bytes": 37986304,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/run/log/journal": {
+          "samples": 17,
+          "initial_bytes": 0,
+          "final_bytes": 0,
+          "delta_bytes": 0,
+          "median_bytes": 0,
+          "ols_bytes_per_hour": 0.0,
+          "decreases": 0,
+          "increases": 0,
+          "nondecreasing": true
+        },
+        "/var/log/nginx": {
+          "samples": 17,
+          "initial_bytes": 9080832,
+          "final_bytes": 9302016,
+          "delta_bytes": 221184,
+          "median_bytes": 9195520,
+          "ols_bytes_per_hour": 810680.087555165,
+          "decreases": 0,
+          "increases": 16,
+          "nondecreasing": true
+        },
+        "Shmem": {
+          "samples": 17,
+          "initial_bytes": 401010688,
+          "final_bytes": 401231872,
+          "delta_bytes": 221184,
+          "median_bytes": 401125376,
+          "ols_bytes_per_hour": 940758.700994072,
+          "decreases": 1,
+          "increases": 15,
+          "nondecreasing": false
+        },
+        "MemAvailable": {
+          "samples": 17,
+          "initial_bytes": 413138944,
+          "final_bytes": 453672960,
+          "delta_bytes": 40534016,
+          "median_bytes": 452415488,
+          "ols_bytes_per_hour": -18899820.47535615,
+          "decreases": 7,
+          "increases": 9,
+          "nondecreasing": false
+        }
+      }
+    }
+  ],
+  "terminal": {
+    "start_elapsed_h": 10.750390318880276,
+    "samples": 76,
+    "first_edge_samples": 15,
+    "last_edge_samples": 15,
+    "first_last_15m_median_delta_bytes": {
+      "/var/log": 6725632,
+      "/var/log/journal": 5963776,
+      "/run/log/journal": 0,
+      "/var/log/nginx": 761856,
+      "Shmem": 6725632,
+      "MemAvailable": -6131712
+    }
+  },
+  "journal": {
+    "grouping": "rendered SYSLOG_IDENTIFIER-like prefix; _SYSTEMD_UNIT fields not archived",
+    "generators": {
+      "kvmd": {
+        "count": 53307,
+        "rendered_bytes": 14447110
+      },
+      "runuser": {
+        "count": 5890,
+        "rendered_bytes": 628942
+      },
+      "sshd-session": {
+        "count": 5775,
+        "rendered_bytes": 706682
+      },
+      "sudo": {
+        "count": 3465,
+        "rendered_bytes": 357264
+      },
+      "unix_chkpwd": {
+        "count": 2310,
+        "rendered_bytes": 209678
+      },
+      "systemd": {
+        "count": 19,
+        "rendered_bytes": 1858
+      }
+    },
+    "messages": 70766,
+    "unparsed_lines": 0,
+    "sampler_nearby_admin": {
+      "sshd-session": {
+        "count": 3714,
+        "rendered_bytes": 454572
+      },
+      "sudo": {
+        "count": 2230,
+        "rendered_bytes": 229944
+      },
+      "unix_chkpwd": {
+        "count": 1488,
+        "rendered_bytes": 135066
+      }
+    },
+    "sampler_association": "within 2 seconds before target sample start through duration plus 2 seconds; temporal association, not exclusive causal assignment",
+    "rotation_drop_mentions": 0,
+    "allocation_steps": [
+      {
+        "elapsed_h": 2.5004218535861096,
+        "delta_bytes": 5963776
+      },
+      {
+        "elapsed_h": 5.333781036497498,
+        "delta_bytes": 5963776
+      },
+      {
+        "elapsed_h": 6.817034612741389,
+        "delta_bytes": 2203648
+      },
+      {
+        "elapsed_h": 8.183779402542221,
+        "delta_bytes": 5963776
+      },
+      {
+        "elapsed_h": 11.03375116819139,
+        "delta_bytes": 5963776
+      }
+    ],
+    "rotation_conclusion": "No aggregate decrease or rotation/drop message observed. No per-file journal identities archived: rotation without net decrease cannot be excluded; bound not demonstrated."
+  },
+  "nginx": {
+    "endpoint_access_append_only": true,
+    "new_access_lines": 52231,
+    "new_access_serialized_bytes": 9296534,
+    "request_categories": {
+      "GET /api/msd 200": 43664,
+      "POST /api/hid/events/send_key 200": 1529,
+      "POST /api/hid/events/send_mouse_relative 200": 1390,
+      "POST /api/hid/events/send_mouse_button 200": 834,
+      "POST /api/hid/set_params 200": 695,
+      "POST /api/hid/events/send_mouse_move 200": 695,
+      "POST /api/auth/login 200": 561,
+      "GET /api/hid 200": 556,
+      "POST /api/hid/reset 200": 417,
+      "POST /api/msd/set_connected 200": 278,
+      "POST /api/hid/events/send_key 401": 139,
+      "POST /api/hid/events/send_mouse_move 401": 139,
+      "POST /api/hid/events/send_mouse_relative 401": 139,
+      "POST /api/auth/login 403": 139,
+      "POST /api/hid/print 404": 139,
+      "POST /api/hid/events/send_shortcut 404": 139,
+      "POST /api/msd/reset 404": 139,
+      "POST /api/atx/power 404": 139,
+      "POST /api/gpio/switch 404": 139,
+      "POST /api/msd/set_params 200": 139,
+      "POST /api/auth/login 502": 9,
+      "GET /share/css/vars.css 200": 7,
+      "GET /share/css/main.css 200": 7,
+      "GET /share/css/modal.css 200": 7,
+      "GET /share/css/window.css 200": 7,
+      "GET /share/js/vars.js 200": 7,
+      "GET /share/svg/logo.svg 200": 7,
+      "GET /share/js/tools.js 200": 7,
+      "GET /share/js/bb.js 200": 7,
+      "GET /share/js/wm.js 200": 7,
+      "GET /share/css/x-desktop.css 200": 7,
+      "GET /share/favicon-32x32.png 200": 7,
+      "GET /share/css/radio.css 200": 5,
+      "GET /share/pic/blank-stream.webp 200": 4,
+      "GET /login/ 200": 3,
+      "GET /share/css/login/login.css 200": 3,
+      "GET /share/js/login/main.js 200": 3,
+      "GET / 200": 2,
+      "GET /share/css/start.css 200": 2,
+      "GET /share/css/index/index.css 200": 2,
+      "GET /share/js/index/main.js 200": 2,
+      "GET /api/info 200": 2,
+      "GET /share/svg/kvm.svg 200": 2,
+      "GET /share/svg/logout.svg 200": 2,
+      "GET /kvm/ 200": 2,
+      "GET /share/css/navbar.css 200": 2,
+      "GET /share/css/led.css 200": 2,
+      "GET /share/css/slider.css 200": 2,
+      "GET /share/css/switch.css 200": 2,
+      "GET /share/css/progress.css 200": 2,
+      "GET /share/css/keypad.css 200": 2,
+      "GET /share/css/tabs.css 200": 2,
+      "GET /share/css/kvm/stream.css 200": 2,
+      "GET /share/css/kvm/msd.css 200": 2,
+      "GET /share/css/kvm/system.css 200": 2,
+      "GET /share/css/kvm/keyboard.css 200": 2,
+      "GET /share/css/kvm/about.css 200": 2,
+      "GET /share/js/kvm/main.js 200": 2,
+      "GET /share/svg/led-undervoltage.svg 200": 2,
+      "GET /share/svg/led-overheating.svg 200": 2,
+      "GET /share/svg/warning.svg 200": 2,
+      "GET /share/svg/stream-mouse-cursor.svg 200": 2,
+      "GET /share/js/kvm/session.js 200": 2,
+      "GET /share/svg/led-hid-mouse.svg 200": 2,
+      "GET /share/svg/led-gear.svg 200": 2,
+      "GET /share/svg/led-video.svg 200": 2,
+      "GET /share/svg/led-link.svg 200": 2,
+      "GET /share/svg/led-hid-keyboard.svg 200": 2,
+      "GET /share/svg/led-fan.svg 200": 2,
+      "GET /share/svg/led-atx-power.svg 200": 2,
+      "GET /share/svg/led-atx-hdd.svg 200": 2,
+      "GET /share/svg/led-msd.svg 200": 2,
+      "GET /share/svg/info.svg 200": 2,
+      "GET /share/svg/led-square.svg 200": 2,
+      "GET /share/js/kvm/info.js 200": 2,
+      "GET /share/js/kvm/recorder.js 200": 2,
+      "GET /share/js/kvm/hid.js 200": 2,
+      "GET /share/js/kvm/paste.js 200": 2,
+      "GET /share/js/kvm/atx.js 200": 2,
+      "GET /share/js/kvm/msd.js 200": 2,
+      "GET /share/js/kvm/stream.js 200": 2,
+      "GET /share/js/kvm/gpio.js 200": 2,
+      "GET /share/js/kvm/ocr.js 200": 2,
+      "GET /share/js/kvm/switch.js 200": 2,
+      "GET /share/js/kvm/keyboard.js 200": 2,
+      "GET /share/js/kvm/mouse.js 200": 2,
+      "GET /share/js/kvm/stream_janus.js 200": 2,
+      "GET /share/js/kvm/stream_media.js 200": 2,
+      "GET /share/js/kvm/stream_mjpeg.js 200": 2,
+      "GET /share/js/kvm/clipboard.js 200": 2,
+      "GET /share/js/keypad.js 200": 2,
+      "GET /share/js/kvm/vu.js 200": 2,
+      "GET /share/css/kvm/x-desktop.css 200": 2,
+      "GET /api/auth/check 200": 2,
+      "GET /streamer/stream 200": 2,
+      "GET /share/css/user.css 200": 1,
+      "GET /api/ws 101": 1
+    },
+    "agents": {
+      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36": 43461,
+      "Python-urllib/3.14": 8769,
+      "curl/8.18.0": 1
+    },
+    "error_bytes_before": 0,
+    "error_bytes_after": 2941,
+    "time_caveat": "endpoint inventories extend beyond resource endpoints; target wall clock differs from bridge UTC; do not directly compare their timestamps",
+    "rotation_conclusion": "Endpoint access content has the complete earlier prefix; directory allocations never decrease. No access truncation demonstrated; no journal file inventory."
+  },
+  "qualification_seconds": 0
+}

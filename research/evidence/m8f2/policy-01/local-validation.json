@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "labctl_tests": 22,
+  "syntax_checked": [
+    "logging-retention.py",
+    "logging-resources.py",
+    "logging-load.py",
+    "build/logging/build.py"
+  ],
+  "builder_image_id": "sha256:4b424588fc99a71195dc54659ea19c77508a7d457b15cdf5101b23551fbabcbc",
+  "logging_policy_tests": 3,
+  "total_tests": 25
+}

@@ -1,0 +1,12 @@
+{
+  "build/logging/README.md": "44968f161e36bdbb1f3a298d01fbf7e3845839b74a352cc5283ba5243e1d1cf3",
+  "build/logging/build.py": "28ba2c3a33763775e8a9fcde199078ed032ce9a3782da7eb3096be21878a5753",
+  "build/logging/check-cpio.py": "5a07733befc2330cafb36a7377cce89529f7e2d425d5fe25a92e3ef03791949b",
+  "build/logging/cpio.sh": "dd333985636c35d050b3140a251bbb69397e99e6e53c8919f67f24a185cc5b77",
+  "build/logging/finalize.py": "bbbfe55d533234c068b952b142b38e032ed1629264aba568e493739461bb7801",
+  "build/logging/zz-blikvm-bounded.conf": "8b9cb035d9d2bceb9301a6ae178455b27a89ee0aa3bee81efcbbf6030bb6b9bc",
+  "lab/logging-load.py": "2f58400737fccd9d1fcafdd637460b3534ea8415a6039cf966f966e2c4688647",
+  "lab/logging-policy-audit.py": "00092f0c25f4b25dbb549ff308672f528c03fc0d3a4d3274ecd526035841c575",
+  "lab/logging-resources.py": "f0fa721320c1d2e60e45ab8604d8e3fe0ef3b8d41d59dced1babee958b359394",
+  "lab/logging-retention.py": "7522335740f67834d3bae5a678108b38e6bf3c99d2873c3c75193f8239c5e5ca"
+}

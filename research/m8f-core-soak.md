@@ -1,6 +1,8 @@
 # M8-F — 24-hour core KVM integration soak
 
-**Status: M8-F OPEN — M8-F1 independent review Outcome C: non-kvmd system growth.**
+M8-F2 targeted retention now selects **Outcome A — LOG GROWTH EXPLAINED AND BOUNDED**. The reproducible logging-only candidate passed its two-hour retention test; M8-F remains OPEN pending a fresh full 24-hour qualification. No new full soak, baseline tag or P1 work has started. See [M8-F2 report](m8f2-bounded-logging.md).
+
+**Status: M8-F OPEN — M8-F2 retention Outcome A; fresh full qualification required.**
 
 The 2026-09-11 [independent memory review](evidence/m8f1/independent-review-01/README.md)
 finds a terminal main-kvmd private/anonymous plateau, but continuing RAM-backed

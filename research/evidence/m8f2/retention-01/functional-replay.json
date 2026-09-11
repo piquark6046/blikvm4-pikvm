@@ -1,0 +1,306 @@
+{
+  "result": "evidence_gates_passed_review_pending",
+  "atx": "DEFERRED",
+  "checks": {
+    "two_hours_retention_only": true,
+    "bounded_lifecycle_windows": true,
+    "no_lifecycle_exclusions": true,
+    "event_actions_bounded": true,
+    "video_worker": true,
+    "browser_worker": true,
+    "video_continuity": true,
+    "moving_video": true,
+    "sustained_27fps": true,
+    "actual_ui_continuity": true,
+    "ui_auth_dimensions": true,
+    "actual_ui_motion": true,
+    "no_unexpected_ui_errors": true,
+    "msd_bytes": true,
+    "real_lun_read_only": true,
+    "periodic_exercises": true,
+    "host_evdev": true,
+    "resource_coverage": true,
+    "same_boot": true,
+    "uart_monitor": true,
+    "systemd": true,
+    "exact_mode": true,
+    "one_streamer": true,
+    "streamer_parent": true,
+    "udc_configured": true,
+    "two_clients": true
+  },
+  "review_required": [
+    "Review all process generations and system trends for unexplained growth; service restarts must not conceal within-generation leaks.",
+    "Audit full host/target journals and map every candidate to bounded planned actions or a documented benign cause; retain unexplained failures."
+  ],
+  "video_gaps": [],
+  "frozen_windows": [],
+  "120_second_fps": [
+    29.816666666666666,
+    29.95,
+    29.841666666666665,
+    29.958333333333332,
+    29.8,
+    29.925,
+    29.816666666666666,
+    29.825,
+    29.941666666666666,
+    29.825,
+    29.933333333333334,
+    29.841666666666665,
+    29.95,
+    29.841666666666665,
+    29.966666666666665,
+    29.783333333333335,
+    29.816666666666666,
+    29.933333333333334,
+    29.7,
+    29.958333333333332,
+    29.858333333333334,
+    29.933333333333334,
+    29.95,
+    29.925,
+    29.841666666666665,
+    29.841666666666665,
+    29.966666666666665,
+    29.841666666666665,
+    29.958333333333332,
+    29.691666666666666,
+    29.933333333333334,
+    29.825,
+    29.975,
+    29.858333333333334,
+    29.833333333333332,
+    29.941666666666666,
+    29.841666666666665,
+    29.975,
+    29.816666666666666,
+    29.975,
+    29.841666666666665,
+    29.816666666666666,
+    29.975,
+    29.825,
+    29.925,
+    29.775,
+    29.941666666666666,
+    29.783333333333335,
+    29.975,
+    29.941666666666666,
+    29.833333333333332,
+    29.933333333333334,
+    29.833333333333332,
+    29.975,
+    29.833333333333332,
+    29.95,
+    29.808333333333334,
+    29.991666666666667,
+    29.833333333333332,
+    29.85
+  ],
+  "recovery_120_second_fps": [
+    [
+      178581.060415486,
+      29.816666666666666
+    ]
+  ],
+  "process_trends": {
+    "kvmd/main: /usr:226:1134": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 61513728,
+        "last_median": 64266240,
+        "delta": 2752512,
+        "min": 61382656,
+        "max": 64266240,
+        "monotonic_nondecreasing": true
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 29,
+        "last_median": 29,
+        "delta": 0,
+        "min": 29,
+        "max": 29,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.6273454178605116
+    },
+    "nginx:238:1195": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 9936896,
+        "last_median": 9936896,
+        "delta": 0,
+        "min": 9936896,
+        "max": 9936896,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 6,
+        "last_median": 6,
+        "delta": 0,
+        "min": 6,
+        "max": 6,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 0.0
+    },
+    "nginx:240:1211": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 9691136,
+        "last_median": 9691136,
+        "delta": 0,
+        "min": 9691136,
+        "max": 9691136,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 14,
+        "last_median": 14,
+        "delta": 0,
+        "min": 14,
+        "max": 19,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 7.943934716479889
+    },
+    "kvmd/hid-keyboa:368:1576": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 46800896,
+        "last_median": 46800896,
+        "delta": 0,
+        "min": 46800896,
+        "max": 46800896,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 22,
+        "last_median": 22,
+        "delta": 0,
+        "min": 22,
+        "max": 23,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.4071898624398127
+    },
+    "kvmd/hid-mouse::369:1577": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 47087616,
+        "last_median": 47087616,
+        "delta": 0,
+        "min": 47087616,
+        "max": 47087616,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 24,
+        "last_median": 24,
+        "delta": 0,
+        "min": 24,
+        "max": 24,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.4120513415815945
+    },
+    "kvmd/hid-mouse::370:1578": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 47218688,
+        "last_median": 47218688,
+        "delta": 0,
+        "min": 47218688,
+        "max": 47218688,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 26,
+        "last_median": 26,
+        "delta": 0,
+        "min": 26,
+        "max": 26,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 1.4056619689952528
+    },
+    "ustreamer:373:1587": {
+      "rss_bytes": {
+        "samples": 121,
+        "first_median": 31154176,
+        "last_median": 31154176,
+        "delta": 0,
+        "min": 31154176,
+        "max": 31154176,
+        "monotonic_nondecreasing": false
+      },
+      "fds": {
+        "samples": 121,
+        "first_median": 12,
+        "last_median": 12,
+        "delta": 0,
+        "min": 12,
+        "max": 12,
+        "monotonic_nondecreasing": false
+      },
+      "cpu_one_core_percent": 3.4712350066363986
+    }
+  },
+  "system_trends": {
+    "process_count": {
+      "samples": 121,
+      "first_median": 107,
+      "last_median": 103,
+      "delta": -4,
+      "min": 102,
+      "max": 114,
+      "monotonic_nondecreasing": false
+    },
+    "socket_count": {
+      "samples": 121,
+      "first_median": 109,
+      "last_median": 109,
+      "delta": 0,
+      "min": 109,
+      "max": 114,
+      "monotonic_nondecreasing": false
+    }
+  },
+  "first_last_memory": {
+    "baseline": "MemTotal:        1020204 kB\nMemFree:          482596 kB\nMemAvailable:     481164 kB\nBuffers:               0 kB\nCached:           346088 kB\nSwapCached:            0 kB\nActive:           131816 kB\nInactive:         334288 kB\nActive(anon):     131816 kB\nInactive(anon):   334204 kB\nActive(file):          0 kB\nInactive(file):       84 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:                 0 kB\nWriteback:             0 kB\nAnonPages:        120340 kB\nMapped:            60172 kB\nShmem:            346088 kB\nKReclaimable:       8620 kB\nSlab:              29700 kB\nSReclaimable:       8620 kB\nSUnreclaim:        21080 kB\nKernelStack:        2136 kB\nPageTables:         3320 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:      510100 kB\nCommitted_AS:     812084 kB\nVmallocTotal:   135288315904 kB\nVmallocUsed:       22912 kB\nVmallocChunk:          0 kB\nPercpu:              272 kB\nBalloon:               0 kB\nGPUActive:             0 kB\nGPUReclaim:            0 kB\n",
+    "final": "MemTotal:        1020204 kB\nMemFree:          461672 kB\nMemAvailable:     460352 kB\nBuffers:               0 kB\nCached:           355772 kB\nSwapCached:            0 kB\nActive:           143048 kB\nInactive:         339788 kB\nActive(anon):     143048 kB\nInactive(anon):   339692 kB\nActive(file):          0 kB\nInactive(file):       96 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:             0 kB\nSwapFree:              0 kB\nDirty:                 0 kB\nWriteback:             0 kB\nAnonPages:        127304 kB\nMapped:            64964 kB\nShmem:            355772 kB\nKReclaimable:       8840 kB\nSlab:              30916 kB\nSReclaimable:       8840 kB\nSUnreclaim:        22076 kB\nKernelStack:        2000 kB\nPageTables:         3252 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:      510100 kB\nCommitted_AS:     831136 kB\nVmallocTotal:   135288315904 kB\nVmallocUsed:       22808 kB\nVmallocChunk:          0 kB\nPercpu:              272 kB\nBalloon:               0 kB\nGPUActive:             0 kB\nGPUReclaim:            0 kB\n"
+  },
+  "ethernet_delta": {
+    "tx_errors": 0,
+    "rx_length_errors": 0,
+    "rx_packets": 5415746,
+    "tx_carrier_errors": 0,
+    "tx_dropped": 0,
+    "rx_missed_errors": 0,
+    "rx_over_errors": 0,
+    "tx_aborted_errors": 0,
+    "rx_crc_errors": 0,
+    "rx_frame_errors": 0,
+    "rx_nohandler": 0,
+    "tx_fifo_errors": 0,
+    "multicast": 0,
+    "tx_packets": 13472488,
+    "tx_window_errors": 0,
+    "rx_bytes": 369350921,
+    "collisions": 0,
+    "rx_dropped": 0,
+    "tx_bytes": 19055093121,
+    "tx_heartbeat_errors": 0,
+    "rx_fifo_errors": 0,
+    "rx_errors": 0,
+    "tx_compressed": 0,
+    "rx_compressed": 0
+  },
+  "qualification_seconds": 0
+}

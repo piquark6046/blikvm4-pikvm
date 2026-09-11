@@ -1,0 +1,14 @@
+{
+  "installed_vm_systemd": "systemd\t259.5-0ubuntu3.4",
+  "target_dpkg_query_readonly": "systemd 259.5-0ubuntu3.4",
+  "frozen_rootfs_systemd": "259.5-0ubuntu3.4",
+  "manual_path": "/usr/share/man/man5/journald.conf.5.gz",
+  "manual_sha256": "ceefe52a4f3241c86d68a619796f265835d2248cb02ea73739881844a0926e90",
+  "candidate": {
+    "Storage": "volatile",
+    "RuntimeMaxUse": "16M",
+    "RuntimeMaxFileSize": "4M",
+    "Compress": "yes",
+    "ForwardToSyslog": "no"
+  }
+}
