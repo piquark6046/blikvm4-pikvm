@@ -192,4 +192,18 @@ M6 GPIO/ATX and later integrations remain excluded.
 
 ## M8-F2 bounded logging
 
-[M8-F2](m8f2-bounded-logging.md) explains the M8-F1 log growth and demonstrates automatic bounded journal retention with passing two-hour browser/video/HID/MSD evidence. M8-F remains OPEN, P1 gated; a fresh full 24-hour qualification remains required.
+[M8-F2](m8f2-bounded-logging.md) explains the M8-F1 log growth and demonstrates automatic bounded journal retention with passing two-hour browser/video/HID/MSD evidence. At that supplemental checkpoint M8-F remained open; the later Run 04 acceptance below supersedes that gate.
+
+## M8-F core acceptance and P1 image production
+
+**CORE KVM SOAK PASSED; ATX DEFERRED.** Run 04 is accepted at
+`ubuntu-26.04.1-kvmd-core-soak-baseline`, commit `4cf664a`, for production
+candidate `8650c66`. [Run 04 evidence](evidence/m8f/run04/README.md) unlocks P1.
+
+[P1 image production](p1-image-production.md) passes frozen-input, vendor raw
+layout, independent byte-identical A/B image, read-only offline filesystem/boot,
+credential scan and private enrollment gates. Public artifacts are under
+`out/images/`; the [design](image-production-design.md) keeps vendor SPL/TF-A/
+U-Boot and one read-write ext4 SD root. No physical SD was written. P2 standalone
+hardware boot remains untested; its guarded flash/readback/regression procedure
+is proposed only. M6/ATX, full M8 and final RO/overlay remain deferred/unaccepted.

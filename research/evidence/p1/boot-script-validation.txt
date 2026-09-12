@@ -1,0 +1,8 @@
+Image Name:   BliKVM standalone SD
+Created:      Sun Sep  6 00:00:00 2026
+Image Type:   ARM Linux Script (uncompressed)
+Data Size:    604 Bytes = 0.59 KiB = 0.00 MiB
+Load Address: 00000000
+Entry Point:  00000000
+Contents:
+   Image 0: 596 Bytes = 0.58 KiB = 0.00 MiB

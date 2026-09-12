@@ -1,0 +1,32 @@
+{
+  "result": "passed",
+  "scope": "P1 offline standalone image production only",
+  "acceptance_tag": "ubuntu-26.04.1-kvmd-core-soak-baseline",
+  "acceptance_commit": "4cf664ad3098aca378c65165a29765bffaafa72e",
+  "qualified_production_candidate_commit": "8650c6684b5f8bc0e1b0e0c168ddb5902280484c",
+  "checks": {
+    "frozen_Run04_inputs": "passed",
+    "two_independent_byte_identical_images": "passed",
+    "verified_raw_bootloader_placement": "passed",
+    "filesystem_and_boot_offline_validation": "passed",
+    "public_private_material_absence": "passed",
+    "no_TFTP_or_deployment_dependency_by_design": "passed",
+    "optional_private_enrollment_exact_diff": "passed",
+    "134_local_tests": "passed"
+  },
+  "image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+  "compressed_image_sha256": "80da597e67074fbd55dd4f1ac41f6af63d268e06932c8e59c92005f45bbdf21e",
+  "image_size": 1077936128,
+  "source_date_epoch": 1788652800,
+  "rootfs_initial_policy": "read-write",
+  "physical_sd_written": false,
+  "recovery_sd_modified": false,
+  "vendor_uboot_replaced": false,
+  "standalone_hardware_boot": "NOT_TESTED_P2",
+  "p2": "PROPOSED_NOT_EXECUTED",
+  "M6_ATX": "DEFERRED",
+  "full_M8_passed": false,
+  "final_RO_overlay": "DEFERRED",
+  "supplemental_scanner_sha256": "0438459fc323b335f76416583c25649098be8135497de9c53fdc50f74dc7a6cb",
+  "local_test_log_sha256": "35508b89fc06b6ca432cfe0aa7120df93f1fe8173df5404238e2c69864bed2f6"
+}

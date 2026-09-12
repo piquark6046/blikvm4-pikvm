@@ -1,0 +1,57 @@
+{
+  "usr/lib/openssh/sshd-auth": {
+    "file_sha256": "8bf897c3c7825a4be2ca076216f3d9cd806ba749f2b2d7f68ddf75a7a5bec0fb",
+    "token_sha256": [
+      "68615125f02e0f18288771f9e49c3c3c4a7e5cdac09a9ffe57f97ef8fc9916cb"
+    ],
+    "reason": "OpenSSH NOUSER fakepw timing constant"
+  },
+  "usr/lib/openssh/sshd-session": {
+    "file_sha256": "c25a3aa76e2fc2fd1ec82bcfa53b27ca7d8f4a1f64b0c0975eb7a004fc06cbfc",
+    "token_sha256": [
+      "68615125f02e0f18288771f9e49c3c3c4a7e5cdac09a9ffe57f97ef8fc9916cb"
+    ],
+    "reason": "OpenSSH NOUSER fakepw timing constant"
+  },
+  "usr/lib/python3/dist-packages/passlib/handlers/__pycache__/bcrypt.cpython-314.pyc": {
+    "file_sha256": "570e19c1acfed1544bc7ed2bd59a90a06cf91266a8d05efb7453e8b347921f6f",
+    "token_sha256": [
+      "4cc9aebe22b838bdbaf70ae69b0b1c3575949375e818ef649ea337097372150b"
+    ],
+    "reason": "Passlib public self-test or documented sample hash; no enrolled account"
+  },
+  "usr/lib/python3/dist-packages/passlib/handlers/bcrypt.py": {
+    "file_sha256": "560aac9c34a5865cafa2801007262325050bbd181f7b43704b73289fa3af008f",
+    "token_sha256": [
+      "4cc9aebe22b838bdbaf70ae69b0b1c3575949375e818ef649ea337097372150b"
+    ],
+    "reason": "Passlib public self-test or documented sample hash; no enrolled account"
+  },
+  "usr/lib/python3/dist-packages/passlib/handlers/django.py": {
+    "file_sha256": "e4c18954d3f1398d2bd223049b0b5c5478b18398283b9dfa9bdc4b3d4f843038",
+    "token_sha256": [
+      "295535e0bef8da115a82acb8ada2545391aaffa2237c14e81147048efaf58761"
+    ],
+    "reason": "Passlib public self-test or documented sample hash; no enrolled account"
+  },
+  "usr/lib/aarch64-linux-gnu/libgnutls.so.30.41.1": {
+    "file_sha256": "3bedde401d4593c973560dff1c403a1aa2010d52cf0b53e68150346f721d4bff",
+    "token_sha256": [
+      "7f173f65ea04836d5d5fab00afa67897e71dbc01662db9bcbe807b8507b20487",
+      "23d51a270cb0711301b27f8cb0b6355126c6d856e1ae7e2f46fefa60c8c51d42",
+      "377b72ebaae43d90a40b89ddaac015ecad98431858312d11b4053b31eb9ccc11",
+      "a3d8965527fc3e07ed347c6d68cc95cc5511ae90a6ed7b9e9d443eceb2f5eaff",
+      "e5c643c952857f233aa0efe512e0eee0053a0ce17c17a41214be05a1cf3e1317",
+      "348f40b8ca903c0a15dee92b03c8b9a59aee3a2296b5ff544a7d72d40c7d2a05",
+      "09cd48c2fbe44bf1e68565684f54c51299e75931ed42467cbc7be37c021e7ede",
+      "d1dc75186fa035add68642556d4cdf68b2a1b74b4b60761b17f08fca7c79a606",
+      "ac1e3b0c79d47689562ef8e864681b377afea59a786db073f647704adfcc82f4",
+      "c41dc6cc1361b41b23dc261c959bed84bae2387ae3f196b1a60b0c61dd195d5b",
+      "eb3a393a358bbb3f3891c21e759168588b391ba563a937a443d2f9033e53b3e9",
+      "ac115ee0c9acdd92c2ef02882023227cc3e5627cad527b12078976ce4503d754"
+    ],
+    "reason": "Exact byte matches to upstream GnuTLS 3.8.12 crypto-selftests-pk.c known-answer vectors; never enrolled TLS keys",
+    "source_url": "https://raw.githubusercontent.com/gnutls/gnutls/3.8.12/lib/crypto-selftests-pk.c",
+    "source_sha256": "6e596be00754107fd7f7d1f132c2dc8cd0ff12bbdfc6de08c162a1dd5eedc7e8"
+  }
+}

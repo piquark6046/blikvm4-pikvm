@@ -1,0 +1,19 @@
+{
+  "result": "passed",
+  "base_image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+  "private_receipt_sha256": "fbb7aea032f1daae15379a7d262617dc8bc16f611e5636dba44ea160831a15af",
+  "changed_paths": [
+    "etc/kvmd/htpasswd",
+    "etc/kvmd/nginx/ssl",
+    "etc/kvmd/nginx/ssl/server.crt",
+    "etc/kvmd/nginx/ssl/server.key",
+    "home/blikvm/.ssh/authorized_keys"
+  ],
+  "all_other_files_and_metadata_identical": true,
+  "base_unchanged": true,
+  "e2fsck_exit": 0,
+  "filesystem_entries_verified": 14606,
+  "physical_sd_written": false,
+  "private_image_published": false,
+  "transformation_sha256": "87cb245ff65ac5263dc79c2e6f3de97d61c239969327fa41e108f22f422800ae"
+}

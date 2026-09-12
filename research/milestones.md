@@ -214,3 +214,18 @@ This completes the candidate's prerequisite regression evidence, not M8-F
 qualification. A NEW continuous 24-hour run must start from zero. Run 02 remains
 permanently FAILED; diagnostics contribute zero time. P1 remains gated and
 M6/ATX DEFERRED. No release/baseline tag is created.
+
+
+## P1 — reproducible standalone SD image production
+
+**Current: PASSED offline on 2026-09-12.** Frozen Run 04 production inputs,
+read-only extraction of verified vendor SPL/FIT extents, one 1 GiB RW ext4 root
+at 4 MiB in a 1028 MiB image, deterministic direct SD-root boot script, exact
+A/B uncompressed and compressed byte identity, complete read-only filesystem
+validation and public/private enrollment separation pass. Public outputs are
+in `out/images/`. [P1 report and proposed P2 procedure](p1-image-production.md)
+contains hashes, evidence, limitations and destructive guards.
+
+No physical SD card was written; recovery SD and vendor U-Boot are unchanged.
+P2 hardware standalone boot is **NOT TESTED** and is proposed only. M6/ATX and
+final RO/overlay are deferred; this does not make full M8 passed.

@@ -1,0 +1,7 @@
+{
+  "result": "passed",
+  "prefix_sha256": "97370d2c6ba452ebb445fe1b637703c09cfadc2eb2c131f4510145050b9e5669",
+  "spl_checksum_valid": true,
+  "fit_components_verified": 3,
+  "all_unpartitioned_bytes_classified": true
+}

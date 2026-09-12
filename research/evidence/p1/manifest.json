@@ -1,0 +1,400 @@
+{
+  "acceptance_commit": "4cf664ad3098aca378c65165a29765bffaafa72e",
+  "acceptance_tag": "ubuntu-26.04.1-kvmd-core-soak-baseline",
+  "assembler_sha256": "2da45c8ac4be74918378b44919efc2f180eba1d03310ec92ee1d1ab4f4b2ba13",
+  "assembly_source_sha256": {
+    "README.md": "be9d7435a6ac29853c75a54da05f8b3af3ab0f22681f6f7979cd50ca3b9cb049",
+    "assemble.py": "2da45c8ac4be74918378b44919efc2f180eba1d03310ec92ee1d1ab4f4b2ba13",
+    "boot.cmd": "7795fdf37a1ca0dc1a7a27192a78f465886aabfaf05fc8a78ec1954c4003c820",
+    "enroll.py": "87cb245ff65ac5263dc79c2e6f3de97d61c239969327fa41e108f22f422800ae",
+    "inputs.lock.json": "f9759813956dd211f52d9991e140f0b0f5d0f8d556179ef6af60efdd334c71de",
+    "mke2fs.conf": "78bef96d8da6ea675ab2ea410d9818757d166ddd4adfb6584531af413092c518",
+    "public-constants.json": "57a06dc6d776dc277486f4548d914d899f2436733e2fd7052506ba17f33dfd3c",
+    "verify-enrollment-separation.py": "0438459fc323b335f76416583c25649098be8135497de9c53fdc50f74dc7a6cb",
+    "verify-vendor.py": "4fd5ed1b72e11ba7f19dd0678d68c6732176106925be77ac6fb4de9aa879ce26"
+  },
+  "atx": "DEFERRED",
+  "boot_cmd_sha256": "7795fdf37a1ca0dc1a7a27192a78f465886aabfaf05fc8a78ec1954c4003c820",
+  "boot_scr_sha256": "24a1e114c8e9ffb7cf2230104fdbc2d29d53ec1702c0ba9ff989e9e0d1267091",
+  "builder": {
+    "architecture": "x86_64",
+    "os_release": "PRETTY_NAME=\"Ubuntu 26.04.1 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"26.04\"\nVERSION=\"26.04.1 LTS (Resolute Raccoon)\"\nVERSION_CODENAME=resolute\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=resolute\nLOGO=ubuntu-logo\n",
+    "type": "native Build VM"
+  },
+  "compressed_image_sha256": "80da597e67074fbd55dd4f1ac41f6af63d268e06932c8e59c92005f45bbdf21e",
+  "compressed_size": 69962099,
+  "compression_options": [
+    "-19",
+    "-T1"
+  ],
+  "contracts": {
+    "etc/kvmd/access.nft": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "9a77cc190bbb38ff15265905b3f31c258bd384a65decba324bc8dbc8293916b5",
+      "size": 861,
+      "uid": 0
+    },
+    "etc/kvmd/meta.yaml": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "303c24b50743c05644d37c6739cae8d27f9e926c05169ecc59ea9756aa9d61c2",
+      "size": 28,
+      "uid": 0
+    },
+    "etc/kvmd/nginx/loc-nobuffering.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "28482c9911542cd1256f931d00b132f4fcb0255cb5c58c72eec37aa14f43360d",
+      "size": 105,
+      "uid": 0
+    },
+    "etc/kvmd/nginx/loc-nocache.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "e23203fafa88ec7ea933d58e029c37809577fea137fce8c4a3b30a0cf8b8f19a",
+      "size": 157,
+      "uid": 0
+    },
+    "etc/kvmd/nginx/loc-proxy.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "055af8c41789e395923f90b4f79a0f749b7149f66138f6426b9c7c46d67b58f5",
+      "size": 283,
+      "uid": 0
+    },
+    "etc/kvmd/nginx/loc-websocket.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "6897504bc19f79e41979fa612a9f69bfd17d81e29c7607f6b16b430583ec1667",
+      "size": 176,
+      "uid": 0
+    },
+    "etc/kvmd/nginx/nginx.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "3a68f35b163547602351d1a37f4a7e86c86872ce3f5302f0a0cfa3487a2bf462",
+      "size": 2602,
+      "uid": 0
+    },
+    "etc/kvmd/override.d/80-web-auth.yaml": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "0e0ad34670b5125348f5bb0c03ccde4ae81ba018022290a31d94a5addbb87d8e",
+      "size": 335,
+      "uid": 0
+    },
+    "etc/kvmd/override.d/90-hid.yaml": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "8c0e402ec7d7acf4c857de08cc5edad69984f89bc39d192dbb7534b158b1fdd2",
+      "size": 403,
+      "uid": 0
+    },
+    "etc/kvmd/override.d/95-msd.yaml": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "4ee52fb3a9c2739adfe43536ed75f463f638c5feb9c44a95f4ca8d6d0df7f0c6",
+      "size": 223,
+      "uid": 0
+    },
+    "etc/kvmd/override.yaml": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "size": 3,
+      "uid": 0
+    },
+    "etc/kvmd/web.css": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "fc54596aacfd34d918a26e3b0a3f22b64dd7da0391c1cc7149e6b4a57dab1235",
+      "size": 43,
+      "uid": 0
+    },
+    "etc/systemd/journald.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "995877ef4f574eb64057eb1d64c5c4e5badfa62a9fa21a686a37c51aa9f67857",
+      "size": 1435,
+      "uid": 0
+    },
+    "etc/systemd/journald.conf.d/zz-blikvm-bounded.conf": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "8b9cb035d9d2bceb9301a6ae178455b27a89ee0aa3bee81efcbbf6030bb6b9bc",
+      "size": 99,
+      "uid": 0
+    },
+    "usr/bin/hid-keyboard": {
+      "gid": 0,
+      "mode": 493,
+      "sha256": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+      "size": 2940,
+      "uid": 0
+    },
+    "usr/bin/ustreamer": {
+      "gid": 0,
+      "mode": 493,
+      "sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+      "size": 460904,
+      "uid": 0
+    },
+    "usr/lib/kvmd-msd/media-helper": {
+      "gid": 0,
+      "mode": 493,
+      "sha256": "81c79056878acea1d7bcae09bbad84ea380122166f2eabf6c95bb673031f4e17",
+      "size": 6833,
+      "uid": 0
+    },
+    "usr/share/g4-storage.img": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uid": 0
+    },
+    "usr/share/kvmd-msd/images/g4-storage.img": {
+      "gid": 0,
+      "mode": 292,
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uid": 0
+    },
+    "var/lib/dpkg/status": {
+      "gid": 0,
+      "mode": 420,
+      "sha256": "5b29ca6cd545dbc91bab379aa88619bd43d5f91608f3d59a30e659a7e80bf66a",
+      "size": 237711,
+      "uid": 0
+    }
+  },
+  "image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+  "image_size": 1077936128,
+  "inputs": {
+    "Image": {
+      "path": "out/m8f-run04/build1/Image",
+      "sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328",
+      "size": 6914056
+    },
+    "initramfs.cpio.gz": {
+      "path": "out/m8f-run04/build1/initramfs.cpio.gz",
+      "sha256": "74a78b5b778d363d51ff89b4a7f3f9f8d68aab52c3e39dd903537f419f09c3c8",
+      "size": 90271306
+    },
+    "kvmd-web_4.213-1blikvm4_arm64.deb": {
+      "path": "out/kvmd-msd/artifacts/kvmd-web_4.213-1blikvm4_arm64.deb",
+      "sha256": "228d2f6dc1114b4516943249d25ddf1f10e4161c9cb53c6603b286b2b4e7f85e",
+      "size": 911982
+    },
+    "linux.config": {
+      "path": "out/m8f-run04/build1/linux.config",
+      "sha256": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b",
+      "size": 67397
+    },
+    "rootfs.tar.gz": {
+      "path": "out/m8f-run04/build1/rootfs.tar.gz",
+      "sha256": "f7273765444773d10c1ce4a0bd5d786dfecbf5a00d7e5c70656a9efcdddb2164",
+      "size": 90462962
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "path": "out/m8f-run04/build1/sun50i-h616-blikvm-v4.dtb",
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "size": 20580
+    },
+    "ustreamer_6.65-1blikvm2_arm64.deb": {
+      "path": "out/ustreamer/artifacts/ustreamer_6.65-1blikvm2_arm64.deb",
+      "sha256": "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1",
+      "size": 164146
+    }
+  },
+  "linux_patch_sha256": {
+    "board/linux-7.2-bli-v4.patch": "5da10e3400d26d3a2e644944fadc66a091ee03bdb1b79ff272189725ffb951d9",
+    "board/linux-7.2-h616-emac1.patch": "010ab2959e7b3137b5f40d38a0fbdbe929059810403f51cc9db8d2f42ad8196a",
+    "board/linux-7.2-musb-rx-queue.patch": "35dea2c63b24164a25e4322e441f9e7a7ed03729de8916c07c3a990321e47fc6",
+    "build/linux-candidates/ms2131-bulk-eof-reject.patch": "da0a20e583117e7abe626d27f39a539188912c14d04fd0b60e61755a9a5720a3"
+  },
+  "linux_version": "7.2.3-blikvm-v4-m8f0-ms2131c2",
+  "mke2fs_config_sha256": "78bef96d8da6ea675ab2ea410d9818757d166ddd4adfb6584531af413092c518",
+  "partition_layout": {
+    "disk_id": "b14b0001",
+    "image_size": 1077936128,
+    "partitions": [
+      {
+        "bootable": true,
+        "end_sector_inclusive": 2105343,
+        "filesystem": "ext4",
+        "label": "blikvm-root",
+        "number": 1,
+        "partuuid": "b14b0001-01",
+        "sectors": 2097152,
+        "start_sector": 8192,
+        "type": "83",
+        "uuid": "b14b0001-2026-4001-8001-000000000001"
+      }
+    ],
+    "sector_size": 512,
+    "table": "dos"
+  },
+  "physical_sd_written": false,
+  "qualified_candidate": "8650c6684b5f8bc0e1b0e0c168ddb5902280484c",
+  "rootfs_inventory_sha256": "8114a10d17715f7d631540812a0ec3c401650a8a09c640b7cde58b30f9cfb29d",
+  "schema_version": 1,
+  "source_date_epoch": 1788652800,
+  "standalone_hardware_boot": "NOT_TESTED",
+  "tool_binary_sha256": {
+    "debugfs": "864e1d7b445e7b5bfc831da78330dbcafc590fa82b89ea9de60b7527f989954f",
+    "e2fsck": "2e51f521c676729920eaba694933d9d4048645f1a5789556fd0027e62d11ecc8",
+    "mke2fs": "e42e49656dfc308efeed86f9bfad7746fc22ad1d4a3b0d508b5dba7a4b9a904f",
+    "mkimage": "0f3e49cfe9513e972ef6996a99b89d92e0b38e3c3cc780d4f226d013e0dad103",
+    "sfdisk": "d6263baff8e73e27ddce3b66dfff12b7e309b928244520807266a14ff1a7c942",
+    "zstd": "fe50fd600cad89b775dc5b4b10bc8ff95e2d33ddb4f7632966464b1fbdab8598"
+  },
+  "tool_versions": {
+    "debugfs": "debugfs 1.47.2 (1-Jan-2025)\n\tUsing EXT2FS Library version 1.47.2",
+    "mke2fs": "mke2fs 1.47.2 (1-Jan-2025)\n\tUsing EXT2FS Library version 1.47.2",
+    "mkimage": "mkimage version 2025.10",
+    "python": "Python 3.14.4",
+    "sfdisk": "sfdisk from util-linux 2.41.3",
+    "zstd": "*** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***"
+  },
+  "ubuntu": {
+    "base_sha256": "5a1906794ced63a71a8119c3f211ef5f0bbe0a243001b4bbd41fdf80c5b219fd",
+    "snapshot": "20260906T000000Z",
+    "version": "26.04.1"
+  },
+  "vendor_bootloader": {
+    "bootloader_extents": [
+      {
+        "name": "vendor-spl.bin",
+        "offset": 8192,
+        "sha256": "962f74dcb00d86c873c820926d4a9d29fd4618822e3d7852b9b6c9b04996433f",
+        "size": 40960
+      },
+      {
+        "name": "vendor-fit.bin",
+        "offset": 49152,
+        "sha256": "cd80d3cc817ce59d018cf096da08327691a5f46ccc16c4b965c8804f61eb9bd6",
+        "size": 608135
+      }
+    ],
+    "fit_components": [
+      {
+        "name": "uboot",
+        "offset": 49336,
+        "sha256": "3030283c644f178526f4cc48f900a58cd2525eb52dd49e59c705370c58fcbc96",
+        "size": 535904
+      },
+      {
+        "name": "atf",
+        "offset": 585392,
+        "sha256": "9a03f67ad5bf43675d8dfb3d1dfb7bf10b5811213ae5db2921948df52b1d88eb",
+        "size": 49265
+      },
+      {
+        "name": "fdt-1",
+        "offset": 634936,
+        "sha256": "852668a9e5f8345f99fea0725828dba53db2c18369da7fd23552939220413914",
+        "size": 21064
+      }
+    ],
+    "fit_properties_hex": {
+      "/#address-cells": "00000001",
+      "/configurations/config-1/description": "73756e3530692d683631362d6d616e676f70692d6d636f726500",
+      "/configurations/config-1/fdt": "6664742d3100",
+      "/configurations/config-1/firmware": "61746600",
+      "/configurations/config-1/loadables": "75626f6f7400",
+      "/configurations/default": "636f6e6669672d3100",
+      "/description": "436f6e66696775726174696f6e20746f206c6f616420415446206265666f726520552d426f6f7400",
+      "/images/atf/arch": "61726d363400",
+      "/images/atf/compression": "6e6f6e6500",
+      "/images/atf/description": "41524d2054727573746564204669726d7761726500",
+      "/images/atf/entry": "40000000",
+      "/images/atf/load": "40000000",
+      "/images/atf/os": "61726d2d747275737465642d6669726d7761726500",
+      "/images/atf/type": "6669726d7761726500",
+      "/images/fdt-1/compression": "6e6f6e6500",
+      "/images/fdt-1/description": "73756e3530692d683631362d6d616e676f70692d6d636f726500",
+      "/images/fdt-1/type": "666c61745f647400",
+      "/images/uboot/arch": "61726d363400",
+      "/images/uboot/compression": "6e6f6e6500",
+      "/images/uboot/description": "552d426f6f74202836342d6269742900",
+      "/images/uboot/load": "4a000000",
+      "/images/uboot/os": "752d626f6f7400",
+      "/images/uboot/type": "7374616e64616c6f6e6500",
+      "/timestamp": "63f2d18b"
+    },
+    "independent_second_read_sha256": "97370d2c6ba452ebb445fe1b637703c09cfadc2eb2c131f4510145050b9e5669",
+    "logical_sector_size": 512,
+    "other_raw_bytes_zero": [
+      [
+        512,
+        8192
+      ],
+      [
+        657287,
+        1048576
+      ]
+    ],
+    "p2_root_contents": [
+      "lost+found"
+    ],
+    "p3_role": "vendor application/data /mnt; not used by boot script or accepted rootfs",
+    "partition_table_extent": {
+      "offset": 0,
+      "sha256": "82d060b1ae7bac3f076a45113c6720dcdbc5502f6c133927c6beca3b12f454ca",
+      "size": 512
+    },
+    "partitions": [
+      {
+        "end_sector_inclusive": 10649599,
+        "filesystem": "ext4",
+        "label": "armbian_root",
+        "number": 1,
+        "sectors": 10641408,
+        "size": 5448400896,
+        "start_sector": 8192,
+        "type": "83",
+        "uuid": "a990fd36-0857-4856-b0b8-5c84a7df516f"
+      },
+      {
+        "end_sector_inclusive": 8191,
+        "filesystem": "ext4",
+        "label": "",
+        "number": 2,
+        "sectors": 6144,
+        "size": 3145728,
+        "start_sector": 2048,
+        "type": "83",
+        "uuid": "c8699739-a271-4f56-93f8-077b643f9b7c"
+      },
+      {
+        "end_sector_inclusive": 125173759,
+        "filesystem": "ext4",
+        "label": "",
+        "number": 3,
+        "sectors": 114524160,
+        "size": 58636369920,
+        "start_sector": 10649600,
+        "type": "83",
+        "uuid": "6e3cffad-01fe-4c59-8635-af31a7e9b7f8"
+      }
+    ],
+    "physical_sector_size": 512,
+    "raw_unpartitioned_extents": [
+      {
+        "offset": 0,
+        "size": 1048576
+      }
+    ],
+    "source_cid": "1b534d454331533530307967bba182ef",
+    "source_device_by_id": "/dev/disk/by-id/mmc-EC1S5_0x307967bb",
+    "source_prefix_sha256": "97370d2c6ba452ebb445fe1b637703c09cfadc2eb2c131f4510145050b9e5669",
+    "source_prefix_size": 4194304,
+    "source_size": 64088965120,
+    "spl_checksum_valid": true,
+    "table_id": "6a80d8d9",
+    "table_type": "dos"
+  },
+  "vendor_layout_sha256": "7baadece61d52722d26bc6524bf53604018269305ae316c70cc19755396dad33"
+}

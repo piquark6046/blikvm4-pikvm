@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "images": [
+    {
+      "image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+      "bytes_scanned": 1077936128,
+      "enrollment_payloads_absent": true,
+      "SSHA512_records_absent": true
+    },
+    {
+      "image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+      "bytes_scanned": 1077936128,
+      "enrollment_payloads_absent": true,
+      "SSHA512_records_absent": true
+    },
+    {
+      "image_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+      "bytes_scanned": 1077936128,
+      "enrollment_payloads_absent": true,
+      "SSHA512_records_absent": true
+    }
+  ],
+  "enrollment_files_checked": 4,
+  "private_values_or_hashes_published": false
+}

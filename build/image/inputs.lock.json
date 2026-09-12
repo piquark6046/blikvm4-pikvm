@@ -1,0 +1,192 @@
+{
+  "acceptance_tag": "ubuntu-26.04.1-kvmd-core-soak-baseline",
+  "acceptance_commit": "4cf664ad3098aca378c65165a29765bffaafa72e",
+  "qualified_candidate": "8650c6684b5f8bc0e1b0e0c168ddb5902280484c",
+  "inputs": {
+    "Image": {
+      "path": "out/m8f-run04/build1/Image",
+      "size": 6914056,
+      "sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328"
+    },
+    "linux.config": {
+      "path": "out/m8f-run04/build1/linux.config",
+      "size": 67397,
+      "sha256": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b"
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "path": "out/m8f-run04/build1/sun50i-h616-blikvm-v4.dtb",
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2"
+    },
+    "rootfs.tar.gz": {
+      "path": "out/m8f-run04/build1/rootfs.tar.gz",
+      "size": 90462962,
+      "sha256": "f7273765444773d10c1ce4a0bd5d786dfecbf5a00d7e5c70656a9efcdddb2164"
+    },
+    "initramfs.cpio.gz": {
+      "path": "out/m8f-run04/build1/initramfs.cpio.gz",
+      "size": 90271306,
+      "sha256": "74a78b5b778d363d51ff89b4a7f3f9f8d68aab52c3e39dd903537f419f09c3c8"
+    },
+    "kvmd-web_4.213-1blikvm4_arm64.deb": {
+      "path": "out/kvmd-msd/artifacts/kvmd-web_4.213-1blikvm4_arm64.deb",
+      "size": 911982,
+      "sha256": "228d2f6dc1114b4516943249d25ddf1f10e4161c9cb53c6603b286b2b4e7f85e"
+    },
+    "ustreamer_6.65-1blikvm2_arm64.deb": {
+      "path": "out/ustreamer/artifacts/ustreamer_6.65-1blikvm2_arm64.deb",
+      "size": 164146,
+      "sha256": "bc8f5358a955d65fe30641a9a4012e2044c4765086093dccd509e7575038b0a1"
+    }
+  },
+  "contracts": {
+    "etc/kvmd/access.nft": {
+      "sha256": "9a77cc190bbb38ff15265905b3f31c258bd384a65decba324bc8dbc8293916b5",
+      "size": 861,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/meta.yaml": {
+      "sha256": "303c24b50743c05644d37c6739cae8d27f9e926c05169ecc59ea9756aa9d61c2",
+      "size": 28,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/nginx/loc-nobuffering.conf": {
+      "sha256": "28482c9911542cd1256f931d00b132f4fcb0255cb5c58c72eec37aa14f43360d",
+      "size": 105,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/nginx/loc-nocache.conf": {
+      "sha256": "e23203fafa88ec7ea933d58e029c37809577fea137fce8c4a3b30a0cf8b8f19a",
+      "size": 157,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/nginx/loc-proxy.conf": {
+      "sha256": "055af8c41789e395923f90b4f79a0f749b7149f66138f6426b9c7c46d67b58f5",
+      "size": 283,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/nginx/loc-websocket.conf": {
+      "sha256": "6897504bc19f79e41979fa612a9f69bfd17d81e29c7607f6b16b430583ec1667",
+      "size": 176,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/nginx/nginx.conf": {
+      "sha256": "3a68f35b163547602351d1a37f4a7e86c86872ce3f5302f0a0cfa3487a2bf462",
+      "size": 2602,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/override.d/80-web-auth.yaml": {
+      "sha256": "0e0ad34670b5125348f5bb0c03ccde4ae81ba018022290a31d94a5addbb87d8e",
+      "size": 335,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/override.d/90-hid.yaml": {
+      "sha256": "8c0e402ec7d7acf4c857de08cc5edad69984f89bc39d192dbb7534b158b1fdd2",
+      "size": 403,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/override.d/95-msd.yaml": {
+      "sha256": "4ee52fb3a9c2739adfe43536ed75f463f638c5feb9c44a95f4ca8d6d0df7f0c6",
+      "size": 223,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/override.yaml": {
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "size": 3,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/kvmd/web.css": {
+      "sha256": "fc54596aacfd34d918a26e3b0a3f22b64dd7da0391c1cc7149e6b4a57dab1235",
+      "size": 43,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/systemd/journald.conf": {
+      "sha256": "995877ef4f574eb64057eb1d64c5c4e5badfa62a9fa21a686a37c51aa9f67857",
+      "size": 1435,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "etc/systemd/journald.conf.d/zz-blikvm-bounded.conf": {
+      "sha256": "8b9cb035d9d2bceb9301a6ae178455b27a89ee0aa3bee81efcbbf6030bb6b9bc",
+      "size": 99,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "usr/bin/hid-keyboard": {
+      "sha256": "078502019c47af960e65bdd7a832034ff2156793fa529b225c73a9b33e125dfc",
+      "size": 2940,
+      "uid": 0,
+      "gid": 0,
+      "mode": 493
+    },
+    "usr/bin/ustreamer": {
+      "sha256": "e5a489c828299bc28de71789414312510198c6d7da63b2b18c300bef6313e71b",
+      "size": 460904,
+      "uid": 0,
+      "gid": 0,
+      "mode": 493
+    },
+    "usr/lib/kvmd-msd/media-helper": {
+      "sha256": "81c79056878acea1d7bcae09bbad84ea380122166f2eabf6c95bb673031f4e17",
+      "size": 6833,
+      "uid": 0,
+      "gid": 0,
+      "mode": 493
+    },
+    "usr/share/g4-storage.img": {
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    },
+    "usr/share/kvmd-msd/images/g4-storage.img": {
+      "sha256": "14845cb5d5d773bc3b7411d2e939b948abc9a7fcc04229159f32a355777ec45b",
+      "size": 8388608,
+      "uid": 0,
+      "gid": 0,
+      "mode": 292
+    },
+    "var/lib/dpkg/status": {
+      "sha256": "5b29ca6cd545dbc91bab379aa88619bd43d5f91608f3d59a30e659a7e80bf66a",
+      "size": 237711,
+      "uid": 0,
+      "gid": 0,
+      "mode": 420
+    }
+  },
+  "linux_patch_sha256": {
+    "board/linux-7.2-bli-v4.patch": "5da10e3400d26d3a2e644944fadc66a091ee03bdb1b79ff272189725ffb951d9",
+    "board/linux-7.2-musb-rx-queue.patch": "35dea2c63b24164a25e4322e441f9e7a7ed03729de8916c07c3a990321e47fc6",
+    "board/linux-7.2-h616-emac1.patch": "010ab2959e7b3137b5f40d38a0fbdbe929059810403f51cc9db8d2f42ad8196a",
+    "build/linux-candidates/ms2131-bulk-eof-reject.patch": "da0a20e583117e7abe626d27f39a539188912c14d04fd0b60e61755a9a5720a3"
+  },
+  "source_date_epoch": 1788652800,
+  "vendor_layout_sha256": "7baadece61d52722d26bc6524bf53604018269305ae316c70cc19755396dad33"
+}

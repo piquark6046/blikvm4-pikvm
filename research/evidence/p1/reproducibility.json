@@ -1,0 +1,66 @@
+{
+  "result": "passed",
+  "independent_clean_directories": [
+    "out/p1/final-A",
+    "out/p1/final-B"
+  ],
+  "comparisons": {
+    "blikvm-v4-pikvm.img": {
+      "A_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+      "B_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+      "byte_identical": true,
+      "size": 1077936128
+    },
+    "blikvm-v4-pikvm.img.zst": {
+      "A_sha256": "80da597e67074fbd55dd4f1ac41f6af63d268e06932c8e59c92005f45bbdf21e",
+      "B_sha256": "80da597e67074fbd55dd4f1ac41f6af63d268e06932c8e59c92005f45bbdf21e",
+      "byte_identical": true,
+      "size": 69962099
+    },
+    "SHA256SUMS": {
+      "A_sha256": "8ef851da14dc5b6be47aa1626a32ce1679531af799fadd39b26f1554a1b030b0",
+      "B_sha256": "8ef851da14dc5b6be47aa1626a32ce1679531af799fadd39b26f1554a1b030b0",
+      "byte_identical": true,
+      "size": 524
+    },
+    "manifest.json": {
+      "A_sha256": "7796be64054e30e0407b2c539b68731b246ae7715953f07ff331977c928559c8",
+      "B_sha256": "7796be64054e30e0407b2c539b68731b246ae7715953f07ff331977c928559c8",
+      "byte_identical": true,
+      "size": 14471
+    },
+    "partition-layout.json": {
+      "A_sha256": "1eadb87a8c33f50a9e860f66c44b050d33c0f9f37b70c3eafedf986fcc3a17dd",
+      "B_sha256": "1eadb87a8c33f50a9e860f66c44b050d33c0f9f37b70c3eafedf986fcc3a17dd",
+      "byte_identical": true,
+      "size": 431
+    },
+    "bootloader-layout.json": {
+      "A_sha256": "0de3eb02ba436a0f62aff0c4cb3c93cde225cc91eefef7ecd49b1d38924499d7",
+      "B_sha256": "0de3eb02ba436a0f62aff0c4cb3c93cde225cc91eefef7ecd49b1d38924499d7",
+      "byte_identical": true,
+      "size": 4080
+    },
+    "filesystem-manifest.json": {
+      "A_sha256": "8114a10d17715f7d631540812a0ec3c401650a8a09c640b7cde58b30f9cfb29d",
+      "B_sha256": "8114a10d17715f7d631540812a0ec3c401650a8a09c640b7cde58b30f9cfb29d",
+      "byte_identical": true,
+      "size": 3550803
+    },
+    "validation.json": {
+      "A_sha256": "0510221103bcf690122e86cffbf1da36e310c07eeada0d66a7b8f5c5fcda2516",
+      "B_sha256": "0510221103bcf690122e86cffbf1da36e310c07eeada0d66a7b8f5c5fcda2516",
+      "byte_identical": true,
+      "size": 1865
+    },
+    "rootfs-delta.json": {
+      "A_sha256": "828df8b6a77a11be315a26adcd142109ff27b1a6eff1580afc1bcf97e66f89a1",
+      "B_sha256": "828df8b6a77a11be315a26adcd142109ff27b1a6eff1580afc1bcf97e66f89a1",
+      "byte_identical": true,
+      "size": 40386
+    }
+  },
+  "differing_byte_ranges": [],
+  "physical_sd_written": false,
+  "fully_materialized_all_three_images": true
+}

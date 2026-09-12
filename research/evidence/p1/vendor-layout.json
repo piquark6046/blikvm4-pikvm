@@ -1,0 +1,133 @@
+{
+  "source_device_by_id": "/dev/disk/by-id/mmc-EC1S5_0x307967bb",
+  "source_cid": "1b534d454331533530307967bba182ef",
+  "source_size": 64088965120,
+  "logical_sector_size": 512,
+  "physical_sector_size": 512,
+  "source_prefix_size": 4194304,
+  "source_prefix_sha256": "97370d2c6ba452ebb445fe1b637703c09cfadc2eb2c131f4510145050b9e5669",
+  "independent_second_read_sha256": "97370d2c6ba452ebb445fe1b637703c09cfadc2eb2c131f4510145050b9e5669",
+  "table_type": "dos",
+  "table_id": "6a80d8d9",
+  "partition_table_extent": {
+    "offset": 0,
+    "size": 512,
+    "sha256": "82d060b1ae7bac3f076a45113c6720dcdbc5502f6c133927c6beca3b12f454ca"
+  },
+  "partitions": [
+    {
+      "number": 1,
+      "start_sector": 8192,
+      "end_sector_inclusive": 10649599,
+      "sectors": 10641408,
+      "size": 5448400896,
+      "type": "83",
+      "filesystem": "ext4",
+      "uuid": "a990fd36-0857-4856-b0b8-5c84a7df516f",
+      "label": "armbian_root"
+    },
+    {
+      "number": 2,
+      "start_sector": 2048,
+      "end_sector_inclusive": 8191,
+      "sectors": 6144,
+      "size": 3145728,
+      "type": "83",
+      "filesystem": "ext4",
+      "uuid": "c8699739-a271-4f56-93f8-077b643f9b7c",
+      "label": ""
+    },
+    {
+      "number": 3,
+      "start_sector": 10649600,
+      "end_sector_inclusive": 125173759,
+      "sectors": 114524160,
+      "size": 58636369920,
+      "type": "83",
+      "filesystem": "ext4",
+      "uuid": "6e3cffad-01fe-4c59-8635-af31a7e9b7f8",
+      "label": ""
+    }
+  ],
+  "raw_unpartitioned_extents": [
+    {
+      "offset": 0,
+      "size": 1048576
+    }
+  ],
+  "bootloader_extents": [
+    {
+      "name": "vendor-spl.bin",
+      "offset": 8192,
+      "size": 40960,
+      "sha256": "962f74dcb00d86c873c820926d4a9d29fd4618822e3d7852b9b6c9b04996433f"
+    },
+    {
+      "name": "vendor-fit.bin",
+      "offset": 49152,
+      "size": 608135,
+      "sha256": "cd80d3cc817ce59d018cf096da08327691a5f46ccc16c4b965c8804f61eb9bd6"
+    }
+  ],
+  "fit_components": [
+    {
+      "name": "uboot",
+      "offset": 49336,
+      "size": 535904,
+      "sha256": "3030283c644f178526f4cc48f900a58cd2525eb52dd49e59c705370c58fcbc96"
+    },
+    {
+      "name": "atf",
+      "offset": 585392,
+      "size": 49265,
+      "sha256": "9a03f67ad5bf43675d8dfb3d1dfb7bf10b5811213ae5db2921948df52b1d88eb"
+    },
+    {
+      "name": "fdt-1",
+      "offset": 634936,
+      "size": 21064,
+      "sha256": "852668a9e5f8345f99fea0725828dba53db2c18369da7fd23552939220413914"
+    }
+  ],
+  "fit_properties_hex": {
+    "/timestamp": "63f2d18b",
+    "/description": "436f6e66696775726174696f6e20746f206c6f616420415446206265666f726520552d426f6f7400",
+    "/#address-cells": "00000001",
+    "/images/uboot/description": "552d426f6f74202836342d6269742900",
+    "/images/uboot/type": "7374616e64616c6f6e6500",
+    "/images/uboot/os": "752d626f6f7400",
+    "/images/uboot/arch": "61726d363400",
+    "/images/uboot/compression": "6e6f6e6500",
+    "/images/uboot/load": "4a000000",
+    "/images/atf/description": "41524d2054727573746564204669726d7761726500",
+    "/images/atf/type": "6669726d7761726500",
+    "/images/atf/os": "61726d2d747275737465642d6669726d7761726500",
+    "/images/atf/arch": "61726d363400",
+    "/images/atf/compression": "6e6f6e6500",
+    "/images/atf/load": "40000000",
+    "/images/atf/entry": "40000000",
+    "/images/fdt-1/description": "73756e3530692d683631362d6d616e676f70692d6d636f726500",
+    "/images/fdt-1/type": "666c61745f647400",
+    "/images/fdt-1/compression": "6e6f6e6500",
+    "/configurations/default": "636f6e6669672d3100",
+    "/configurations/config-1/description": "73756e3530692d683631362d6d616e676f70692d6d636f726500",
+    "/configurations/config-1/firmware": "61746600",
+    "/configurations/config-1/loadables": "75626f6f7400",
+    "/configurations/config-1/fdt": "6664742d3100"
+  },
+  "spl_checksum_valid": true,
+  "other_raw_bytes_zero": [
+    [
+      512,
+      8192
+    ],
+    [
+      657287,
+      1048576
+    ]
+  ],
+  "p2_root_contents": [
+    "lost+found"
+  ],
+  "p3_role": "vendor application/data /mnt; not used by boot script or accepted rootfs"
+}

@@ -1,0 +1,34 @@
+FIT description: Configuration to load ATF before U-Boot
+Created:         Mon Feb 20 01:48:59 2023
+ Image 0 (uboot)
+  Description:  U-Boot (64-bit)
+  Created:      Mon Feb 20 01:48:59 2023
+  Type:         Standalone Program
+  Compression:  uncompressed
+  Data Size:    535904 Bytes = 523.34 KiB = 0.51 MiB
+  Architecture: AArch64
+  Load Address: 0x4a000000
+  Entry Point:  unavailable
+ Image 1 (atf)
+  Description:  ARM Trusted Firmware
+  Created:      Mon Feb 20 01:48:59 2023
+  Type:         Firmware
+  Compression:  uncompressed
+  Data Size:    49265 Bytes = 48.11 KiB = 0.05 MiB
+  Architecture: AArch64
+  OS:           ARM Trusted Firmware
+  Load Address: 0x40000000
+ Image 2 (fdt-1)
+  Description:  sun50i-h616-mangopi-mcore
+  Created:      Mon Feb 20 01:48:59 2023
+  Type:         Flat Device Tree
+  Compression:  uncompressed
+  Data Size:    21064 Bytes = 20.57 KiB = 0.02 MiB
+  Architecture: Unknown Architecture
+ Default Configuration: 'config-1'
+ Configuration 0 (config-1)
+  Description:  sun50i-h616-mangopi-mcore
+  Kernel:       unavailable
+  Firmware:     atf
+  FDT:          fdt-1
+  Loadables:    uboot

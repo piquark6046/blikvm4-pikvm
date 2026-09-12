@@ -1,0 +1,20 @@
+{
+  "disk_id": "b14b0001",
+  "image_size": 1077936128,
+  "partitions": [
+    {
+      "bootable": true,
+      "end_sector_inclusive": 2105343,
+      "filesystem": "ext4",
+      "label": "blikvm-root",
+      "number": 1,
+      "partuuid": "b14b0001-01",
+      "sectors": 2097152,
+      "start_sector": 8192,
+      "type": "83",
+      "uuid": "b14b0001-2026-4001-8001-000000000001"
+    }
+  ],
+  "sector_size": 512,
+  "table": "dos"
+}

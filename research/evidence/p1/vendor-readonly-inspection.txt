@@ -1,0 +1,28 @@
+7.2.3-blikvm-v4-m8f0-ms2131c2
+lrwxrwxrwx 1 root root 13 Jul 27 20:44 /dev/disk/by-id/mmc-EC1S5_0x307967bb -> ../../mmcblk0
+lrwxrwxrwx 1 root root 15 Jul 27 20:44 [REDACTED:entropy:42] -> ../../mmcblk0p1
+lrwxrwxrwx 1 root root 15 Jul 27 20:44 [REDACTED:entropy:42] -> ../../mmcblk0p2
+lrwxrwxrwx 1 root root 15 Jul 27 20:44 [REDACTED:entropy:42] -> ../../mmcblk0p3
+NAME        PATH                  SIZE RO TYPE FSTYPE UUID                                 LABEL        PARTUUID                                START LOG-SEC PHY-SEC MOUNTPOINTS
+mmcblk0     /dev/mmcblk0   64088965120  0 disk                                                                                                            512     512
+├─mmcblk0p1 /dev/mmcblk0p1  5448400896  0 part ext4   a990fd36-0857-4856-b0b8-5c84a7df516f armbian_root 6a80d8d9-01                              8192     512     512
+├─mmcblk0p2 /dev/mmcblk0p2     3145728  0 part ext4   c8699739-a271-4f56-93f8-077b643f9b7c              6a80d8d9-02                              2048     512     512
+└─mmcblk0p3 /dev/mmcblk0p3 58636369920  0 part ext4   6e3cffad-01fe-4c59-8635-af31a7e9b7f8              6a80d8d9-03                          10649600     512     512
+/dev/mmcblk0: PTUUID="6a80d8d9" PTTYPE="dos"
+/dev/mmcblk0p1: LABEL="armbian_root" UUID="a990fd36-0857-4856-b0b8-5c84a7df516f" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="6a80d8d9-01"
+/dev/mmcblk0p2: UUID="c8699739-a271-4f56-93f8-077b643f9b7c" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="6a80d8d9-02"
+/dev/mmcblk0p3: UUID="6e3cffad-01fe-4c59-8635-af31a7e9b7f8" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="6a80d8d9-03"
+1b534d454331533530307967bba182ef
+rootfs / rootfs rw,size=465800k,nr_inodes=116450 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+devtmpfs /dev devtmpfs rw,nosuid,size=465800k,nr_inodes=116450,mode=755 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,size=204044k,nr_inodes=819200,mode=755 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot,memory_hugetlb_accounting 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,size=510104k,nr_inodes=1048576 0 0
+none /run/credentials/systemd-journald.service tmpfs ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+none /run/credentials/systemd-networkd.service tmpfs ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap 0 0
+none /run/credentials/serial-getty@ttyS0.service tmpfs ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,noswap 0 0
