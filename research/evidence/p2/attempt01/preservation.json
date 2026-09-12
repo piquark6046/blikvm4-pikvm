@@ -1,0 +1,59 @@
+{
+  "result": "FAILED",
+  "attempt": "P2 attempt 01",
+  "public_base_sha256": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127",
+  "enrolled_image_sha256": "befbede0b28ca46ec396a6e61d60ac31d99d5c9c6b3f802e213babaa926bcd05",
+  "private_evidence": [
+    {
+      "name": "flash01/enrollment-receipt.json",
+      "size": 1707,
+      "sha256": "fbb7aea032f1daae15379a7d262617dc8bc16f611e5636dba44ea160831a15af"
+    },
+    {
+      "name": "attempt01-preserved-20260912.tar.gz",
+      "size": 90229578,
+      "sha256": "8159c7c1c55f4f4573dc484fef0089a5efcaee278882cad606b0930dc7757256"
+    },
+    {
+      "name": "flash01/flash-evidence.tar.gz",
+      "size": 4372,
+      "sha256": "631f14b16a010b55694867ba0d3efabd275f3262f80c09174e01d592b6d44dd7"
+    },
+    {
+      "name": "boot01/boot01-interrupted.tar.gz",
+      "size": 1528,
+      "sha256": "09d98586bb9b478250a1f583aabb3ee29409cd63a5c941f1b648a67210e14fc2"
+    },
+    {
+      "name": "boot02/qualification-evidence01.tar.gz",
+      "size": 911546,
+      "sha256": "4a08a62dee72d00dc2d74daf9b50a154b9c1dccfd072f14ab2d24a6b440c5627"
+    },
+    {
+      "name": "boot02/offline-boot-diagnosis.stderr",
+      "size": 63,
+      "sha256": "f318ec054d0fd5149b12479a8c8d05ee343b25d05a1b1c991722153647ee4192"
+    },
+    {
+      "name": "boot02/reconnected-service-probe.json",
+      "size": 84,
+      "sha256": "8195ca6a0fafe27102b80bca9b32048f8da8fc4ea8d464d659bbfdc4549f8f10"
+    },
+    {
+      "name": "boot02/offline-reconnect-network.txt",
+      "size": 199,
+      "sha256": "9e359d39356d32298431c4a7ee7cf0d2fa1778fe430774491e8170e2c33d7c15"
+    },
+    {
+      "name": "boot02/cold-offline-uart.raw",
+      "size": 13083,
+      "sha256": "b836fb11921f1845189469d129e52eca9de85cc0cf1a00de7ff7a8a99bebeaa0"
+    },
+    {
+      "name": "boot02/cold-offline-events-final.jsonl",
+      "size": 267817,
+      "sha256": "affced00b34ee3bcb933191c30987b2bb1fb0ce3e08e32251d9496f895f5e0e8"
+    }
+  ],
+  "recovery_restored": "User reports powered off, untouched recovery SD restored, then powered on; no current target contact."
+}
