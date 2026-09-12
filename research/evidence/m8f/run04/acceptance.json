@@ -1,0 +1,82 @@
+{
+  "result": "accepted",
+  "record": "CORE KVM SOAK PASSED; ATX DEFERRED",
+  "run": "M8-F Run 04",
+  "candidate_commit": "8650c6684b5f8bc0e1b0e0c168ddb5902280484c",
+  "start_utc": "2026-09-11T08:10:19.482586+00:00",
+  "end_utc": "2026-09-12T08:10:58.787199+00:00",
+  "continuous_seconds": 86439.30461479601,
+  "original_automated_gates": 27,
+  "all_original_automated_gates_passed": true,
+  "strict_JPEG_parser_unchanged": true,
+  "strict_worker_frames": 2583116,
+  "malformed_escaping_payloads": 0,
+  "minimum_unaffected_120s_fps": 29.65,
+  "minimum_recovery_120s_fps": 29.8,
+  "host_verified_HID_MSD_cycles": 272,
+  "whole_image_O_DIRECT_reads": 1635,
+  "resource_samples": 1443,
+  "journal_max_allocated_bytes": 16777216,
+  "automatic_journal_file_removals": 10,
+  "nginx_regular_logs_empty": true,
+  "var_log_allocated_bytes_min_max": [
+    4096,
+    4096
+  ],
+  "terminal_Shmem_bounded": true,
+  "unexplained_continuing_system_memory_decline": false,
+  "full_journal_review_passed": true,
+  "manual_log_reclamation": false,
+  "production_kernel": true,
+  "diagnostic_kernel_or_taildiag": false,
+  "events": [
+    {
+      "event": "nginx",
+      "offset_hours": 4.000056771802499,
+      "action_seconds": 2.878513404983096,
+      "recovery_bound_seconds": 60
+    },
+    {
+      "event": "kvmd",
+      "offset_hours": 8.000063192060551,
+      "action_seconds": 4.967826773005072,
+      "recovery_bound_seconds": 60
+    },
+    {
+      "event": "logout",
+      "offset_hours": 12.000093328218888,
+      "action_seconds": 1.6055023729859386,
+      "recovery_bound_seconds": 60
+    },
+    {
+      "event": "hdmi",
+      "offset_hours": 16.00002311070833,
+      "action_seconds": 15.411017655016622,
+      "recovery_bound_seconds": 60
+    },
+    {
+      "event": "nginx",
+      "offset_hours": 20.00007341829277,
+      "action_seconds": 2.827327176986728,
+      "recovery_bound_seconds": 60
+    }
+  ],
+  "archive_sha256": "0119824b08eaa2c939a38df0d6c0a7bdf7d5a5fbea2a10d2a3be616cced0d7f9",
+  "archive_bytes": 237350349,
+  "archive_verified_files": 12398,
+  "journal_candidate_mapping_sha256": "40378eae220ca0a1ebde4d9f1dc5f74ea513f8d5dbf7cf1f71c33647f5bb8850",
+  "run02": "PERMANENTLY_FAILED",
+  "run03": "COMPLETED_BUT_UNACCEPTED_HISTORICAL_EVIDENCE",
+  "M8F1": "SUPPLEMENTAL_DIAGNOSIS_ONLY",
+  "M8F2": "SUPPLEMENTAL_BOUNDED_LOGGING_QUALIFICATION_ONLY",
+  "M6_ATX": "DEFERRED",
+  "writable_MSD": "DEFERRED",
+  "P1": "UNLOCKED",
+  "physical_SD_write": "NOT_PERFORMED",
+  "review_limitations": [
+    "Finite 24-hour qualification, not proof of permanent allocator boundedness.",
+    "Minute resource sampling does not exclude unsampled transient peaks.",
+    "Production PSS interfaces are unavailable and are not required.",
+    "Pre-run host journal history is retained and not retroactively accepted."
+  ]
+}

@@ -159,27 +159,23 @@ image-production preparation slice is proposed only.
 
 ### M8-F — 24-hour core KVM soak
 
-M8-F2 targeted retention now selects **Outcome A — LOG GROWTH EXPLAINED AND BOUNDED**. The reproducible logging-only candidate passed its two-hour retention test; M8-F remains OPEN pending a fresh full 24-hour qualification. No new full soak, baseline tag or P1 work has started. See [M8-F2 report](m8f2-bounded-logging.md).
+**Current: PASSED — Run 04 independently accepted on 2026-09-12.**
 
-**Current: OPEN — M8-F2 retention Outcome A; fresh full qualification required.**
-Run 02 remains permanently **FAILED**. Run 03 retains its completed 24-hour
-functional evidence, 27 passing automated gates and passing journal review,
-but is not accepted. The 2026-09-11 independent raw-sample review confirms
-main kvmd's private/anonymous terminal plateau and restart release. System
-memory continues declining: during the final 75-minute plateau, Shmem and
-RAM-backed log allocations each grow 6.414 MiB while service Pss_Anon stays
-constant. This is not labeled a continuing kvmd leak. M8-F1 is supplemental
-diagnostic-kernel evidence with **zero qualification duration**. Investigate
-logging retention/rotation; do not rerun the 24-hour soak or begin P1.
-See the [new independent review](evidence/m8f1/independent-review-01/README.md)
-and the unchanged [historical Outcome-B review](evidence/m8f0/soak03/acceptance-review/README.md).
-Preserve the frozen
-M8-E core stack through one continuous 24-hour qualification with two
-authenticated video clients, a real Web UI, moving HDMI, real host HID/MSD
-checks, bounded lifecycle events and resource-growth review. See
-[M8-F procedure and status](m8f-core-soak.md). M6 GPIO/ATX remains **DEFERRED**.
-P1 standalone image assembly begins only after M8-F acceptance; physical
-flashing remains a separate P2 qualification.
+**CORE KVM SOAK PASSED; ATX DEFERRED**
+
+Production candidate `8650c66` completed a fresh 24-hour qualification. All 27
+original automated gates pass independent VM replay, with zero malformed JPEG
+escapes, all five bounded lifecycle recoveries, 272 host HID/MSD cycles and
+1,635 exact O_DIRECT reads. The bounded logging policy passes 1,443 raw samples:
+journal storage <=16 MiB with 10 automatic removals, empty nginx logs and fixed
+4 KiB /var/log. Terminal memory and complete journals pass independent review.
+See [Run 04 evidence](evidence/m8f/run04/README.md) and
+[M8-F report](m8f-core-soak.md).
+
+Baseline: `ubuntu-26.04.1-kvmd-core-soak-baseline`.
+Run 02 remains permanently FAILED; Run 03 remains completed-but-unaccepted
+historical evidence. M8-F1/M8-F2 remain supplemental. P1 is unlocked; M6/ATX and
+writable MSD remain DEFERRED. No physical SD write was performed.
 
 ## M9 — Optional hardware
 

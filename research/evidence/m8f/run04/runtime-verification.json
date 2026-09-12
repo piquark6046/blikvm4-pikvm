@@ -1,0 +1,54 @@
+{
+  "result": "passed",
+  "candidate_commit": "8650c6684b5f8bc0e1b0e0c168ddb5902280484c",
+  "artifacts": {
+    "Image": {
+      "size": 6914056,
+      "sha256": "e5022886bc6c839e82f6d967fca1fcdfca8c341c05044f94b59d001e7fe68328",
+      "matches_qualified_production": true
+    },
+    "linux.config": {
+      "size": 67397,
+      "sha256": "1bf08e1a66c5894b744e8b5b8bc7b83d6f6f8a03489dfc463547de093a6f533b",
+      "matches_qualified_production": true
+    },
+    "sun50i-h616-blikvm-v4.dtb": {
+      "size": 20580,
+      "sha256": "3dadd0efd2c9ded33d852446a32e9cd2de2a6989c1f01798c1ab3c6f49887ee2",
+      "matches_qualified_production": true
+    },
+    "initramfs.cpio.gz": {
+      "size": 90274837,
+      "sha256": "8f727c932c4704e9a73de29cb855e90d1033c67285c963da2deb16c663913eb2",
+      "enrolled": true
+    }
+  },
+  "frozen_workers": [
+    "stream-client.py",
+    "soak-video.py",
+    "soak-browser.mjs",
+    "hid-api-hil.py",
+    "msd-hil.py",
+    "msd-workload.py",
+    "soak-resources.py",
+    "logging-resources.py",
+    "logging-policy-audit.py",
+    "verify-core-soak.py"
+  ],
+  "runtime_contracts": [
+    "kvmd-unit",
+    "nginx-unit",
+    "auth-config",
+    "kvmd-effective",
+    "gadget-owner-unit",
+    "firewall-config",
+    "firewall-unit",
+    "blikvm-access-unit",
+    "nginx-effective"
+  ],
+  "strict_parser_unchanged": true,
+  "malformed_payload_files": 0,
+  "production_kernel_diagnostics_disabled": true,
+  "ustreamer_matches_accepted_binary": true,
+  "start_end_helper_privilege_checks_passed": true
+}

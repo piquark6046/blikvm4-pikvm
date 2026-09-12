@@ -1,22 +1,25 @@
 # M8-F — 24-hour core KVM integration soak
 
-M8-F2 targeted retention now selects **Outcome A — LOG GROWTH EXPLAINED AND BOUNDED**. The reproducible logging-only candidate passed its two-hour retention test; M8-F remains OPEN pending a fresh full 24-hour qualification. No new full soak, baseline tag or P1 work has started. See [M8-F2 report](m8f2-bounded-logging.md).
+**Status: PASSED — M8-F Run 04 independently accepted on 2026-09-12.**
 
-**Status: M8-F OPEN — M8-F2 retention Outcome A; fresh full qualification required.**
+**CORE KVM SOAK PASSED; ATX DEFERRED**
 
-The 2026-09-11 [independent memory review](evidence/m8f1/independent-review-01/README.md)
-finds a terminal main-kvmd private/anonymous plateau, but continuing RAM-backed
-log growth. During the final 75-minute plateau, Shmem and `/var/log` each grow
-6.414 MiB while service Pss_Anon stays constant. Run 03 remains pending
-acceptance; the diagnostic observation contributes zero qualification time.
-P1 stays gated. The prior Outcome-B review remains unchanged historical evidence.
-The next proposed diagnostic concerns logging retention/rotation, not another
-soak or a presumed Python leak. This review made no target contact or change.
+The exact production candidate `8650c66`, pushed before its reproducible rebuild,
+completed 86,439.305 continuous seconds. Independent replay passes all 27 original
+gates: zero malformed JPEG escapes in 2,583,116 strict-worker frames, minimum
+29.65-fps unaffected windows, all five bounded lifecycle recoveries, 272
+host-verified HID/MSD cycles and 1,635 exact O_DIRECT full-image reads.
+The 1,443 raw resource records and complete host/target journals were reviewed.
+Journal allocation stays at or below 16 MiB with 10 automatic removals; nginx
+logs remain empty and /var/log stays at 4 KiB. Terminal Shmem and process memory
+reach a bounded working range with no unexplained continuing system-memory loss.
+See [Run 04 acceptance and limitations](evidence/m8f/run04/README.md) and the
+[machine-readable decision](evidence/m8f/run04/acceptance.json).
 
-Independent acceptance review completed on 2026-09-10. Run 03 retains its
-completed functional soak and passing journal evidence, but is not accepted.
-Run 02 remains permanently **FAILED** at 14h54m; its record below is unchanged.
-P1 remains gated. No further soak or target change was performed for this review.
+Run 02 remains permanently FAILED. Run 03 remains completed but unaccepted
+historical evidence. M8-F1 and M8-F2 remain supplemental diagnostic/qualification
+evidence; none contributes time to Run 04. P1 is now unlocked. M6/ATX and writable
+MSD remain deferred; no physical SD write has occurred.
 
 Frozen parent: `ubuntu-26.04.1-kvmd-msd-baseline`, commit
 `6b2e4217df9d8e66950f960e1a6de6e5c4629e4d`. M6 GPIO/ATX remains **DEFERRED**.

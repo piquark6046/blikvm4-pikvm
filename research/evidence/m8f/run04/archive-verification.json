@@ -1,0 +1,12 @@
+{
+  "result": "passed",
+  "archive": {
+    "sha256": "0119824b08eaa2c939a38df0d6c0a7bdf7d5a5fbea2a10d2a3be616cced0d7f9",
+    "bytes": 237350349,
+    "files": 12398,
+    "final_acceptance": false,
+    "independent_review_required": true
+  },
+  "verified_files": 12398,
+  "symlinks_not_followed_or_extracted": true
+}

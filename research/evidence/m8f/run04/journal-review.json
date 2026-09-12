@@ -1,0 +1,41 @@
+{
+  "result": "passed",
+  "journals": {
+    "target-journal-live.log": {
+      "lines": 139325,
+      "bytes": 32265835,
+      "classifications": {
+        "benign keyword match in normal startup message": 5,
+        "known boot preset warning for masked/generated unit": 6,
+        "known unavailable optional tmp usrquota at boot": 1,
+        "known boot BPF firewall capability warning; nftables policy audited separately": 1,
+        "normal preflight SSH session closure": 12,
+        "normal sampler/workload SSH session closure": 4528,
+        "expected HID/MSD negative/reset API cycle": 1088,
+        "expected auth negative test": 272,
+        "scheduled kvmd restart bounded API unavailability": 11,
+        "normal streamer handler installation after scheduled kvmd restart": 1,
+        "normal post-run final inventory SSH closure": 2,
+        "expected client teardown after controller completed": 1
+      }
+    },
+    "host-journal-live.log": {
+      "lines": 77294,
+      "bytes": 8143194,
+      "classifications": {
+        "pre-run host history retained; not qualification failure": 4365,
+        "known bridge Internet NTS availability; isolated Ethernet workload unaffected": 125,
+        "bridge administrative SSH closure/accounting warning": 12,
+        "expected MSD ejected medium SCSI NOT READY": 272,
+        "expected MSD ejected medium read rejection": 272,
+        "known bridge Wi-Fi roaming/control condition; isolated Ethernet workload unaffected": 583,
+        "bridge background package network-wait timeout; qualification Ethernet continuity passed": 6,
+        "benign background service description keyword match": 2
+      }
+    }
+  },
+  "clock_mapping": "nearest sampled target/bridge monotonic pair; target wall clock not used",
+  "unknown": [],
+  "unexplained_persistent_failures": 0,
+  "historical_host_messages_are_not_reclassified_as_passes": true
+}
