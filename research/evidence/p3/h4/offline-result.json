@@ -1,0 +1,128 @@
+{
+  "result": "H4_OFFLINE_BLOCKED_CONFIRMED",
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "target_contacted": false,
+  "archive_sha256": {
+    "offline-diagnostics.tar.gz": "284c44c1e62f526b1bf36db42940a0356c55f38c2805877634b8b1afa8da99c0",
+    "h3-crashpad-private.tar.gz": "129c99656aa0c39346c2b77e4591e787136a2b987f40c85b9fd53e90b457943e"
+  },
+  "indexed_files_verified": 76,
+  "runtime_entries_each": 1235,
+  "common_regular_files_content_equal": 1147,
+  "suid_stripping_hypothesis": "DISPROVEN_FOR_FROZEN_SOURCE_AND_H3",
+  "sandbox_helper": {
+    "source": {
+      "uid": 1000,
+      "gid": 1000,
+      "st_mode": 33261,
+      "mode_octal": "0o100755",
+      "type": 32768,
+      "nlink": 1,
+      "symlink_target": null,
+      "xattrs": {},
+      "sha256": "206aa30eeb399b1d10fdf345106b315be01deded548243eb7263c8af2773ab88",
+      "getcap": ""
+    },
+    "h3": {
+      "uid": 0,
+      "gid": 0,
+      "st_mode": 33261,
+      "mode_octal": "0o100755",
+      "type": 32768,
+      "nlink": 1,
+      "symlink_target": null,
+      "xattrs": {},
+      "sha256": "206aa30eeb399b1d10fdf345106b315be01deded548243eb7263c8af2773ab88",
+      "getcap": ""
+    }
+  },
+  "metadata_preserving_copy_equal": true,
+  "cases": [
+    {
+      "case": "A",
+      "page_created": false,
+      "signal": "SIGTRAP",
+      "fatal": "No usable sandbox!"
+    },
+    {
+      "case": "B",
+      "page_created": false,
+      "signal": "SIGTRAP",
+      "fatal": "No usable sandbox!"
+    },
+    {
+      "case": "C",
+      "page_created": false,
+      "signal": "SIGTRAP",
+      "fatal": "No usable sandbox!"
+    },
+    {
+      "case": "D",
+      "page_created": false,
+      "signal": "SIGTRAP",
+      "fatal": "No usable sandbox!"
+    }
+  ],
+  "current_sandbox_blocker": "AppArmor unprivileged_userns sys_admin denial",
+  "h3_crash": {
+    "thread": 15228,
+    "signal": 5,
+    "frames": [
+      {
+        "module": "chrome",
+        "offset": "0x633662b"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x63371a2"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x6337154"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x6337117"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x401b406"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x63b7e94"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x401c19f"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x5410ace"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x541156f"
+      },
+      {
+        "module": "libc.so.6",
+        "offset": "0x2a601"
+      },
+      {
+        "module": "libc.so.6",
+        "offset": "0x2a718"
+      },
+      {
+        "module": "chrome",
+        "offset": "0x665583a"
+      }
+    ],
+    "method": "saved AMD64 RIP and bounded RBP chain; no CFI unwinding or symbols",
+    "root_cause": "UNASSIGNED"
+  },
+  "h3_failed_latch_unchanged": true,
+  "h4_qualification_namespace_created": false,
+  "functional_preflights_started": false,
+  "p3_a_attempt02_started": false
+}

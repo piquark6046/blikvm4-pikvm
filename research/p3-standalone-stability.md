@@ -471,3 +471,131 @@ H3 is **FAILED, not accepted**, despite its successful permission-only phase.
 There is no H3 acceptance checkpoint or tag. P3-A attempt 02 stays unstarted at
 `accepted_cycles=0`; P3-B/P3-C remain unstarted and blocked. P2 remains PASSED;
 P3 remains UNACCEPTED. M6/ATX, writable MSD and RO/overlay remain DEFERRED.
+
+## P3-H4 — offline runtime isolation blocked (2026-09-13)
+
+**H4 NOT QUALIFIED; H3 remains FAILED; zero P3 credit.** Checkpoint `1895be8`
+remains immutable. The bridge-only investigation disproves the proposed removal
+of SUID bits from the frozen Chromium helper. It does not assign H3's crash
+root cause. No target contact, reboot, reflash, H4 functional preflight or P3-A
+attempt-02 cycle occurred. P2 remains PASSED; P3 remains UNACCEPTED;
+P3-B/P3-C remain blocked; M6/ATX, writable MSD and RO/overlay remain DEFERRED.
+
+The exact source tree is `/home/user/blikvm-lan/out/kvmd-web/browser`, resolved
+by both the pre-H3 browser input and H2's retained runtime symlink. H2 itself
+never launched Chromium: the earlier attempt-02 first preflight supplies the
+successful functional evidence. H3 used its distinct copy at
+`/var/lib/blikvm-p3-h3/input/context/out/kvmd-web/browser`.
+
+Both trees have 1,235 entries. Every common regular file has identical content.
+The full private `out/p3-h4/browser-runtime-metadata-diff.json` records relative
+paths, SHA-256, numeric owner/group, full st_mode/type, symlink targets, link
+counts, all xattrs and getcap output. `getfattr` was unavailable; Python's
+no-follow listxattr/getxattr APIs collected xattrs directly. H3 changed every
+entry's owner/group to root, changed 640 full modes, and dereferenced the two
+Playwright CLI symlinks. These two type changes are not executable content
+corruption. No entry in either tree has SUID/SGID/sticky bits or xattrs.
+
+The actual helper name is **`chrome_sandbox`**, not `chrome-sandbox`:
+
+| Input | uid:gid | Full st_mode | Capabilities |
+|---|---|---|---|
+| Source | 1000:1000 | 0100755 | none |
+| H3 copy | 0:0 | 0100755 | none |
+
+The helper hash is identical in both trees:
+`206aa30eeb399b1d10fdf345106b315be01deded548243eb7263c8af2773ab88`.
+The `chrome` and `chrome_crashpad_handler` hashes also match. The source was
+**not root-owned setuid**, and H3 did not change 04755 to 0755.
+
+### Preserved H3 crash review
+
+H3's retained Playwright launch argv contains `--no-sandbox`, supplied by the
+historical Playwright default. H4 did not rerun that argv. H3 browser.log is
+empty; browser-result.json retains launch/cleanup records and SIGTRAP but no
+sandbox, namespace, crashpad, NSS or profile fatal message. The retained
+controller journal only adds the secondary missing-launch-gate exception.
+The PID-specific journal and bounded kernel-journal query have no entries.
+`coredumpctl`, GDB and stackwalk tools are unavailable on the bridge. Apport
+recorded PID 15228, signal 5, core limit zero, and discarded its package-level
+report because this executable does not belong to a package.
+
+A separate **51,376-byte Crashpad minidump** survives under H3's sealed
+runtime HOME. The dump and its metadata were copied privately without altering
+H3. The VM extracted thread 15228, signal 5, and twelve saved instruction/frame
+pointer module offsets; the first is `chrome+0x633662b`. This is a bounded AMD64
+RBP-chain inspection, not a symbolized/CFI-unwound backtrace. No usable fatal
+annotation was recovered. Public evidence contains only sanitized module
+offsets, never raw dump memory or environment. Structure interpretation uses
+[Breakpad's format definitions](https://github.com/google/breakpad/blob/main/src/google_breakpad/common/minidump_format.h)
+and [AMD64 context definition](https://github.com/google/breakpad/blob/main/src/google_breakpad/common/minidump_cpu_amd64.h).
+H3's root cause remains **UNASSIGNED**; SIGTRAP alone does not identify it.
+
+### Independent sandbox-enabled matrix
+
+Diagnostics used new namespaces, never `/var/lib/blikvm-p3-h4` or H3's active
+leaf. A transient root controller entered an empty network namespace before
+launching Xvfb/Playwright as uid 995, gid 983, supplementary groups `[983]`.
+Only a down loopback interface existed; target connectivity was absent.
+`chromiumSandbox: true` was explicit; captured launch argv contains no
+`--no-sandbox`. Each case used fresh HOME/TMP with the same simple layout;
+D additionally reproduced H3's fresh HOME/.pki/nssdb ownership and mode layout.
+
+| Case | Runtime | HOME/TMP | Result |
+|---|---|---|---|
+| A | Exact source | Simple fresh | SIGTRAP; no page |
+| B | Exact H3 copy | Simple fresh | SIGTRAP; no page |
+| C | Fresh `cp -a` source copy | Simple fresh | SIGTRAP; no page |
+| D | Same preserved copy | Fresh H3 NSS/layout | SIGTRAP; no page |
+
+All four stderr logs report **`No usable sandbox!`**. Matching kernel audit
+records show the `unprivileged_userns` AppArmor profile denying `sys_admin`
+during Chromium namespace setup. This demonstrates the present sandbox-enabled
+launch blocker, not H3's historical crash cause: H3 had disabled sandboxing.
+No host AppArmor/sysctl policy or runtime metadata was repaired. A/C did not
+pass; the proposed A/C-pass versus B-fail classification is unsupported.
+
+The first diagnostic controller had a separate setup error: umask 0077 reduced
+the requested cases-parent 0711 to 0700, so Xvfb could not create its log.
+Chromium never launched there. That failed namespace and logs remain intact;
+the corrected controller ran the complete matrix in a second new namespace.
+Neither diagnostic attempt is an H4 functional preflight or P3 credit.
+
+Exact invocation/environment, Chromium argv/hash, stderr, Xvfb logs, 50 ms
+process snapshots, wrapper status, browser signal, page-creation results and
+kernel journal are privately archived. All four browser wrappers returned 1;
+no uid-995 process remained. The preserved copy's complete manifest equals the
+frozen source, and both source and H3 runtime manifests remained unchanged.
+Diagnostic case trees were archived and verified before atomic rename below
+their root-owned 0700 private ancestors; uid-995 traversal was then denied.
+This is diagnostic preservation, not the unrun H4 global permission gate.
+
+### Replay and stop boundary
+
+[Independent verifier](evidence/p3/verify-h4-offline.py) authenticates both
+private archives, verifies all 76 indexed diagnostic members, rechecks runtime
+and copy equality, validates every case's sandbox-enabled argv and failure,
+reconstructs the sanitized minidump frames, and compares H3's FAILED latch
+against its immutable prior archive. [Public result](evidence/p3/h4/offline-result.json).
+
+| Private archive | Bytes | SHA-256 |
+|---|---:|---|
+| `out/p3-h4/offline-diagnostics.tar.gz` | 214591 | `284c44c1e62f526b1bf36db42940a0356c55f38c2805877634b8b1afa8da99c0` |
+| `out/p3-h4/h3-crashpad-private.tar.gz` | 11019 | `129c99656aa0c39346c2b77e4591e787136a2b987f40c85b9fd53e90b457943e` |
+
+Both transfers used authenticated pinned-host SFTP and matched bridge hashes.
+Raw scripts are included in the diagnostic archive, including the failed
+first controller. H3's latch and historical evidence were not repaired.
+
+H4 clean-namespace preparation is **NOT STARTED** because H3 root cause was
+not demonstrated and minimal sandboxed launch failed. Runtime integrity and
+global evidence permission qualification, two minimal passing launches, three
+functional preflights, qualification checkpoint, start inventory and P3-A
+attempt 02 remain unstarted. No baseline tag or H4 qualification checkpoint
+was created. Advancing requires resolving the sandbox-enabled runtime blocker
+and the still-unassigned H3 crash without weakening the required sandbox.
+
+Validation: the offline verifier returned `H4_OFFLINE_BLOCKED_CONFIRMED`.
+The local suite ran 144 tests: 143 passed and one preexisting synthetic POSIX
+ACL fixture was skipped. These checks authenticate the diagnostic findings;
+they do not qualify H4 or award P3 credit.
