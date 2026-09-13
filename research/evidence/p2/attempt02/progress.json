@@ -1,0 +1,41 @@
+{
+  "result": "completed_gates_replayed",
+  "p2_accepted": false,
+  "archives": {
+    "postreboot-evidence.tar.gz": {
+      "sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "verified_members": 2129
+    },
+    "core-evidence.tar.gz": {
+      "sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "verified_members": 2177
+    },
+    "lan-hdmi-evidence.tar.gz": {
+      "sha256": "4abf93c1886ebfeb2663f9776a9dd4aaa7f4e993636f2a698173d665f19252f9",
+      "verified_members": 34
+    },
+    "reconnect-evidence.tar.gz": {
+      "sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "verified_members": 594
+    },
+    "normal-reboot-evidence.tar.gz": {
+      "sha256": "65e68116534a5ba6fe6b3ba4f038c13739f0074bce42d242b9fc86043f93fbfc",
+      "verified_members": 10
+    }
+  },
+  "two_client_fps": [
+    29.630229813678934,
+    29.647048636308256
+  ],
+  "hid_cycles": 12,
+  "combined_direct_reads": 254,
+  "browser_direct_reads": 304,
+  "physical_usb_reconnect": "passed",
+  "normal_reboot_firmware": "complete",
+  "persistence": "passed",
+  "remaining": [
+    "second cold boot and retained checks",
+    "final artifact and journal review",
+    "persistence cleanup"
+  ]
+}
