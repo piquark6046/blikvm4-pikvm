@@ -300,3 +300,10 @@ replay confirms zero browser-smoke completions, zero P3 credit, unchanged
 No H3 acceptance or tag; Chromium runs 002/003 and P3-A attempt 02 are unstarted.
 P2 remains PASSED; P3 remains UNACCEPTED. P3-B/P3-C remain blocked; M6/ATX and
 RO/overlay remain DEFERRED.
+
+P3-H4 update (2026-09-13): [offline runtime isolation is blocked](p3-standalone-stability.md#p3-h4--offline-runtime-isolation-blocked-2026-09-13).
+The source sandbox helper was not setuid; the stripped-SUID hypothesis is
+disproven. All four sandbox-enabled about:blank cases fail with AppArmor
+namespace denial. H3 root cause remains unassigned; its FAILED latch and
+checkpoint 1895be8 remain unchanged. H4 functional preflights and P3-A attempt
+02 are unstarted, with zero P3 credit. No target contact occurred.

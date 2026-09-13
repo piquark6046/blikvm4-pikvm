@@ -592,8 +592,13 @@ not demonstrated and minimal sandboxed launch failed. Runtime integrity and
 global evidence permission qualification, two minimal passing launches, three
 functional preflights, qualification checkpoint, start inventory and P3-A
 attempt 02 remain unstarted. No baseline tag or H4 qualification checkpoint
-was created. Advancing requires resolving the sandbox-enabled runtime blocker
-and the still-unassigned H3 crash without weakening the required sandbox.
+was created. The sandbox-enabled matrix is a SEPARATE APPARMOR FAILURE MODE, not an
+H3 reproduction or an advancement gate. H3 historical argv contains
+`--no-sandbox` from normal Playwright launch semantics. H3 root cause is
+UNASSIGNED. P3-H4b must first reconstruct and replay the historical H2 good
+control twice, then the H3 failed control in fresh diagnostic namespaces.
+SUID stripping hypothesis: DISPROVEN. Target contact: none. Qualification
+credit: zero. AppArmor and sandbox flags must not be changed as workarounds.
 
 Validation: the offline verifier returned `H4_OFFLINE_BLOCKED_CONFIRMED`.
 The local suite ran 144 tests: 143 passed and one preexisting synthetic POSIX

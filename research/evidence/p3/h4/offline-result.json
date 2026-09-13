@@ -64,6 +64,8 @@
       "fatal": "No usable sandbox!"
     }
   ],
+  "sandbox_enabled_matrix": "SEPARATE APPARMOR FAILURE MODE",
+  "h3_historical_no_sandbox_present": true,
   "current_sandbox_blocker": "AppArmor unprivileged_userns sys_admin denial",
   "h3_crash": {
     "thread": 15228,
