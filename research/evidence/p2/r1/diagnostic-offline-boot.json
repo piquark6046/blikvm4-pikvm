@@ -1,0 +1,37 @@
+{
+  "scope": "P2-R1 narrow diagnostic only",
+  "result": "offline_dwell_passed_recovery_pending",
+  "marks": {
+    "linux": {
+      "utc": "2026-09-12T13:45:00.994787+00:00",
+      "monotonic_ns": 3535018354294
+    },
+    "sd_root": {
+      "utc": "2026-09-12T13:45:01.055919+00:00",
+      "monotonic_ns": 3535079491551
+    },
+    "systemd": {
+      "utc": "2026-09-12T13:45:04.001297+00:00",
+      "monotonic_ns": 3538024823355
+    },
+    "login": {
+      "utc": "2026-09-12T13:45:15.700759+00:00",
+      "monotonic_ns": 3549724331958
+    }
+  },
+  "offline_seconds_since_login": 330.656757313,
+  "continuous_uart_since_systemd": true,
+  "carrier_zero_during_boot": true,
+  "carrier_samples": 1376,
+  "private_archive_sha256": "c4c91349a2bb17a245de5bbddb284070a8e14ea43df98506ac31b879769dd1a2",
+  "private_archive_bytes": 46123,
+  "snapshot_file_sha256": {
+    "carrier.jsonl": "bd2ce11a6c1a2a4db4be1c825b8aa7a981aa7dbed481ff51adac78537ab51095",
+    "events.jsonl": "9a9c267de5f7e0cfaa6f27618c1cd060d66c8fa6adb61b6f0b78869165fe21f1",
+    "uart-002.raw": "34a870cc12bdd4e13aa324493892abbdc45d7c109b405a6a2814c4b912360f4f",
+    "offline-status-latest.json": "d424c68d53e59ec4a35257765b33804ea7275e22895fab15c70cd83a89817a3d"
+  },
+  "recovery_probe_pid": 2462,
+  "manual_service_repair": false,
+  "p2_attempt02": "NOT_STARTED"
+}

@@ -1,0 +1,24 @@
+{
+  "networkd_binary_sha256": "8c220c296aaff3e11eeb80610afc8a790f2cf32c0fbca0285eeba7cde1dab26e",
+  "networkd_version_output": "systemd 259 (259.5-0ubuntu3.4)\n+PAM +AUDIT +SELINUX +APPARMOR +IMA +IPE +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF -XKBCOMMON -UTMP +SYSVINIT +LIBARCHIVE\n",
+  "parser_key_present": "Network.ConfigureWithoutCarrier",
+  "matching_vm_package": "systemd\t259.5-0ubuntu3.4",
+  "manpages": {
+    "systemd.network.5": {
+      "sha256": "1e592c39db2a4ba956754b9d3fdcb719b2239176d8f408e011f1ea639b8e81ea",
+      "package": "systemd 259.5-0ubuntu3.4 (matching version, AMD64 VM documentation)"
+    },
+    "systemd.service.5": {
+      "sha256": "3293c11ca405a7be1860004fd4ea5f93be5565900398bc14f59135c1daf83db7",
+      "package": "systemd 259.5-0ubuntu3.4 (matching version, AMD64 VM documentation)"
+    },
+    "systemd-system.conf.5": {
+      "sha256": "2607968bfba7e11e4d2aacc9d1522f6fb9902a7c4564426cff01130697dabfb6",
+      "package": "systemd 259.5-0ubuntu3.4 (matching version, AMD64 VM documentation)"
+    },
+    "systemd-networkd-wait-online.service.8": {
+      "sha256": "88429246293fa5489de63d48fd982a5f382de5ae0ed10d1ec9cdb464568d0a44",
+      "package": "systemd 259.5-0ubuntu3.4 (matching version, AMD64 VM documentation)"
+    }
+  }
+}

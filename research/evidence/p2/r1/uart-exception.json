@@ -1,0 +1,19 @@
+{
+  "scope": "P2-R1 Candidate 1 narrow diagnostic only",
+  "user_authorized": true,
+  "reason": "UART shares target power; independent UART power is not possible",
+  "allowed_gap": "early SPL/TF-A while bridge UART USB re-enumerates",
+  "required_continuity": "systemd startup through Ethernet/SSH recovery",
+  "passive": true,
+  "uart_commands_allowed": false,
+  "uboot_interruption_allowed": false,
+  "qualification_credit": false,
+  "p2_attempt02_exception_granted": false,
+  "fresh_typed_flash_confirmation_received": true,
+  "recorder_started": true,
+  "recorder_sha256": "fd77f73747784bd096ea5d0408fd997b58487939f27e67b80ae86d7b75bb6e46",
+  "source_recorder_sha256": "984620fbcbb2b51e8b8d7109f144e627011cb41540c9dd27d397285139d3db48",
+  "recorder_validation": "Python compilation passed; adapted previously used passive hotplug recorder; not yet run",
+  "bridge_uart_pid": 2328,
+  "bridge_carrier_pid": 2329
+}

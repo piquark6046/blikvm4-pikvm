@@ -1,0 +1,19 @@
+{
+  "result": "same_boot_and_ssh_generation_verified",
+  "boot_id": "3d04d00b-34c0-4ab3-b580-ef49acf692f9",
+  "ssh_main_pid": "259",
+  "ssh_NRestarts": "0",
+  "expired_cycle01": "timed out without carrier down; no qualification credit",
+  "previous_uart": "finished normally; gap before new carrier-cycle capture must remain explicit",
+  "manual_repair": false,
+  "private_archive_sha256": "d80cafd1383edc112538084914ce53b9fc61137ab873ae59b106bf100e7c8f1a",
+  "private_archive_bytes": 216838,
+  "new_cycle": "carrier-cycle02",
+  "new_uart": "uart-cycle02",
+  "cycle_pid": 4450,
+  "uart_pid": 4449,
+  "https_http": 302,
+  "https_tls_verify_result": 0,
+  "nginx_NRestarts": 0,
+  "scope": "renew expired carrier-cycle observation only; not new boot or P2 attempt02"
+}

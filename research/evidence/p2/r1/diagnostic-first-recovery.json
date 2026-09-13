@@ -1,0 +1,35 @@
+{
+  "scope": "P2-R1 narrow diagnostic first recovery; carrier cycle pending",
+  "result": "first_recovery_passed",
+  "private_archive_sha256": "2c9d8a0c75e6308b6d9f6abae975a18d8af212b9b2c32d38a3c799e13f0b0273",
+  "archive_member_hashes_verified": 16,
+  "latency_seconds_from_observed_carrier": {
+    "icmp": 1.018502458,
+    "tcp443": 1.01592315,
+    "https": 2.097558729,
+    "tcp22": 1.014948944,
+    "ssh": 3.719977718
+  },
+  "boot_id": "3d04d00b-34c0-4ab3-b580-ef49acf692f9",
+  "ssh_main_pid": 259,
+  "ssh_NRestarts": 0,
+  "ssh_main_start_monotonic_usec": 126956212,
+  "ssh_listening_at_boot_seconds": 127.054738,
+  "first_eth0_carrier_at_boot_seconds": 801.072865,
+  "ssh_status255_failure_observed": false,
+  "ssh_listenaddress": [
+    "192.168.88.2:22"
+  ],
+  "tcp_listeners": [
+    "192.168.88.2:22",
+    "192.168.88.2:443"
+  ],
+  "ssh_socket": "disabled and inactive",
+  "journal_allocated_MiB": 4,
+  "journal_limit_MiB": 16,
+  "wait_online": "timed out after 120 seconds as predeclared; failure remains recorded",
+  "clock_note": "Target realtime is stale; ordering uses target monotonic journals and latency uses bridge monotonic probes. No clock repair performed.",
+  "original_attempt01_runtime_cause": "not directly proven because its journal was lost; Candidate 1 runtime supports the predicted resolution",
+  "candidate_decision": "PENDING carrier down/up diagnostic",
+  "manual_repair": false
+}

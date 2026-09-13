@@ -18,6 +18,18 @@ V=load('vendor','verify-vendor.py')
 S=load('separation','verify-enrollment-separation.py')
 
 class ImageProductionTests(unittest.TestCase):
+    def test_standalone_revision_rejects_network_drift(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d); p=root/A.NETWORK_PATH; p.parent.mkdir(parents=True)
+            p.write_bytes(A.P1_NETWORK+b'DHCP=yes\n')
+            with self.assertRaisesRegex(AssertionError, 'network input drift'):
+                A.standalone_network(root, 'p2-r1-candidate1')
+            p.write_bytes(A.P1_NETWORK)
+            A.standalone_network(root, 'p1')
+            self.assertEqual(p.read_bytes(), A.P1_NETWORK)
+            A.standalone_network(root, 'p2-r1-candidate1')
+            self.assertEqual(p.read_bytes().replace(b'ConfigureWithoutCarrier=yes\n',b''), A.P1_NETWORK)
+
     def test_enrollment_bytes_rejected_outside_filesystem(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d); enrollment=root/'enrollment';enrollment.mkdir()

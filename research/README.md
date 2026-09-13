@@ -207,3 +207,23 @@ credential scan and private enrollment gates. Public artifacts are under
 U-Boot and one read-write ext4 SD root. No physical SD was written. P2 standalone
 hardware boot remains untested; its guarded flash/readback/regression procedure
 is proposed only. M6/ATX, full M8 and final RO/overlay remain deferred/unaccepted.
+
+
+## P2 attempt 01 and P2-R1
+
+[P2 attempt 01](p2-standalone-sd-bringup.md) is permanently **FAILED**: Ethernet
+and trusted HTTPS recovered after a cold offline boot, but SSH refused connections.
+The failure checkpoint is pushed as `b19036e`; the untouched recovery SD was
+restored by the operator. P1 remains historically offline-passed.
+[P2-R1 Candidate 1](p2-r1-offline-ssh-recovery.md) passes fresh reproducible offline
+assembly/enrollment with only ConfigureWithoutCarrier=yes added to standalone
+network configuration. Narrow HIL and fresh P2 attempt 02 remain NOT STARTED.
+The preceding P1 no-write/not-tested wording records the state at P1 acceptance.
+Run 04 remains the accepted core soak; M6/ATX and RO/overlay remain deferred.
+
+
+P2-R1 update (2026-09-13): [Candidate 1 narrow HIL passed and the revised image is
+frozen](p2-r1-offline-ssh-recovery.md#candidate-1-decision-and-freeze--2026-09-13).
+SSH binds the approved address before carrier with zero restarts; cold offline
+recovery and the separate carrier cycle pass. Candidate 2 is unnecessary.
+Fresh P2 attempt 02 remains NOT STARTED; diagnostic evidence earns no credit.

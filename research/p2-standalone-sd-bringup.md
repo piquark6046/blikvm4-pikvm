@@ -77,3 +77,6 @@ failure demonstrating absent-address SSH startup.
 
 Run 02 remains FAILED; Run 03 remains unaccepted history; Run 04 remains the
 accepted core-KVM soak. P3, M6/ATX and RO/overlay work remain deferred.
+
+[P2-R1 offline findings and Candidate-1 artifacts](p2-r1-offline-ssh-recovery.md)
+record the subsequent separate revision; this does not change attempt 01.

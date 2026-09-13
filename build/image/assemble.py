@@ -27,6 +27,21 @@ UUID = 'b14b0001-2026-4001-8001-000000000001'
 PARTUUID = 'b14b0001-01'
 LABEL = 'blikvm-root'
 EPOCH = 1788652800
+NETWORK_PATH = 'etc/systemd/network/10-lab.network'
+P1_NETWORK = (b'[Match]\nName=eth0\n[Network]\nAddress=192.168.88.2/24\n'
+              b'DHCP=no\nLinkLocalAddressing=no\nIPv6AcceptRA=no\nLLMNR=no\n'
+              b'MulticastDNS=no\n[Link]\nRequiredForOnline=routable\n')
+
+
+def standalone_network(root, revision):
+    """Reject drift; R1 changes exactly one line in the standalone image only."""
+    assert revision in ('p1', 'p2-r1-candidate1')
+    path = root/NETWORK_PATH
+    assert path.read_bytes() == P1_NETWORK, 'frozen standalone network input drift'
+    if revision == 'p2-r1-candidate1':
+        path.write_bytes(P1_NETWORK.replace(b'[Network]\n',
+                         b'[Network]\nConfigureWithoutCarrier=yes\n'))
+
 ENROLL = {
     'etc/kvmd/htpasswd': (0o400, 988, 0),
     'etc/kvmd/nginx/ssl/server.crt': (0o644, 0, 0),
@@ -238,7 +253,7 @@ def validate(image, work, expected, lock, vendor, enrolled=False):
             'root_uuid': UUID, 'root_label': LABEL, 'script_crc_verified': True, 'secret_scan': scan}
 
 
-def assemble(destination, vendor_dir):
+def assemble(destination, vendor_dir, revision='p1'):
     if os.geteuid() != 0:
         raise ValueError('run as root to preserve numeric owners and use read-only loop validation')
     lock = check_inputs()
@@ -265,6 +280,7 @@ def assemble(destination, vendor_dir):
     (root/'etc/fstab').write_text(f'PARTUUID={PARTUUID} / ext4 defaults 0 1\n')
     (root/'home/blikvm/.ssh/authorized_keys').write_bytes(b'')
     (root/'etc/systemd/system/serial-getty@ttyS0.service.d/lab.conf').unlink()
+    standalone_network(root, revision)
     # Normalize all mtimes, including symlinks, root and modified directories.
     for current, dirs, files in os.walk(root, topdown=False):
         for n in dirs + files:
@@ -273,6 +289,8 @@ def assemble(destination, vendor_dir):
     expected = inventory(root)
     delta = [n for n in sorted(set(original)|set(expected)) if original.get(n) != expected.get(n)]
     allowed = {'boot/Image','boot/sun50i-h616-blikvm-v4.dtb','boot/boot.cmd','boot/boot.scr','etc/fstab','home/blikvm/.ssh/authorized_keys','etc/systemd/system/serial-getty@ttyS0.service.d/lab.conf'}
+    if revision == 'p2-r1-candidate1':
+        allowed.add(NETWORK_PATH)
     # Only timestamp normalization may change other existing entries.
     for n in set(delta)-allowed:
         old, new = dict(original[n]), dict(expected[n]); old.pop('mtime'); new.pop('mtime'); assert old == new, n
@@ -314,7 +332,7 @@ def assemble(destination, vendor_dir):
     for name, args in {'mke2fs':['mkfs.ext4','-V'],'debugfs':['debugfs','-V'],'zstd':['zstd','--version'],
                        'mkimage':['mkimage','-V'],'sfdisk':['sfdisk','--version'],'python':['python3','--version']}.items():
         p = run(args); versions[name] = (p.stdout+p.stderr).decode().strip()
-    manifest = {'schema_version':1, **lock, 'linux_version':'7.2.3-blikvm-v4-m8f0-ms2131c2',
+    manifest = {'schema_version':1, **lock, 'standalone_revision':revision, 'linux_version':'7.2.3-blikvm-v4-m8f0-ms2131c2',
                 'ubuntu':{'version':'26.04.1','snapshot':'20260906T000000Z','base_sha256':'5a1906794ced63a71a8119c3f211ef5f0bbe0a243001b4bbd41fdf80c5b219fd'},
                 'partition_layout':partition,'vendor_bootloader':vendor,'tool_versions':versions,
                 'tool_binary_sha256':{name:digest(Path(shutil.which(name))) for name in ['mke2fs','debugfs','e2fsck','mkimage','zstd','sfdisk']},
@@ -335,5 +353,6 @@ if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--vendor-dir', type=Path, default=REPO/'out/p1/vendor')
+    p.add_argument('--revision', choices=['p1', 'p2-r1-candidate1'], default='p1')
     a = p.parse_args()
-    assemble(a.output, a.vendor_dir.resolve())
+    assemble(a.output, a.vendor_dir.resolve(), a.revision)

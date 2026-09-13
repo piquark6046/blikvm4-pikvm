@@ -80,3 +80,21 @@ This rejects actual enrollment payloads and individual PEM/key lines anywhere
 in the public raw bytes, and independently checks the accepted SSHA512 format.
 It prints no private values or their hashes. Negative tests seed otherwise
 unallocated bytes to prove both gates reject material outside filesystem paths.
+
+## P2-R1 Candidate 1 standalone revision
+
+The historical P1 default remains available. Select `--revision p2-r1-candidate1`
+for the one-line standalone-only `ConfigureWithoutCarrier=yes` delta. The
+assembler rejects drift in the original network file before adding it. Accepted
+rootfs/package/kernel inputs and SSH/firewall policy stay frozen. The manifest
+records the revision. Never overwrite `out/images/` or the original P1 receipts.
+
+```
+sudo python3 build/image/assemble.py --revision p2-r1-candidate1 --output out/p2-r1/assembly-A
+sudo python3 build/image/assemble.py --revision p2-r1-candidate1 --output out/p2-r1/assembly-B
+```
+
+Compare every output and both full filesystem manifests against historical P1;
+only `etc/systemd/network/10-lab.network` may differ in the filesystem. Repeat
+the supplemental enrollment separation scan and enroll from the new exact base
+into a new private directory. See `research/p2-r1-offline-ssh-recovery.md`.

@@ -1,0 +1,65 @@
+{
+  "result": "passed",
+  "revision": "p2-r1-candidate1",
+  "assemblies": [
+    "out/p2-r1/final-A",
+    "out/p2-r1/final-B"
+  ],
+  "artifacts": {
+    "SHA256SUMS": {
+      "bytes": 524,
+      "sha256": "7376f604bb3fea2bcf61fff3135cbed7940c2e8e63abbfc8eee4a5e2558e450b",
+      "byte_identical": true
+    },
+    "blikvm-v4-pikvm.img": {
+      "bytes": 1077936128,
+      "sha256": "1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079",
+      "byte_identical": true
+    },
+    "blikvm-v4-pikvm.img.zst": {
+      "bytes": 69962116,
+      "sha256": "f9577617339c366ce69ebff2ee60ce541b22948e595cf0e0e3f529d9a588b435",
+      "byte_identical": true
+    },
+    "bootloader-layout.json": {
+      "bytes": 4080,
+      "sha256": "0de3eb02ba436a0f62aff0c4cb3c93cde225cc91eefef7ecd49b1d38924499d7",
+      "byte_identical": true
+    },
+    "filesystem-manifest.json": {
+      "bytes": 3550803,
+      "sha256": "14f65400f9144bc5cc9ed02419b5fabefc743c1e05f49559f653f790dc4f8851",
+      "byte_identical": true
+    },
+    "manifest.json": {
+      "bytes": 14516,
+      "sha256": "e9214081d7ff780e7d377f35c644768f8506059df0798fc2590165588ef64f02",
+      "byte_identical": true
+    },
+    "partition-layout.json": {
+      "bytes": 431,
+      "sha256": "1eadb87a8c33f50a9e860f66c44b050d33c0f9f37b70c3eafedf986fcc3a17dd",
+      "byte_identical": true
+    },
+    "rootfs-delta.json": {
+      "bytes": 40470,
+      "sha256": "21138fd077d8fe59c232dc7e6c8299e96b78cf532e5d721a181d172addd6891a",
+      "byte_identical": true
+    },
+    "validation.json": {
+      "bytes": 1865,
+      "sha256": "ef3bb9b22dc8cf1ab3848fd296ca13272ed66f99123669e7c98e469daaa34b02",
+      "byte_identical": true
+    }
+  },
+  "filesystem_changes_from_original_p1": [
+    "etc/systemd/network/10-lab.network"
+  ],
+  "all_other_files_and_metadata_identical": true,
+  "accepted_inputs_contracts_patches_bootloader_unchanged": true,
+  "old_public_artifacts_unchanged": true,
+  "source_files_match_current": true,
+  "local_tests": 135,
+  "hardware_diagnostic": "NOT_STARTED",
+  "p2_attempt02": "NOT_STARTED"
+}

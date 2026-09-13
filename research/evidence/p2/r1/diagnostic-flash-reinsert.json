@@ -1,0 +1,34 @@
+{
+  "scope": "P2-R1 Candidate 1 narrow diagnostic only",
+  "result": "post_reinsert_verification_passed",
+  "readback": {
+    "bytes_read": 1077936128,
+    "sha256": "c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24",
+    "every_byte_compared": true,
+    "O_DIRECT": true,
+    "alignment": "page-aligned anonymous mmap"
+  },
+  "diskseq_before": 19,
+  "diskseq_after": 23,
+  "physical_removal_reinsertion_operator_confirmed": true,
+  "fsck_exit": 0,
+  "raw_bootloader_direct_read": [
+    {
+      "name": "vendor-spl.bin",
+      "offset": 8192,
+      "bytes": 40960,
+      "sha256": "962f74dcb00d86c873c820926d4a9d29fd4618822e3d7852b9b6c9b04996433f"
+    },
+    {
+      "name": "vendor-fit.bin",
+      "offset": 49152,
+      "bytes": 608135,
+      "sha256": "cd80d3cc817ce59d018cf096da08327691a5f46ccc16c4b965c8804f61eb9bd6"
+    }
+  ],
+  "prefix_bytes_directly_compared": 4194304,
+  "private_archive_sha256": "8d774d95675ac41e2967cb64ec1e61f33bcf51685fc132f9614e863a9ecb9554",
+  "private_archive_bytes": 16845,
+  "recovery_system_contacted": false,
+  "p2_attempt02": "NOT_STARTED"
+}

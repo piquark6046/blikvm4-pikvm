@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN_FOR_FRESH_P2_ATTEMPT_02",
+  "revision": "p2-r1-candidate1",
+  "allowed_filesystem_delta_from_historical_P1": [
+    "etc/systemd/network/10-lab.network: add ConfigureWithoutCarrier=yes under [Network]"
+  ],
+  "public_image_sha256": "1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079",
+  "public_compressed_image_sha256": "f9577617339c366ce69ebff2ee60ce541b22948e595cf0e0e3f529d9a588b435",
+  "assembly_source_sha256": {
+    "README.md": "13fe723c9afc0ba2b1b1b2e52f9a8bfaaa601d746f4e6042ea7ad93f79828761",
+    "assemble.py": "09e6e23fd2242cde7907cdf2b75c4c09c285207870f4b85e90bbab3e1ff399d6",
+    "boot.cmd": "7795fdf37a1ca0dc1a7a27192a78f465886aabfaf05fc8a78ec1954c4003c820",
+    "enroll.py": "87cb245ff65ac5263dc79c2e6f3de97d61c239969327fa41e108f22f422800ae",
+    "inputs.lock.json": "f9759813956dd211f52d9991e140f0b0f5d0f8d556179ef6af60efdd334c71de",
+    "mke2fs.conf": "78bef96d8da6ea675ab2ea410d9818757d166ddd4adfb6584531af413092c518",
+    "public-constants.json": "57a06dc6d776dc277486f4548d914d899f2436733e2fd7052506ba17f33dfd3c",
+    "verify-enrollment-separation.py": "0438459fc323b335f76416583c25649098be8135497de9c53fdc50f74dc7a6cb",
+    "verify-vendor.py": "4fd5ed1b72e11ba7f19dd0678d68c6732176106925be77ac6fb4de9aa879ce26"
+  },
+  "private_enrollment_receipt_sha256": "5c2982a84cd6bead37a76dfb189f71d0144c3545d1a08a006333157c45314084",
+  "private_enrolled_image_sha256": "c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24",
+  "diagnostic_archive_sha256": "058557cbc659fa7ff922db346b08b75ae8f329e39b8c71b565f7413a4ea31ef6",
+  "historical_P1_offline_acceptance": "unchanged; original artifacts superseded for P2 by this revision",
+  "core_soak": "M8-F Run 04 remains accepted",
+  "original_P2_attempt01": "permanently FAILED",
+  "P2_attempt02": "NOT_STARTED",
+  "baseline_tag_created": false,
+  "M6_ATX": "DEFERRED",
+  "RO_overlay": "DEFERRED"
+}

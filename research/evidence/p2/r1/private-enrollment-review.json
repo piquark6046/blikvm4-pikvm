@@ -1,0 +1,26 @@
+{
+  "result": "passed",
+  "base_image_sha256": "1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079",
+  "enrolled_image_sha256": "c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24",
+  "approved_files": [
+    "etc/kvmd/htpasswd",
+    "etc/kvmd/nginx/ssl/server.crt",
+    "etc/kvmd/nginx/ssl/server.key",
+    "home/blikvm/.ssh/authorized_keys"
+  ],
+  "necessary_directory": "etc/kvmd/nginx/ssl",
+  "exact_filesystem_changes": [
+    "etc/kvmd/htpasswd",
+    "etc/kvmd/nginx/ssl",
+    "etc/kvmd/nginx/ssl/server.crt",
+    "etc/kvmd/nginx/ssl/server.key",
+    "home/blikvm/.ssh/authorized_keys"
+  ],
+  "all_other_files_and_metadata_identical": true,
+  "base_unchanged": true,
+  "physical_sd_written": false,
+  "standalone_boot": "NOT_TESTED",
+  "private_receipt_sha256": "5c2982a84cd6bead37a76dfb189f71d0144c3545d1a08a006333157c45314084",
+  "filesystem_entries_verified": 14606,
+  "e2fsck_exit": 0
+}

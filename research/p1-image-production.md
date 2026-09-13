@@ -270,3 +270,12 @@ Read back the partition table and raw SPL/FIT hashes as additional checks.
     No M6/ATX, writable MSD, final RO/overlay or new soak is included in P2.
 
 P1 stops at artifacts and this proposal. Standalone hardware boot remains P2.
+
+
+## Historical P1 status after P2-R1
+
+The original P1 artifacts above remain historically offline-passed and unchanged.
+P2 attempt 01 is permanently FAILED. The [P2-R1 Candidate-1 revision](p2-r1-offline-ssh-recovery.md)
+adds only ConfigureWithoutCarrier=yes to standalone network configuration,
+passes new A/B/enrollment and narrow HIL gates, and supersedes the original image
+for fresh P2 attempt 02. This does not retroactively fail P1 or accept P2.

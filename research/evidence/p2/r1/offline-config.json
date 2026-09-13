@@ -1,0 +1,352 @@
+{
+  "source": "exact original P1 raw image, read-only loop offset 4 MiB and ro,noload mount; all recorded files and links compared",
+  "files": {
+    "etc/default/ssh": {
+      "sha256": "8ec4e7be86cf6d98c8b280ef6d71e6d97a635813bb06bf5ac5cdc756e98ef379",
+      "text": "# Default settings for openssh-server. This file is sourced by /bin/sh from\n# /etc/init.d/ssh.\n\n# Options to pass to sshd\nSSHD_OPTS=\n"
+    },
+    "etc/nftables.conf": {
+      "sha256": "60dac93ffe0ea440fc4a8941a080b6fb8d2c8655d47baf856e97182a0d1ca29a",
+      "text": "#!/usr/sbin/nft -f\n\nflush ruleset\n\ntable inet filter {\n\tchain input {\n\t\ttype filter hook input priority filter;\n\t}\n\tchain forward {\n\t\ttype filter hook forward priority filter;\n\t}\n\tchain output {\n\t\ttype filter hook output priority filter;\n\t}\n}\n"
+    },
+    "etc/ssh/sshd_config": {
+      "sha256": "f5f0b40412fd9a84b787d967efbcb576728d398e8d40d0d32c825004a04a4999",
+      "text": "\n# This is the sshd server system-wide configuration file.  See\n# sshd_config(5) for more information.\n\n# This sshd was compiled with PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games\n\n# The strategy used for options in the default sshd_config shipped with\n# OpenSSH is to specify options with their default value where\n# possible, but leave them commented.  Uncommented options override the\n# default value.\n\n# In general, the first uncommented definition of an option takes precedence.\n# For options that accept multiple values, like 'Port', subsequent definitions\n# are appended to the configuration.\n#\n# Note that the above implies that configuration options from snippets in\n# /etc/ssh/sshd_config.d/*.conf take precedence over those defined in this\n# file. In addition, configuration snippet files are processed in lexical\n# order, so options defined in files with names that sort earlier take\n# precedence.\n#\n# Such configuration snippets may be present in default installations of\n# Ubuntu.\nInclude /etc/ssh/sshd_config.d/*.conf\n\n# When systemd socket activation is used (the default), the socket\n# configuration must be re-generated after changing Port, AddressFamily, or\n# ListenAddress.\n#\n# For changes to take effect, run:\n#\n#   systemctl daemon-reload\n#   systemctl restart ssh.socket\n#\n#Port 22\n#AddressFamily any\n#ListenAddress 0.0.0.0\n#ListenAddress ::\n\n#HostKey /etc/ssh/ssh_host_rsa_key\n#HostKey /etc/ssh/ssh_host_ecdsa_key\n#HostKey /etc/ssh/ssh_host_ed25519_key\n\n# Ciphers and keying\n#RekeyLimit default none\n\n# Logging\n#SyslogFacility AUTH\n#LogLevel INFO\n\n# Authentication:\n\n#LoginGraceTime 2m\n#PermitRootLogin prohibit-password\n#StrictModes yes\n#MaxAuthTries 6\n#MaxSessions 10\n\n#PubkeyAuthentication yes\n\n# Expect .ssh/authorized_keys2 to be disregarded by default in future.\n#AuthorizedKeysFile\t.ssh/authorized_keys .ssh/authorized_keys2\n\n#AuthorizedPrincipalsFile none\n\n#AuthorizedKeysCommand none\n#AuthorizedKeysCommandUser nobody\n\n# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts\n#HostbasedAuthentication no\n# Change to yes if you don't trust ~/.ssh/known_hosts for\n# HostbasedAuthentication\n#IgnoreUserKnownHosts no\n# Don't read the user's ~/.rhosts and ~/.shosts files\n#IgnoreRhosts yes\n\n# To disable tunneled clear text passwords, change to \"no\" here!\n#PasswordAuthentication yes\n#PermitEmptyPasswords no\n\n# Change to \"yes\" to enable keyboard-interactive authentication.  Depending on\n# the system's configuration, this may involve passwords, challenge-response,\n# one-time passwords or some combination of these and other methods.\n# Beware issues with some PAM modules and threads.\nKbdInteractiveAuthentication no\n\n# Kerberos options\n#KerberosAuthentication no\n#KerberosOrLocalPasswd yes\n#KerberosTicketCleanup yes\n#KerberosGetAFSToken no\n\n# GSSAPI options\n#GSSAPIAuthentication no\n#GSSAPICleanupCredentials yes\n#GSSAPIStrictAcceptorCheck yes\n#GSSAPIKeyExchange no\n\n# Set this to 'yes' to enable PAM authentication, account processing,\n# and session processing. If this is enabled, PAM authentication will\n# be allowed through the KbdInteractiveAuthentication and\n# PasswordAuthentication.  Depending on your PAM configuration,\n# PAM authentication via KbdInteractiveAuthentication may bypass\n# the setting of \"PermitRootLogin prohibit-password\".\n# If you just want the PAM account and session checks to run without\n# PAM authentication, then enable this but set PasswordAuthentication\n# and KbdInteractiveAuthentication to 'no'.\nUsePAM yes\n\n#AllowAgentForwarding yes\n#AllowTcpForwarding yes\n#GatewayPorts no\nX11Forwarding yes\n#X11DisplayOffset 10\n#X11UseLocalhost yes\n#PermitTTY yes\nPrintMotd no\n#PrintLastLog yes\n#TCPKeepAlive yes\n#PermitUserEnvironment no\n#Compression delayed\n#ClientAliveInterval 0\n#ClientAliveCountMax 3\n#UseDNS no\n#PidFile /run/sshd.pid\n#MaxStartups 10:30:100\n#PermitTunnel no\n#ChrootDirectory none\n#VersionAddendum none\n\n# no default banner path\n#Banner none\n\n# Allow client to pass locale and color environment variables\nAcceptEnv LANG LC_* COLORTERM NO_COLOR\n\n# override default of no subsystems\nSubsystem\tsftp\t/usr/lib/openssh/sftp-server\n\n# Example of overriding settings on a per-user basis\n#Match User anoncvs\n#\tX11Forwarding no\n#\tAllowTcpForwarding no\n#\tPermitTTY no\n#\tForceCommand cvs server\n"
+    },
+    "etc/ssh/sshd_config.d/00-blikvm-lab.conf": {
+      "sha256": "bae9fec576ce52d92f148c758aaa43867ff1f03cd7cd343d9e5a92d7e9d7e517",
+      "text": "ListenAddress 192.168.88.2\nPasswordAuthentication no\nKbdInteractiveAuthentication no\nPermitRootLogin no\nPubkeyAuthentication yes\nAuthenticationMethods publickey\nAllowUsers blikvm\nUseDNS no\n"
+    },
+    "etc/systemd/journald.conf": {
+      "sha256": "995877ef4f574eb64057eb1d64c5c4e5badfa62a9fa21a686a37c51aa9f67857",
+      "text": "#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it under the\n#  terms of the GNU Lesser General Public License as published by the Free\n#  Software Foundation; either version 2.1 of the License, or (at your option)\n#  any later version.\n#\n# Entries in this file show the compile time defaults. Local configuration\n# should be created by either modifying this file (or a copy of it placed in\n# /etc/ if the original file is shipped in /usr/), or by creating \"drop-ins\" in\n# the /etc/systemd/journald.conf.d/ directory. The latter is generally\n# recommended. Defaults can be restored by simply deleting the main\n# configuration file and all drop-ins located in /etc/.\n#\n# Use 'systemd-analyze cat-config systemd/journald.conf' to display the full config.\n#\n# See journald.conf(5) for details.\n\n[Journal]\n#Storage=persistent\n#Compress=yes\n#Seal=yes\n#SplitMode=uid\n#SyncIntervalSec=5m\n#RateLimitIntervalSec=30s\n#RateLimitBurst=10000\n#SystemMaxUse=\n#SystemKeepFree=\n#SystemMaxFileSize=\n#SystemMaxFiles=100\n#RuntimeMaxUse=\n#RuntimeKeepFree=\n#RuntimeMaxFileSize=\n#RuntimeMaxFiles=100\n#MaxRetentionSec=0\n#MaxFileSec=1month\n#ForwardToSyslog=no\n#ForwardToKMsg=no\n#ForwardToConsole=no\n#ForwardToWall=yes\n#TTYPath=/dev/console\n#MaxLevelStore=debug\n#MaxLevelSyslog=debug\n#MaxLevelKMsg=notice\n#MaxLevelConsole=info\n#MaxLevelWall=emerg\n#MaxLevelSocket=debug\n#LineMax=48K\n#ReadKMsg=yes\n#Audit=yes\n"
+    },
+    "etc/systemd/journald.conf.d/zz-blikvm-bounded.conf": {
+      "sha256": "8b9cb035d9d2bceb9301a6ae178455b27a89ee0aa3bee81efcbbf6030bb6b9bc",
+      "text": "[Journal]\nStorage=volatile\nRuntimeMaxUse=16M\nRuntimeMaxFileSize=4M\nCompress=yes\nForwardToSyslog=no\n"
+    },
+    "etc/systemd/network/10-lab.network": {
+      "sha256": "9ab7dfc57b852d001cb23838143527de3fe5bdd3880b82c53582c08587f415fe",
+      "text": "[Match]\nName=eth0\n[Network]\nAddress=192.168.88.2/24\nDHCP=no\nLinkLocalAddressing=no\nIPv6AcceptRA=no\nLLMNR=no\nMulticastDNS=no\n[Link]\nRequiredForOnline=routable\n"
+    },
+    "etc/systemd/networkd.conf": {
+      "sha256": "b322d440050647f44ba14f1cd5be58010a925b5f244b62a6dbffc55d6612993e",
+      "text": "#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it under the\n#  terms of the GNU Lesser General Public License as published by the Free\n#  Software Foundation; either version 2.1 of the License, or (at your option)\n#  any later version.\n#\n# Entries in this file show the compile time defaults. Local configuration\n# should be created by either modifying this file (or a copy of it placed in\n# /etc/ if the original file is shipped in /usr/), or by creating \"drop-ins\" in\n# the /etc/systemd/networkd.conf.d/ directory. The latter is generally\n# recommended. Defaults can be restored by simply deleting the main\n# configuration file and all drop-ins located in /etc/.\n#\n# Use 'systemd-analyze cat-config systemd/networkd.conf' to display the full config.\n#\n# See networkd.conf(5) for details.\n\n[Network]\n#SpeedMeter=no\n#SpeedMeterIntervalSec=10sec\n#ManageForeignRoutingPolicyRules=yes\n#ManageForeignRoutes=yes\n#ManageForeignNextHops=yes\n#RouteTable=\n#IPv4Forwarding=\n#IPv6Forwarding=\n#IPv6PrivacyExtensions=no\n#UseDomains=no\n\n#[IPv6AddressLabel]\n#Prefix=\n#Label=\n\n[IPv6AcceptRA]\n#UseDomains=\n\n[DHCPv4]\n#ClientIdentifier=duid\n#DUIDType=vendor\n#DUIDRawData=\n#UseDomains=\n\n[DHCPv6]\n#DUIDType=vendor\n#DUIDRawData=\n#UseDomains=\n\n[DHCPServer]\n#PersistLeases=yes\n"
+    },
+    "etc/systemd/system.conf": {
+      "sha256": "ceeeab2e0c3050692854c58e2cbffd23638967b48603ec4ef4f27d4fd0b6add4",
+      "text": "#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it under the\n#  terms of the GNU Lesser General Public License as published by the Free\n#  Software Foundation; either version 2.1 of the License, or (at your option)\n#  any later version.\n#\n# Entries in this file show the compile time defaults. Local configuration\n# should be created by either modifying this file (or a copy of it placed in\n# /etc/ if the original file is shipped in /usr/), or by creating \"drop-ins\" in\n# /etc/systemd/system.conf.d/ directory. The latter is generally recommended.\n# Defaults can be restored by simply deleting the main configuration file and\n# all drop-ins located in /etc/.\n#\n# Use 'systemd-analyze cat-config systemd/system.conf' to display the full config.\n#\n# See systemd-system.conf(5) for details.\n\n[Manager]\n#LogLevel=info\n#LogTarget=journal-or-kmsg\n#LogColor=yes\n#LogLocation=no\n#LogTime=no\n#DumpCore=yes\n#ShowStatus=yes\n#CrashChangeVT=no\n#CrashShell=no\n#CrashAction=freeze\n#CtrlAltDelBurstAction=reboot-force\n#CPUAffinity=\n#NUMAPolicy=default\n#NUMAMask=\n#RuntimeWatchdogSec=off\n#RuntimeWatchdogPreSec=off\n#RuntimeWatchdogPreGovernor=\n#RebootWatchdogSec=10min\n#KExecWatchdogSec=off\n#WatchdogDevice=\n#CapabilityBoundingSet=\n#NoNewPrivileges=no\n#ProtectSystem=auto\n#SystemCallArchitectures=\n#TimerSlackNSec=\n#StatusUnitFormat=combined\n#DefaultTimerAccuracySec=1min\n#DefaultStandardOutput=journal\n#DefaultStandardError=inherit\n#DefaultTimeoutStartSec=90s\n#DefaultTimeoutStopSec=90s\n#DefaultTimeoutAbortSec=\n#DefaultDeviceTimeoutSec=90s\n#DefaultRestartSec=100ms\n#DefaultStartLimitIntervalSec=10s\n#DefaultStartLimitBurst=5\n#DefaultEnvironment=\n#DefaultIOAccounting=no\n#DefaultIPAccounting=no\n#DefaultMemoryAccounting=yes\n#DefaultTasksAccounting=yes\n#DefaultTasksMax=15%\n#DefaultLimitCPU=\n#DefaultLimitFSIZE=\n#DefaultLimitDATA=\n#DefaultLimitSTACK=\n#DefaultLimitCORE=\n#DefaultLimitRSS=\n#DefaultLimitNOFILE=1024:524288\n#DefaultLimitAS=\n#DefaultLimitNPROC=\n#DefaultLimitMEMLOCK=8M\n#DefaultLimitLOCKS=\n#DefaultLimitSIGPENDING=\n#DefaultLimitMSGQUEUE=\n#DefaultLimitNICE=\n#DefaultLimitRTPRIO=\n#DefaultLimitRTTIME=\n#DefaultMemoryPressureThresholdSec=200ms\n#DefaultMemoryPressureWatch=auto\n#DefaultOOMPolicy=stop\n#DefaultSmackProcessLabel=\n#DefaultRestrictSUIDSGID=\n#ReloadLimitIntervalSec=\n#ReloadLimitBurst=\n"
+    },
+    "etc/systemd/system/ssh.service.d/ram-root.conf": {
+      "sha256": "7840326720021ccf38863742a9835467f6832eafbe92b67a3870a120fed89df7",
+      "text": "[Unit]\nRequires=sshd-keygen.service\nAfter=sshd-keygen.service network-online.target\nWants=network-online.target\n"
+    },
+    "usr/lib/systemd/network/73-usb-net-by-mac.link": {
+      "sha256": "775b785e52cc9deadf2c509db33e64838dbc81aa707b9a914847a39ec2dabe89",
+      "text": "[Match]\nPath=*-usb-*\nProperty=ID_NET_NAME_MAC=*\n\n[Link]\nNamePolicy=mac\n"
+    },
+    "usr/lib/systemd/network/80-6rd-tunnel.link": {
+      "sha256": "84520039b52bf342bb1249a6c37bba9e0ecd3a3e5046a09708958d79ab624f34",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .link file matches 6rd-* SIT devices and marks them as managed by\n# systemd-networkd.\n\n[Match]\nKind=sit\nOriginalName=6rd-*\n\n[Link]\nNamePolicy=keep\nMACAddressPolicy=persistent\nProperty=ID_NET_MANAGED_BY=io.systemd.Network\n"
+    },
+    "usr/lib/systemd/network/80-6rd-tunnel.network": {
+      "sha256": "02d268378ec04c25ff0f15c9aca89014ea9d0143e991343bb32c553786924005",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .network file matches 6rd-* SIT devices which is automatically created by\n# systemd-networkd when DHCPv4 6RD option is received.\n\n[Match]\nKind=sit\nName=6rd-*\n\n[Network]\nDHCPPrefixDelegation=yes\n"
+    },
+    "usr/lib/systemd/network/80-auto-link-local.network.example": {
+      "sha256": "da30ad2e7d596a726b6db5a1ce67fa4eee2a8230a51377c50a195cf3d5da7b2b",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This example config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To use the file, one of the following methods may be used:\n# 1. add a symlink from /etc/systemd/network to the current location of this file,\n# 2. copy the file into /etc/systemd/network or one of the other paths checked\n#    by systemd-networkd and edit it there.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# Enable IPv4LL + IPv6LL (but no DHCP/IPv6RA) for local links\n[Match]\nType=ether\nProperty=ID_NET_AUTO_LINK_LOCAL_ONLY=1\n\n[Network]\nLinkLocalAddressing=yes\nIPv6AcceptRA=no\nMulticastDNS=yes\nLLDP=yes\nEmitLLDP=yes\n"
+    },
+    "usr/lib/systemd/network/80-container-host0-tun.network": {
+      "sha256": "10fd1475b7b96cad0e63eccc2241888402dae3e2f3ec6be5d7b85b6137c36103",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This network file is inside unprivileged containers that rely on network being\n# provided as a tun link via slirp4netns(1) or pasta(1).\n\n[Match]\nKind=tun\nName=host0\nVirtualization=container\n\n[Network]\nDHCP=yes\nLinkLocalAddressing=yes\n\n[DHCP]\nUseTimezone=yes\n"
+    },
+    "usr/lib/systemd/network/80-container-host0.network": {
+      "sha256": "b71c4d4edea0c5b91f7e36179019139cd382465e49e4fc32acfa50b72b301c00",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This network file matches the container-side of the virtual Ethernet link\n# created by systemd-nspawn's --network-veth switch. See systemd-nspawn(1) for\n# details.\n\n[Match]\nKind=veth\nName=host0\nVirtualization=container\n\n[Network]\nDHCP=yes\nLinkLocalAddressing=yes\nLLDP=yes\nEmitLLDP=customer-bridge\n\n[DHCP]\nUseTimezone=yes\n"
+    },
+    "usr/lib/systemd/network/80-container-vb.link": {
+      "sha256": "33f6636020a8856285124ba00e0eba33b8e6bac7a921ea9bd9b7cc66a9709a0d",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .link file matches the host-side of the virtual Ethernet link created\n# by systemd-nspawn's --network-veth switch with --network-bridge= or\n# --network-zone= switch. See systemd-nspawn(1) for details.\n\n[Match]\nKind=veth\nOriginalName=vb-*\n\n[Link]\nNamePolicy=keep\nProperty=ID_NET_MANAGED_BY=io.systemd.Network\n"
+    },
+    "usr/lib/systemd/network/80-container-vb.network": {
+      "sha256": "7d564acafc35c1efbbe5075178786ea189de1cd5711ee205e08abf79d16b809f",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .network file matches the host-side of the virtual Ethernet link created\n# by systemd-nspawn's --network-veth switch with --network-bridge= or\n# --network-zone= switch. See systemd-nspawn(1) for details.\n\n[Match]\nKind=veth\nName=vb-*\n\n[Link]\nRequiredForOnline=no\n\n[Network]\nKeepMaster=yes\nLinkLocalAddressing=no\nLLDP=yes\nEmitLLDP=nearest-bridge\n"
+    },
+    "usr/lib/systemd/network/80-container-ve.link": {
+      "sha256": "90323b806eb29bbc8eecf02fe79653780f92e39c239599e6d28aa39e1891cd2a",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .link file matches the host-side of the virtual Ethernet link\n# created by systemd-nspawn's --network-veth switch. See systemd-nspawn(1) for\n# details.\n\n[Match]\nKind=veth\nOriginalName=ve-*\n\n[Link]\nNamePolicy=keep\nProperty=ID_NET_MANAGED_BY=io.systemd.Network\n"
+    },
+    "usr/lib/systemd/network/80-container-ve.network": {
+      "sha256": "d27550924882a1eeac8583d9372dc5b8033a833c6a8c2fafd1b7ddd76b94a8fa",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .network file matches the host-side of the virtual Ethernet link\n# created by systemd-nspawn's --network-veth switch. See systemd-nspawn(1) for\n# details.\n\n[Match]\nKind=veth\nName=ve-*\n\n[Link]\nRequiredForOnline=no\n\n[Network]\n# Default to using a /28 prefix, giving up to 13 addresses per container.\nAddress=0.0.0.0/28\nLinkLocalAddressing=yes\nDHCPServer=yes\nIPMasquerade=both\nLLDP=yes\nEmitLLDP=customer-bridge\nIPv6AcceptRA=no\nIPv6SendRA=yes\n\n[DHCPServer]\nPersistLeases=runtime\nLocalLeaseDomain=_dhcp\n"
+    },
+    "usr/lib/systemd/network/80-container-vz.link": {
+      "sha256": "50f88708601571d685d1a86e994f41b6c5193d27b074343e7ef2248689704335",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .link file matches the bridge interface created by systemd-nspawn's\n# --network-zone= switch. See systemd-nspawn(1) for details.\n\n[Match]\nKind=bridge\nOriginalName=vz-*\n\n[Link]\nNamePolicy=keep\nProperty=ID_NET_MANAGED_BY=io.systemd.Network\n"
+    },
+    "usr/lib/systemd/network/80-container-vz.network": {
+      "sha256": "f1f75f05da5a7928814e44b16056035f7130dc9451b8288a0c15626c2bc59da0",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This network file matches the bridge interface created by systemd-nspawn's\n# --network-zone= switch. See systemd-nspawn(1) for details.\n\n[Match]\nKind=bridge\nName=vz-*\n\n[Link]\nRequiredForOnline=no\n\n[Network]\n# Default to using a /24 prefix, giving up to 253 addresses per virtual network.\nAddress=0.0.0.0/24\nLinkLocalAddressing=yes\nDHCPServer=yes\nIPMasquerade=both\nLLDP=yes\nEmitLLDP=customer-bridge\nIPv6AcceptRA=no\nIPv6SendRA=yes\n\n[DHCPServer]\nPersistLeases=runtime\nLocalLeaseDomain=_dhcp\n"
+    },
+    "usr/lib/systemd/network/80-vm-vt.link": {
+      "sha256": "a05c7f493f223f41cd0b120873effe586b4479588a96b6fc1b416a32b5e24112",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This .link file matches vt-* TUN/TAP devices on the host and marks them as\n# managed by systemd-networkd.\n\n[Match]\nKind=tun\nOriginalName=vt-*\n\n[Link]\nNamePolicy=keep\nProperty=ID_NET_MANAGED_BY=io.systemd.Network\n"
+    },
+    "usr/lib/systemd/network/80-vm-vt.network": {
+      "sha256": "a8192b4852185e42b1029cc4e19bb756e54b6ed8ae03e5a5adb712d5be7a7f1f",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# This network file matches vt-* TUN/TAP devices and applies a similar\n# configuration as ve-* to provide NAT/DHCP to VMs.\n\n[Match]\nKind=tun\nName=vt-*\n\n[Link]\nRequiredForOnline=no\n\n[Network]\n# Default to using a /28 prefix, giving up to 13 addresses per VM.\nAddress=0.0.0.0/28\nLinkLocalAddressing=yes\nDHCPServer=yes\nIPMasquerade=both\nLLDP=yes\nEmitLLDP=customer-bridge\nIPv6AcceptRA=no\nIPv6SendRA=yes\n\n[DHCPServer]\nPersistLeases=runtime\nLocalLeaseDomain=_dhcp\n"
+    },
+    "usr/lib/systemd/network/80-wifi-adhoc.network": {
+      "sha256": "01ffa3ff9837a9a5727a816818c2a2080758c54055df9f09a938143a1b31fe00",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n[Match]\nType=wlan\nWLANInterfaceType=ad-hoc\n\n[Network]\nLinkLocalAddressing=yes\nIPv6AcceptRA=no\nMulticastDNS=yes\n"
+    },
+    "usr/lib/systemd/network/80-wifi-ap.network.example": {
+      "sha256": "fde889ee44f796b44833f675aab4a2e17827f46f9e1d7a68dfd750536dde8909",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This example config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To use the file, one of the following methods may be used:\n# 1. add a symlink from /etc/systemd/network to the current location of this file,\n# 2. copy the file into /etc/systemd/network or one of the other paths checked\n#    by systemd-networkd and edit it there.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n[Match]\nType=wlan\nWLANInterfaceType=ap\n\n[Network]\nAddress=0.0.0.0/24\nDHCPServer=yes\nIPMasquerade=both\nIPv6AcceptRA=no\nIPv6SendRA=yes\n\n[DHCPServer]\nLocalLeaseDomain=home.arpa\n"
+    },
+    "usr/lib/systemd/network/80-wifi-station.network.example": {
+      "sha256": "4c1d42d311a9e57cdf35c4676522cc3695f201615ac0f74f26c9e64243944bd4",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This example config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To use the file, one of the following methods may be used:\n# 1. add a symlink from /etc/systemd/network to the current location of this file,\n# 2. copy the file into /etc/systemd/network or one of the other paths checked\n#    by systemd-networkd and edit it there.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n[Match]\nType=wlan\nWLANInterfaceType=station\nSSID=*\n\n[Network]\nDHCP=yes\n"
+    },
+    "usr/lib/systemd/network/89-ethernet.network.example": {
+      "sha256": "3e5f238737715abe34beb977a2da0481187bf90cec15f427a4b4d018079ad5aa",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This example config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To use the file, one of the following methods may be used:\n# 1. add a symlink from /etc/systemd/network to the current location of this file,\n# 2. copy the file into /etc/systemd/network or one of the other paths checked\n#    by systemd-networkd and edit it there.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n# Enable DHCPv4 and DHCPv6 on all physical ethernet links\n[Match]\nKind=!*\nType=ether\n\n[Network]\nDHCP=yes\n"
+    },
+    "usr/lib/systemd/network/99-default.link": {
+      "sha256": "b7db47fb50889162af148c0ea3e29beb98ec8b5daf8f6efd6089ee97cfdbd167",
+      "text": "# SPDX-License-Identifier: MIT-0\n#\n# This config file is installed as part of systemd.\n# It may be freely copied and edited (following the MIT No Attribution license).\n#\n# To make local modifications, use \"networkctl edit\". See networkctl(1) for details.\n# This file should not be edited in place, because it'll be overwritten on upgrades.\n\n[Match]\nOriginalName=*\n\n[Link]\nNamePolicy=keep kernel database onboard slot path\nAlternativeNamesPolicy=database onboard slot path mac\nMACAddressPolicy=persistent\n"
+    },
+    "usr/lib/systemd/system/network-online.target": {
+      "sha256": "5227af8374af7c9d4d73c0b91c19bcc94c069a3e9fb29650846b9d366729afee",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network is Online\nDocumentation=man:systemd.special(7)\nDocumentation=https://systemd.io/NETWORK_ONLINE\nAfter=network.target\n"
+    },
+    "usr/lib/systemd/system/network-pre.target": {
+      "sha256": "014233df77916a140d401445cf513f23d0695570ecd544b63405e5d801dda269",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Preparation for Network\nDocumentation=man:systemd.special(7)\nDocumentation=https://systemd.io/NETWORK_ONLINE\nRefuseManualStart=yes\n"
+    },
+    "usr/lib/systemd/system/network.target": {
+      "sha256": "1a1958208707d4293cfafe1d041722e194bbe471c9c4ec2b57d3628e173346b4",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network\nDocumentation=man:systemd.special(7)\nDocumentation=https://systemd.io/NETWORK_ONLINE\nAfter=network-pre.target\nRefuseManualStart=yes\n"
+    },
+    "usr/lib/systemd/system/nftables.service": {
+      "sha256": "e040269f9010bb805d21a7c7b61af5b06530857967cdb2e2fbcf9a470fdf1810",
+      "text": "[Unit]\nDescription=nftables\nDocumentation=man:nft(8) http://wiki.nftables.org\nWants=network-pre.target\nBefore=network-pre.target shutdown.target\nConflicts=shutdown.target\nDefaultDependencies=no\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\nStandardInput=null\nProtectSystem=full\nProtectHome=true\nExecStart=/usr/sbin/nft -f /etc/nftables.conf\nExecReload=/usr/sbin/nft -f /etc/nftables.conf\nExecStop=/usr/sbin/nft flush ruleset\n\n[Install]\nWantedBy=sysinit.target\n"
+    },
+    "usr/lib/systemd/system/rescue-ssh.target": {
+      "sha256": "eb6276ede3dfae539f920a2a2e3c1e1fd33367c5d6aa10f995a229438191f070",
+      "text": "[Unit]\nDescription=Rescue with network and ssh\nDocumentation=man:systemd.special(7)\nRequires=network-online.target ssh.service\nAfter=network-online.target ssh.service\nAllowIsolate=yes\n"
+    },
+    "usr/lib/systemd/system/ssh-access.target": {
+      "sha256": "bdc935e5e734c0acfa0949dc09acf8b5f61ff3fd1a15e4e97997c2fa781eb795",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=SSH Access Available\nDocumentation=man:systemd.special(7)\nStopWhenUnneeded=yes\n"
+    },
+    "usr/lib/systemd/system/ssh.service": {
+      "sha256": "1e3c11483cc51a6c7aa3ab92affa43a313cab65e9721a64ce7720404cf6de1c8",
+      "text": "[Unit]\nDescription=OpenBSD Secure Shell server\nDocumentation=man:sshd(8) man:sshd_config(5)\nAfter=network.target nss-user-lookup.target auditd.service\nConditionPathExists=!/etc/ssh/sshd_not_to_be_run\n\n[Service]\nEnvironmentFile=-/etc/default/ssh\nExecStartPre=/usr/sbin/sshd -t\nExecStart=/usr/sbin/sshd -D $SSHD_OPTS\nExecReload=/usr/sbin/sshd -t\nExecReload=/bin/kill -HUP $MAINPID\nKillMode=process\nRestart=on-failure\nRestartPreventExitStatus=255\nType=notify\nRuntimeDirectory=sshd\nRuntimeDirectoryMode=0755\n\n[Install]\nWantedBy=multi-user.target\nAlias=sshd.service\n"
+    },
+    "usr/lib/systemd/system/ssh.socket": {
+      "sha256": "a79db2fe39bb1b452c260370e7a1ba6d13bed16fad0df8f18177802760b3d196",
+      "text": "[Unit]\nDescription=OpenBSD Secure Shell server socket\nBefore=sockets.target ssh.service\nConditionPathExists=!/etc/ssh/sshd_not_to_be_run\n\n[Socket]\nListenStream=0.0.0.0:22\nListenStream=[::]:22\nBindIPv6Only=ipv6-only\nAccept=no\nFreeBind=yes\n\n[Install]\nWantedBy=sockets.target\nRequiredBy=ssh.service\n"
+    },
+    "usr/lib/systemd/system/sshd-keygen.service": {
+      "sha256": "229006e93cdb44d2ee4d8f43bcea346e4566b443455f1fa71aa636505d2e17b0",
+      "text": "[Unit]\nDescription=Generate sshd host keys on first boot\nConditionFirstBoot=yes\nConditionPathIsReadWrite=/etc/ssh\nConditionPathIsSymbolicLink=!/etc/ssh\nBefore=ssh.service sshd.service sshd@.service\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\nExecStart=ssh-keygen -A\n\n[Install]\nWantedBy=ssh.service sshd.service sshd@.service ssh.socket\n"
+    },
+    "usr/lib/systemd/system/sshd@.service": {
+      "sha256": "7610d9ad0085adab3e5b079ccc46ef776c3a4877f27ad845ad3d0349b988c7ef",
+      "text": "[Unit]\nDescription=OpenBSD Secure Shell server per-connection daemon\nDocumentation=man:sshd(8) man:sshd_config(5)\nAfter=nss-user-lookup.target auditd.service\n\n[Service]\nEnvironmentFile=-/etc/default/ssh\nExecStart=-/usr/sbin/sshd -i $SSHD_OPTS -o \"AuthorizedKeysFile ${CREDENTIALS_DIRECTORY}/ssh.ephemeral-authorized_keys-all .ssh/authorized_keys\"\nStandardInput=socket\nRuntimeDirectory=sshd\nRuntimeDirectoryPreserve=yes\nRuntimeDirectoryMode=0755\nImportCredential=ssh.ephemeral-authorized_keys-all\n"
+    },
+    "usr/lib/systemd/system/systemd-journald-audit.socket": {
+      "sha256": "7beadc84b52c3b02b7e30901f4e514c5840d360bf80c87325333c621519962c9",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Audit Socket\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nDefaultDependencies=no\nBefore=sockets.target\nConditionSecurity=audit\nConditionCapability=CAP_AUDIT_READ\n\n[Socket]\nService=systemd-journald.service\nReceiveBuffer=128M\nListenNetlink=audit 1\nPassCredentials=yes\nDeferTrigger=yes\n\n[Install]\nWantedBy=sockets.target\nWantedBy=systemd-journald.service\n"
+    },
+    "usr/lib/systemd/system/systemd-journald-dev-log.socket": {
+      "sha256": "f3a1838110d76876c411606f88450bb34218191454b35f697ac3ac3c6f6197fc",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Socket (/dev/log)\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nDefaultDependencies=no\nBefore=sockets.target\n\n# Mount and swap units need this. If this socket unit is removed by an isolate\n# request the mount and swap units would be removed too, hence let's exclude\n# systemd-journald and its sockets from isolate requests.\nIgnoreOnIsolate=yes\n\n[Socket]\nListenDatagram=/run/systemd/journal/dev-log\nPassCredentials=yes\nPassSecurity=yes\nService=systemd-journald.service\nSocketMode=0666\nSymlinks=/dev/log\nTimestamping=us\nDeferTrigger=yes\n\n# Increase both the send and receive buffer, so that things don't\n# block early. Note that journald internally uses the this socket both\n# for receiving syslog messages, and for forwarding them to any other\n# syslog, hence we bump both values.\nReceiveBuffer=8M\nSendBuffer=8M\n"
+    },
+    "usr/lib/systemd/system/systemd-journald-sync@.service": {
+      "sha256": "8b681b74900a211077def8598bad9a073b8333396cb49bfaaa66214866729606",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Sync Journal for Namespace %i\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\n\n# At the time when journalctl in ExecStop= is invoked,\n# systemd-journald@.service may not be started yet. Hence, both socket\n# units must be active when journalctl is invoked.\nRequires=systemd-journald@%i.socket systemd-journald-varlink@%i.socket\nAfter=systemd-journald@%i.socket systemd-journald-varlink@%i.socket\nStopWhenUnneeded=yes\n\n[Service]\nExecStop=journalctl --namespace=%i --sync\nType=oneshot\nRemainAfterExit=yes\n"
+    },
+    "usr/lib/systemd/system/systemd-journald-varlink@.socket": {
+      "sha256": "b13d97a5e6a531db0c082be633e5eff21eae5b7d23578325d9ed56655251e505",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Varlink Socket for Namespace %i\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nStopWhenUnneeded=yes\n\n[Socket]\nService=systemd-journald@%i.service\nListenStream=/run/systemd/journal.%i/io.systemd.journal\nSocketMode=0666\n"
+    },
+    "usr/lib/systemd/system/systemd-journald.service": {
+      "sha256": "bd4ea47726762331ca3fabebb9c0186b54378ca7a7aa8d54559ec8c3f9c09918",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Service\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nDefaultDependencies=no\nRequires=systemd-journald.socket\nAfter=systemd-journald.socket systemd-journald-dev-log.socket systemd-journald-audit.socket syslog.socket\nBefore=sysinit.target\n\n# To avoid journald being SIGKILLed during soft-reboot and corrupting journals.\n# See https://github.com/systemd/systemd/issues/30195\n# Note, typically soft-reboot.target will be never reached,\n# and systemd-soft-reboot.service will trigger soft-reboot.\n# Hence, this must be stopped before systemd-soft-reboot.service.\nBefore=soft-reboot.target systemd-soft-reboot.service\nConflicts=soft-reboot.target\n\n# Mount and swap units need the journal socket units. If they were removed by\n# an isolate request the mount and swap units would be removed too, hence let's\n# exclude systemd-journald and its sockets from isolate requests.\nIgnoreOnIsolate=yes\n\n[Service]\nDeviceAllow=char-* rw\nExecStart=/usr/lib/systemd/systemd-journald\nFileDescriptorStoreMax=4224\n# Ensure services using StandardOutput=journal do not break when journald is stopped\nFileDescriptorStorePreserve=yes\nImportCredential=journal.*\nIPAddressDeny=any\nLockPersonality=yes\nMemoryDenyWriteExecute=yes\nNoNewPrivileges=yes\nOOMScoreAdjust=-250\nProtectClock=yes\nRestart=always\nRestartSec=0\nRestrictAddressFamilies=AF_UNIX AF_NETLINK AF_VSOCK AF_INET AF_INET6\nRestrictNamespaces=yes\nRestrictRealtime=yes\nRestrictSUIDSGID=yes\nRuntimeDirectory=systemd/journal\nRuntimeDirectoryPreserve=yes\n# Audit socket is not listed here because this unit can be turned off. However\n# the link between the socket and the service units is still created thanks to\n# the 'Service=' setting specified in the socket unit.\nSockets=systemd-journald.socket systemd-journald-dev-log.socket\nStandardOutput=null\nSystemCallArchitectures=native\nSystemCallErrorNumber=EPERM\nSystemCallFilter=@system-service\nType=notify-reload\nPassEnvironment=TERM\nWatchdogSec=3min\n\n# In case you're wondering why CAP_SYS_PTRACE is needed, access to\n# /proc/<pid>/exe requires this capability. Thus if this capability is missing\n# the _EXE=/OBJECT_EXE= fields will be missing from the journal entries.\nCapabilityBoundingSet=CAP_SYS_ADMIN CAP_DAC_OVERRIDE CAP_SYS_PTRACE CAP_SYSLOG CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_CHOWN CAP_DAC_READ_SEARCH CAP_FOWNER CAP_SETUID CAP_SETGID CAP_MAC_OVERRIDE\n\n# If there are many split up journal files we need a lot of fds to access them\n# all in parallel.\nLimitNOFILE=524288\n"
+    },
+    "usr/lib/systemd/system/systemd-journald.service.d/nice.conf": {
+      "sha256": "672f18ceef2ca6f420b4be60df3c63d0aefb3b4e3dd58ead7f0e2ed4d980779b",
+      "text": "# Set Nice=-1 to dodge watchdog on soft lockups (LP: #1696970).\n\n[Service]\nNice=-1\n"
+    },
+    "usr/lib/systemd/system/systemd-journald.socket": {
+      "sha256": "4d5933d28949a7602e2fcf9227d55d0ffa732255a1c6ed271fbbbe76b01979d9",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Sockets\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nDefaultDependencies=no\nBefore=sockets.target\n\n# Mount and swap units need this. If this socket unit is removed by an isolate\n# request the mount and swap units would be removed too, hence let's exclude\n# systemd-journald and its sockets from isolate requests.\nIgnoreOnIsolate=yes\n\n[Socket]\nListenDatagram=/run/systemd/journal/socket\nListenStream=/run/systemd/journal/stdout\nPassCredentials=yes\nPassSecurity=yes\nReceiveBuffer=8M\nService=systemd-journald.service\nSocketMode=0666\nTimestamping=us\nDeferTrigger=yes\n"
+    },
+    "usr/lib/systemd/system/systemd-journald@.service": {
+      "sha256": "3db28ab89a2ff92c9c05c0924ebd5df6abd5228d50992d34c738733386b53547",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Service for Namespace %i\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nRequires=systemd-journald@%i.socket systemd-journald-varlink@%i.socket\nAfter=systemd-journald@%i.socket systemd-journald-varlink@%i.socket\n\n[Service]\nCapabilityBoundingSet=CAP_SYS_ADMIN CAP_DAC_OVERRIDE CAP_SYS_PTRACE CAP_CHOWN CAP_DAC_READ_SEARCH CAP_FOWNER CAP_SETUID CAP_SETGID CAP_MAC_OVERRIDE\nDevicePolicy=closed\nExecStart=/usr/lib/systemd/systemd-journald %i\nFileDescriptorStoreMax=4224\nGroup=systemd-journal\nIPAddressDeny=any\nLockPersonality=yes\nLogsDirectory=journal/%m.%i\nLogsDirectoryMode=02755\nMemoryDenyWriteExecute=yes\nNoNewPrivileges=yes\nRestrictAddressFamilies=AF_UNIX AF_NETLINK\nRestrictNamespaces=yes\nRestrictRealtime=yes\nRestrictSUIDSGID=yes\nRuntimeDirectory=systemd/journal.%i\nRuntimeDirectoryPreserve=yes\nSockets=systemd-journald@%i.socket\nSystemCallArchitectures=native\nSystemCallErrorNumber=EPERM\nSystemCallFilter=@system-service\nType=notify\nWatchdogSec=3min\n\n# If there are many split up journal files we need a lot of fds to access them\n# all in parallel.\nLimitNOFILE=524288\n"
+    },
+    "usr/lib/systemd/system/systemd-journald@.socket": {
+      "sha256": "ad206121f5e0f3d670f4750892f97f6fe4ea3b8d9fb4df04c38253da4823eb6a",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Journal Sockets for Namespace %i\nDocumentation=man:systemd-journald.service(8) man:journald.conf(5)\nStopWhenUnneeded=yes\n\n[Socket]\nService=systemd-journald@%i.service\nListenStream=/run/systemd/journal.%i/stdout\nListenDatagram=/run/systemd/journal.%i/socket\nListenDatagram=/run/systemd/journal.%i/dev-log\nSocketMode=0666\nPassCredentials=yes\nPassSecurity=yes\nReceiveBuffer=8M\nSendBuffer=8M\nTimestamping=us\n\n[Install]\nWantedBy=sockets.target\n"
+    },
+    "usr/lib/systemd/system/systemd-network-generator.service": {
+      "sha256": "d6db0d0b5ccabf5c649a356bb5f4be9cf5fcbec661e6bded7c078282f6087aa3",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Generate Network Units from Kernel Command Line\nDocumentation=man:systemd-network-generator.service(8)\n\nDefaultDependencies=no\nBefore=network-pre.target systemd-udevd.service\nWants=network-pre.target\nConflicts=shutdown.target initrd-switch-root.target\nBefore=shutdown.target initrd-switch-root.target\n\n[Service]\nType=oneshot\nRemainAfterExit=yes\nExecStart=/usr/lib/systemd/systemd-network-generator\nImportCredential=network.netdev.*\nImportCredential=network.link.*\nImportCredential=network.network.*\n\n[Install]\nWantedBy=sysinit.target\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd-persistent-storage.service": {
+      "sha256": "2bd7a373e9bb8644119e8a950ebb342124fbbb20750ab03490f8359049a626e0",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Enable Persistent Storage in systemd-networkd\nDocumentation=man:networkctl(1)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nAfter=systemd-remount-fs.service systemd-networkd.service\nBindsTo=systemd-networkd.service\nConflicts=shutdown.target\nBefore=shutdown.target\nConditionPathExists=!/etc/initrd-release\n\n[Service]\nType=oneshot\nUser=systemd-network\nExecStart=networkctl persistent-storage yes\nExecStop=networkctl persistent-storage no\nStateDirectory=systemd/network\nRemainAfterExit=yes\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd-resolve-hook.socket": {
+      "sha256": "0cba2a79aceeacaa945fe5f3f43271ee19ddb80eba403636fdcdb902ae7ef32f",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network Management Resolve Hook Socket\nDocumentation=man:systemd-networkd.service(8)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nAfter=network-pre.target\nBefore=shutdown.target\nConflicts=shutdown.target\n\n[Socket]\nListenStream=/run/systemd/resolve.hook/io.systemd.Network\nFileDescriptorName=resolve-hook\nSocketMode=0666\nService=systemd-networkd.service\nRemoveOnStop=yes\n\n[Install]\nWantedBy=sockets.target\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd-varlink.socket": {
+      "sha256": "4d6b6aaa3ec9e7218ae2e4522da40e7ee1512c06edaae7d3bd3b2d3fb85e7494",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network Management Varlink Socket\nDocumentation=man:systemd-networkd.service(8)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nBefore=sockets.target shutdown.target\nConflicts=shutdown.target\n\n[Socket]\nListenStream=/run/systemd/netif/io.systemd.Network\nFileDescriptorName=varlink\nSocketMode=0666\nService=systemd-networkd.service\n\n[Install]\nWantedBy=sockets.target\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd-wait-online.service": {
+      "sha256": "486f5c44545130238fa689d1def7fb8b836ffef2aa98819f7df474dc1ba6c0f0",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Wait for Network to be Online\nDocumentation=man:systemd-networkd-wait-online.service(8)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nConflicts=shutdown.target\nBindsTo=systemd-networkd.service\nAfter=systemd-networkd.service\nBefore=network-online.target shutdown.target\n\n[Service]\nType=oneshot\nExecStart=/usr/lib/systemd/systemd-networkd-wait-online\nRemainAfterExit=yes\n\n[Install]\nWantedBy=network-online.target\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd-wait-online@.service": {
+      "sha256": "767b77d25c1cc260c7ddd32d257bb1c1949fa52e138a32d0c930ae60156e6dc2",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Wait for Network Interface %i to be Online\nDocumentation=man:systemd-networkd-wait-online.service(8)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nConflicts=shutdown.target\nBindsTo=systemd-networkd.service\nAfter=systemd-networkd.service\nBefore=network-online.target shutdown.target\n\n[Service]\nType=oneshot\nExecStart=/usr/lib/systemd/systemd-networkd-wait-online -i %i\nRemainAfterExit=yes\n\n[Install]\nWantedBy=network-online.target\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd.service": {
+      "sha256": "95b2e19b3c8a44d2fdcb03cbd3e9248fab087aeb85deb2db53c52026a3371af0",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network Management\nDocumentation=man:systemd-networkd.service(8)\nDocumentation=man:org.freedesktop.network1(5)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\n# systemd-udevd.service can be dropped once tuntap is moved to netlink\nAfter=systemd-udevd.service network-pre.target systemd-sysusers.service systemd-sysctl.service\nBefore=network.target multi-user.target shutdown.target initrd-switch-root.target\nConflicts=shutdown.target initrd-switch-root.target\nWants=network.target systemd-networkd-persistent-storage.service\n\n[Service]\nAmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW CAP_BPF CAP_SYS_ADMIN\nBusName=org.freedesktop.network1\nCapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW CAP_BPF CAP_SYS_ADMIN\nDeviceAllow=char-* rw\nExecStart=/usr/lib/systemd/systemd-networkd\nFileDescriptorStoreMax=512\nImportCredential=network.wireguard.*\nLockPersonality=yes\nMemoryDenyWriteExecute=yes\nNoNewPrivileges=yes\nProtectProc=invisible\nProtectClock=yes\nProtectControlGroups=yes\nProtectHome=yes\nProtectKernelLogs=yes\nProtectKernelModules=yes\nProtectSystem=strict\nRestart=on-failure\nRestartKillSignal=SIGUSR2\nRestartSec=0\nRestrictAddressFamilies=AF_UNIX AF_NETLINK AF_INET AF_INET6 AF_PACKET\nRestrictNamespaces=yes\nRestrictRealtime=yes\nRestrictSUIDSGID=yes\nRuntimeDirectory=systemd/netif\nRuntimeDirectoryPreserve=yes\nSockets=systemd-networkd.socket systemd-networkd-varlink.socket systemd-networkd-resolve-hook.socket\nSystemCallArchitectures=native\nSystemCallErrorNumber=EPERM\nSystemCallFilter=@system-service bpf\nType=notify-reload\nUser=systemd-network\nWatchdogSec=3min\n\n[Install]\nWantedBy=multi-user.target\nAlso=systemd-networkd.socket systemd-networkd-varlink.socket systemd-networkd-resolve-hook.socket\nAlias=dbus-org.freedesktop.network1.service\n\n# The output from this generator is used by udevd and networkd. Enable it by\n# default when enabling systemd-networkd.service.\nAlso=systemd-network-generator.service\n\n# We want to enable systemd-networkd-wait-online.service whenever this service\n# is enabled. systemd-networkd-wait-online.service has\n# WantedBy=network-online.target, so enabling it only has an effect if\n# network-online.target itself is enabled or pulled in by some other unit.\nAlso=systemd-networkd-wait-online.service\n"
+    },
+    "usr/lib/systemd/system/systemd-networkd.socket": {
+      "sha256": "6ed74e30d9fc76faec3b58bfb8b14cc9645089d550ecca30f03909a630ec52ab",
+      "text": "#  SPDX-License-Identifier: LGPL-2.1-or-later\n#\n#  This file is part of systemd.\n#\n#  systemd is free software; you can redistribute it and/or modify it\n#  under the terms of the GNU Lesser General Public License as published by\n#  the Free Software Foundation; either version 2.1 of the License, or\n#  (at your option) any later version.\n\n[Unit]\nDescription=Network Management Netlink Socket\nDocumentation=man:systemd-networkd.service(8) man:rtnetlink(7)\nConditionCapability=CAP_NET_ADMIN\nDefaultDependencies=no\nBefore=sockets.target shutdown.target\nConflicts=shutdown.target\n\n[Socket]\nReceiveBuffer=128M\nListenNetlink=route 1361\nFileDescriptorName=rtnl\nPassPacketInfo=yes\n\n[Install]\nWantedBy=sockets.target\n"
+    }
+  },
+  "systemd_links": {
+    "etc/systemd/system-generators/systemd-gpt-auto-generator": "/dev/null",
+    "etc/systemd/system/dbus-org.freedesktop.network1.service": "/usr/lib/systemd/system/systemd-networkd.service",
+    "etc/systemd/system/default.target": "/usr/lib/systemd/system/multi-user.target",
+    "etc/systemd/system/getty.target.wants/getty@tty1.service": "/usr/lib/systemd/system/getty@.service",
+    "etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service": "/usr/lib/systemd/system/serial-getty@.service",
+    "etc/systemd/system/multi-user.target.wants/blikvm-access.service": "/etc/systemd/system/blikvm-access.service",
+    "etc/systemd/system/multi-user.target.wants/blikvm-gadget.service": "/usr/lib/systemd/system/blikvm-gadget.service",
+    "etc/systemd/system/multi-user.target.wants/blikvm-msd-helper.service": "/usr/lib/systemd/system/blikvm-msd-helper.service",
+    "etc/systemd/system/multi-user.target.wants/e2scrub_reap.service": "/lib/systemd/system/e2scrub_reap.service",
+    "etc/systemd/system/multi-user.target.wants/kvmd.service": "/usr/lib/systemd/system/kvmd.service",
+    "etc/systemd/system/multi-user.target.wants/nginx.service": "/etc/systemd/system/nginx.service",
+    "etc/systemd/system/multi-user.target.wants/remote-fs.target": "/usr/lib/systemd/system/remote-fs.target",
+    "etc/systemd/system/multi-user.target.wants/ssh.service": "/usr/lib/systemd/system/ssh.service",
+    "etc/systemd/system/multi-user.target.wants/systemd-networkd.service": "/usr/lib/systemd/system/systemd-networkd.service",
+    "etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service": "/usr/lib/systemd/system/systemd-networkd-wait-online.service",
+    "etc/systemd/system/sockets.target.wants/systemd-networkd-resolve-hook.socket": "/usr/lib/systemd/system/systemd-networkd-resolve-hook.socket",
+    "etc/systemd/system/sockets.target.wants/systemd-networkd-varlink.socket": "/usr/lib/systemd/system/systemd-networkd-varlink.socket",
+    "etc/systemd/system/sockets.target.wants/systemd-networkd.socket": "/usr/lib/systemd/system/systemd-networkd.socket",
+    "etc/systemd/system/ssh.service.wants/sshd-keygen.service": "/usr/lib/systemd/system/sshd-keygen.service",
+    "etc/systemd/system/ssh.socket.wants/sshd-keygen.service": "/usr/lib/systemd/system/sshd-keygen.service",
+    "etc/systemd/system/sshd.service": "/usr/lib/systemd/system/ssh.service",
+    "etc/systemd/system/sshd.service.wants/sshd-keygen.service": "/usr/lib/systemd/system/sshd-keygen.service",
+    "etc/systemd/system/sshd@.service.wants/sshd-keygen.service": "/usr/lib/systemd/system/sshd-keygen.service",
+    "etc/systemd/system/sysinit.target.wants/systemd-network-generator.service": "/usr/lib/systemd/system/systemd-network-generator.service",
+    "etc/systemd/system/sysinit.target.wants/systemd-pstore.service": "/usr/lib/systemd/system/systemd-pstore.service",
+    "etc/systemd/system/timers.target.wants/apt-daily-upgrade.timer": "/lib/systemd/system/apt-daily-upgrade.timer",
+    "etc/systemd/system/timers.target.wants/apt-daily.timer": "/lib/systemd/system/apt-daily.timer",
+    "etc/systemd/system/timers.target.wants/dpkg-db-backup.timer": "/lib/systemd/system/dpkg-db-backup.timer",
+    "etc/systemd/system/timers.target.wants/e2scrub_all.timer": "/lib/systemd/system/e2scrub_all.timer",
+    "etc/systemd/system/timers.target.wants/fstrim.timer": "/lib/systemd/system/fstrim.timer",
+    "etc/systemd/system/timers.target.wants/motd-news.timer": "/lib/systemd/system/motd-news.timer",
+    "etc/systemd/system/ustreamer.service": "/dev/null",
+    "etc/systemd/user/sockets.target.wants/ssh-agent.socket": "/usr/lib/systemd/user/ssh-agent.socket",
+    "usr/lib/systemd/system/autovt@.service": "getty@.service",
+    "usr/lib/systemd/system/cryptdisks-early.service": "/dev/null",
+    "usr/lib/systemd/system/cryptdisks.service": "/dev/null",
+    "usr/lib/systemd/system/ctrl-alt-del.target": "reboot.target",
+    "usr/lib/systemd/system/dbus-org.freedesktop.hostname1.service": "systemd-hostnamed.service",
+    "usr/lib/systemd/system/dbus-org.freedesktop.locale1.service": "systemd-localed.service",
+    "usr/lib/systemd/system/dbus-org.freedesktop.login1.service": "systemd-logind.service",
+    "usr/lib/systemd/system/dbus-org.freedesktop.timedate1.service": "systemd-timedated.service",
+    "usr/lib/systemd/system/default.target": "graphical.target",
+    "usr/lib/systemd/system/factory-reset.target.wants/systemd-factory-reset-request.service": "../systemd-factory-reset-request.service",
+    "usr/lib/systemd/system/factory-reset.target.wants/systemd-pcrphase-factory-reset.service": "../systemd-pcrphase-factory-reset.service",
+    "usr/lib/systemd/system/getty.target.wants/getty-static.service": "../getty-static.service",
+    "usr/lib/systemd/system/hwclock.service": "/dev/null",
+    "usr/lib/systemd/system/initrd.target.wants/systemd-battery-check.service": "../systemd-battery-check.service",
+    "usr/lib/systemd/system/initrd.target.wants/systemd-bsod.service": "../systemd-bsod.service",
+    "usr/lib/systemd/system/initrd.target.wants/systemd-confext-initrd.service": "../systemd-confext-initrd.service",
+    "usr/lib/systemd/system/initrd.target.wants/systemd-pcrphase-initrd.service": "../systemd-pcrphase-initrd.service",
+    "usr/lib/systemd/system/initrd.target.wants/systemd-sysext-initrd.service": "../systemd-sysext-initrd.service",
+    "usr/lib/systemd/system/kmod.service": "systemd-modules-load.service",
+    "usr/lib/systemd/system/local-fs.target.wants/tmp.mount": "../tmp.mount",
+    "usr/lib/systemd/system/multi-user.target.wants/dbus.service": "../dbus.service",
+    "usr/lib/systemd/system/multi-user.target.wants/getty.target": "../getty.target",
+    "usr/lib/systemd/system/multi-user.target.wants/systemd-ask-password-wall.path": "../systemd-ask-password-wall.path",
+    "usr/lib/systemd/system/multi-user.target.wants/systemd-logind.service": "../systemd-logind.service",
+    "usr/lib/systemd/system/multi-user.target.wants/systemd-user-sessions.service": "../systemd-user-sessions.service",
+    "usr/lib/systemd/system/procps.service": "systemd-sysctl.service",
+    "usr/lib/systemd/system/sockets.target.wants/dbus.socket": "../dbus.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-ask-password.socket": "../systemd-ask-password.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-creds.socket": "../systemd-creds.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-factory-reset.socket": "../systemd-factory-reset.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-hostnamed.socket": "../systemd-hostnamed.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-journald-dev-log.socket": "../systemd-journald-dev-log.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-journald.socket": "../systemd-journald.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-logind-varlink.socket": "../systemd-logind-varlink.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-mute-console.socket": "../systemd-mute-console.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-pcrextend.socket": "../systemd-pcrextend.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-pcrlock.socket": "../systemd-pcrlock.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-sysext.socket": "../systemd-sysext.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-udevd-control.socket": "../systemd-udevd-control.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-udevd-kernel.socket": "../systemd-udevd-kernel.socket",
+    "usr/lib/systemd/system/sockets.target.wants/systemd-udevd-varlink.socket": "../systemd-udevd-varlink.socket",
+    "usr/lib/systemd/system/sshd.service": "ssh.service",
+    "usr/lib/systemd/system/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service": "../systemd-pcrphase-storage-target-mode.service",
+    "usr/lib/systemd/system/sudo.service": "/dev/null",
+    "usr/lib/systemd/system/sysinit.target.wants/dev-hugepages.mount": "../dev-hugepages.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/dev-mqueue.mount": "../dev-mqueue.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/imports.target": "../imports.target",
+    "usr/lib/systemd/system/sysinit.target.wants/kmod-static-nodes.service": "../kmod-static-nodes.service",
+    "usr/lib/systemd/system/sysinit.target.wants/ldconfig.service": "../ldconfig.service",
+    "usr/lib/systemd/system/sysinit.target.wants/proc-sys-fs-binfmt_misc.automount": "../proc-sys-fs-binfmt_misc.automount",
+    "usr/lib/systemd/system/sysinit.target.wants/sys-fs-fuse-connections.mount": "../sys-fs-fuse-connections.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/sys-kernel-config.mount": "../sys-kernel-config.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/sys-kernel-debug.mount": "../sys-kernel-debug.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/sys-kernel-tracing.mount": "../sys-kernel-tracing.mount",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-ask-password-console.path": "../systemd-ask-password-console.path",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-binfmt.service": "../systemd-binfmt.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-firstboot.service": "../systemd-firstboot.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-hibernate-clear.service": "../systemd-hibernate-clear.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-hwdb-update.service": "../systemd-hwdb-update.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-journal-catalog-update.service": "../systemd-journal-catalog-update.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-journal-flush.service": "../systemd-journal-flush.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-journald.service": "../systemd-journald.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-machine-id-commit.service": "../systemd-machine-id-commit.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-modules-load.service": "../systemd-modules-load.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-pcrmachine.service": "../systemd-pcrmachine.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-pcrnvdone.service": "../systemd-pcrnvdone.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-pcrphase-sysinit.service": "../systemd-pcrphase-sysinit.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-pcrphase.service": "../systemd-pcrphase.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-pcrproduct.service": "../systemd-pcrproduct.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-random-seed.service": "../systemd-random-seed.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-sysctl.service": "../systemd-sysctl.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-sysusers.service": "../systemd-sysusers.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup-dev-early.service": "../systemd-tmpfiles-setup-dev-early.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup-dev.service": "../systemd-tmpfiles-setup-dev.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup.service": "../systemd-tmpfiles-setup.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-tpm2-setup-early.service": "../systemd-tpm2-setup-early.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-tpm2-setup.service": "../systemd-tpm2-setup.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-udev-trigger.service": "../systemd-udev-trigger.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-udevd.service": "../systemd-udevd.service",
+    "usr/lib/systemd/system/sysinit.target.wants/systemd-update-done.service": "../systemd-update-done.service",
+    "usr/lib/systemd/system/timers.target.wants/systemd-tmpfiles-clean.timer": "../systemd-tmpfiles-clean.timer",
+    "usr/lib/systemd/system/x11-common.service": "/dev/null"
+  },
+  "installed_versions": {
+    "systemd": "259.5-0ubuntu3.4",
+    "openssh-server": "1:10.2p1-2ubuntu3.6"
+  },
+  "ssh_socket_enabled": "disabled",
+  "public_image_sha256_before_after": "873845575255879c13dc5a91aebfdbe269929e2af58b3a71c547661776e3c127"
+}

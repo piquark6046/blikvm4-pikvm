@@ -1,0 +1,45 @@
+{
+  "result": "CANDIDATE_1_NARROW_DIAGNOSTIC_PASSED",
+  "archive_sha256": "058557cbc659fa7ff922db346b08b75ae8f329e39b8c71b565f7413a4ea31ef6",
+  "archive_members_verified": 93,
+  "first_recovery_seconds": {
+    "icmp": 1.018502458,
+    "tcp443": 1.01592315,
+    "https": 2.097558729,
+    "tcp22": 1.014948944,
+    "ssh": 3.719977718
+  },
+  "carrier_cycle_recovery_seconds": {
+    "icmp": 1.015940552,
+    "tcp443": 1.013165537,
+    "https": 2.063908409,
+    "tcp22": 1.013514668,
+    "ssh": 3.376869905
+  },
+  "carrier_down_seconds": 97.362915541,
+  "boot_id_unchanged": true,
+  "ssh_main_pid": 259,
+  "ssh_NRestarts": 0,
+  "nginx_NRestarts": 0,
+  "ssh_listening_before_first_carrier_seconds": 674.0181269999999,
+  "restricted_listeners_and_firewall": true,
+  "unauthenticated_api_http": 401,
+  "journal_allocation_KiB": {
+    "first": 4096,
+    "pre_cycle": 4096,
+    "post_cycle": 4096
+  },
+  "no_manual_repair": true,
+  "ssh_restart_override_added": false,
+  "candidate2_needed": false,
+  "original_mechanism": "sufficiently resolved by Candidate 1 runtime; original attempt exit code remains unproven due to lost journal",
+  "limits": [
+    "early SPL/TF-A UART gap explicitly approved",
+    "no claim of continuous overnight UART observation",
+    "expired carrier-cycle01 has no qualification credit",
+    "supplemental IPv6-sysctl harness failure preserved",
+    "wait-online timeout expected and retained; no policy repair",
+    "target realtime stale; monotonic ordering used"
+  ],
+  "p2_attempt02": "NOT_STARTED; requires fresh flash and qualification from zero"
+}
