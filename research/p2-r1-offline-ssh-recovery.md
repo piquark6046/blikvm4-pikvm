@@ -352,3 +352,12 @@ P2 attempt 02 must now start from zero with a new expendable-card identification
 fresh typed erasure confirmation, fresh write/fsync/flush and physical reinsert/
 complete readback. Diagnostic boot and its checks contribute no P2 qualification
 credit. M6/ATX, P3 and RO/overlay remain deferred.
+
+## R1 closure (2026-09-13)
+
+Candidate 1 remains unchanged and now passes [fresh complete P2 attempt 02](p2-standalone-sd-bringup.md#final-acceptance--p2-attempt-02-passed-2026-09-13).
+Both offline cold boots bound the approved SSH address before carrier appeared,
+with zero SSH restarts and automatic trusted HTTPS/enrolled SSH recovery.
+Candidate 2 is not needed. The approved early cold-boot UART capture exception
+and complete normal-reboot firmware trace are explicit in the acceptance record.
+Attempt 01 remains FAILED; no later phase or baseline tag is started.

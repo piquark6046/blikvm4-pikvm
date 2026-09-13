@@ -249,3 +249,13 @@ frozen](p2-r1-offline-ssh-recovery.md#candidate-1-decision-and-freeze--2026-09-1
 SSH binds the approved address before carrier with zero restarts; cold offline
 recovery and the separate carrier cycle pass. Candidate 2 is unnecessary.
 Fresh P2 attempt 02 remains NOT STARTED; diagnostic evidence earns no credit.
+
+P2 final update (2026-09-13): [fresh attempt 02 PASSED](p2-standalone-sd-bringup.md#final-acceptance--p2-attempt-02-passed-2026-09-13)
+using frozen P2-R1 Candidate 1. Both offline-Ethernet cold boots recovered trusted
+HTTPS and enrolled SSH automatically with zero SSH restarts. Complete core,
+physical USB reconnect, persistence, normal reboot and retained-artifact gates
+passed. Acceptance includes the explicitly approved early cold-boot UART gap;
+the normal reboot captured the full firmware chain. Earlier NOT STARTED/pending
+entries are historical checkpoints. Attempt 01 remains FAILED; P1 original
+remains historically offline-passed. M8-F Run 04 remains the accepted core soak.
+P3 has not begun; M6/ATX and RO/overlay remain DEFERRED. No baseline tag is created.

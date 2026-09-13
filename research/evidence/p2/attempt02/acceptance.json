@@ -1,0 +1,98 @@
+{
+  "result": "PASSED",
+  "phase": "P2 attempt 02",
+  "candidate": "p2-r1-candidate1",
+  "enrolled_image_sha256": "c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24",
+  "archives": {
+    "postreboot-evidence.tar.gz": {
+      "sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "verified_members": 2129
+    },
+    "core-evidence.tar.gz": {
+      "sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "verified_members": 2177
+    },
+    "lan-hdmi-evidence.tar.gz": {
+      "sha256": "4abf93c1886ebfeb2663f9776a9dd4aaa7f4e993636f2a698173d665f19252f9",
+      "verified_members": 34
+    },
+    "reconnect-evidence.tar.gz": {
+      "sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "verified_members": 594
+    },
+    "normal-reboot-evidence.tar.gz": {
+      "sha256": "65e68116534a5ba6fe6b3ba4f038c13739f0074bce42d242b9fc86043f93fbfc",
+      "verified_members": 10
+    },
+    "write-evidence.tar.gz": {
+      "sha256": "051d990253e019c63c042e3050fe668d8d0d04cc23085be5a0a0809ee4902a56"
+    },
+    "reinsert-evidence.tar.gz": {
+      "sha256": "7e2c758e6eeb428e5916bd73207ea5837fbd4782125889eae9bf2a5fc1c9b755"
+    },
+    "live-insertion-recheck.tar.gz": {
+      "sha256": "f56dcf2022881872cc3d372746570d13ed29e8e1d7424d1d848791a625a07bea"
+    },
+    "coldboot01-recovery.tar.gz": {
+      "sha256": "3eebf57dd64639ce821b85d8e646ad8087473d7363d4ace0fb91469771acf1f9",
+      "verified_members": 16
+    },
+    "coldboot02-recovery.tar.gz": {
+      "sha256": "02b3817d554ec5beaedfc15c69ce3b383a943d8e8af4e8ceeac86cd15d7c7761",
+      "verified_members": 15
+    },
+    "final-evidence.tar.gz": {
+      "sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "verified_members": 2174
+    }
+  },
+  "cold_boot_recoveries": [
+    {
+      "https_seconds": 2.089490146,
+      "ssh_seconds": 3.721358869,
+      "offline_dwell_seconds": 327.938613182,
+      "sshd_listen_boot_seconds": 126.926941,
+      "carrier_boot_seconds": 887.116733,
+      "ssh_restarts": 0
+    },
+    {
+      "https_seconds": 2.089825427,
+      "ssh_seconds": 2.567754012,
+      "offline_dwell_seconds": 349.514041759,
+      "sshd_listen_boot_seconds": 125.880183,
+      "carrier_boot_seconds": 566.897396,
+      "ssh_restarts": 0
+    }
+  ],
+  "second_cold_two_client_fps": [
+    29.764779766787413,
+    29.773266495710025
+  ],
+  "second_cold_combined_direct_reads": 252,
+  "second_cold_browser_direct_reads": 303,
+  "frozen_artifacts_matched": 10686,
+  "enrollment_files_matched": 4,
+  "journal_allocation_KiB": 4096,
+  "expected_auth_denials": 12,
+  "warning_classification": {
+    "legacy_gpio_regulator": 13,
+    "unsupported_bpf_firewall": 2,
+    "unsupported_sysctl": 4,
+    "inherited_rtc": 6,
+    "interface_name": 2,
+    "expected_offline_timeout": 3,
+    "unsupported_ipv6": 4
+  },
+  "expected_offline_failed_unit": "systemd-networkd-wait-online.service",
+  "persistence_cleanup": "passed",
+  "normal_reboot_full_firmware_trace": "passed",
+  "cold_boot_uart_exception": "User-approved missing early firmware during shared power/UART re-enumeration; continuous systemd-through-recovery capture retained",
+  "attempt01": "FAILED permanently",
+  "candidate2": "not required",
+  "M8F_Run04": "accepted core soak unchanged; no repeat required for network-only delta",
+  "deferred": [
+    "P3",
+    "M6/ATX",
+    "RO/overlay"
+  ]
+}

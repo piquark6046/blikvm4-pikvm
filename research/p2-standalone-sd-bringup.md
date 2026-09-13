@@ -201,3 +201,97 @@ The persistence file still matched before shutdown, no units were failed, and
 journal allocation remained 4 MiB with 24 KiB under /var/log. The guarded normal
 poweroff was requested only after the full volatile journal was archived.
 The second standalone cold boot and final qualification review remain pending.
+
+### Final acceptance — P2 attempt 02 PASSED (2026-09-13)
+
+This final decision supersedes the pending-status checkpoints above. Attempt 02
+passes on frozen **p2-r1-candidate1**, with the explicitly approved cold-boot UART
+exception: shared power/UART re-enumeration loses early firmware bytes. Both cold
+boots have continuous systemd-through-network-recovery capture; the separate
+normal standalone reboot has the complete ordered SPL/TF-A/U-Boot/Linux/systemd
+trace. This is not a claim of complete early-firmware capture on cold power-on.
+
+The second cold boot repeated the original failure scenario from physical power
+removal, with Ethernet disconnected through standalone startup. The recorded
+minimum dwell after the login prompt was 349.514 seconds. Independent probes
+measured latency from the bridge's first observed Ethernet carrier-up sample to
+each probe's first successful completion (therefore including polling overhead):
+
+| Attempt 02 boot | Trusted HTTPS | Enrolled SSH | SSH restarts |
+| --- | ---: | ---: | ---: |
+| First cold boot | 2.089 s | 3.721 s | 0 |
+| Second cold boot | 2.090 s | 2.568 s | 0 |
+
+On the second boot sshd logged its successful bind at boot time 125.880 seconds,
+well before Ethernet carrier at 566.897 seconds. The first cold boot likewise
+bound at 126.927 seconds before carrier at 887.117 seconds. With IPv4 nonlocal
+binding disabled, successful binding proves the approved address existed at that
+startup point; no status-255 failure/retry, UART command, reboot, manual SSH
+service repair or configuration modification was needed for either recovery.
+The original attempt's lost journal still prevents proving its exact live state;
+its static failure mechanism is sufficiently resolved by the Candidate 1 runtime
+evidence. Candidate 2 is unnecessary and no restart override is added.
+
+Second-cold-boot core qualification passed all three independent stages: the
+11-stage real Chromium/MSD suite, the two-client video/HID/RO-MSD workload, and
+the browser/HID/RO-MSD workload. The two 120-second streams delivered 29.765 and
+29.773 fps, with changing-frame windows independently replayed from frame records.
+The combined workload completed 252 full direct RO-media reads; the browser
+workload completed 303. These complement the first-boot, physical USB-PC reconnect,
+LAN/HTTPS/auth, HDMI recovery and normal-reboot/post-reboot results above.
+
+Final review matched all **10,686 selected frozen artifact files** and all four
+approved enrollment files. Physical RW ext4 root remained `/dev/mmcblk0p1` with
+the frozen UUID/PARTUUID. Machine identity, SSH host public-key hashes and the
+65,536-byte persistence payload survived normal reboot and the second cold boot.
+After review, only that hash-verified disposable persistence file was removed and
+its parent directory fsynced; a private cleanup receipt confirms removal.
+
+Final SSH state remains active with `NRestarts=0`, vendor
+`RestartPreventExitStatus=255`, and `ListenAddress 192.168.88.2`. The socket remains
+disabled/inactive. The only listening TCP endpoints are `192.168.88.2:22` and
+`192.168.88.2:443`; nftables matches the earlier frozen policy after normalizing
+packet counters. There is no default route or network policy expansion.
+
+The offline wait-online timeout remains expected because
+`RequiredForOnline=routable` is retained: it is the sole failed unit on offline
+cold boots. The connected normal reboot had no failed units. Final journald
+configuration remains volatile, `RuntimeMaxUse=16M`, `RuntimeMaxFileSize=4M`;
+measured journal allocation was 4 MiB and `/var/log` occupied 24 KiB. Review of
+the final boot journal found 12 expected negative-auth-test error messages and
+no unexpected high-severity application, filesystem or I/O errors. Other warning
+classes are the inherited unsupported kernel features (BPF/cgroup firewall,
+IPv6/sysctl interfaces), regulator/GPIO and interface-name notices, stale RTC
+clock effects, and the declared wait-online timeout. These do not establish a
+new network/SSH regression. Existing bounded-retention qualification remains
+applicable; this short run is not a new endurance soak.
+
+The final private archive SHA-256 is
+`1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08`.
+All 2,174 member hashes verified after transfer to the build VM. It includes
+second-cold core evidence, UART/carrier snapshots, final artifact/enrollment and
+journal state, and the cleanup receipt. Additional second-cold recovery archive:
+`02b3817d554ec5beaedfc15c69ce3b383a943d8e8af4e8ceeac86cd15d7c7761`.
+The [acceptance replay](evidence/p2/attempt02/verify-acceptance.py) validates these
+and the earlier immutable flash/core/reconnect/reboot archives; its
+[sanitized result](evidence/p2/attempt02/acceptance.json) lists hashes and gates.
+Run it with the private archive directory as its sole argument. Raw logs,
+enrollment and private keys remain outside Git.
+
+Accepted public image SHA-256:
+`1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079`.
+Accepted private enrolled image SHA-256:
+`c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24`.
+Its enrollment receipt SHA-256 remains
+`5c2982a84cd6bead37a76dfb189f71d0144c3545d1a08a006333157c45314084`.
+No image was patched during qualification. The only production delta from
+historical P1 is `ConfigureWithoutCarrier=yes`; accepted kernel/video/HID/MSD/core
+files are unchanged. M8-C-style regression and complete P2 passed, and bounded
+logging remains effective, so the accepted M8-F Run 04 soak does not require a
+new 24-hour run for this fix.
+
+P2 attempt 01 remains permanently **FAILED**. Original P1 remains historically
+offline-passed, superseded for P2 by this revision. Run 02 remains FAILED and
+Run 03 remains unaccepted historical evidence. The diagnostic contributes zero
+P2 qualification credit. No baseline tag is created. P3 has not begun; M6/ATX
+and RO/overlay remain DEFERRED. The recovery SD remains untouched.
