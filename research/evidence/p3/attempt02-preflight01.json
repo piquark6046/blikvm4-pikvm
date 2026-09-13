@@ -1,0 +1,38 @@
+{
+  "result": "FUNCTIONAL_REPLAY_PASSED",
+  "complete_permission_boundary": "NOT_ACCEPTED",
+  "scope": "HARNESS_ONLY_PREFLIGHT",
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+  "storage_checks": 8,
+  "msd_transitions": 19,
+  "intentional_logout_socket_resets": [
+    {
+      "reset_us": 1367924203,
+      "logout_us": 1367914211,
+      "reauth_us": 1368625692
+    },
+    {
+      "reset_us": 1415840506,
+      "logout_us": 1415832305,
+      "reauth_us": 1416435344
+    },
+    {
+      "reset_us": 1415852415,
+      "logout_us": 1415832305,
+      "reauth_us": 1416435344
+    }
+  ],
+  "verified_members": 492,
+  "target_hashes_matched": 10690,
+  "protected_hashes_matched": 99,
+  "browser_stages": 47,
+  "chromium_version": "145.0.7632.6",
+  "video_unique_frames": 6,
+  "journal_records_reviewed": 1191,
+  "inherited_early_nginx_errors": 6,
+  "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+  "browser_processes_remaining": 0,
+  "service_generations_unchanged": true
+}

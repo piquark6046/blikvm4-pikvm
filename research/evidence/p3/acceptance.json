@@ -2,7 +2,7 @@
   "schema_version": 1,
   "phase": "P3",
   "result": "NOT_ACCEPTED",
-  "stage": "STOPPED_AFTER_P3_A_ATTEMPT01_FAILURE",
+  "stage": "STOPPED_P3_A_ATTEMPT02_PREFLIGHT_FAILURE",
   "baseline_commit": "1fa1a7c8a4c53639dfd38e32e24c256c8682afd7",
   "baseline_tag": "standalone-sd-core-kvm-baseline",
   "plan_sha256": "ef5405a993848e8fec8c32386482eb855b3a6cd3b3547b2f51d05359d971047a",
@@ -98,5 +98,12 @@
   ],
   "attempt01": "P2 attempt 01 remains permanently FAILED",
   "completed_passing_cycles": 0,
-  "power_loss_stage": "NOT_STARTED"
+  "power_loss_stage": "NOT_STARTED",
+  "attempt02": {
+    "status": "REBOOT_SEQUENCE_NOT_STARTED",
+    "accepted_cycles": 0,
+    "reboot_cycles_consumed": 0,
+    "preflight": "FAILED",
+    "record": "attempt02-preflight-failure.json"
+  }
 }

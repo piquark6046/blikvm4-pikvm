@@ -268,3 +268,12 @@ file was unreadable by Chromium. The reboot/startup checks passed, but no P3
 cycle earns acceptance credit. The private failure archive is independently
 verified. No power-loss or second-card test ran; P3 remains NOT ACCEPTED.
 M6/ATX, writable MSD and RO/overlay remain DEFERRED.
+
+P3-A attempt-02 preparation update (2026-09-13): the separate bridge correction
+passed initial permission checks and one functional Chromium smoke, but a later
+check found previous browser evidence directories still writable by the browser
+account. The second preflight was stopped. Both archives are independently
+verified; the [failed preflight checkpoint](p3-standalone-stability.md) consumes
+zero reboot cycles. Attempt-02 reboot sequence has NOT STARTED. All 10,690
+target hashes and retained protected evidence remain unchanged. P2 stays PASSED;
+P3 remains NOT ACCEPTED; P3-B/P3-C have not started. No new tag was created.

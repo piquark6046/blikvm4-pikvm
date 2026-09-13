@@ -1,6 +1,6 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — P3-A attempt 01 FAILED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
+Status: **STOPPED — attempt-02 preflight FAILED; reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -187,3 +187,69 @@ These are permission tests, not browser preflights or P3 cycles.
 
 The two actual browser preflights and attempt-02 start inventory are pending.
 P3-B/P3-C have not started. P2 remains PASSED; P3 remains NOT ACCEPTED.
+
+
+## Attempt 02 preparation — stopped at browser preflight (2026-09-13)
+
+**PREFLIGHT FAILED. Attempt-02 reboot sequence NOT STARTED; zero reboot
+cycles consumed and `accepted_cycles=0/12`.** The second preflight was stopped
+after an effective-access check proved browser uid 995 could write the first
+preflight's `browser-msd` and `browser-hid` evidence directories. Both remained
+owned by uid 995/gid 983 with mode `0750`. Their root-owned parent was not
+writable, but traversal still allowed modification inside the child directories.
+The first permission gate checked original P3 evidence and private inputs; it
+failed to include all prior browser-run evidence. Commit `81b3f61` therefore
+remains an **insufficient harness correction**, not authorization to reboot.
+
+The first run completed browser functionality: Chromium 145.0.7632.6, trusted
+HTTPS and enrolled login, 11 MSD stages, 8 independent storage checks and
+19 media transitions with the exact G4 digest, 47 HID stages and six distinct
+video frames at the retained 1080p30 setting. Both browser harnesses exited
+zero, no browser processes remained, target service generations were unchanged,
+and all 10,690 target hashes plus 99 protected bridge hashes matched. Its
+[functional replay](evidence/p3/attempt02-preflight01.json) is supplemental;
+it does **not** accept the complete permission boundary or earn P3 credit.
+
+Full first-preflight journal review covered 1,191 records. The six inherited
+early nginx errors remain classified as in attempt 01. Three additional nginx
+`recv() failed (104: Connection reset by peer)` messages occurred on upgraded
+WebSockets during the deliberate logout stages. Retained kvmd journal entries
+place each reset between logout/socket removal and subsequent successful
+reauthentication; browser stale-session and neutral-HID assertions passed.
+The replay requires those specific causal witnesses, rather than ignoring all
+nginx errors or relying on severity alone.
+
+The second run was stopped during MSD smoke. Its original `in_progress`
+controller record remains unchanged alongside an explicit `boundary-failure.json`.
+The transient unit's reported exit status is not treated as a completed browser
+run. No browser processes remain. There was no third preflight, reboot, service
+repair, target configuration change, power cut, second-card action or reflash.
+The post-stop inventory matched all 10,690 production/enrollment files, the same
+physical root and SD CID, boot ID, machine/SSH identities, and service generations.
+All 99 protected bridge hashes and all 482 live first-preflight evidence files
+were independently compared and unchanged.
+
+Both private archives were transferred via pinned-host SFTP and independently
+verified on the VM, including every manifest member:
+
+- First preflight: 492 members; SHA-256
+  `c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f`.
+- Stopped second preflight: 125 members; SHA-256
+  `be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644`.
+
+The [failure replay](evidence/p3/verify-preflight02-failure.py) and
+[machine-readable checkpoint](evidence/p3/attempt02-preflight-failure.json)
+preserve the failed boundary and zero-cycle status. The 135 local tests passed;
+they do not override this live permission failure.
+
+A future bridge-only correction must seal completed/aborted evidence against
+the browser account and inventory every sibling evidence tree before launch,
+including preparation-test outputs. It must verify protected paths cannot be
+modified through writable ancestors. That correction and another browser
+preflight have **not** been applied or run after this stop. Two fully passing
+fresh-directory preflights and a new immediate target start inventory are still
+required before cycle 1. The original 12-cycle matrix is unchanged.
+
+P2 remains PASSED. P3-A is not passed; P3 remains NOT ACCEPTED. P3-B and P3-C
+remain NOT STARTED; M6/ATX, writable MSD and RO/overlay remain DEFERRED. No tag
+was created. The user-requested stop on preflight failure is in effect.
