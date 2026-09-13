@@ -291,3 +291,13 @@ Immutable H2 failed before Chromium; the earlier successful preflight used a
 different HOME configuration and did not retain browser argv. Incomplete
 launch contracts and sanitized Crashpad build identity are preserved. No
 browser probe or target contact; H3 root cause UNASSIGNED; zero P3 credit.
+
+
+P3-H5 update (2026-09-13): the [prospective substrate](p3-standalone-stability.md#p3-h5--prospective-substrate-stopped-before-first-browser-launch-2026-09-13)
+replaces the impossible exact historical-control gate. H3 root cause: UNASSIGNED.
+Earlier successful attempt-02 preflight is a HISTORICAL FUNCTIONAL REFERENCE only.
+H5 minimal-001 FAILED at its Node sysfs-interface assertion before Chromium
+launch. No retry or target contact; zero P3 credit. New account/runtime contract,
+permission audits, atomic failure-leaf sealing and independent archive replay
+are retained. H5 is unaccepted and latched FAILED; P3-A attempt 02 is unstarted.
+P2 PASSED, P3 UNACCEPTED, P3-B/C blocked, M6/ATX and RO/overlay DEFERRED.

@@ -1,6 +1,8 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — P3-H3 FAILED at first Chromium launch; attempt-02 reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
+Status: **STOPPED — P3-H5 minimal-001 FAILED before Chromium launch;
+H3 root cause: UNASSIGNED; attempt-02 reboot sequence NOT STARTED;
+P3 UNACCEPTED** (2026-09-13). P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -10,6 +12,13 @@ M6/ATX, writable MSD and RO/overlay remain DEFERRED.
 Frozen public image: `1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079`.
 Frozen private enrolled image: `c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24`.
 No image regeneration or production-file modification is authorized by this plan.
+
+Current methodology is the [prospective H5 plan](evidence/p3/h5-plan.md).
+Historical H4/H4b control prerequisites below describe those checkpoints only;
+they are no longer gates. The earlier successful attempt-02 browser preflight
+is a **HISTORICAL FUNCTIONAL REFERENCE**, never an exact control. No further
+reconstruction of unknown historical DISPLAY/XAUTHORITY/argv/environment is
+required. H5 preserves rather than supersedes H3's FAILED record.
 
 ## Predeclared sequence
 
@@ -681,3 +690,76 @@ H4b validation: five archive SHA-256 checks and contract recovery passed; the
 prior H4 archive replay still passed. Node syntax and fail-closed incomplete
 contract checks passed locally. The preceding checkpoint suite passed 143
 tests with one existing skip. These are offline diagnostic checks only.
+
+## P3-H5 — prospective substrate stopped before first browser launch (2026-09-13)
+
+**H5 FAILED, zero credit. H3 root cause: UNASSIGNED.** The forensic conclusion
+is frozen: H3 SIGTRAP at `chrome+0x633662b`, exact Chromium build identity and
+private Crashpad archive remain retained; SUID stripping is DISPROVEN and
+sandbox-enabled AppArmor denial is a separate failure mode. `b800439` and
+`eadd900` remain historical checkpoints. No exact successful historical browser
+argv/environment exists. H4/H4b had no target contact or browser reproduction.
+The earlier successful preflight is a HISTORICAL FUNCTIONAL REFERENCE only.
+
+The new H5 namespace was prepared without changing H3 or legacy descendants,
+historical FAILED latches, or the old `p3-browser` account. `p3-browser-h5`
+is locked, shell `/usr/sbin/nologin`, uid 994/gid 982, groups `[982]`, and HOME
+equals its dedicated `/var/lib/blikvm-p3-h5/home` (owned 994:982, mode 0700).
+Root-owned controller/sealed ancestors are 0700, input is read-only to that UID,
+and the active parent is root-owned 0711. A fresh public-CA-only NSS database
+has no private keys. The public Chromium/Playwright runtime was copied from
+the frozen root-owned H3 input tree with modes preserved; no generic Chromium
+chmod or old browser home/cache reuse occurred.
+
+Before the probe, contract SHA-256
+`cac55c25be2b1332211e806cbeac4c4edb1c2dda70f163d31e446e515a80755d`
+recorded 1,235 runtime entries with hashes/ownership/modes/xattrs, executable
+identities and package versions, account and ancestor metadata, NSS inventory,
+the minimal environment, exact Xvfb wrapper and frozen Playwright API.
+Versions remain Node v22.22.1, Playwright 1.58.2 and Chromium 145.0.7632.6.
+TMPDIR/XDG_RUNTIME_DIR were absent. No manual sandbox flags were introduced.
+
+`minimal-001` ran under transient systemd unit
+`blikvm-p3-h5-minimal-001.service`. The controller used `unshare --net`, brought
+loopback up, and checked one interface with `ip` before dropping privileges.
+The Node probe then asserted that `/sys/class/net` contained only `lo`, but
+observed `enp1s0`, `lo`, and `wlo1`. It exited 1 at that assertion, before loading
+Playwright, serializing the in-process launch contract, running the immediate
+JS launch audit, or calling `chromium.launch`. There is no generated Chromium
+argv, browser context/page, or SIGTRAP from this probe. The preparation-only
+`chrome --version` command is not a browser session or qualification launch.
+
+This is a new H5 probe failure. Source review shows the controller isolated
+the network namespace but inherited the existing sysfs mount; the sysfs-based
+check therefore used an unsuitable interface view. That explains the assertion
+path, not H3's crash. Actual in-process namespace identifiers were not retained
+because the assertion preceded provenance serialization; the archive does not
+certify a completed network-isolation/launch contract. No corrective retry was
+performed, and H5's original controller/probe bytes remain frozen.
+
+The pre-probe and post-seal actual-UID audits passed 21,511 operations in total.
+The completed failure leaf and fresh NSS home contents were archived with
+original metadata and atomically renamed behind the 0700 sealed ancestor.
+Explicit traversal/mutation checks of that sealed leaf were denied. No H5 UID
+process remained. Complete retained before/after protected manifests match,
+including H3/legacy and original private/repository input roots. These permission
+results do not pass H5. No target connection was made, so no fresh target
+inventory or continuity claim is substituted for the missing functional phase.
+
+Private archive `out/p3-h5/h5-failed.tar.gz` was transferred using SFTP with the
+configured bridge host-key pin. SHA-256:
+`304bdf020fdb6df9039fe459c392b6c22e16b9f8a04bd52900974430458bc0da`;
+611,585 bytes, 35 indexed files and a separately verified seven-member sealed
+leaf archive. [Independent Build VM replay](evidence/p3/verify-h5-failure.py)
+returned [H5_PRELAUNCH_FAILURE_CONFIRMED](evidence/p3/h5-failure.json).
+The source/dirty-state provenance note is explicitly retrospective; the runtime
+contract and uploaded plan preceded the probe. No complete in-process launch
+contract or generated argv is claimed.
+
+`minimal-002`, `minimal-003`, all three functional preflights, H5 acceptance,
+and P3-A attempt 02 remain NOT STARTED. The H5 FAILED latch remains installed.
+P2 remains PASSED; P3 remains UNACCEPTED; accepted_cycles=0/12. P3-B/P3-C remain
+blocked, M6/ATX and RO/overlay DEFERRED. No acceptance checkpoint, product tag,
+reboot, reflash, or target repair was performed. Local validation: 144 tests,
+143 passed with one preexisting skip; Python/Node syntax checks passed. Those
+tests did not cover the live network-namespace/sysfs distinction.

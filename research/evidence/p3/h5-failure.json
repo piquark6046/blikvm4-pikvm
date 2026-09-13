@@ -1,0 +1,17 @@
+{
+  "result": "H5_PRELAUNCH_FAILURE_CONFIRMED",
+  "archive_sha256": "304bdf020fdb6df9039fe459c392b6c22e16b9f8a04bd52900974430458bc0da",
+  "indexed_files": 35,
+  "runtime_manifest_entries": 1235,
+  "permission_audits": 2,
+  "permission_operations": 21511,
+  "sealed_members": 7,
+  "browser_launches": 0,
+  "complete_in_process_launch_contracts": 0,
+  "generated_argv_records": 0,
+  "target_contacted": false,
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "protected_inputs_unchanged": true,
+  "h3_root_cause": "UNASSIGNED"
+}
