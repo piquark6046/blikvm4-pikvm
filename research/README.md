@@ -255,3 +255,15 @@ verified; the [failed preflight checkpoint](p3-standalone-stability.md) consumes
 zero reboot cycles. Attempt-02 reboot sequence has NOT STARTED. All 10,690
 target hashes and retained protected evidence remain unchanged. P2 stays PASSED;
 P3 remains NOT ACCEPTED; P3-B/P3-C have not started. No new tag was created.
+
+
+P3-H2 update (2026-09-13): [evidence-directory isolation FAILED before the first
+browser launch](p3-standalone-stability.md#p3-h2--evidence-isolation-stopped-failed-2026-09-13).
+The actual browser UID created a zero-byte probe in an inherited root-owned
+0777 attempt-01 output omitted from the sealing migration. The probe and changed
+directory timestamps are preserved; existing protected file contents and prior
+archives are unchanged. The 78-file private archive independently replays as
+FAILED_CONFIRMED. Both target inventories match all 10,690 hashes and the same
+boot/identity/service generations. No browser smoke or reboot ran; no later
+preflight or P3-A/B/C work started. P2 remains PASSED; P3 remains UNACCEPTED.
+M6/ATX, writable MSD and RO/overlay remain DEFERRED. No tag was created.

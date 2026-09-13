@@ -1,0 +1,73 @@
+{
+  "result": "PUSHED_IN_ORDER",
+  "origin_main": "d064d7fe56fd8f2ea475a4f7d4f09734e608d817",
+  "tag_created": false,
+  "commits": [
+    {
+      "commit": "d7e67345a4aa07c3a61e59f569712397d4d758e4",
+      "tree": "23f4c870192bc84641d039f9363663dbab47af88",
+      "scope": "complete tracked candidate tree, all blob bytes; known private enrollment values and credential patterns",
+      "files": 1053,
+      "bytes": 23465568,
+      "findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "kind": "private_key"
+        }
+      ],
+      "result": "passed_after_fixture_review",
+      "ignored_private_outputs_excluded_from_git": true,
+      "reviewed_findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "line": 64,
+          "classification": "synthetic scanner rejection fixture; marker followed by 80 literal A bytes, no private key; unchanged from origin baseline"
+        }
+      ]
+    },
+    {
+      "commit": "81b3f6168c374e6d86b9e012b3b547f61322f43f",
+      "tree": "ecb3b7472632d4d4c37453e59235e2b9224ab8c2",
+      "scope": "complete tracked candidate tree, all blob bytes; known private enrollment values and credential patterns",
+      "files": 1056,
+      "bytes": 23538703,
+      "findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "kind": "private_key"
+        }
+      ],
+      "result": "passed_after_fixture_review",
+      "ignored_private_outputs_excluded_from_git": true,
+      "reviewed_findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "line": 64,
+          "classification": "synthetic scanner rejection fixture; marker followed by 80 literal A bytes, no private key; unchanged from origin baseline"
+        }
+      ]
+    },
+    {
+      "commit": "d064d7fe56fd8f2ea475a4f7d4f09734e608d817",
+      "tree": "4061ce06adf4361b1e3403b6bb4cdfb4285376ca",
+      "scope": "complete tracked candidate tree, all blob bytes; known private enrollment values and credential patterns",
+      "files": 1060,
+      "bytes": 23559266,
+      "findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "kind": "private_key"
+        }
+      ],
+      "result": "passed_after_fixture_review",
+      "ignored_private_outputs_excluded_from_git": true,
+      "reviewed_findings": [
+        {
+          "path": "tests/test_image_production.py",
+          "line": 64,
+          "classification": "synthetic scanner rejection fixture; marker followed by 80 literal A bytes, no private key; unchanged from origin baseline"
+        }
+      ]
+    }
+  ]
+}

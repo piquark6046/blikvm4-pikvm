@@ -1,6 +1,6 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — attempt-02 preflight FAILED; reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
+Status: **STOPPED — P3-H2 FAILED before first browser launch; attempt-02 reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -253,3 +253,79 @@ required before cycle 1. The original 12-cycle matrix is unchanged.
 P2 remains PASSED. P3-A is not passed; P3 remains NOT ACCEPTED. P3-B and P3-C
 remain NOT STARTED; M6/ATX, writable MSD and RO/overlay remain DEFERRED. No tag
 was created. The user-requested stop on preflight failure is in effect.
+
+
+## P3-H2 — evidence isolation stopped FAILED (2026-09-13)
+
+**FAILED before the first Chromium launch; zero browser-smoke completions and
+zero reboot cycles.** The expanded actual-UID auditor caught a historical
+attempt-01 output omitted from the migration seal list:
+`/home/user/blikvm-msd/p3-context/a01-smoke/browser-msd`. Its preexisting
+ownership was root:root and its mode was **0777**. Browser uid 995/gid 983,
+with only group 983, successfully created the disposable probe when creation
+was required to fail. The first 150 operations met their expectations; operation
+151 failed the boundary. No functional browser stage ran. `preflight-002` and
+`preflight-003` have NOT STARTED, and no retry or corrective resealing followed.
+
+The probe remains in place as negative evidence. It is a new zero-byte file;
+its creation changed the historical directory's mtime/ctime. The independent
+before/after comparison found no removed files, no changed preexisting file
+contents, and no other protected-path metadata changes. This is a protected
+evidence namespace mutation and a failed gate, not a claim of complete
+permission isolation. The frozen attempt-01 and both earlier preflight archives
+retain their exact previously recorded hashes and failure classifications.
+
+Before this launch gate, the new bridge-only implementation created a separate
+root-owned context at `/var/lib/blikvm-p3-h2`. It separates browser output from
+controller records and read-only acknowledgments, uses exclusive no-follow
+controller publication, rejects symlinks/hardlinks/special output entries,
+and records effective syscall results plus ancestor ownership/mode/xattrs.
+No broad permission grant was introduced. The migration archived and sealed
+five old permission-test directories, three old dedicated-browser smoke leaves,
+and the old browser home. Those nine original archives precede their metadata
+changes. The unused active leaf was also archived and sealed during failure
+preservation. Original archive metadata and sealed working-copy records are
+retained separately. These implementation paths are **unqualified**: the
+migration coverage was incomplete and the complete syscall gate did not pass.
+The frozen failed candidate is retained in [the lifecycle/auditor](../lab/p3-h2-boundary.py),
+[context preparation](../lab/p3-h2-prepare.py), and
+[preflight controller](../lab/p3-h2-preflight.py). Do not run these as an accepted
+harness or remove the controller's `FAILED.json` latch to resume qualification.
+
+Fresh pre-launch and failure-preservation target inventories independently
+match all 10,690 production/enrollment hashes against the immutable attempt-01
+startup evidence, accepted P2 root UUID/PARTUUID, SD CID, machine/SSH identity,
+boot ID `eecefe38-98a3-406c-9260-3e51de321ffe`, and SSH/core service generations.
+No browser processes remain. The retained full post-stop journal contains
+1,479 records; its nine error messages exactly match the previously reviewed
+six early nginx errors and three deliberate-logout socket resets. No new error
+message appeared. No reboot, target repair, target configuration change,
+SD reflash, power cut, second-card operation or M8-F rerun occurred.
+
+Private archive `out/p3-h2/h2-failed-evidence.tar.gz` was downloaded by pinned-host
+SFTP and independently verified on the VM: **3,445,267 bytes**, SHA-256
+`1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332`.
+All 78 indexed files and ten original metadata archives replay successfully as
+**FAILED_CONFIRMED**, including the exact deployed candidate sources. See the
+[failure result](evidence/p3/h2-failure.json) and
+[independent replay](evidence/p3/verify-h2-failure.py). This replay verifies the
+failure and preservation; it does not accept the boundary or a functional smoke.
+
+The local suite ran 140 tests: 139 passed and one POSIX ACL fixture was skipped
+because this VM filesystem returned EINVAL when creating the synthetic ACL.
+The live auditor inventories POSIX ACL xattrs and rejects any encountered ACL;
+no live ACL acceptance is inferred from the unavailable local fixture.
+The local symlink, ancestor substitution, hardlink, FIFO and exclusive-publication
+checks passed. Local checks cannot override the live failure.
+
+The three earlier checkpoints `d7e6734`, `81b3f61`, and `d064d7f` were scanned,
+reviewed, and pushed to origin/main in that order, with remote readback confirming
+`d064d7f`. The sole pattern hit was the existing synthetic private-key rejection
+test fixture, not private material. [Push/scan record](evidence/p3/h2-historical-checkpoints.json).
+No tag was created.
+
+The newly requested three-run H2 gate supersedes the earlier proposal for two
+preflights; neither failed preparation nor this stopped H2 run earns any credit.
+P3-A attempt 02 remains NOT STARTED with `accepted_cycles=0`. P3-B/P3-C remain
+NOT STARTED. P2 remains PASSED; P3 remains UNACCEPTED. M6/ATX, writable MSD and
+RO/overlay remain DEFERRED. The stop-on-failure boundary remains in effect.
