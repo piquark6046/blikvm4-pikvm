@@ -259,3 +259,12 @@ the normal reboot captured the full firmware chain. Earlier NOT STARTED/pending
 entries are historical checkpoints. Attempt 01 remains FAILED; P1 original
 remains historically offline-passed. M8-F Run 04 remains the accepted core soak.
 P3 has not begun; M6/ATX and RO/overlay remain DEFERRED. No baseline tag is created.
+
+
+P3 update (2026-09-13): the annotated `standalone-sd-core-kvm-baseline` tag is
+verified on origin at accepted P2 commit `1fa1a7c`. [P3-A attempt 01](p3-standalone-stability.md)
+stopped FAILED during cycle 1 browser smoke because a bridge acknowledgment
+file was unreadable by Chromium. The reboot/startup checks passed, but no P3
+cycle earns acceptance credit. The private failure archive is independently
+verified. No power-loss or second-card test ran; P3 remains NOT ACCEPTED.
+M6/ATX, writable MSD and RO/overlay remain DEFERRED.

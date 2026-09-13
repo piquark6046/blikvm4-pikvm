@@ -1,0 +1,32 @@
+{
+  "phase": "P3-A attempt 01",
+  "result": "FAILED",
+  "p3_accepted": false,
+  "failed_cycle": 1,
+  "completed_passing_cycles": 0,
+  "accepted_cycles": 0,
+  "required_cycles": 12,
+  "cycle1_reboot_startup": "PASSED",
+  "cycle1_browser_smoke": "FAILED_BEFORE_CYCLE_ACCEPTANCE",
+  "failure_class": "bridge harness permissions",
+  "failure": "root-owned 0600 browser acknowledgment unreadable by Chromium user",
+  "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+  "verified_members": 85,
+  "firmware_trace": "complete",
+  "automatic_trusted_https_and_ssh_recovery_seconds": 19.980460993,
+  "artifacts_and_enrollment_matched": 10690,
+  "machine_and_ssh_identity_retained": true,
+  "physical_rw_root_retained": true,
+  "postboot_failed_units": [],
+  "journal_records_reviewed": 552,
+  "classified_nginx_early_startup_messages": 6,
+  "uart_classification": [
+    "two shutdown endpoint -108 messages before SPL",
+    "inherited vendor TF-A RSB address error; boot continued"
+  ],
+  "core_smoke": "incomplete; no cycle credit",
+  "power_cuts_performed": 0,
+  "second_card_written": false,
+  "sequence_stopped": true,
+  "target_repair_performed": false
+}

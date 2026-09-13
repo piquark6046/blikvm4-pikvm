@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "phase": "P3",
+  "result": "NOT_ACCEPTED",
+  "stage": "STOPPED_AFTER_P3_A_ATTEMPT01_FAILURE",
+  "baseline_commit": "1fa1a7c8a4c53639dfd38e32e24c256c8682afd7",
+  "baseline_tag": "standalone-sd-core-kvm-baseline",
+  "plan_sha256": "ef5405a993848e8fec8c32386482eb855b3a6cd3b3547b2f51d05359d971047a",
+  "clean_reboot_matrix": [
+    {
+      "cycle": 1,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 2,
+      "ethernet": "offline_until_gate"
+    },
+    {
+      "cycle": 3,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 4,
+      "ethernet": "offline_until_gate"
+    },
+    {
+      "cycle": 5,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 6,
+      "ethernet": "offline_until_gate"
+    },
+    {
+      "cycle": 7,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 8,
+      "ethernet": "offline_until_gate"
+    },
+    {
+      "cycle": 9,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 10,
+      "ethernet": "offline_until_gate"
+    },
+    {
+      "cycle": 11,
+      "ethernet": "connected_throughout"
+    },
+    {
+      "cycle": 12,
+      "ethernet": "offline_until_gate"
+    }
+  ],
+  "power_cases": [
+    {
+      "case": 1,
+      "load": "steady_idle",
+      "dwell_seconds": 60
+    },
+    {
+      "case": 2,
+      "load": "active_appliance",
+      "dwell_seconds": 120
+    },
+    {
+      "case": 3,
+      "load": "disposable_writer",
+      "dwell_seconds": 30,
+      "sentinel_bytes": 65536,
+      "scratch_bytes": 8388608
+    }
+  ],
+  "fully_off_seconds": [
+    15,
+    60
+  ],
+  "cycles": [
+    {
+      "attempt": 1,
+      "cycle": 1,
+      "result": "FAILED",
+      "failure_class": "bridge harness permissions",
+      "record": "attempt01.json"
+    }
+  ],
+  "power_results": [],
+  "second_card": "NOT_STARTED",
+  "independent_review": "failed attempt archive independently verified; full P3 review NOT_STARTED",
+  "deferred": [
+    "M6/ATX",
+    "RO/overlay",
+    "writable MSD"
+  ],
+  "attempt01": "P2 attempt 01 remains permanently FAILED",
+  "completed_passing_cycles": 0,
+  "power_loss_stage": "NOT_STARTED"
+}

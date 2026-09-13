@@ -1,0 +1,15 @@
+{
+  "scope": "VM-only bridge harness permission correction; no HIL retry",
+  "original": {
+    "child_umask": "077",
+    "root_owned_ack_mode": "0600",
+    "unprivileged_read": false
+  },
+  "proposed": {
+    "child_umask": "022",
+    "root_owned_ack_mode": "0644",
+    "unprivileged_read": true
+  },
+  "target_production_changes": false,
+  "proposal_deployed": false
+}
