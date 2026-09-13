@@ -285,3 +285,9 @@ disproven. All four sandbox-enabled about:blank cases fail with AppArmor
 namespace denial. H3 root cause remains unassigned; its FAILED latch and
 checkpoint 1895be8 remain unchanged. H4 functional preflights and P3-A attempt
 02 are unstarted, with zero P3 credit. No target contact occurred.
+
+P3-H4b update (2026-09-13): [historical good-control identity is unresolved](p3-standalone-stability.md#p3-h4b--historical-good-control-identity-unresolved-2026-09-13).
+Immutable H2 failed before Chromium; the earlier successful preflight used a
+different HOME configuration and did not retain browser argv. Incomplete
+launch contracts and sanitized Crashpad build identity are preserved. No
+browser probe or target contact; H3 root cause UNASSIGNED; zero P3 credit.

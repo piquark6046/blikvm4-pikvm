@@ -1,0 +1,64 @@
+{
+  "crashing_thread": 15228,
+  "frame_method": "saved RIP and bounded RBP chain; no CFI unwinding",
+  "frames": [
+    {
+      "module": "chrome",
+      "offset": "0x633662b"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x63371a2"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x6337154"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x6337117"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x401b406"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x63b7e94"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x401c19f"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x5410ace"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x541156f"
+    },
+    {
+      "module": "libc.so.6",
+      "offset": "0x2a601"
+    },
+    {
+      "module": "libc.so.6",
+      "offset": "0x2a718"
+    },
+    {
+      "module": "chrome",
+      "offset": "0x665583a"
+    }
+  ],
+  "instruction_offset": "0x633662b",
+  "module": "chrome",
+  "module_build_id": "3693ce542c8bad6e9045e9f05df6241a3ec45cd4",
+  "module_sha256": "481fea1516a1f2b76454664272f12cd9dd1f20117b21e1f1498e08bc7f872c00",
+  "raw_dump_published": false,
+  "root_cause": "UNASSIGNED",
+  "signal": "SIGTRAP",
+  "signal_number": 5,
+  "stderr": "empty browser.log; retained browser-result contains launch and SIGTRAP without CHECK/FATAL text",
+  "symbolization": "available addr2line on hash-matching stripped binary returns no source lines; nearest exported names are not reliable function identification"
+}

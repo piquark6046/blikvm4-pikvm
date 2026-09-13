@@ -1,0 +1,134 @@
+{
+  "archive": {
+    "path": "out/p3-h2/h2-failed-evidence.tar.gz",
+    "sha256": "1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332"
+  },
+  "browser_argv": {
+    "reason": "no H2 Chromium process was launched",
+    "status": "UNKNOWN"
+  },
+  "browser_runtime_tree": {
+    "reason": "H2 runtime symlink source measured later by H4; no successful H2 launch",
+    "status": "UNKNOWN"
+  },
+  "chromium": {
+    "reason": "no executed H2 Chromium binary; H4 source tree hash is retrospective",
+    "status": "UNKNOWN"
+  },
+  "cwd": {
+    "basis": "archived source; not an observed process environment",
+    "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+    "value": "/var/lib/blikvm-p3-h2"
+  },
+  "earlier_successful_candidate": {
+    "HOME": "runuser account HOME; no explicit fresh runtime-home override in archived wrapper",
+    "TMPDIR": "no explicit override; inherited effective value unknown",
+    "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+    "browser_result": "passed",
+    "browser_version": "145.0.7632.6",
+    "cwd": "/var/lib/blikvm-p3-browser",
+    "exact_browser_argv": {
+      "reason": "successful browser.log is empty; browser-result has no argv",
+      "status": "UNKNOWN"
+    },
+    "identity": "attempt02 preflight01 at 81b3f61; not H2",
+    "source_member": "harness/msd-browser-hil.py",
+    "substitution_status": "requires resolution of requested good-control identity"
+  },
+  "environment": {
+    "DBUS_SESSION_BUS_ADDRESS": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "DISPLAY": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "HOME": {
+      "basis": "archived source; not an observed process environment",
+      "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h2/attempt/preflight-001/browser-msd/runtime-home"
+    },
+    "NODE_EXTRA_CA_CERTS": {
+      "basis": "archived source; not an observed process environment",
+      "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h2/private/ca.crt"
+    },
+    "PATH": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "PLAYWRIGHT_BROWSERS_PATH": {
+      "basis": "archived source; not an observed process environment",
+      "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h2/out/kvmd-web/browser/browsers"
+    },
+    "PLAYWRIGHT_HOST_PLATFORM_OVERRIDE": {
+      "basis": "archived source; not an observed process environment",
+      "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+      "value": "ubuntu24.04-x64"
+    },
+    "TMPDIR": {
+      "reason": "no explicit H2 override; inherited effective value not captured; H2 did not launch",
+      "status": "UNKNOWN"
+    },
+    "XAUTHORITY": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "XDG_RUNTIME_DIR": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    }
+  },
+  "exact_reproduction_ready": false,
+  "historical_outcome": "FAILED_BEFORE_BROWSER_LAUNCH",
+  "historical_successful_control_available": false,
+  "identity": "H2 at 0ef54c7",
+  "identity_evidence": {
+    "gid": 983,
+    "groups": [
+      983
+    ],
+    "kind": "prelaunch audit",
+    "member": "attempt/preflight-001/controller/msd-before-boundary.json",
+    "uid": 995
+  },
+  "launch_options": {
+    "headless": false
+  },
+  "mount_flags": {
+    "reason": "historical bridge mount flags not captured",
+    "status": "UNKNOWN"
+  },
+  "node": {
+    "reason": "historical resolved executable, bytes and version not captured",
+    "status": "UNKNOWN"
+  },
+  "node_command_from_archived_wrapper": "node",
+  "nss_db_identity": {
+    "cert9.db": "7ac0d3744ff8de82fd445f0f2269085071822a00c36bd41d74c1aa83061693e7",
+    "key4.db": "3ac2f31f0875a0b9939c0f1f7b033e821dc6989fed1e6acece7a0a3d7b3ceaf7",
+    "pkcs11.txt": "5a44b9b3b31e25a82527c0b748a53dadbd18f6b5f38718c8e3625649090bc79d"
+  },
+  "playwright_module": {
+    "basis": "archived source; not an observed process environment",
+    "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+    "value": "/var/lib/blikvm-p3-h2/out/kvmd-web/browser/node_modules/playwright"
+  },
+  "playwright_version": {
+    "reason": "package hash retained; version bytes verified separately against that hash",
+    "status": "UNKNOWN"
+  },
+  "qualification_credit": 0,
+  "runtime_home_layout": {
+    "source_semantics": "fresh runtime-home/.pki/nssdb copied from input; directories 0700, files 0600, owner 995:983",
+    "tmp": "no separately created TMPDIR"
+  },
+  "scope": "P3-H4b target-free archive analysis",
+  "xvfb_arguments": [
+    "-a",
+    "-s",
+    "-screen 0 1600x1200x24 -nolisten tcp"
+  ]
+}

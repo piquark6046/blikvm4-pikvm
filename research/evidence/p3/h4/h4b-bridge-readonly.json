@@ -1,0 +1,24 @@
+{
+  "scope": "P3-H4b bridge-only read-only observations, 2026-09-13",
+  "historical_environment_snapshot": false,
+  "target_contacted": false,
+  "browser_probes_started": 0,
+  "qualification_credit": 0,
+  "kernel": "7.0.0-31-generic #31-Ubuntu SMP PREEMPT_DYNAMIC Sat Aug 1 04:26:38 UTC 2026 x86_64",
+  "identity": {"uid": 995, "gid": 983, "groups": [983], "account_home": "/var/lib/blikvm-p3-browser/home"},
+  "node": {"path": "/usr/bin/node", "version": "v22.22.1", "sha256": "d0efb6fcb9d023ba4e2b160ec2384dc28fe4f17732141ef47f676828fa960505"},
+  "xvfb": {"path": "/usr/bin/Xvfb", "sha256": "1253e0dadfd57e1fe6784011e304fd8e36c3194858132a129c10178cabffc035"},
+  "playwright": {"version": "1.58.2", "package_sha256": "718c91812946dcfbb4b724cfa0084ee3be205c571df09094f218bc4571f43c2b", "source_and_h3_package_hashes_equal": true},
+  "chromium": {"sha256": "481fea1516a1f2b76454664272f12cd9dd1f20117b21e1f1498e08bc7f872c00", "build_id": "3693ce542c8bad6e9045e9f05df6241a3ec45cd4", "bytes": 269778136},
+  "mounts": {
+    "/var/lib": {"mountpoint": "/", "filesystem": "ext4", "options": "rw,relatime"},
+    "/home/user": {"mountpoint": "/", "filesystem": "ext4", "options": "rw,relatime"},
+    "/tmp": {"mountpoint": "/tmp", "filesystem": "tmpfs", "options": "rw,nosuid,nodev,size=3704468k,nr_inodes=1048576,inode64,usrquota"}
+  },
+  "symbolization": {
+    "tool": "existing /usr/bin/addr2line -f -C on bridge; no install or runtime change",
+    "source_lines": "all ??:?",
+    "interpretation": "nearest exported symbols are insufficient to identify actual internal Chromium functions or a CHECK/FATAL site"
+  },
+  "runtime_drift_decision": "UNASSIGNED; no historical Node/Xvfb/mount snapshot or valid good-control replay"
+}

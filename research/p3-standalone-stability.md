@@ -604,3 +604,80 @@ Validation: the offline verifier returned `H4_OFFLINE_BLOCKED_CONFIRMED`.
 The local suite ran 144 tests: 143 passed and one preexisting synthetic POSIX
 ACL fixture was skipped. These checks authenticate the diagnostic findings;
 they do not qualify H4 or award P3 credit.
+
+## P3-H4b — historical good-control identity unresolved (2026-09-13)
+
+**P3 remains UNACCEPTED; H3 root cause remains UNASSIGNED. No browser
+reproduction probe has started.** The sanitized H4 negative-result checkpoint
+`b800439` was pushed before H4b bridge inspection, without a tag. It explicitly
+classifies SUID stripping as DISPROVEN and the sandbox-enabled A–D matrix as
+a SEPARATE APPARMOR FAILURE MODE. `1895be8` remains immutable.
+
+The requested successful H2 control conflicts with the immutable evidence.
+H2 archive `1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332`
+contains a FAILED prelaunch permission audit, zero stages, and no browser
+result or harness log. Its archived wrapper prepares a fresh runtime HOME,
+but that configuration never launched Chromium. The successful earlier
+attempt-02 preflight at `81b3f61`, archive
+`c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f`,
+used `runuser` account HOME without the explicit fresh-HOME override. Its
+browser result records Chromium `145.0.7632.6`; its browser logs are empty
+and do not preserve the generated argv. These are distinct historical facts,
+not interchangeable successful controls. The intended successful custom-HOME
+archive has been requested from the user.
+
+[Archive recovery](evidence/p3/h4/recover-launch-contracts.py) authenticates
+five private archives without executing their code. It generates the requested
+[H2 contract](evidence/p3/h4/h2-launch-contract.json),
+[H3 contract](evidence/p3/h4/h3-launch-contract.json), and
+[launch difference report](evidence/p3/h4/h2-vs-h3-launch-diff.json).
+They are **incomplete historical contracts**, with unknown fields explicitly
+marked and `exact_reproduction_ready=false`. Archived source intent is
+distinguished from observed argv and process identity. Current host state is
+never substituted for missing historical environment, Node identity, or mount
+flags. An exhaustive effective-environment differential is not yet possible.
+
+The concrete source delta remains: H2 has no explicit TMPDIR override; H3
+exports browser-owned `runtime-tmp`. H2's inherited TMPDIR is unknown, and
+its launch never occurred. The prepared H2 and H3 NSS databases have identical
+hashes for `cert9.db`, `key4.db`, and `pkcs11.txt`. Other recorded differences
+include runtime copying and metadata, HOME and cwd paths, acknowledgments,
+the prelaunch JS audit, and ancestor isolation. None assigns crash causality.
+D1 remains the first declared probe after valid controls are established.
+
+Read-only bridge inspection used the configured ssh-mcp profile. No UART
+session, target connection, browser launch, runtime mutation, or package
+installation occurred. [Current observations](evidence/p3/h4/h4b-bridge-readonly.json)
+retain safe Node/Xvfb hashes and versions, mount flags, account identity, and
+Chromium/Playwright identities. Playwright `1.58.2` package bytes match the
+frozen H3 package hash. These observations do not establish bridge-global
+drift without corresponding historical evidence and valid control replay.
+
+[Private-dump analysis](evidence/p3/h4/h3-crashpad-analysis.json) recovers
+SIGTRAP, thread 15228, `chrome+0x633662b`, and the minidump's ELF build ID
+`3693ce542c8bad6e9045e9f05df6241a3ec45cd4`. The build ID matches the binary
+whose SHA-256 matches frozen H3. Existing `addr2line` returns no source lines;
+nearest exported names are insufficient to identify internal functions or a
+CHECK/FATAL site. Saved RIP and bounded RBP-chain offsets remain the only
+usable stack evidence. No raw dump or private environment is published.
+
+The [minimal about:blank probe](../lab/p3-h4b-blank.cjs) is prepared and syntax
+checked; its local incomplete-contract rejection was checked without loading
+Playwright. No browser launch occurred. It uses normal `chromium.launch({headless:false})` without
+manual sandbox flags, requires a complete reviewed contract, checks pinned
+module/binary identity and uid/gid/groups, and requires external network
+isolation and debug capture. The external controller, namespace mapping, and
+argv comparison must be completed after resolving the historical control;
+the probe's own page success would only be pending argv replay.
+
+This is a historical-evidence blocker preceding decisions A–D. It is neither
+bridge-global drift nor H3 nonreproduction: no valid controls were run.
+H2-control runs 1/2, H3-control, D1–D7, syscall tracing, and H4 qualification
+remain unstarted. H3 FAILED.json is untouched. P2 remains PASSED; P3-A attempt
+02 remains unstarted; P3-B/P3-C remain blocked; M6/ATX and RO/overlay remain
+DEFERRED. Target contact and qualification credit are both zero.
+
+H4b validation: five archive SHA-256 checks and contract recovery passed; the
+prior H4 archive replay still passed. Node syntax and fail-closed incomplete
+contract checks passed locally. The preceding checkpoint suite passed 143
+tests with one existing skip. These are offline diagnostic checks only.

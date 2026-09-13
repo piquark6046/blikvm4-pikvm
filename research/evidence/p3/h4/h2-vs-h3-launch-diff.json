@@ -1,0 +1,78 @@
+{
+  "decision_A_B_C_D": null,
+  "differences": [
+    {
+      "dimension": "observed launch",
+      "h2": "never launched",
+      "h3": "SIGTRAP at first launch"
+    },
+    {
+      "dimension": "TMPDIR override",
+      "h2": "none explicit; inherited unknown",
+      "h3": "browser-owned runtime-tmp exported",
+      "priority": "D1 only after valid controls"
+    },
+    {
+      "dimension": "browser runtime",
+      "h2": "source symlink; retrospective H4 source manifest",
+      "h3": "root-owned copied input distribution; archived H3 manifest"
+    },
+    {
+      "details": "1235 entries each; 1147 common regular files equal; all owners become root; 640 full-mode differences; two CLI symlinks dereferenced",
+      "dimension": "runtime metadata (H4 measurement)"
+    },
+    {
+      "dimension": "HOME",
+      "h2": {
+        "basis": "archived source; not an observed process environment",
+        "member": "attempt/preflight-001/controller/sources/msd-browser-hil.py",
+        "value": "/var/lib/blikvm-p3-h2/attempt/preflight-001/browser-msd/runtime-home"
+      },
+      "h3": {
+        "basis": "archived source; not an observed process environment",
+        "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+        "value": "/var/lib/blikvm-p3-h3/active/chromium-preflight-001/msd/runtime-home"
+      }
+    },
+    {
+      "dimension": "NSS",
+      "hashes_equal": true,
+      "launch_time_effective_state": "H2 did not launch"
+    },
+    {
+      "dimension": "cwd/context",
+      "h2": "/var/lib/blikvm-p3-h2",
+      "h3": "/var/lib/blikvm-p3-h3/input/context"
+    },
+    {
+      "dimension": "prelaunch JS",
+      "h2": "boundary audit outside JS",
+      "h3": "additional synchronous h3LaunchGate before each chromium.launch"
+    },
+    {
+      "dimension": "P3_CONTROL",
+      "h2": "control-msd under attempt/preflight-001",
+      "h3": "input/acks/chromium-preflight-001-msd plus P3_LAUNCH_REQUIREMENTS"
+    },
+    {
+      "dimension": "ancestor isolation",
+      "h2": "sealed descendants; audit failed on historical writable ancestor",
+      "h3": "ancestor quarantine and separate input/active/sealed/controller"
+    }
+  ],
+  "exhaustive_effective_environment_diff_possible": false,
+  "probes_started": 0,
+  "qualification_credit": 0,
+  "reason": "No valid paired historical controls; cannot classify runtime drift or nonreproduction without valid probes",
+  "root_cause": "UNASSIGNED",
+  "status": "BLOCKED_HISTORICAL_GOOD_CONTROL_UNRESOLVED",
+  "target_contacted": false,
+  "unknowns": [
+    "successful H2 launch identity",
+    "good-control exact browser argv",
+    "historical Node path/hash/version",
+    "inherited environment",
+    "historical DISPLAY/XAUTHORITY",
+    "historical bridge mount flags"
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "archive": {
+    "path": "out/p3-h3/h3-failed.tar.gz",
+    "sha256": "78cb138eca5698b29286931df1c47c350b3526c13560f35a812babc51ef48752"
+  },
+  "browser_argv": [
+    "/var/lib/blikvm-p3-h3/input/context/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+    "--disable-field-trial-config",
+    "--disable-background-networking",
+    "--disable-background-timer-throttling",
+    "--disable-backgrounding-occluded-windows",
+    "--disable-back-forward-cache",
+    "--disable-breakpad",
+    "--disable-client-side-phishing-detection",
+    "--disable-component-extensions-with-background-pages",
+    "--disable-component-update",
+    "--no-default-browser-check",
+    "--disable-default-apps",
+    "--disable-dev-shm-usage",
+    "--disable-extensions",
+    "--disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints",
+    "--enable-features=CDPScreenshotNewSurface",
+    "--allow-pre-commit-input",
+    "--disable-hang-monitor",
+    "--disable-ipc-flooding-protection",
+    "--disable-popup-blocking",
+    "--disable-prompt-on-repost",
+    "--disable-renderer-backgrounding",
+    "--force-color-profile=srgb",
+    "--metrics-recording-only",
+    "--no-first-run",
+    "--password-store=basic",
+    "--use-mock-keychain",
+    "--no-service-autorun",
+    "--export-tagged-pdf",
+    "--disable-search-engine-choice-screen",
+    "--unsafely-disable-devtools-self-xss-warnings",
+    "--edge-skip-compat-layer-relaunch",
+    "--enable-automation",
+    "--disable-infobars",
+    "--disable-search-engine-choice-screen",
+    "--disable-sync",
+    "--enable-unsafe-swiftshader",
+    "--no-sandbox",
+    "--user-data-dir=/var/lib/blikvm-p3-h3/active/chromium-preflight-001/msd/runtime-tmp/playwright_chromiumdev_profile-u0BQmf",
+    "--remote-debugging-pipe",
+    "--no-startup-window"
+  ],
+  "browser_runtime_tree": {
+    "entries": 1235,
+    "manifest_member": "controller/browser-installation.json:input_manifest"
+  },
+  "chromium": {
+    "path": "/var/lib/blikvm-p3-h3/input/context/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+    "sha256": "481fea1516a1f2b76454664272f12cd9dd1f20117b21e1f1498e08bc7f872c00"
+  },
+  "cwd": {
+    "basis": "archived source; not an observed process environment",
+    "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+    "value": "/var/lib/blikvm-p3-h3/input/context"
+  },
+  "environment": {
+    "DBUS_SESSION_BUS_ADDRESS": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "DISPLAY": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "HOME": {
+      "basis": "archived source; not an observed process environment",
+      "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h3/active/chromium-preflight-001/msd/runtime-home"
+    },
+    "NODE_EXTRA_CA_CERTS": {
+      "basis": "archived source; not an observed process environment",
+      "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h3/input/context/private/ca.crt"
+    },
+    "PATH": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "PLAYWRIGHT_BROWSERS_PATH": {
+      "basis": "archived source; not an observed process environment",
+      "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+      "value": "/var/lib/blikvm-p3-h3/input/context/out/kvmd-web/browser/browsers"
+    },
+    "PLAYWRIGHT_HOST_PLATFORM_OVERRIDE": {
+      "basis": "archived source; not an observed process environment",
+      "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+      "value": "ubuntu24.04-x64"
+    },
+    "TMPDIR": {
+      "basis": "archived source; not an observed process environment",
+      "member": "controller/snapshot-h3-failed/p3-h3-preflight.py",
+      "value": "/var/lib/blikvm-p3-h3/active/chromium-preflight-001/msd/runtime-tmp"
+    },
+    "XAUTHORITY": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    },
+    "XDG_RUNTIME_DIR": {
+      "reason": "not captured in examined immutable evidence",
+      "status": "UNKNOWN"
+    }
+  },
+  "exact_reproduction_ready": false,
+  "historical_no_sandbox_present": true,
+  "historical_outcome": "SIGTRAP",
+  "identity": "H3 first launch at 1895be8",
+  "identity_evidence": {
+    "gid": 983,
+    "groups": [
+      983
+    ],
+    "kind": "prelaunch audit",
+    "member": "controller/chromium-preflight-001/msd/launch-audit-001.json",
+    "uid": 995
+  },
+  "launch_options": {
+    "headless": false
+  },
+  "mount_flags": {
+    "reason": "historical bridge mount flags not captured",
+    "status": "UNKNOWN"
+  },
+  "node": {
+    "reason": "historical resolved executable, bytes and version not captured",
+    "status": "UNKNOWN"
+  },
+  "node_command_from_archived_wrapper": "node",
+  "nss_db_identity": {
+    "cert9.db": "7ac0d3744ff8de82fd445f0f2269085071822a00c36bd41d74c1aa83061693e7",
+    "key4.db": "3ac2f31f0875a0b9939c0f1f7b033e821dc6989fed1e6acece7a0a3d7b3ceaf7",
+    "pkcs11.txt": "5a44b9b3b31e25a82527c0b748a53dadbd18f6b5f38718c8e3625649090bc79d"
+  },
+  "playwright_module": {
+    "basis": "archived source; not an observed process environment",
+    "member": "controller/snapshot-h3-failed/context/msd-browser-hil.py",
+    "value": "/var/lib/blikvm-p3-h3/input/context/out/kvmd-web/browser/node_modules/playwright"
+  },
+  "playwright_package_sha256": "718c91812946dcfbb4b724cfa0084ee3be205c571df09094f218bc4571f43c2b",
+  "playwright_version": {
+    "basis": "current package bytes match frozen H3 package SHA-256",
+    "value": "1.58.2"
+  },
+  "qualification_credit": 0,
+  "runtime_home_layout": {
+    "source_semantics": "fresh runtime-home/.pki/nssdb copied from input; directories 0700, files 0600, owner 995:983",
+    "tmp": "separate runtime-tmp 0700 owner 995:983"
+  },
+  "scope": "P3-H4b target-free archive analysis",
+  "xvfb_arguments": [
+    "-a",
+    "-s",
+    "-screen 0 1600x1200x24 -nolisten tcp"
+  ]
+}
