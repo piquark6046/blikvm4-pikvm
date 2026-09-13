@@ -1,0 +1,1953 @@
+{
+  "permission-test01": {
+    "stats": {
+      "/": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/"
+      },
+      "/home": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home"
+      },
+      "/home/user": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o751",
+        "resolved": "/home/user"
+      },
+      "/home/user/.local/share/blikvm-m7": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/.local/share/blikvm-m7"
+      },
+      "/home/user/blikvm-lan": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan"
+      },
+      "/home/user/blikvm-lan/out": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/home/user/blikvm-msd/p3-context/a01-smoke": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home/user/blikvm-msd/p3-context/a01-smoke"
+      },
+      "/home/user/blikvm-msd/private": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-lan/private"
+      },
+      "/home/user/blikvm-msd/private/ca.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/ca.crt"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-0.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-1.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-45083-0.conf"
+      },
+      "/home/user/blikvm-msd/private/credentials.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/credentials.json"
+      },
+      "/home/user/blikvm-msd/private/server.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/server.crt"
+      },
+      "/home/user/blikvm-msd/private/soak-60359.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/soak-60359.conf"
+      },
+      "/home/user/blikvm-p2": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p2"
+      },
+      "/home/user/blikvm-p3": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-p3"
+      },
+      "/home/user/blikvm-p3/a01": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/a01"
+      },
+      "/home/user/blikvm-p3/preparation": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/preparation"
+      },
+      "/var": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var"
+      },
+      "/var/lib": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib"
+      },
+      "/var/lib/blikvm-p3-browser": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser"
+      },
+      "/var/lib/blikvm-p3-browser/lab": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/lab"
+      },
+      "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/out": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-msd/out"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-msd/out/kvmd-web"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o664",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright/package.json"
+      },
+      "/var/lib/blikvm-p3-browser/permission-test01": {
+        "uid": 995,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/permission-test01"
+      },
+      "/var/lib/blikvm-p3-browser/private": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/private"
+      },
+      "/var/lib/blikvm-p3-browser/private/ca.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/ca.crt"
+      },
+      "/var/lib/blikvm-p3-browser/private/credentials.json": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/credentials.json"
+      },
+      "/var/lib/blikvm-p3-browser/private/server.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/server.crt"
+      }
+    },
+    "effective": {
+      "uid": 995,
+      "gid": 983,
+      "groups": [
+        983
+      ],
+      "access": {
+        "/": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user": {
+          "r": false,
+          "w": false,
+          "x": true
+        },
+        "/home/user/.local/share/blikvm-m7": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-lan": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/p3-context/a01-smoke": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/private": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/ca.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/credentials.json": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/server.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/soak-60359.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p2": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-p3/a01": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3/preparation": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/var": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/permission-test01": {
+          "r": true,
+          "w": true,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private/ca.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/credentials.json": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/server.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        }
+      },
+      "negative_open_write": {
+        "/var/lib/blikvm-p3-browser/private/credentials.json": 13,
+        "/home/user/blikvm-msd/private/credentials.json": 13
+      },
+      "create_rename_read_cleanup": true
+    },
+    "requirements": {
+      "paths": [
+        "/",
+        "/home",
+        "/home/user",
+        "/home/user/.local/share/blikvm-m7",
+        "/home/user/blikvm-lan",
+        "/home/user/blikvm-lan/out",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-p2",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/var",
+        "/var/lib",
+        "/var/lib/blikvm-p3-browser",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json",
+        "/var/lib/blikvm-p3-browser/permission-test01",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/server.crt"
+      ],
+      "reads": [
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json"
+      ],
+      "protected": [
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-p2",
+        "/home/user/.local/share/blikvm-m7",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/server.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf"
+      ],
+      "parents": [
+        "/",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/var",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/var/lib/blikvm-p3-browser",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-lan/out",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/home/user/blikvm-lan",
+        "/home",
+        "/home/user",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/var/lib",
+        "/var/lib/blikvm-p3-browser/out"
+      ],
+      "output": "/var/lib/blikvm-p3-browser/permission-test01",
+      "negative": [
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/home/user/blikvm-msd/private/credentials.json"
+      ]
+    }
+  },
+  "permission-test04": {
+    "stats": {
+      "/": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/"
+      },
+      "/home": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home"
+      },
+      "/home/user": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o751",
+        "resolved": "/home/user"
+      },
+      "/home/user/.local/share/blikvm-m7": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/.local/share/blikvm-m7"
+      },
+      "/home/user/blikvm-lan": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan"
+      },
+      "/home/user/blikvm-lan/out": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/home/user/blikvm-msd/p3-context/a01-smoke": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home/user/blikvm-msd/p3-context/a01-smoke"
+      },
+      "/home/user/blikvm-msd/private": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-lan/private"
+      },
+      "/home/user/blikvm-msd/private/ca.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/ca.crt"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-0.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-1.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-45083-0.conf"
+      },
+      "/home/user/blikvm-msd/private/credentials.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/credentials.json"
+      },
+      "/home/user/blikvm-msd/private/server.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/server.crt"
+      },
+      "/home/user/blikvm-msd/private/soak-60359.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/soak-60359.conf"
+      },
+      "/home/user/blikvm-p2": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p2"
+      },
+      "/home/user/blikvm-p3": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-p3"
+      },
+      "/home/user/blikvm-p3/a01": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/a01"
+      },
+      "/home/user/blikvm-p3/preparation": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/preparation"
+      },
+      "/usr": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr"
+      },
+      "/usr/bin": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin"
+      },
+      "/usr/bin/node": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin/node"
+      },
+      "/usr/bin/xvfb-run": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin/xvfb-run"
+      },
+      "/var": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var"
+      },
+      "/var/lib": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib"
+      },
+      "/var/lib/blikvm-p3-browser": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser"
+      },
+      "/var/lib/blikvm-p3-browser/lab": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/lab"
+      },
+      "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/out": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/out"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/out/kvmd-web"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o755",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o664",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright/package.json"
+      },
+      "/var/lib/blikvm-p3-browser/permission-test04": {
+        "uid": 995,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/permission-test04"
+      },
+      "/var/lib/blikvm-p3-browser/private": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/private"
+      },
+      "/var/lib/blikvm-p3-browser/private/ca.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/ca.crt"
+      },
+      "/var/lib/blikvm-p3-browser/private/credentials.json": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/credentials.json"
+      },
+      "/var/lib/blikvm-p3-browser/private/server.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/server.crt"
+      }
+    },
+    "effective": {
+      "uid": 995,
+      "gid": 983,
+      "groups": [
+        983
+      ],
+      "access": {
+        "/": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user": {
+          "r": false,
+          "w": false,
+          "x": true
+        },
+        "/home/user/.local/share/blikvm-m7": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-lan": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/p3-context/a01-smoke": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/private": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/ca.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/credentials.json": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/server.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/soak-60359.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p2": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-p3/a01": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3/preparation": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/usr": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin/node": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin/xvfb-run": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/permission-test04": {
+          "r": true,
+          "w": true,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private/ca.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/credentials.json": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/server.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        }
+      },
+      "negative_open_write": {
+        "/var/lib/blikvm-p3-browser/private/credentials.json": 13,
+        "/home/user/blikvm-msd/private/credentials.json": 13
+      },
+      "create_rename_read_cleanup": true
+    },
+    "requirements": {
+      "paths": [
+        "/",
+        "/home",
+        "/home/user",
+        "/home/user/.local/share/blikvm-m7",
+        "/home/user/blikvm-lan",
+        "/home/user/blikvm-lan/out",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-p2",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/usr",
+        "/usr/bin",
+        "/usr/bin/node",
+        "/usr/bin/xvfb-run",
+        "/var",
+        "/var/lib",
+        "/var/lib/blikvm-p3-browser",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json",
+        "/var/lib/blikvm-p3-browser/permission-test04",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/server.crt"
+      ],
+      "reads": [
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+        "/usr/bin/node",
+        "/usr/bin/xvfb-run"
+      ],
+      "protected": [
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-p2",
+        "/home/user/.local/share/blikvm-m7",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/server.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf"
+      ],
+      "parents": [
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-lan",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers",
+        "/home",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/usr/bin",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208",
+        "/home/user/blikvm-lan/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/",
+        "/usr",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/home/user",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208",
+        "/var"
+      ],
+      "output": "/var/lib/blikvm-p3-browser/permission-test04",
+      "negative": [
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/home/user/blikvm-msd/private/credentials.json"
+      ]
+    }
+  },
+  "permission-test05": {
+    "stats": {
+      "/": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/"
+      },
+      "/home": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home"
+      },
+      "/home/user": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o751",
+        "resolved": "/home/user"
+      },
+      "/home/user/.local/share/blikvm-m7": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/.local/share/blikvm-m7"
+      },
+      "/home/user/blikvm-lan": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan"
+      },
+      "/home/user/blikvm-lan/out": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/home/user/blikvm-msd/p3-context/a01-smoke": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/home/user/blikvm-msd/p3-context/a01-smoke"
+      },
+      "/home/user/blikvm-msd/private": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-lan/private"
+      },
+      "/home/user/blikvm-msd/private/ca.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/ca.crt"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-0.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-2482-1.conf"
+      },
+      "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/capacity-45083-0.conf"
+      },
+      "/home/user/blikvm-msd/private/credentials.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/credentials.json"
+      },
+      "/home/user/blikvm-msd/private/server.crt": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/server.crt"
+      },
+      "/home/user/blikvm-msd/private/soak-60359.conf": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o600",
+        "resolved": "/home/user/blikvm-lan/private/soak-60359.conf"
+      },
+      "/home/user/blikvm-p2": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p2"
+      },
+      "/home/user/blikvm-p3": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-p3"
+      },
+      "/home/user/blikvm-p3/a01": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/a01"
+      },
+      "/home/user/blikvm-p3/preparation": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o700",
+        "resolved": "/home/user/blikvm-p3/preparation"
+      },
+      "/usr": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr"
+      },
+      "/usr/bin": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin"
+      },
+      "/usr/bin/node": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin/node"
+      },
+      "/usr/bin/xvfb-run": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/usr/bin/xvfb-run"
+      },
+      "/var": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var"
+      },
+      "/var/lib": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib"
+      },
+      "/var/lib/blikvm-p3-browser": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser"
+      },
+      "/var/lib/blikvm-p3-browser/lab": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/lab"
+      },
+      "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o644",
+        "resolved": "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs"
+      },
+      "/var/lib/blikvm-p3-browser/out": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/out"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+        "uid": 0,
+        "gid": 0,
+        "mode": "0o755",
+        "resolved": "/var/lib/blikvm-p3-browser/out/kvmd-web"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o755",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o775",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright"
+      },
+      "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+        "uid": 1000,
+        "gid": 1000,
+        "mode": "0o664",
+        "resolved": "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright/package.json"
+      },
+      "/var/lib/blikvm-p3-browser/permission-test05": {
+        "uid": 995,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/permission-test05"
+      },
+      "/var/lib/blikvm-p3-browser/private": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o750",
+        "resolved": "/var/lib/blikvm-p3-browser/private"
+      },
+      "/var/lib/blikvm-p3-browser/private/ca.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/ca.crt"
+      },
+      "/var/lib/blikvm-p3-browser/private/credentials.json": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/credentials.json"
+      },
+      "/var/lib/blikvm-p3-browser/private/server.crt": {
+        "uid": 0,
+        "gid": 983,
+        "mode": "0o640",
+        "resolved": "/var/lib/blikvm-p3-browser/private/server.crt"
+      }
+    },
+    "effective": {
+      "uid": 995,
+      "gid": 983,
+      "groups": [
+        983
+      ],
+      "access": {
+        "/": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user": {
+          "r": false,
+          "w": false,
+          "x": true
+        },
+        "/home/user/.local/share/blikvm-m7": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-lan": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/p3-context/a01-smoke": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-msd/private": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/ca.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/credentials.json": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/server.crt": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-msd/private/soak-60359.conf": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p2": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/home/user/blikvm-p3/a01": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/home/user/blikvm-p3/preparation": {
+          "r": false,
+          "w": false,
+          "x": false
+        },
+        "/usr": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin/node": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/usr/bin/xvfb-run": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/out": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/permission-test05": {
+          "r": true,
+          "w": true,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private": {
+          "r": true,
+          "w": false,
+          "x": true
+        },
+        "/var/lib/blikvm-p3-browser/private/ca.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/credentials.json": {
+          "r": true,
+          "w": false,
+          "x": false
+        },
+        "/var/lib/blikvm-p3-browser/private/server.crt": {
+          "r": true,
+          "w": false,
+          "x": false
+        }
+      },
+      "negative_open_write": {
+        "/var/lib/blikvm-p3-browser/private/credentials.json": 13,
+        "/home/user/blikvm-msd/private/credentials.json": 13
+      },
+      "create_rename_read_cleanup": true
+    },
+    "requirements": {
+      "paths": [
+        "/",
+        "/home",
+        "/home/user",
+        "/home/user/.local/share/blikvm-m7",
+        "/home/user/blikvm-lan",
+        "/home/user/blikvm-lan/out",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-p2",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/usr",
+        "/usr/bin",
+        "/usr/bin/node",
+        "/usr/bin/xvfb-run",
+        "/var",
+        "/var/lib",
+        "/var/lib/blikvm-p3-browser",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json",
+        "/var/lib/blikvm-p3-browser/permission-test05",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/server.crt"
+      ],
+      "reads": [
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/lab/msd-browser.mjs",
+        "/var/lib/blikvm-p3-browser/lab/hid-browser.mjs",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright/package.json",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64/chrome",
+        "/usr/bin/node",
+        "/usr/bin/xvfb-run"
+      ],
+      "protected": [
+        "/home/user/blikvm-msd/private",
+        "/home/user/blikvm-p3",
+        "/home/user/blikvm-p3/a01",
+        "/home/user/blikvm-p3/preparation",
+        "/home/user/blikvm-msd/p3-context/a01-smoke",
+        "/home/user/blikvm-p2",
+        "/home/user/.local/share/blikvm-m7",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/private/server.crt",
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/var/lib/blikvm-p3-browser/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-45083-0.conf",
+        "/home/user/blikvm-msd/private/server.crt",
+        "/home/user/blikvm-msd/private/credentials.json",
+        "/home/user/blikvm-msd/private/soak-60359.conf",
+        "/home/user/blikvm-msd/private/ca.crt",
+        "/home/user/blikvm-msd/private/capacity-2482-1.conf",
+        "/home/user/blikvm-msd/private/capacity-2482-0.conf"
+      ],
+      "parents": [
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib/blikvm-p3-browser/lab",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules/playwright",
+        "/home/user/blikvm-lan",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers",
+        "/home",
+        "/home/user/blikvm-lan/out/kvmd-web/browser",
+        "/usr/bin",
+        "/var/lib/blikvm-p3-browser/private",
+        "/var/lib/blikvm-p3-browser/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208/chrome-linux64",
+        "/var/lib",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers/chromium-1208",
+        "/home/user/blikvm-lan/out",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser",
+        "/var/lib/blikvm-p3-browser",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules/playwright",
+        "/",
+        "/usr",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/node_modules",
+        "/home/user/blikvm-lan/out/kvmd-web",
+        "/home/user",
+        "/home/user/blikvm-lan/out/kvmd-web/browser/browsers",
+        "/var/lib/blikvm-p3-browser/out/kvmd-web/browser/browsers/chromium-1208",
+        "/var"
+      ],
+      "output": "/var/lib/blikvm-p3-browser/permission-test05",
+      "negative": [
+        "/var/lib/blikvm-p3-browser/private/credentials.json",
+        "/home/user/blikvm-msd/private/credentials.json"
+      ]
+    }
+  }
+}

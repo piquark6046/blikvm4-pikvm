@@ -155,3 +155,35 @@ It has not been uploaded or exercised on hardware. A fresh attempt must preserve
 preflight cross-user acknowledgment access and then start the same 12-cycle
 matrix from cycle 1. No accepted production file needs modification for this
 instrumentation correction. The stable-image tag must not be created now.
+
+
+## Attempt 02 preparation — bridge permission correction
+
+Attempt 01 is frozen by commit `d7e6734`, FAILED with `accepted_cycles=0/12`.
+The proposed child umask alone did not meet the stronger private-input boundary.
+The bridge now has a dedicated `p3-browser` account (uid 995/gid 983, no
+supplemental groups), an isolated root-owned context, root-owned read-only
+credential copies, and a fresh NSS database containing only the public enrolled
+CA. The original private files and attempt-01 evidence contents are unchanged.
+No target artifact, configuration, enrollment or qualification assertion changes.
+
+The bridge-only [installer](../lab/p3-browser-prepare.py) pins the original
+MSD/HID harness hashes, changes only browser identity and evidence permissions,
+and resolves the browser dependency directly. The [launch permission gate](../lab/p3-browser-permissions.py)
+records uid/gid, owner/group/mode, resolved paths and effective access under the
+actual browser account before every launch. Evidence directories are `0750`,
+credentials `0640` root/browser-group, private directories `0750`, and root
+acknowledgments `0644`; there is no world-writable evidence directory. The
+bridge home changes from `0750` to `0751` solely for dependency traversal.
+
+The first bridge-only permission unit check caught an intermediate dependency
+symlink through a `0700` directory before any browser or target contact. The
+installer now links directly to the resolved public dependency tree. This
+negative check remains in the [permission inventories](evidence/p3/attempt02-permission-inventories.json),
+alongside two passing fresh-directory checks including executable parents,
+create/rename/read/cleanup and `EACCES` on attempted write-only opens of both
+original and copied credential files. The writes do not truncate or alter data.
+These are permission tests, not browser preflights or P3 cycles.
+
+The two actual browser preflights and attempt-02 start inventory are pending.
+P3-B/P3-C have not started. P2 remains PASSED; P3 remains NOT ACCEPTED.
