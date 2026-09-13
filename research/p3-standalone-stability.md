@@ -1,6 +1,6 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — P3-H2 FAILED before first browser launch; attempt-02 reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
+Status: **STOPPED — P3-H3 FAILED at first Chromium launch; attempt-02 reboot sequence NOT STARTED; P3 NOT ACCEPTED** (2026-09-13). P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -329,3 +329,145 @@ preflights; neither failed preparation nor this stopped H2 run earns any credit.
 P3-A attempt 02 remains NOT STARTED with `accepted_cycles=0`. P3-B/P3-C remain
 NOT STARTED. P2 remains PASSED; P3 remains UNACCEPTED. M6/ATX, writable MSD and
 RO/overlay remain DEFERRED. The stop-on-failure boundary remains in effect.
+
+
+## P3-H3 — ancestor isolation passed permission tests; Chromium preflight FAILED (2026-09-13)
+
+**H3 FAILED; zero P3 credit.** The three permission-only transitions passed,
+but `chromium-preflight-001` failed at the first Chromium launch. Chromium
+PID 15228 started and exited with **SIGTRAP** before Playwright could create a
+page or complete any UI, login, video, MSD or HID smoke stage. No second Chromium
+launch occurred. Runs 002/003 and P3-A attempt 02 were not started.
+
+The prelaunch global syscall auditors passed, including the auditor run by
+uid 995 immediately before the actual Chromium launch. The root controller
+subsequently raised `RuntimeError('missing launch gate')` because its expected
+MSD second-launch audit was absent. That secondary controller error does not
+replace the retained primary browser launch failure. The crash root cause
+is **unassigned**. No browser retry, source repair, target service restart,
+reboot, reflash, power cycle or historical-descendant permission repair followed.
+The bridge `controller/FAILED.json` latch remains in place.
+
+### H2 checkpoint preservation
+
+Checkpoint `0ef54c7124253458615bf117c7a70848861c4c4c` remains the immutable H2
+failure checkpoint. Its original archive replay again returned FAILED_CONFIRMED.
+The complete 1,067-file tracked tree passed the public private-material scan
+after review of the unchanged synthetic scanner-rejection fixture. Fetch,
+review, push and remote readback confirmed that origin/main already held that
+exact checkpoint; push reported `Everything up-to-date`. No tag was created.
+See [the scan and push record](evidence/p3/h3-h2-checkpoint-scan.json).
+
+### Legacy quarantine and clean namespace
+
+Read-only bridge discovery found four legacy P3 working roots:
+
+- `/home/user/blikvm-p3`
+- `/home/user/blikvm-msd/p3-context`
+- `/var/lib/blikvm-p3-browser`
+- `/var/lib/blikvm-p3-h2`
+
+Before any move, the controller checked the four frozen failure-archive hashes,
+created complete lstat/xattr/file-hash manifests and verified four additional
+whole-root archives. The manifests retain original absolute paths, numeric
+owner/group, modes, inode/device/link counts, mtime/ctime, ACL/xattr information,
+symlink targets and every regular-file hash. Legacy symlinks were recorded
+without traversal. It then renamed each complete root under the **single
+root:root mode 0700** ancestor `/var/lib/blikvm-p3-legacy`. No old-path alias was
+created, and no legacy descendant was chmod/chown-ed. Old paths are mapped to
+new paths in `controller/quarantine.json`.
+
+In particular, the historical `p3-context/a01-smoke/browser-msd` remains **0777**
+and the uid-995 zero-byte H2 probe retains its contents, ownership and identity
+in both the frozen pre-move archive and quarantined working copy. Its permissions
+cannot bypass the inaccessible legacy ancestor. Working-root rename metadata
+is recorded separately; it does not rewrite any original immutable archive.
+
+The new namespace is `/var/lib/blikvm-p3-h3`, root:root 0755:
+
+| Path | Boundary |
+|---|---|
+| `controller/` | root:root 0700; manifests, logs, archives and failure latch |
+| `input/` | root-owned read-only browser inputs; no legacy evidence links |
+| `input/acks/` | root-owned, browser-readable protocol acknowledgments; browser mutation denied |
+| `active/` | root:root 0711; traversal allowed, sibling creation denied |
+| `active/<nonce>/` | sole current writable capability root, uid 995/gid 983 0700 |
+| `sealed/` | root:root 0700; completed leaves retain descendant ownership/modes |
+
+The installed runtime, frozen P3 scripts, public NSS trust data and required
+credential inputs are copies, with no symlinks into legacy evidence. Credential
+copies are root:983 0640 under a root:983 0750 directory. Fixed input/source/private
+manifests exclude the explicitly generated acknowledgment stream, whose writes
+are controller-only and whose bytes are included in the evidence export.
+
+The [H3 boundary helper](../lab/p3-h3-boundary.py) independently walks the whole
+reachable evidence namespace under uid 995; inaccessible ancestors terminate
+traversal. Root records the complete namespace/ACL/stat/realpath inventory and
+mount information and enforces the exact active-leaf count. Actual create,
+write-open, truncate, rename and unlink attempts supplement the boundary checks;
+current-leaf create/write/fsync/rename/unlink succeeds. Source/private roots and
+repository ancestors are also checked. Unexpected ACLs fail closed. Completed
+leaves are fsynced, manifested, archived and verified before a same-filesystem
+atomic rename into `sealed/`; descendant chmod/chown is not the sealing mechanism.
+
+Controller publication uses exclusive no-follow operations; browser JSON reads
+reject symlinks, hardlinks and special files. The candidate also validates
+browser requests against the frozen 11-stage MSD and 47-stage HID protocol
+before using names in privileged evidence paths. Every Chromium launch, including
+the planned MSD reopen, has an actual-UID global syscall gate. These functional
+integration paths remain **unqualified** because the first launch failed.
+
+### Permission-only evidence and failed browser evidence
+
+`perm-001`, `perm-002` and `perm-003` each passed the full UID audit, created a
+harmless browser-owned fixture under an intentionally mode-0777 descendant,
+were archived/verified and renamed into `sealed/`, then passed a zero-active-leaf
+audit. Each later transition also denied access through the previous sealed
+ancestor. Independent VM replay verified **35,595 operations in six audits**,
+all four legacy archives, the original H2 probe, and preserved 0777 descendants.
+These tests contacted neither the target nor Chromium and earn zero P3 credit.
+See [permission replay](evidence/p3/h3-permission.json) and
+[its independent verifier](evidence/p3/verify-h3-permission.py).
+
+The failed first Chromium leaf was archived with all 25 original members and
+renamed whole into `sealed/chromium-preflight-001`. A separate preservation
+audit denied direct write-open/truncate/rename/unlink of every sealed browser
+file and the preserved legacy probe, as well as ancestor traversal/creation.
+No uid-995 process and no active leaf remains. The browser failure archive
+independently replays as **H3_FAILED_CONFIRMED**: 234 indexed files and 23,857
+additional syscall operations, including prelaunch and post-failure audits.
+All permission-snapshot file bytes remain unchanged in that final archive.
+See [failure replay](evidence/p3/h3-failure.json) and
+[its independent verifier](evidence/p3/verify-h3-failure.py).
+
+Both archives were transferred by authenticated, pinned-host SFTP and hashed
+independently on the VM. The MCP download tool returned binary as text; the
+retained local artifacts use the verified binary SFTP transfer instead.
+
+| Private VM archive | Bytes | SHA-256 |
+|---|---:|---|
+| `out/p3-h3/permission-only.tar.gz` | 25,297,300 | `2158a52d913639d4547f950e54d6d7a2c0132d0fcb5bea539319c5ecfa2c71b0` |
+| `out/p3-h3/h3-failed.tar.gz` | 28,238,682 | `78cb138eca5698b29286931df1c47c350b3526c13560f35a812babc51ef48752` |
+
+The matching bridge exports are under `/home/user/blikvm-p3-h3-exports`, mode
+0700 and inaccessible to uid 995. Full raw/private evidence remains outside Git.
+The local suite ran **144 tests: 143 passed, one ACL fixture skipped** because
+the VM cannot create the synthetic POSIX ACL. The live auditor does not waive
+ACL rejection. Local path-hardening fixtures passed for symlinks, parent
+substitution, hardlinks, FIFOs, exclusive publication and unknown 0777 descendants.
+
+### Target continuity and stop boundary
+
+Independent prelaunch/failure-preservation inventories match all **10,690**
+production/enrollment hashes, accepted P2 physical root UUID/PARTUUID and SD CID,
+machine/SSH identities, boot ID `eecefe38-98a3-406c-9260-3e51de321ffe`, and SSH/core
+service generations. The full 1,502-record retained target journal has the same
+nine previously classified errors and zero new error messages. Protected bridge
+input/source/private bytes and metadata are unchanged across this failed run.
+The temporary bridge HDMI test-source process was stopped by normal harness
+cleanup; no browser functional stage completed.
+
+H3 is **FAILED, not accepted**, despite its successful permission-only phase.
+There is no H3 acceptance checkpoint or tag. P3-A attempt 02 stays unstarted at
+`accepted_cycles=0`; P3-B/P3-C remain unstarted and blocked. P2 remains PASSED;
+P3 remains UNACCEPTED. M6/ATX, writable MSD and RO/overlay remain DEFERRED.

@@ -1,0 +1,15 @@
+{
+  "result": "H3_PERMISSION_ONLY_PASS",
+  "archive_sha256": "2158a52d913639d4547f950e54d6d7a2c0132d0fcb5bea539319c5ecfa2c71b0",
+  "indexed_files": 64,
+  "legacy_archives_verified": 4,
+  "legacy_probe_preserved": true,
+  "descendant_mode_0777_preserved": true,
+  "permission_transitions": 3,
+  "audits": 6,
+  "syscall_operations": 35595,
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "target_contacted": false,
+  "chromium_launched": false
+}

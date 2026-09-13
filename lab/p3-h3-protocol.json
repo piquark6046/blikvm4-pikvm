@@ -1,0 +1,265 @@
+{
+  "msd": [
+    {
+      "name": "normal-login",
+      "connected": true
+    },
+    {
+      "name": "excluded-controls",
+      "connected": true
+    },
+    {
+      "name": "ui-eject",
+      "connected": false
+    },
+    {
+      "name": "ui-select",
+      "connected": false
+    },
+    {
+      "name": "ui-connect",
+      "connected": true
+    },
+    {
+      "name": "ui-second-eject",
+      "connected": false
+    },
+    {
+      "name": "ui-reconnect",
+      "connected": true
+    },
+    {
+      "name": "logout-stale-websocket",
+      "connected": true,
+      "stale_socket_state": 3,
+      "loggedout_status": 403,
+      "reauth": true
+    },
+    {
+      "name": "normal-relogin",
+      "connected": true
+    },
+    {
+      "name": "browser-close",
+      "connected": true,
+      "browser_process_closed": true
+    },
+    {
+      "name": "browser-reopen",
+      "connected": true
+    }
+  ],
+  "hid": [
+    {
+      "name": "login-and-open",
+      "kind": "setup"
+    },
+    {
+      "name": "keyboard",
+      "kind": "exact"
+    },
+    {
+      "name": "absolute-near-min",
+      "kind": "absolute"
+    },
+    {
+      "name": "absolute-center",
+      "kind": "absolute"
+    },
+    {
+      "name": "absolute-near-max",
+      "kind": "absolute"
+    },
+    {
+      "name": "absolute-button",
+      "kind": "exact"
+    },
+    {
+      "name": "prepare-mode-0",
+      "kind": "setup"
+    },
+    {
+      "name": "mode-usb_rel-0",
+      "kind": "exact"
+    },
+    {
+      "name": "close-menu-0",
+      "kind": "setup"
+    },
+    {
+      "name": "pointer-lock-0",
+      "kind": "setup"
+    },
+    {
+      "name": "relative-0-0",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-0-1",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-0-2",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-0-3",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-0-4",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-button-0",
+      "kind": "exact"
+    },
+    {
+      "name": "prepare-mode-1",
+      "kind": "setup"
+    },
+    {
+      "name": "mode-usb-1",
+      "kind": "exact"
+    },
+    {
+      "name": "close-menu-1",
+      "kind": "setup"
+    },
+    {
+      "name": "absolute-return-1",
+      "kind": "absolute"
+    },
+    {
+      "name": "prepare-mode-2",
+      "kind": "setup"
+    },
+    {
+      "name": "mode-usb_rel-2",
+      "kind": "exact"
+    },
+    {
+      "name": "close-menu-2",
+      "kind": "setup"
+    },
+    {
+      "name": "pointer-lock-2",
+      "kind": "setup"
+    },
+    {
+      "name": "relative-2-0",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-2-1",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-2-2",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-2-3",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-2-4",
+      "kind": "relative"
+    },
+    {
+      "name": "relative-button-2",
+      "kind": "exact"
+    },
+    {
+      "name": "prepare-mode-3",
+      "kind": "setup"
+    },
+    {
+      "name": "mode-usb-3",
+      "kind": "exact"
+    },
+    {
+      "name": "close-menu-3",
+      "kind": "setup"
+    },
+    {
+      "name": "absolute-return-3",
+      "kind": "absolute"
+    },
+    {
+      "name": "focus-keyboard",
+      "kind": "setup"
+    },
+    {
+      "name": "browser-held-shift",
+      "kind": "exact",
+      "held": [
+        [
+          42
+        ],
+        [],
+        []
+      ]
+    },
+    {
+      "name": "browser-close-cleanup",
+      "kind": "exact"
+    },
+    {
+      "name": "reopen",
+      "kind": "setup"
+    },
+    {
+      "name": "api-websocket-open",
+      "kind": "setup"
+    },
+    {
+      "name": "websocket-held-shift",
+      "kind": "exact",
+      "held": [
+        [
+          42
+        ],
+        [],
+        []
+      ]
+    },
+    {
+      "name": "websocket-close-cleanup",
+      "kind": "exact"
+    },
+    {
+      "name": "revocation-socket-open",
+      "kind": "setup"
+    },
+    {
+      "name": "logout-held-input",
+      "kind": "exact",
+      "held": [
+        [
+          42
+        ],
+        [
+          272
+        ],
+        []
+      ]
+    },
+    {
+      "name": "logout-cleanup-and-stale-socket",
+      "kind": "exact"
+    },
+    {
+      "name": "reauth",
+      "kind": "setup"
+    },
+    {
+      "name": "video-motion",
+      "kind": "setup"
+    },
+    {
+      "name": "final-close",
+      "kind": "setup"
+    }
+  ]
+}

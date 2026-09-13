@@ -1,0 +1,20 @@
+{
+  "commit": "0ef54c7124253458615bf117c7a70848861c4c4c",
+  "tree": "d49b954124897430c09aab3bb3760700237fcb96",
+  "scope": "complete tracked candidate tree, all blob bytes; known private enrollment values and credential patterns",
+  "files": 1067,
+  "bytes": 23609373,
+  "result": "passed_after_synthetic_fixture_review",
+  "ignored_private_outputs_excluded_from_git": true,
+  "reviewed_findings": [
+    {
+      "path": "tests/test_image_production.py",
+      "kind": "private_key"
+    }
+  ],
+  "findings": [],
+  "review": "Existing scanner rejection fixture: private-key marker followed by 80 literal A bytes; unchanged from H2 parent.",
+  "remote_main_verified": "0ef54c7124253458615bf117c7a70848861c4c4c",
+  "push_result": "Everything up-to-date",
+  "tag_created": false
+}

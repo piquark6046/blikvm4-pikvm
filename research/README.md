@@ -267,3 +267,14 @@ FAILED_CONFIRMED. Both target inventories match all 10,690 hashes and the same
 boot/identity/service generations. No browser smoke or reboot ran; no later
 preflight or P3-A/B/C work started. P2 remains PASSED; P3 remains UNACCEPTED.
 M6/ATX, writable MSD and RO/overlay remain DEFERRED. No tag was created.
+
+
+P3-H3 update (2026-09-13): [ancestor quarantine and all three permission-only
+transitions passed, but the first Chromium launch FAILED with SIGTRAP](p3-standalone-stability.md#p3-h3--ancestor-isolation-passed-permission-tests-chromium-preflight-failed-2026-09-13).
+The failed leaf is archived and sealed behind a root-only ancestor; the H2
+zero-byte probe and all historical archives remain preserved. Independent
+replay confirms zero browser-smoke completions, zero P3 credit, unchanged
+10,690 target hashes/identity/boot/service generations, and no reboot or reflash.
+No H3 acceptance or tag; Chromium runs 002/003 and P3-A attempt 02 are unstarted.
+P2 remains PASSED; P3 remains UNACCEPTED. P3-B/P3-C remain blocked; M6/ATX and
+RO/overlay remain DEFERRED.
