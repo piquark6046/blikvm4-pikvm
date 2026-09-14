@@ -110,3 +110,13 @@ passes all eight tests. Its first invocation failed on an incorrect local Node
 path and is retained privately; using the discovered executable passes. The
 public source/test/plan/result scan found no secret or private material. The
 immutable attempt-02 archive still matches its frozen SHA-256.
+
+
+P3-A attempt 03 (2026-09-14): [cycle 1 stopped FAILED during independent
+journal replay](p3-a03-cycle01-failure.md), 0/12 accepted cycles. Controller R1
+completed its immutable publication lifecycle and real browser/host gates, but
+two startup nginx entries at 12.075869 seconds fall outside the inherited
+replayer's strict startup classification window. The failure latch, original
+provisional records and both archives are preserved. No threshold change, retry
+or later cycle. Attempt 02 remains permanently FAILED, H5R2 ACCEPTED, P2 PASSED,
+P3 UNACCEPTED; P3-B/C BLOCKED, M6/ATX and RO/overlay DEFERRED.

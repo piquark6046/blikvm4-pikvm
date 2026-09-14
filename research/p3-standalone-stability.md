@@ -1,8 +1,8 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — P3-H5R1 functional-001 FAILED at its initial MSD
-connected-media prerequisite; H5 remains FAILED; H3 root cause: UNASSIGNED;
-attempt-02 reboot sequence NOT STARTED; P3 UNACCEPTED** (2026-09-14). P2 attempt 02 is accepted
+Status: **STOPPED — P3-A attempt 03 FAILED during independent cycle-1 journal
+replay; 0/12 accepted cycles; H5R2 ACCEPTED; P3 UNACCEPTED** (2026-09-14).
+P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -895,3 +895,13 @@ issued. The FAILED latch and original incomplete/final records are retained;
 no retry or repair. All 10,690 target hashes, boot and service generations match,
 and approved RO MSD remains attached. P3-A is 0/12; H5R2 remains ACCEPTED,
 P2 PASSED, P3 UNACCEPTED. P3-B/C blocked; M6/ATX and RO/overlay DEFERRED.
+
+
+P3-A attempt 03 (2026-09-14): [cycle 1 stopped FAILED during independent
+journal replay](p3-a03-cycle01-failure.md), 0/12 accepted cycles. Controller R1
+completed its immutable publication lifecycle and real browser/host gates, but
+two startup nginx entries at 12.075869 seconds fall outside the inherited
+replayer's strict startup classification window. The failure latch, original
+provisional records and both archives are preserved. No threshold change, retry
+or later cycle. Attempt 02 remains permanently FAILED, H5R2 ACCEPTED, P2 PASSED,
+P3 UNACCEPTED; P3-B/C BLOCKED, M6/ATX and RO/overlay DEFERRED.

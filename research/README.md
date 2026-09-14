@@ -309,3 +309,13 @@ The pinned attempt-02 bug reproduces before reboot; its FAILED checkpoint remain
 unchanged with zero credit. Fresh attempt 03 requires clean pushed source and
 a fresh read-only inventory before cycle 1. H5R2 ACCEPTED, P2 PASSED, P3 UNACCEPTED;
 M6/ATX and RO/overlay DEFERRED.
+
+
+P3-A attempt 03 (2026-09-14): [cycle 1 stopped FAILED during independent
+journal replay](p3-a03-cycle01-failure.md), 0/12 accepted cycles. Controller R1
+completed its immutable publication lifecycle and real browser/host gates, but
+two startup nginx entries at 12.075869 seconds fall outside the inherited
+replayer's strict startup classification window. The failure latch, original
+provisional records and both archives are preserved. No threshold change, retry
+or later cycle. Attempt 02 remains permanently FAILED, H5R2 ACCEPTED, P2 PASSED,
+P3 UNACCEPTED; P3-B/C BLOCKED, M6/ATX and RO/overlay DEFERRED.
