@@ -113,3 +113,14 @@ class ControllerGates(unittest.TestCase):
             stream.seek(0)
             with tarfile.open(fileobj=stream) as t:
                 with self.assertRaises(RuntimeError):h['entries'](t)
+
+
+class ContractSerializationTests(unittest.TestCase):
+    def test_js_timestamp_precision_is_replayed_without_ignoring_other_fields(self):
+        h=runpy.run_path(str(ROOT/'research/evidence/p3/verify-h5r1.py'))
+        original={'ctime_ns':1788735966451346543,'sha256':'frozen','uid':993}
+        r=h['javascript_json'](json.dumps(original).encode())
+        self.assertEqual(r['ctime_ns'],1788735966451346400)
+        self.assertEqual(r['sha256'],'frozen');self.assertEqual(r['uid'],993)
+        changed=dict(original,sha256='changed')
+        self.assertNotEqual(r,h['javascript_json'](json.dumps(changed).encode()))

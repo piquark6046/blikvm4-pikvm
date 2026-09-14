@@ -6,6 +6,7 @@ import io
 import json
 from pathlib import Path, PurePosixPath
 import re
+import subprocess
 import tarfile
 
 
@@ -44,6 +45,16 @@ def netns(before,after):
     for k in ('route','route6'):
         require(all(x.get('dev')=='lo' and not x.get('gateway') for x in json.loads(after['raw'][k]['stdout'])),'UID route')
     require((after['uid'],after['gid'],after['groups'])==(before['uid'],before['gid'],before['groups']),'UID drift')
+
+
+def javascript_json(raw):
+    # Independently reproduce JSON.parse/stringify number representation. The
+    # immutable original is separately bound by the prospective SHA-256, so no
+    # original metadata precision is discarded from the evidence.
+    p=subprocess.run(['node','-e',
+        "process.stdout.write(JSON.stringify(JSON.parse(require('node:fs').readFileSync(0,'utf8'))))"],
+        input=raw,capture_output=True,check=True)
+    return json.loads(p.stdout)
 
 
 def replay(archive, expected, name):
@@ -101,7 +112,7 @@ def replay(archive, expected, name):
         argv=[line for line in log.splitlines() if '<launching>' in line]
         require(argv==r['generated_argv_lines']==read('controller/'+name+'/generated-argv.json'),'argv capture')
         contract=read(prefix+'launch-contract.json')
-        require(contract['phase']=='before_launch' and contract['frozen_contract']==c,'prospective contract')
+        require(contract['phase']=='before_launch' and contract['frozen_contract']==javascript_json(data('input/contract.json')),'prospective contract')
         require(contract['contract_sha256']==sha(data('input/contract.json')),'contract hash')
         audit=read(prefix+'launch-audit.json')
         require(audit['operations'] and all(o['passed'] for o in audit['operations']),'launch audit')

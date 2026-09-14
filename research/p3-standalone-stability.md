@@ -786,3 +786,24 @@ observed only lo through netlink/Node while inherited sysfs exposed
 docker0/enp1s0/lo/proton. No browser or target contact in VM validation.
 Source must be committed, pushed and clean before any bridge deployment.
 Live H5R1 qualification has not yet started at this source checkpoint.
+
+H5R1 source `ac73300f7b2633b36f0f8cde383845414282daad` was pushed and verified
+clean before deployment. The fresh account is UID 993/GID 981. The netns-only
+self-test passed with one isolated namespace across privilege drop, lo-only
+netlink/Node observations, no inherited sockets, and informational inherited
+sysfs enp1s0/lo/wlo1. The first deployment transport invocation failed before
+source installation; its prematurely started preparation unit exited with
+ENOENT without executing H5R1 code. That unit is retained. Subsequent verified
+source installation and the first actual runtime preparation succeeded.
+
+[Minimal-001](evidence/p3/h5r1-minimal-001.json) completed all six stages with
+clean browser exit, no SIGTRAP, prospective contract/generated argv, unchanged
+protected inputs, no remaining UID processes, and archive/atomic sealing.
+The initial VM verifier stopped on literal Python-vs-JavaScript JSON equality:
+1,282 metadata ctime_ns/mtime_ns values have JavaScript Number serialization
+rounding. This was a VM verifier failure, not a browser retry. The revised
+verifier explicitly reproduces JSON.parse/stringify and still verifies the
+prospective SHA-256 against the exact original contract bytes; no metadata
+fields are ignored. The unchanged archive independently passes. The initial
+failed replay is retained in this record. All runs remain zero P3 credit;
+H5R1 is not yet accepted and no target contact has occurred.
