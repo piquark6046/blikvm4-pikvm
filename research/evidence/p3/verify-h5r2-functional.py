@@ -29,8 +29,8 @@ IMAGE=H['G4']['EXPECTED']['sha256'];MEDIA='/usr/share/kvmd-msd/images/g4-storage
 exec(compile(ast.Module(body=keep,type_ignores=[]),'frozen-msd-replay','exec'))
 
 
-def replay(archive, expected, name):
-    assert sha(archive.read_bytes())==expected
+def replay(archive, archive_sha256, name):
+    assert sha(archive.read_bytes())==archive_sha256
     with tempfile.TemporaryDirectory(prefix='h5r2-functional-replay-') as temporary,tarfile.open(archive) as t:
         outer=V['entries'](t);data=lambda n:t.extractfile(n).read();j=lambda n:json.loads(data(n))
         idx='controller/export-'+name+'/SHA256.json';index=j(idx)
@@ -186,7 +186,7 @@ def replay(archive, expected, name):
           logout_resets.append({'reset_us':ts,'logout_us':start,'reauth_us':end})
         # Bounded journals may have evicted historical startup records; classify
         # every retained record without requiring evicted records to persist.
-        result.update(result='H5R2_FUNCTIONAL_ACCEPTED',name=name,archive_sha256=expected,
+        result.update(result='H5R2_FUNCTIONAL_ACCEPTED',name=name,archive_sha256=archive_sha256,
             leaf_archive_sha256=seal['sha256'],functional_source_commit=fc['source']['commit'],
             target_hashes_matched=10690,service_generations_unchanged=True,launches=launches,
             prospective_contracts=launches,generated_argv_records=launches,hid_stages=count,

@@ -1,0 +1,38 @@
+{
+  "storage_checks": 8,
+  "msd_transitions": 19,
+  "result": "H5R2_FUNCTIONAL_ACCEPTED",
+  "name": "functional-002",
+  "archive_sha256": "6073424557af5d67d813da1fddc1aa968fd31907e4d68daba999af3d430de707",
+  "leaf_archive_sha256": "febce42f58a69acfc0240a42e86e1f26482b68a52d9a7ba6be5f0f12333158a3",
+  "functional_source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+  "target_hashes_matched": 10690,
+  "service_generations_unchanged": true,
+  "launches": 3,
+  "prospective_contracts": 3,
+  "generated_argv_records": 3,
+  "hid_stages": 47,
+  "video_unique_frames": 6,
+  "journal_records_reviewed": 1804,
+  "intentional_logout_socket_resets": [
+    {
+      "reset_us": 1134364285,
+      "logout_us": 1134354631,
+      "reauth_us": 1134991670
+    },
+    {
+      "reset_us": 1134374784,
+      "logout_us": 1134354631,
+      "reauth_us": 1134991670
+    },
+    {
+      "reset_us": 1329743567,
+      "logout_us": 1329734522,
+      "reauth_us": 1330438751
+    }
+  ],
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "h5_status": "FAILED",
+  "h3_root_cause": "UNASSIGNED"
+}

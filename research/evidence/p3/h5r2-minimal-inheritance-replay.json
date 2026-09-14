@@ -1,0 +1,12 @@
+{
+  "result": "H5R2_RUNTIME_INHERITANCE_ACCEPTED",
+  "archive_sha256": "0fc4a91e62c9f65a987231ebc788d90ddb88a224523d45ad319b79cfcb00f6c2",
+  "runtime_files": 1149,
+  "executables_identical": true,
+  "launch_options_identical": true,
+  "generated_stable_flags_identical": true,
+  "netns_implementation_identical": true,
+  "permission_worker_identical": true,
+  "minimal_launches_required": 1,
+  "qualification_credit": 0
+}

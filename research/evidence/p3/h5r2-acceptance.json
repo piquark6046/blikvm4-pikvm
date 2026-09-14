@@ -1,0 +1,40 @@
+{
+  "result": "H5R2_INDEPENDENTLY_ACCEPTED",
+  "s0_clean_boot_invariant": "PASS",
+  "minimal_sanity": "PASS",
+  "runtime_inheritance": "PASS",
+  "functional_preflights": 3,
+  "attached_preconditions": 3,
+  "attached_postconditions": 3,
+  "boot_id": "1c8365c7-90bf-46fb-8db4-5ec06a745a6a",
+  "target_hashes_matched": 10690,
+  "chromium_launches": 9,
+  "hid_stages": 141,
+  "msd_storage_checks": 24,
+  "predecessor_files_unchanged": 2140,
+  "archives": [
+    {
+      "name": "functional-001",
+      "sha256": "4cf2e4f9b890639d2f832b3dc917b4f52ab6d67c28c6a37e6a6755d4fa7fe627"
+    },
+    {
+      "name": "functional-002",
+      "sha256": "6073424557af5d67d813da1fddc1aa968fd31907e4d68daba999af3d430de707"
+    },
+    {
+      "name": "functional-003",
+      "sha256": "830608ff1f8f5b398b88f1c64cdbb320f38961ee602f3caf2f8108982314c1e6"
+    }
+  ],
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "h3_root_cause": "UNASSIGNED",
+  "h5": "FAILED",
+  "h5r1": "FAILED because its target prerequisite was false before launch",
+  "h5r2": "prospectively qualifies the browser harness from a proven boot state",
+  "p2": "PASSED",
+  "p3": "UNACCEPTED",
+  "p3_b_c": "BLOCKED",
+  "m6_atx": "DEFERRED",
+  "ro_overlay": "DEFERRED"
+}

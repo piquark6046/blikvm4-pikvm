@@ -880,3 +880,9 @@ accepted_cycles=0. P3-B/C remain blocked, M6/ATX and RO/overlay DEFERRED.
 The empty LUN predates H5R1; the exact production image is attached automatically
 on the single zero-credit preparation reboot. H5R1 remains permanently FAILED.
 H5R2 and P3-A attempt 02 have not yet qualified; P3 remains UNACCEPTED.
+
+P3-H5R2 (2026-09-14): [independently accepted](p3-h5r2-harness.md), with one
+byte-identical-runtime minimal sanity and three full no-reboot browser
+preflights. Each starts and ends attached RO; target hashes, permission sealing
+and replay pass. Zero P3 credit. P3-A attempt 02 immediate inventory passes;
+cycle 1 must perform its own reboot. P3 remains UNACCEPTED; P3-B/C blocked.

@@ -1,0 +1,17 @@
+{
+  "result": "H5R2_MINIMAL_ACCEPTED",
+  "name": "minimal-001",
+  "source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+  "archive_sha256": "0fc4a91e62c9f65a987231ebc788d90ddb88a224523d45ad319b79cfcb00f6c2",
+  "leaf_archive_sha256": "a808b91463494045bae863c96c259f278aa9b77313a9c97f174391595c38873b",
+  "indexed_files": 61,
+  "netns_selftest": "PASS",
+  "prospective_contracts": 1,
+  "generated_argv_records": 1,
+  "sigtrap": false,
+  "protected_inputs_unchanged": true,
+  "target_contacted": false,
+  "qualification_credit": 0,
+  "h5_status": "FAILED",
+  "h3_root_cause": "UNASSIGNED"
+}

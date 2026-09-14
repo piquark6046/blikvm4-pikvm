@@ -344,3 +344,9 @@ restores the exact attached RO G4 invariant automatically. Zero P3-A credit;
 H5/H5R1 remain FAILED and H3 root cause UNASSIGNED. H5R2 preparation is unlocked;
 P3-A attempt 02 remains unstarted. P2 PASSED, P3 UNACCEPTED; P3-B/C blocked,
 M6/ATX and RO/overlay DEFERRED. No product tag.
+
+P3-H5R2 (2026-09-14): [independently accepted](p3-h5r2-harness.md), with one
+byte-identical-runtime minimal sanity and three full no-reboot browser
+preflights. Each starts and ends attached RO; target hashes, permission sealing
+and replay pass. Zero P3 credit. P3-A attempt 02 immediate inventory passes;
+cycle 1 must perform its own reboot. P3 remains UNACCEPTED; P3-B/C blocked.
