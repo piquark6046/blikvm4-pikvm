@@ -1,0 +1,26 @@
+{
+  "result": "THREE_MINIMAL_CONTRACTS_MATCH",
+  "runs": [
+    "minimal-001",
+    "minimal-002",
+    "minimal-003"
+  ],
+  "stable_sha256": "914a8fb386e99a6b9de5b8c34ac6f55a0c3289cc5fc3581c20b18efd35dd9c5b",
+  "stable_properties": [
+    "runtime identities",
+    "Playwright generated flags",
+    "uid/gid/groups",
+    "environment",
+    "cwd",
+    "Xvfb arguments"
+  ],
+  "ephemeral_environment_keys": [
+    "DISPLAY",
+    "XAUTHORITY",
+    "H5R1_LEAF",
+    "H5R1_REQUIREMENTS",
+    "H5R1_NETNS_EXPECTED"
+  ],
+  "ephemeral_profile_flag": "--user-data-dir=/tmp/playwright_chromiumdev_profile-*",
+  "qualification_credit": 0
+}

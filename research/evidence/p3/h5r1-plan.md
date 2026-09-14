@@ -108,3 +108,36 @@ continuity matches, no SD reflash. P3-A attempt 02 starts at accepted_cycles=0
 and runs the frozen 12-cycle network matrix unchanged. H5/H5R1 earn zero
 credit. P3-B requires 12/12 plus independent replay; P3-C requires its declared
 prerequisite. P2 PASSED; P3 UNACCEPTED; M6/ATX and RO/overlay DEFERRED.
+
+## Functional adaptation frozen after the three minimal replays
+
+The functional layer is additive under input/functional and uses the already
+qualified runtime, HOME, cwd, Xvfb arguments and headless:false launch options.
+The original minimal input manifest remains immutable; a separately published
+functional input manifest records the declared addition before target contact.
+The runtime tree must still equal the original runtime manifest. All original
+minimal input files retain their bytes. Functional inputs and historical data
+must remain unchanged throughout each functional run.
+
+The four H3 UI/host probes are SHA-256-pinned historical references. Fresh
+copies preserve their full MSD/HID stage protocols. Changes are limited to
+new launch dispatch, H5R1 runtime resolution and per-launch capture/audit;
+the unreachable service-restart branch explicitly rejects a restart stage.
+Before functional deployment, the complete VM suite passes 154 tests (two
+privileged tests skipped; the H5R1 real privileged regression already passed).
+
+Browser environment is cleared to the qualified environment plus the declared
+NODE_EXTRA_CA_CERTS, controller acknowledgment/requirements paths and host
+netns identity. TMPDIR/XDG_RUNTIME_DIR remain absent. Root HIL runs from its
+fresh functional context; browser cwd remains the original input directory.
+Fresh HOME state is used for each MSD/HID subprocess; each Chromium call uses
+a new Playwright temporary profile. Every call records exact prospective
+contract and generated argv. Independent replay compares generated flags with
+the accepted minimal launch, allowing only the temporary user-data-dir value.
+
+The functional replayer retains the frozen raw evdev/SCSI/browser checks,
+checks all eight read-only MSD media validations, identity/hash continuity,
+all permission gates and prior-seal mutation denials. Full retained target
+journal messages are classified; bounded-journal rotation need not preserve
+historical startup entries, but every retained error must meet the existing
+startup/logout classification. Unknown errors stop acceptance.

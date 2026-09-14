@@ -807,3 +807,12 @@ prospective SHA-256 against the exact original contract bytes; no metadata
 fields are ignored. The unchanged archive independently passes. The initial
 failed replay is retained in this record. All runs remain zero P3 credit;
 H5R1 is not yet accepted and no target contact has occurred.
+
+[Minimal-002](evidence/p3/h5r1-minimal-002.json) and
+[minimal-003](evidence/p3/h5r1-minimal-003.json) independently passed on the
+same pushed `ac73300` runtime/controller. [Stable launch comparison](evidence/p3/h5r1-minimal-comparison.json)
+passes across all three. Profile, X display/auth, leaf/protocol paths and
+netns identities are explicitly classified as ephemeral. All three earn zero
+P3 credit. The separately frozen functional adaptation now prepares a fresh
+context while preserving the qualified runtime; target continuity must pass
+before its first functional launch. No target contact at this checkpoint.
