@@ -886,3 +886,12 @@ byte-identical-runtime minimal sanity and three full no-reboot browser
 preflights. Each starts and ends attached RO; target hashes, permission sealing
 and replay pass. Zero P3 credit. P3-A attempt 02 immediate inventory passes;
 cycle 1 must perform its own reboot. P3 remains UNACCEPTED; P3-B/C blocked.
+
+## P3-A attempt 02 — cycle 1 stopped before reboot (2026-09-14)
+
+[The new controller failed on an append-only state publication](p3-a02-cycle01-failure.md)
+after its attached-MSD preboot gate passed. No reboot or Chromium launch was
+issued. The FAILED latch and original incomplete/final records are retained;
+no retry or repair. All 10,690 target hashes, boot and service generations match,
+and approved RO MSD remains attached. P3-A is 0/12; H5R2 remains ACCEPTED,
+P2 PASSED, P3 UNACCEPTED. P3-B/C blocked; M6/ATX and RO/overlay DEFERRED.

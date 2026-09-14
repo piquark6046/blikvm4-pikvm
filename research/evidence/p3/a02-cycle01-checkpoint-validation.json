@@ -1,0 +1,16 @@
+{
+  "result": "CHECKPOINT_VALIDATED",
+  "local_suite": {
+    "tests": 159,
+    "skipped": 2,
+    "result": "PASS"
+  },
+  "full_journal_error_records": 6,
+  "error_records_unchanged_from_accepted_h5r2": true,
+  "controller_source_unchanged": true,
+  "controller_sha256": "cebd49d48d27836cbf0f6fd8e25b6b4fed48cbdea35b17fd3c51871cb2090cca",
+  "independent_failure_replay": "a02-cycle01-failure.json",
+  "public_scan": "PASS",
+  "retries": 0,
+  "product_tags": 0
+}

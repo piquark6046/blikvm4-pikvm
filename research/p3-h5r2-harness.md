@@ -80,3 +80,7 @@ real bridge netns and permission execution are independently retained above.
 H3 root cause remains UNASSIGNED. H5 FAILED. H5R1 FAILED because its target
 prerequisite was false before launch. H5R2 prospectively qualifies the browser
 harness from a proven boot state. No product tag.
+
+Subsequent P3-A status: [attempt-02 cycle 1 failed before issuing its reboot](p3-a02-cycle01-failure.md)
+on a new controller state-publication bug. H5R2's accepted evidence and status
+remain unchanged. No cycle credit or production runtime regression is inferred.

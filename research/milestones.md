@@ -350,3 +350,9 @@ byte-identical-runtime minimal sanity and three full no-reboot browser
 preflights. Each starts and ends attached RO; target hashes, permission sealing
 and replay pass. Zero P3 credit. P3-A attempt 02 immediate inventory passes;
 cycle 1 must perform its own reboot. P3 remains UNACCEPTED; P3-B/C blocked.
+
+P3-A attempt 02 (2026-09-14): [cycle 1 FAILED before reboot](p3-a02-cycle01-failure.md)
+when the new controller tried updating cycle.json through an append-only publisher.
+No cycle reboot or browser launch; 0/12 accepted. No retry/repair. H5R2 remains
+ACCEPTED; the target remains on the S0 boot with attached RO MSD and all 10,690
+hashes unchanged. P2 PASSED, P3 UNACCEPTED; P3-B/C blocked; deferred scope unchanged.
