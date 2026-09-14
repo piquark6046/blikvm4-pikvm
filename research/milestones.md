@@ -323,3 +323,17 @@ launch. No retry or target contact; zero P3 credit. New account/runtime contract
 permission audits, atomic failure-leaf sealing and independent archive replay
 are retained. H5 is unaccepted and latched FAILED; P3-A attempt 02 is unstarted.
 P2 PASSED, P3 UNACCEPTED, P3-B/C blocked, M6/ATX and RO/overlay DEFERRED.
+
+
+P3-H5R1 update (2026-09-14): [netns-only and all three minimal launches passed,
+but functional-001 FAILED](p3-standalone-stability.md#p3-h5r1--functional-001-failed-qualification-stopped-2026-09-14).
+Both source layers were pushed clean before their deployment. The initial MSD
+stage required connected media, while prelaunch inventories and the API showed
+an empty/disconnected read-only LUN. Chromium's first prospective contract and
+generated argv are preserved; clean exit, no SIGTRAP. The secondary controller
+expected-launch-count error does not erase the first functional failure.
+Independent archive replay confirms sealing/isolation and unchanged 10,690
+hashes, boot/service identities and gadget state. No retry, repair or reboot;
+H5R1 is latched FAILED, H5 permanently FAILED, H3 root cause UNASSIGNED.
+P2 PASSED; P3 UNACCEPTED; zero cycles; later preflights and P3-A unstarted.
+No acceptance tag. M6/ATX and RO/overlay remain DEFERRED.

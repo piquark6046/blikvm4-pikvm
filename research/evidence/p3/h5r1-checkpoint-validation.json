@@ -1,0 +1,37 @@
+{
+  "checkpoint_kind": "BRIDGE-HARNESS_FAILURE",
+  "result": "H5R1_FAILED",
+  "minimal_source_commit": "ac73300f7b2633b36f0f8cde383845414282daad",
+  "functional_source_commit": "043fa5b94b6a3cfcd6dd90d2d0a440b5acb3da9e",
+  "sources_pushed_clean_before_deployment": true,
+  "complete_local_suite": {
+    "tests": 154,
+    "skipped": 2,
+    "result": "PASS",
+    "log_sha256": "cc7192af6b796bd380ebb21387667178677b3d28c2277ae399d4bb0179462843"
+  },
+  "real_vm_netns_suite": {
+    "tests": 7,
+    "skipped": 0,
+    "result": "PASS"
+  },
+  "public_material_scan": {
+    "result": "PASS",
+    "files_before_this_report": 1120,
+    "known_private_values_checked": 7,
+    "findings": []
+  },
+  "independent_failure_replay": "H5R1_FUNCTIONAL_FAILURE_CONFIRMED",
+  "h5_status": "FAILED",
+  "h3_root_cause": "UNASSIGNED",
+  "p2_status": "PASSED",
+  "p3_status": "UNACCEPTED",
+  "accepted_cycles": 0,
+  "retry": false,
+  "target_service_repair": false,
+  "reboot": false,
+  "reflash": false,
+  "tag_created": false,
+  "m6_atx": "DEFERRED",
+  "ro_overlay": "DEFERRED"
+}

@@ -1,8 +1,8 @@
 # P3 standalone SD stability
 
-Status: **STOPPED — P3-H5 minimal-001 FAILED before Chromium launch;
-H3 root cause: UNASSIGNED; attempt-02 reboot sequence NOT STARTED;
-P3 UNACCEPTED** (2026-09-13). P2 attempt 02 is accepted
+Status: **STOPPED — P3-H5R1 functional-001 FAILED at its initial MSD
+connected-media prerequisite; H5 remains FAILED; H3 root cause: UNASSIGNED;
+attempt-02 reboot sequence NOT STARTED; P3 UNACCEPTED** (2026-09-14). P2 attempt 02 is accepted
 at `1fa1a7c8a4c53639dfd38e32e24c256c8682afd7`, revision `p2-r1-candidate1`.
 The annotated `standalone-sd-core-kvm-baseline` tag already exists locally and
 on origin at that exact commit (tag object `025b6eccf3d1e84a54d73d82a1af92c82c651bbd`).
@@ -816,3 +816,60 @@ netns identities are explicitly classified as ephemeral. All three earn zero
 P3 credit. The separately frozen functional adaptation now prepares a fresh
 context while preserving the qualified runtime; target continuity must pass
 before its first functional launch. No target contact at this checkpoint.
+
+
+## P3-H5R1 — functional-001 FAILED, qualification stopped (2026-09-14)
+
+**H5R1 FAILED; zero P3 credit. H5 permanently FAILED. H3 root cause remains
+UNASSIGNED.** The netns self-test and all three independently replayed minimal
+launches passed, but this does not accept H5R1's full browser harness.
+
+The first target continuity inventory matched all 10,690 production/enrollment
+hashes, SD CID, UUID/PARTUUID, machine/SSH identity and unchanged boot/service
+generations. However, it did not enforce the functional protocol's initial
+MSD-connected prerequisite. The target configfs backing-file attribute was
+already empty in that inventory and again immediately before functional-001.
+The read-only flag remained 1. No historical cause for that state is assigned.
+
+Functional source was committed/pushed clean as
+`043fa5b94b6a3cfcd6dd90d2d0a440b5acb3da9e` before deployment. The first functional
+Chromium launched as UID 993/GID 981, completed enrolled login and reached the
+KVM UI, including its 1920-pixel video-width gate. At the first `normal-login`
+MSD stage, the frozen protocol required connected=true; the API reported
+connected=false. The host stage failed, and the browser stopped before any
+MSD attach/eject stage or HID workload. Changing-video and full MSD/HID
+contracts therefore did not pass. No retry, media attachment, target service
+repair, reboot or reflash followed.
+
+The controller subsequently checked for the two launches expected of a
+successful full MSD run and recorded `missing prospective contract/argv`.
+That secondary error masks the first functional failure in the top-level
+result. It does **not** mean the first launch lacked evidence: its complete
+prospective contract, actual-UID launch audit and Playwright-generated argv
+are archived. Only the first of the planned two MSD launches was reached.
+Chromium exited with exitCode=0/signal=null and no SIGTRAP. Its generated flags
+match the accepted minimal launches, allowing only the temporary profile path.
+The controller/probe and FAILED latch remain frozen without a repair.
+
+Read-only postfailure collection again matched all 10,690 hashes, the same
+boot/service generations and the identical gadget state, including an empty
+MSD backing-file attribute. The leaf was archived then atomically renamed
+under sealed/; subsequent actual-UID traversal/create attempts were denied.
+No UID processes remained, and all protected input/history hashes matched.
+
+The private archive `functional-001-failed.tar.gz` is 8,006,662 bytes, SHA-256
+`4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48`.
+[Independent VM failure replay](evidence/p3/h5r1-failure.json), using
+[the failure verifier](evidence/p3/verify-h5r1-failure.py), verifies all 377
+indexed files, 49 sealed-leaf members, 64,467 permission operations, original
+source commits, contract/argv, failed stage and unchanged target inventory.
+All 1,564 retained target journal records were reviewed; six historical nginx
+startup errors and three historical logout/socket resets meet the frozen
+classification. H5's original archived files also match the current protected
+H5 namespace byte-for-byte. Private credentials, NSS state and raw archives
+remain outside Git.
+
+Functional-002/003, H5R1 acceptance and P3-A attempt 02 remain NOT STARTED.
+No BRIDGE-HARNESS acceptance or product/baseline tag is created. This is a
+failure checkpoint only. P2 remains PASSED; P3 remains UNACCEPTED;
+accepted_cycles=0. P3-B/C remain blocked, M6/ATX and RO/overlay DEFERRED.
