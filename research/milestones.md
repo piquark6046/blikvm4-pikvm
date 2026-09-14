@@ -356,3 +356,11 @@ when the new controller tried updating cycle.json through an append-only publish
 No cycle reboot or browser launch; 0/12 accepted. No retry/repair. H5R2 remains
 ACCEPTED; the target remains on the S0 boot with attached RO MSD and all 10,690
 hashes unchanged. P2 PASSED, P3 UNACCEPTED; P3-B/C blocked; deferred scope unchanged.
+
+
+P3-A controller R1 (2026-09-14): the [immutable publication correction](p3-controller-r1.md)
+passes VM and bridge-only lifecycle rehearsal and independent archive replay.
+The pinned attempt-02 bug reproduces before reboot; its FAILED checkpoint remains
+unchanged with zero credit. Fresh attempt 03 requires clean pushed source and
+a fresh read-only inventory before cycle 1. H5R2 ACCEPTED, P2 PASSED, P3 UNACCEPTED;
+M6/ATX and RO/overlay DEFERRED.

@@ -1,0 +1,13 @@
+{
+  "result": "CONTROLLER_R1_LOCAL_VALIDATION_PASS",
+  "tests_run": 163,
+  "tests_passed": 161,
+  "existing_skips": 2,
+  "privileged_netns_tests_passed": 8,
+  "publication_rehearsal_cases": 13,
+  "publication_bytes_verified_per_archive": 378,
+  "secret_scan": "PASS",
+  "attempt02_archive_sha256": "4fa747be4901cc17d78ace87febc363a0287cfa4493086831a481a682c12cc5b",
+  "attempt02_controller_sha256": "cebd49d48d27836cbf0f6fd8e25b6b4fed48cbdea35b17fd3c51871cb2090cca",
+  "qualification_credit": 0
+}

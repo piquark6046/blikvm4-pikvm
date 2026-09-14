@@ -1,0 +1,10 @@
+{
+  "result": "CONTROLLER_R1_REHEARSAL_INDEPENDENTLY_REPLAYED",
+  "archive_sha256": "ead616c5889edc507b89c4eb42d04918338bdb39c8f9096676a995e5371da5d4",
+  "cases": 13,
+  "publication_bytes_verified": 378,
+  "qualification_credit": 0,
+  "target_contact": false,
+  "browser_launches": 0,
+  "old_bug_reproduced": true
+}
