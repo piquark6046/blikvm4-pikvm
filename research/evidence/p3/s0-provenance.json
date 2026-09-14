@@ -1,0 +1,2552 @@
+{
+  "archives": [
+    {
+      "path": "out/p3-h5r1/functional-001-failed.tar.gz",
+      "sha256": "4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48",
+      "json_members": 113,
+      "observations": 4,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3-h5/h5-failed.tar.gz",
+      "sha256": "304bdf020fdb6df9039fe459c392b6c22e16b9f8a04bd52900974430458bc0da",
+      "json_members": 16,
+      "observations": 0,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3-h3/h3-failed.tar.gz",
+      "sha256": "78cb138eca5698b29286931df1c47c350b3526c13560f35a812babc51ef48752",
+      "json_members": 65,
+      "observations": 2,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3-h2/h2-failed-evidence.tar.gz",
+      "sha256": "1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332",
+      "json_members": 52,
+      "observations": 2,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "json_members": 118,
+      "observations": 40,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3/preparation/preflight-evidence.tar.gz",
+      "sha256": "2aab01a080ab178fad5862c5c8af6a7c5383bd26c71f7ae6b382f3f6447a6f10",
+      "json_members": 9,
+      "observations": 1,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3/preparation/a01-evidence.tar.gz",
+      "sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "json_members": 32,
+      "observations": 7,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "json_members": 43,
+      "observations": 19,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/normal-reboot-evidence.tar.gz",
+      "sha256": "65e68116534a5ba6fe6b3ba4f038c13739f0074bce42d242b9fc86043f93fbfc",
+      "json_members": 5,
+      "observations": 0,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "json_members": 488,
+      "observations": 50,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/shutdown-evidence.tar.gz",
+      "sha256": "19c91ead14c4650a816b358ef31ec09159cdab46d229bea20db4901c9a139bda",
+      "json_members": 3,
+      "observations": 0,
+      "hash_in_checked_in_evidence": false
+    },
+    {
+      "path": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "json_members": 133,
+      "observations": 50,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "json_members": 504,
+      "observations": 50,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "json_members": 500,
+      "observations": 54,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/write-evidence.tar.gz",
+      "sha256": "051d990253e019c63c042e3050fe668d8d0d04cc23085be5a0a0809ee4902a56",
+      "json_members": 6,
+      "observations": 0,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/reinsert-evidence.tar.gz",
+      "sha256": "7e2c758e6eeb428e5916bd73207ea5837fbd4782125889eae9bf2a5fc1c9b755",
+      "json_members": 8,
+      "observations": 0,
+      "hash_in_checked_in_evidence": true
+    },
+    {
+      "path": "out/p2/attempt02-preparation/lan-hdmi-evidence.tar.gz",
+      "sha256": "4abf93c1886ebfeb2663f9776a9dd4aaa7f4e993636f2a698173d665f19252f9",
+      "json_members": 10,
+      "observations": 0,
+      "hash_in_checked_in_evidence": true
+    }
+  ],
+  "rows": [
+    {
+      "archive": "out/p3-h5r1/functional-001-failed.tar.gz",
+      "archive_sha256": "4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48",
+      "archive_member_mtime": 1789355951.9682302,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785250170026004680,
+      "started_monotonic_ns": 65128817432555,
+      "finished_monotonic_ns": 65142177333061,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "controller/functional-001/before/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h5r1/functional-001-failed.tar.gz",
+      "archive_sha256": "4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48",
+      "archive_member_mtime": 1789356037.1482172,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785250255352789054,
+      "started_monotonic_ns": 65214144217471,
+      "finished_monotonic_ns": 65227270824769,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "controller/functional-001/failure-preservation/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h5r1/functional-001-failed.tar.gz",
+      "archive_sha256": "4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48",
+      "archive_member_mtime": 1789355960.7623167,
+      "path": "controller/functional-001/msd/normal-login-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3-h5r1/functional-001-failed.tar.gz",
+      "archive_sha256": "4fac32a311fd4649a1f2ff13003a3afee4be66b3c193b49bfd626e38d4968c48",
+      "archive_member_mtime": 1789355891.2572286,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785250109198910401,
+      "started_monotonic_ns": 65067990337526,
+      "finished_monotonic_ns": 65081410173991,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "controller/target-continuity/before-first-functional/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h3/h3-failed.tar.gz",
+      "archive_sha256": "78cb138eca5698b29286931df1c47c350b3526c13560f35a812babc51ef48752",
+      "archive_member_mtime": 1789298887.267484,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785193105673912678,
+      "started_monotonic_ns": 8064465340553,
+      "finished_monotonic_ns": 8078751357643,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "controller/chromium-preflight-001/before/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h3/h3-failed.tar.gz",
+      "archive_sha256": "78cb138eca5698b29286931df1c47c350b3526c13560f35a812babc51ef48752",
+      "archive_member_mtime": 1789298911.6030471,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785193130571705481,
+      "started_monotonic_ns": 8089363134023,
+      "finished_monotonic_ns": 8103180092238,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "controller/chromium-preflight-001/failure-preservation/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h2/h2-failed-evidence.tar.gz",
+      "archive_sha256": "1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332",
+      "archive_member_mtime": 1789296925.0316331,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785191143553336409,
+      "started_monotonic_ns": 6102344765201,
+      "finished_monotonic_ns": 6116624685582,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "attempt/preflight-001/controller/before/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3-h2/h2-failed-evidence.tar.gz",
+      "archive_sha256": "1bb8f7076d86de563381e2736169698589c03f728f5d09c6fac148943b42b332",
+      "archive_member_mtime": 1789296941.3261964,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785191160680329417,
+      "started_monotonic_ns": 6119471756084,
+      "finished_monotonic_ns": 6132914264340,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "attempt/preflight-001/controller/failure-preservation/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292245.0470228,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785186464878658761,
+      "started_monotonic_ns": 1423670086970,
+      "finished_monotonic_ns": 1436904862143,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "inventory/after/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292146.4394252,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785186366559656339,
+      "started_monotonic_ns": 1325351083506,
+      "finished_monotonic_ns": 1338402459179,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "inventory/before/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292164.7549925,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292182.5166202,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-relogin-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292168.989358,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292183.8506231,
+      "path": "smoke/browser-msd/normal-relogin-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292160.0537724,
+      "path": "smoke/browser-msd/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292165.116174,
+      "path": "smoke/browser-msd/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292181.2581923,
+      "path": "smoke/browser-msd/normal-relogin-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292153.263854,
+      "path": "smoke/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292187.9893117,
+      "path": "smoke/browser-msd/browser-close-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292170.5089445,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-second-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292163.4522524,
+      "path": "smoke/browser-msd/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292157.4219978,
+      "path": "smoke/browser-msd/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292154.5273142,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292172.1231174,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292191.176224,
+      "path": "smoke/browser-msd/browser-reopen-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292186.571955,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/browser-close-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292162.8901865,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292173.476991,
+      "path": "smoke/browser-msd/ui-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292169.2413568,
+      "path": "smoke/browser-msd/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292167.734971,
+      "path": "smoke/browser-msd/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292157.1224265,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292178.8219805,
+      "path": "smoke/browser-msd/logout-stale-websocket-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292185.3449616,
+      "path": "smoke/browser-msd/browser-close-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292185.1414077,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-relogin-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292158.7184126,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292155.8660893,
+      "path": "smoke/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292174.7587183,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292166.377307,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292192.4627228,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/browser-reopen-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292176.18922,
+      "path": "smoke/browser-msd/logout-stale-websocket-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292177.4105997,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/logout-stale-websocket-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292161.3546839,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292195.1158628,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/browser-reopen-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292170.8747766,
+      "path": "smoke/browser-msd/ui-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292189.246225,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/browser-close-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292161.6049385,
+      "path": "smoke/browser-msd/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292193.830059,
+      "path": "smoke/browser-msd/browser-reopen-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight01-evidence.tar.gz",
+      "archive_sha256": "c528cd34d02e0a939edd4bbb7dfec7be6e7ff5dc83854472604154e4bfea0f6f",
+      "archive_member_mtime": 1789292180.09442,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/logout-stale-websocket-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/preflight-evidence.tar.gz",
+      "archive_sha256": "2aab01a080ab178fad5862c5c8af6a7c5383bd26c71f7ae6b382f3f6447a6f10",
+      "archive_member_mtime": 1789290455.5932448,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "started_wall_ns": 1785195738864922683,
+      "started_monotonic_ns": 10697669149434,
+      "finished_monotonic_ns": 10711675865274,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=7ee54837da254833843bf84726947488",
+        "ExecMainStartTimestampMonotonic=1010807016",
+        "Id=nginx.service",
+        "InvocationID=a7ae67286ff04d849605d3eab218277e",
+        "ExecMainStartTimestampMonotonic=1019571855",
+        "Id=blikvm-gadget.service",
+        "InvocationID=72a6206a6a4c4327a26b2f6dfd8cdc0a",
+        "ExecMainStartTimestampMonotonic=5647985",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=9667e637fffd4642af33326ae5cb677b",
+        "ExecMainStartTimestampMonotonic=6657469",
+        "Id=ssh.service",
+        "InvocationID=87353ce5e9114eefaa16b37f5ad4269a",
+        "ExecMainStartTimestampMonotonic=125786245"
+      ],
+      "path": "preflight02/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290880.7759235,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785185100739213819,
+      "started_monotonic_ns": 59530643194,
+      "finished_monotonic_ns": 72773869034,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "cycle/failure-preservation/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290854.7670257,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785185056068867590,
+      "started_monotonic_ns": 14860295256,
+      "finished_monotonic_ns": 46765259396,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "cycle/startup/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290800.2892592,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "started_wall_ns": 1785196083583303640,
+      "started_monotonic_ns": 11042387532307,
+      "finished_monotonic_ns": 11056220916646,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=7ee54837da254833843bf84726947488",
+        "ExecMainStartTimestampMonotonic=1010807016",
+        "Id=nginx.service",
+        "InvocationID=a7ae67286ff04d849605d3eab218277e",
+        "ExecMainStartTimestampMonotonic=1019571855",
+        "Id=blikvm-gadget.service",
+        "InvocationID=72a6206a6a4c4327a26b2f6dfd8cdc0a",
+        "ExecMainStartTimestampMonotonic=5647985",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=9667e637fffd4642af33326ae5cb677b",
+        "ExecMainStartTimestampMonotonic=6657469",
+        "Id=ssh.service",
+        "InvocationID=87353ce5e9114eefaa16b37f5ad4269a",
+        "ExecMainStartTimestampMonotonic=125786245"
+      ],
+      "path": "cycle/before/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290861.282954,
+      "path": "smoke/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290862.547423,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290865.1451182,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "archive_member_mtime": 1789290863.8808622,
+      "path": "smoke/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292645.4308453,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785186865026598994,
+      "started_monotonic_ns": 1823818026202,
+      "finished_monotonic_ns": 1837203813000,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "inventory/boundary-preservation/target.json",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292496.6167078,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "started_wall_ns": 1785186716399288173,
+      "started_monotonic_ns": 1675190715256,
+      "finished_monotonic_ns": 1688437877388,
+      "generations": [
+        "Id=kvmd.service",
+        "InvocationID=9854f464dd6a4baba87076595a590d5e",
+        "ExecMainStartTimestampMonotonic=6947098",
+        "Id=nginx.service",
+        "InvocationID=7964a1418a1044b2add488ac9a13f8e9",
+        "ExecMainStartTimestampMonotonic=8289589",
+        "Id=blikvm-gadget.service",
+        "InvocationID=edc4478849754a6e88b166213c0eaa72",
+        "ExecMainStartTimestampMonotonic=5651931",
+        "Id=blikvm-msd-helper.service",
+        "InvocationID=b4fcb0f7b6e54d3082e5fa745d42f1f9",
+        "ExecMainStartTimestampMonotonic=6637644",
+        "Id=ssh.service",
+        "InvocationID=030a3b472aeb447a893dbb101ef8a9cc",
+        "ExecMainStartTimestampMonotonic=7934943"
+      ],
+      "path": "inventory/before/target.json",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292514.9957588,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292519.232861,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292510.2307467,
+      "path": "smoke/browser-msd/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292515.3638077,
+      "path": "smoke/browser-msd/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292503.4632022,
+      "path": "smoke/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292513.682722,
+      "path": "smoke/browser-msd/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292507.606753,
+      "path": "smoke/browser-msd/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292504.7228715,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292513.0702758,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292519.483329,
+      "path": "smoke/browser-msd/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292517.9598732,
+      "path": "smoke/browser-msd/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292507.3025587,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292508.8858576,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292506.0599308,
+      "path": "smoke/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292516.6089478,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292511.4652703,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "path": "smoke/browser-msd/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+      "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+      "archive_member_mtime": 1789292511.7672307,
+      "path": "smoke/browser-msd/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279088.028307,
+      "path": "postreboot-core/browser-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279260.7568817,
+      "path": "postreboot-core/browser-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279089.3063865,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279257.890137,
+      "path": "postreboot-core/browser-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279259.150306,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279262.0177498,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278902.516841,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278920.383944,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/normal-relogin-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278906.860253,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278921.7332027,
+      "path": "postreboot-core/browser-msd/normal-relogin-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278897.8287446,
+      "path": "postreboot-core/browser-msd/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278902.9283543,
+      "path": "postreboot-core/browser-msd/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278919.127797,
+      "path": "postreboot-core/browser-msd/normal-relogin-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278890.937193,
+      "path": "postreboot-core/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278925.92638,
+      "path": "postreboot-core/browser-msd/browser-close-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278908.3653364,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-second-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278901.2238982,
+      "path": "postreboot-core/browser-msd/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278895.182891,
+      "path": "postreboot-core/browser-msd/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278892.2228749,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278909.9981635,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278929.2118313,
+      "path": "postreboot-core/browser-msd/browser-reopen-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278924.5280461,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/browser-close-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278900.607961,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278911.3547285,
+      "path": "postreboot-core/browser-msd/ui-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278907.1110845,
+      "path": "postreboot-core/browser-msd/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278905.5563657,
+      "path": "postreboot-core/browser-msd/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278894.8246412,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278916.6476948,
+      "path": "postreboot-core/browser-msd/logout-stale-websocket-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278923.2832346,
+      "path": "postreboot-core/browser-msd/browser-close-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278923.0238721,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/normal-relogin-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278896.4619753,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278893.5724523,
+      "path": "postreboot-core/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278912.6440973,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278904.1965933,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278930.4789126,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/browser-reopen-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278914.0193233,
+      "path": "postreboot-core/browser-msd/logout-stale-websocket-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278915.2340882,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/logout-stale-websocket-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278899.0964704,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278933.1801243,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/browser-reopen-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278908.7356472,
+      "path": "postreboot-core/browser-msd/ui-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278927.178699,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/browser-close-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278899.352642,
+      "path": "postreboot-core/browser-msd/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278931.8472383,
+      "path": "postreboot-core/browser-msd/browser-reopen-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278917.9106843,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/browser-msd/logout-stale-websocket-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278933.8140192,
+      "path": "postreboot-core/two-client-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279086.4281917,
+      "path": "postreboot-core/two-client-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789278935.071023,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/two-client-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279083.5232742,
+      "path": "postreboot-core/two-client-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279084.790185,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/two-client-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/postreboot-evidence.tar.gz",
+      "archive_sha256": "a8a2e3bc25b046d507ef043909c937ab37c6f99ef450ec3c8e3812bad90bb326",
+      "archive_member_mtime": 1789279087.6817124,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "path": "postreboot-core/two-client-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278603.2008324,
+      "path": "after-all-reconnect-checks-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278487.6766653,
+      "path": "physical-return-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278329.0472388,
+      "path": "before-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278490.6157296,
+      "path": "physical-return-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278331.9761887,
+      "path": "before-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278488.9378512,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "physical-return-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278333.2612963,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "before-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278330.30628,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "before-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278600.279504,
+      "path": "after-all-reconnect-checks-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278601.5335472,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "after-all-reconnect-checks-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278604.4740982,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "after-all-reconnect-checks-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278491.8674095,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "physical-return-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278521.3350406,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278539.1039574,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/normal-relogin-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278525.664286,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278540.456632,
+      "path": "msd-browser/normal-relogin-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278516.580172,
+      "path": "msd-browser/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278521.7458138,
+      "path": "msd-browser/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278537.8468907,
+      "path": "msd-browser/normal-relogin-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278509.8036456,
+      "path": "msd-browser/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278544.5769587,
+      "path": "msd-browser/browser-close-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278527.169217,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-second-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278520.0323915,
+      "path": "msd-browser/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278513.9461908,
+      "path": "msd-browser/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278511.0567358,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278528.7991269,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278547.770965,
+      "path": "msd-browser/browser-reopen-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278543.1673434,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/browser-close-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278519.4599786,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278530.1382997,
+      "path": "msd-browser/ui-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278525.9143624,
+      "path": "msd-browser/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278524.3866074,
+      "path": "msd-browser/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278513.6458256,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278535.4363213,
+      "path": "msd-browser/logout-stale-websocket-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278541.9459856,
+      "path": "msd-browser/browser-close-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278541.7464895,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/normal-relogin-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278515.2278185,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278512.3948307,
+      "path": "msd-browser/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278531.4370522,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278523.015704,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278549.0434222,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/browser-reopen-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278532.8057263,
+      "path": "msd-browser/logout-stale-websocket-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278534.043134,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/logout-stale-websocket-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278517.8739142,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278551.6768918,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/browser-reopen-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278527.533424,
+      "path": "msd-browser/ui-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278545.8457184,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/browser-close-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278518.1738398,
+      "path": "msd-browser/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278550.3944812,
+      "path": "msd-browser/browser-reopen-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/reconnect-evidence.tar.gz",
+      "archive_sha256": "cff3503218d483f94eb201112895aab2dc38d60d33eecb6add0907b824ce712e",
+      "archive_member_mtime": 1789278536.675152,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "msd-browser/logout-stale-websocket-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280773.806344,
+      "path": "second-cold-core/browser-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280775.0723877,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280770.9392138,
+      "path": "second-cold-core/browser-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280772.2052858,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280600.2643595,
+      "path": "second-cold-core/browser-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280601.6344063,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280438.1977487,
+      "path": "second-cold-core/browser-msd/browser-close-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280439.444813,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/browser-close-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280435.5612862,
+      "path": "second-cold-core/browser-msd/browser-close-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280436.7828937,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/browser-close-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280444.0449765,
+      "path": "second-cold-core/browser-msd/browser-reopen-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280445.3690174,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/browser-reopen-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280441.426797,
+      "path": "second-cold-core/browser-msd/browser-reopen-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280442.6926322,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/browser-reopen-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280409.9539168,
+      "path": "second-cold-core/browser-msd/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280411.2516785,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280407.342181,
+      "path": "second-cold-core/browser-msd/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280408.6032557,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280428.975468,
+      "path": "second-cold-core/browser-msd/logout-stale-websocket-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280430.2262788,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/logout-stale-websocket-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280426.3332148,
+      "path": "second-cold-core/browser-msd/logout-stale-websocket-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280427.5623178,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/logout-stale-websocket-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280405.780689,
+      "path": "second-cold-core/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280407.040089,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280403.1332183,
+      "path": "second-cold-core/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280404.4417987,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280434.0189052,
+      "path": "second-cold-core/browser-msd/normal-relogin-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280435.3091743,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/normal-relogin-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280431.39215,
+      "path": "second-cold-core/browser-msd/normal-relogin-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280432.6822393,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/normal-relogin-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280417.7079084,
+      "path": "second-cold-core/browser-msd/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280418.9791486,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280415.0812366,
+      "path": "second-cold-core/browser-msd/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280416.3430161,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280411.5541475,
+      "path": "second-cold-core/browser-msd/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280412.8216448,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280423.6110117,
+      "path": "second-cold-core/browser-msd/ui-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280424.910687,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280420.9347217,
+      "path": "second-cold-core/browser-msd/ui-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280422.220371,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280419.2299747,
+      "path": "second-cold-core/browser-msd/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280420.5179,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-second-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280413.4393244,
+      "path": "second-cold-core/browser-msd/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280414.7184527,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/browser-msd/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280598.6212897,
+      "path": "second-cold-core/two-client-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280599.883346,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/two-client-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280595.7531235,
+      "path": "second-cold-core/two-client-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280597.0092237,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/two-client-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280445.967102,
+      "path": "second-cold-core/two-client-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "archive_member_mtime": 1789280447.218757,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "path": "second-cold-core/two-client-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277551.9510987,
+      "path": "mapped-harness-access-failure/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277553.1858735,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "mapped-harness-access-failure/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277555.8206944,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "mapped-harness-access-failure/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277554.5657735,
+      "path": "mapped-harness-access-failure/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277830.3250701,
+      "path": "core-qualified/browser-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789278003.2822402,
+      "path": "core-qualified/browser-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277831.600199,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789278000.3970747,
+      "path": "core-qualified/browser-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789278001.6434822,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789278004.53,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277644.3145657,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-select-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277662.2699196,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/normal-relogin-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277648.6237082,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-connect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277663.6203678,
+      "path": "core-qualified/browser-msd/normal-relogin-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277639.510258,
+      "path": "core-qualified/browser-msd/excluded-controls-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277644.6784391,
+      "path": "core-qualified/browser-msd/ui-connect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277661.024953,
+      "path": "core-qualified/browser-msd/normal-relogin-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277632.6297297,
+      "path": "core-qualified/browser-msd/normal-login-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277667.7578537,
+      "path": "core-qualified/browser-msd/browser-close-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277650.153767,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-second-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277642.98013,
+      "path": "core-qualified/browser-msd/ui-select-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277636.8258104,
+      "path": "core-qualified/browser-msd/excluded-controls-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277633.911896,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/normal-login-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277651.812341,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-reconnect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277670.9730864,
+      "path": "core-qualified/browser-msd/browser-reopen-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277666.3343604,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/browser-close-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277642.3574533,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-eject-target.stdout",
+      "lun_file": ""
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277653.1750848,
+      "path": "core-qualified/browser-msd/ui-reconnect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277648.8737593,
+      "path": "core-qualified/browser-msd/ui-second-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277647.311952,
+      "path": "core-qualified/browser-msd/ui-connect-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277636.524279,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/normal-login-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277658.5603466,
+      "path": "core-qualified/browser-msd/logout-stale-websocket-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277665.102915,
+      "path": "core-qualified/browser-msd/browser-close-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277664.9033473,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/normal-relogin-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277638.1343896,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/excluded-controls-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277635.259107,
+      "path": "core-qualified/browser-msd/normal-login-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277654.4541967,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-reconnect-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277645.9527194,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/ui-connect-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277672.228563,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/browser-reopen-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277655.9304466,
+      "path": "core-qualified/browser-msd/logout-stale-websocket-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277657.1527736,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/logout-stale-websocket-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277640.7838702,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/excluded-controls-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277674.8680248,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/browser-reopen-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277650.5119512,
+      "path": "core-qualified/browser-msd/ui-reconnect-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277668.9942946,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/browser-close-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277641.084447,
+      "path": "core-qualified/browser-msd/ui-eject-api.json",
+      "api_connected": false
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277673.6057582,
+      "path": "core-qualified/browser-msd/browser-reopen-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277659.800949,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/browser-msd/logout-stale-websocket-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277675.498762,
+      "path": "core-qualified/two-client-hid-msd/workload-before-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277828.6801693,
+      "path": "core-qualified/two-client-hid-msd/workload-after-after-writes-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277676.7588751,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/two-client-hid-msd/workload-before-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277825.7728477,
+      "path": "core-qualified/two-client-hid-msd/workload-after-api.json",
+      "api_connected": true
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277827.0268729,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/two-client-hid-msd/workload-after-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    },
+    {
+      "archive": "out/p2/attempt02-preparation/core-evidence.tar.gz",
+      "archive_sha256": "db34f549ea7e85b964efec85566a08aa8ddf5faa07ed7ab0320aa48da25c27ca",
+      "archive_member_mtime": 1789277829.929342,
+      "boot_id": "09fba8ce-bfac-4c3d-afec-5418056ab62f",
+      "path": "core-qualified/two-client-hid-msd/workload-after-after-writes-target.stdout",
+      "lun_file": "/usr/share/kvmd-msd/images/g4-storage.img"
+    }
+  ],
+  "historical_cause_of_current_empty_lun": "UNASSIGNED",
+  "observed_prior_eject": {
+    "archive_sha256": "be15a52352e74b222e219a0ead96f10aa523eefc26d4f4bbe266afa4fad0d644",
+    "stage": "ui-second-eject",
+    "target_monotonic_us": 1711896740,
+    "target_wall_us": 1785186753105334,
+    "operation": "POST /msd/set_connected?connected=false",
+    "http_status": 200,
+    "api_after_connected": false,
+    "first_later_explicit_empty_inventory": "inventory/boundary-preservation/target.json",
+    "continuity_limit": "Snapshots do not exclude unrecorded intervening transitions."
+  },
+  "last_proven_attached": {
+    "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+    "member": "smoke/browser-msd/ui-connect-after-writes-target.stdout",
+    "member_bridge_wall_seconds": 1789292519.232861,
+    "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+    "file": "/usr/share/kvmd-msd/images/g4-storage.img",
+    "target_timestamp": "not serialized in this member"
+  },
+  "first_proven_empty_after_last_attached": {
+    "archive": "out/p3/preparation/a02-preflight02-evidence.tar.gz",
+    "member": "inventory/boundary-preservation/target.json",
+    "started_monotonic_ns": 1823818026202,
+    "finished_monotonic_ns": 1837203813000,
+    "file": ""
+  },
+  "timestamp_note": "Target wall clock differs from bridge wall clock; order within a boot uses target monotonic time. Archive member mtime is bridge evidence-file time, not an exact target measurement timestamp. Earlier successful browser protocols include temporary ejections followed by attachments."
+}

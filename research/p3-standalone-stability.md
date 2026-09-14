@@ -873,3 +873,10 @@ Functional-002/003, H5R1 acceptance and P3-A attempt 02 remain NOT STARTED.
 No BRIDGE-HARNESS acceptance or product/baseline tag is created. This is a
 failure checkpoint only. P2 remains PASSED; P3 remains UNACCEPTED;
 accepted_cycles=0. P3-B/C remain blocked, M6/ATX and RO/overlay DEFERRED.
+
+## P3-S0 — MSD runtime-state provenance and clean-boot invariant
+
+[Preservation and independent replay passed](p3-s0-msd-provenance.md).
+The empty LUN predates H5R1; the exact production image is attached automatically
+on the single zero-credit preparation reboot. H5R1 remains permanently FAILED.
+H5R2 and P3-A attempt 02 have not yet qualified; P3 remains UNACCEPTED.

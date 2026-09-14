@@ -1,0 +1,14 @@
+{
+  "result": "S0_CURRENT_EMPTY_VERIFIED",
+  "archive_sha256": "ce7cf638b5ad02e12de879c145f0a477598d17b4495c5aa5aa9a54fdbb345362",
+  "members": 39,
+  "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+  "hashes_matched": 10690,
+  "service_generations_unchanged": true,
+  "api_connected": false,
+  "host_objects_present": true,
+  "host_media_readable": false,
+  "journal_records": 1606,
+  "journal_first_monotonic_us": 3225322,
+  "qualification_credit": 0
+}

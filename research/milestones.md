@@ -337,3 +337,10 @@ hashes, boot/service identities and gadget state. No retry, repair or reboot;
 H5R1 is latched FAILED, H5 permanently FAILED, H3 root cause UNASSIGNED.
 P2 PASSED; P3 UNACCEPTED; zero cycles; later preflights and P3-A unstarted.
 No acceptance tag. M6/ATX and RO/overlay remain DEFERRED.
+
+P3-S0 (2026-09-14): [current empty-LUN preservation, provenance and one clean
+preparation reboot passed](p3-s0-msd-provenance.md). Fresh production boot
+restores the exact attached RO G4 invariant automatically. Zero P3-A credit;
+H5/H5R1 remain FAILED and H3 root cause UNASSIGNED. H5R2 preparation is unlocked;
+P3-A attempt 02 remains unstarted. P2 PASSED, P3 UNACCEPTED; P3-B/C blocked,
+M6/ATX and RO/overlay DEFERRED. No product tag.

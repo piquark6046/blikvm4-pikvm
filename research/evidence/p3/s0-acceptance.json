@@ -1,0 +1,20 @@
+{
+  "result": "P3_S0_CLEAN_BOOT_INVARIANT_PASS",
+  "finding": "fresh production boot restores attached RO MSD invariant",
+  "archive_sha256": "0032c9ad2c35269e6fdadf0ca158d5167d007866318bffc2c6aa493047cf59fa",
+  "members": 100,
+  "boot_id": "1c8365c7-90bf-46fb-8db4-5ec06a745a6a",
+  "hashes_matched": 10690,
+  "scsi_write_rejected": true,
+  "journal_records_reviewed": 935,
+  "host_boot_journal_records": 28,
+  "preparation_reboots": 1,
+  "qualification_credit": 0,
+  "accepted_cycles": 0,
+  "historical_empty_lun_cause": "UNASSIGNED",
+  "h3_root_cause": "UNASSIGNED",
+  "h5": "FAILED",
+  "h5r1": "FAILED",
+  "p2": "PASSED",
+  "p3": "UNACCEPTED"
+}
