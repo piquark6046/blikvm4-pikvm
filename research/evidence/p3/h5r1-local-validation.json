@@ -1,0 +1,32 @@
+{
+  "result": "LOCAL_VALIDATION_PASSED",
+  "complete_suite": {
+    "tests": 151,
+    "skipped": 2,
+    "log_sha256": "f77db6269a53765f974c2833df7767922e015af696dac40a4e6868f04e74e8f3"
+  },
+  "privileged_netns_suite": {
+    "tests": 7,
+    "skipped": 0,
+    "log_sha256": "57b30583bc0ab50ba0e381bd5333640bd99bc743b6c94721cc847b0a62167f52"
+  },
+  "observed_vm_sysfs": [
+    "docker0",
+    "enp1s0",
+    "lo",
+    "proton"
+  ],
+  "authoritative_interfaces": [
+    "lo"
+  ],
+  "namespace_id_preserved_across_uid_drop": true,
+  "inherited_sockets": 0,
+  "chromium_launched": false,
+  "target_contacted": false,
+  "qualification_credit": 0,
+  "public_source_scan": {
+    "result": "PASS",
+    "known_private_values_checked": 6,
+    "findings": []
+  }
+}

@@ -13,7 +13,8 @@ Frozen public image: `1db928494867222308a37507cc37f82f81892849900154275840ac14b2
 Frozen private enrolled image: `c261a2328594bca90f6a47bc566429a5684c0bf573de0d4089f2843f114eae24`.
 No image regeneration or production-file modification is authorized by this plan.
 
-Current methodology is the [prospective H5 plan](evidence/p3/h5-plan.md).
+Current methodology is the [prospective H5R1 plan](evidence/p3/h5r1-plan.md).
+The [H5 plan](evidence/p3/h5-plan.md) remains frozen historical evidence.
 Historical H4/H4b control prerequisites below describe those checkpoints only;
 they are no longer gates. The earlier successful attempt-02 browser preflight
 is a **HISTORICAL FUNCTIONAL REFERENCE**, never an exact control. No further
@@ -763,3 +764,25 @@ blocked, M6/ATX and RO/overlay DEFERRED. No acceptance checkpoint, product tag,
 reboot, reflash, or target repair was performed. Local validation: 144 tests,
 143 passed with one preexisting skip; Python/Node syntax checks passed. Those
 tests did not cover the live network-namespace/sysfs distinction.
+
+
+## P3-H5R1 — corrected prospective namespace observation (2026-09-14)
+
+H5 remains permanently FAILED at aebd3c7 with zero P3 credit. H3 root cause
+remains UNASSIGNED. H5R1 is a separate prospective harness qualification; its
+[plan](evidence/p3/h5r1-plan.md) preserves all historical failed namespaces.
+
+The new Python/Node gates observe the current network namespace through
+netlink and Node os.networkInterfaces(), record namespace identities before
+and after privilege drop, and reject external interfaces/addresses/routes
+and inherited socket descriptors. Sysfs is informational only. A separate
+netns-only self-test must pass before the first minimal launch. Subsequent
+minimal runs require a VM replay acknowledgment tied to the prior archive.
+
+[Local validation](evidence/p3/h5r1-local-validation.json): complete suite
+151 tests (two privileged tests skipped in that unprivileged invocation);
+the separate privileged H5R1 suite passes all seven tests. The real VM test
+observed only lo through netlink/Node while inherited sysfs exposed
+docker0/enp1s0/lo/proton. No browser or target contact in VM validation.
+Source must be committed, pushed and clean before any bridge deployment.
+Live H5R1 qualification has not yet started at this source checkpoint.
