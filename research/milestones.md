@@ -374,3 +374,10 @@ replayer's strict startup classification window. The failure latch, original
 provisional records and both archives are preserved. No threshold change, retry
 or later cycle. Attempt 02 remains permanently FAILED, H5R2 ACCEPTED, P2 PASSED,
 P3 UNACCEPTED; P3-B/C BLOCKED, M6/ATX and RO/overlay DEFERRED.
+
+## P3-J1 — offline causal journal classifier
+
+[P3-J1](p3-j1-causal-journal.md) passed historical and independent fixture replay.
+Attempt 03 remains permanently FAILED, 0/12; P3 remains UNACCEPTED.
+No target contact or production changes. Attempt 04 remains unstarted pending
+a complete, reviewed and pushed controller freeze for the original matrix.

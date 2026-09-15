@@ -1,0 +1,2808 @@
+[
+  {
+    "name": "positive-h5r2-boot-and-logout",
+    "expected_eligible": true,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7007586"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7862562"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13322594"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1047729547"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1054546825"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134354631"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473741682576, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134357203"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *172 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134364285"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *178 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws?stream=false HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws?stream=false\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134374784"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134991670"
+      }
+    ]
+  },
+  {
+    "name": "positive-a03-observed-startup-and-logout",
+    "expected_eligible": true,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "A-socket-after-ready",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "B-auth502-after-ready",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "C-wrong-unit",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "D-arbitrary-502",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "nginx ERROR arbitrary upstream 502",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "E-no-logout",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "F-no-reauth",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      }
+    ]
+  },
+  {
+    "name": "G-no-removed-socket",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "H-unknown-startup-error",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "unknown.component ERROR unexpected startup fault",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "I-repeated-after-readiness",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102602"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102603"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102604"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "J-reordered-causal-sequence",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "missing-readiness",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "wrong-upstream",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/other.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/other.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "wrong-reset-path",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /other/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "mixed-boot",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "unknown-high-priority",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "unexplained low-case failure",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "duplicate-readiness",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "positive-time-translation",
+    "expected_eligible": true,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "907130402"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "908559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "909190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "909190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "910654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "910656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "912075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "912075869"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "913102601"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "971108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "977986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1057495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1057498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1057503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1058100333"
+      }
+    ]
+  },
+  {
+    "name": "J-sorted-but-invalid-readiness-sequence",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130402"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7130403"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "8559808"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [crit] 231#231: *1 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:10 [error] 231#231: *1 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "9190562"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [crit] 231#231: *3 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10654282"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:11 [error] 231#231: *3 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "10656283"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [crit] 231#231: *5 connect() to unix:/run/kvmd/api/kvmd.sock failed (2: No such file or directory) while connecting to upstream, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", subrequest: \"/auth_check\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/auth/check\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:44:13 [error] 231#231: *5 auth request unexpected status: 502 while sending to client, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET / HTTP/1.1\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12075869"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "71108086"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "77986734"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157495388"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473356813984, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157498295"
+      },
+      {
+        "MESSAGE": "2026/07/27 20:46:38 [error] 231#231: *180 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "157503968"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "158100333"
+      }
+    ]
+  },
+  {
+    "name": "J-kvmd-start-after-readiness",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7862562"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13322594"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13322595"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1047729547"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1054546825"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134354631"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473741682576, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134357203"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *172 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134364285"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *178 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws?stream=false HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws?stream=false\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134374784"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134991670"
+      }
+    ]
+  },
+  {
+    "name": "J-nginx-start-after-reset",
+    "expected_eligible": false,
+    "journal": [
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7007586"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "13322594"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1047729547"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1054546825"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged out user 'fixture-user'; sessions_closed=5",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134354631"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.server             INFO --- Removed client socket: WsSession(id=281473741682576, {'stream': True}); clients now: 1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134357203"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *172 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134364285"
+      },
+      {
+        "MESSAGE": "2026/07/27 21:02:55 [error] 227#227: *178 recv() failed (104: Connection reset by peer) while proxying upgraded connection, client: 192.168.88.1, server: blikvm-v4.lab, request: \"GET /api/ws?stream=false HTTP/1.1\", upstream: \"http://unix:/run/kvmd/api/kvmd.sock:/ws?stream=false\", host: \"blikvm-v4.lab\"",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134374784"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134991670"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "1134991671"
+      }
+    ]
+  },
+  {
+    "name": "positive-inherited-offline-startup",
+    "expected_eligible": true,
+    "offline": true,
+    "journal": [
+      {
+        "MESSAGE": "Starting systemd-networkd-wait-online.service - Wait for Network to be Online...",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "5518141"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7098647"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12709820"
+      },
+      {
+        "MESSAGE": "Timeout occurred while waiting for network connectivity.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "systemd-networkd-wait-online.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125620238"
+      },
+      {
+        "MESSAGE": "Failed to start systemd-networkd-wait-online.service - Wait for Network to be Online.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125642932"
+      },
+      {
+        "MESSAGE": "Server listening on 192.168.88.2 port 22.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "ssh.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125880364"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "126135310"
+      },
+      {
+        "MESSAGE": "eth0: Gained carrier",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "systemd-networkd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "566897817"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "654084955"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "659293201"
+      }
+    ]
+  },
+  {
+    "name": "offline-missing-carrier",
+    "expected_eligible": false,
+    "offline": true,
+    "journal": [
+      {
+        "MESSAGE": "Starting systemd-networkd-wait-online.service - Wait for Network to be Online...",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "5518141"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7098647"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12709820"
+      },
+      {
+        "MESSAGE": "Timeout occurred while waiting for network connectivity.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "systemd-networkd-wait-online.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125620238"
+      },
+      {
+        "MESSAGE": "Failed to start systemd-networkd-wait-online.service - Wait for Network to be Online.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125642932"
+      },
+      {
+        "MESSAGE": "Server listening on 192.168.88.2 port 22.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "ssh.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125880364"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "126135310"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "654084955"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "659293201"
+      }
+    ]
+  },
+  {
+    "name": "offline-missing-ssh",
+    "expected_eligible": false,
+    "offline": true,
+    "journal": [
+      {
+        "MESSAGE": "Starting systemd-networkd-wait-online.service - Wait for Network to be Online...",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "5518141"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7098647"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12709820"
+      },
+      {
+        "MESSAGE": "Timeout occurred while waiting for network connectivity.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "systemd-networkd-wait-online.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125620238"
+      },
+      {
+        "MESSAGE": "Failed to start systemd-networkd-wait-online.service - Wait for Network to be Online.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125642932"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "126135310"
+      },
+      {
+        "MESSAGE": "eth0: Gained carrier",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "systemd-networkd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "566897817"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "654084955"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "659293201"
+      }
+    ]
+  },
+  {
+    "name": "offline-wrong-unit",
+    "expected_eligible": false,
+    "offline": true,
+    "journal": [
+      {
+        "MESSAGE": "Starting systemd-networkd-wait-online.service - Wait for Network to be Online...",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "5518141"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7098647"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12709820"
+      },
+      {
+        "MESSAGE": "Timeout occurred while waiting for network connectivity.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "nginx.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125620238"
+      },
+      {
+        "MESSAGE": "Failed to start systemd-networkd-wait-online.service - Wait for Network to be Online.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125642932"
+      },
+      {
+        "MESSAGE": "Server listening on 192.168.88.2 port 22.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "ssh.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125880364"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "126135310"
+      },
+      {
+        "MESSAGE": "eth0: Gained carrier",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "systemd-networkd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "566897817"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "654084955"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "659293201"
+      }
+    ]
+  },
+  {
+    "name": "offline-not-authorized-connected-mode",
+    "expected_eligible": false,
+    "offline": false,
+    "journal": [
+      {
+        "MESSAGE": "Starting systemd-networkd-wait-online.service - Wait for Network to be Online...",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "5518141"
+      },
+      {
+        "MESSAGE": "Started kvmd.service - BliKVM video-only kvmd.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "7098647"
+      },
+      {
+        "MESSAGE": "kvmd.htserver                     INFO --- ======== Running on http://unix:/run/kvmd/api/kvmd.sock: ========",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "12709820"
+      },
+      {
+        "MESSAGE": "Timeout occurred while waiting for network connectivity.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "systemd-networkd-wait-online.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125620238"
+      },
+      {
+        "MESSAGE": "Failed to start systemd-networkd-wait-online.service - Wait for Network to be Online.",
+        "PRIORITY": "3",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125642932"
+      },
+      {
+        "MESSAGE": "Server listening on 192.168.88.2 port 22.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "ssh.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "125880364"
+      },
+      {
+        "MESSAGE": "Started nginx.service - BliKVM loopback HTTPS Web UI.",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "init.scope",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "126135310"
+      },
+      {
+        "MESSAGE": "eth0: Gained carrier",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "systemd-networkd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "566897817"
+      },
+      {
+        "MESSAGE": "kvmd.apps.kvmd.auth               INFO --- Logged in user 'fixture-user'; expire=INF, sessions_now=1",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "654084955"
+      },
+      {
+        "MESSAGE": "aiohttp.access                    INFO --- [fixture-user (token) / -] 'GET /auth/check HTTP/1.1' => 200; size=214 --- referer='https://blikvm-v4.lab/login/'; user_agent='fixture-agent'",
+        "PRIORITY": "6",
+        "_SYSTEMD_UNIT": "kvmd.service",
+        "_BOOT_ID": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "__MONOTONIC_TIMESTAMP": "659293201"
+      }
+    ]
+  }
+]

@@ -1,0 +1,330 @@
+{
+  "result": "P3_J1_CLASSIFIER_REPLAY_PASS",
+  "corpus": [
+    {
+      "name": "h5r2-functional-001",
+      "archive": "out/p3-h5r2/functional-001.tar.gz",
+      "archive_sha256": "4cf2e4f9b890639d2f832b3dc917b4f52ab6d67c28c6a37e6a6755d4fa7fe627",
+      "member": "controller/functional-001/after/target.json",
+      "member_sha256": "65ec45bec1f20eb54f0ea7b35001dc3b3636cf9671edd9409667d3a6a2e67b97",
+      "journal_sha256": "265eeb1900b0fa403c6c3e514d4f28ebe026a8bf85047dc7427976c78cc81c53",
+      "format": "journal_json",
+      "records": 1148,
+      "boot_id": "1c8365c7-90bf-46fb-8db4-5ec06a745a6a",
+      "classifier_result": "JOURNAL_ELIGIBLE",
+      "startup_reset_counts": [
+        0,
+        2
+      ],
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "h5r2-functional-002",
+      "archive": "out/p3-h5r2/functional-002.tar.gz",
+      "archive_sha256": "6073424557af5d67d813da1fddc1aa968fd31907e4d68daba999af3d430de707",
+      "member": "controller/functional-002/after/target.json",
+      "member_sha256": "8c11031e873be828399f360ab5ddd7667b7cda9d348183d44c000c626be2845f",
+      "journal_sha256": "7c9ec5497ab38ba0386a08d4e89f042289a019e108be9261cc739cccec227eda",
+      "format": "journal_json",
+      "records": 1804,
+      "boot_id": "1c8365c7-90bf-46fb-8db4-5ec06a745a6a",
+      "classifier_result": "JOURNAL_ELIGIBLE",
+      "startup_reset_counts": [
+        0,
+        3
+      ],
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "h5r2-functional-003",
+      "archive": "out/p3-h5r2/functional-003.tar.gz",
+      "archive_sha256": "830608ff1f8f5b398b88f1c64cdbb320f38961ee602f3caf2f8108982314c1e6",
+      "member": "controller/functional-003/after/target.json",
+      "member_sha256": "cdfdd59c9791c676931e4c58d36836e11ec9cee2ddb669e7c1418a2c50b64291",
+      "journal_sha256": "3763271c91cb738592bb9918b95f52939fa693971d2da38e484af575b79763ff",
+      "format": "journal_json",
+      "records": 2462,
+      "boot_id": "1c8365c7-90bf-46fb-8db4-5ec06a745a6a",
+      "classifier_result": "JOURNAL_ELIGIBLE",
+      "startup_reset_counts": [
+        0,
+        6
+      ],
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "a01-cycle-001",
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "member": "cycle/failure-preservation/target.json",
+      "member_sha256": "4b4b381d7d948cd61d683b3cfcf9125bd8b97c29a151325baec511aadbabde08",
+      "journal_sha256": "ac34e56f15d6017597b893c82de9e9f4fc8725a812fc6004768039feb004a97f",
+      "format": "journal_json",
+      "records": 552,
+      "boot_id": "eecefe38-98a3-406c-9260-3e51de321ffe",
+      "classifier_result": "JOURNAL_ELIGIBLE",
+      "startup_reset_counts": [
+        6,
+        0
+      ],
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "a03-cycle-001",
+      "archive": "out/p3-controller-r1/p3-a03-cycle-001.tar.gz",
+      "archive_sha256": "58ef027fa82066b505827133b488005aa22d4d15f543b8a73ab96715e02abccb",
+      "member": "controller/p3-a03-cycle-001/after/target.json",
+      "member_sha256": "b2c16da7d67a2b8bce016d91eb1aeea6d34ba7144c5d43ef47dc005ab94e2661",
+      "journal_sha256": "325bb2578163fcd27c79e1f6602fb311101ffce3e556f04ccc0e6187859d9a8e",
+      "format": "journal_json",
+      "records": 1129,
+      "boot_id": "755c9d0a-65ed-4b20-9b95-3692281e53bb",
+      "classifier_result": "JOURNAL_ELIGIBLE",
+      "startup_reset_counts": [
+        6,
+        1
+      ],
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "p2-accepted-a01-preboot",
+      "archive": "out/p3/preparation/a01-evidence.tar.gz",
+      "archive_sha256": "dde56c3bf3ab1d14006c601c8c8a05343c353b11c385f9b8a33755837ed5e57a",
+      "member": "cycle/before/target.json",
+      "member_sha256": "335ccbcb23ec4e4646ef5fdcb07db71eef20512895b0bfc1848be1d6544efb76",
+      "journal_sha256": "04ac6471044d99167227a376e04f850868348fff2deae6fbc6ea0502f4d7b06e",
+      "format": "journal_json",
+      "records": 2282,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "classifier_result": "REJECTED",
+      "reason": "historical intentional auth/restart tests outside P3 semantics",
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "p2-normal-reboot",
+      "archive": "out/p2/attempt02-preparation/normal-reboot-evidence.tar.gz",
+      "archive_sha256": "65e68116534a5ba6fe6b3ba4f038c13739f0074bce42d242b9fc86043f93fbfc",
+      "member": "snapshot/after.json",
+      "member_sha256": "001be8dd952d88764b8a84d1a5e2e91823b3850742e1431bec1cf89de15a7ae0",
+      "journal_sha256": "7dd8eada3da9d733e6e541f6b6575ef197916069af3dc8550c95c73909d03f37",
+      "format": "journal",
+      "records": 459,
+      "boot_id": "443f83ef-6193-4d4c-aa4d-119e249a4c66",
+      "classifier_result": "REJECTED",
+      "startup_reset_counts": null,
+      "historical_status_unchanged": true
+    },
+    {
+      "name": "p2-final-coldboot",
+      "archive": "out/p2/attempt02-preparation/final-evidence.tar.gz",
+      "archive_sha256": "1cbc3e9d529fb23b045750219d2a1e7de57e89713fe4c553adf24993484b7b08",
+      "member": "coldboot02/final-review.json",
+      "member_sha256": "57c80c09848b445080507fef894671a2fc9334ca927cc4a455f2dec69bf6a9c0",
+      "journal_sha256": "ef44ae6aed8102314dcd9ac146d12231ae6f65cbeec3b544b8685e393cb36ac0",
+      "format": "journal",
+      "records": 2227,
+      "boot_id": "04ba921f-2425-4534-8ba2-b5b9f347b4dc",
+      "classifier_result": "REJECTED",
+      "startup_reset_counts": null,
+      "historical_status_unchanged": true
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "positive-h5r2-boot-and-logout",
+      "expected_eligible": true,
+      "result": "JOURNAL_ELIGIBLE"
+    },
+    {
+      "name": "positive-a03-observed-startup-and-logout",
+      "expected_eligible": true,
+      "result": "JOURNAL_ELIGIBLE"
+    },
+    {
+      "name": "A-socket-after-ready",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "B-auth502-after-ready",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "C-wrong-unit",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "D-arbitrary-502",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "E-no-logout",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "F-no-reauth",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "G-no-removed-socket",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "H-unknown-startup-error",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "I-repeated-after-readiness",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "J-reordered-causal-sequence",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "missing-readiness",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "wrong-upstream",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "wrong-reset-path",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "mixed-boot",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "unknown-high-priority",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "duplicate-readiness",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "positive-time-translation",
+      "expected_eligible": true,
+      "result": "JOURNAL_ELIGIBLE"
+    },
+    {
+      "name": "J-sorted-but-invalid-readiness-sequence",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "J-kvmd-start-after-readiness",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "J-nginx-start-after-reset",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "positive-inherited-offline-startup",
+      "expected_eligible": true,
+      "result": "JOURNAL_ELIGIBLE"
+    },
+    {
+      "name": "offline-missing-carrier",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "offline-missing-ssh",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "offline-wrong-unit",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    },
+    {
+      "name": "offline-not-authorized-connected-mode",
+      "expected_eligible": false,
+      "result": "REJECTED"
+    }
+  ],
+  "independent_per_record_and_witness_agreement": true,
+  "a03_status": "PERMANENTLY_FAILED",
+  "a03_accepted_cycles": 0,
+  "qualification_credit": 0,
+  "p3": "UNACCEPTED",
+  "target_contacted": false,
+  "source_sha256": {
+    "lab/p3-j1-classifier.py": "fe59586572f01093cf6e826a3a61082ab6b786696bd1d0346f1536a562dde59e",
+    "research/evidence/p3/j1/study.py": "8183edb0fc9c553e66a351bd7333a82aea1b765e68ae676621bf113c6a51a957",
+    "research/evidence/p3/j1/reference.py": "d8b76757ab7079249ee8f578634d2b302bd8dedaa5583c9a20466d9ef843f631",
+    "research/evidence/p3/j1/verify.py": "037605e484ca29cc868d69c92a24509653abd45782b877863bb0ffbd1d3c849e",
+    "research/evidence/p3/j1/semantics.md": "b0f924853e87de8d2c7323989deeedf06c7d2c34f2febc684d5de6fa1982336e",
+    "research/evidence/p3/j1/fixtures.json": "3c675a7b11182b5e7079a328d0a0192f5d79d368ab809c909d28a9e16d82e27d",
+    "research/evidence/p3/j1/functional.py": "9ebe9f29c345be6df4efd3940fd620b30eb30e7a48eafe51e1ac4f0c9ccf357a",
+    "research/evidence/p3/j1/make-fixtures.py": "ce57edc7c982ef2df404c90feb1692296403b94da5e967ad5498854154e654a5"
+  },
+  "private_evidence": {
+    "archive": "out/p3-j1/p3-j1-offline-evidence.tar.gz",
+    "sha256": "8102e7eed448d1c27687ee00ec48063f1323e3ad387709a8c81ccb45999b7728",
+    "bytes": 571580,
+    "members_verified": 29
+  },
+  "validation": {
+    "local_tests": {
+      "run": 166,
+      "skipped": 2,
+      "result": "PASS",
+      "log_sha256": "b41ca26e73c81ad8227331224ad578814f9728cb646a929041acdb1b30d4cb38"
+    },
+    "functional_corpus": "PASS; all four full archives replayed with zero credit",
+    "publication_lifecycle": "PASS; all 12 failure/success cases and frozen old-controller regression",
+    "a03_preservation": {
+      "result": "P3_A03_CYCLE_001_REPLAY_FAILURE_CONFIRMED",
+      "attempt": 3,
+      "cycle": 1,
+      "accepted_cycles": 0,
+      "total_cycles": 12,
+      "qualification_credit": 0,
+      "archive_sha256": "689e2442510781009439ff70ded02365b472f1492d27cbee0cf7d046ce91afd2",
+      "original_cycle_archive_sha256": "58ef027fa82066b505827133b488005aa22d4d15f543b8a73ab96715e02abccb",
+      "indexed_files_verified": 2548,
+      "original_cycle_files_unchanged": 2543,
+      "target_hashes_matched": 10690,
+      "controller_exit": 0,
+      "reboot_requests_issued": 1,
+      "chromium_launches": 3,
+      "journal_records_reviewed": 1129,
+      "offending_timestamp_us": 12075869,
+      "offending_records": 2,
+      "later_logout_resets_classified": 1,
+      "frozen_classifier_failure_reproduced": true,
+      "thresholds_changed": false,
+      "h5r2": "ACCEPTED",
+      "p2": "PASSED",
+      "p3": "UNACCEPTED",
+      "p3_b_c": "BLOCKED",
+      "m6_atx": "DEFERRED",
+      "ro_overlay": "DEFERRED"
+    },
+    "public_secret_scan": "PASS"
+  }
+}

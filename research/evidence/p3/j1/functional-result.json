@@ -1,0 +1,187 @@
+{
+  "result": "P3_J1_FUNCTIONAL_CORPUS_PASS",
+  "qualification_credit": 0,
+  "a03_status": "PERMANENTLY_FAILED",
+  "replays": [
+    {
+      "storage_checks": 8,
+      "msd_transitions": 19,
+      "result": "P3_J1_FUNCTIONAL_PREREQUISITES_REPLAYED",
+      "name": "functional-001",
+      "archive_sha256": "4cf2e4f9b890639d2f832b3dc917b4f52ab6d67c28c6a37e6a6755d4fa7fe627",
+      "leaf_archive_sha256": "d50b28606fad8193ca1bca59689ee4a0c56243cf320131c8191253990c6fcdc2",
+      "functional_source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+      "target_hashes_matched": 10690,
+      "service_generations_unchanged": true,
+      "launches": 3,
+      "prospective_contracts": 3,
+      "generated_argv_records": 3,
+      "hid_stages": 47,
+      "video_unique_frames": 6,
+      "journal_records_reviewed": 1148,
+      "qualification_credit": 0,
+      "accepted_cycles": 0,
+      "h5_status": "FAILED",
+      "h3_root_cause": "UNASSIGNED",
+      "historical_status_unchanged": true,
+      "intentional_logout_socket_resets": [
+        {
+          "reset_us": 1134364285,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        },
+        {
+          "reset_us": 1134374784,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        }
+      ]
+    },
+    {
+      "storage_checks": 8,
+      "msd_transitions": 19,
+      "result": "P3_J1_FUNCTIONAL_PREREQUISITES_REPLAYED",
+      "name": "functional-002",
+      "archive_sha256": "6073424557af5d67d813da1fddc1aa968fd31907e4d68daba999af3d430de707",
+      "leaf_archive_sha256": "febce42f58a69acfc0240a42e86e1f26482b68a52d9a7ba6be5f0f12333158a3",
+      "functional_source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+      "target_hashes_matched": 10690,
+      "service_generations_unchanged": true,
+      "launches": 3,
+      "prospective_contracts": 3,
+      "generated_argv_records": 3,
+      "hid_stages": 47,
+      "video_unique_frames": 6,
+      "journal_records_reviewed": 1804,
+      "qualification_credit": 0,
+      "accepted_cycles": 0,
+      "h5_status": "FAILED",
+      "h3_root_cause": "UNASSIGNED",
+      "historical_status_unchanged": true,
+      "intentional_logout_socket_resets": [
+        {
+          "reset_us": 1134364285,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        },
+        {
+          "reset_us": 1134374784,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        },
+        {
+          "reset_us": 1329743567,
+          "readiness_us": 13322594,
+          "logout_us": 1329734522,
+          "removed_socket_us": 1329737763,
+          "reauth_us": 1330438751
+        }
+      ]
+    },
+    {
+      "storage_checks": 8,
+      "msd_transitions": 19,
+      "result": "P3_J1_FUNCTIONAL_PREREQUISITES_REPLAYED",
+      "name": "functional-003",
+      "archive_sha256": "830608ff1f8f5b398b88f1c64cdbb320f38961ee602f3caf2f8108982314c1e6",
+      "leaf_archive_sha256": "605a6ce0187c193fd8f9f77a9299067a4c971fa6b5e8313a7483d0e2fbaf692d",
+      "functional_source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+      "target_hashes_matched": 10690,
+      "service_generations_unchanged": true,
+      "launches": 3,
+      "prospective_contracts": 3,
+      "generated_argv_records": 3,
+      "hid_stages": 47,
+      "video_unique_frames": 6,
+      "journal_records_reviewed": 2462,
+      "qualification_credit": 0,
+      "accepted_cycles": 0,
+      "h5_status": "FAILED",
+      "h3_root_cause": "UNASSIGNED",
+      "historical_status_unchanged": true,
+      "intentional_logout_socket_resets": [
+        {
+          "reset_us": 1134364285,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        },
+        {
+          "reset_us": 1134374784,
+          "readiness_us": 13322594,
+          "logout_us": 1134354631,
+          "removed_socket_us": 1134357203,
+          "reauth_us": 1134991670
+        },
+        {
+          "reset_us": 1329743567,
+          "readiness_us": 13322594,
+          "logout_us": 1329734522,
+          "removed_socket_us": 1329737763,
+          "reauth_us": 1330438751
+        },
+        {
+          "reset_us": 1585180096,
+          "readiness_us": 13322594,
+          "logout_us": 1585169871,
+          "removed_socket_us": 1585172331,
+          "reauth_us": 1585870613
+        },
+        {
+          "reset_us": 1640577686,
+          "readiness_us": 13322594,
+          "logout_us": 1640568800,
+          "removed_socket_us": 1640572794,
+          "reauth_us": 1641175430
+        },
+        {
+          "reset_us": 1640588744,
+          "readiness_us": 13322594,
+          "logout_us": 1640568800,
+          "removed_socket_us": 1640572794,
+          "reauth_us": 1641175430
+        }
+      ]
+    },
+    {
+      "storage_checks": 8,
+      "msd_transitions": 19,
+      "result": "P3_J1_FUNCTIONAL_PREREQUISITES_REPLAYED",
+      "name": "p3-a03-cycle-001",
+      "archive_sha256": "58ef027fa82066b505827133b488005aa22d4d15f543b8a73ab96715e02abccb",
+      "leaf_archive_sha256": "ea274bea1c640dfdd49fcdbdc521792d9e71bbd85c78a67c40ea674ab472b357",
+      "functional_source_commit": "8a7175e2a69c8b223942216c8640633160d0e065",
+      "target_hashes_matched": 10690,
+      "service_generations_unchanged": true,
+      "launches": 3,
+      "prospective_contracts": 3,
+      "generated_argv_records": 3,
+      "hid_stages": 47,
+      "video_unique_frames": 6,
+      "journal_records_reviewed": 1129,
+      "qualification_credit": 0,
+      "accepted_cycles": 0,
+      "h5_status": "FAILED",
+      "h3_root_cause": "UNASSIGNED",
+      "historical_status_unchanged": true,
+      "intentional_logout_socket_resets": [
+        {
+          "reset_us": 157503968,
+          "readiness_us": 13102601,
+          "logout_us": 157495388,
+          "removed_socket_us": 157498295,
+          "reauth_us": 158100333
+        }
+      ]
+    }
+  ]
+}
