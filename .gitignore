@@ -4,3 +4,4 @@ __pycache__/
 /artifacts/vendor/Image
 /artifacts/vendor/uInitrd
 /artifacts/vendor/sun50i-h616-mangopi-mcore.dtb
+.agents/temp
