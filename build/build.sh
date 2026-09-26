@@ -3,6 +3,9 @@ set -euo pipefail
 
 repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 source "$repo/build/versions.env"
+if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then
+    TOOLCHAIN_IMAGE=blikvm-release-linux:20260904
+fi
 jobs=${JOBS:-3}
 
 mkdir -p "$repo/out/downloads" "$repo/out/src" "$repo/out/build"
@@ -39,7 +42,10 @@ if ! docker info >/dev/null 2>&1; then
     docker=(sudo -n docker)
 fi
 
-if ! "${docker[@]}" image inspect "$TOOLCHAIN_IMAGE" >/dev/null 2>&1; then
+if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then
+    "${docker[@]}" build --file "$repo/build/release/KernelContainerfile" \
+        --tag "$TOOLCHAIN_IMAGE" "$repo/build/release"
+elif ! "${docker[@]}" image inspect "$TOOLCHAIN_IMAGE" >/dev/null 2>&1; then
     "${docker[@]}" build \
         --build-arg "TOOLCHAIN_BASE=$TOOLCHAIN_BASE" \
         --file "$repo/build/Containerfile" \

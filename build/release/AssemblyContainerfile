@@ -1,0 +1,8 @@
+FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+RUN rm /etc/apt/sources.list.d/debian.sources \
+ && echo 'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20260904T000000Z bookworm main' > /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends e2fsprogs zstd u-boot-tools util-linux mount fdisk git python3 ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+ENV LC_ALL=C TZ=UTC
+WORKDIR /work

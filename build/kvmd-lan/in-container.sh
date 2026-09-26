@@ -2,6 +2,7 @@
 set -euo pipefail
 umask 022
 source /work/build/ubuntu/versions.env
+source /work/build/release/verify.sh
 # Refuse direct execution in the host's initial user namespace.
 read -r uid_inner uid_outer uid_count < /proc/self/uid_map
 [ "$uid_inner:$uid_outer:$uid_count" = 0:0:65536 ] || {
@@ -38,7 +39,7 @@ printf '%s\n' "$rule" > /proc/sys/fs/binfmt_misc/register
 cat "$registration"
 test ! -e "$root"
 mkdir -p "$root" "$output"
-printf '%s  %s\n' "3a40cafa3e690a0317a176d6bd9e5f2f2b96ce771514518d2cde69cdd2836347" /work/out/kvmd-web/artifacts/rootfs.tar.gz | sha256sum -c -
+release_verify_file "3a40cafa3e690a0317a176d6bd9e5f2f2b96ce771514518d2cde69cdd2836347" /work/out/kvmd-web/artifacts/rootfs.tar.gz
 tar --numeric-owner -xpf /work/out/kvmd-web/artifacts/rootfs.tar.gz -C "$root"
 for directory in proc sys dev dev/pts run; do mkdir -p "$root/$directory"; done
 mount -t proc proc "$root/proc"; mounted+=("$root/proc")

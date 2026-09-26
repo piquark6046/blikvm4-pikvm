@@ -84,7 +84,11 @@ EOF
     exit 0
 fi
 test -f /work/out/ubuntu/packages.complete
-test -s /provision/authorized_keys
+if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then
+    test ! -s /provision/authorized_keys
+else
+    test -s /provision/authorized_keys
+fi
 mkdir -p "$output"
 install -m 644 /provision/authorized_keys /tmp/m7-public-key
 chroot "$root" id blikvm >/dev/null 2>&1 || chroot "$root" useradd -m -s /bin/bash -G sudo blikvm

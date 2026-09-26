@@ -2,6 +2,7 @@
 set -euo pipefail
 umask 022
 source /work/build/ubuntu/versions.env
+source /work/build/release/verify.sh
 # Refuse direct execution in the host's initial user namespace.
 read -r uid_inner uid_outer uid_count < /proc/self/uid_map
 [ "$uid_inner:$uid_outer:$uid_count" = 0:0:65536 ] || {
@@ -38,7 +39,7 @@ printf '%s\n' "$rule" > /proc/sys/fs/binfmt_misc/register
 cat "$registration"
 test ! -e "$root"
 mkdir -p "$root" "$output"
-printf '%s  %s\n' "8f7488d12e98662655aa84cc9e4d2bf0920d5a5e1dd2917bb4793288c2a7d663" /work/out/kvmd-hid/artifacts/rootfs.tar.gz | sha256sum -c -
+release_verify_file "8f7488d12e98662655aa84cc9e4d2bf0920d5a5e1dd2917bb4793288c2a7d663" /work/out/kvmd-hid/artifacts/rootfs.tar.gz
 tar --numeric-owner -xpf /work/out/kvmd-hid/artifacts/rootfs.tar.gz -C "$root"
 for directory in proc sys dev dev/pts run; do mkdir -p "$root/$directory"; done
 mount -t proc proc "$root/proc"; mounted+=("$root/proc")
@@ -53,14 +54,14 @@ chmod 755 "$root/usr/sbin/policy-rc.d"
 chroot "$root" apt-get update
 if [ "$1" = package ]; then
     mkdir -p "$root/build/source" "$root/build/pkg/DEBIAN"
-    printf '%s  %s\n' "$KVMD_SHA256" /work/out/kvmd-web/downloads/kvmd.tar.gz | sha256sum -c -
+    release_verify_file "$KVMD_SHA256" /work/out/kvmd-web/downloads/kvmd.tar.gz
     tar -xf /work/out/kvmd-web/downloads/kvmd.tar.gz --strip-components=1 -C "$root/build/source"
-    printf '%s  %s\n' "$KVMD_PATCH_SHA256" /work/build/kvmd/video-only.patch | sha256sum -c -
+    release_verify_file "$KVMD_PATCH_SHA256" /work/build/kvmd/video-only.patch
     chroot "$root" apt-get install -y --no-install-recommends patch
     chroot "$root" dpkg-query -W '-f=${Package}\t${Version}\t${Architecture}\n' > "$output/build-packages.tsv"
     cp /work/build/kvmd/video-only.patch "$root/build/video-only.patch"
     chroot "$root" /bin/sh -c 'cd /build/source; patch -p1 < /build/video-only.patch'
-    printf '%s  %s\n' "$WEB_PATCH_SHA256" /work/build/kvmd-web/web-auth.patch | sha256sum -c -
+    release_verify_file "$WEB_PATCH_SHA256" /work/build/kvmd-web/web-auth.patch
     cp /work/build/kvmd-web/web-auth.patch "$root/build/web-auth.patch"
     chroot "$root" /bin/sh -c 'cd /build/source; patch -p1 < /build/web-auth.patch'
     cp /work/build/kvmd-hid/hid.patch "$root/build/hid.patch"

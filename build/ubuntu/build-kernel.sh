@@ -1,11 +1,15 @@
 #!/bin/bash
 # Explicit, independently invoked exception; never called by the rootfs builder.
 set -euo pipefail
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/build/release/verify.sh"
 repo=$(cd "$(dirname "$0")/../.." && pwd)
 source "$repo/build/versions.env"
+if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then
+    TOOLCHAIN_IMAGE=blikvm-release-linux:20260904
+fi
 cd "$repo"
 mkdir -p out/ubuntu/kernel
-sha256sum -c build/ubuntu/m5-artifacts.sha256
+release_verify_list build/ubuntu/m5-artifacts.sha256
 sudo -n docker run --rm --user "$(id -u):$(id -g)" \
   --env JOBS="${JOBS:-3}" -v "$repo:/work" "$TOOLCHAIN_IMAGE" bash -euc '
   src=/work/out/src/linux-7.2.3
@@ -27,4 +31,4 @@ sudo -n docker run --rm --user "$(id -u):$(id -g)" \
   cd "$dest"
   sha256sum Image linux.config sun50i-h616-blikvm-v4.dtb > SHA256SUMS
   '
-sha256sum -c build/ubuntu/m5-artifacts.sha256
+release_verify_list build/ubuntu/m5-artifacts.sha256

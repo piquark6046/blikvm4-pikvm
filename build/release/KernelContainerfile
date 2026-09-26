@@ -1,0 +1,21 @@
+FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+ENV DEBIAN_FRONTEND=noninteractive LC_ALL=C TZ=UTC
+RUN rm /etc/apt/sources.list.d/debian.sources \
+ && echo 'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20260904T000000Z bookworm main' > /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+      bc bison build-essential ca-certificates cpio device-tree-compiler file flex \
+      gcc-aarch64-linux-gnu kmod libc6-dev-arm64-cross libelf-dev libssl-dev \
+      python3 python3-dev python3-pip python3-setuptools python3-wheel rsync swig xz-utils \
+ && rm -rf /var/lib/apt/lists/*
+COPY kernel-requirements.txt /tmp/kernel-requirements.txt
+COPY kernel-build-requirements.txt /tmp/kernel-build-requirements.txt
+RUN pip3 install --break-system-packages --no-cache-dir --require-hashes \
+      -r /tmp/kernel-build-requirements.txt \
+ && pip3 install --break-system-packages --no-cache-dir --no-build-isolation \
+      --require-hashes -r /tmp/kernel-requirements.txt \
+ && rm /tmp/kernel-requirements.txt /tmp/kernel-build-requirements.txt
+ENV ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- \
+    KBUILD_BUILD_USER=blikvm KBUILD_BUILD_HOST=linux-builder \
+    KBUILD_BUILD_TIMESTAMP=1970-01-01T00:00:00Z SOURCE_DATE_EPOCH=0
+WORKDIR /work

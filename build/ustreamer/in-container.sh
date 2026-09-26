@@ -2,12 +2,14 @@
 set -euo pipefail
 umask 022
 source /work/build/ubuntu/versions.env
+source /work/build/release/verify.sh
 # Refuse direct execution in the host's initial user namespace.
 read -r uid_inner uid_outer uid_count < /proc/self/uid_map
 [ "$uid_inner:$uid_outer:$uid_count" = 0:0:65536 ] || {
     echo 'Builder requires its isolated 65536-ID user namespace' >&2; exit 2;
 }
 source /work/build/ustreamer/versions.env
+if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then export USTREAMER_JOBS=2; fi
 root=/work/out/ustreamer/$1-rootfs
 output=/work/out/ustreamer/artifacts
 registration=/proc/sys/fs/binfmt_misc/blikvm-m7-aarch64
@@ -36,7 +38,7 @@ printf '%s\n' "$rule" > /proc/sys/fs/binfmt_misc/register
 cat "$registration"
 test ! -e "$root"
 mkdir -p "$root" "$output"
-printf '%s  %s\n' "$M7_ROOTFS_SHA256" /work/out/ubuntu/artifacts/rootfs.tar.gz | sha256sum -c -
+release_verify_file "$M7_ROOTFS_SHA256" /work/out/ubuntu/artifacts/rootfs.tar.gz
 tar --numeric-owner -xpf /work/out/ubuntu/artifacts/rootfs.tar.gz -C "$root"
 for directory in proc sys dev dev/pts run; do mkdir -p "$root/$directory"; done
 mount -t proc proc "$root/proc"; mounted+=("$root/proc")
@@ -52,13 +54,13 @@ chroot "$root" apt-get update
 if [ "$1" = package ]; then
     chroot "$root" apt-get install -y --no-install-recommends build-essential pkg-config libjpeg-dev libevent-dev libbsd-dev
     chroot "$root" dpkg-query -W '-f=${Package}\t${Version}\t${Architecture}\n' > "$output/build-packages.tsv"
-    printf '%s  %s\n' "$USTREAMER_SHA256" /work/out/ustreamer/downloads/ustreamer.tar.gz | sha256sum -c -
+    release_verify_file "$USTREAMER_SHA256" /work/out/ustreamer/downloads/ustreamer.tar.gz
     mkdir -p "$root/build/source" "$root/build/pkg/DEBIAN"
     tar -xf /work/out/ustreamer/downloads/ustreamer.tar.gz --strip-components=1 -C "$root/build/source"
-    printf '%s  %s\n' "$USTREAMER_PATCH_SHA256" /work/build/ustreamer/capture-controls.patch | sha256sum -c -
+    release_verify_file "$USTREAMER_PATCH_SHA256" /work/build/ustreamer/capture-controls.patch
     cp /work/build/ustreamer/capture-controls.patch "$root/build/capture-controls.patch"
     chroot "$root" /bin/bash -c 'cd /build/source; patch -p1 < /build/capture-controls.patch'
-    chroot "$root" /bin/bash -c 'cd /build/source; make -j3 WITH_GPIO=0 WITH_SYSTEMD=0 WITH_PYTHON=0 WITH_JANUS=0 WITH_V4P=0 CFLAGS="-O2 -g0 -ffile-prefix-map=/build/source=. -fstack-protector-strong -D_FORTIFY_SOURCE=2" LDFLAGS="-Wl,-z,relro,-z,now"'
+    chroot "$root" /bin/bash -c 'cd /build/source; make -j${USTREAMER_JOBS:-3} WITH_GPIO=0 WITH_SYSTEMD=0 WITH_PYTHON=0 WITH_JANUS=0 WITH_V4P=0 CFLAGS="-O2 -g0 -ffile-prefix-map=/build/source=. -fstack-protector-strong -D_FORTIFY_SOURCE=2" LDFLAGS="-Wl,-z,relro,-z,now"'
     install -Dm755 "$root/build/source/ustreamer" "$root/build/pkg/usr/bin/ustreamer"
     chroot "$root" strip /build/pkg/usr/bin/ustreamer
     install -Dm644 "$root/build/source/LICENSE" "$root/build/pkg/usr/share/doc/ustreamer/copyright"
@@ -116,7 +118,7 @@ POSTREMOVE
     if chroot "$root" /build/pkg/usr/bin/ustreamer --quality=101 > "$output/invalid-quality.txt" 2>&1; then exit 1; fi
     chroot "$root" ldd /build/pkg/usr/bin/ustreamer > "$output/binary-libraries.txt"
 else
-    printf '%s  %s\n' "$USTREAMER_PACKAGE_SHA256" "$output/ustreamer_${PACKAGE_VERSION}_arm64.deb" | sha256sum -c -
+    release_verify_file "$USTREAMER_PACKAGE_SHA256" "$output/ustreamer_${PACKAGE_VERSION}_arm64.deb"
     cp "$output/ustreamer_${PACKAGE_VERSION}_arm64.deb" "$root/tmp/ustreamer.deb"
     chroot "$root" apt-get install -y --no-install-recommends /tmp/ustreamer.deb
     sed -i '1i enable ustreamer.service' "$root/etc/systemd/system-preset/00-blikvm-lab.preset"

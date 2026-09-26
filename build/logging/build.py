@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Overlay only the logging policy on the pinned, public M8-E rootfs archive."""
-import argparse,copy,gzip,hashlib,io,json,pathlib,tarfile
-p=argparse.ArgumentParser();p.add_argument('--output',type=pathlib.Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+import argparse,copy,gzip,hashlib,io,json,pathlib,subprocess,tarfile
+p=argparse.ArgumentParser();p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--release',action='store_true');a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
 base=pathlib.Path('out/kvmd-msd/artifacts/rootfs.tar.gz');policy=pathlib.Path('build/logging/zz-blikvm-bounded.conf').read_bytes();epoch=1788652800
 sha=lambda b:hashlib.sha256(b).hexdigest()
-assert sha(base.read_bytes())=='563ed45f6705657b8a52f97e2c5a408c182a5dc5fe9b32ac5af4cdb2d7b97f0a'
+if a.release:
+ subprocess.run(['python3','build/release/lock.py','verify',str(base)],check=True)
+else:
+ assert sha(base.read_bytes())=='563ed45f6705657b8a52f97e2c5a408c182a5dc5fe9b32ac5af4cdb2d7b97f0a'
 entries={};diff=[]
 with tarfile.open(base) as src:
  for m in src:

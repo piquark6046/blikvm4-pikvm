@@ -1,12 +1,13 @@
 #!/bin/bash
 set -euo pipefail
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/build/release/verify.sh"
 repo=$(cd "$(dirname "$0")/../.." && pwd)
 source "$repo/build/ubuntu/versions.env"
 mode=${1:-packages}
 case "$mode" in packages|finalize) ;; *) echo 'usage: build.sh packages | finalize /absolute/external/key.pub' >&2; exit 2;; esac
 cd "$repo"
 mkdir -p out/ubuntu/downloads
-sha256sum -c build/ubuntu/m5-artifacts.sha256
+release_verify_list build/ubuntu/m5-artifacts.sha256
 download=out/ubuntu/downloads
 if [ "$mode" = packages ]; then
     for name in SHA256SUMS SHA256SUMS.gpg "$UBUNTU_ARCHIVE"; do
@@ -24,13 +25,17 @@ if [ "$mode" = packages ]; then
     printf '%s  %s\n' "$UBUNTU_SHA256" "$download/$UBUNTU_ARCHIVE" | sha256sum -c -
     sudo -n docker build --build-arg "BUILDER_BASE=$BUILDER_BASE" -f build/ubuntu/Containerfile -t "$BUILDER_IMAGE" build/ubuntu
     sudo -n docker image inspect "$BUILDER_IMAGE" > out/ubuntu/builder-image.json
-    sudo -n docker run --rm --privileged --env "SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH" \
+    sudo -n docker run --rm --privileged --env "SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH" --env "BLIKVM_RELEASE_BUILD=${BLIKVM_RELEASE_BUILD:-0}" \
         -v "$repo:/work" "$BUILDER_IMAGE" \
         unshare --user --map-users=0,0,65536 --map-groups=0,0,65536 \
         --mount --pid --fork --mount-proc /work/build/ubuntu/in-container.sh packages
 else
-    key=$(realpath "${2:?public key file outside Git required}")
-    case "$key" in "$repo"/*) echo 'public key must be outside repository' >&2; exit 2;; esac
+    if [[ ${BLIKVM_RELEASE_BUILD:-0} == 1 ]]; then
+        test "${2:-}" = "--public" || { echo 'release finalize requires --public' >&2; exit 2; }
+        key=/dev/null
+    else
+        key=$(realpath "${2:?public key file outside Git required}")
+        case "$key" in "$repo"/*) echo 'public key must be outside repository' >&2; exit 2;; esac
     # ssh-keygen -l also accepts private-key files. Reject those before mounting
     # the input into any container; this interface accepts one public key only.
     python3 - "$key" <<'PY'
@@ -40,8 +45,9 @@ lines = Path(sys.argv[1]).read_text().strip().splitlines()
 if len(lines) != 1 or len(lines[0].split()) < 2 or not lines[0].split()[0].startswith(('ssh-', 'ecdsa-')):
     raise SystemExit('expected one OpenSSH public key, never a private key')
 PY
-    ssh-keygen -lf "$key" >/dev/null
-    sudo -n docker run --rm --privileged --env "SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH" \
+        ssh-keygen -lf "$key" >/dev/null
+    fi
+    sudo -n docker run --rm --privileged --env "SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH" --env "BLIKVM_RELEASE_BUILD=${BLIKVM_RELEASE_BUILD:-0}" \
         -v "$repo:/work" -v "$key:/provision/authorized_keys:ro" \
         "$BUILDER_IMAGE" \
         unshare --user --map-users=0,0,65536 --map-groups=0,0,65536 \

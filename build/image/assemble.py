@@ -12,6 +12,7 @@ import shutil
 import stat
 import struct
 import subprocess
+import sys
 import tarfile
 import zlib
 
@@ -154,10 +155,13 @@ def verify_script(script, command):
     return run(['dumpimage', '-l', script]).stdout.decode()
 
 
-def check_inputs():
-    lock = json.loads((HERE/'inputs.lock.json').read_text())
-    assert run(['git', '-C', REPO, 'rev-parse', lock['acceptance_tag']+'^{commit}']).stdout.decode().strip() == lock['acceptance_commit']
-    assert digest(REPO/'research/evidence/p1/vendor-layout.json') == lock['vendor_layout_sha256']
+def check_inputs(lock_path=None):
+    lock = json.loads(Path(lock_path or HERE/'inputs.lock.json').read_text())
+    if 'acceptance_tag' in lock:
+        assert run(['git', '-c', f'safe.directory={REPO}', '-C', REPO, 'rev-parse',
+                    lock['acceptance_tag']+'^{commit}']).stdout.decode().strip() == lock['acceptance_commit']
+    if 'vendor_layout_sha256' in lock:
+        assert digest(REPO/'research/evidence/p1/vendor-layout.json') == lock['vendor_layout_sha256']
     for name, item in lock['inputs'].items():
         p = REPO/item['path']; regular(p)
         assert p.stat().st_size == item['size'] and digest(p) == item['sha256'], name
@@ -228,7 +232,12 @@ def validate(image, work, expected, lock, vendor, enrolled=False):
         run(['mount', '-t', 'ext4', '-o', 'ro,noload', loop, mount]); mounted = True
         actual = inventory(mount)
         assert actual == expected, [n for n in set(actual)|set(expected) if actual.get(n) != expected.get(n)][:20]
+        # Enrollment verifies every file against its new full inventory above.
+        # Only these two frozen lab-policy contracts are intentionally replaced.
+        enrolled_contracts = {'etc/kvmd/access.nft', 'etc/kvmd/nginx/nginx.conf'} if enrolled else set()
         for n, item in lock['contracts'].items():
+            if n in enrolled_contracts:
+                continue
             assert digest(mount/n) == item['sha256'], n
         for n in ['Image', 'sun50i-h616-blikvm-v4.dtb']:
             assert digest(mount/'boot'/n) == lock['inputs'][n]['sha256']
@@ -253,22 +262,25 @@ def validate(image, work, expected, lock, vendor, enrolled=False):
             'root_uuid': UUID, 'root_label': LABEL, 'script_crc_verified': True, 'secret_scan': scan}
 
 
-def assemble(destination, vendor_dir, revision='p1'):
+def assemble(destination, vendor_dir, revision='p1', lock_path=None, layout_path=None):
     if os.geteuid() != 0:
         raise ValueError('run as root to preserve numeric owners and use read-only loop validation')
-    lock = check_inputs()
+    lock = check_inputs(lock_path)
     dest = destination.resolve()
     assert dest.is_relative_to(REPO/'out') and not dest.exists(), 'new clean output below repository out/ required'
     dest.mkdir(parents=True, mode=0o755)
     work = dest/'work'; work.mkdir(); root = work/'root'; root.mkdir()
-    vendor = json.loads((REPO/'research/evidence/p1/vendor-layout.json').read_text())
+    vendor = json.loads(Path(layout_path or REPO/'research/evidence/p1/vendor-layout.json').read_text())
     for x in vendor['bootloader_extents']:
         p = vendor_dir/x['name']; regular(p)
         assert p.stat().st_size == x['size'] and digest(p) == x['sha256']
     archive = REPO/lock['inputs']['rootfs.tar.gz']['path']
     with tarfile.open(archive) as t:
         # The complete immutable archive hash above is the trust boundary.
-        t.extractall(root, filter='fully_trusted')
+        if sys.version_info >= (3, 12):
+            t.extractall(root, filter='fully_trusted')
+        else:
+            t.extractall(root)
     original = inventory(root)
     for name, item in lock['contracts'].items():
         assert digest(root/name) == item['sha256']
@@ -338,7 +350,8 @@ def assemble(destination, vendor_dir, revision='p1'):
                 'tool_binary_sha256':{name:digest(Path(shutil.which(name))) for name in ['mke2fs','debugfs','e2fsck','mkimage','zstd','sfdisk']},
                 'assembler_sha256':digest(Path(__file__)),
                 'assembly_source_sha256':{p.name:digest(p) for p in sorted(HERE.iterdir()) if p.is_file()}, 'mke2fs_config_sha256':digest(HERE/'mke2fs.conf'),
-                'builder':{'type':'native Build VM','os_release':Path('/etc/os-release').read_text(),'architecture':os.uname().machine},
+                'builder':{'type':'pinned release container' if os.environ.get('BLIKVM_RELEASE_BUILD') == '1' else 'native Build VM',
+                           'os_release':Path('/etc/os-release').read_text(),'architecture':os.uname().machine},
                 'boot_cmd_sha256':digest(root/'boot/boot.cmd'),'boot_scr_sha256':digest(root/'boot/boot.scr'),
                 'rootfs_inventory_sha256':digest(dest/'filesystem-manifest.json'),
                 'image_sha256':digest(image),'compressed_image_sha256':digest(compressed),
@@ -354,5 +367,7 @@ if __name__ == '__main__':
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--vendor-dir', type=Path, default=REPO/'out/p1/vendor')
     p.add_argument('--revision', choices=['p1', 'p2-r1-candidate1'], default='p1')
+    p.add_argument('--input-lock', type=Path)
+    p.add_argument('--bootloader-layout', type=Path)
     a = p.parse_args()
-    assemble(a.output, a.vendor_dir.resolve(), a.revision)
+    assemble(a.output, a.vendor_dir.resolve(), a.revision, a.input_lock, a.bootloader_layout)

@@ -1,0 +1,13 @@
+FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+RUN rm /etc/apt/sources.list.d/debian.sources \
+ && echo 'deb [check-valid-until=no] http://snapshot.debian.org/archive/debian/20260904T000000Z bookworm main' > /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends \
+      bc bison build-essential ca-certificates device-tree-compiler flex \
+      gcc-aarch64-linux-gnu libgnutls28-dev libssl-dev pkg-config \
+      python3 python3-dev python3-pyelftools python3-setuptools swig \
+ && rm -rf /var/lib/apt/lists/*
+ENV LC_ALL=C TZ=UTC SOURCE_DATE_EPOCH=1788652800 \
+    KBUILD_BUILD_USER=blikvm KBUILD_BUILD_HOST=release-builder \
+    KBUILD_BUILD_TIMESTAMP=1970-01-01T00:00:00Z
+WORKDIR /work
