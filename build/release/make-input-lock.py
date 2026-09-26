@@ -22,6 +22,11 @@ def record(path: Path) -> dict:
     return {"path": path.relative_to(REPO).as_posix(), "size": path.stat().st_size, "sha256": digest}
 
 
+def reject_host_resolver_backup(archive: tarfile.TarFile) -> None:
+    if "./etc/.resolv.conf.systemd-resolved.bak" in archive.getnames():
+        raise ValueError("host resolver backup leaked into public rootfs")
+
+
 def main() -> None:
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
@@ -39,6 +44,7 @@ def main() -> None:
     inputs = {name: record(path) for name, path in mapping.items()}
     contracts = HISTORICAL["contracts"]
     with tarfile.open(mapping["rootfs.tar.gz"]) as archive:
+        reject_host_resolver_backup(archive)
         for name, expected in contracts.items():
             member = archive.getmember("./" + name)
             if not member.isfile():

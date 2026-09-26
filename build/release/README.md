@@ -6,6 +6,13 @@ builds from pinned public source and package snapshots, and generates a new
 input lock from its own artifacts. It uses `JOBS=2` and never uses the bridge
 for ordinary software builds.
 
+Offline comparison of the two candidates from Actions run `36236262602`
+found 26 differing raw-image bytes, all within the packaged
+`/etc/.resolv.conf.systemd-resolved.bak`. That backup contains the individual
+runner's temporary DNS configuration. The release-only logging overlay omits
+it and records its hash in `file-diff.json`; the release input lock rejects a
+rootfs that still contains it. Historical M7 and M8-E artifacts stay frozen.
+
 ```sh
 JOBS=2 build/release/build.sh --output out/release-local-a
 JOBS=2 build/release/build.sh --output out/release-local-b
