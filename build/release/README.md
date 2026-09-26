@@ -37,18 +37,21 @@ The source-built U-Boot/TF-A candidate has **no hardware qualification** yet.
 chain. The owner selected GPL-3.0-or-later for project-authored code and
 documentation; the root `LICENSE` contains the GPLv3 text. File-specific SPDX
 notices and licenses on third-party source, patches, copied material, and
-archived evidence continue to govern those materials. The third-party notice
-inventory remains incomplete. `policy.py` blocks release publication until
-the remaining records and exact-byte evidence are added. The
-historical P2 image used private recovery-card bootloader bytes and cannot
+archived evidence continue to govern those materials. The package notice lock
+now records all 247 dpkg inventory rows, including one residual config-files
+record, with their source package, installed license document path and SHA-256.
+`notices.py` verifies each document against the exact rootfs tar; the candidate
+builder enforces that match, and publication policy binds both notice files to
+the source manifest. This offline work does not qualify a bootloader or image.
+The historical P2 image used private recovery-card bootloader bytes and cannot
 qualify this new boot chain by association.
 
 Pushed `-build.<sha>` tags are candidate-only. CI still runs both independent
 builds, compares their bytes, and uploads short-lived candidate artifacts, but
 does not create a GitHub Release. The publication policy also rejects manual
-attempts to publish build tags. The failed release job in Actions run
-`36246591270` is retained as the historical notice-gate result; a new build tag
-is needed to verify the candidate-only workflow.
+attempts to publish build tags. The failed release jobs in Actions runs
+`36246591270` and `36255355336` remain historical notice-gate results;
+`0.1.0-beta.1` is not moved. A later commit and new tag must pass every gate.
 
 To authorize publication later, record the exact source-built bootloader hash
 and a real boot evidence file under `research/evidence/` in

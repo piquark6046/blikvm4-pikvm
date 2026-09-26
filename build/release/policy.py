@@ -9,6 +9,8 @@ from pathlib import Path
 import re
 import stat
 
+import notices as notices_module
+
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -98,7 +100,7 @@ def prepublish(dist: Path, record_path: Path | None = None) -> dict:
     image_name = f"blikvm-v4-pikvm-{tag}.img.zst"
     allowed = {image_name, "filesystem-manifest.json", "image-inputs.lock.json",
                "source-manifest.json", "bootloader-layout.json", "package-inventory.tsv",
-               "ENROLLMENT.md", "FLASHING.md", "THIRD_PARTY_NOTICES.md",
+               "ENROLLMENT.md", "FLASHING.md", "THIRD_PARTY_NOTICES.md", "package-notices.tsv",
                "blikvm-enroll.tar.gz", "release-manifest.json", "SHA256SUMS"}
     if {p.name for p in dist.iterdir()} != allowed:
         raise ReleaseBlocked("PUBLIC_ASSET_ALLOWLIST_FAILED")
@@ -112,11 +114,15 @@ def prepublish(dist: Path, record_path: Path | None = None) -> dict:
     if (source.get("git_commit") != manifest["git_commit"]
             or source.get("inputs_lock_sha256") != digest(dist / "image-inputs.lock.json")
             or source.get("package_inventory_sha256") != digest(dist / "package-inventory.tsv")
+            or source.get("package_notices_sha256") != digest(dist / "package-notices.tsv")
+            or source.get("third_party_notices_sha256") != digest(dist / "THIRD_PARTY_NOTICES.md")
             or source.get("bootloader") != layout):
         raise ReleaseBlocked("SOURCE_MANIFEST_MISMATCH")
     expected_inputs = {"release_input_lock_sha256": digest(dist / "image-inputs.lock.json"),
                        "source_manifest_sha256": digest(dist / "source-manifest.json"),
                        "package_inventory_sha256": digest(dist / "package-inventory.tsv"),
+                       "package_notices_sha256": digest(dist / "package-notices.tsv"),
+                       "third_party_notices_sha256": digest(dist / "THIRD_PARTY_NOTICES.md"),
                        "bootloader_layout_sha256": digest(dist / "bootloader-layout.json")}
     expected_toolchain = {name: source[name] for name in
                           ("tool_versions", "tool_binary_sha256", "container_base_digests",
@@ -141,6 +147,10 @@ def prepublish(dist: Path, record_path: Path | None = None) -> dict:
     notices = (dist / "THIRD_PARTY_NOTICES.md").read_text()
     if not notices.strip() or "INCOMPLETE" in notices.upper() or "TODO" in notices.upper():
         raise ReleaseBlocked("THIRD_PARTY_NOTICES_BLOCKED")
+    try:
+        notices_module.verify_inventory_lock(dist / "package-inventory.tsv", dist / "package-notices.tsv")
+    except ValueError as exc:
+        raise ReleaseBlocked("THIRD_PARTY_PACKAGE_NOTICE_MISMATCH") from exc
     record = json.loads((record_path or REPO / "release/qualification.json").read_text())
     status = qualification(manifest, record)
     if manifest["qualification"] != status:

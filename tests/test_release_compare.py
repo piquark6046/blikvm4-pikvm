@@ -27,6 +27,8 @@ class ReleaseCompareTests(unittest.TestCase):
         source = {"git_commit": "c" * 40,
                   "bootloader": json.loads((path / "bootloader-layout.json").read_text()),
                   "package_inventory_sha256": compare.sha(path / "package-inventory.tsv"),
+                  "package_notices_sha256": compare.sha(ROOT / "release/package-notices.tsv"),
+                  "third_party_notices_sha256": compare.sha(ROOT / "release/THIRD_PARTY_NOTICES.md"),
                   "tool_versions": {"mkimage": "test"}, "tool_binary_sha256": {"mkimage": "d" * 64},
                   "container_base_digests": {"assembly": "sha256:test"},
                   "ubuntu_snapshot": "20260906T000000Z",

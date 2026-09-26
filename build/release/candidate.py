@@ -11,6 +11,8 @@ import shutil
 import subprocess
 import sys
 
+import notices
+
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -38,6 +40,9 @@ def main(source: Path, target: Path) -> None:
     compressed = source / "blikvm-v4-pikvm.img.zst"
     if sha(image) != manifest["image_sha256"] or sha(compressed) != manifest["compressed_image_sha256"]:
         raise ValueError("assembled image hash changed")
+    notices.verify(REPO / "out/kvmd-msd/artifacts/packages.tsv",
+                   REPO / "out/release/logging/rootfs.tar.gz",
+                   REPO / "release/package-notices.tsv")
     target.mkdir(exist_ok=False)
     for name in ("blikvm-v4-pikvm.img.zst", "filesystem-manifest.json", "validation.json",
                  "bootloader-layout.json", "manifest.json"):
@@ -62,6 +67,8 @@ def main(source: Path, target: Path) -> None:
         "tool_binary_sha256": manifest["tool_binary_sha256"],
         "ubuntu_snapshot": manifest["ubuntu"]["snapshot"],
         "package_inventory_sha256": sha(target / "package-inventory.tsv"),
+        "package_notices_sha256": sha(REPO / "release/package-notices.tsv"),
+        "third_party_notices_sha256": sha(REPO / "release/THIRD_PARTY_NOTICES.md"),
         "project_license_sha256": sha(REPO / "LICENSE") if (REPO / "LICENSE").is_file() else None,
         "public_upstream_inputs": {
             "linux": {"url": f"https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-{linux['LINUX_VERSION']}.tar.xz",

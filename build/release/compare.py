@@ -117,7 +117,8 @@ def compare(first: Path, second: Path, dist: Path, release: dict) -> None:
         shutil.copyfile(first / name, dist / name)
     for source, target in (("ENROLLMENT.md", "ENROLLMENT.md"),
                            ("FLASHING.md", "FLASHING.md"),
-                           ("THIRD_PARTY_NOTICES.md", "THIRD_PARTY_NOTICES.md")):
+                           ("THIRD_PARTY_NOTICES.md", "THIRD_PARTY_NOTICES.md"),
+                           ("package-notices.tsv", "package-notices.tsv")):
         shutil.copyfile(REPO / "release" / source, dist / target)
     enrollment_bundle(dist / "blikvm-enroll.tar.gz")
     record = json.loads((REPO / "release/qualification.json").read_text())
@@ -144,6 +145,8 @@ def compare(first: Path, second: Path, dist: Path, release: dict) -> None:
         "inputs": {"release_input_lock_sha256": a["release_input_lock_sha256"],
                    "source_manifest_sha256": a["source_manifest_sha256"],
                    "package_inventory_sha256": sha(dist / "package-inventory.tsv"),
+                   "package_notices_sha256": sha(dist / "package-notices.tsv"),
+                   "third_party_notices_sha256": sha(dist / "THIRD_PARTY_NOTICES.md"),
                    "bootloader_layout_sha256": sha(dist / "bootloader-layout.json")},
         "toolchain": {"tool_versions": source_manifest["tool_versions"],
                       "tool_binary_sha256": source_manifest["tool_binary_sha256"],

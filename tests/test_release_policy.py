@@ -21,10 +21,16 @@ class ReleasePolicyTests(unittest.TestCase):
         image_name = f"blikvm-v4-pikvm-{tag}.img.zst"
         other = ("filesystem-manifest.json", "image-inputs.lock.json",
                  "bootloader-layout.json", "package-inventory.tsv", "ENROLLMENT.md",
-                 "FLASHING.md", "THIRD_PARTY_NOTICES.md", "blikvm-enroll.tar.gz")
+                 "FLASHING.md", "THIRD_PARTY_NOTICES.md", "package-notices.tsv",
+                 "blikvm-enroll.tar.gz")
         for name in (image_name, *other):
             (dist / name).write_bytes(b"public")
         (dist / "THIRD_PARTY_NOTICES.md").write_text("reviewed notice inventory\n")
+        (dist / "package-inventory.tsv").write_text("example\t1\tarm64\n")
+        (dist / "package-notices.tsv").write_text(
+            "package\tversion\tarchitecture\tdpkg_status\tsource\tlicense_document\tlicense_sha256\tlicense_terms\n"
+            "example\t1\tarm64\tinstall ok installed\texample\t/usr/share/doc/example/copyright\t"
+            + "e" * 64 + "\tGPL-2+\n")
         boot = "b" * 64
         image = "a" * 64
         (root / "LICENSE").write_text("owner-selected license")
@@ -34,6 +40,8 @@ class ReleasePolicyTests(unittest.TestCase):
             "bootloader": bootloader, "git_commit": "c" * 40,
             "inputs_lock_sha256": policy.digest(dist / "image-inputs.lock.json"),
             "package_inventory_sha256": policy.digest(dist / "package-inventory.tsv"),
+            "package_notices_sha256": policy.digest(dist / "package-notices.tsv"),
+            "third_party_notices_sha256": policy.digest(dist / "THIRD_PARTY_NOTICES.md"),
             "project_license_sha256": policy.digest(root / "LICENSE"),
             "tool_versions": {"mkimage": "test"},
             "tool_binary_sha256": {"mkimage": "d" * 64},
@@ -62,6 +70,8 @@ class ReleasePolicyTests(unittest.TestCase):
                     "inputs": {"release_input_lock_sha256": policy.digest(dist / "image-inputs.lock.json"),
                                "source_manifest_sha256": policy.digest(dist / "source-manifest.json"),
                                "package_inventory_sha256": policy.digest(dist / "package-inventory.tsv"),
+                               "package_notices_sha256": policy.digest(dist / "package-notices.tsv"),
+                               "third_party_notices_sha256": policy.digest(dist / "THIRD_PARTY_NOTICES.md"),
                                "bootloader_layout_sha256": policy.digest(dist / "bootloader-layout.json")},
                     "toolchain": {name: source[name] for name in
                                   ("tool_versions", "tool_binary_sha256", "container_base_digests",
@@ -125,6 +135,17 @@ class ReleasePolicyTests(unittest.TestCase):
             dist, _ = self.fixture(Path(temp))
             (dist / "ENROLLMENT.md").write_bytes(b"modified")
             with self.assertRaisesRegex(policy.ReleaseBlocked, "CHECKSUM_MISMATCH"):
+                policy.prepublish(dist, Path(temp) / "qualification.json")
+
+    def test_rehashed_notice_change_still_fails_source_provenance(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(policy, "REPO", Path(temp)):
+            dist, _ = self.fixture(Path(temp))
+            notice = dist / "package-notices.tsv"
+            notice.write_text(notice.read_text().replace("GPL-2+", "MIT"))
+            (dist / "SHA256SUMS").write_text("".join(
+                f"{policy.digest(path)}  {path.name}\n" for path in sorted(dist.iterdir())
+                if path.is_file() and path.name != "SHA256SUMS"))
+            with self.assertRaisesRegex(policy.ReleaseBlocked, "SOURCE_MANIFEST_MISMATCH"):
                 policy.prepublish(dist, Path(temp) / "qualification.json")
 
     def test_deferred_scope_cannot_be_promoted_by_metadata_alone(self):
