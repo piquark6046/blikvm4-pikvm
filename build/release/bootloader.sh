@@ -15,7 +15,7 @@ cp "$repo/build/release/sun50i-h616-blikvm-v4.dts" "$root/u-boot/dts/upstream/sr
 sed -e 's@sun50i-h616-orangepi-zero2@sun50i-h616-blikvm-v4@' \
     -e 's/^CONFIG_AXP305_POWER=y$/CONFIG_AXP313_POWER=y/' \
     "$root/u-boot/configs/orangepi_zero2_defconfig" > "$root/u-boot/configs/blikvm_v4_defconfig"
-test "$(rg -c '^CONFIG_AXP313_POWER=y$' "$root/u-boot/configs/blikvm_v4_defconfig")" = 1
+test "$(grep -Fxc -- 'CONFIG_AXP313_POWER=y' "$root/u-boot/configs/blikvm_v4_defconfig")" = 1
 docker_cmd=(docker)
 if ! docker info >/dev/null 2>&1; then docker_cmd=(sudo -n docker); fi
 boot_builder=blikvm-release-bootloader:20260904
