@@ -2,6 +2,10 @@
 
 `build.py` overlays the hash-pinned public M8-E rootfs, changing only the active nginx logging directives and adding the journald drop-in. All other tar payloads and metadata must match. `cpio.sh` runs inside the existing pinned Build VM container and applies the baseline epoch normalization. No package install, kernel rebuild or application patch occurs.
 
+For fresh public release builds only, `build.py --release` also omits the
+`systemd-resolved` backup of the build host's temporary `resolv.conf`. The
+non-release overlay keeps its historical exact-byte output.
+
 Build twice into new `out/m8f2/build1` and `build2` directories, then run `finalize.py` and `check-cpio.py`. Preserve previous outputs before a new attempt. Finalize requires both archive formats to match; it reuses the accepted production candidate-2 kernel/DTB and the existing private M8-C enrollment, kept outside Git. `check-cpio.py` independently verifies every existing cpio entry's metadata and resolved hardlink content against public M8-E.
 
 Commands from repository root:

@@ -6,6 +6,13 @@ builds from pinned public source and package snapshots, and generates a new
 input lock from its own artifacts. It uses `JOBS=2` and never uses the bridge
 for ordinary software builds.
 
+Offline comparison of the two candidates from Actions run `36236262602`
+found 26 differing raw-image bytes, all within the packaged
+`/etc/.resolv.conf.systemd-resolved.bak`. That backup contains the individual
+runner's temporary DNS configuration. The release-only logging overlay omits
+it and records its hash in `file-diff.json`; the release input lock rejects a
+rootfs that still contains it. Historical M7 and M8-E artifacts stay frozen.
+
 ```sh
 JOBS=2 build/release/build.sh --output out/release-local-a
 JOBS=2 build/release/build.sh --output out/release-local-b
@@ -27,9 +34,12 @@ the workflow is release ready.
 
 The source-built U-Boot/TF-A candidate has **no hardware qualification** yet.
 `release/qualification.json` contains no newly qualified public image or boot
-chain. The repository also has no owner-selected project license, and the
-third-party notice inventory remains incomplete. `policy.py` blocks release
-publication until those records and exact-byte evidence are added. The
+chain. The owner selected GPL-3.0-or-later for project-authored code and
+documentation; the root `LICENSE` contains the GPLv3 text. File-specific SPDX
+notices and licenses on third-party source, patches, copied material, and
+archived evidence continue to govern those materials. The third-party notice
+inventory remains incomplete. `policy.py` blocks release publication until
+the remaining records and exact-byte evidence are added. The
 historical P2 image used private recovery-card bootloader bytes and cannot
 qualify this new boot chain by association.
 
@@ -39,8 +49,9 @@ and a real boot evidence file under `research/evidence/` in
 SHA-256. A stable image also needs an independently accepted exact public raw
 image SHA-256, its bootloader SHA-256, and core-KVM/P2 pass evidence. Beta and
 build channels may identify an unqualified image as such, but their bootloader
-must still be hardware-qualified. Publication also requires the owner's
-project `LICENSE` and a complete `THIRD_PARTY_NOTICES.md`.
+must still be hardware-qualified. Publication also requires a complete
+`THIRD_PARTY_NOTICES.md`; the project `LICENSE` hash must match the source
+manifest generated for the exact release commit.
 
 Bootloader qualification is a separate hardware run. With fresh authorization
 for a specifically identified expendable SD card, write the candidate once,
