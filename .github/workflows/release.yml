@@ -1,0 +1,168 @@
+name: Public image release
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Supported release tag to rehearse against the selected commit
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-release-${{ github.ref }}-${{ inputs.tag || '' }}
+  cancel-in-progress: false
+
+jobs:
+  classify:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      channel: ${{ steps.version.outputs.channel }}
+      commit: ${{ steps.version.outputs.git_commit }}
+      tag_object: ${{ steps.version.outputs.tag_object }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - id: version
+        env:
+          RELEASE_TAG: ${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          if [ "$GITHUB_EVENT_NAME" = push ]; then
+            python3 build/release/version.py github-output "$RELEASE_TAG" "$GITHUB_REF" > classification.json
+          else
+            python3 build/release/version.py check "$RELEASE_TAG" --commit HEAD > classification.json
+          fi
+          python3 - <<'PY'
+          import json, os
+          record = json.load(open('classification.json'))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              for name in ('tag', 'channel', 'git_commit', 'tag_object'):
+                  output.write(f'{name}={record.get(name) or ""}\n')
+          PY
+      - run: python3 -m unittest discover -s tests -p test_release_version.py
+
+  unit-tests:
+    needs: classify
+    runs-on: ubuntu-26.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.classify.outputs.commit }}
+          fetch-depth: 0
+      - run: |
+          set -euo pipefail
+          sudo docker build -f build/release/AssemblyContainerfile \
+            -t blikvm-release-assembly:20260904 build/release
+          sudo docker build -f build/release/TestContainerfile \
+            -t blikvm-release-tests:20260904 build/release
+          sudo docker run --rm -v "$PWD:/work:ro" -w /work \
+            blikvm-release-tests:20260904 python3 -m unittest discover -s tests
+
+  build:
+    needs: [classify, unit-tests]
+    strategy:
+      fail-fast: false
+      matrix:
+        replica: [a, b]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 300
+    env:
+      JOBS: '2'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.classify.outputs.commit }}
+          fetch-depth: 0
+      - run: |
+          set -euo pipefail
+          printf 'Runner image: %s %s\n' "${ImageOS:-unknown}" "${ImageVersion:-unknown}"
+          df -h /
+          build/release/build.sh --output out/release-run
+          df -h /
+          du -xhd1 out/release-run
+          sudo du -xhd1 /var/lib/docker 2>/dev/null || true
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: candidate-${{ matrix.replica }}
+          path: out/release-run/public/
+          if-no-files-found: error
+          retention-days: 2
+
+  compare:
+    needs: [classify, build]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.classify.outputs.commit }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: candidate-a
+          path: candidates/a
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: candidate-b
+          path: candidates/b
+      - env:
+          RELEASE_TAG: ${{ needs.classify.outputs.tag }}
+          CLASSIFIED_TAG_OBJECT: ${{ needs.classify.outputs.tag_object }}
+        run: |
+          set -euo pipefail
+          sudo docker build -f build/release/AssemblyContainerfile \
+            -t blikvm-release-assembly:20260904 build/release
+          if [ "$GITHUB_EVENT_NAME" = push ]; then
+            sudo docker run --rm --user "$(id -u):$(id -g)" \
+              -v "$PWD:/work" -w /work blikvm-release-assembly:20260904 \
+              python3 build/release/compare.py candidates/a candidates/b \
+              --output dist --tag "$RELEASE_TAG" --ref "$GITHUB_REF" \
+              --tag-object "$CLASSIFIED_TAG_OBJECT"
+          else
+            sudo docker run --rm --user "$(id -u):$(id -g)" \
+              -v "$PWD:/work" -w /work blikvm-release-assembly:20260904 \
+              python3 build/release/compare.py candidates/a candidates/b \
+              --output dist --tag "$RELEASE_TAG" --commit HEAD
+          fi
+          (cd dist && sha256sum -c SHA256SUMS)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: final-public-assets
+          path: dist/
+          if-no-files-found: error
+          retention-days: 2
+
+  release:
+    if: github.event_name == 'push'
+    needs: [classify, compare]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.classify.outputs.commit }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: final-public-assets
+          path: dist
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.classify.outputs.tag }}
+        run: |
+          set -euo pipefail
+          python3 build/release/prepublish.py --dist dist --tag "$RELEASE_TAG" --ref "$GITHUB_REF"
+          python3 build/release/publish.py --dist dist --tag "$RELEASE_TAG" --ref "$GITHUB_REF"

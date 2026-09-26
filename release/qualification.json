@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "historical_baseline": {
+    "tag": "standalone-sd-core-kvm-baseline",
+    "historical_standalone_image_sha256": "1db928494867222308a37507cc37f82f81892849900154275840ac14b2312079",
+    "bootloader": "private recovery-card capture",
+    "p2": "PASSED",
+    "evidence": "research/p2-standalone-sd-bringup.md"
+  },
+  "qualified_bootloaders": [],
+  "qualified_public_images": [],
+  "p3": "UNACCEPTED",
+  "m6_atx": "DEFERRED",
+  "ro_overlay": "DEFERRED"
+}

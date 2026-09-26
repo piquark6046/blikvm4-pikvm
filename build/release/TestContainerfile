@@ -1,0 +1,6 @@
+FROM blikvm-release-assembly:20260904
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      build-essential libssl-dev nodejs systemd iproute2 nftables openssh-client \
+ && rm -rf /var/lib/apt/lists/*
+WORKDIR /work
