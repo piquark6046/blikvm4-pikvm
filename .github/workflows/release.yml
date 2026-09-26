@@ -145,7 +145,7 @@ jobs:
           retention-days: 2
 
   release:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && (needs.classify.outputs.channel == 'stable' || needs.classify.outputs.channel == 'beta')
     needs: [classify, compare]
     runs-on: ubuntu-26.04
     timeout-minutes: 90

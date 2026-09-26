@@ -92,6 +92,8 @@ def prepublish(dist: Path, record_path: Path | None = None) -> dict:
     dist = dist.resolve()
     verify_checksums(dist)
     manifest = json.loads((dist / "release-manifest.json").read_text())
+    if manifest.get("channel") == "build":
+        raise ReleaseBlocked("BUILD_TAG_CANDIDATE_ONLY")
     tag = manifest["release_tag"]
     image_name = f"blikvm-v4-pikvm-{tag}.img.zst"
     allowed = {image_name, "filesystem-manifest.json", "image-inputs.lock.json",

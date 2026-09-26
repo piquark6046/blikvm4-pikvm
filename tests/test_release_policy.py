@@ -17,7 +17,8 @@ class ReleasePolicyTests(unittest.TestCase):
     def fixture(self, root: Path, channel: str = "stable") -> tuple[Path, dict]:
         dist = root / "dist"
         dist.mkdir()
-        image_name = "blikvm-v4-pikvm-1.2.5.img.zst"
+        tag = "1.2.5-build.cccccccc" if channel == "build" else "1.2.5"
+        image_name = f"blikvm-v4-pikvm-{tag}.img.zst"
         other = ("filesystem-manifest.json", "image-inputs.lock.json",
                  "bootloader-layout.json", "package-inventory.tsv", "ENROLLMENT.md",
                  "FLASHING.md", "THIRD_PARTY_NOTICES.md", "blikvm-enroll.tar.gz")
@@ -55,7 +56,7 @@ class ReleasePolicyTests(unittest.TestCase):
                   "p3": "UNACCEPTED", "m6_atx": "DEFERRED", "ro_overlay": "DEFERRED"}
         qpath = root / "qualification.json"
         qpath.write_text(json.dumps(record))
-        manifest = {"release_tag": "1.2.5", "channel": channel, "git_commit": "c" * 40,
+        manifest = {"release_tag": tag, "channel": channel, "git_commit": "c" * 40,
                     "filesystem_manifest_sha256": policy.digest(dist / "filesystem-manifest.json"),
                     "release_input_lock_sha256": policy.digest(dist / "image-inputs.lock.json"),
                     "inputs": {"release_input_lock_sha256": policy.digest(dist / "image-inputs.lock.json"),
@@ -70,8 +71,8 @@ class ReleasePolicyTests(unittest.TestCase):
                     "public_image": {"sha256": image}, "bootloader_sha256": boot,
                     "build_jobs": 2, "reproducible_build": True,
                     "offline_validation": "PASSED", "secret_scan": "PASSED",
-                    "qualification": policy.qualification({"public_image": {"sha256": image},
-                        "bootloader_sha256": boot, "channel": channel}, record)}
+                    "qualification": policy.qualification_status({"public_image": {"sha256": image},
+                        "bootloader_sha256": boot}, record)}
         (dist / "release-manifest.json").write_text(json.dumps(manifest))
         (dist / "SHA256SUMS").write_text("".join(
             f"{policy.digest(path)}  {path.name}\n" for path in sorted(dist.iterdir()) if path.is_file()))
@@ -87,6 +88,13 @@ class ReleasePolicyTests(unittest.TestCase):
             qpath.write_text(json.dumps(record))
             with self.assertRaisesRegex(policy.ReleaseBlocked, "STABLE_EXACT_IMAGE_NOT_QUALIFIED"):
                 policy.prepublish(dist, qpath)
+
+    def test_build_tag_cannot_publish_even_with_qualification(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(policy, "REPO", Path(temp)):
+            root = Path(temp)
+            dist, _ = self.fixture(root, "build")
+            with self.assertRaisesRegex(policy.ReleaseBlocked, "BUILD_TAG_CANDIDATE_ONLY"):
+                policy.prepublish(dist, root / "qualification.json")
 
     def test_prerelease_still_requires_qualified_bootloader_and_license(self):
         with tempfile.TemporaryDirectory() as temp, patch.object(policy, "REPO", Path(temp)):

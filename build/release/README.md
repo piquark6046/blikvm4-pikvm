@@ -43,13 +43,20 @@ the remaining records and exact-byte evidence are added. The
 historical P2 image used private recovery-card bootloader bytes and cannot
 qualify this new boot chain by association.
 
+Pushed `-build.<sha>` tags are candidate-only. CI still runs both independent
+builds, compares their bytes, and uploads short-lived candidate artifacts, but
+does not create a GitHub Release. The publication policy also rejects manual
+attempts to publish build tags. The failed release job in Actions run
+`36246591270` is retained as the historical notice-gate result; a new build tag
+is needed to verify the candidate-only workflow.
+
 To authorize publication later, record the exact source-built bootloader hash
 and a real boot evidence file under `research/evidence/` in
 `release/qualification.json`. Each entry needs the evidence path and its
 SHA-256. A stable image also needs an independently accepted exact public raw
-image SHA-256, its bootloader SHA-256, and core-KVM/P2 pass evidence. Beta and
-build channels may identify an unqualified image as such, but their bootloader
-must still be hardware-qualified. Publication also requires a complete
+image SHA-256, its bootloader SHA-256, and core-KVM/P2 pass evidence. A beta
+release may identify an unqualified image as such, but its bootloader must
+still be hardware-qualified. Publication also requires a complete
 `THIRD_PARTY_NOTICES.md`; the project `LICENSE` hash must match the source
 manifest generated for the exact release commit.
 
